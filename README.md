@@ -25,7 +25,7 @@ function Car(name) {
   this.name = name;
 }
 
-or;
+or
 
 class Car {
   constructor(name) {
