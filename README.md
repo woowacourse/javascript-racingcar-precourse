@@ -17,7 +17,10 @@
 
 ## ✅ 프로그래밍 요구사항
 
-- 자동차의 이름을 입력값을 받는 input은 
+- 자동차의 이름을 입력하는 input 태그는 `#car-names-input` id값을 가진다.
+- 자동차의 이름을 제출하는 button 태그는 `#car-names-submit` id값을 가진다.
+- 레이싱 횟수를 입력하는 input 태그는 `#racing-count-input` id값을 가진다.
+- 레이싱 횟수을 제출하는 button 태그는 `#racing-count-submit` id값을 가진다.
 - 다음 Car 객체를 만들고, new 를 이용해 인스턴스를 만든다.
 
 ```javascript
