@@ -56,7 +56,7 @@ class Car {
 
 ## 📝 미션 저장소 및 진행 요구사항
 
-- 미션은 [https://github.com/woowacourse](https://github.com/woowacourse/javascript-racingcar-precourse) 저장소를 fork/clone해 시작한다.
+- 미션은 [https://github.com/woowacourse/javascript-racingcar-precours](https://github.com/woowacourse/javascript-racingcar-precourse) 저장소를 fork/clone해 시작한다.
 - **기능을 구현하기 전에 javascript-racingcar/README.md 파일에 구현할 기능 목록**을 정리해 추가한다.
 - **git의 commit 단위는 앞 단계에서 README.md 파일에 정리한 기능 목록 단위로 추가**한다.
 - [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서 절차를 따라 미션을 제출한다.
