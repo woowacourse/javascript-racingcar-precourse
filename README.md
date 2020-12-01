@@ -13,19 +13,32 @@
 
 ![실행이미지](./images/result.gif)
 
-![실행이미지](./images/result.png)
+![실행이미지](./images/result.jpg)
 
 ## ✅ 프로그래밍 요구사항
 
-- 자동차의 이름을 입력값을 받는 input은
+- **자바스크립트 코드 컨벤션을 지키면서 프로그래밍** 한다
+  - [https://google.github.io/styleguide/jsguide.html](https://google.github.io/styleguide/jsguide.html)
+  - [https://ui.toast.com/fe-guide/ko_CODING-CONVENSION/](https://ui.toast.com/fe-guide/ko_CODING-CONVENTION)
+- **indent(인덴트, 들여쓰기) depth를 3이 넘지 않도록 구현한다. 2까지만 허용**한다.
+  - 예를 들어 while문 안에 if문이 있으면 들여쓰기는 2이다.
+  - 힌트: indent(인덴트, 들여쓰기) depth를 줄이는 좋은 방법은 함수(또는 메소드)를 분리하면 된다.
+- **함수(또는 메소드)가 한 가지 일만 하도록 최대한 작게** 만들어라.
+
+### 추가된 요구사항
+
+- **함수(또는 메소드)의 길이가 15라인을 넘어가지 않도록 구현한다.**
+  - 함수(또는 메소드)가 한 가지 일만 잘 하도록 구현한다.
+- 자동차의 이름을 입력하는 input 태그는 `#car-names-input` id값을 가진다.
+- 자동차의 이름을 제출하는 button 태그는 `#car-names-submit` id값을 가진다.
+- 레이싱 횟수를 입력하는 input 태그는 `#racing-count-input` id값을 가진다.
+- 레이싱 횟수을 제출하는 button 태그는 `#racing-count-submit` id값을 가진다.
 - 다음 Car 객체를 만들고, new 를 이용해 인스턴스를 만든다.
 
 ```javascript
 function Car(name) {
   this.name = name;
 }
-
-or;
 
 class Car {
   constructor(name) {
@@ -39,22 +52,20 @@ class Car {
   - [let](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/let)
 - `import` 문을 이용해 스크립트를 모듈화하고 불러올 수 있게 만든다.
   - [https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/import](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/import)
-  - 참고링크
 - `template literal`을 이용해 데이터와 html string을 가독성 좋게 표현한다.
   - [https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Template_literals](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Template_literals)
-- **함수(또는 메소드)의 길이가 15라인을 넘어가지 않도록 구현한다.**
-  - 함수(또는 메소드)가 한 가지 일만 잘 하도록 구현한다.
-- **자바스크립트 코드 컨벤션을 지키면서 프로그래밍** 한다
-  - [https://google.github.io/styleguide/jsguide.html](https://google.github.io/styleguide/jsguide.html)
-  - [https://ui.toast.com/fe-guide/ko_CODING-CONVENSION/](https://ui.toast.com/fe-guide/ko_CODING-CONVENTION)
-- **indent(인덴트, 들여쓰기) depth를 3이 넘지 않도록 구현한다. 2까지만 허용**한다.
-  - 예를 들어 while문 안에 if문이 있으면 들여쓰기는 2이다.
-  - 힌트: indent(인덴트, 들여쓰기) depth를 줄이는 좋은 방법은 함수(또는 메소드)를 분리하면 된다.
-- **함수(또는 메소드)가 한 가지 일만 하도록 최대한 작게** 만들어라.
 
 ## 📝 미션 저장소 및 진행 요구사항
 
-- 미션은 [https://github.com/woowacourse](https://github.com/woowacourse/javascript-racingcar-precourse) 저장소를 fork/clone해 시작한다.
+- 미션은 [https://github.com/woowacourse/javascript-racingcar-precours](https://github.com/woowacourse/javascript-racingcar-precourse) 저장소를 fork/clone해 시작한다.
 - **기능을 구현하기 전에 javascript-racingcar/README.md 파일에 구현할 기능 목록**을 정리해 추가한다.
 - **git의 commit 단위는 앞 단계에서 README.md 파일에 정리한 기능 목록 단위로 추가**한다.
 - [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서 절차를 따라 미션을 제출한다.
+
+## 🤔 FAQ
+
+- `eslint`, `prettier`를 사용 가능한가요?
+  - `eslint`, `prettier`와 같이 기능 요구사항 구현에 영향을 주지 않는 라이브러리는 자유롭게 사용해주셔도 좋습니다.
+- `Template literals`에서의 경우에도 indent에 포함되나요?
+  - 요구사항에서 제시한 인덴트의 경우에는 **조건과 분기를 위한 indent가 2 depth**를 넘지 않는 것을 의미합니다.
+    따라서 단순히 가독성을 위해 depth가 깊어지는 경우는 상관 없습니다.
