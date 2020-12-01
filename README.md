@@ -65,10 +65,3 @@ class Car {
 - **git의 commit 단위는 앞 단계에서 README.md 파일에 정리한 기능 목록 단위로 추가**한다.
 - [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서 절차를 따라 미션을 제출한다.
 
-## 🤔 FAQ
-
-- `eslint`, `prettier`를 사용 가능한가요?
-  - `eslint`, `prettier`와 같이 기능 요구사항 구현에 영향을 주지 않는 라이브러리는 자유롭게 사용해주셔도 좋습니다.
-- `Template literals`에서의 경우에도 indent에 포함되나요?
-  - 요구사항에서 제시한 인덴트의 경우에는 **조건과 분기를 위한 indent가 2 depth**를 넘지 않는 것을 의미합니다.
-    따라서 단순히 가독성을 위해 depth가 깊어지는 경우는 상관 없습니다.
