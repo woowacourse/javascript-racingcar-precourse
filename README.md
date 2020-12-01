@@ -39,7 +39,6 @@ class Car {
   - [let](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/let)
 - `import` 문을 이용해 스크립트를 모듈화하고 불러올 수 있게 만든다.
   - [https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/import](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/import)
-  - 참고링크
 - `template literal`을 이용해 데이터와 html string을 가독성 좋게 표현한다.
   - [https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Template_literals](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Template_literals)
 - **함수(또는 메소드)의 길이가 15라인을 넘어가지 않도록 구현한다.**
