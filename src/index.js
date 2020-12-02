@@ -1,8 +1,7 @@
+import InputStatus from '/src/lib/inputControl.js';
+
 import {
-  getCarNames,
-  getTurnNumber,
   getInitCarInfo,
-  createRandomNumber,
 } from '/src/lib/gameFunctions.js';
 
 export default class RacingCarGame {
@@ -26,8 +25,13 @@ export default class RacingCarGame {
   }
 }
 
+const runGame = carNames => {
+  let game = new RacingCarGame(carNames);
+  
+}
+
 const startGame = () => {
-  //let game = new RacingCarGame();
+  //
 
   //input
 

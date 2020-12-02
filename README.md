@@ -10,12 +10,10 @@
 
 ## 기능 목록 구현
 - 1. 차 이름 입력, 파싱 및 검사하는 메소드 구현
-  - 올바르지 않은 경우
+  - 올바르지 않은 경우 => 경고 입력 후 초기화 해준다.
     - 차 이름 길이가 5글자를 넘어간다.
-    - 공백이 들어간 경우? -> 공백을 제거할 것인가, 경고문을 올릴 것인가?
-    - 숫자, 한글, 영어 대문자가 들어간 경우?
-    - 경고 입력 후 초기화 해준다.
-  - 올바른 경우
+    - 공백이 들어간 경우
+  - 올바른 경우 => 다음 순서
     - 인풋값을 파싱해서 new Car라는 객체 형태로 저장
     - Car객체에 게임 내역들 기록할 것
   - 올바르게 입력됐으면 RacingCarGame에 생성자 만들어서 다음 입력 받는다.
@@ -59,3 +57,8 @@
   - class Car 객체를 만들 것. => 클래스 상속 개념?
   - 함수 길이가 <span style="color:red">15줄</span>을 넘기지 말 것
   - DOM 내장 객체에 innterHTML 부분에 tamplete literal을 적용하기
+
+#### 새로운 개념
+  - node객체 내장 함수들 익힐 것
+    - node.previousSibling, node.nextSibling 등
+    - [참고 url] https://developer.mozilla.org/ko/docs/Web/API/Node
