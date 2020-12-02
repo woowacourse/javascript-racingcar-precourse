@@ -21,6 +21,7 @@ const startRacing = (carArray) => {
 };
 
 export function handleNamesSubmit() {
+  clearResult();
   this.carArray = inputStringToArray(
     document.getElementById("car-names-input").value
   );
@@ -32,6 +33,8 @@ export function handleNamesSubmit() {
 
 export function handleCountSubmit() {
   clearResult();
+  const inputValue = document.getElementById("car-names-input").value;
+  this.carArray = inputStringToArray(inputValue);
 
   const countValue = document.getElementById("racing-count-input").value;
   if (countValue <= 0) {
@@ -42,7 +45,6 @@ export function handleCountSubmit() {
   for (let i = 0; i < countValue; i++) {
     this.carArray = startRacing(this.carArray);
   }
-
   printResultContainer(this.carArray, printRaceResult);
   setContainerVisible("car-game-result-container", true);
 }
