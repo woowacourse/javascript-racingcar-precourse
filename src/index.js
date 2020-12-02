@@ -10,10 +10,14 @@ import { RacingCarView } from './modules/views';
 window.addEventListener('DOMContentLoaded', () => {
   const carNamesInput = document.getElementById('#car-names-inputs');
   const carNamesSubmitButtton = document.getElementById('#car-names-submit');
+  const carRacingCountDiv = document.getElementById(
+    '#car-racing-count-container',
+  );
   const gameModel = new RacingCarModel();
   const gameView = new RacingCarView(
     gameModel,
     carNamesInput,
     carNamesSubmitButtton,
+    carRacingCountDiv,
   );
 });
