@@ -12,19 +12,17 @@ export default class RacingCarGame {
   }
 
   addEventListener() {
-    this.$nameButton.addEventListener('click', () => this.getInput());
-    this.$nameInput.addEventListener('keypress', (e) => {
-      if (e.keyCode === 13)
-        this.getInput();
-    })
+    this.$nameButton.addEventListener("click", () => this.getInput());
+    this.$nameInput.addEventListener("keypress", (e) => {
+      if (e.keyCode === 13) this.getInput();
+    });
   }
 
   getCarNames() {
     const userNameInput = this.$nameInput.value;
-    const carNames = userNameInput.split(',');
+    const carNames = userNameInput.split(",");
     console.log(carNames);
   }
-  
 }
 
 new RacingCarGame();
