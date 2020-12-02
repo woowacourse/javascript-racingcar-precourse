@@ -19,3 +19,9 @@ export const inputStringToArray = (inputString) => {
 
   return carArray;
 };
+
+export const setContainerVisible = (className, visible) => {
+  document.getElementsByClassName(className)[0].style.display = visible
+    ? "initial"
+    : "none";
+};
