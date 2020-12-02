@@ -39,8 +39,12 @@ export default class RacingCarGame {
 		const carNamesList = this.getCarNamesList(this.carNames);
 
 		if (!this.isCarNamesValid(carNamesList)) {
-			return alert("자동차 이름을 5자 이하로 입력해주세요.");
+			return;
 		}
+	}
+
+	getCarNamesList = carNames => {
+		return carNames.split(",");
 	}
 
 	isCarNamesValid = carNamesList => {
@@ -49,6 +53,7 @@ export default class RacingCarGame {
 		for (let name = 0; name < carNamesList.length; name++) {
 			if (carNamesList[name].length > 5) {
 				validity = false;
+				alert("자동차 이름을 5자 이하로 입력해주세요.");
 				break;
 			}
 		}
