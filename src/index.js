@@ -18,6 +18,13 @@ export default class RacingCarGame {
       this.getCarNameInput();
     });
   };
+
+  handleCountSubmit = () => {
+    const countButton = document.getElementById("racting-count-submit");
+    countButton.addEventListener("click", () => {
+      this.getCountInput();
+    });
+  };
 }
 
 new RacingCarGame();
