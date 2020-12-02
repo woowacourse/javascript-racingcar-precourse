@@ -1,4 +1,4 @@
-import Car from '/src/lib/car.js';
+import Car from '/src/lib/classes/car.js';
 
 const GO_AHEAD_MAX_VALUE = 9;
 

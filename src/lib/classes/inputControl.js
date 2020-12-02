@@ -1,4 +1,4 @@
-const MAX_CAR_NAME_LENGTH = 5;
+import { MAX_CAR_NAME_LENGTH } from '/src/lib/variables/constantNumbers.js';
 
 export default class InputStatus {
   constructor(inputs) {

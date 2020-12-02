@@ -1,8 +1,9 @@
-import InputStatus from '/src/lib/inputControl.js';
+import InputStatus from '/src/lib/classes/inputControl.js';
+import getDOMinit from '/src/lib/config/DOMinitSetting.js';
 
-import {
+import {  
   getInitCarInfo,
-} from '/src/lib/gameFunctions.js';
+} from '/src/lib/functions/gameFunctions.js';
 
 
 
@@ -33,7 +34,7 @@ const runGame = carNames => {
 }
 
 const startGame = () => {
-  //
+  getDOMinit();
 
   //input
 
