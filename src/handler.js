@@ -1,4 +1,8 @@
-import { printResultContainer, printRoundResult } from "./print.js";
+import {
+  printRaceResult,
+  printResultContainer,
+  printRoundResult,
+} from "./print.js";
 import {
   inputStringToArray,
   isCarForward,
@@ -21,4 +25,18 @@ export function handleNamesSubmit() {
   );
 
   setContainerVisible("car-game-count-container", true);
+}
+
+export function handleCountSubmit() {
+  for (
+    let i = 0;
+    i < document.getElementById("racing-count-input").value;
+    i++
+  ) {
+    this.carArray = startRacing(this.carArray);
+  }
+
+  printResultContainer(this.carArray, printRaceResult);
+
+  setContainerVisible("car-game-result-container", true);
 }
