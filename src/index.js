@@ -36,7 +36,24 @@ export default class RacingCarGame {
 	}
 
 	startGame = () => {
-		console.log(this.carNames, this.racingCount);
+		const carNamesList = this.getCarNamesList(this.carNames);
+
+		if (!this.isCarNamesValid(carNamesList)) {
+			return alert("자동차 이름을 5자 이하로 입력해주세요.");
+		}
+	}
+
+	isCarNamesValid = carNamesList => {
+		let validity = true;
+
+		for (let name = 0; name < carNamesList.length; name++) {
+			if (carNamesList[name].length > 5) {
+				validity = false;
+				break;
+			}
+		}
+
+		return validity;
 	}
 }
 
