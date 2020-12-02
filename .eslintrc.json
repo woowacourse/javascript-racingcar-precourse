@@ -1,0 +1,11 @@
+{
+  "env": {
+    "browser": true
+  },
+  "extends": ["airbnb-base", "plugin:prettier/recommended"],
+  "plugins": ["prettier"],
+  "rules": {
+    "no-new": "off",
+    "max-depth": ["error", 2]
+  }
+}
