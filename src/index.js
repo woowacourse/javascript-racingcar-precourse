@@ -10,4 +10,10 @@ export default class RacingCarGame {
       this.carsArray.push(new Car(carName));
     }
   }
+
+  gamePlay(times) {
+    for (let i = 0; i < times; i++) {
+      this.carsArray.forEach((car) => car.plusLength());
+    }
+  }
 }
