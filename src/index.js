@@ -1,4 +1,4 @@
-import Car from "src/core/car.js"
+import Car from "/src/core/car.js"
 
 export default class RacingCarGame {
 	constructor() {
@@ -15,23 +15,28 @@ export default class RacingCarGame {
 	}
 
 	setAttributes = () => {
-		this.carNamesInput.addAttribute("id", "car-names-input");
-		this.carNamesSubmit.addAttribute("id", "car-names-submit");
-		this.racingCountInput.addAttribute("id", "racing-count-input");
-		this.racingCountSubmit.addAttribute("id", "racing-count-submit");
+		this.carNamesInput.setAttribute("id", "car-names-input");
+		this.carNamesSubmit.setAttribute("id", "car-names-submit");
+		this.racingCountInput.setAttribute("id", "racing-count-input");
+		this.racingCountSubmit.setAttribute("id", "racing-count-submit");
 	}
 
 	setHandlers = () => {
 		this.carNamesSubmit.addEventListener("click", this.getCarNames);
 		this.racingCountSubmit.addEventListener("click", this.getRacingCount);
+		this.racingCountSubmit.addEventListener("click", this.startGame);
 	}
 
 	getCarNames = () => {
-		this.carName = this.carNamesInput.value;
+		this.carNames = this.carNamesInput.value;
 	}
 
 	getRacingCount = () => {
 		this.racingCount = this.racingCountInput.value;
+	}
+
+	startGame = () => {
+		console.log(this.carNames, this.racingCount);
 	}
 }
 
