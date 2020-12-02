@@ -7,18 +7,16 @@ export default class RacingCarModel {
 
   makeCarInstances(cars) {
     const instances = cars.map(car => {
-      new Car(car);
+      return new Car(car);
     });
 
     this._cars = instances;
   }
 
   progress() {
-    const progressedCars = this._cars.map(car => {
+    this._cars.forEach(car => {
       car.moveForward();
     });
-
-    this._cars = progressedCars;
   }
 
   getCars() {
