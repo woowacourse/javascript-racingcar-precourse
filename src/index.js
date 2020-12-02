@@ -1,5 +1,5 @@
 import InputStatus from '/src/lib/classes/inputControl.js';
-import getDOMinit from '/src/lib/config/DOMinitSetting.js';
+import addIdsToNodes from '/src/lib/config/addIdsToNodes.js';
 
 import {  
   getInitCarInfo,
@@ -34,8 +34,8 @@ const runGame = carNames => {
 }
 
 const startGame = () => {
-  getDOMinit();
-
+  addIdsToNodes();
+  
   //input
 
 }

@@ -81,3 +81,7 @@
         - button `#racing-count-submit`
 
       - 3. 결과 출력하는 부분은 입력 성공적으로 받고 제대로 실행될 때 생각하기
+
+#### 구현한 것
+  - boilarplate 생성
+  - dom init해서 id값 부여 => 프로그램 시작 후 생성된 노드는 전역변수로 쓰지 말것
