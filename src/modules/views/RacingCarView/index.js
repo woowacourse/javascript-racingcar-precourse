@@ -50,4 +50,6 @@ export default class RacingCarView {
     `;
     this.addEventListenerToRacingCountSubmitButton();
   }
+
+  renderResult() {}
 }
