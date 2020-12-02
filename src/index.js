@@ -12,6 +12,10 @@ export default class RacingCarGame {
       .getElementById("car-names-input")
       .value.split(",");
     carNames.map((carName) => new RacingCar(carName));
+    const racingCountContainer = document.getElementById(
+      "racing-count-container"
+    );
+    racingCountContainer.style.display = "block";
   }
   addEventListenerById(id, event) {
     const element = document.getElementById(id);
