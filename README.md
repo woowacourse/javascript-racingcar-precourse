@@ -13,7 +13,7 @@
   * 2020.12.02 - 2020.12.08
 ### 📝사용 언어
 <p align="left">
-  <img src="https://img.shields.io/badge/HTML5-orange?logo=HTML5"/>
+  <img src="https://img.shields.io/badge/html-HTML5-orange?logo=HTML5"/>
   <img src="https://img.shields.io/badge/javascript-ES6+-yellow?logo=javascript"/>
 </p>
 
