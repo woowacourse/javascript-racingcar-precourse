@@ -1,14 +1,4 @@
-// import getCarName from './input/getCarName.js';
-
-// function Car(name) {
-//   this.name = name;
-// }
-
-//   class Car {
-//     constructor(name) {
-//       this.name = name;
-//     }
-//   }
+import getUserInput from './input/getUserInput.js';
 
 function hideScreen() {
   const $inputRaceNumberScreen = document.querySelector(
@@ -22,6 +12,7 @@ function hideScreen() {
 
 export default function RacingCarGame() {
   hideScreen();
+  getUserInput();
 }
 
 new RacingCarGame();
