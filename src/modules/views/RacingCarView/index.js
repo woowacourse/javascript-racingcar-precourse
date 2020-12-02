@@ -37,6 +37,7 @@ export default class RacingCarView {
       this.renderIntermediateResult(this.RacingCarModel.getCars());
     }
     console.log(this.RacingCarModel.getCars());
+    this.renderWinners(this.RacingCarModel.getCars());
   }
 
   addEventListenerToRacingCountSubmitButton() {
@@ -66,4 +67,6 @@ export default class RacingCarView {
       </div>
     `;
   }
+
+  renderWinners(cars) {}
 }
