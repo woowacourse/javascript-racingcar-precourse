@@ -68,13 +68,15 @@ class Car {
 ## 기능 목록
 
 - RacingCarView class 
+  - init
   - handleCarNamesSubmit
-  - splitNamesString
   - handleRacingCountSubmit
+  - addEventListenerToRacingCountSubmitButton
+  - renderIntermediateResult
   - renderWinners
-  - renderResult
   
 - RacingCarModel class
+  - makeCarInstances
   - progress
   - getCars
 
@@ -84,6 +86,7 @@ class Car {
 
 - utils
   - isFourHigher
+  - splitNamesString
 
   
   
