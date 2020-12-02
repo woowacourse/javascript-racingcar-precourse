@@ -28,7 +28,7 @@ export default class InputStatus {
     return this.inputs.split(',');
   }
 
-  getTurnNumber() {
+  getRacingCountNumber() {
     return Number(this.inputs);
   }
 }

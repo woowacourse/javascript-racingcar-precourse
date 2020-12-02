@@ -4,6 +4,8 @@ import {
   getInitCarInfo,
 } from '/src/lib/gameFunctions.js';
 
+
+
 export default class RacingCarGame {
   constructor(carNames) {
 		this.cars = getInitCarInfo(carNames);
@@ -27,7 +29,7 @@ export default class RacingCarGame {
 
 const runGame = carNames => {
   let game = new RacingCarGame(carNames);
-  
+
 }
 
 const startGame = () => {

@@ -1,5 +1,11 @@
 # 🏎️ 자동차 경주 게임 README by Seongwon Kim
 
+## 요구사항
+- 자동차의 이름을 입력하는 input 태그는 `#car-names-input` id값을 가진다.
+- 자동차의 이름을 제출하는 button 태그는 `#car-names-submit` id값을 가진다.
+- 레이싱 횟수를 입력하는 input 태그는 `#racing-count-input` id값을 가진다.
+- 레이싱 횟수을 제출하는 button 태그는 `#racing-count-submit` id값을 가진다.
+
 ## 프로젝트 개요
 - 각 이름이 5자 이하인 자동차를 입력받는다. (input form, button)
 - 시도 횟수를 입력받는다. form은 요구사항에 제시된 형태 사용 (input form, button)
@@ -62,3 +68,16 @@
   - node객체 내장 함수들 익힐 것
     - node.previousSibling, node.nextSibling 등
     - [참고 url] https://developer.mozilla.org/ko/docs/Web/API/Node
+
+#### input을 어떻게 처리하지?
+  - dom init를 구현할 것
+    - `.car-game-container` DOM 클래스 구조
+      - 1. [자동차 이름 입력] div `#get-car-names`
+        - input `#car-names-input`
+        - button `#car-names-submit`
+      
+      - 2. [시도 횟수 입력] div `#get-racing-count`
+        - input `#racing-count-input`
+        - button `#racing-count-submit`
+
+      - 3. 결과 출력하는 부분은 입력 성공적으로 받고 제대로 실행될 때 생각하기
