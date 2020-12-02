@@ -13,11 +13,15 @@ window.addEventListener('DOMContentLoaded', () => {
   const carRacingCountDiv = document.getElementById(
     '#car-racing-count-container',
   );
+  const carRacingResultDiv = document.getElementById(
+    '#car-racing-result-container',
+  );
   const gameModel = new RacingCarModel();
   const gameView = new RacingCarView(
     gameModel,
     carNamesInput,
     carNamesSubmitButtton,
     carRacingCountDiv,
+    carRacingResultDiv,
   );
 });

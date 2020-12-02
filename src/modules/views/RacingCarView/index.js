@@ -6,11 +6,13 @@ export default class RacingCarView {
     carNamesInput,
     carNamesSubmitButtton,
     carRacingCountDiv,
+    carRacingResultDiv,
   ) {
     this.RacingCarModel = RacingCarModel;
     this.carNamesInput = carNamesInput;
     this.carNamesSubmitButtton = carNamesSubmitButtton;
     this.carRacingCountDiv = carRacingCountDiv;
+    this.carRacingResultDiv = carRacingResultDiv;
     this.init();
   }
 
@@ -32,6 +34,7 @@ export default class RacingCarView {
 
     for (let i = 0; i < racingCount; i++) {
       this.RacingCarModel.progress();
+      this.renderIntermediateResult(this.RacingCarModel.getCars());
     }
     console.log(this.RacingCarModel.getCars());
   }
@@ -51,5 +54,16 @@ export default class RacingCarView {
     this.addEventListenerToRacingCountSubmitButton();
   }
 
-  renderResult() {}
+  renderIntermediateResult(cars) {
+    let intermediateResult = ``;
+    cars.forEach(car => {
+      let hyphens = '-'.repeat(car.moveForwardDistance);
+      intermediateResult += `<p>${car.name} : ${hyphens}</p>`;
+    });
+    this.carRacingResultDiv.innerHTML += `
+      <div>
+        ${intermediateResult}
+      </div>
+    `;
+  }
 }
