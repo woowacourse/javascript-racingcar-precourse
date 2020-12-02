@@ -1,5 +1,50 @@
 # 🏎️ 자동차 경주 게임
 
+## 👨🏻‍💻 구현할 기능 목록
+
+1. 사용자가 자동차 이름 input칸에 작성하고 확인 버튼을 눌렀을 때 input값을 가져오는 기능
+
+   - [예외] 글자가 없는데 확인 버튼을 눌렀을 경우
+
+2. input값에서 콤마로 자동차의 개수를 구분하는 기능
+
+   - String으로 받아서 ,를 기준으로 String을 나눈다.
+   - 각 자동차 String의 길이가 5가 넘으면 alert로 다시 입력 받음.
+
+   - [예외] 쉼표가 없을 경우: 하나의 String
+   - [예외] 쉼표이전에 5자가 넘을 경우
+   - [예외] 쉼표와 쉼표 사이에 글자가 없을 경우
+
+3. Car객체를 해당 자동차 수 만큼 생성하는 기능
+
+   - 객체는 Car와 Racing 으로 나눔(module로 나눔)
+   - Car와 Racing을 모듈로 나눔. Racing 객체에서 실행
+
+4. 시도할 횟수를 입력받는 기능
+
+   - 시도 횟수만큼 반복
+   - [예외] 시도 횟수가 0일 때
+
+5. 시도 횟수만큼 객체당 랜덤으로 0-9까지의 숫자를 생성하여 전진/정지 구분 하는 기능
+
+   - random 값이 4이상일 경우 '전진', 3이하일 경우 '정지' 리턴
+
+6. 구분된 전진/정지로 객체 Car가 전진 혹은 정지를 하여 시도 횟수별로 저장되는 기능
+
+   - 전진 일 경우 html string에 '-' 추가
+
+7. 시도 횟수가 끝났을 때 결과값을 확인하는 기능
+
+   - '-'의 개수를 세서 제일 많은 Car 객체를 출력
+
+   - [예외] 다 정지라 '-'가 없을 경우 : 모두 우승
+
+8. 진행 상황과 결과값을 출력하는 기능
+
+   - 여러개일 경우 쉼표로 구분하여 출력
+
+<br>
+
 ## 🎯 기능 요구사항
 
 - 주어진 횟수 동안 n대의 자동차는 전진 또는 멈출 수 있다.
@@ -15,8 +60,8 @@
 ![실행이미지](images/result.gif)
 ![실행이미지](images/result.jpg)
 
-
 ## ✅ 프로그래밍 요구사항
+
 - 사용자가 잘못된 입력 값을 작성한 경우 `alert`을 이용해 메시지를 보여주고, 재입력할 수 있게 한다.
 - 외부 라이브러리(jQuery, Lodash 등)를 사용하지 않고, 순수 Vanilla JS로만 구현한다.
 - **자바스크립트 코드 컨벤션을 지키면서 프로그래밍** 한다
@@ -57,11 +102,9 @@ class Car {
 - `template literal`을 이용해 데이터와 html string을 가독성 좋게 표현한다.
   - [https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Template_literals](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Template_literals)
 
-
 ## 📝 미션 저장소 및 진행 요구사항
 
 - 미션은 [https://github.com/woowacourse/javascript-racingcar-precours](https://github.com/woowacourse/javascript-racingcar-precourse) 저장소를 fork/clone해 시작한다.
 - **기능을 구현하기 전에 javascript-racingcar-precourse/docs/README.md 파일에 구현할 기능 목록**을 정리해 추가한다.
 - **git의 commit 단위는 앞 단계에서 README.md 파일에 정리한 기능 목록 단위로 추가**한다.
 - [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서 절차를 따라 미션을 제출한다.
-
