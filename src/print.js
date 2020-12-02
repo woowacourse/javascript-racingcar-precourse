@@ -7,3 +7,13 @@ const createRestartButton = () => {
 
   return buttonNode;
 };
+
+const printLength = (count) => {
+  let returnString = "";
+
+  for (let i = 0; i < count; i++) {
+    returnString += "-";
+  }
+
+  return returnString;
+};
