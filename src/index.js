@@ -1,5 +1,13 @@
-export default function RacingCarGame() {}
-// export default class RacingCarGame {
-// }
+import Car from './car.js';
 
-new RacingCarGame();
+export default class RacingCarGame {
+  constructor() {
+    this.carsArray = [];
+  }
+
+  getPlayingCarList(carNameListArray) {
+    for (const carName of carNameListArray) {
+      this.carsArray.push(new Car(carName));
+    }
+  }
+}
