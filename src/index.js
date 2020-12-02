@@ -1,4 +1,4 @@
-import RacingCar from "./RacingCar";
+import RacingCar from "./RacingCar.js";
 
 export default class RacingCarGame {
   constructor() {
