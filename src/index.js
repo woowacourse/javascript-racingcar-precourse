@@ -23,10 +23,16 @@ export default class RacingCarGame {
 
 	setHandlers = () => {
 		this.carNamesSubmit.addEventListener("click", this.getCarNames);
+		this.racingCountSubmit.addEventListener("click", this.getRacingCount);
 	}
 
 	getCarNames = () => {
 		this.carName = this.carNamesInput.value;
 	}
+
+	getRacingCount = () => {
+		this.racingCount = this.racingCountInput.value;
+	}
 }
+
 new RacingCarGame();
