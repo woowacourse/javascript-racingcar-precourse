@@ -14,6 +14,10 @@
 - names-submit 버튼에 부착되어 문자열에서 자동차의 이름을 파싱하고 배열의 형태로 이를 저장하며, count 부분을 visible한 상태로 만들어주는 `handleNamesSubmit`
 - count-submit 버튼에 부착되어 count 수만큼 라운드를 실행하고 최종 결과를 출력하며, 결과 부분을 visible한 상태로 만들어주는 `handleCountSubmit`
 
+## 추가 구현사항
+- gif대로 순서대로 각각의 div container가 표시되도록 하였다.
+- 재시작 버튼을 추가하여 최초의 상태로 돌아갈 수 있도록 하였다.
+
 ## 🎯 기능 요구사항
 
 - 주어진 횟수 동안 n대의 자동차는 전진 또는 멈출 수 있다.
