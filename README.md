@@ -5,7 +5,7 @@
    - 자동차의 이름을 입력하는 input 태그 : #car-names-input
    - 자동차의 이름을 제출하는 button 태그 : #car-names-submit
    - 레이싱 횟수를 입력하는 input 태그 : #racing-count-input
-   - 레이싱 횟수을 제출하는 button 태그는 #racing-count-submit
+   - 레이싱 횟수을 제출하는 button 태그 : #racing-count-submit
 1. **[✔️] 자동차 입력을 받기 전까지 경주 횟수 입력받는 화면과 결과화면을 숨기는 기능**
    - 자동차 입력을 받은 후 화면에 보이게 함
 1. **[] 사용자에게 n대의 자동차 입력을 받는 기능**
