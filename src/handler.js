@@ -4,6 +4,7 @@ import {
   printRoundResult,
 } from "./print.js";
 import {
+  clearResult,
   inputStringToArray,
   isCarForward,
   setContainerVisible,
@@ -30,6 +31,8 @@ export function handleNamesSubmit() {
 }
 
 export function handleCountSubmit() {
+  clearResult();
+
   const countValue = document.getElementById("racing-count-input").value;
   if (countValue <= 0) {
     alert("1 이상의 값을 입력해주세요.");
@@ -41,6 +44,5 @@ export function handleCountSubmit() {
   }
 
   printResultContainer(this.carArray, printRaceResult);
-
   setContainerVisible("car-game-result-container", true);
 }

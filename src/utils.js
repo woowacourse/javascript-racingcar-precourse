@@ -33,6 +33,10 @@ export const resetGame = () => {
   document.getElementById("car-names-input").value = "";
   document.getElementById("racing-count-input").value = "";
 
+  clearResult();
+};
+
+export const clearResult = () => {
   const resultContainer = document.getElementsByClassName(
     "car-game-result-container"
   )[0];
