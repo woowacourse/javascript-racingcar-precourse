@@ -23,4 +23,9 @@ function checkValidCarName(carNamesArray) {
 export default function getCarName() {
   const $carNamesInput = document.querySelector('#car-names-input');
   const carNamesArray = [...new Set($carNamesInput.value.split(','))];
+
+  if (!checkValidCarName(carNamesArray)) {
+    $carNamesInput.value = '';
+    return alert('잘못 된 입력입니다! 다시 입력해주세요!');
+  }
 }
