@@ -12,8 +12,8 @@
 
 ## 💻 프로그램 실행 결과
 
-![실행이미지](precourse/racing-game/javascript-racingcar-precourse/images/result.gif)
-![실행이미지](precourse/racing-game/javascript-racingcar-precourse/images/result.jpg)
+![실행이미지](images/result.gif)
+![실행이미지](images/result.jpg)
 
 
 ## ✅ 프로그래밍 요구사항
