@@ -1,12 +1,8 @@
-import getCarName from './getCarName.js';
-
 function userInputHandler(target) {
-  const $targetInput = target.previousSibling.previousSibling;
-
-  if ($targetInput.type === 'text') {
-    getCarName($targetInput.value);
+  if (target.id === 'car-names-submit') {
+    //
   }
-  if ($targetInput.type === 'number') {
+  if (target.id === 'racing-count-submit') {
     //
   }
 }
