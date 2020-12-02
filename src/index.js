@@ -7,10 +7,8 @@ import { RacingCarView } from './modules/views';
 
 // new RacingCarGame();
 
-// window.addEventListener('DOMContentLoaded', () => {
-//   const carNamesInput = document.getElementById('#car-names-inputs');
-
-//   const gameModel =
-
-//   const gameView =
-// });
+window.addEventListener('DOMContentLoaded', () => {
+  const carNamesInput = document.getElementById('#car-names-inputs');
+  const gameModel = new RacingCarModel();
+  const gameView = new RacingCarView(gameModel, carNamesInput);
+});

@@ -1,5 +1,5 @@
 export default class RacingCarView {
-  constructor(RacingCarModel) {
+  constructor(RacingCarModel, carNamesInput) {
     this._RacingCarModel = RacingCarModel;
   }
 }

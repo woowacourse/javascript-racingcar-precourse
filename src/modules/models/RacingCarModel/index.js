@@ -3,7 +3,6 @@ import { Car } from '../../models';
 export default class RacingCarModel {
   constructor(cars) {
     this._cars = null;
-    this.makeCarInstances(cars);
   }
 
   makeCarInstances(cars) {
