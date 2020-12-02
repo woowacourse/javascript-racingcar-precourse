@@ -7,8 +7,11 @@ export default class RacingCarGame {
 		this.racingCountInput = document.getElementsByTagName("input")[1];
 		this.racingCountSubmit = document.getElementsByTagName("button")[1];
 
+		this.carNames;
+		this.racingCount;
+
 		this.setAttributes();
-		this.initGame();
+		this.setHandlers();
 	}
 
 	setAttributes = () => {
@@ -18,8 +21,12 @@ export default class RacingCarGame {
 		this.racingCountSubmit.addAttribute("id", "racing-count-submit");
 	}
 
-	initGame = () => {
+	setHandlers = () => {
+		this.carNamesSubmit.addEventListener("click", this.getCarNames);
+	}
 
+	getCarNames = () => {
+		this.carName = this.carNamesInput.value;
 	}
 }
 new RacingCarGame();
