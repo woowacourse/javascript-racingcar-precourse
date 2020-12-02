@@ -1,5 +1,5 @@
 import RacingCarGame from './index.js';
-import InputValid from './inputvalid.js';
+import {NameValid, TimesValid} from './inputvalid.js';
 
 const timesWrapper = document.body.querySelector('#racing-count-container');
 const resultWrapper = document.body.querySelector('#result-container');
@@ -13,6 +13,7 @@ const onSubmitCarName = () => {
   if (!isRightNameInput(carNameInput.value)) {
     return (carNameInput.value = '');
   }
+  console.log(racingGame);
   racingGame.getPlayingCarList(carNameInput.value);
   timesWrapper.style.display = 'block';
   carNameSubmitBtn.removeEventListener('click', onSubmitCarName);
@@ -21,19 +22,39 @@ const onSubmitCarName = () => {
 };
 
 const isRightNameInput = (name) => {
-  const inputValid = new InputValid();
-  const splitedName = name.split(',');
-  if (!inputValid.isRightCharacter(splitedName)) {
+  const nameValid = new NameValid(name.split(','));
+  if (!nameValid.isRightCharacter()) {
     return false;
   }
-  if (!inputValid.isRightLength(splitedName)) {
+  if (!nameValid.isRightLength()) {
     return false;
   }
-  if (inputValid.isEqualValue(splitedName)) {
+  if (!nameValid.isAllDifferentValue()) {
     return false;
+  }
+
+  return true;
+};
+
+const onSubmitRacingTimes = () => {
+  if (!isRightRacingTimesInput(timesInput.value)) {
+    return (timesInput.value = '');
   }
 };
 
-const onSubmitRacingTimes = () => {};
+const isRightRacingTimesInput = (times) => {
+  const timesValid = new TimesValid(times);
+  if (!timesValid.isMoreThanZero()) {
+    return false;
+  }
+  if (!timesValid.isfilledValue()) {
+    return false;
+  }
+  if (!timesValid.isRightNumber()) {
+    return false;
+  }
+
+  return true;
+};
 
 carNameSubmitBtn.addEventListener('click', onSubmitCarName);
