@@ -1,4 +1,5 @@
 import RacingCarGame from './index.js';
+import InputValid from './inputvalid.js';
 
 const timesWrapper = document.body.querySelector('#racing-count-container');
 const resultWrapper = document.body.querySelector('#result-container');
@@ -9,7 +10,7 @@ const timesSubmitBtn = document.body.querySelector('#racing-count-submit');
 const racingGame = new RacingCarGame();
 
 const onSubmitCarName = () => {
-  if (!isRightInput()) {
+  if (!isRightNameInput(carNameInput.value)) {
     return (carNameInput.value = '');
   }
   racingGame.getPlayingCarList(carNameInput.value);
@@ -19,7 +20,19 @@ const onSubmitCarName = () => {
   return timesSubmitBtn.addEventListener('click', onSubmitRacingTimes);
 };
 
-const isRightInput = () => {};
+const isRightNameInput = (name) => {
+  const inputValid = new InputValid();
+  const splitedName = name.split(',');
+  if (!inputValid.isRightCharacter(splitedName)) {
+    return false;
+  }
+  if (!inputValid.isRightLength(splitedName)) {
+    return false;
+  }
+  if (inputValid.isEqualValue(splitedName)) {
+    return false;
+  }
+};
 
 const onSubmitRacingTimes = () => {};
 
