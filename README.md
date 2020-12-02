@@ -75,10 +75,15 @@ class Car {
   - renderResult
   
 - RacingCarModel class
-  - randomNumber
-  - isFourHigher
+  - progress
+  - getCars
 
 - Car class
+  - randomNumber
   - moveForward
+
+- utils
+  - isFourHigher
+
   
   
