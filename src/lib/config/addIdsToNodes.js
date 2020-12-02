@@ -1,26 +1,33 @@
-const $carGameContainer = document.querySelector('.car-game-container');
+const $carGameApp = document.querySelector('#app');
 
 const addIdsToParentNodes = () => {
-  const [_getCarNames, _getRacingCount] = $carGameContainer.getElementsByTagName('div');
-  
-  _getCarNames.id = 'get-car-names';
-  _getRacingCount.id = 'get-racing-count';
+  const [
+    $carGameContainer,
+    $getCarNames, 
+    $getRacingCount,
+    $result
+  ] = $carGameApp.getElementsByTagName('div');
+
+  $carGameContainer.id = 'car-game-input'
+  $getCarNames.id = 'get-car-names';
+  $getRacingCount.id = 'get-racing-count';
+  $result.id = 'result';
 }
 
 const addIdsToInputCarNamesNode = () => {
-  const [_carNamesInput] = document.querySelector('#get-car-names').getElementsByTagName('input');
-  const [_carNamesSubmit] = document.querySelector('#get-car-names').getElementsByTagName('button');
+  const [$carNamesInput] = document.querySelector('#get-car-names').getElementsByTagName('input');
+  const [$carNamesSubmit] = document.querySelector('#get-car-names').getElementsByTagName('button');
   
-  _carNamesInput.id = 'car-names-input';
-  _carNamesSubmit.id = 'car-names-submit';
+  $carNamesInput.id = 'car-names-input';
+  $carNamesSubmit.id = 'car-names-submit';
 }
 
 const addIdsToInputGetRacingCountNode = () => {
-  const [_racingCountInput] = document.querySelector('#get-racing-count').getElementsByTagName('input');
-  const [_racingCountSubmit] = document.querySelector('#get-racing-count').getElementsByTagName('button');
+  const [$racingCountInput] = document.querySelector('#get-racing-count').getElementsByTagName('input');
+  const [$racingCountSubmit] = document.querySelector('#get-racing-count').getElementsByTagName('button');
   
-  _racingCountInput.id = 'racing-count-input';
-  _racingCountSubmit.id = 'racing-count-submit';
+  $racingCountInput.id = 'racing-count-input';
+  $racingCountSubmit.id = 'racing-count-submit';
 }
 
 export default () => {

@@ -1,5 +1,5 @@
 export default class Car {
-  constructor(name) {
+  constructor(name) { //깃헙에 왜 공백 나오지ㅡㅡ
 		this.name = name;
 		this.result = [];
   }

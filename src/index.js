@@ -2,6 +2,9 @@ import { GO_AHEAD_MAX_VALUE } from '/src/lib/variables/constantNumbers.js';
 import Car from '/src/lib/classes/car.js';
 import Inputs from '/src/lib/classes/inputControl.js';
 import addIdsToNodes from '/src/lib/config/addIdsToNodes.js';
+import {
+  hideRacingCountInputAndResult,
+} from '/src/lib/config/controlGetRacingCount.js';
 
 const getInitCarInfo = carNames => carNames.reduce((acc, carName) => {
   acc.push(new Car(carName));
@@ -74,6 +77,7 @@ const carNamesUserInput = () => {
 
 const startGame = () => {
   addIdsToNodes();
+  hideRacingCountInputAndResult();
   carNamesUserInput();
 }
 
