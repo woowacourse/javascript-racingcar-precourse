@@ -23,16 +23,14 @@ export default class RacingCarGame {
   }
 
   createResultList() {
-    const $resultContainer = document.body.querySelector('#result-container');
-    const $resultUl = document.createElement('ul');
+    const $resultUl = document.body.querySelector('#result-list');
     const $resultLi = document.createElement('li');
     for (const car of this.carsArray) {
       $resultLi.appendChild(this.createResultText(car));
     }
 
-    $resultUl.style.padding = '0px';
+    $resultLi.style.marginBottom = '30px';
     $resultUl.appendChild($resultLi);
-    $resultContainer.appendChild($resultUl);
   }
 
   createResultText(car) {
