@@ -1,6 +1,6 @@
 import { GO_AHEAD_MAX_VALUE } from '/src/lib/variables/constantNumbers.js';
 import Car from '/src/lib/classes/car.js';
-import InputStatus from '/src/lib/classes/inputControl.js';
+import Inputs from '/src/lib/classes/inputControl.js';
 import addIdsToNodes from '/src/lib/config/addIdsToNodes.js';
 
 const getInitCarInfo = carNames => carNames.reduce((acc, carName) => {
@@ -27,22 +27,54 @@ export default class RacingCarGame {
 
   }
   
-  play(totalTurnNumber) {
+  play(totalRacingCountNumber) {
     //for문으로 턴을 쭉 돌면서 _moveCars 함수 실행
     
   }
 }
 
-const runGame = carNames => {
+const runGame = (carNames, racingCount) => {
   let game = new RacingCarGame(carNames);
 
 }
 
+const racingCountUserInput = carNames => {
+  const $racingCountInput = document.getElementById('racing-count-input');
+  const $racingCountSubmit = document.getElementById('racing-count-submit');
+
+  $racingCountSubmit.addEventListener('click', () => {
+    const _inputResult = new Inputs($racingCountInput.value);
+    $racingCountInput.focus();
+    console.log(_inputResult);
+    console.log(_inputResult.getRacingCountNumber());
+
+    //값이 올바르면 게임 시작하기
+    console.log(carNames);
+  });
+}
+
+const carNamesUserInput = () => {
+  const $carNamesInput = document.getElementById('car-names-input');
+  const $carNamesSubmit = document.getElementById('car-names-submit');
+
+  $carNamesSubmit.addEventListener('click', () => {
+    const _inputResult = new Inputs($carNamesInput.value);
+    $carNamesInput.focus();
+    //console.log(_inputResult);
+    //console.log(_inputResult.getCarNames());
+
+    //유효성이 맞으면 아래 노드 부활시키고 다음 순서(시도할 횟수)
+    //유효성이 틀리면 입력 재시도
+    //함수로 빼서 키보드 클릭 시 재탕시키기
+
+    //이미 입력 받았으면 경고 메시지 띄우거나 disable시키기
+    racingCountUserInput(_inputResult.getCarNames());
+  });
+}
+
 const startGame = () => {
   addIdsToNodes();
-
-  //input
-
+  carNamesUserInput();
 }
 
 startGame();

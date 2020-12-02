@@ -1,6 +1,6 @@
 import { MAX_CAR_NAME_LENGTH } from '/src/lib/variables/constantNumbers.js';
 
-export default class InputStatus {
+export default class Inputs {
   constructor(inputs) {
     this.inputs = inputs;
   }
@@ -11,6 +11,10 @@ export default class InputStatus {
 
   checkCharsWithoutNumber() {
     return /[^1-9]+/g.test(this.inputs);
+  }
+
+  checkIsValudNumber() {
+    return Number(this.inputs) > 0;
   }
   
   checkMoreThanFiveChars() {
