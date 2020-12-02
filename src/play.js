@@ -40,6 +40,9 @@ const onSubmitRacingTimes = () => {
   if (!isRightRacingTimesInput(timesInput.value)) {
     return (timesInput.value = '');
   }
+  racingGame.gamePlay(timesInput.value);
+  resultWrapper.style.display = 'block';
+  timesSubmitBtn.removeEventListener('click', onSubmitRacingTimes);
 };
 
 const isRightRacingTimesInput = (times) => {
