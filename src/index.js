@@ -12,6 +12,7 @@ export default class RacingCarGame {
 
 		this.setAttributes();
 		this.setHandlers();
+		this.setRacingCountInputAndSubmitStyleToNone();
 	}
 
 	setAttributes = () => {
@@ -24,7 +25,12 @@ export default class RacingCarGame {
 	setHandlers = () => {
 		this.carNamesSubmit.addEventListener("click", this.getCarNames);
 		this.racingCountSubmit.addEventListener("click", this.getRacingCount);
-		this.racingCountSubmit.addEventListener("click", this.playGame);
+		this.racingCountSubmit.addEventListener("click", this.startGame);
+	}
+
+	setRacingCountInputAndSubmitStyleToNone = () => {
+		this.racingCountInput.style.display = "none";
+		this.racingCountSubmit.style.display = "none";
 	}
 
 	getCarNames = () => {
@@ -35,7 +41,7 @@ export default class RacingCarGame {
 		this.racingCount = this.racingCountInput.value;
 	}
 
-	playGame = () => {
+	startGame = () => {
 		const carNamesList = this.getCarNamesList(this.carNames);
 
 		if (!this.isCarNamesValid(carNamesList)) {
