@@ -1,3 +1,1 @@
-export default class RaceCourse {
-
-}
+export default class RaceCourse {}
