@@ -10,4 +10,8 @@ export default class RacingCarModel {
 
     this._cars = progressedCars;
   }
+
+  getCars() {
+    return this._cars;
+  }
 }
