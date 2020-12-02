@@ -41,4 +41,20 @@ export default class RacingCarGame {
 
     return $resultText;
   }
+
+  pickWinner() {
+    const maxLength = this.findMaxLengthCar();
+    const winner = this.carsArray.filter(
+      (car) => car.length.length === maxLength,
+    );
+
+    return winner;
+  }
+
+  findMaxLengthCar() {
+    const lengthArray = [];
+    this.carsArray.forEach((car) => lengthArray.push(car.length.length));
+
+    return Math.max(...lengthArray);
+  }
 }
