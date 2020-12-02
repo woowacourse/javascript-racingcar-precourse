@@ -1,5 +1,15 @@
 import { resetGame } from "./utils.js";
 
+export const printResultContainer = (resultArray, printFunc) => {
+  const resultContainer = document.getElementsByClassName(
+    "car-game-result-container"
+  )[0];
+
+  const resultNode = printFunc(resultArray);
+
+  resultContainer.appendChild(resultNode);
+};
+
 export const printRoundResult = (resultArray) => {
   const resultNode = document.createElement("p");
 
