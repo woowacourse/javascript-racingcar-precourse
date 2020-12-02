@@ -1,8 +1,12 @@
+import getCarName from './getCarName.js';
+
 function userInputHandler(target) {
-  if (target.previousSibling.previousSibling.type === 'text') {
-    //
+  const $targetInput = target.previousSibling.previousSibling;
+
+  if ($targetInput.type === 'text') {
+    getCarName($targetInput.value);
   }
-  if (target.previousSibling.previousSibling.type === 'number') {
+  if ($targetInput.type === 'number') {
     //
   }
 }
