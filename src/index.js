@@ -24,6 +24,7 @@ export default class RacingCarGame {
 
 	setHandlers = () => {
 		this.carNamesSubmit.addEventListener("click", this.getCarNames);
+		this.carNamesSubmit.addEventListener("click", this.displayRacingCountInputAndSubmit);
 		this.racingCountSubmit.addEventListener("click", this.getRacingCount);
 		this.racingCountSubmit.addEventListener("click", this.startGame);
 	}
@@ -34,6 +35,12 @@ export default class RacingCarGame {
 	}
 
 	displayRacingCountInputAndSubmit = () => {
+		const carNamesList = this.carNames.split(",");
+
+		if (!this.isCarNamesValid(carNamesList)) {
+			return;
+		}
+
 		this.racingCountInput.removeAttribute("style");
 		this.racingCountSubmit.removeAttribute("style");
 	}
@@ -47,25 +54,22 @@ export default class RacingCarGame {
 	}
 
 	startGame = () => {
-		const carNamesList = this.getCarNamesList(this.carNames);
-
-		if (!this.isCarNamesValid(carNamesList)) {
-			return;
-		}
-
+		this.displayRacingCountInputAndSubmit();
+		const carNamesList = this.carNames.split(",");
 		const carObjects = this.getCarObjectsList(carNamesList);
-		console.log(carObjects);
+		
+		this.playGame(carObjects);
 	}
 
-	getCarNamesList = carNames => {
-		return carNames.split(",");
+	playGame = (carObjects) => {
+
 	}
 
 	isCarNamesValid = carNamesList => {
 		let validity = true;
 
 		for (let name = 0; name < carNamesList.length; name++) {
-			if (carNamesList[name].length > 5) {
+			if (carNamesList[name].length > 5 || carNamesList[name].length <= 0) {
 				validity = false;
 				alert("자동차 이름을 5자 이하로 입력해주세요.");
 				break;
