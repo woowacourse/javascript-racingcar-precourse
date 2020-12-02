@@ -10,12 +10,6 @@
 - 자동차 경주 게임을 완료한 후 누가 우승했는지를 알려준다. 우승자는 한 명 이상일 수 있다.
 - 우승자가 여러명일 경우 ,를 이용하여 구분한다.
 
-## 💻 프로그램 실행 결과
-
-![실행이미지](images/result.gif)
-![실행이미지](images/result.jpg)
-
-
 ## ✅ 프로그래밍 요구사항
 - 사용자가 잘못된 입력 값을 작성한 경우 `alert`을 이용해 메시지를 보여주고, 재입력할 수 있게 한다.
 - 외부 라이브러리(jQuery, Lodash 등)를 사용하지 않고, 순수 Vanilla JS로만 구현한다.
@@ -58,10 +52,21 @@ class Car {
   - [https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Template_literals](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Template_literals)
 
 
-## 📝 미션 저장소 및 진행 요구사항
-
-- 미션은 [https://github.com/woowacourse/javascript-racingcar-precours](https://github.com/woowacourse/javascript-racingcar-precourse) 저장소를 fork/clone해 시작한다.
-- **기능을 구현하기 전에 javascript-racingcar-precourse/docs/README.md 파일에 구현할 기능 목록**을 정리해 추가한다.
-- **git의 commit 단위는 앞 단계에서 README.md 파일에 정리한 기능 목록 단위로 추가**한다.
-- [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서 절차를 따라 미션을 제출한다.
-
+## 작업 상세 내용
++ 작업 상세 내용을 README에 업데이트
++ `Car` 클래스 생성
+  + 랜덤한 수를 생성하는 `getRandomNumber`함수 생성
++ 첫번째 입력값 평가하는 함수들 생성
+  + 다섯글자 이하인지 체크하는 `isUnderFiveCharacters`
+  + ',' 이외 특수문자가 포함되었는지 체크하는 `hasOtherCharacters`
+  + ','가 문장의 끝에 위치했는지 체크하는 `hasCommaEnd`
+  + 중복된 문자열이 입력되었는지 체크하는 `hasDuplicatedCharacters`
++ 첫번째 입력값이 유효하지 않으면 `alert` 띄움
++ 첫번째 입력값을 ',' 기준으로 나누는 `separateCarNames` 생성
+  + 첫번째 입력값 갯수에 따라 `car`인스턴스 생성
++ 첫번째 확인 버튼 클릭 후 두번째 입력창, 확인 버튼 띄움
++ 자동차가 전진한 횟수를 `forward`에 업데이트, 출력하는 `goForward`함수 생성
++ 레이싱을 n회 실행하는 `tryGameNTimes` 함수 생성
++ 각 레이스를 출력하는 `printEachRace` 함수 생성
++ 최종 우승자를 출력하는 `printWinner` 함수 생성
++ 재시작 템플릿 작성 후 html에 추가
