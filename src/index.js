@@ -17,17 +17,6 @@ export default class RacingCarGame {
     racingCountContainer.style.display = "block";
   }
 
-  countSubmitClickEvent() {
-    const count = document.getElementById("racing-count-input").value;
-    let i;
-    for (i = 0; i < count; i++) {
-      this.cars.forEach((car) => car.move());
-      this.printMoveStatus();
-    }
-    const resultContainer = document.getElementById("result-container");
-    resultContainer.style.display = "block";
-  }
-
   printMoveStatus() {
     const moveStatusEl = document.createElement("div");
     moveStatusEl.innerHTML = this.cars
@@ -36,6 +25,36 @@ export default class RacingCarGame {
     moveStatusEl.style.marginBottom = "30px";
     const resultContainer = document.getElementById("result-container");
     resultContainer.appendChild(moveStatusEl);
+  }
+
+  printWinner() {
+    const winners = this.cars.reduce((acc, car) => {
+      if (acc.length === 0 || acc[0].distance === car.distance) {
+        return [...acc, car];
+      }
+      if (acc[0].distance < car.distance) {
+        return [car];
+      }
+      return acc;
+    }, []);
+    const winnerEl = document.createElement("span");
+    winnerEl.innerHTML = `최종 우승자: ${winners
+      .map((car) => car.name)
+      .join(", ")}`;
+    const resultContainer = document.getElementById("result-container");
+    resultContainer.appendChild(winnerEl);
+  }
+
+  countSubmitClickEvent() {
+    const count = document.getElementById("racing-count-input").value;
+    let i;
+    for (i = 0; i < count; i++) {
+      this.cars.forEach((car) => car.move());
+      this.printMoveStatus();
+    }
+    this.printWinner();
+    const resultContainer = document.getElementById("result-container");
+    resultContainer.style.display = "block";
   }
 
   allClickEventListener() {
