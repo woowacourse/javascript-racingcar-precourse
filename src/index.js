@@ -33,6 +33,11 @@ export default class RacingCarGame {
 		this.racingCountSubmit.style.display = "none";
 	}
 
+	displayRacingCountInputAndSubmit = () => {
+		this.racingCountInput.removeAttribute("style");
+		this.racingCountSubmit.removeAttribute("style");
+	}
+
 	getCarNames = () => {
 		this.carNames = this.carNamesInput.value;
 	}
