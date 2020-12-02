@@ -4,7 +4,7 @@
 - [v] html에서 시도할 횟수와 실행 결과를 display : none으로 적용한다.
 - [v] display : none인 div element에 id를 부여한다.
 - [v] html에서 요구사항에 맞게 input과 button에 id를 추가한다. 
-- [] 자동차 class를 만들고, 프로퍼티로 name(자동차 이름)과 length(거리)를 가진다.
+- [v] 자동차 class를 만들고, 프로퍼티로 name(자동차 이름)과 length(거리)를 가진다.
 - [] 자동차 class에 거리를 증가시키기 위한 메소드를 만든다.
 - [] 자동차 게임 class을 만들고, 프로퍼티로 자동차 게임에 참여할 자동차 class를 넣을 배열을 만든다.
 - [] 자동차 게임 class에 user가 입력한 자동차 이름을 받아 각각의 이름대로 위의 배열에 push할 메소드를 만든다.
