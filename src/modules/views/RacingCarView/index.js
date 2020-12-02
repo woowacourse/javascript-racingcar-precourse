@@ -1,3 +1,5 @@
 export default class RacingCarView {
-  constructor() {}
+  constructor(RacingCarModel) {
+    this._RacingCarModel = RacingCarModel;
+  }
 }

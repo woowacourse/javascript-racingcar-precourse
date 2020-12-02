@@ -4,6 +4,7 @@
   "description": "javascript-racingcar-precourse",
   "main": "index.js",
   "scripts": {
+    "build": "webpack -w",
     "test": "jest"
   },
   "repository": {
