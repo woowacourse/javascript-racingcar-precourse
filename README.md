@@ -65,3 +65,20 @@ class Car {
 - **git의 commit 단위는 앞 단계에서 README.md 파일에 정리한 기능 목록 단위로 추가**한다.
 - [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서 절차를 따라 미션을 제출한다.
 
+## 기능 목록
+
+- RacingCarView class 
+  - handleCarNamesSubmit
+  - splitNamesString
+  - handleRacingCountSubmit
+  - renderWinners
+  - renderResult
+  
+- RacingCarModel class
+  - randomNumber
+  - isFourHigher
+
+- Car class
+  - moveForward
+  
+  
