@@ -5,7 +5,8 @@ export default class RacingCarGame {
     this.carsArray = [];
   }
 
-  getPlayingCarList(carNameListArray) {
+  getPlayingCarList(carNameList) {
+    const carNameListArray = carNameList.split(',');
     for (const carName of carNameListArray) {
       this.carsArray.push(new Car(carName));
     }
