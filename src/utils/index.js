@@ -10,4 +10,8 @@ function splitNamesString(names) {
   return splitedNames;
 }
 
-export { isFourHigher, splitNamesString };
+function compareDistance(a, b) {
+  return a.moveForwardDistance - b.moveForwardDistance;
+}
+
+export { isFourHigher, splitNamesString, compareDistance };
