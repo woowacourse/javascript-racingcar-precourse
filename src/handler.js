@@ -28,11 +28,13 @@ export function handleNamesSubmit() {
 }
 
 export function handleCountSubmit() {
-  for (
-    let i = 0;
-    i < document.getElementById("racing-count-input").value;
-    i++
-  ) {
+  const countValue = document.getElementById("racing-count-input").value;
+  if (countValue <= 0) {
+    alert("1 이상의 값을 입력해주세요.");
+    return;
+  }
+
+  for (let i = 0; i < countValue; i++) {
     this.carArray = startRacing(this.carArray);
   }
 
