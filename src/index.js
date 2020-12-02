@@ -16,6 +16,8 @@ export default class RacingCarGame {
       this.carsArray.forEach((car) => car.plusLength());
       this.showOnGameProgress();
     }
+
+    return this.showWinner();
   }
 
   showOnGameProgress() {
@@ -42,6 +44,12 @@ export default class RacingCarGame {
     return $resultText;
   }
 
+  showWinner() {
+    const winnerCarsArray = this.pickWinner();
+    const winnerCarsNameArray = winnerCarsArray.map((car) => car.name);
+    this.createWinnerElement(winnerCarsNameArray);
+  }
+
   pickWinner() {
     const maxLength = this.findMaxLengthCar();
     const winner = this.carsArray.filter(
@@ -56,5 +64,12 @@ export default class RacingCarGame {
     this.carsArray.forEach((car) => lengthArray.push(car.length.length));
 
     return Math.max(...lengthArray);
+  }
+
+  createWinnerElement(winner) {
+    const $resultContainer = document.querySelector('#result-container');
+    const $winnerText = document.createElement('div');
+    $winnerText.textContent = `최종 우승자: ${winner.join(', ')}`;
+    $resultContainer.appendChild($winnerText);
   }
 }
