@@ -24,7 +24,9 @@ export function handleNamesSubmit() {
     document.getElementById("car-names-input").value
   );
 
-  setContainerVisible("car-game-count-container", true);
+  if (this.carArray.length > 0)
+    setContainerVisible("car-game-count-container", true);
+  else alert("입력 값이 잘못되었습니다!");
 }
 
 export function handleCountSubmit() {

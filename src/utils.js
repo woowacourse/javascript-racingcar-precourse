@@ -14,7 +14,7 @@ export const inputStringToArray = (inputString) => {
 
   // Initialize the object
   for (let i = 0; i < inputArray.length; i++) {
-    carArray.push(new Car(inputArray[i], 0));
+    inputArray[i].length > 0 && carArray.push(new Car(inputArray[i], 0));
   }
 
   return carArray;
