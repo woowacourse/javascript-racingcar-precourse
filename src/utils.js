@@ -25,3 +25,20 @@ export const setContainerVisible = (className, visible) => {
     ? "initial"
     : "none";
 };
+
+export const resetGame = () => {
+  setContainerVisible("car-game-count-container", false);
+  setContainerVisible("car-game-result-container", false);
+
+  document.getElementById("car-names-input").value = "";
+  document.getElementById("racing-count-input").value = "";
+
+  const resultContainer = document.getElementsByClassName(
+    "car-game-result-container"
+  )[0];
+
+  const nodeLength = resultContainer.children.length;
+  for (let i = 1; i < nodeLength; i++) {
+    resultContainer.children[1].remove();
+  }
+};
