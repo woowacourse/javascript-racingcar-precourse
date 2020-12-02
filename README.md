@@ -1,5 +1,19 @@
 # 🏎️ 자동차 경주 게임
 
+## 구현할 기능 목록
+- 이름과 자신이 전진한 만큼의 수를 기억하는 객체 `Car` 
+- Random으로 값을 구해서 Forward / Stop을 반환해줄 `isCarForward`
+- 입력 받은 자동차 스트링을 파싱하여 Array 형태로 반환해주는 `inputStringToArray`
+- 컨테이너(div)의 display style을 관리해줄 `setContainerVisible`
+- 게임 상태의 출력 부분을 초기, 재시작 시 초기화해주는 `resetGame`
+- 재시작 버튼을 만들어주는 `createRestartButton`
+- 결과에서 얼마나 전진했는지를 문자열으로 반환하는 `printLength`
+- `printResultContainer`에 인자로 전달되어 각각 라운드 결과와 총 결과를 알려줄 함수 `printRoundResult`, `printRaceResult`
+- 인자로 받은 함수로부터 받은 노드를 HTML의 결과 부분에 append 해줄 `printResultContainer`
+- 한 라운드를 실행하고 결과를 반환하며 한 라운드의 결과를 출력하는 `startRacing`
+- names-submit 버튼에 부착되어 문자열에서 자동차의 이름을 파싱하고 배열의 형태로 이를 저장하며, count 부분을 visible한 상태로 만들어주는 `handleNamesSubmit`
+- count-submit 버튼에 부착되어 count 수만큼 라운드를 실행하고 최종 결과를 출력하며, 결과 부분을 visible한 상태로 만들어주는 `handleCountSubmit`
+
 ## 🎯 기능 요구사항
 
 - 주어진 횟수 동안 n대의 자동차는 전진 또는 멈출 수 있다.
