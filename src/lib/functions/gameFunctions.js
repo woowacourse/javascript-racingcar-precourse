@@ -1,6 +1,5 @@
 import Car from '/src/lib/classes/car.js';
-
-const GO_AHEAD_MAX_VALUE = 9;
+import { GO_AHEAD_MAX_VALUE } from '/src/lib/variables/constantNumbers.js';
 
 export const createRandomNumber = () => Math.floor(Math.random()*(GO_AHEAD_MAX_VALUE+1));
 
