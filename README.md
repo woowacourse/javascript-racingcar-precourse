@@ -13,6 +13,7 @@
 - 한 라운드를 실행하고 결과를 반환하며 한 라운드의 결과를 출력하는 `startRacing`
 - names-submit 버튼에 부착되어 문자열에서 자동차의 이름을 파싱하고 배열의 형태로 이를 저장하며, count 부분을 visible한 상태로 만들어주는 `handleNamesSubmit`
 - count-submit 버튼에 부착되어 count 수만큼 라운드를 실행하고 최종 결과를 출력하며, 결과 부분을 visible한 상태로 만들어주는 `handleCountSubmit`
+- 결과 출력 부분을 비워주는 `clearResult`
 
 ## 추가 구현사항
 - gif대로 순서대로 각각의 div container가 표시되도록 하였다.
