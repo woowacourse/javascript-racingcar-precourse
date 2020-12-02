@@ -12,8 +12,8 @@
 ### ⏳개발기간
   * 2020.12.02 - 2020.12.08
 ### 📝사용 언어
-<p align="center">
-  <img src="https://img.shields.io/HTML5-#E34F26?logo=HTML5"/>
+<p align="left">
+  <img src="https://img.shields.io/badge/HTML5-orange?logo=HTML5"/>
   <img src="https://img.shields.io/badge/javascript-ES6+-yellow?logo=javascript"/>
 </p>
 
