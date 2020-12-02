@@ -1,4 +1,4 @@
-import { splitNamesString } from '../../../utils';
+import { splitNamesString, compareDistance } from '../../../utils';
 
 export default class RacingCarView {
   constructor(
@@ -68,5 +68,27 @@ export default class RacingCarView {
     `;
   }
 
-  renderWinners(cars) {}
+  decideWinners(sortedCars) {
+    const winnerDistance = sortedCars[0].moveForwardDistance;
+
+    const winners = sortedCars.reduce((accumulator, car) => {
+      console.log(accumulator);
+      if (car.moveForwardDistance === winnerDistance) {
+        return accumulator.concat([car]);
+      }
+
+      return accumulator;
+    }, []);
+
+    return winners;
+  }
+
+  renderWinners(cars) {
+    const sortedCars = [...cars];
+    sortedCars.sort(compareDistance);
+    console.log(sortedCars, 'sorted');
+    const winners = this.decideWinners(sortedCars);
+
+    console.log(winners, 'winners');
+  }
 }
