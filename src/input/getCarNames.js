@@ -20,7 +20,7 @@ function checkValidCarName(carNamesArray) {
   return true;
 }
 
-export default function getCarName() {
+export default function getCarNames() {
   const $carNamesInput = document.querySelector('#car-names-input');
   const carNamesArray = [...new Set($carNamesInput.value.split(','))];
 
