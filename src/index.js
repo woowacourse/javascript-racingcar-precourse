@@ -9,6 +9,11 @@ import { RacingCarView } from './modules/views';
 
 window.addEventListener('DOMContentLoaded', () => {
   const carNamesInput = document.getElementById('#car-names-inputs');
+  const carNamesSubmitButtton = document.getElementById('#car-names-submit');
   const gameModel = new RacingCarModel();
-  const gameView = new RacingCarView(gameModel, carNamesInput);
+  const gameView = new RacingCarView(
+    gameModel,
+    carNamesInput,
+    carNamesSubmitButtton,
+  );
 });
