@@ -10,9 +10,14 @@ export default class RacingCarGame {
 		this.carNames = "";
 		this.racingCount = 0;
 
+		this.setRacingCountInputAndSubmitStyleToNone();
 		this.setAttributes();
 		this.setHandlers();
-		this.setRacingCountInputAndSubmitStyleToNone();
+	}
+
+	setRacingCountInputAndSubmitStyleToNone = () => {
+		this.racingCountInput.style.display = "none";
+		this.racingCountSubmit.style.display = "none";
 	}
 
 	setAttributes = () => {
@@ -29,40 +34,17 @@ export default class RacingCarGame {
 		this.racingCountSubmit.addEventListener("click", this.startGame);
 	}
 
-	setRacingCountInputAndSubmitStyleToNone = () => {
-		this.racingCountInput.style.display = "none";
-		this.racingCountSubmit.style.display = "none";
+	getCarNames = () => {
+		this.carNames = this.carNamesInput.value;
 	}
 
 	displayRacingCountInputAndSubmit = () => {
 		const carNamesList = this.carNames.split(",");
 
-		if (!this.isCarNamesValid(carNamesList)) {
-			return;
-		}
-
-		this.racingCountInput.removeAttribute("style");
-		this.racingCountSubmit.removeAttribute("style");
-	}
-
-	getCarNames = () => {
-		this.carNames = this.carNamesInput.value;
-	}
-
-	getRacingCount = () => {
-		this.racingCount = this.racingCountInput.value;
-	}
-
-	startGame = () => {
-		this.displayRacingCountInputAndSubmit();
-		const carNamesList = this.carNames.split(",");
-		const carObjects = this.getCarObjectsList(carNamesList);
-		
-		this.playGame(carObjects);
-	}
-
-	playGame = (carObjects) => {
-
+		if (this.isCarNamesValid(carNamesList)) {
+			this.racingCountInput.removeAttribute("style");
+			this.racingCountSubmit.removeAttribute("style");
+		}		
 	}
 
 	isCarNamesValid = carNamesList => {
@@ -79,6 +61,30 @@ export default class RacingCarGame {
 		return validity;
 	}
 
+	getRacingCount = () => {
+		this.racingCount = Number(this.racingCountInput.value);
+	}
+
+	startGame = () => {
+		if (this.isRacingCountValid(this.racingCount)) {
+			const carNamesList = this.carNames.split(",");
+			const carObjects = this.getCarObjectsList(carNamesList);
+		
+			this.playGame(carObjects);
+		}
+	}
+
+	isRacingCountValid(racingCount) {
+		let validity = true;
+
+		if (parseInt(racingCount) !== racingCount) {
+			validity = false;
+			alert("0보다 큰 정수를 입력해주세요.");
+		} 
+
+		return validity;
+	}
+
 	getCarObjectsList = carNamesList => {
 		const carObjects = [];
 		carNamesList.forEach(carName => carObjects.push(this.createCar(carName)));
@@ -90,6 +96,10 @@ export default class RacingCarGame {
 		const newCar = new Car(carName);
 
 		return newCar;
+	}
+
+	playGame = (carObjects) => {
+		
 	}
 }
 
