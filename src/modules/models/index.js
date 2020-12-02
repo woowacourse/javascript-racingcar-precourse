@@ -1,3 +1,3 @@
 import Car from './Car';
-
-export { Car };
+import RacingCarModel from './RacingCarModel';
+export { Car, RacingCarModel };

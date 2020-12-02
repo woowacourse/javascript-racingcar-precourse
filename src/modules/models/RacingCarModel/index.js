@@ -1,6 +1,17 @@
+import { Car } from '../../models';
+
 export default class RacingCarModel {
   constructor(cars) {
-    this._cars = cars;
+    this._cars = null;
+    this.makeCarInstances(cars);
+  }
+
+  makeCarInstances(cars) {
+    const instances = cars.map(car => {
+      new Car(car);
+    });
+
+    this._cars = instances;
   }
 
   progress() {
