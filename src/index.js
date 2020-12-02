@@ -12,6 +12,13 @@ export default class RacingCarGame {
     return carNames;
   };
 
+  getCountInput = () => {
+    const countInput = document.getElementById("racing-count-input");
+    const counts = countInput.value;
+    console.log(counts);
+    return counts;
+  };
+
   handleCarNameSubmit = () => {
     const carNameButton = document.getElementById("car-names-submit");
     carNameButton.addEventListener("click", () => {
