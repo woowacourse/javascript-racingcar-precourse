@@ -7,8 +7,8 @@ export default class RacingCarGame {
 		this.racingCountInput = document.getElementsByTagName("input")[1];
 		this.racingCountSubmit = document.getElementsByTagName("button")[1];
 
-		this.carNames;
-		this.racingCount;
+		this.carNames = "";
+		this.racingCount = 0;
 
 		this.setAttributes();
 		this.setHandlers();
@@ -24,7 +24,7 @@ export default class RacingCarGame {
 	setHandlers = () => {
 		this.carNamesSubmit.addEventListener("click", this.getCarNames);
 		this.racingCountSubmit.addEventListener("click", this.getRacingCount);
-		this.racingCountSubmit.addEventListener("click", this.startGame);
+		this.racingCountSubmit.addEventListener("click", this.playGame);
 	}
 
 	getCarNames = () => {
@@ -35,12 +35,15 @@ export default class RacingCarGame {
 		this.racingCount = this.racingCountInput.value;
 	}
 
-	startGame = () => {
+	playGame = () => {
 		const carNamesList = this.getCarNamesList(this.carNames);
 
 		if (!this.isCarNamesValid(carNamesList)) {
 			return;
 		}
+
+		const carObjects = this.getCarObjectsList(carNamesList);
+		console.log(carObjects);
 	}
 
 	getCarNamesList = carNames => {
@@ -59,6 +62,19 @@ export default class RacingCarGame {
 		}
 
 		return validity;
+	}
+
+	getCarObjectsList = carNamesList => {
+		const carObjects = [];
+		carNamesList.forEach(carName => carObjects.push(this.createCar(carName)));
+
+		return carObjects;
+	}
+
+	createCar = carName => {
+		const newCar = new Car(carName);
+
+		return newCar;
 	}
 }
 
