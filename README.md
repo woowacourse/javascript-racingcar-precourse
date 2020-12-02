@@ -15,8 +15,8 @@
 ![실행이미지](images/result.gif)
 ![실행이미지](images/result.jpg)
 
-
 ## ✅ 프로그래밍 요구사항
+
 - 사용자가 잘못된 입력 값을 작성한 경우 `alert`을 이용해 메시지를 보여주고, 재입력할 수 있게 한다.
 - 외부 라이브러리(jQuery, Lodash 등)를 사용하지 않고, 순수 Vanilla JS로만 구현한다.
 - **자바스크립트 코드 컨벤션을 지키면서 프로그래밍** 한다
@@ -57,7 +57,6 @@ class Car {
 - `template literal`을 이용해 데이터와 html string을 가독성 좋게 표현한다.
   - [https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Template_literals](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Template_literals)
 
-
 ## 📝 미션 저장소 및 진행 요구사항
 
 - 미션은 [https://github.com/woowacourse/javascript-racingcar-precours](https://github.com/woowacourse/javascript-racingcar-precourse) 저장소를 fork/clone해 시작한다.
@@ -65,3 +64,32 @@ class Car {
 - **git의 commit 단위는 앞 단계에서 README.md 파일에 정리한 기능 목록 단위로 추가**한다.
 - [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서 절차를 따라 미션을 제출한다.
 
+<br>
+
+## 👉 구현 기능 목록
+
+##### [입력] 자동차 이름
+
+- 확인버튼을 눌렀을 때, 입력된 `자동차 이름`들을 검사한다.
+  - 입력이 올바른 경우 시도횟수 입력창을 띄운다.
+  - 입력이 올바르지 않은 경우 경고창을 띄우고, 재입력 받는다.
+    - [예외상황] 하나 이상의 자동차 이름이 5자 초과인 경우
+    - [예외상황] 하나 이상의 자동차 이름이 공백만으로 이루어진 경우
+    - [예외상황] 자동차 이름이 서로 중복되는 경우
+    - [예외상황] 자동차 총 대수가 1대 이하로 경주가 성립되지 않는 경우
+
+##### [입력] 시도횟수
+
+- 확인버튼을 눌렀을 때, 입력된 `시도횟수`를 검사한다.
+  - 입력이 올바른 경우 실행결과 및 최종 우승자를 띄운다.
+  - 입력이 올바르지 않은 경우 경고창을 띄우고, 재입력 받는다.
+    - [예외상황] 시도횟수가 문자인 경우
+    - [예외상황] 시도횟수가 소수인 경우
+    - [예외상황] 시도횟수가 0 이하의 정수인 아닌 경우
+
+##### [출력] 실행결과 및 최종 우승자
+
+- 입력받은 자동차들에 대해 입력받은 시도횟수만큼 반복하여 0 ~ 9 사이의 랜덤한 숫자를 생성한다.
+  - 생성한 숫자가 4 이상일 경우에만 해당 자동차의 실행결과값에 '-'를 추가한다.
+- 반복을 마치고 각 자동차의 실행결과를 출력한다.
+- 실행결과값이 가장 긴 자동차를 최종 우승자로 출력한다.
