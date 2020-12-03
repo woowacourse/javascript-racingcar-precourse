@@ -1,4 +1,4 @@
-function isFourHigher(number) {
+function isHigherThanFour(number) {
   if (number >= 4) {
     return true;
   }
@@ -55,7 +55,7 @@ function compareDistance(a, b) {
 }
 
 export {
-  isFourHigher,
+  isHigherThanFour,
   splitNamesString,
   compareDistance,
   isLongerThanFive,
