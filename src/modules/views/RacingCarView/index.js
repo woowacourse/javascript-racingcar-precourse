@@ -49,6 +49,7 @@ export default class RacingCarView {
     const racingCount = document.getElementById('#racing-count-input').value;
     const exception = this.validCount(racingCount);
     if (exception) {
+      this.resetRacingCountInput();
       alert(exception);
       return;
     }
@@ -103,6 +104,11 @@ export default class RacingCarView {
 
   resetCarNamesInput() {
     this.carNamesInput.value = '';
+  }
+
+  resetRacingCountInput() {
+    const racingCountInput = document.getElementById('#racing-count-input');
+    racingCountInput.value = '';
   }
 
   renderCountInputAndSubmitButton() {
