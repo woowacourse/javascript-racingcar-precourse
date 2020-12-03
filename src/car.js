@@ -5,13 +5,17 @@ export class Car {
     }
 
     makeRandomNumber() {
-        return (Math.random() * 9)
+        return (Math.random() * 9);
     }
 
     makeOneInningGame() {
         if (this.makeRandomNumber() > 3) {
-            return this.position += "-"
+            return this.position += "-";
         }
+    }
+
+    getResult() {
+        return `${this.name} : ${this.position}`;
     }
 
 }
