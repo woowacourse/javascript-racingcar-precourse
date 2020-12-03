@@ -7,7 +7,6 @@ function userInputHandler(target) {
   }
   if (target.id === 'racing-count-submit') {
     getRacingCount();
-    console.log(getRacingCount());
   }
 }
 
