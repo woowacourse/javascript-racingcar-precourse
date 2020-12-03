@@ -3,7 +3,10 @@ import {
     isOnlySpaceString,
     isUnderFiveDigits,
     isValidCarName,
-    getRandomDigit
+    getRandomDigit,
+    printResultOfOneRound,
+    getWinnersName,
+    printWinnersName
 } from './utils.js';
 import Car from './Car.js';
 
@@ -24,6 +27,7 @@ const getNumOfTry = () => {
     if (isDigits(numOfTryInput.value)) {
         game.numOfTry = (parseInt(numOfTryInput.value));
         toggleDiplayResultArea();
+        racing();
     } else {
         alert("❌유효하지 않은 시도 횟수입니다.\n다시 입력해주세요.");
         numOfTryInput.value = '';
@@ -59,17 +63,23 @@ const forward = (car) => {
     return car;
 }
 
+const racing = () => {
+    while (game.numOfTry > 0) {
+        game.roundStart();
+        game.numOfTry--;
+        printResultOfOneRound(game.cars);
+    }
+    printWinnersName(getWinnersName(game.cars));
+}
+
 export default function RacingCarGame() {
     this.cars = [];
     this.numOfTry = 0;
     init();
     this.roundStart = () => {
-        // if(this.numOfTry===0) 
         for (let idx = 0; idx < this.cars.length; idx++) {
             this.cars[idx] = forward(this.cars[idx]);
         }
-        printResultOfOneRound(this.cars);
-        this.numOfTry--;
     }
 }
 

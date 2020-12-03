@@ -33,6 +33,31 @@ export const printResultOfOneRound = (cars) => {
     for (const car of cars) {
         resText += `${car.getCarName()}: ${'-'.repeat(car.getForwardCnt())}\n`;
     }
-    resultElem.innerText(resText);
+    resultElem.innerText = resText + '\n';
+    resultArea.appendChild(resultElem);
+}
+
+export const getWinnersName = (cars) => {
+    let max = 0;
+    let winnersName = [];
+    for (const car of cars) {
+        if (car.getForwardCnt() >= max) {
+            max = car.getForwardCnt();
+            winnersName = [];
+            winnersName.push(car.getCarName());
+        } else {
+            winnersName = [];
+        }
+    }
+    console.log(winnersName)
+    return winnersName;
+}
+
+export const printWinnersName = (winnersName) => {
+    const resultArea = document.getElementById("app").querySelectorAll("div + div")[1];
+    const resultElem = document.createElement("p");
+    let resText = `최종 우승자: ${winnersName.join(", ")}`;
+
+    resultElem.innerText = resText;
     resultArea.appendChild(resultElem);
 }
