@@ -27,6 +27,7 @@ class CarNamesInput extends Component {
         return;
       }
       carNames = this.getCarNames(input);
+      this._props.createCars(carNames);
     }
   }
 

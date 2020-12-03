@@ -40,6 +40,7 @@ class RacingCountInput extends Component {
       return;
     }
     this._props.racingCount.value = parseInt(input);
+    this._props.setGameData();
   }
 }
 
