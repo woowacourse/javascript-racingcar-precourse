@@ -32,17 +32,17 @@ export const getNumOfTryInput = (e) => {
         alert("❌유효하지 않은 시도 횟수입니다.\n다시 입력해주세요.");
         numOfTryInput.value = '';
     }
-}
+};
 
 export const toggleDiplayNumOfTryArea = () => {
     const numOfTryArea = document.getElementById("app").querySelectorAll("div + div")[0];
     numOfTryArea.style.display = numOfTryArea.style.display === "none" ? "block" : "none";
-}
+};
 
 export const toggleDiplayResultArea = () => {
     const resultArea = document.getElementById("app").querySelectorAll("div + div")[1];
     resultArea.style.display = resultArea.style.display === "none" ? "block" : "none";
-}
+};
 
 export const printResultOfOneRound = (cars) => {
     const resultArea = document.getElementById("app").querySelectorAll("div + div")[1];
@@ -53,7 +53,7 @@ export const printResultOfOneRound = (cars) => {
     }
     resultElem.innerText = resText + '\n';
     resultArea.appendChild(resultElem);
-}
+};
 
 export const getWinnersName = (cars) => {
     let max = 0;
@@ -67,7 +67,7 @@ export const getWinnersName = (cars) => {
         }
     }
     return winnersName;
-}
+};
 
 export const printWinnersName = (winnersName) => {
     const resultArea = document.getElementById("app").querySelectorAll("div + div")[1];
@@ -76,4 +76,4 @@ export const printWinnersName = (winnersName) => {
 
     resultElem.innerText = resText;
     resultArea.appendChild(resultElem);
-}
+};

@@ -8,7 +8,7 @@ import {
 export default function Car(name = '') {
     this.carName = name;
     this.forwardCnt = 0;
-}
+};
 
 Car.forwardCar = (car) => {
     const digit = getRandomDigit();
@@ -16,7 +16,7 @@ Car.forwardCar = (car) => {
         car.forwardCnt++;
     }
     return car;
-}
+};
 
 Car.isValidCarName = (carNames) => {
     return carNames.every(
@@ -25,4 +25,4 @@ Car.isValidCarName = (carNames) => {
                 !isOnlySpaceString(carName))
         ) &&
         !hasDuplicatedName(carNames);
-}
+};

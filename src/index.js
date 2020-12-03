@@ -32,7 +32,7 @@ export default function RacingCarGame() {
             this.cars[idx] = Car.forwardCar(this.cars[idx]);
         }
     }
-}
+};
 
 RacingCarGame.racing = (gameName) => {
     while (gameName.numOfTry > 0) {
@@ -41,7 +41,7 @@ RacingCarGame.racing = (gameName) => {
         printResultOfOneRound(gameName.cars);
     }
     printWinnersName(getWinnersName(gameName.cars));
-}
+};
 
 const game = new RacingCarGame();
 init(game);

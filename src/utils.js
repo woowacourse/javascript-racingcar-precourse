@@ -5,7 +5,7 @@ export const getRandomDigit = () => {
 export const isDigits = (string) => {
     const nums = "0123456789";
     return [...string].every(str => nums.includes(str));
-}
+};
 
 export const isUnderFiveDigits = (string) => {
     const len = string.length;
@@ -26,8 +26,9 @@ export const hasDuplicatedName = (nameArray) => {
     const originLen = nameArray.length;
     const setLen = [...new Set(nameArray)].length;
     return originLen === setLen ? false : true;
-}
+};
 
 export const pageRefresh = () => {
+    alert("💠 게임을 새로 시작합니다.");
     location.reload();
-}
+};
