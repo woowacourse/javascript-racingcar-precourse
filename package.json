@@ -4,7 +4,7 @@
   "description": "우아한 테크코스 프리코스 2주차 과제",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -18,8 +18,11 @@
   "homepage": "https://github.com/jho2301/precourse#readme",
   "devDependencies": {
     "@babel/core": "^7.12.9",
+    "@babel/plugin-proposal-class-properties": "^7.12.1",
+    "@babel/preset-env": "^7.12.7",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.14.0",
+    "jest": "^26.6.3",
     "prettier": "^2.2.1"
   }
 }
