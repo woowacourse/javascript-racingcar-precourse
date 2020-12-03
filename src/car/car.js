@@ -1,3 +1,5 @@
+import Random from "/src/utils/random.js";
+
 export default class Car {
 	constructor (name) {
 		this.name = name;
@@ -5,14 +7,8 @@ export default class Car {
 	}
 	
 	setDistance = () => {
-		if (this.getRandomNumber() >= 4) {
+		if (new Random.getRandomNumber() >= 4) {
 			this.distance += 1;
 		}	
-	}
-
-	getRandomNumber = () => {
-		const randomNumber = Math.floor(Math.random() * 9 + 1);
-
-		return randomNumber;
 	}
 }
