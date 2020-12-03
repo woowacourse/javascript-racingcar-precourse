@@ -25,10 +25,7 @@ export default class RacingCarView {
   }
 
   init() {
-    this.carNamesSubmitButtton.addEventListener(
-      'click',
-      this.handleCarNamesSubmit.bind(this),
-    );
+    this.addEventListenerToCarNamesSubmitButtton();
   }
 
   handleCarNamesSubmit() {
@@ -60,6 +57,13 @@ export default class RacingCarView {
     document
       .getElementById('#racing-count-submit')
       .addEventListener('click', this.handleRacingCountSubmit.bind(this));
+  }
+
+  addEventListenerToCarNamesSubmitButtton() {
+    this.carNamesSubmitButtton.addEventListener(
+      'click',
+      this.handleCarNamesSubmit.bind(this),
+    );
   }
 
   validNames(names) {
