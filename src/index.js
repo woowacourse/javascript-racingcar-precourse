@@ -14,7 +14,7 @@ export default class RacingCarGame {
 
   gamePlay(times) {
     for (let i = 0; i < times; i++) {
-      this.carsArray.forEach((car) => car.plusLength());
+      this.carsArray.forEach((car) => car.carMove());
       this.showOnGameProgress();
     }
 
