@@ -1,0 +1,19 @@
+{
+  "name": "woowahan-precourse-racing-game",
+  "version": "1.0.0",
+  "description": "우아한 테크코스 프리코스 2주차 과제",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jho2301/precourse.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jho2301/precourse/issues"
+  },
+  "homepage": "https://github.com/jho2301/precourse#readme"
+}
