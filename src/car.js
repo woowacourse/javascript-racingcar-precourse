@@ -5,7 +5,7 @@ export class Car {
     }
 
     makeRandomNumber() {
-        return (Math.random() * 9);
+        return parseInt(Math.random() * 9);
     }
 
     makeOneInningGame() {
