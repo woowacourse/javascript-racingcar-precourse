@@ -2,6 +2,22 @@
 
 ## 🎯 기능 요구사항
 
+- 입력받은 자동차 이름들의 유효성을 검사하는 `checkCarNamesValidity`. 객체를 반환하고, 에러가 있을 시 객체의 errorMessage에 에러 메시지를 적어서 반환한다.
+- 입력받은 자동차 이름들을 `,`를 기준으로 분열시켜 배열을 반환하는 `splitNamesByComma`.
+- ,를 기준으로 분열된, 레이싱 카의 이름들이 담긴 배열을 각 요소가 인스턴스로 변환되게 한 뒤 그 배열을 반환하는 `switchToInstance`.
+- `switchToInstance`에서 반환된 값을 인수로 받아 `RacingCarGame` 에 `carArray`라는 이름으로 그 값을 설정해주는 `setCarArray`.
+- 레이싱 횟수에 대한 input, button, h4 요소가 보이게 설정하는 `showIteratorElements`.
+- 입력받은 레이싱 횟수 값의 유효성을 검사하는 `checkIteratorValidity`.
+- 1 이상 9 이하의 무작위 자연수를 반환하는 `getRandomNumber`.
+- `getRandomNumber`를 실행하여 그 값이 4 이상이면 `true`, 그렇지 않으면 `false`를 반환하는 `isBiggerThanFour`.
+- `Car` 인스턴스에 `location`이라는 값을 설정하는 `setLocation`.
+- 반복 할 횟수와 정해지지 않은 수의 콜백함수들을 인수로 받아 for문을 돌며 콜백함수들을 실행하는 `iterateBy`.
+- `iterateBy`함수를 이용해 `RacingCarGame`에 있는 `carArray`의 길이만큼 반복하며 `carArray`의 값을 바꾸는 `iterateByCarArrayLength`.
+- 현재의 `RacingCarGame`의 `carArray` 값을 이용해 화면에 출력하는 `renderCurrentState`.
+- 최종 우승자를 출력하는 `renderWinner`.
+
+## 🎯 기능 요구사항
+
 - 주어진 횟수 동안 n대의 자동차는 전진 또는 멈출 수 있다.
 - 자동차에 이름을 부여할 수 있다. 전진하는 자동차를 출력할 때 자동차 이름을 같이 출력한다.
 - 자동차 이름은 쉼표(,)를 기준으로 구분하며 이름은 5자 이하만 가능하다.
@@ -15,8 +31,8 @@
 ![실행이미지](images/result.gif)
 ![실행이미지](images/result.jpg)
 
-
 ## ✅ 프로그래밍 요구사항
+
 - 사용자가 잘못된 입력 값을 작성한 경우 `alert`을 이용해 메시지를 보여주고, 재입력할 수 있게 한다.
 - 외부 라이브러리(jQuery, Lodash 등)를 사용하지 않고, 순수 Vanilla JS로만 구현한다.
 - **자바스크립트 코드 컨벤션을 지키면서 프로그래밍** 한다
@@ -57,11 +73,9 @@ class Car {
 - `template literal`을 이용해 데이터와 html string을 가독성 좋게 표현한다.
   - [https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Template_literals](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Template_literals)
 
-
 ## 📝 미션 저장소 및 진행 요구사항
 
 - 미션은 [https://github.com/woowacourse/javascript-racingcar-precours](https://github.com/woowacourse/javascript-racingcar-precourse) 저장소를 fork/clone해 시작한다.
 - **기능을 구현하기 전에 javascript-racingcar-precourse/docs/README.md 파일에 구현할 기능 목록**을 정리해 추가한다.
 - **git의 commit 단위는 앞 단계에서 README.md 파일에 정리한 기능 목록 단위로 추가**한다.
 - [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서 절차를 따라 미션을 제출한다.
-
