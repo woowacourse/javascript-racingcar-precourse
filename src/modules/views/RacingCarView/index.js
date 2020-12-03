@@ -10,13 +10,13 @@ import { text } from '../../../constants';
 
 export default class RacingCarView {
   constructor(
-    RacingCarModel,
+    RacingCarGame,
     carNamesInput,
     carNamesSubmitButtton,
     carRacingCountDiv,
     carRacingResultDiv,
   ) {
-    this.RacingCarModel = RacingCarModel;
+    this.RacingCarGame = RacingCarGame;
     this.carNamesInput = carNamesInput;
     this.carNamesSubmitButtton = carNamesSubmitButtton;
     this.carRacingCountDiv = carRacingCountDiv;
@@ -33,8 +33,6 @@ export default class RacingCarView {
 
   handleCarNamesSubmit() {
     const splitedNames = splitNamesString(this.carNamesInput.value);
-    console.log(splitedNames, 'splited');
-
     const exception = this.validNames(splitedNames);
     if (exception) {
       this.resetCarNamesInput();
@@ -42,7 +40,7 @@ export default class RacingCarView {
       return;
     }
 
-    this.RacingCarModel.makeCarInstances(splitedNames);
+    this.RacingCarGame.makeCarInstances(splitedNames);
     this.renderCountInputAndSubmitButton();
   }
 
@@ -151,10 +149,10 @@ export default class RacingCarView {
     this.renderHeading();
 
     for (let i = 0; i < racingCount; i++) {
-      this.RacingCarModel.progress();
-      this.renderIntermediateResult(this.RacingCarModel.getCars());
+      this.RacingCarGame.progress();
+      this.renderIntermediateResult(this.RacingCarGame.getCars());
     }
 
-    this.renderWinners(this.RacingCarModel.getCars());
+    this.renderWinners(this.RacingCarGame.getCars());
   }
 }
