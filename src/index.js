@@ -1,5 +1,6 @@
 export default function RacingCarGame() {
   addEventToCarNameSubmitBtn();
+  addEventToRaceCountSubmitBtn();
 }
 new RacingCarGame();
 
@@ -40,7 +41,7 @@ function makeCarObj(carNames) {
     };
     carsArr.push(carObj);
   }
-  console.log(carsArr, carsArr.length);
+  //   console.log(carsArr, carsArr.length);
   makeResultBox(carsArr);
 }
 
@@ -55,7 +56,7 @@ function makeRandomNumber(carNames) {
   return randoms;
 }
 
-// 실행 결과창에 자동차의 이름, 랜덤숫자 출력해보기
+// 실행 결과창 생성
 function makeResultBox(carsArr) {
   const resultHead = document.getElementsByTagName("h4")[1];
   resultHead.id = "result-head";
@@ -67,8 +68,24 @@ function makeResultBox(carsArr) {
   printResult(resultBox, carsArr);
 }
 
+// 실행 결과창에 자동차의 이름, 랜덤숫자 출력해보기
 function printResult(resultBox, carsArr) {
   for (let i = 0; i < carsArr.length; i++) {
     resultBox.innerHTML += `${carsArr[i].name}: ${carsArr[i].randomNum}<br />`;
   }
+}
+
+// 횟수 입력 버튼에 이벤트 리스너 달기
+function addEventToRaceCountSubmitBtn() {
+  const RaceCountSubmitBtn = document.getElementsByTagName("button")[1];
+  RaceCountSubmitBtn.id = "racing-count-submit";
+  RaceCountSubmitBtn.addEventListener("click", onRaceCountSubmit);
+}
+
+// 횟수 입력 받기
+function onRaceCountSubmit() {
+  const raceCountInput = document.getElementsByTagName("input")[1];
+  raceCountInput.id = "racing-count-input";
+  let raceCount = raceCountInput.value;
+  console.log(raceCount);
 }
