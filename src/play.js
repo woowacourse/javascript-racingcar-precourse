@@ -1,7 +1,7 @@
-import RacingCarGame from './index.js';
-import checkInputValid from './inputvalid.js';
-import {carElements} from './utils.js';
-import initGame from './init.js';
+import RacingCarGame from './class/RacingCarGame.js';
+import checkInputValid from './modules/inputvalid.js';
+import {carElements} from './modules/utils.js';
+import initGame from './modules/init.js';
 import {showCounterElement, showResultElement} from './elements/showElement.js';
 
 const racingGame = new RacingCarGame();

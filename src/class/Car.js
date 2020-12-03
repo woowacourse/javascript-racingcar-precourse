@@ -1,4 +1,4 @@
-import {MAX_RANDOM_NUMBER} from './utils.js';
+import {MAX_RANDOM_NUMBER} from '../modules/utils.js';
 
 export default class Car {
   constructor(name) {

@@ -1,6 +1,6 @@
-import Car from './car.js';
-import showWinner from './winner.js';
-import showOnGameProgress from './progress.js';
+import Car from './Car.js';
+import showWinner from '../modules/winner.js';
+import showOnGameProgress from '../modules/progress.js';
 
 export default class RacingCarGame {
   constructor() {

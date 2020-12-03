@@ -1,4 +1,4 @@
-import {createWinnerElement} from './elements/createElement.js';
+import {createWinnerElement} from '../elements/createElement.js';
 
 const pickWinner = (carsArray) => {
   const maxLength = findMaxLengthCar(carsArray);
