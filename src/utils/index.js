@@ -15,6 +15,17 @@ function isFiveUpper(names) {
   return false;
 }
 
+function isNames(names) {
+  for (let i = 0; i < names.length; i++) {
+    let name = Array.from(new Set(names[i]));
+    if (name.length === 1 && name[0] === ' ') {
+      return false;
+    }
+  }
+
+  return true;
+}
+
 function splitNamesString(names) {
   const splitedNames = names.split(',');
   return splitedNames;
@@ -24,4 +35,10 @@ function compareDistance(a, b) {
   return b.moveForwardDistance - a.moveForwardDistance;
 }
 
-export { isFourHigher, splitNamesString, compareDistance, isFiveUpper };
+export {
+  isFourHigher,
+  splitNamesString,
+  compareDistance,
+  isFiveUpper,
+  isNames,
+};

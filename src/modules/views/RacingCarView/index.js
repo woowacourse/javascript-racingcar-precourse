@@ -1,4 +1,9 @@
-import { splitNamesString, compareDistance, isFiveUpper } from '../../../utils';
+import {
+  splitNamesString,
+  compareDistance,
+  isFiveUpper,
+  isNames,
+} from '../../../utils';
 
 export default class RacingCarView {
   constructor(
@@ -38,6 +43,9 @@ export default class RacingCarView {
   }
 
   validNames(names) {
+    if (!isNames(names)) {
+      return '공백이 아닌 자동차 이름을 입력해주세요.';
+    }
     if (isFiveUpper(names)) {
       return '5자 이하의 자동차 이름을 입력해주세요.';
     }
