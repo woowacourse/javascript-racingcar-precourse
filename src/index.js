@@ -40,6 +40,12 @@ export default class RacingCarGame {
     return true;
   };
 
+  generateRandomNumber = () => {
+    const num = Math.floor(Math.random() * 10);
+
+    return num;
+  };
+
   getCarNameInput = () => {
     const carNameInput = document.getElementById("car-names-input");
     const carNameValue = carNameInput.value;
