@@ -9,21 +9,21 @@ function validateCarNames(carNamesInputValue) {
     return isValid;
 }
 
-function takeCarNames() {
-    const carNamesInput = document.querySelector("#car-names-input");
-    return carNamesInput.value.split(",");
-}
-
 function handleCarNamesSubmitClick() {
-    const carNamesInputValue = takeCarNames();
+    const carNamesInput = document.querySelector("#car-names-input");
+    const carNamesInputValue = carNamesInput.value.split(",");
     const isValid = validateCarNames(carNamesInputValue);
-    console.log(isValid);
-    isValid ? showTryCountInput() : resetCarNamesInputValue();
+
+    isValid ? showTryCountScreen() : resetCarNamesInputValue(carNamesInput);
 }
 
-function resetCarNamesInputValue() {}
+function resetCarNamesInputValue(carNamesInput) {
+    alert("차 이름을 다시 입력해주세요");
+    carNamesInput.value = "";
+    carNamesInput.focus();
+}
 
-function showTryCountInput() {
+function showTryCountScreen() {
     const racingCount = document.querySelector("#racing-count");
     racingCount.innerHTML = `
           <h4>시도할 횟수를 입력해주세요.</h4>
