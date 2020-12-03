@@ -74,6 +74,13 @@ export default class RacingCarGame {
     });
   };
 
+  // 자동차 경주 게임 수행 메서드
+  startGame = () => {
+    for (let i = 0; i < this.counts; i++) {
+      this.play(this.cars);
+    }
+  };
+
   getCarNameInput = () => {
     const carNameInput = document.getElementById("car-names-input");
     const carNameValue = carNameInput.value;
