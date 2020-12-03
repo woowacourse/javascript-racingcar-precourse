@@ -1,5 +1,19 @@
 # 🏎️ 자동차 경주 게임
 
+## 👩🏻‍💻 기능 구현
+
+- 자동차 이름 제출 버튼에 이벤트 리스너 추가
+- 입력받은 쟈동차 이름들로 자동차 그룹 어레이 생성
+- 랜덤 숫자 생성
+- 입력받은 자동차들에 랜덤 숫자 부여
+- 실행 결과창에 랜덤 숫자가 4~9인 자동차는 '-' 출력, 우승자 판별에 사용할 수 있도록 개수 카운트
+- 횟수 입력 버튼에 이벤트 리스너 추가
+- 횟수만큼 랜덤 숫자 부여, 실행 결과 출력, 카운트 반복
+- 우승자 판별
+- 횟수 입력 버튼 숨기기
+- 자동차 이름을 잘못 입력할 경우 alert 메시지 띄우기
+- 횟수를 잘못 입력할 경우 alert 메시지 띄우기
+
 ## 🎯 기능 요구사항
 
 - 주어진 횟수 동안 n대의 자동차는 전진 또는 멈출 수 있다.
@@ -15,8 +29,8 @@
 ![실행이미지](images/result.gif)
 ![실행이미지](images/result.jpg)
 
-
 ## ✅ 프로그래밍 요구사항
+
 - 사용자가 잘못된 입력 값을 작성한 경우 `alert`을 이용해 메시지를 보여주고, 재입력할 수 있게 한다.
 - 외부 라이브러리(jQuery, Lodash 등)를 사용하지 않고, 순수 Vanilla JS로만 구현한다.
 - **자바스크립트 코드 컨벤션을 지키면서 프로그래밍** 한다
@@ -57,11 +71,9 @@ class Car {
 - `template literal`을 이용해 데이터와 html string을 가독성 좋게 표현한다.
   - [https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Template_literals](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Template_literals)
 
-
 ## 📝 미션 저장소 및 진행 요구사항
 
 - 미션은 [https://github.com/woowacourse/javascript-racingcar-precours](https://github.com/woowacourse/javascript-racingcar-precourse) 저장소를 fork/clone해 시작한다.
 - **기능을 구현하기 전에 javascript-racingcar-precourse/docs/README.md 파일에 구현할 기능 목록**을 정리해 추가한다.
 - **git의 commit 단위는 앞 단계에서 README.md 파일에 정리한 기능 목록 단위로 추가**한다.
 - [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서 절차를 따라 미션을 제출한다.
-
