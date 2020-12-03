@@ -46,6 +46,16 @@ export default class RacingCarGame {
     return num;
   };
 
+  moveCar = () => {
+    const generateNum = this.generateRandomNumber();
+
+    if (generateNum >= 4) {
+      return true;
+    }
+
+    return false;
+  };
+
   getCarNameInput = () => {
     const carNameInput = document.getElementById("car-names-input");
     const carNameValue = carNameInput.value;
