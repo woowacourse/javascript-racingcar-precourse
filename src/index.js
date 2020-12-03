@@ -43,21 +43,31 @@ const runGame = (carNames, racingCount) => {
 
 }
 
-const submitRacingCountInput = ($racingCountInput, $racingCountSubmit, carNames) => {
-  const _inputResult = new Inputs($racingCountInput.value);
-  $racingCountInput.focus();
-  console.log(_inputResult);
-  console.log(_inputResult.getRacingCountNumber());
+const checkRacingCountInput = (carNames, racingCountInputData, $racingCountInput, $racingCountSubmit) => {
+  const {
+    goToNextStep,
+    message,
+    inputData
+  } = racingCountInputData.getResultOfRacingCountNumber($racingCountInput);
 
-  disableInputs($racingCountInput, $racingCountSubmit);
+  if(goToNextStep) {
+    disableInputs($racingCountInput, $racingCountSubmit);
+    return console.log('success!', carNames, inputData);
+  }
 
-  console.log(carNames);
+  $racingCountInput.value = '';
+  return alert(message);
 }
 
 const userInputRacingCount = carNames => {
   const $racingCountInput = document.getElementById('racing-count-input');
   const $racingCountSubmit = document.getElementById('racing-count-submit');
-  $racingCountSubmit.addEventListener('click', () => submitRacingCountInput($racingCountInput, $racingCountInput, carNames));
+  $racingCountSubmit.addEventListener('click', () => checkRacingCountInput(
+    carNames, 
+    new Inputs($racingCountInput.value),
+    $racingCountInput, 
+    $racingCountSubmit
+  ));
 }
 
 const submitCarNamesInput = carNames => {
