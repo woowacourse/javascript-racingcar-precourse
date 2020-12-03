@@ -24,3 +24,13 @@ const createResultText = (car) => {
 
   return $resultText;
 };
+
+export const createRestartBtn = () => {
+  const $racingWrapper = document.body.querySelector('#app');
+  const $restartBtn = document.createElement('button');
+  $restartBtn.id = 'restart-btn';
+  $restartBtn.textContent = '다시하기';
+  $racingWrapper.appendChild($restartBtn);
+
+  return $restartBtn;
+};
