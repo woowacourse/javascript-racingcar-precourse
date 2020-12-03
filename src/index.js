@@ -24,6 +24,7 @@ export default function RacingCarGame() {
       for (i = 0; i < inputNum; i++) {
         getResult.printResult(words, result);
       }
+      getResult.printWinner(result);
     }
   };
 

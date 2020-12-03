@@ -10,7 +10,6 @@ export default function getResult() {
     let i;
     for (i = 0; i < words.length; i++) {
       cars[i] = new Car(words[i], "");
-      console.log(cars[i]);
     }
   };
 
@@ -29,5 +28,23 @@ export default function getResult() {
       }
     }
     result.innerHTML += "<br>";
+  };
+
+  this.printWinner = (result) => {
+    let i;
+    let maxValue = 0;
+    let winners = [];
+    for (i = 0; i < cars.length; i++) {
+      if (maxValue < cars[i].position.length) {
+        maxValue = cars[i].position.length;
+      }
+    }
+    for (i = 0; i < cars.length; i++) {
+      if (maxValue === cars[i].position.length) {
+        winners.push(cars[i].name);
+      }
+    }
+
+    result.innerHTML += `<h4>최종 우승자: ${winners}</h4>`;
   };
 }
