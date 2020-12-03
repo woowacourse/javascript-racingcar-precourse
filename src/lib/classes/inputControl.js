@@ -4,7 +4,7 @@ class InputResult {
   constructor() {
     this.goToNextStep = true;
     this.message = '';
-    this.inputData = [];
+    this.inputData = null;
   }
 
   getAlertMessage(message) {
@@ -27,12 +27,12 @@ export default class Inputs {
     return /\s+/g.test(this.inputs);
   }
 
-  checkCharsWithoutNumber() {
+  checkChars() {
     return /[^1-9]+/g.test(this.inputs);
   }
 
-  checkIsValudNumber() {
-    return Number(this.inputs) > 0;
+  checkInvalidNumber() {
+    return Number(this.inputs) <= 0;
   }
   
   checkMoreThanFiveChars() {
@@ -72,9 +72,13 @@ export default class Inputs {
   }
 
   getResultOfRacingCountNumber($racingCountInput) {
-
-    return new InputResult(true, '', this.getRacingCountNumber());
+    let inputResult = new InputResult();
+    $racingCountInput.focus();
+    if(this.checkSpace()) inputResult.getAlertMessage('공백은 입력받을 수 없습니다.');
+    if(this.checkChars()) inputResult.getAlertMessage('숫자 외 글자는 입력받을 수 없습니다.');
+    if(this.checkInvalidNumber()) inputResult.getAlertMessage('1이상의 숫자만 입력하세요.');
+    
+    if(inputResult.goToNextStep) inputResult.insertData(this.getRacingCountNumber());
+    return inputResult;
   }
-
-
 }
