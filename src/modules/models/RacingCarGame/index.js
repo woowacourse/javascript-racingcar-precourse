@@ -13,7 +13,7 @@ export default class RacingCarGame {
     this._cars = instances;
   }
 
-  progress() {
+  gameContinue() {
     this._cars.forEach(car => {
       car.moveForward();
     });

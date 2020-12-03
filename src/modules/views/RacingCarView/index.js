@@ -38,7 +38,7 @@ export default class RacingCarView {
     }
 
     this.RacingCarGame.makeCarInstances(splitedNames);
-    this.renderCountInputAndSubmitButton();
+    this.renderRacingCountInputAndSubmitButton();
   }
 
   handleRacingCountSubmit() {
@@ -84,12 +84,14 @@ export default class RacingCarView {
     if (isZero(count)) {
       return text.WARNING_FOR_COUNT_ZERO;
     }
+
+    return '';
   }
 
-  decideWinners(sortedCars) {
-    const winnerDistance = sortedCars[0].moveForwardDistance;
+  decideWinners(cars) {
+    const winnerDistance = cars[0].moveForwardDistance;
 
-    const winners = sortedCars.reduce((accumulator, car) => {
+    const winners = cars.reduce((accumulator, car) => {
       if (car.moveForwardDistance === winnerDistance) {
         return accumulator.concat([car.name]);
       }
@@ -109,7 +111,7 @@ export default class RacingCarView {
     racingCountInput.value = '';
   }
 
-  renderCountInputAndSubmitButton() {
+  renderRacingCountInputAndSubmitButton() {
     this.carRacingCountDiv.innerHTML = `
       <h4>${text.ASK_INPUT_COUNT_NUMBER}</h4>
       <input type="number" id="#racing-count-input"/>
@@ -118,7 +120,7 @@ export default class RacingCarView {
     this.addEventListenerToRacingCountSubmitButton();
   }
 
-  renderHeading() {
+  renderResultHeading() {
     this.carRacingResultDiv.innerHTML += `<h4>${text.RESULT_HEADING}</h4>`;
   }
 
@@ -150,10 +152,10 @@ export default class RacingCarView {
   }
 
   renderResult(racingCount) {
-    this.renderHeading();
+    this.renderResultHeading();
 
     for (let i = 0; i < racingCount; i++) {
-      this.RacingCarGame.progress();
+      this.RacingCarGame.gameContinue();
       this.renderIntermediateResult(this.RacingCarGame.getCars());
     }
 
