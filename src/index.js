@@ -15,7 +15,6 @@ function onCarNameSubmit() {
   const carNameInput = document.getElementsByTagName("input")[0];
   carNameInput.id = "car-names-input";
 
-  //   console.log(carNameInput);
   let carNamesString = carNameInput.value;
 
   makeCarNameArray(carNamesString);
@@ -28,16 +27,29 @@ function makeCarNameArray(carNamesString) {
   makeCarObj(carNamesArr);
 }
 
-// 자동차에 이름과 번호 부여
+// 각 자동차에 이름과 인덱스, 랜덤 넘버 부여한 객체 어레이 생성
 function makeCarObj(carNamesArr) {
+  const randoms = makeRandomNumber(carNamesArr);
   let carsArr = [];
 
   for (let i = 0; i < carNamesArr.length; i++) {
     let carObj = {
       name: `${carNamesArr[i]}`,
       index: `${i + 1}`,
+      randomNum: randoms[i],
     };
     carsArr.push(carObj);
   }
-  console.log(carsArr);
+  console.log(carsArr, carsArr.length);
+}
+
+// 랜덤 숫자 생성
+function makeRandomNumber(carNamesArr) {
+  let randoms = [];
+
+  for (let i = 0; i < carNamesArr.length; i++) {
+    let randomNumber = Math.floor(Math.random() * 10);
+    randoms.push(randomNumber);
+  }
+  return randoms;
 }
