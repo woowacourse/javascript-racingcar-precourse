@@ -34,23 +34,13 @@ export default class RacingCarView {
 
     const exception = this.validNames(splitedNames);
     if (exception) {
+      this.resetCarNamesInput();
       alert(exception);
       return;
     }
 
     this.RacingCarModel.makeCarInstances(splitedNames);
     this.renderCountInputAndSubmitButton();
-  }
-
-  validNames(names) {
-    if (!isNames(names)) {
-      return '공백이 아닌 자동차 이름을 입력해주세요.';
-    }
-    if (isFiveUpper(names)) {
-      return '5자 이하의 자동차 이름을 입력해주세요.';
-    }
-
-    return '';
   }
 
   handleRacingCountSubmit() {
@@ -70,6 +60,17 @@ export default class RacingCarView {
       .addEventListener('click', this.handleRacingCountSubmit.bind(this));
   }
 
+  validNames(names) {
+    if (!isNames(names)) {
+      return '공백이 아닌 자동차 이름을 입력해주세요.';
+    }
+    if (isFiveUpper(names)) {
+      return '5자 이하의 자동차 이름을 입력해주세요.';
+    }
+
+    return '';
+  }
+
   decideWinners(sortedCars) {
     const winnerDistance = sortedCars[0].moveForwardDistance;
 
@@ -83,6 +84,10 @@ export default class RacingCarView {
     }, []);
 
     return winners;
+  }
+
+  resetCarNamesInput() {
+    this.carNamesInput.value = '';
   }
 
   renderCountInputAndSubmitButton() {
