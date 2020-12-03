@@ -60,37 +60,33 @@ const userInputRacingCount = carNames => {
   $racingCountSubmit.addEventListener('click', () => submitRacingCountInput($racingCountInput, $racingCountInput, carNames));
 }
 
-const submitCarNamesInput = ($carNamesInput, $carNamesSubmit) => {
+const submitCarNamesInput = carNames => {
   const $racingCountContainer = document.getElementById('racing-count-container');
-  const _inputCarNamesResult = new Inputs($carNamesInput.value);
-  $carNamesInput.focus();
-
-  if(_inputCarNamesResult.checkSpace()) {
-    $carNamesInput.value = '';
-    return alert('공백은 입력받을 수 없습니다.');
-  }
-
-  if(_inputCarNamesResult.checkMoreThanFiveChars()) {
-    $carNamesInput.value = '';
-    return alert('자동차 이름은 5글자를 넘으면 안됩니다.');
-  }
-
-  if(_inputCarNamesResult.checkSameNames()) {
-    $carNamesInput.value = '';
-    return alert('자동차 이름은 중복될 수 없습니다.');
-  }
-
-
-  disableInputs($carNamesInput, $carNamesSubmit);
   showContainer($racingCountContainer);
-  userInputRacingCount(_inputCarNamesResult.getCarNames());
+  console.log(carNames);
+  userInputRacingCount(carNames);
 }
 
 const userInputCarNames = () => {
   const $carNamesInput = document.getElementById('car-names-input');
   const $carNamesSubmit = document.getElementById('car-names-submit');
 
-  $carNamesSubmit.addEventListener('click', () => submitCarNamesInput($carNamesInput, $carNamesSubmit));
+  $carNamesSubmit.addEventListener('click', () => {
+    const carNamesInputData = new Inputs($carNamesInput.value);
+    const {
+      goToNextStep,
+      message,
+      inputData
+    } = carNamesInputData.getResultOfCarNamesInput($carNamesInput);
+    
+    if(goToNextStep) {
+      disableInputs($carNamesInput, $carNamesSubmit);
+      return submitCarNamesInput(inputData);
+    }
+
+    $carNamesInput.value = '';
+    alert(message);
+  });
 }
 
 const startGame = () => {

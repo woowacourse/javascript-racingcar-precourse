@@ -1,5 +1,23 @@
 import { MAX_CAR_NAME_LENGTH } from '/src/lib/variables/constantNumbers.js';
 
+class InputResult {
+  constructor() {
+    this.goToNextStep = true;
+    this.message = '';
+    this.inputData = [];
+  }
+
+  getAlertMessage(message) {
+    this.goToNextStep = false;
+    this.message = message;
+  }
+
+  insertData(inputData) {
+    this.goToNextStep = true;
+    this.inputData = inputData;
+  }
+}
+
 export default class Inputs {
   constructor(inputs) {
     this.inputs = inputs;
@@ -25,7 +43,6 @@ export default class Inputs {
   checkSameNames() {
     const carNames = this.inputs.split(',');
     const carsWithoutSameName = new Set([...carNames]);
-    console.log(carsWithoutSameName);
     return carsWithoutSameName.size !== carNames.length;
   }
 
@@ -36,4 +53,22 @@ export default class Inputs {
   getRacingCountNumber() {
     return Number(this.inputs);
   }
+
+  getResultOfCarNamesInput($carNamesInput) {
+    let inputResult = new InputResult();
+    $carNamesInput.focus();
+    if(this.checkSpace()) inputResult.getAlertMessage('공백은 입력받을 수 없습니다.');
+    if(this.checkMoreThanFiveChars()) inputResult.getAlertMessage('자동차 이름은 5글자를 넘으면 안됩니다.');
+    if(this.checkSameNames()) inputResult.getAlertMessage('같은 이름의 자동차를 입력할 수 없습니다.');
+
+    if(inputResult.goToNextStep) inputResult.insertData(this.getCarNames());
+    return inputResult;
+  }
+
+  getResultOfRacingCountNumber($racingCountInput) {
+
+    return new InputResult(true, '', this.getRacingCountNumber());
+  }
+
+
 }
