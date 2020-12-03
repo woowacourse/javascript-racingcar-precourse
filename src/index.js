@@ -2,6 +2,22 @@
 
 // new RacingCarGame();
 
+class Car {
+    constructor(name) {
+        this.name = name;
+        this.moveCounts = 0;
+        this.moveList = [];
+    }
+
+    go() {
+        const move = Math.floor(Math.random() * 10) >= 4;
+        const moveItem = move ? "-" : null;
+        this.moveList.push(moveItem);
+        const moveCount = move ? 1 : 0;
+        this.moveCounts += moveCount;
+    }
+}
+
 function validateCarNames(carNamesInputValue) {
     const isValid = carNamesInputValue.every(
         (carName) => 0 < carName.length && carName.length < 6
