@@ -12,16 +12,10 @@ export default class UserInputs {
     this.$racingCountContainer = document.getElementById('racing-count-container');
     this.$racingCountInput = document.getElementById('racing-count-input');
     this.$racingCountSubmit = document.getElementById('racing-count-submit');
-    this.carNames = [];
-    this.racingCount = null;
   }
 
-  getUserInputData() {
-    if(!this.carNames || !this.racingCount) return null;
-    return {
-      carNames: this.carNames,
-      racingCount: this.racingCount
-    }
+  inputDataInRacingCarGame(carNames, racingCount) {
+    console.log(carNames, racingCount);
   }
 
   checkRacingCountInput(racingCountInputData) {
@@ -34,7 +28,7 @@ export default class UserInputs {
     if(goToNextStep) {
       disableInputs(this.$racingCountInput, this.$racingCountSubmit);
       this.racingCount = inputData;
-      return console.log('success!', this.carNames, inputData);
+      return this.inputDataInRacingCarGame(this.carNames, inputData)
     }
   
     this.$racingCountInput.value = '';
