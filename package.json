@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/jho2301/precourse/issues"
   },
-  "homepage": "https://github.com/jho2301/precourse#readme"
+  "homepage": "https://github.com/jho2301/precourse#readme",
+  "devDependencies": {
+    "@babel/core": "^7.12.9",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.14.0"
+  }
 }
