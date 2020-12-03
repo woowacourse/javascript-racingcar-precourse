@@ -5,6 +5,16 @@ function isFourHigher(number) {
   return false;
 }
 
+function isFiveLower(names) {
+  names.forEach(name => {
+    if (name.length > 5) {
+      return false;
+    }
+  });
+
+  return true;
+}
+
 function splitNamesString(names) {
   const splitedNames = names.split(',');
   return splitedNames;
@@ -14,4 +24,4 @@ function compareDistance(a, b) {
   return b.moveForwardDistance - a.moveForwardDistance;
 }
 
-export { isFourHigher, splitNamesString, compareDistance };
+export { isFourHigher, splitNamesString, compareDistance, isFiveLower };

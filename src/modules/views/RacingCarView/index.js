@@ -1,4 +1,4 @@
-import { splitNamesString, compareDistance } from '../../../utils';
+import { splitNamesString, compareDistance, isFiveLower } from '../../../utils';
 
 export default class RacingCarView {
   constructor(
@@ -24,9 +24,25 @@ export default class RacingCarView {
   }
 
   handleCarNamesSubmit() {
-    const cars = splitNamesString(this.carNamesInput.value);
-    this.RacingCarModel.makeCarInstances(cars);
+    const splitedNames = splitNamesString(this.carNamesInput.value);
+    console.log(splitedNames, 'splited');
+
+    const exception = this.validNames(splitedNames);
+    if (exception) {
+      alert(exception);
+      return;
+    }
+
+    this.RacingCarModel.makeCarInstances(splitedNames);
     this.renderCountInputAndSubmitButton();
+  }
+
+  validNames(names) {
+    if (isFiveLower(names)) {
+      return '5자 이하의 자동차 이름을 입력해주세요.';
+    }
+
+    return '';
   }
 
   handleRacingCountSubmit() {
@@ -44,6 +60,21 @@ export default class RacingCarView {
     document
       .getElementById('#racing-count-submit')
       .addEventListener('click', this.handleRacingCountSubmit.bind(this));
+  }
+
+  decideWinners(sortedCars) {
+    const winnerDistance = sortedCars[0].moveForwardDistance;
+
+    const winners = sortedCars.reduce((accumulator, car) => {
+      console.log(accumulator);
+      if (car.moveForwardDistance === winnerDistance) {
+        return accumulator.concat([car.name]);
+      }
+
+      return accumulator;
+    }, []);
+
+    return winners;
   }
 
   renderCountInputAndSubmitButton() {
@@ -68,27 +99,18 @@ export default class RacingCarView {
     `;
   }
 
-  decideWinners(sortedCars) {
-    const winnerDistance = sortedCars[0].moveForwardDistance;
-
-    const winners = sortedCars.reduce((accumulator, car) => {
-      console.log(accumulator);
-      if (car.moveForwardDistance === winnerDistance) {
-        return accumulator.concat([car]);
-      }
-
-      return accumulator;
-    }, []);
-
-    return winners;
-  }
-
   renderWinners(cars) {
     const sortedCars = [...cars];
     sortedCars.sort(compareDistance);
     console.log(sortedCars, 'sorted');
     const winners = this.decideWinners(sortedCars);
 
-    console.log(winners, 'winners');
+    const winnersString = winners.join(', ');
+
+    this.carRacingResultDiv.innerHTML += `
+      <div>
+        최종 우승자: ${winnersString}
+      </div>
+    `;
   }
 }

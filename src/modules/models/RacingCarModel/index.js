@@ -5,9 +5,9 @@ export default class RacingCarModel {
     this._cars = null;
   }
 
-  makeCarInstances(cars) {
-    const instances = cars.map(car => {
-      return new Car(car);
+  makeCarInstances(splitedNames) {
+    const instances = splitedNames.map(name => {
+      return new Car(name);
     });
 
     this._cars = instances;
