@@ -24,6 +24,22 @@ export default class RacingCarGame {
     return true;
   };
 
+  checkCountVaild = (counts) => {
+    if (isNaN(counts)) {
+      alert("입력한 횟수가 숫자가 아닙니다");
+
+      return false;
+    }
+
+    if (counts <= 0) {
+      alert("입력한 횟수가 올바른 값이 아닙니다");
+
+      return false;
+    }
+
+    return true;
+  };
+
   getCarNameInput = () => {
     const carNameInput = document.getElementById("car-names-input");
     const carNameValue = carNameInput.value;
@@ -35,7 +51,6 @@ export default class RacingCarGame {
   getCountInput = () => {
     const countInput = document.getElementById("racing-count-input");
     const counts = countInput.value;
-    console.log(counts);
 
     return counts;
   };
@@ -48,7 +63,7 @@ export default class RacingCarGame {
   };
 
   handleCountSubmit = () => {
-    const countButton = document.getElementById("racting-count-submit");
+    const countButton = document.getElementById("racing-count-submit");
     countButton.addEventListener("click", () => {
       this.getCountInput();
     });
