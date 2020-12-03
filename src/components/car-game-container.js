@@ -1,10 +1,12 @@
 import Component from '../library/core/component.js';
 import State from '../library/core/state.js';
 import CarNamesInput from './car-names-input.js';
+import RacingCountInput from './racing-count-input.js';
 
 class CarGameContainer extends Component {
-  _carNames;
   #$racingCountContainer;
+  _carNames;
+  _racingCount;
 
   constructor($target, props) {
     super($target, props);
@@ -16,6 +18,7 @@ class CarGameContainer extends Component {
 
   initializeStates() {
     this._carNames = new State([]);
+    this._racingCount = new State(0);
   }
 
   initializeDOMElements() {
@@ -28,7 +31,14 @@ class CarGameContainer extends Component {
     const $carNamesContainer = this._$target.querySelector(
       '.car-names-container'
     );
+    const $racingCountContainer = this._$target.querySelector(
+      '.racing-count-container'
+    );
     new CarNamesInput($carNamesContainer, { carNames: this._carNames });
+    new RacingCountInput($racingCountContainer, {
+      racingCount: this._racingCount,
+      createCars: this.createCars,
+    });
   }
 
   render = () => {
