@@ -6,6 +6,7 @@ import {
   isZero,
   isNumber,
 } from '../../../utils';
+import { text } from '../../../constants';
 
 export default class RacingCarView {
   constructor(
@@ -65,10 +66,10 @@ export default class RacingCarView {
 
   validNames(names) {
     if (!isNames(names)) {
-      return '공백이 아닌 자동차 이름을 입력해주세요.';
+      return text.WARNING_FOR_WHITE_SPACE;
     }
     if (isFiveUpper(names)) {
-      return '5자 이하의 자동차 이름을 입력해주세요.';
+      return text.WARNING_FOR_NAME_LONGER_THAN_FIVE;
     }
 
     return '';
@@ -76,10 +77,10 @@ export default class RacingCarView {
 
   validCount(count) {
     if (!isNumber(count)) {
-      return '숫자만 입력해주세요.';
+      return text.WARNING_FOR_COUNT_NOT_NUMBER;
     }
     if (isZero(count)) {
-      return '1 이상의 수를 입력해주세요.';
+      return text.WARNING_FOR_COUNT_ZERO;
     }
   }
 
@@ -108,15 +109,15 @@ export default class RacingCarView {
 
   renderCountInputAndSubmitButton() {
     this.carRacingCountDiv.innerHTML = `
-      <h4>시도할 횟수를 입력해주세요.</h4>
+      <h4>${text.ASK_INPUT_COUNT_NUMBER}</h4>
       <input type="number" id="#racing-count-input"/>
-      <button id="#racing-count-submit">확인</button>
+      <button id="#racing-count-submit">${text.SUBMIT_COUNT}</button>
     `;
     this.addEventListenerToRacingCountSubmitButton();
   }
 
   renderHeading() {
-    this.carRacingResultDiv.innerHTML += `<h4>📄 실행 결과</h4>`;
+    this.carRacingResultDiv.innerHTML += `<h4>${text.RESULT_HEADING}</h4>`;
   }
 
   renderIntermediateResult(cars) {
@@ -141,7 +142,7 @@ export default class RacingCarView {
 
     this.carRacingResultDiv.innerHTML += `
       <div>
-        최종 우승자: ${winnersString}
+        ${text.LAST_WINNERS}: ${winnersString}
       </div>
     `;
   }

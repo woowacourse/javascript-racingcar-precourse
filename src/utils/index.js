@@ -16,7 +16,6 @@ function isFiveUpper(names) {
 }
 
 function isZero(count) {
-  console.log(typeof count);
   if (count === '0') {
     return true;
   }
