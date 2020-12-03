@@ -67,8 +67,7 @@ const submitCarNamesInput = carNames => {
   userInputRacingCount(carNames);
 }
 
-const checkCarNamesInput = ($carNamesInput, $carNamesSubmit) => {
-  const carNamesInputData = new Inputs($carNamesInput.value);
+const checkCarNamesInput = (carNamesInputData, $carNamesInput, $carNamesSubmit) => {
   const {
     goToNextStep,
     message,
@@ -88,7 +87,11 @@ const userInputCarNames = () => {
   const $carNamesInput = document.getElementById('car-names-input');
   const $carNamesSubmit = document.getElementById('car-names-submit');
 
-  $carNamesSubmit.addEventListener('click', () => checkCarNamesInput($carNamesInput, $carNamesSubmit));
+  $carNamesSubmit.addEventListener('click', () => checkCarNamesInput(
+    new Inputs($carNamesInput.value),
+    $carNamesInput, 
+    $carNamesSubmit
+  ));
 }
 
 const startGame = () => {

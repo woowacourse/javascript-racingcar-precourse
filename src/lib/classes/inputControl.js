@@ -36,14 +36,19 @@ export default class Inputs {
   }
   
   checkMoreThanFiveChars() {
-    const carNames = this.inputs.split(',');
-    return carNames.some(carName => carName.length > MAX_CAR_NAME_LENGTH);
+    const _carNames = this.inputs.split(',');
+    return _carNames.some(carName => carName.length > MAX_CAR_NAME_LENGTH);
+  }
+
+  checkLessThanOneCars() {
+    const _carNames = this.inputs.split(',');
+    return _carNames.length < 2;
   }
 
   checkSameNames() {
-    const carNames = this.inputs.split(',');
-    const carsWithoutSameName = new Set([...carNames]);
-    return carsWithoutSameName.size !== carNames.length;
+    const _carNames = this.inputs.split(',');
+    const carsWithoutSameName = new Set([..._carNames]);
+    return carsWithoutSameName.size !== _carNames.length;
   }
 
   getCarNames() {
@@ -59,6 +64,7 @@ export default class Inputs {
     $carNamesInput.focus();
     if(this.checkSpace()) inputResult.getAlertMessage('공백은 입력받을 수 없습니다.');
     if(this.checkMoreThanFiveChars()) inputResult.getAlertMessage('자동차 이름은 5글자를 넘으면 안됩니다.');
+    if(this.checkLessThanOneCars()) inputResult.getAlertMessage('두 개 이상의 자동차 이름을 입력하세요.');
     if(this.checkSameNames()) inputResult.getAlertMessage('같은 이름의 자동차를 입력할 수 없습니다.');
 
     if(inputResult.goToNextStep) inputResult.insertData(this.getCarNames());
