@@ -1,4 +1,4 @@
-import Car from "/src/core/car.js"
+import Car from "/src/car/car.js";
 
 export default class RacingCarGame {
 	constructor() {
@@ -34,7 +34,7 @@ export default class RacingCarGame {
 		this.racingCountSubmit.addEventListener("click", this.startGame);
 	}
 
-	getCarNames = () => {
+	setCarNames = () => {
 		this.carNames = this.carNamesInput.value;
 	}
 
@@ -61,7 +61,7 @@ export default class RacingCarGame {
 		return validity;
 	}
 
-	getRacingCount = () => {
+	setRacingCount = () => {
 		this.racingCount = Number(this.racingCountInput.value);
 	}
 
@@ -99,7 +99,7 @@ export default class RacingCarGame {
 	}
 
 	playGame = (carObjects) => {
-		
+		console.log(carObjects);
 	}
 }
 
