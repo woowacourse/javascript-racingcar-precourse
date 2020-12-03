@@ -13,13 +13,13 @@ export default class RacingCarGame {
     this._carInstances = instances;
   }
 
+  getCarInstances() {
+    return this._carInstances;
+  }
+
   gameContinue() {
     this._carInstances.forEach(car => {
       car.moveForward();
     });
-  }
-
-  getCarInstances() {
-    return this._carInstances;
   }
 }

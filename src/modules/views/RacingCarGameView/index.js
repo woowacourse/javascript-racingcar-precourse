@@ -1,14 +1,14 @@
 import {
   splitNamesString,
   compareDistance,
-  isFiveUpper,
+  isLongerThanFive,
   isNames,
   isZero,
   isNumber,
 } from '../../../utils';
 import { text } from '../../../constants';
 
-export default class RacingCarView {
+export default class RacingCarGameView {
   constructor(
     RacingCarGame,
     carNamesInput,
@@ -70,7 +70,7 @@ export default class RacingCarView {
     if (!isNames(names)) {
       return text.WARNING_FOR_WHITE_SPACE;
     }
-    if (isFiveUpper(names)) {
+    if (isLongerThanFive(names)) {
       return text.WARNING_FOR_NAME_LONGER_THAN_FIVE;
     }
 
@@ -117,6 +117,7 @@ export default class RacingCarView {
       <input type="number" id="#racing-count-input"/>
       <button id="#racing-count-submit">${text.SUBMIT_COUNT}</button>
     `;
+
     this.addEventListenerToRacingCountSubmitButton();
   }
 
@@ -140,7 +141,6 @@ export default class RacingCarView {
   renderWinners(cars) {
     const sortedCars = [...cars];
     sortedCars.sort(compareDistance);
-    console.log(sortedCars, 'sorted');
     const winners = this.decideWinners(sortedCars);
     const winnersString = winners.join(', ');
 
@@ -154,7 +154,7 @@ export default class RacingCarView {
   renderResult(count) {
     this.renderResultHeading();
 
-    for (let i = 0; i < racingCount; i++) {
+    for (let i = 0; i < count; i++) {
       this.RacingCarGame.gameContinue();
       this.renderIntermediateResult(this.RacingCarGame.getCarInstances());
     }

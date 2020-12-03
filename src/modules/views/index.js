@@ -1,3 +1,3 @@
-import RacingCarView from './RacingCarView';
+import RacingCarGameView from './RacingCarGameView';
 
-export { RacingCarView };
+export { RacingCarGameView };
