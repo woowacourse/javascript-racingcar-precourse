@@ -1,8 +1,10 @@
+import {MAX_NAME_LENGTH} from './utils.js';
+
 const isRightNameInput = (nameInput) => {
   if (nameInput.find((name) => name.match(/[^a-zA-Z0-9가-힣]/))) {
     return alert('특수문자는 사용 불가능합니다.');
   }
-  if (nameInput.some((name) => name.length > 5)) {
+  if (nameInput.some((name) => name.length > MAX_NAME_LENGTH)) {
     return alert('이름은 5자리 이하로 입력해주세요.');
   }
   if (nameInput.some((name) => name === '')) {

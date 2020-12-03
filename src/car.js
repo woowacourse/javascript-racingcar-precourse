@@ -1,3 +1,5 @@
+import {MAX_RANDOM_NUMBER} from './utils.js';
+
 export default class Car {
   constructor(name) {
     this.name = name;
@@ -22,8 +24,7 @@ const isCarMove = () => {
 };
 
 const createRandomNumber = () => {
-  const MAX_NUMBER = 9;
-  const randomNumber = Math.floor(Math.random() * MAX_NUMBER + 1);
+  const randomNumber = Math.floor(Math.random() * MAX_RANDOM_NUMBER + 1);
 
   return randomNumber;
 };

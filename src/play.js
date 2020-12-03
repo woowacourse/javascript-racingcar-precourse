@@ -1,13 +1,16 @@
 import RacingCarGame from './index.js';
 import checkInputValid from './inputvalid.js';
+import {carElements} from './utils.js';
 
-const timesWrapper = document.body.querySelector('#racing-count-container');
-const resultWrapper = document.body.querySelector('#result-container');
-const carNameInput = document.body.querySelector('#car-names-input');
-const carNameSubmitBtn = document.body.querySelector('#car-names-submit');
-const timesInput = document.body.querySelector('#racing-count-input');
-const timesSubmitBtn = document.body.querySelector('#racing-count-submit');
 const racingGame = new RacingCarGame();
+const {
+  timesWrapper,
+  resultWrapper,
+  carNameSubmitBtn,
+  timesSubmitBtn,
+  carNameInput,
+  timesInput,
+} = carElements;
 
 const onSubmitCarName = (e) => {
   if (!checkInputValid(e.target, carNameInput.value)) {
