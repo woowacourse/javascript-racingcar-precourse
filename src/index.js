@@ -7,6 +7,8 @@ class Car {
 
 export default class RacingCarGame {
   constructor() {
+    this.cars = [];
+    this.counts = 0;
     this.handleCarNameSubmit();
     this.handleCountSubmit();
   }
@@ -68,14 +70,17 @@ export default class RacingCarGame {
     const carNameValue = carNameInput.value;
     const carNames = carNameValue.split(",");
 
-    return carNames;
+    carNames.forEach((carName) => {
+      const car = new Car(carName);
+      this.cars.push(car);
+    });
   };
 
   getCountInput = () => {
     const countInput = document.getElementById("racing-count-input");
     const counts = countInput.value;
 
-    return counts;
+    this.counts = counts;
   };
 
   handleCarNameSubmit = () => {
