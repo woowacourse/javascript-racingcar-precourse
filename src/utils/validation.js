@@ -1,18 +1,24 @@
 import { NAME_SEPERATOR } from '../constants/configuration.js';
 
-const checkIsCarAlone = (names) => {
-  const carNames = names.split(NAME_SEPERATOR);
-  let isCarAlone = false;
-  if (carNames.length === 0) {
-    isCarAlone = true;
+const checkIsCarNameLong = (carNameList) => {
+  let isCarNameLong = false;
+  for (let i = 0; i < carNameList.length; i += 1) {
+    if (carNameList[i].length > 5) {
+      isCarNameLong = true;
+      break;
+    }
   }
 
-  return isCarAlone;
+  return isCarNameLong;
 };
 
 export const checkCarNames = (names) => {
   let isValid = true;
-  if (checkIsCarAlone(names)) {
+  const carNameList = names.split(NAME_SEPERATOR);
+  if (carNameList.length === 0) {
+    isValid = false;
+  }
+  if (checkIsCarNameLong(carNameList)) {
     isValid = false;
   }
 
