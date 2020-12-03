@@ -1,16 +1,11 @@
 import getCarNames from './getCarNames.js';
 
 function userInputHandler(target) {
-  const $inputRaceNumberScreen = document.querySelector(
-    '.car-game-container > div:last-child',
-  );
-
   if (target.id === 'car-names-submit') {
     getCarNames();
-    $inputRaceNumberScreen.style.display = 'inline';
   }
   if (target.id === 'racing-count-submit') {
-    //
+    console.log('asd');
   }
 }
 
