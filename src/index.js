@@ -25,9 +25,20 @@ function validateCarNames(carNamesInputValue) {
     return isValid;
 }
 
-function handleCarNamesSubmitClick() {
+function takeCarNamesInput() {
     const carNamesInput = document.querySelector("#car-names-input");
+    return carNamesInput;
+}
+
+function takeCarNamesInputValue() {
+    const carNamesInput = takeCarNamesInput();
     const carNamesInputValue = carNamesInput.value.split(",");
+    return carNamesInputValue;
+}
+
+function handleCarNamesSubmitClick() {
+    const carNamesInput = takeCarNamesInput();
+    const carNamesInputValue = takeCarNamesInputValue();
     const isValid = validateCarNames(carNamesInputValue);
 
     isValid ? showTryCountScreen() : resetCarNamesInputValue(carNamesInput);
