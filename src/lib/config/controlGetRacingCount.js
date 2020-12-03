@@ -1,18 +1,19 @@
-export const hideRacingCountInputAndResult = () => {
-  const $getRacingCount = document.querySelector('#get-racing-count');
-  const $result = document.querySelector('#result');
-  $getRacingCount.setAttribute('style', 'display:none;');
-  $result.setAttribute('style', 'display:none;');
+export const hideContainer = $container => {
+  if(typeof($container) !== 'object') return;
+  $container.setAttribute('style', 'display:none;');
 }
 
-export const showRacingCountInputAttribute = () => {
-  const $getRacingCount = document.querySelector('#get-racing-count');
-  $getRacingCount.removeAttribute('style');
+export const hideUnusedContainers = () => {
+  const $racingCountContainer = document.querySelector('#racing-count-container');
+  const $resultContainer = document.querySelector('#result-container');
+  [$racingCountContainer, $resultContainer].forEach($container => {
+    hideContainer($container);
+  })
 }
 
-export const showResultAttribute = () => {
-  const $result = document.querySelector('#result');
-  $result.removeAttribute('style');
+export const showContainer = $container => {
+  if(typeof($container) !== 'object') return;
+  $container.removeAttribute('style');
 }
 
 export const disableInputs = ($input, $button) => {

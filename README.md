@@ -75,11 +75,11 @@
 #### input을 어떻게 처리하지?
   - dom init를 구현할 것
     - `.car-game-container` DOM 클래스 구조
-      - 1. [자동차 이름 입력] div `#get-car-names`
+      - 1. [자동차 이름 입력] div `#car-names-container`
         - input `#car-names-input`
         - button `#car-names-submit`
       
-      - 2. [시도 횟수 입력] div `#get-racing-count`
+      - 2. [시도 횟수 입력] div `#racing-count-container`
         - input `#racing-count-input`
         - button `#racing-count-submit`
 

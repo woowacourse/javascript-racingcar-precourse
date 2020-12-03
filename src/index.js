@@ -3,8 +3,8 @@ import Car from '/src/lib/classes/car.js';
 import Inputs from '/src/lib/classes/inputControl.js';
 import addIdsToNodes from '/src/lib/config/addIdsToNodes.js';
 import {
-  hideRacingCountInputAndResult,
-  showRacingCountInputAttribute,
+  hideUnusedContainers,
+  showContainer,
   disableInputs,
 } from '/src/lib/config/controlGetRacingCount.js';
 
@@ -76,14 +76,14 @@ const carNamesUserInput = () => {
 
     disableInputs($carNamesInput, $carNamesSubmit);
     
-    showRacingCountInputAttribute();
+    
     racingCountUserInput(_inputResult.getCarNames());
   });
 }
 
 const startGame = () => {
   addIdsToNodes();
-  hideRacingCountInputAndResult();
+  hideUnusedContainers();
   carNamesUserInput();
 }
 
