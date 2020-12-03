@@ -1,7 +1,11 @@
-export default function RacingCarGame() {
+// export default function RacingCarGame() {}
+
+// new RacingCarGame();
+
+function handleCarNamesSubmitClick() {}
+
+function init() {
+    const carNamesSubmitButton = document.querySelector("#car-names-submit");
+    carNamesSubmitButton.addEventListener("click", handleCarNamesSubmitClick);
 }
-// export default class RacingCarGame {
-// }
-
-
-new RacingCarGame();
+init();
