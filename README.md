@@ -25,7 +25,7 @@
 ### 경주 수행하기
 
 <br/>
-- 차들과 경주장을 생성하기 (create cars & racecourse)
+- 차들과 경주장을 생성하기 (create cars & raceCourse)
 - 경주 진행하기 (play race game)
 
 <br/>
