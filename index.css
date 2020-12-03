@@ -1,3 +1,7 @@
 .hidden {
   display: none;
 }
+
+.race {
+  margin: 14px 0;
+}
