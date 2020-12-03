@@ -5,6 +5,7 @@ import addIdsToNodes from '/src/lib/config/addIdsToNodes.js';
 import {
   hideRacingCountInputAndResult,
   showRacingCountInputAttribute,
+  disableInputs,
 } from '/src/lib/config/controlGetRacingCount.js';
 
 const getInitCarInfo = carNames => carNames.reduce((acc, carName) => {
@@ -53,8 +54,7 @@ const racingCountUserInput = carNames => {
     console.log(_inputResult.getRacingCountNumber());
 
     //값이 올바르면 인풋 비활성화 후 게임 시작하기
-    $racingCountInput.setAttribute('disabled', 'true');
-    $racingCountSubmit.setAttribute('disabled', 'true');
+    disableInputs($racingCountInput, $racingCountSubmit);
 
     console.log(carNames);
   });
@@ -73,8 +73,8 @@ const carNamesUserInput = () => {
     //유효성이 맞으면 아래 노드 부활시키고 다음 순서(시도할 횟수)
     //유효성이 틀리면 입력 재시도
     //이미 입력 받았으면 경고 메시지 띄우거나 disable시키기
-    $carNamesInput.setAttribute('disabled', 'true');
-    $carNamesSubmit.setAttribute('disabled', 'true');
+
+    disableInputs($carNamesInput, $carNamesSubmit);
     
     showRacingCountInputAttribute();
     racingCountUserInput(_inputResult.getCarNames());

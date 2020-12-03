@@ -8,8 +8,6 @@ const addIdsToParentNodes = () => {
     $result
   ] = $carGameApp.getElementsByTagName('div');
 
-  console.log(typeof $getCarNames);
-
   $carGameContainer.id = 'car-game-input'
   $getCarNames.id = 'get-car-names';
   $getRacingCount.id = 'get-racing-count';
