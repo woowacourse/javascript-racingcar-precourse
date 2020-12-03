@@ -1,8 +1,9 @@
 import Component from '../library/core/component.js';
 
 class CarGameContainer extends Component {
-  $carNamesInput;
-  $carNamesSubmit;
+  #$carNamesInput;
+  #$carNamesSubmit;
+  #$racingCountContainer;
 
   constructor($target, props) {
     super($target, props);
@@ -11,8 +12,11 @@ class CarGameContainer extends Component {
   }
 
   initializeElements() {
-    this.$carNamesInput = this._$target.querySelector('#car-names-input');
-    this.$carNamesSubmit = this._$target.querySelector('#car-names-submit');
+    this.#$carNamesInput = this._$target.querySelector('#car-names-input');
+    this.#$carNamesSubmit = this._$target.querySelector('#car-names-submit');
+    this.#$racingCountContainer = this._$target.querySelector(
+      '.racing-count-container'
+    );
   }
 
   initializeEventListener() {
@@ -33,14 +37,15 @@ class CarGameContainer extends Component {
   }
 
   setCarNames() {
-    const input = this.$carNamesInput.value;
+    const input = this.#$carNamesInput.value;
     let carNames;
     if (!this.isValidateInput(input)) {
       this.alertByCase(input);
-      this.$carNamesInput.value = '';
-      this.$carNamesInput.focus();
+      this.#$carNamesInput.value = '';
+      this.#$carNamesInput.focus();
     }
     carNames = input.split(',').map(carName => carName.trim());
+    this.#$racingCountContainer.classList.remove('hidden');
     console.log(carNames);
   }
 

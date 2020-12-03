@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "우아한 테크코스 프리코스 2주차 과제",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "jest"
   },
