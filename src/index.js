@@ -18,6 +18,12 @@ class Car {
     }
 }
 
+function makeNewCars() {
+    const cars = takeCarNamesInputValue();
+    const carsArray = cars.map((car) => new Car(car));
+    console.log(carsArray);
+}
+
 function validateCarNames(carNamesInputValue) {
     const isValid = carNamesInputValue.every(
         (carName) => 0 < carName.length && carName.length < 6
@@ -73,6 +79,8 @@ function handleRacingCountSubmitButton() {
 function handleRacingCountSubmitClick() {
     const racingCountInput = document.querySelector("#racing-count-input");
     const racingCountInputValue = racingCountInput.value;
+
+    makeNewCars();
     console.log(racingCountInputValue);
 }
 
