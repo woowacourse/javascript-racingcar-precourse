@@ -6,7 +6,6 @@ class CarNamesInput extends Component {
   constructor($target, props) {
     super($target, props);
     this.initializeDOMElements();
-    props.carNames.subscribe(this.render);
   }
 
   initializeDOMElements() {
@@ -14,33 +13,31 @@ class CarNamesInput extends Component {
   }
 
   initializeEventListener() {
-    this._$target.addEventListener('click', event => this.onClick(event));
-    this._$target.addEventListener('keyup', event => this.onKeyup(event));
+    this._$target.addEventListener('click', event => this.handleEvent(event));
+    this._$target.addEventListener('keyup', event => this.handleEvent(event));
   }
 
-  onClick(event) {
-    if (event.target.id === 'car-names-submit') {
-      this.setCarNames();
-    }
-  }
-
-  onKeyup(event) {
-    if (event.key === 'Enter') {
-      this.setCarNames();
-    }
-  }
-
-  setCarNames() {
-    const input = this.#$carNamesInput.value;
+  handleEvent(event) {
+    let input;
     let carNames;
-    if (!this.isValidateInput(input)) {
-      this.alertByCase(input);
-      this.#$carNamesInput.value = '';
-      this.#$carNamesInput.focus();
-      return;
+    if (event.target.id === 'car-names-submit' || event.key === 'Enter') {
+      input = this.#$carNamesInput.value;
+      if (!this.isValidateInput(input)) {
+        this.handleError(input);
+        return;
+      }
+      carNames = this.getCarNames(input);
     }
-    carNames = input.split(',').map(carName => carName.trim());
-    this._props.carNames.value = carNames;
+  }
+
+  handleError(input) {
+    this.alertByCase(input);
+    this.#$carNamesInput.value = '';
+    this.#$carNamesInput.focus();
+  }
+
+  getCarNames(input) {
+    return input.split(',').map(carName => carName.trim());
   }
 
   isValidateInput(input) {
