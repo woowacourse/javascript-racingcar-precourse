@@ -15,6 +15,14 @@ function isFiveUpper(names) {
   return false;
 }
 
+function isZero(count) {
+  if (count === '0') {
+    return true;
+  }
+
+  return false;
+}
+
 function isNames(names) {
   for (let i = 0; i < names.length; i++) {
     let name = Array.from(new Set(names[i]));
@@ -41,4 +49,5 @@ export {
   compareDistance,
   isFiveUpper,
   isNames,
+  isZero,
 };

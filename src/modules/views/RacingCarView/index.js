@@ -3,6 +3,7 @@ import {
   compareDistance,
   isFiveUpper,
   isNames,
+  isZero,
 } from '../../../utils';
 
 export default class RacingCarView {
@@ -75,7 +76,6 @@ export default class RacingCarView {
     const winnerDistance = sortedCars[0].moveForwardDistance;
 
     const winners = sortedCars.reduce((accumulator, car) => {
-      console.log(accumulator);
       if (car.moveForwardDistance === winnerDistance) {
         return accumulator.concat([car.name]);
       }
