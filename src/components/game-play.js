@@ -13,7 +13,7 @@ class GamePlay extends Component {
     for (let i = 0; i < racingCount; i++) {
       this._$target.innerHTML += this.createRaceTemplate(cars);
     }
-    // this._$target.innerHTML += this.createWinnerTemplate(cars);
+    this._$target.innerHTML += this.createWinnerTemplate(cars);
   };
 
   createRaceTemplate = cars => {
@@ -28,9 +28,26 @@ class GamePlay extends Component {
     return result;
   };
 
-  // createWinnerTemplate = cars => {
-  //   return `<div>최종 우승자: ${this.getWinners(cars)} </div>`;
-  // };
+  createWinnerTemplate = cars => {
+    console.log(this.getWinners(cars));
+    const winners = this.getWinners(cars)
+      .map(car => car.name)
+      .join(', ');
+
+    return `<div>최종 우승자: ${winners} </div>`;
+  };
+
+  getWinners = cars => {
+    let maxDrivenDistance = -Infinity;
+    cars.forEach(car => {
+      console.log(car);
+      if (car.getDrivenDistance() > maxDrivenDistance) {
+        maxDrivenDistance = car.getDrivenDistance();
+      }
+    });
+
+    return cars.filter(car => car.getDrivenDistance() === maxDrivenDistance);
+  };
 }
 
 export default GamePlay;
