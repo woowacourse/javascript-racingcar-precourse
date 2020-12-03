@@ -65,6 +65,24 @@ export default class RacingCarGame {
     return false;
   };
 
+  showWinner = () => {
+    const resultContainer = document.getElementById("result");
+    let winner = [];
+
+    this.cars.forEach((car) => {
+      if (winner.length === 0 || winner[0].move < car.move) {
+        winner = [car];
+      } else if (winner[0].move === car.move) {
+        winner.push(car);
+      }
+    });
+
+    let result = winner.map((car) => {
+      return car.name;
+    });
+    resultContainer.innerHTML += `최종 우승자: ${result.join(", ")}`;
+  };
+
   showGameResult = () => {
     const resultContainer = document.getElementById("result");
 
@@ -92,6 +110,7 @@ export default class RacingCarGame {
     for (let i = 0; i < this.counts; i++) {
       this.play(this.cars);
     }
+    this.showWinner();
   };
 
   getCarNameInput = () => {
