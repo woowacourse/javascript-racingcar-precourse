@@ -1,9 +1,9 @@
-import getUserInput from './input/getUserInput.js';
+import playGame from './game/playGame.js';
 import initializeGame from './utils/initializeGame.js';
 
 export default function RacingCarGame() {
   initializeGame();
-  getUserInput();
+  playGame();
 }
 
 new RacingCarGame();

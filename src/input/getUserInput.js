@@ -3,11 +3,10 @@ import getRacingCount from './getRacingCount.js';
 
 function userInputHandler(target) {
   if (target.id === 'car-names-submit') {
-    getCarNames();
+    return getCarNames();
   }
-  if (target.id === 'racing-count-submit') {
-    getRacingCount();
-  }
+  // if (target.id === 'racing-count-submit') {
+  return getRacingCount();
 }
 
 function carGameContainerClickHandler({ target }) {

@@ -24,7 +24,8 @@ export default function getCarNames() {
 
   if (!checkValidCarName(carNamesArray)) {
     $carNamesInput.value = '';
-    return alert('잘못 된 입력입니다! 다시 입력해주세요!');
+    alert('잘못 된 입력입니다! 다시 입력해주세요!');
+    return false;
   }
   toggleRaceNumberInputScreen();
   return makeNewCars(carNamesArray);
