@@ -93,4 +93,4 @@
 ### [Day 2]
 1. car racing count 처음에 숨기기
 2. 메소드의 길이가 15를 넘지 않게 하기 위해 input 유효성 체크는 별도의 클래스(inputControl.js)에서 처리
-3. 
+3. Input 함수 어떻게 모듈화하지? 
