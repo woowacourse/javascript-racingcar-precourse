@@ -5,13 +5,7 @@ class CarGameContainer extends Component {
   #$carNamesSubmit;
   #$racingCountContainer;
 
-  constructor($target, props) {
-    super($target, props);
-    this.initializeElements();
-    this.initializeEventListener();
-  }
-
-  initializeElements() {
+  initializeDOMElements() {
     this.#$carNamesInput = this._$target.querySelector('#car-names-input');
     this.#$carNamesSubmit = this._$target.querySelector('#car-names-submit');
     this.#$racingCountContainer = this._$target.querySelector(

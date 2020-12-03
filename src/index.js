@@ -1,7 +1,9 @@
 import CarGameContainer from './components/car-game-container.js';
+import Component from './library/core/component.js';
 
-export default class RacingCarGame {
+export default class RacingCarGame extends Component {
   constructor() {
+    super();
     this.initializeComponents();
   }
 
