@@ -24,7 +24,7 @@ const isCarMove = () => {
 };
 
 const createRandomNumber = () => {
-  const randomNumber = Math.floor(Math.random() * MAX_RANDOM_NUMBER + 1);
+  const randomNumber = Math.floor(Math.random() * (MAX_RANDOM_NUMBER + 1));
 
   return randomNumber;
 };
