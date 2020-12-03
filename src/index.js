@@ -1,13 +1,11 @@
 import {
     isDigits,
     isOnlySpaceString,
-    isUnderFiveDigits
+    isUnderFiveDigits,
+    isValidCarName
 } from './utils.js';
 import Car from './Car.js';
 
-const isValidCarName = (carNames) => carNames.every(
-    carName => (isUnderFiveDigits(carName) && !isOnlySpaceString(carName))
-);
 
 const getCarNameInput = () => {
     const carNameInput = document.getElementById('car-names-input');
@@ -60,7 +58,6 @@ export default function RacingCarGame() {
 
     this.setCars = (carNameArray) => {
         cars = carNameArray.map(carName => new Car(carName));
-        console.log(cars.map(car => car.getCarName()));
     }
     this.setNumOfTry = (numOfTryInput) => {
         numOfTry = parseInt(numOfTryInput);

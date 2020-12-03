@@ -22,3 +22,7 @@ export const isOnlySpaceString = (string) => {
     }
     return false;
 };
+
+export const isValidCarName = (carNames) => carNames.every(
+    carName => (isUnderFiveDigits(carName) && !isOnlySpaceString(carName))
+);
