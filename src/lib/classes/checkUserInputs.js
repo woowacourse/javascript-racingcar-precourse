@@ -2,19 +2,8 @@ import { MAX_CAR_NAME_LENGTH } from '/src/lib/variables/constantNumbers.js';
 import Car from '/src/lib/classes/car.js';
 
 class InputResult {
-  constructor() {
-    this.goToNextStep = true;
-    this.message = '';
-    this.inputData = null;
-  }
-
-  getAlertMessage(message) {
-    this.goToNextStep = false;
-    this.message = message;
-  }
-
-  insertData(inputData) {
-    this.goToNextStep = true;
+  constructor(goToNextStep, inputData) {
+    this.goToNextStep = goToNextStep;
     this.inputData = inputData;
   }
 }
@@ -22,67 +11,94 @@ class InputResult {
 export default class InputsControl {
   constructor(inputs) {
     this.inputs = inputs;
+    this._carNames = inputs.split(',');
+    this._racingCount = Number(inputs);
+  }
+
+  checkIsEmpty() {
+    if(this.inputs.length === 0) {
+      alert('값을 입력해주세요.');
+      return true;
+    }
+    return false;
   }
 
   checkSpace() {
-    return /\s+/g.test(this.inputs);
-  }
-
-  checkChars() {
-    return /[^1-9]+/g.test(this.inputs);
-  }
-
-  checkInvalidNumber() {
-    return Number(this.inputs) <= 0;
+    if(/\s+/g.test(this.inputs)) {
+      alert('공백은 입력받을 수 없습니다.');
+      return true;
+    }
+    return false;
   }
   
   checkMoreThanFiveChars() {
-    const _carNames = this.inputs.split(',');
-    return _carNames.some(carName => carName.length > MAX_CAR_NAME_LENGTH);
+    if(this._carNames.some(carName => carName.length > MAX_CAR_NAME_LENGTH)) {
+      alert(`자동차 이름은 ${MAX_CAR_NAME_LENGTH}글자를 넘을 수 없습니다.`);
+      return true;
+    }
+    return false;
   }
 
   checkLessThanOneCars() {
-    const _carNames = this.inputs.split(',');
-    return _carNames.length < 2;
+    if(this._carNames.length < 2) {
+      alert('자동차는 반드시 2대 이상이어야 합니다.');
+      return true;
+    }
+    return false;
   }
 
   checkSameNames() {
-    const _carNames = this.inputs.split(',');
-    const carsWithoutSameName = new Set([..._carNames]);
-    return carsWithoutSameName.size !== _carNames.length;
+    const carsWithoutSameName = new Set([...this._carNames]);
+    if(carsWithoutSameName.size !== this._carNames.length) {
+      alert('자동차 이름은 중복될 수 없습니다.');
+      return true;
+    }
+    return false;
+  }
+
+  checkInvalidNumber() {
+    if(this._racingCount <= 0) {
+      alert('0이하의 값은 입력받을 수 없습니다.');
+      return true;
+    }
+    return false;
+  }
+
+  checkChars() {
+    if(/[^1-9]+/g.test(this.inputs)) {
+      alert('숫자 외에는 입력받을 수 없습니다.');
+      return true;
+    }
+    return false;
   }
 
   getCarNames() {
-    return this.inputs.split(',').reduce((acc, carName) => {
+    return this._carNames.reduce((acc, carName) => {
       acc.push(new Car(carName));
       return acc;
     }, []);
   }
 
   getRacingCountNumber() {
-    return Number(this.inputs);
+    return this._racingCount;
   }
 
   getResultOfCarNamesInput($carNamesInput) {
-    let inputResult = new InputResult();
     $carNamesInput.focus();
-    if(this.checkSpace()) inputResult.getAlertMessage('공백은 입력받을 수 없습니다.');
-    if(this.checkMoreThanFiveChars()) inputResult.getAlertMessage('자동차 이름은 5글자를 넘으면 안됩니다.');
-    if(this.checkLessThanOneCars()) inputResult.getAlertMessage('두 개 이상의 자동차 이름을 입력하세요.');
-    if(this.checkSameNames()) inputResult.getAlertMessage('같은 이름의 자동차를 입력할 수 없습니다.');
-
-    if(inputResult.goToNextStep) inputResult.insertData(this.getCarNames());
-    return inputResult;
+    if(!this.checkIsEmpty() && !this.checkSpace() && !this.checkSameNames()
+      && !this.checkLessThanOneCars() 
+      && !this.checkMoreThanFiveChars()
+    ) {
+      return new InputResult(true, this.getCarNames(), '');
+    }
+    return new InputResult(false, null);
   }
 
   getResultOfRacingCountNumber($racingCountInput) {
-    let inputResult = new InputResult();
     $racingCountInput.focus();
-    if(this.checkSpace()) inputResult.getAlertMessage('공백은 입력받을 수 없습니다.');
-    if(this.checkChars()) inputResult.getAlertMessage('숫자 외 글자는 입력받을 수 없습니다.');
-    if(this.checkInvalidNumber()) inputResult.getAlertMessage('1이상의 숫자만 입력하세요.');
-    
-    if(inputResult.goToNextStep) inputResult.insertData(this.getRacingCountNumber());
-    return inputResult;
+    if(!this.checkIsEmpty() && !this.checkSpace() && !this.checkInvalidNumber() && !this.checkChars()) {
+      return new InputResult(true, this.getRacingCountNumber(), '');
+    }
+    return new InputResult(false, null);
   }
 }

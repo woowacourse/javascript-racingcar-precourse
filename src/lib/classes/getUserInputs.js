@@ -21,7 +21,6 @@ export default class UserInputs {
   checkRacingCountInput(racingCountInputData) {
     const {
       goToNextStep,
-      message,
       inputData
     } = racingCountInputData.getResultOfRacingCountNumber(this.$racingCountInput);
   
@@ -31,8 +30,7 @@ export default class UserInputs {
       return this.inputDataInRacingCarGame(this.carNames, inputData)
     }
   
-    this.$racingCountInput.value = '';
-    return alert(message);
+    return this.$racingCountInput.value = '';
   }
 
   userInputRacingCount() {
@@ -50,7 +48,6 @@ export default class UserInputs {
   checkCarNamesInput(carNamesInputData) {
     const {
       goToNextStep,
-      message,
       inputData
     } = carNamesInputData.getResultOfCarNamesInput(this.$carNamesInput);
   
@@ -58,9 +55,8 @@ export default class UserInputs {
       disableInputs(this.$carNamesInput, this.$carNamesSubmit);
       return this.submitCarNamesInput(inputData);
     }
-  
-    this.$carNamesInput.value = '';
-    return alert(message);
+
+    return this.$carNamesInput.value = '';
   }
 
   userInputCarNames() {  
