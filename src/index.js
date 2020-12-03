@@ -8,14 +8,9 @@ import {
   disableInputs,
 } from '/src/lib/config/controlGetRacingCount.js';
 
-const getInitCarInfo = carNames => carNames.reduce((acc, carName) => {
-  acc.push(new Car(carName));
-  return acc;
-}, []);
-
 export default class RacingCarGame {
-  constructor(carNames) {
-		this.cars = getInitCarInfo(carNames);
+  constructor() {
+		this.cars = [];
   }
 
   _createRandomNumber() {
@@ -39,7 +34,7 @@ export default class RacingCarGame {
 }
 
 const runGame = (carNames, racingCount) => {
-  let game = new RacingCarGame(carNames);
+  let game = new RacingCarGame();
 
 }
 
@@ -73,7 +68,7 @@ const userInputRacingCount = carNames => {
 const submitCarNamesInput = carNames => {
   const $racingCountContainer = document.getElementById('racing-count-container');
   showContainer($racingCountContainer);
-  console.log(carNames);
+  //console.log(carNames);
   userInputRacingCount(carNames);
 }
 

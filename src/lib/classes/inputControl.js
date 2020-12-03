@@ -1,4 +1,5 @@
 import { MAX_CAR_NAME_LENGTH } from '/src/lib/variables/constantNumbers.js';
+import Car from '/src/lib/classes/car.js';
 
 class InputResult {
   constructor() {
@@ -52,7 +53,10 @@ export default class Inputs {
   }
 
   getCarNames() {
-    return this.inputs.split(',');
+    return this.inputs.split(',').reduce((acc, carName) => {
+      acc.push(new Car(carName));
+      return acc;
+    }, []);
   }
 
   getRacingCountNumber() {
