@@ -54,12 +54,7 @@ export default class RacingCarView {
       return;
     }
 
-    for (let i = 0; i < racingCount; i++) {
-      this.RacingCarModel.progress();
-      this.renderIntermediateResult(this.RacingCarModel.getCars());
-    }
-    console.log(this.RacingCarModel.getCars());
-    this.renderWinners(this.RacingCarModel.getCars());
+    this.renderResult(racingCount);
   }
 
   addEventListenerToRacingCountSubmitButton() {
@@ -128,7 +123,7 @@ export default class RacingCarView {
     let intermediateResult = ``;
     cars.forEach(car => {
       let hyphens = '-'.repeat(car.moveForwardDistance);
-      intermediateResult += `<p>${car.name} : ${hyphens}</p>`;
+      intermediateResult += `<p class=".car-distance-p">${car.name} : ${hyphens}</p>`;
     });
     this.carRacingResultDiv.innerHTML += `
       <div>
@@ -151,9 +146,14 @@ export default class RacingCarView {
     `;
   }
 
-  renderResult(cars) {
+  renderResult(racingCount) {
     this.renderHeading();
-    this.renderIntermediateResult(cars);
-    this.renderWinners(cars);
+
+    for (let i = 0; i < racingCount; i++) {
+      this.RacingCarModel.progress();
+      this.renderIntermediateResult(this.RacingCarModel.getCars());
+    }
+
+    this.renderWinners(this.RacingCarModel.getCars());
   }
 }
