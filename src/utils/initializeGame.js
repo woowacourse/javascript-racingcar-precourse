@@ -1,9 +1,9 @@
 import addTagID from './addTagID.js';
-import hideResultScreen from './hideResultScreen.js';
-import hideRaceNumberInputScreen from './hideRaceNumberInputScreen.js';
+import toggleRaceNumberInputScreen from './toggleRaceNumberInputScreen.js';
+import toggleResultScreen from './toggleResultScreen.js';
 
 export default function initializeGame() {
   addTagID();
-  hideRaceNumberInputScreen();
-  hideResultScreen();
+  toggleResultScreen();
+  toggleRaceNumberInputScreen();
 }

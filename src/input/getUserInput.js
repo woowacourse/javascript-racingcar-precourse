@@ -1,11 +1,13 @@
 import getCarNames from './getCarNames.js';
+import getRacingCount from './getRacingCount.js';
 
 function userInputHandler(target) {
   if (target.id === 'car-names-submit') {
     getCarNames();
   }
   if (target.id === 'racing-count-submit') {
-    console.log('asd');
+    getRacingCount();
+    console.log(getRacingCount());
   }
 }
 
