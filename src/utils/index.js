@@ -5,14 +5,14 @@ function isFourHigher(number) {
   return false;
 }
 
-function isFiveLower(names) {
-  names.forEach(name => {
-    if (name.length > 5) {
-      return false;
+function isFiveUpper(names) {
+  for (let i = 0; i < names.length; i++) {
+    if (names[i].length > 5) {
+      return true;
     }
-  });
+  }
 
-  return true;
+  return false;
 }
 
 function splitNamesString(names) {
@@ -24,4 +24,4 @@ function compareDistance(a, b) {
   return b.moveForwardDistance - a.moveForwardDistance;
 }
 
-export { isFourHigher, splitNamesString, compareDistance, isFiveLower };
+export { isFourHigher, splitNamesString, compareDistance, isFiveUpper };
