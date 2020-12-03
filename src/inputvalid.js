@@ -1,67 +1,40 @@
-export class NameValid {
-  constructor(name) {
-    this.nameInput = name;
+const isRightNameInput = (nameInput) => {
+  if (nameInput.find((name) => name.match(/[^a-zA-Z0-9가-힣]/))) {
+    return alert('특수문자는 사용 불가능합니다.');
+  }
+  if (nameInput.some((name) => name.length > 5)) {
+    return alert('이름은 5자리 이하로 입력해주세요.');
+  }
+  if (nameInput.some((name) => name === '')) {
+    return alert('빈칸은 입력할 수 없습니다.');
+  }
+  if (nameInput.length !== new Set(nameInput).size) {
+    return alert('중복된 이름이 존재합니다.');
   }
 
-  isRightCharacter() {
-    // ","를 제외한 특수문자 사용 불가
-    if (
-      this.nameInput.find((name) =>
-        name.match(/[\{\}\[\]\/?.,;:|\)*~`!^\-+<>@\#$%&\\\=\(\'\"]/),
-      )
-    ) {
-      return alert('특수문자는 사용 불가능합니다.');
-    }
+  return true;
+};
 
-    return true;
+const isRightRacingTimesInput = (times) => {
+  if (parseInt(times, 10) <= 0) {
+    return alert('1이상의 숫자를 입력해주세요.');
+  }
+  if (times === '') {
+    return alert('빈칸을 입력하셨습니다.');
   }
 
-  isRightLength() {
-    if (this.nameInput.some((name) => name.length > 5)) {
-      return alert('이름은 5자리 이하로 입력해주세요.');
-    }
-    if (this.nameInput.some((name) => name === '')) {
-      return alert('빈칸은 입력할 수 없습니다.');
-    }
-
-    return true;
+  if (times.match(/\D/)) {
+    return alert('숫자를 입력해주세요.');
   }
 
-  isAllDifferentValue() {
-    if (this.nameInput.length !== new Set(this.nameInput).size) {
-      return alert('중복된 이름이 존재합니다.');
-    }
+  return true;
+};
 
-    return true;
+export default function checkInputValid(target, input) {
+  if (target.id === 'car-names-submit') {
+    return isRightNameInput(input.split(','));
   }
-}
-
-export class TimesValid {
-  constructor(times) {
-    this.times = times;
-  }
-
-  isMoreThanZero() {
-    if (parseInt(this.times, 10) <= 0) {
-      return alert('1이상의 숫자를 입력해주세요.');
-    }
-
-    return true;
-  }
-
-  isfilledValue() {
-    if (this.times === '') {
-      return alert('빈칸을 입력하셨습니다.');
-    }
-
-    return true;
-  }
-
-  isRightNumber() {
-    if (this.times.match(/\D/)) {
-      return alert('숫자를 입력해주세요.');
-    }
-
-    return true;
+  if (target.id === 'racing-count-submit') {
+    return isRightRacingTimesInput(input);
   }
 }
