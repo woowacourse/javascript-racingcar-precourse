@@ -4,7 +4,7 @@ export default class Car {
 		this.distance = 0;
 	}
 	
-	getDistance = () => {
+	setDistance = () => {
 		if (this.getRandomNumber() >= 4) {
 			this.distance += 1;
 		}	
