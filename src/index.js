@@ -4,16 +4,29 @@ export default class RacingCarGame {
     this.carNames = [];
   }
 
-  setCarNames() {
-    const carNameInputValue = document.getElementById('car-names-input').value;
-    const carNames = this.splitCarNamesWithComma(carNameInputValue);
+  setCarNames(carNames) {
+    carNames = this.splitCarNamesWithComma(carNames);
 
     if (!this.isValidCarNames(carNames)) {
-      return alert('자동차 이름은 5자 이하로 입력해주세요.');
+      return this.invaildCarNameAlert(carNames);
     }
 
     this.carNames = carNames;
     console.log(this.carNames);
+  }
+
+  setRacingCount() {
+
+  }
+
+  invaildCarNameAlert(carNames) {
+    if (carNames.length === 0) {
+      alert('자동차 이름을 입력해주세요.');
+    } else if (this.isOutOfLength(carNames)) {
+      alert('자동차 이름은 5자 이하로 입력해주세요.');
+    } else {
+      alert('자동차 이름을 중복되지 않게 입력해주세요.');
+    }
   }
 
   splitCarNamesWithComma(carNames) {
@@ -23,18 +36,43 @@ export default class RacingCarGame {
   }
 
   isValidCarNames(carNames) {
-    return !carNames.some(carName => carName.length > 5);
+    if (carNames.length === 0
+      || this.isOutOfLength(carNames)
+      || this.isDuplicate(carNames)) {
+      return false;
+    }
+
+    return true;
+  }
+
+  isOutOfLength(carNames) {
+    return carNames.some(carName => carName.length > 5);
+  }
+
+  isDuplicate(carNames) {
+    return carNames.some(carName =>
+      carNames.indexOf(carName) !== carNames.lastIndexOf(carName),
+    );
+  }
+
+  showRacingCount() {
+    if (this.carNames.length > 0) {
+      document.getElementById('racing-count').hidden = false;
+    }
   }
 
   onClick(event) {
     const targetId = event.target.id;
 
     if (targetId === 'car-names-submit') {
-      this.setCarNames();
+      const carNames = document.getElementById('car-names-input').value;
+
+      this.setCarNames(carNames);
+      this.showRacingCount();
     }
 
     if (targetId === 'racing-count-submit') {
-
+      this.setRacingCount();
     }
   }
 }
