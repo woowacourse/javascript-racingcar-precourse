@@ -2,12 +2,18 @@ export default function Car(name = '') {
     let carName = name;
     let forwardCnt = 0;
 
-    this.getCarName = () => carName;
-    this.setCarName = (_name) => {
-        carName = _name;
-    };
-    this.getForwardCnt = () => forwardCnt;
-    this.setForwardCnt = (num) => {
-        forwardCnt = num;
-    };
+    this.forwardCar = forwardCar;
+    this.isValidCarName = isValidCarName;
 }
+
+Car.forwardCar = (car) => {
+    const digit = getRandomDigit();
+    if (digit >= 4) {
+        car.setForwardCnt(car.getForwardCnt() + 1);
+    }
+    return car;
+}
+
+Car.isValidCarName = (carNames) => carNames.every(
+    carName => (isUnderFiveDigits(carName) && !isOnlySpaceString(carName))
+);

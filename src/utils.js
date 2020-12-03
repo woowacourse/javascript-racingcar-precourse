@@ -22,16 +22,12 @@ export const isOnlySpaceString = (string) => {
     return false;
 };
 
-export const isValidCarName = (carNames) => carNames.every(
-    carName => (isUnderFiveDigits(carName) && !isOnlySpaceString(carName))
-);
-
 export const printResultOfOneRound = (cars) => {
     const resultArea = document.getElementById("app").querySelectorAll("div + div")[1];
     const resultElem = document.createElement("p");
     let resText = '';
     for (const car of cars) {
-        resText += `${car.getCarName()}: ${'-'.repeat(car.getForwardCnt())}\n`;
+        resText += `${car.carName}: ${'-'.repeat(car.forwardCnt)}\n`;
     }
     resultElem.innerText = resText + '\n';
     resultArea.appendChild(resultElem);
@@ -41,11 +37,11 @@ export const getWinnersName = (cars) => {
     let max = 0;
     let winnersName = [];
     for (const car of cars) {
-        if (car.getForwardCnt() > max) {
-            max = car.getForwardCnt();
-            winnersName = [car.getCarName()];
-        } else if (car.getForwardCnt() === max) {
-            winnersName.push(car.getCarName());
+        if (car.forwardCnt > max) {
+            max = car.forwardCnt;
+            winnersName = [car.carName];
+        } else if (car.forwardCnt === max) {
+            winnersName.push(car.carName);
         }
     }
     return winnersName;

@@ -16,7 +16,7 @@
 - [x] 우승 자동차 이름들 출력처리
 
 - ### Car
-- [x] Car 객체 getter, setter 생성
+- [x] Car 객체 <del>getter, setter</del> 생성
 - [x] 기준 값에 따라 Car 전진/멈춤 판단 기능
 - [x] Car 전진일 때 forwardCnt 증가 처리
 
