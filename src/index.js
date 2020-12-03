@@ -11,6 +11,7 @@ export default class RacingCarGame {
     this.counts = 0;
     this.handleCarNameSubmit();
     this.handleCountSubmit();
+    this.initDisplay();
   }
 
   displayContainer = (container, show) => {
@@ -153,6 +154,16 @@ export default class RacingCarGame {
     countButton.addEventListener("click", () => {
       this.getCountInput();
     });
+  };
+
+  initDisplay = () => {
+    const countContainer = document.getElementById("car-game-count-container");
+    const resultContainer = document.getElementById(
+      "car-game-result-container"
+    );
+
+    this.displayContainer(countContainer, false);
+    this.displayContainer(resultContainer, false);
   };
 }
 
