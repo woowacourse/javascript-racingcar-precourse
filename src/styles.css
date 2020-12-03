@@ -1,0 +1,15 @@
+.racing-count-form {
+  display: none;
+}
+
+.racing-count-form.active {
+  display: block;
+}
+
+.car-game-result {
+  display: none;
+}
+
+.car-game-result.active {
+  display: block;
+}
