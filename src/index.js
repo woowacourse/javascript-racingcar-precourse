@@ -65,6 +65,15 @@ export default class RacingCarGame {
     return false;
   };
 
+  // 주어진 cars 객체들 게임 한번 수행 메서드
+  play = () => {
+    this.cars.forEach((car) => {
+      if (this.moveCar()) {
+        car.move += 1;
+      }
+    });
+  };
+
   getCarNameInput = () => {
     const carNameInput = document.getElementById("car-names-input");
     const carNameValue = carNameInput.value;
@@ -81,6 +90,8 @@ export default class RacingCarGame {
     const counts = countInput.value;
 
     this.counts = counts;
+
+    this.startGame();
   };
 
   handleCarNameSubmit = () => {
