@@ -38,13 +38,9 @@ export default function RacingCarGame() {
     }
 
     let container = this.makeElement("div", "", "");
-    container.appendChild(
-      this.makeElement("h4", "", "시도할 횟수를 입력해주세요")
-    );
+    container.appendChild(this.makeElement("h4", "", "시도할 횟수를 입력해주세요"));
     container.appendChild(this.makeElement("input", "racing-count-input", ""));
-    container.appendChild(
-      this.makeElement("button", "racing-count-submit", "확인")
-    );
+    container.appendChild(this.makeElement("button", "racing-count-submit", "확인"));
     gameContainer.appendChild(container);
     let numSubmitBtn = document.getElementById("racing-count-submit");
     numSubmitBtn.addEventListener("click", this.onNumSubmit);
