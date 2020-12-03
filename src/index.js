@@ -11,7 +11,7 @@ const getCarNameInput = () => {
     const carNameInput = document.getElementById('car-names-input');
     const carNames = carNameInput.value.split(',');
     if (isValidCarName(carNames)) {
-        game.setCars(carNames.map(carName => carName.trim()));
+        game.cars = carNames.map(carName => new Car(carName.trim()));
         toggleDiplayNumOfTryArea();
     } else {
         alert("❌유효하지 않은 자동차 이름입니다.\n다시 입력해주세요.");
@@ -22,7 +22,7 @@ const getCarNameInput = () => {
 const getNumOfTry = () => {
     const numOfTryInput = document.getElementById("racing-count-input");
     if (isDigits(numOfTryInput.value)) {
-        game.setNumOfTry(numOfTryInput.value);
+        game.numOfTry = (parseInt(numOfTryInput.value));
         toggleDiplayResultArea();
     } else {
         alert("❌유효하지 않은 시도 횟수입니다.\n다시 입력해주세요.");
@@ -56,24 +56,20 @@ const canForward = () => {
     return 4 <= digit ? true : false;
 }
 
-const gameStart = (cars, numOfTry) => {
-    const resultArea = document.getElementById("app").querySelectorAll("div + div")[1];
-
-}
-
 export default function RacingCarGame() {
-    let cars = [];
-    let numOfTry = 0;
+    this.cars = [];
+    this.numOfTry = 0;
     init();
 
-    this.setCars = (carNameArray) => {
-        cars = carNameArray.map(carName => new Car(carName));
+    this.roundStart = (cars) => {
+        const resultArea = document.getElementById("app").querySelectorAll("div + div")[1];
+        for (const car of cars) {
+            if (canForward()) {
+                car.setForwardCnt(car.getForwardCnt() + 1);
+            }
+        }
+        return;
     }
-    this.getCars = () => cars;
-    this.setNumOfTry = (numOfTryInput) => {
-        numOfTry = parseInt(numOfTryInput);
-    }
-    this.getNumOftry = () => numOfTry;
 }
 
 const game = new RacingCarGame();
