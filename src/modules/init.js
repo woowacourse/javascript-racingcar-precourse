@@ -3,7 +3,7 @@ import {
   hideResultElement,
 } from '../elements/hideElement.js';
 import {carInf, $carNameInput, $timesInput} from './utils.js';
-import RacingCarGame from '../class/RacingCarGame.js';
+import RacingCarGame from '../index.js';
 
 export default function initGame() {
   hideCounterElement();
