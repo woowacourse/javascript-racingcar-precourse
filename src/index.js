@@ -65,6 +65,17 @@ export default class RacingCarGame {
     return false;
   };
 
+  showGameResult = () => {
+    const resultContainer = document.getElementById("result");
+
+    this.cars.forEach((car) => {
+      resultContainer.innerHTML += `${car.name}: ${"-".repeat(
+        car.move
+      )} <br />`;
+    });
+    resultContainer.innerHTML += "<br />";
+  };
+
   // 주어진 cars 객체들 게임 한번 수행 메서드
   play = () => {
     this.cars.forEach((car) => {
@@ -72,6 +83,8 @@ export default class RacingCarGame {
         car.move += 1;
       }
     });
+
+    this.showGameResult();
   };
 
   // 자동차 경주 게임 수행 메서드
