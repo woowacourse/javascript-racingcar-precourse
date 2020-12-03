@@ -30,6 +30,23 @@ function showTryCountScreen() {
           <input id="racing-count-input" type="number" />
           <button id="racing-count-submit">확인</button>
           `;
+    handleRacingCountSubmitButton();
+}
+
+function handleRacingCountSubmitButton() {
+    const racingCountSubmitButton = document.querySelector(
+        "#racing-count-submit"
+    );
+    racingCountSubmitButton.addEventListener(
+        "click",
+        handleRacingCountSubmitClick
+    );
+}
+
+function handleRacingCountSubmitClick() {
+    const racingCountInput = document.querySelector("#racing-count-input");
+    const racingCountInputValue = racingCountInput.value;
+    console.log(racingCountInputValue);
 }
 
 function init() {
