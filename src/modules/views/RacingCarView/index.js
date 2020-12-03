@@ -123,10 +123,10 @@ export default class RacingCarView {
     let intermediateResult = ``;
     cars.forEach(car => {
       let hyphens = '-'.repeat(car.moveForwardDistance);
-      intermediateResult += `<p class=".car-distance-p">${car.name} : ${hyphens}</p>`;
+      intermediateResult += `<p">${car.name} : ${hyphens}</p>`;
     });
     this.carRacingResultDiv.innerHTML += `
-      <div>
+      <div class="car-intermediate-result-container">
         ${intermediateResult}
       </div>
     `;
