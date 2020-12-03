@@ -18,3 +18,11 @@ export const checkCarNames = (names) => {
 
 	return isValid;
 };
+export const checkTryCount = (tryCount) => {
+	let isValid = true;
+	if (tryCount <= 0) {
+		isValid = false;
+	}
+
+	return isValid;
+};

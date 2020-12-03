@@ -8,3 +8,7 @@ export const preProcessCarNames = (carNames) => {
 
 	return preProcessedCardNames;
 };
+
+export const preProcessTryCount = (tryCount) => {
+	return Number(tryCount);
+};
