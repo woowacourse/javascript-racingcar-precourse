@@ -72,6 +72,10 @@ class Car {
   - handleCarNamesSubmit
   - handleRacingCountSubmit
   - addEventListenerToRacingCountSubmitButton
+  - validNames
+  - decideWinners
+  - resetCarNamesInput
+  - renderCountInputAndSubmitButton
   - renderIntermediateResult
   - renderWinners
   
@@ -86,7 +90,10 @@ class Car {
 
 - utils
   - isFourHigher
+  - isFiveUpper
+  - isNames
   - splitNamesString
+  - compareDistance
 
   
   
