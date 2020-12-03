@@ -7,9 +7,12 @@ export default class RacingCarGame {
     const carNamesSubmitButton = document.querySelector('#car-names-submit');
 
     carNamesSubmitButton.addEventListener('click', () => {
-      const carNames = this.carNames();
+      const carNamesString = this.carNames();
+      const carNamesArray = this.isCarNames(carNamesString);
 
-      console.log(this.isCarNames(carNames));
+      console.log(carNamesArray);
+
+      return carNamesArray;
     });
   }
 
@@ -20,15 +23,56 @@ export default class RacingCarGame {
   }
 
   isCarNames(_carNames) {
+    let carNamesArray = null;
+
     if (_carNames === '') {
       alert('하나 이상 입력해주세요.');
+    } else {
+      carNamesArray = this.separateCarNames(_carNames);
+    }
+
+    return carNamesArray;
+  }
+
+  separateCarNames(_carNames) {
+    const carNamesArray = _carNames.split(',');
+    const appropriateCarNamesArray = this.isAppropriateCarNames(carNamesArray);
+
+    return appropriateCarNamesArray;
+  }
+
+  isAppropriateCarNames(_carNamesArray) {
+    let appropriateCarNamesArray = this.isOverLength(_carNamesArray);
+
+    if (appropriateCarNamesArray != null) {
+      appropriateCarNamesArray = this.isDuplicateCarNames(_carNamesArray);
+    }
+
+    return appropriateCarNamesArray;
+  }
+
+  isOverLength(_carNamesArray) {
+    for (let i = 0; i < _carNamesArray.length; i++) {
+      if (_carNamesArray[i].length > 5 || _carNamesArray[i].length == 0) {
+        alert('자동차 이름을 알맞게 적어주세요');
+
+        return null;
+      }
+    }
+
+    return _carNamesArray;
+  }
+
+  isDuplicateCarNames(_carNamesArray) {
+    const setCarNamesArray = new Set(_carNamesArray);
+
+    if (setCarNamesArray.size != _carNamesArray.length) {
+      alert('중복된 값이 존재합니다.');
 
       return null;
-    } else {
-      // 콤마로 구분해서 배열로 저장하는 기능 넣기
-
-      return _carNames;
     }
+
+    return _carNamesArray;
   }
 }
 
