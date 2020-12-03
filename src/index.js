@@ -1,14 +1,15 @@
 import Car from "/src/car/car.js";
 import Handler from "/src/handler/handler.js";
+import Validity from "/src/utils/validity.js";
 import {carNamesInput, racingCountInput} from "/src/view/input/input.js";
 import {carNamesButton, racingCountButton} from "/src/view/button/button.js";
 
 export default class RacingCarGame {
 	constructor() {
-		new Handler(carNamesButton, this.setCarNames).setClickHandler();
-		new Handler(carNamesButton, this.displayRacingCountInputAndSubmit).setClickHandler();
-		new Handler(racingCountButton, this.setRacingCount).setClickHandler();
-		new Handler(racingCountButton, this.startGame).setClickHandler();
+		new Handler().setClickHandler(carNamesButton, this.setCarNames);
+		new Handler().setClickHandler(carNamesButton, this.displayRacingCountInputAndSubmit);
+		new Handler().setClickHandler(racingCountButton, this.setRacingCount);
+		new Handler().setClickHandler(racingCountButton, this.startGame);
 
 		this.carNames = "";
 		this.racingCount = 0;
@@ -26,6 +27,7 @@ export default class RacingCarGame {
 
 	setCarNames = () => {
 		this.carNames = carNamesInput.value;
+		console.log(new Validity().isCarNamesValid(this.carNames.split(",")));
 	}
 
 	setRacingCountInputAndSubmitStyleToNone = () => {
@@ -38,20 +40,6 @@ export default class RacingCarGame {
 		racingCountButton.removeAttribute("style");
 	};
 
-	isCarNamesValid = carNamesList => {
-		let validity = true;
-
-		for (let name = 0; name < carNamesList.length; name++) {
-			if (carNamesList[name].length > 5 || carNamesList[name].length <= 0) {
-				validity = false;
-				alert("자동차 이름을 5자 이하로 입력해주세요.");
-				break;
-			}
-		}
-
-		return validity;
-	}
-
 	setRacingCount = () => {
 		this.racingCount = Number(racingCountInput.value);
 	}
@@ -63,17 +51,6 @@ export default class RacingCarGame {
 		
 			this.playGame(carObjects);
 		}
-	}
-
-	isRacingCountValid(racingCount) {
-		let validity = true;
-
-		if (parseInt(racingCount) !== racingCount) {
-			validity = false;
-			alert("0보다 큰 정수를 입력해주세요.");
-		} 
-
-		return validity;
 	}
 
 	getCarObjectsList = carNamesList => {
