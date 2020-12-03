@@ -1,5 +1,34 @@
 # 🏎️ 자동차 경주 게임
 
+## 🔥 구현할 기능 목록
+
+- ### Input
+- [x] 자동차 이름 콤마로 구분하여 입력받기
+- [x] 각 이름이 5자 이하 아닌 것이 있으면 alert 후 재입력
+- [x] 각 이름이 공백이 있으면 alert 후 재입력
+- [x] 자동차 이름이 중복된다면 alert 후 재입력
+- [x] 시도횟수 숫자로 입력받기
+- [x] <del>시도횟수 숫자가 아니면 alert 후 재입력</del>
+
+- ### Output
+- [x] 자동차 이름입력 후에 시도횟수 영역 노출처리
+- [x] 시도횟수 입력 후에 실행결과 영역 노출처리
+- [x] 각 자동차들의 이름과 주행거리 출력처리
+- [x] 우승 자동차 이름들 출력처리
+- [X] 게임 종료 여부 정보추가하여 게임 끝난 후 버튼 클릭 시, 페이지 새로고침 처리
+
+- ### Car
+- [x] Car 객체 <del>getter, setter</del> 생성
+- [x] 기준 값에 따라 Car 전진/멈춤 판단 기능
+- [x] Car 전진일 때 forwardCnt 증가 처리
+
+- ### Utils
+- [x] 0~9사이 랜덤 값 구하는 기능
+- [x] 문자열의 길이가 5자 이하인지 판단하는 기능
+- [x] 문자열이 공백으로 이루어져 있는지 판단하는 기능
+- [x] 입력이 숫자인지 판단하는 기능
+- [x] 중복된 이름이 있는지 검사하는 기능
+
 ## 🎯 기능 요구사항
 
 - 주어진 횟수 동안 n대의 자동차는 전진 또는 멈출 수 있다.
@@ -15,8 +44,8 @@
 ![실행이미지](images/result.gif)
 ![실행이미지](images/result.jpg)
 
-
 ## ✅ 프로그래밍 요구사항
+
 - 사용자가 잘못된 입력 값을 작성한 경우 `alert`을 이용해 메시지를 보여주고, 재입력할 수 있게 한다.
 - 외부 라이브러리(jQuery, Lodash 등)를 사용하지 않고, 순수 Vanilla JS로만 구현한다.
 - **자바스크립트 코드 컨벤션을 지키면서 프로그래밍** 한다
@@ -57,11 +86,9 @@ class Car {
 - `template literal`을 이용해 데이터와 html string을 가독성 좋게 표현한다.
   - [https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Template_literals](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Template_literals)
 
-
 ## 📝 미션 저장소 및 진행 요구사항
 
 - 미션은 [https://github.com/woowacourse/javascript-racingcar-precours](https://github.com/woowacourse/javascript-racingcar-precourse) 저장소를 fork/clone해 시작한다.
 - **기능을 구현하기 전에 javascript-racingcar-precourse/docs/README.md 파일에 구현할 기능 목록**을 정리해 추가한다.
 - **git의 commit 단위는 앞 단계에서 README.md 파일에 정리한 기능 목록 단위로 추가**한다.
 - [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서 절차를 따라 미션을 제출한다.
-
