@@ -11,8 +11,18 @@ export default class RacingCarGame {
     carNamesSubmitButton.addEventListener('click', () => {
       const carNames = new CarName();
 
+      if (carNames.names != null) {
+        this.countRacing();
+      }
+
       console.log(carNames.names);
     });
+  }
+
+  countRacing() {
+    const countContainer = document.querySelector('#count-container');
+
+    countContainer.style.display = 'block';
   }
 }
 
