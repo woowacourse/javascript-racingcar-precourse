@@ -1,7 +1,14 @@
-export default function RacingCarGame() {
+import CarGameContainer from './components/car-game-container.js';
+
+export default class RacingCarGame {
+  constructor() {
+    this.initializeComponents();
+  }
+
+  initializeComponents() {
+    const $carGameContainer = document.querySelector('.car-game-container');
+    new CarGameContainer($carGameContainer);
+  }
 }
-// export default class RacingCarGame {
-// }
 
-
-new RacingCarGame();
+window.onload = new RacingCarGame();
