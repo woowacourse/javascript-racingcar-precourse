@@ -1,20 +1,24 @@
+import {carNamesInput, racingCountInput} from "/src/view/input/input.js";
+import {carNamesButton, racingCountButton} from "/src/view/button/button.js";
 import Car from "/src/car/car.js";
 import Handler from "/src/handler/handler.js";
 import Validity from "/src/utils/validity.js";
-import {carNamesInput, racingCountInput} from "/src/view/input/input.js";
-import {carNamesButton, racingCountButton} from "/src/view/button/button.js";
+
 
 export default class RacingCarGame {
 	constructor() {
 		new Handler().setClickHandler(carNamesButton, this.setCarNames);
-		new Handler().setClickHandler(carNamesButton, this.displayRacingCountInputAndSubmit);
+		new Handler().setClickHandler(carNamesButton, this.displayRacingCountInput);
+		new Handler().setClickHandler(carNamesButton, this.displayRacingCountButton);
+
 		new Handler().setClickHandler(racingCountButton, this.setRacingCount);
 		new Handler().setClickHandler(racingCountButton, this.startGame);
 
 		this.carNames = "";
 		this.racingCount = 0;
 
-		this.setRacingCountInputAndSubmitStyleToNone();
+		this.hideRacingCountInput();
+		this.hideRacingCountButton();
 		this.setAttributes();
 	}
 
@@ -30,18 +34,24 @@ export default class RacingCarGame {
 		console.log(new Validity().isCarNamesValid(this.carNames.split(",")));
 	}
 
-	setRacingCountInputAndSubmitStyleToNone = () => {
-		racingCountInput.style.display = "none";
-		racingCountButton.style.display = "none";
-	};
-
-	displayRacingCountInputAndSubmit = () => {
-		racingCountInput.removeAttribute("style");
-		racingCountButton.removeAttribute("style");
-	};
-
 	setRacingCount = () => {
 		this.racingCount = Number(racingCountInput.value);
+	}
+
+	hideRacingCountInput = () => {
+		racingCountInput.style.display = "none";
+	};
+
+	hideRacingCountButton = () => {
+		racingCountButton.style.display = "none";
+	}
+
+	displayRacingCountInput = () => {
+		racingCountInput.style.display = "inline";
+	};
+
+	displayRacingCountButton = () => {
+		racingCountButton.style.display = "inline-block";
 	}
 
 	startGame = () => {
@@ -55,15 +65,9 @@ export default class RacingCarGame {
 
 	getCarObjectsList = carNamesList => {
 		const carObjects = [];
-		carNamesList.forEach(carName => carObjects.push(this.createCar(carName)));
+		carNamesList.forEach(carName => carObjects.push(new Car(carName)));
 
 		return carObjects;
-	}
-
-	createCar = carName => {
-		const newCar = new Car(carName);
-
-		return newCar;
 	}
 
 	playGame = (carObjects) => {
