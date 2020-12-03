@@ -13,6 +13,14 @@ export default class RacingCarGame {
     this.handleCountSubmit();
   }
 
+  displayContainer = (container, show) => {
+    if (show) {
+      container.style.display = "block";
+    } else {
+      container.style.display = "none";
+    }
+  };
+
   checkCarNameVaild = (carNames) => {
     carNames.map((carName) => {
       if (carName.length === 0) {
