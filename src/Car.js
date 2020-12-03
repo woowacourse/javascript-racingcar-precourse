@@ -1,15 +1,18 @@
-export default function Car(name = '') {
-    let carName = name;
-    let forwardCnt = 0;
+import {
+    isUnderFiveDigits,
+    isOnlySpaceString,
+    getRandomDigit
+} from "./utils.js";
 
-    this.forwardCar = forwardCar;
-    this.isValidCarName = isValidCarName;
+export default function Car(name = '') {
+    this.carName = name;
+    this.forwardCnt = 0;
 }
 
 Car.forwardCar = (car) => {
     const digit = getRandomDigit();
     if (digit >= 4) {
-        car.setForwardCnt(car.getForwardCnt() + 1);
+        car.forwardCnt++;
     }
     return car;
 }

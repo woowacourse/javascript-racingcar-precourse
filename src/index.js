@@ -1,6 +1,5 @@
 import {
     isDigits,
-    getRandomDigit,
     printResultOfOneRound,
     getWinnersName,
     printWinnersName
@@ -10,7 +9,7 @@ import Car from './Car.js';
 const getCarNameInput = () => {
     const carNameInput = document.getElementById('car-names-input');
     const carNames = carNameInput.value.split(',');
-    if ((new Car()).isValidCarName(carNames)) {
+    if (Car.isValidCarName(carNames)) {
         game.cars = carNames.map(carName => new Car(carName.trim()));
         toggleDiplayNumOfTryArea();
     } else {
@@ -67,7 +66,7 @@ export default function RacingCarGame() {
     init();
     this.roundStart = () => {
         for (let idx = 0; idx < this.cars.length; idx++) {
-            this.cars[idx] = (new Car).forwardCar(this.cars[idx]);
+            this.cars[idx] = Car.forwardCar(this.cars[idx]);
         }
     }
 }
