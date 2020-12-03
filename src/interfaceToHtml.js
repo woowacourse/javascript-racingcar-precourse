@@ -5,7 +5,7 @@ const RACING_COUNT_BUTTON_ID = "racing-count-submit";
 const GAME_STEP_ENUM = {
   NAME_INPUT: 1,
   RACING_COUNT: 2,
-  GAME_RESULT: 3,
+  RESULT: 3,
 };
 
 export default class InterfacetoHtml {
@@ -31,12 +31,11 @@ export default class InterfacetoHtml {
       this.addEventToButton({
         buttonId: CAR_NAME_BUTTON_ID,
         functionCallback: this.processRacingCount,
-        functionElement: { containerWhereToDraw: this.carGameContainer },
+        functionElement: null,
       });
     }
   }
   processRacingCount() {
-    console.log(this);
     if (this.currentStepInGame === GAME_STEP_ENUM.RACING_COUNT) {
       this.currentStepInGame++;
       this.drawHTML({
@@ -49,16 +48,23 @@ export default class InterfacetoHtml {
         </div>
         `,
       });
+      this.addEventToButton({
+        buttonId: RACING_COUNT_BUTTON_ID,
+        functionCallback: this.processGameResult,
+        functionElement: null,
+      });
     }
   }
-
-  drawGameResult({ containerWhereToDraw }) {
-    containerWhereToDraw.insertAdjacentHTML(
-      "beforeend",
-      `
-    <h4>📄 실행 결과</h4>
-    `
-    );
+  processGameResult() {
+    if (this.currentStepInGame === GAME_STEP_ENUM.RESULT) {
+      this.currentStepInGame++;
+      this.drawHTML({
+        containerWhereToDraw: this.carGameContainer,
+        htmlWhatToDraw: `
+        <h4>📄 실행 결과</h4>
+        `,
+      });
+    }
   }
 
   drawHTML({ containerWhereToDraw, htmlWhatToDraw }) {
