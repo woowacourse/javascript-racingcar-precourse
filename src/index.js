@@ -1,10 +1,8 @@
 import { GO_AHEAD_MAX_VALUE } from '/src/lib/variables/constantNumbers.js';
-import InputsControl from '/src/lib/classes/inputControl.js';
+import UserInputs from '/src/lib/classes/getUserInputs.js';
 import addIdsToNodes from '/src/lib/config/addIdsToNodes.js';
 import {
   hideUnusedContainers,
-  showContainer,
-  disableInputs,
 } from '/src/lib/config/manipulateContainers.js';
 
 export default class RacingCarGame {
@@ -32,75 +30,6 @@ export default class RacingCarGame {
   }
 }
 
-const runGame = (carNames, racingCount) => {
-  let game = new RacingCarGame();
-
-}
-
-class UserInputs {
-  constructor() {
-    this.$carNamesInput = document.getElementById('car-names-input');
-    this.$carNamesSubmit = document.getElementById('car-names-submit');
-    this.$racingCountContainer = document.getElementById('racing-count-container');
-    this.$racingCountInput = document.getElementById('racing-count-input');
-    this.$racingCountSubmit = document.getElementById('racing-count-submit');
-    this.carNames = [];
-  }
-
-  checkRacingCountInput(racingCountInputData) {
-    const {
-      goToNextStep,
-      message,
-      inputData
-    } = racingCountInputData.getResultOfRacingCountNumber(this.$racingCountInput);
-  
-    if(goToNextStep) {
-      disableInputs(this.$racingCountInput, this.$racingCountSubmit);
-      return console.log('success!', this.carNames, inputData);
-    }
-  
-    this.$racingCountInput.value = '';
-    return alert(message);
-  }
-
-  userInputRacingCount() {
-    this.$racingCountSubmit.addEventListener('click', () => this.checkRacingCountInput(
-      new InputsControl(this.$racingCountInput.value),
-    ));
-  }
-
-  submitCarNamesInput(carNames) {
-    showContainer(this.$racingCountContainer);
-    this.carNames = carNames;
-    return this.userInputRacingCount();
-  }
-
-  checkCarNamesInput(carNamesInputData) {
-    const {
-      goToNextStep,
-      message,
-      inputData
-    } = carNamesInputData.getResultOfCarNamesInput(this.$carNamesInput);
-  
-    if(goToNextStep) {
-      disableInputs(this.$carNamesInput, this.$carNamesSubmit);
-      return this.submitCarNamesInput(inputData);
-    }
-  
-    this.$carNamesInput.value = '';
-    return alert(message);
-  }
-
-  userInputCarNames() {  
-    this.$carNamesSubmit.addEventListener('click', () => this.checkCarNamesInput(
-      new InputsControl(this.$carNamesInput.value)
-    ));
-  }
-
-}
-
-
-
 const settingGame = () => {
   addIdsToNodes();
   hideUnusedContainers();
@@ -111,6 +40,7 @@ const startGame = () => {
   
   let userInputs = new UserInputs();
   userInputs.userInputCarNames();
+  
 }
 
 startGame();
