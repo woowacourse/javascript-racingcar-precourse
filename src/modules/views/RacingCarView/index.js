@@ -151,14 +151,14 @@ export default class RacingCarView {
     `;
   }
 
-  renderResult(racingCount) {
+  renderResult(count) {
     this.renderResultHeading();
 
     for (let i = 0; i < racingCount; i++) {
       this.RacingCarGame.gameContinue();
-      this.renderIntermediateResult(this.RacingCarGame.getCars());
+      this.renderIntermediateResult(this.RacingCarGame.getCarInstances());
     }
 
-    this.renderWinners(this.RacingCarGame.getCars());
+    this.renderWinners(this.RacingCarGame.getCarInstances());
   }
 }

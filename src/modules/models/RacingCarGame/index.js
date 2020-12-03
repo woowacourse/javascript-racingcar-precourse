@@ -2,7 +2,7 @@ import { Car } from '../../models';
 
 export default class RacingCarGame {
   constructor() {
-    this._cars = null;
+    this._carInstances = null;
   }
 
   makeCarInstances(splitedNames) {
@@ -10,16 +10,16 @@ export default class RacingCarGame {
       return new Car(name);
     });
 
-    this._cars = instances;
+    this._carInstances = instances;
   }
 
   gameContinue() {
-    this._cars.forEach(car => {
+    this._carInstances.forEach(car => {
       car.moveForward();
     });
   }
 
-  getCars() {
-    return this._cars;
+  getCarInstances() {
+    return this._carInstances;
   }
 }
