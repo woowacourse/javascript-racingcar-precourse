@@ -43,6 +43,23 @@
 
 <hr/>
 
+## 파일 목록
+- 1. classes 폴더 => 객체 모델들
+  - car.js 자동차 클래스
+  - getUserInputs.js 사용자 입력 처리하는 클래스
+  - lib/checkUserInputs.js 사용자 입력 유효한지 체크하는 클래스
+  - racingCarGame.js 게임 진행하는 클래스
+
+- 2. config 폴더 => DOM 조작
+  - addIdsToNodes 각 노드에 id값 부여
+  - manipulateContainers 노드 숨기거나 보여주는 함수들
+
+- 3. variables
+  - 전역 변수 관리
+
+<br/>
+<hr/>
+
 ## 결과 화면
 
 <br/>
@@ -71,6 +88,9 @@
   - node객체 내장 함수들 익힐 것
     - node.previousSibling, node.nextSibling 등
     - [참고 url] https://developer.mozilla.org/ko/docs/Web/API/Node
+  - html 태그에 id값 부여
+  - setAttribute를 활용해서 숨겼다가 뺏다 하기
+  - 클래스 상속 
 
 #### input을 어떻게 처리하지?
   - dom init를 구현할 것
@@ -93,4 +113,6 @@
 ### [Day 2]
 1. car racing count 처음에 숨기기
 2. 메소드의 길이가 15를 넘지 않게 하기 위해 input 유효성 체크는 별도의 클래스(inputControl.js)에서 처리
-3. Input 함수 어떻게 모듈화하지? 
+3. Input 함수 어떻게 모듈화하지? => 우선 클래스로 별도 분리는 성공
+4. racingcargame 클래스 파일 분리
+5. 클래스 상속 관계 공부ㅠㅠ
