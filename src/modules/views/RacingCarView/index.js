@@ -120,6 +120,10 @@ export default class RacingCarView {
     this.addEventListenerToRacingCountSubmitButton();
   }
 
+  renderHeading() {
+    this.carRacingResultDiv.innerHTML += `<h4>📄 실행 결과</h4>`;
+  }
+
   renderIntermediateResult(cars) {
     let intermediateResult = ``;
     cars.forEach(car => {
@@ -138,7 +142,6 @@ export default class RacingCarView {
     sortedCars.sort(compareDistance);
     console.log(sortedCars, 'sorted');
     const winners = this.decideWinners(sortedCars);
-
     const winnersString = winners.join(', ');
 
     this.carRacingResultDiv.innerHTML += `
@@ -146,5 +149,11 @@ export default class RacingCarView {
         최종 우승자: ${winnersString}
       </div>
     `;
+  }
+
+  renderResult(cars) {
+    this.renderHeading();
+    this.renderIntermediateResult(cars);
+    this.renderWinners(cars);
   }
 }
