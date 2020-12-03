@@ -5,7 +5,7 @@ import {
   hideUnusedContainers,
   showContainer,
   disableInputs,
-} from '/src/lib/config/controlGetRacingCount.js';
+} from '/src/lib/config/manipulateContainers.js';
 
 export default class RacingCarGame {
   constructor() {
