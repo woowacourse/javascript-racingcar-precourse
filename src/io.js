@@ -1,14 +1,17 @@
 import Car from "./Car.js";
 import {
-    isDigits
+    isDigits,
+    pageRefresh
 } from "./utils.js";
 import RacingCarGame from "./index.js";
 
 export const getCarNameInput = (e) => {
+    const game = e.currentTarget.currGame;
     const carNameInput = document.getElementById('car-names-input');
     const carNames = carNameInput.value.split(',');
+    if (game.isFinished) pageRefresh();
     if (Car.isValidCarName(carNames)) {
-        e.currentTarget.currGame.cars = carNames.map(carName => new Car(carName.trim()));
+        game.cars = carNames.map(carName => new Car(carName.trim()));
         toggleDiplayNumOfTryArea();
     } else {
         alert("❌유효하지 않은 자동차 이름입니다.\n다시 입력해주세요.");
@@ -18,10 +21,13 @@ export const getCarNameInput = (e) => {
 
 export const getNumOfTryInput = (e) => {
     const numOfTryInput = document.getElementById("racing-count-input");
+    const game = e.currentTarget.currGame;
+    if (game.isFinished) pageRefresh();
     if (isDigits(numOfTryInput.value)) {
-        e.currentTarget.currGame.numOfTry = (parseInt(numOfTryInput.value));
+        game.numOfTry = (parseInt(numOfTryInput.value));
         toggleDiplayResultArea();
-        RacingCarGame.racing(e.currentTarget.currGame);
+        RacingCarGame.racing(game);
+        game.isFinished = true;
     } else {
         alert("❌유효하지 않은 시도 횟수입니다.\n다시 입력해주세요.");
         numOfTryInput.value = '';

@@ -2,11 +2,11 @@ import Car from './Car.js';
 import {
     getCarNameInput,
     getNumOfTryInput,
-    toggleDiplayNumOfTryArea,
-    toggleDiplayResultArea,
-    printResultOfOneRound,
     getWinnersName,
-    printWinnersName
+    printResultOfOneRound,
+    printWinnersName,
+    toggleDiplayResultArea,
+    toggleDiplayNumOfTryArea
 } from './io.js';
 
 const init = (gameName) => {
@@ -19,13 +19,14 @@ const init = (gameName) => {
     carNameSubmitBtn.currGame = gameName;
     numOfTrySubmitBtn.currGame = gameName;
 
-    toggleDiplayNumOfTryArea();
     toggleDiplayResultArea();
+    toggleDiplayNumOfTryArea();
 };
 
 export default function RacingCarGame() {
     this.cars = [];
     this.numOfTry = 0;
+    this.isFinished = false;
     this.roundStart = () => {
         for (let idx = 0; idx < this.cars.length; idx++) {
             this.cars[idx] = Car.forwardCar(this.cars[idx]);

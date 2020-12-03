@@ -21,3 +21,7 @@ export const isOnlySpaceString = (string) => {
     }
     return false;
 };
+
+export const pageRefresh = () => {
+    location.reload();
+}
