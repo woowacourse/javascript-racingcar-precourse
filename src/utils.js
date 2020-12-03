@@ -41,15 +41,13 @@ export const getWinnersName = (cars) => {
     let max = 0;
     let winnersName = [];
     for (const car of cars) {
-        if (car.getForwardCnt() >= max) {
+        if (car.getForwardCnt() > max) {
             max = car.getForwardCnt();
-            winnersName = [];
+            winnersName = [car.getCarName()];
+        } else if (car.getForwardCnt() === max) {
             winnersName.push(car.getCarName());
-        } else {
-            winnersName = [];
         }
     }
-    console.log(winnersName)
     return winnersName;
 }
 
