@@ -43,48 +43,60 @@ const runGame = (carNames, racingCount) => {
 
 }
 
-const racingCountUserInput = carNames => {
-  const $racingCountInput = document.getElementById('racing-count-input');
-  const $racingCountSubmit = document.getElementById('racing-count-submit');
+const submitRacingCountInput = ($racingCountInput, $racingCountSubmit, carNames) => {
+  const _inputResult = new Inputs($racingCountInput.value);
+  $racingCountInput.focus();
+  console.log(_inputResult);
+  console.log(_inputResult.getRacingCountNumber());
 
-  $racingCountSubmit.addEventListener('click', () => {
-    const _inputResult = new Inputs($racingCountInput.value);
-    $racingCountInput.focus();
-    console.log(_inputResult);
-    console.log(_inputResult.getRacingCountNumber());
+  disableInputs($racingCountInput, $racingCountSubmit);
 
-    //값이 올바르면 인풋 비활성화 후 게임 시작하기
-    disableInputs($racingCountInput, $racingCountSubmit);
-
-    console.log(carNames);
-  });
+  console.log(carNames);
 }
 
-const carNamesUserInput = () => {
+const userInputRacingCount = carNames => {
+  const $racingCountInput = document.getElementById('racing-count-input');
+  const $racingCountSubmit = document.getElementById('racing-count-submit');
+  $racingCountSubmit.addEventListener('click', () => submitRacingCountInput($racingCountInput, $racingCountInput, carNames));
+}
+
+const submitCarNamesInput = ($carNamesInput, $carNamesSubmit) => {
+  const $racingCountContainer = document.getElementById('racing-count-container');
+  const _inputCarNamesResult = new Inputs($carNamesInput.value);
+  $carNamesInput.focus();
+
+  if(_inputCarNamesResult.checkSpace()) {
+    $carNamesInput.value = '';
+    return alert('공백은 입력받을 수 없습니다.');
+  }
+
+  if(_inputCarNamesResult.checkMoreThanFiveChars()) {
+    $carNamesInput.value = '';
+    return alert('자동차 이름은 5글자를 넘으면 안됩니다.');
+  }
+
+  if(_inputCarNamesResult.checkSameNames()) {
+    $carNamesInput.value = '';
+    return alert('자동차 이름은 중복될 수 없습니다.');
+  }
+
+
+  disableInputs($carNamesInput, $carNamesSubmit);
+  showContainer($racingCountContainer);
+  userInputRacingCount(_inputCarNamesResult.getCarNames());
+}
+
+const userInputCarNames = () => {
   const $carNamesInput = document.getElementById('car-names-input');
   const $carNamesSubmit = document.getElementById('car-names-submit');
 
-  $carNamesSubmit.addEventListener('click', () => {
-    const _inputResult = new Inputs($carNamesInput.value);
-    $carNamesInput.focus();
-    //console.log(_inputResult);
-    //console.log(_inputResult.getCarNames());
-
-    //유효성이 맞으면 아래 노드 부활시키고 다음 순서(시도할 횟수)
-    //유효성이 틀리면 입력 재시도
-    //이미 입력 받았으면 경고 메시지 띄우거나 disable시키기
-
-    disableInputs($carNamesInput, $carNamesSubmit);
-    
-    
-    racingCountUserInput(_inputResult.getCarNames());
-  });
+  $carNamesSubmit.addEventListener('click', () => submitCarNamesInput($carNamesInput, $carNamesSubmit));
 }
 
 const startGame = () => {
   addIdsToNodes();
   hideUnusedContainers();
-  carNamesUserInput();
+  userInputCarNames();
 }
 
 startGame();

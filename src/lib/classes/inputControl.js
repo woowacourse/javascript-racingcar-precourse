@@ -25,7 +25,8 @@ export default class Inputs {
   checkSameNames() {
     const carNames = this.inputs.split(',');
     const carsWithoutSameName = new Set([...carNames]);
-    return carsWithoutSameName.size === carNames.length;
+    console.log(carsWithoutSameName);
+    return carsWithoutSameName.size !== carNames.length;
   }
 
   getCarNames() {
