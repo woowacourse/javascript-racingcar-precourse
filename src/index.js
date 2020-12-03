@@ -131,13 +131,20 @@ export default class RacingCarGame {
       const car = new Car(carName);
       this.cars.push(car);
     });
+
+    const countContainer = document.getElementById("car-game-count-container");
+    this.displayContainer(countContainer, true);
   };
 
   getCountInput = () => {
     const countInput = document.getElementById("racing-count-input");
     const counts = countInput.value;
-
     this.counts = counts;
+
+    const resultContainer = document.getElementById(
+      "car-game-result-container"
+    );
+    this.displayContainer(resultContainer, true);
 
     this.startGame();
   };
