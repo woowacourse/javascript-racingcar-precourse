@@ -17,23 +17,22 @@ export default class RacingCarGame {
     this.racingCount = null;
   }
 
-  createRandomNumber() {
+  _createRandomNumber() {
     return Math.floor(Math.random()*(GO_AHEAD_MAX_VALUE+1));
   }
 
-  moveCars(curTurn) {
-    //cars를 순회하면서 숫자랑 현재 턴 집어넣는다.
-    //example -> cars._runOrPause(생성한 렌덤 숫자, 현재 turn숫자)
+  getResult() {
+    console.log(this.carNames, this.racingCount);
   }
 
-  getResult() {
-    //게임이 종료된 후 결과 반환
-
+  moveCars(turn) {
+    console.log(`turn ${turn}`);
+    this.carNames.forEach(car => car._runOrPause(this._createRandomNumber(), turn));
+    this.getResult();
   }
   
   play() {
-    //for문으로 턴을 쭉 돌면서 _moveCars 함수 실행
-    console.log(this.carNames, this.racingCount);
+    for(let turn = 1; turn <= this.racingCount; turn++) this.moveCars(turn);
   }
 
   checkRacingCountInput(racingCountInputData) {
