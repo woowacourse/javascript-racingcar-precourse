@@ -1,5 +1,25 @@
 # 🏎️ 자동차 경주 게임
 
+## 🕹 구현할 기능 목록
+
+- [ ] car names 입력값 받기
+  - [ ] 올바른 입력값 판단
+  - [ ] 잘못된 입력값 메시지(alert) 출력
+- [ ] racing count 입력값 받기
+  - [ ] 올바른 입력값 판단
+  - [ ] 잘못된 입력값 메시지(alert) 출력
+- [ ] racing count 횟수마다 게임 결과를 담을 store 변수
+- [ ] car 수 만큼 각각 0에서 9 사이에서 random 값 구하기
+  - [ ] 4이상의 값 전진("-")
+  - [ ] 3이하의 값 멈춤("")
+- [ ] racing count 횟수마다 게임 결과를 저장 및 업데이트
+  - [ ] 각 횟수마다 게임 결과 저장 및 업데이트
+  - [ ] 각 횟수마다 최고 값을 가진 자동차들 저장 및 업데이트
+- [ ] render 게임 결과 화면에 출력
+  - [ ] 게임 진행 과정 출력
+  - [ ] 게임 우승자 출력
+    - [ ] 게임 우승자가 다수일 경우 ,로 구분 하여 출력
+
 ## 🎯 기능 요구사항
 
 - 주어진 횟수 동안 n대의 자동차는 전진 또는 멈출 수 있다.
@@ -15,8 +35,8 @@
 ![실행이미지](images/result.gif)
 ![실행이미지](images/result.jpg)
 
-
 ## ✅ 프로그래밍 요구사항
+
 - 사용자가 잘못된 입력 값을 작성한 경우 `alert`을 이용해 메시지를 보여주고, 재입력할 수 있게 한다.
 - 외부 라이브러리(jQuery, Lodash 등)를 사용하지 않고, 순수 Vanilla JS로만 구현한다.
 - **자바스크립트 코드 컨벤션을 지키면서 프로그래밍** 한다
@@ -57,11 +77,9 @@ class Car {
 - `template literal`을 이용해 데이터와 html string을 가독성 좋게 표현한다.
   - [https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Template_literals](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Template_literals)
 
-
 ## 📝 미션 저장소 및 진행 요구사항
 
 - 미션은 [https://github.com/woowacourse/javascript-racingcar-precours](https://github.com/woowacourse/javascript-racingcar-precourse) 저장소를 fork/clone해 시작한다.
 - **기능을 구현하기 전에 javascript-racingcar-precourse/docs/README.md 파일에 구현할 기능 목록**을 정리해 추가한다.
 - **git의 commit 단위는 앞 단계에서 README.md 파일에 정리한 기능 목록 단위로 추가**한다.
 - [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서 절차를 따라 미션을 제출한다.
-
