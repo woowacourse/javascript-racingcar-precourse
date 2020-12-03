@@ -1,51 +1,42 @@
 import Car from "/src/car/car.js";
+import Handler from "/src/handler/handler.js";
+import {carNamesInput, racingCountInput} from "/src/view/input/input.js";
+import {carNamesButton, racingCountButton} from "/src/view/button/button.js";
 
 export default class RacingCarGame {
 	constructor() {
-		this.carNamesInput = document.getElementsByTagName("input")[0];
-		this.carNamesSubmit = document.getElementsByTagName("button")[0];
-		this.racingCountInput = document.getElementsByTagName("input")[1];
-		this.racingCountSubmit = document.getElementsByTagName("button")[1];
+		new Handler(carNamesButton, this.setCarNames).setClickHandler();
+		new Handler(carNamesButton, this.displayRacingCountInputAndSubmit).setClickHandler();
+		new Handler(racingCountButton, this.setRacingCount).setClickHandler();
+		new Handler(racingCountButton, this.startGame).setClickHandler();
 
 		this.carNames = "";
 		this.racingCount = 0;
 
 		this.setRacingCountInputAndSubmitStyleToNone();
 		this.setAttributes();
-		this.setHandlers();
-	}
-
-	setRacingCountInputAndSubmitStyleToNone = () => {
-		this.racingCountInput.style.display = "none";
-		this.racingCountSubmit.style.display = "none";
 	}
 
 	setAttributes = () => {
-		this.carNamesInput.setAttribute("id", "car-names-input");
-		this.carNamesSubmit.setAttribute("id", "car-names-submit");
-		this.racingCountInput.setAttribute("id", "racing-count-input");
-		this.racingCountSubmit.setAttribute("id", "racing-count-submit");
-	}
-
-	setHandlers = () => {
-		this.carNamesSubmit.addEventListener("click", this.getCarNames);
-		this.carNamesSubmit.addEventListener("click", this.displayRacingCountInputAndSubmit);
-		this.racingCountSubmit.addEventListener("click", this.getRacingCount);
-		this.racingCountSubmit.addEventListener("click", this.startGame);
+		carNamesInput.setAttribute("id", "car-names-input");
+		carNamesButton.setAttribute("id", "car-names-submit");
+		racingCountInput.setAttribute("id", "racing-count-input");
+		racingCountButton.setAttribute("id", "racing-count-submit");
 	}
 
 	setCarNames = () => {
-		this.carNames = this.carNamesInput.value;
+		this.carNames = carNamesInput.value;
 	}
+
+	setRacingCountInputAndSubmitStyleToNone = () => {
+		racingCountInput.style.display = "none";
+		racingCountButton.style.display = "none";
+	};
 
 	displayRacingCountInputAndSubmit = () => {
-		const carNamesList = this.carNames.split(",");
-
-		if (this.isCarNamesValid(carNamesList)) {
-			this.racingCountInput.removeAttribute("style");
-			this.racingCountSubmit.removeAttribute("style");
-		}		
-	}
+		racingCountInput.removeAttribute("style");
+		racingCountButton.removeAttribute("style");
+	};
 
 	isCarNamesValid = carNamesList => {
 		let validity = true;
@@ -62,7 +53,7 @@ export default class RacingCarGame {
 	}
 
 	setRacingCount = () => {
-		this.racingCount = Number(this.racingCountInput.value);
+		this.racingCount = Number(racingCountInput.value);
 	}
 
 	startGame = () => {
