@@ -11,7 +11,7 @@ class InputResult {
 export default class InputsControl {
   constructor(inputs) {
     this.inputs = inputs;
-    this._carNames = inputs.split(',');
+    this._carNames = inputs.split(',').filter(carName => carName.length > 0);
     this._racingCount = Number(inputs);
   }
 
