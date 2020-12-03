@@ -3,6 +3,7 @@ module.exports = {
     browser: true,
     es2021: true,
     node: true,
+    jest: true,
   },
   extends: 'eslint:recommended',
   parserOptions: {
@@ -18,6 +19,7 @@ module.exports = {
     'no-console': 'off',
     'no-alert': 'off',
     'max-depth': ['error', 2],
+    'max-lines-per-function': ['error', 15]
   },
   parser: 'babel-eslint',
 };
