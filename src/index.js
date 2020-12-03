@@ -2,10 +2,10 @@ import CarName from './CarName.js';
 
 export default class RacingCarGame {
   constructor() {
-    this.play();
+    this.submitCarNames();
   }
 
-  play() {
+  submitCarNames() {
     const carNamesSubmitButton = document.querySelector('#car-names-submit');
 
     carNamesSubmitButton.addEventListener('click', () => {
