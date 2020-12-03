@@ -1,11 +1,12 @@
 import RacingCarGame from '/src/lib/classes/racingCarGame.js';
+import {
+  settingGame,
+} from '/src/lib/config/manipulateContainers.js';
 
-const startGame = () => {
+const start = () => {
+  settingGame();
   let racingCarGame = new RacingCarGame();
-  racingCarGame._settingGame();
-  racingCarGame._getUserInputs();
-
-  
+  racingCarGame.startGame();
 }
 
-startGame();
+start();

@@ -1,3 +1,5 @@
+import addIdsToNodes from '/src/lib/config/addIdsToNodes.js';
+
 export const hideContainer = $container => {
   if(typeof($container) !== 'object') return;
   $container.setAttribute('style', 'display:none;');
@@ -9,6 +11,11 @@ export const hideUnusedContainers = () => {
   [$racingCountContainer, $resultContainer].forEach($container => {
     hideContainer($container);
   })
+}
+
+export const settingGame = () => {
+  addIdsToNodes();
+  hideUnusedContainers();
 }
 
 export const showContainer = $container => {

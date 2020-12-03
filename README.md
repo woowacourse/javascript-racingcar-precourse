@@ -46,7 +46,7 @@
 ## 파일 목록
 - 1. classes 폴더 => 객체 모델들
   - car.js 자동차 클래스
-  - getUserInputs.js 사용자 입력 처리하는 클래스
+  - getUserInputs.js 사용자 입력 처리하는 클래스 (racingcargame에 통합함..)
   - lib/checkUserInputs.js 사용자 입력 유효한지 체크하는 클래스
   - racingCarGame.js 게임 진행하는 클래스
 
@@ -115,4 +115,4 @@
 2. 메소드의 길이가 15를 넘지 않게 하기 위해 input 유효성 체크는 별도의 클래스(inputControl.js)에서 처리
 3. Input 함수 어떻게 모듈화하지? => 우선 클래스로 별도 분리는 성공
 4. racingcargame 클래스 파일 분리
-5. 클래스 상속 관계 공부ㅠㅠ
+5. 반복되는 메소드들 정리 (이거 은근 까다롭고 노가다 작업이 많음...)
