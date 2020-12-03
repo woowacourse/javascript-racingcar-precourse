@@ -5,3 +5,8 @@ export function Car(name) {
     this.location = nextLocation;
   };
 }
+export const iterateBy = ({ iterator, callbacks }) => {
+  for (let i = 0; i < iterator; i++) {
+    callbacks.forEach((callback) => callback(i));
+  }
+};
