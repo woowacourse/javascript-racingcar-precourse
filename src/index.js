@@ -1,5 +1,5 @@
 import { GO_AHEAD_MAX_VALUE } from '/src/lib/variables/constantNumbers.js';
-import Inputs from '/src/lib/classes/inputControl.js';
+import InputsControl from '/src/lib/classes/inputControl.js';
 import addIdsToNodes from '/src/lib/config/addIdsToNodes.js';
 import {
   hideUnusedContainers,
@@ -37,66 +37,69 @@ const runGame = (carNames, racingCount) => {
 
 }
 
-const checkRacingCountInput = (carNames, racingCountInputData, $racingCountInput, $racingCountSubmit) => {
-  const {
-    goToNextStep,
-    message,
-    inputData
-  } = racingCountInputData.getResultOfRacingCountNumber($racingCountInput);
-
-  if(goToNextStep) {
-    disableInputs($racingCountInput, $racingCountSubmit);
-    return console.log('success!', carNames, inputData);
+class UserInputs {
+  constructor() {
+    this.$carNamesInput = document.getElementById('car-names-input');
+    this.$carNamesSubmit = document.getElementById('car-names-submit');
+    this.$racingCountContainer = document.getElementById('racing-count-container');
+    this.$racingCountInput = document.getElementById('racing-count-input');
+    this.$racingCountSubmit = document.getElementById('racing-count-submit');
+    this.carNames = [];
   }
 
-  $racingCountInput.value = '';
-  return alert(message);
-}
-
-const userInputRacingCount = carNames => {
-  const $racingCountInput = document.getElementById('racing-count-input');
-  const $racingCountSubmit = document.getElementById('racing-count-submit');
-  $racingCountSubmit.addEventListener('click', () => checkRacingCountInput(
-    carNames, 
-    new Inputs($racingCountInput.value),
-    $racingCountInput, 
-    $racingCountSubmit
-  ));
-}
-
-const submitCarNamesInput = carNames => {
-  const $racingCountContainer = document.getElementById('racing-count-container');
-  showContainer($racingCountContainer);
-  //console.log(carNames);
-  userInputRacingCount(carNames);
-}
-
-const checkCarNamesInput = (carNamesInputData, $carNamesInput, $carNamesSubmit) => {
-  const {
-    goToNextStep,
-    message,
-    inputData
-  } = carNamesInputData.getResultOfCarNamesInput($carNamesInput);
-
-  if(goToNextStep) {
-    disableInputs($carNamesInput, $carNamesSubmit);
-    return submitCarNamesInput(inputData);
+  checkRacingCountInput(racingCountInputData) {
+    const {
+      goToNextStep,
+      message,
+      inputData
+    } = racingCountInputData.getResultOfRacingCountNumber(this.$racingCountInput);
+  
+    if(goToNextStep) {
+      disableInputs(this.$racingCountInput, this.$racingCountSubmit);
+      return console.log('success!', this.carNames, inputData);
+    }
+  
+    this.$racingCountInput.value = '';
+    return alert(message);
   }
 
-  $carNamesInput.value = '';
-  return alert(message);
+  userInputRacingCount() {
+    this.$racingCountSubmit.addEventListener('click', () => this.checkRacingCountInput(
+      new InputsControl(this.$racingCountInput.value),
+    ));
+  }
+
+  submitCarNamesInput(carNames) {
+    showContainer(this.$racingCountContainer);
+    this.carNames = carNames;
+    return this.userInputRacingCount();
+  }
+
+  checkCarNamesInput(carNamesInputData) {
+    const {
+      goToNextStep,
+      message,
+      inputData
+    } = carNamesInputData.getResultOfCarNamesInput(this.$carNamesInput);
+  
+    if(goToNextStep) {
+      disableInputs(this.$carNamesInput, this.$carNamesSubmit);
+      return this.submitCarNamesInput(inputData);
+    }
+  
+    this.$carNamesInput.value = '';
+    return alert(message);
+  }
+
+  userInputCarNames() {  
+    this.$carNamesSubmit.addEventListener('click', () => this.checkCarNamesInput(
+      new InputsControl(this.$carNamesInput.value)
+    ));
+  }
+
 }
 
-const userInputCarNames = () => {
-  const $carNamesInput = document.getElementById('car-names-input');
-  const $carNamesSubmit = document.getElementById('car-names-submit');
 
-  $carNamesSubmit.addEventListener('click', () => checkCarNamesInput(
-    new Inputs($carNamesInput.value),
-    $carNamesInput, 
-    $carNamesSubmit
-  ));
-}
 
 const settingGame = () => {
   addIdsToNodes();
@@ -105,7 +108,9 @@ const settingGame = () => {
 
 const startGame = () => {
   settingGame();
-  userInputCarNames();
+  
+  let userInputs = new UserInputs();
+  userInputs.userInputCarNames();
 }
 
 startGame();

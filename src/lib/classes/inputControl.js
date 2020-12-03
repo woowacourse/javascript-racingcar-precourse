@@ -19,7 +19,7 @@ class InputResult {
   }
 }
 
-export default class Inputs {
+export default class InputsControl {
   constructor(inputs) {
     this.inputs = inputs;
   }
