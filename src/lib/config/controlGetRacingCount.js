@@ -7,10 +7,10 @@ export const hideRacingCountInputAndResult = () => {
 
 export const showRacingCountInputAttribute = () => {
   const $getRacingCount = document.querySelector('#get-racing-count');
-  
+  $getRacingCount.removeAttribute('style');
 }
 
 export const showResultAttribute = () => {
   const $result = document.querySelector('#result');
-
+  $result.removeAttribute('style');
 }

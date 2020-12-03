@@ -4,6 +4,7 @@ import Inputs from '/src/lib/classes/inputControl.js';
 import addIdsToNodes from '/src/lib/config/addIdsToNodes.js';
 import {
   hideRacingCountInputAndResult,
+  showRacingCountInputAttribute,
 } from '/src/lib/config/controlGetRacingCount.js';
 
 const getInitCarInfo = carNames => carNames.reduce((acc, carName) => {
@@ -68,9 +69,8 @@ const carNamesUserInput = () => {
 
     //유효성이 맞으면 아래 노드 부활시키고 다음 순서(시도할 횟수)
     //유효성이 틀리면 입력 재시도
-    //함수로 빼서 키보드 클릭 시 재탕시키기
-
     //이미 입력 받았으면 경고 메시지 띄우거나 disable시키기
+    showRacingCountInputAttribute();
     racingCountUserInput(_inputResult.getCarNames());
   });
 }
