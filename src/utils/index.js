@@ -38,7 +38,7 @@ function isNames(names) {
 
   for (let i = 0; i < names.length; i++) {
     let name = Array.from(new Set(names[i]));
-    if (name.length === 1 && name[0] === ' ') {
+    if ((name.length === 1 && name[0] === ' ') || name.length === 0) {
       return false;
     }
   }
