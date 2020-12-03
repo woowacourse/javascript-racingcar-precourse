@@ -17,7 +17,7 @@
 
 - ### Car
 - [x] Car 객체 getter, setter 생성
-- [ ] 기준 값에 따라 Car 전진/멈춤 판단 기능
+- [x] 기준 값에 따라 Car 전진/멈춤 판단 기능
 - [ ] Car 전진일 때 forwardCnt 증가 처리
 
 - ### Utils

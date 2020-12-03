@@ -2,10 +2,10 @@ import {
     isDigits,
     isOnlySpaceString,
     isUnderFiveDigits,
-    isValidCarName
+    isValidCarName,
+    getRandomDigit
 } from './utils.js';
 import Car from './Car.js';
-
 
 const getCarNameInput = () => {
     const carNameInput = document.getElementById('car-names-input');
@@ -51,6 +51,16 @@ const init = () => {
     toggleDiplayResultArea();
 };
 
+const canForward = () => {
+    const digit = getRandomDigit();
+    return 4 <= digit ? true : false;
+}
+
+const gameStart = (cars, numOfTry) => {
+    const resultArea = document.getElementById("app").querySelectorAll("div + div")[1];
+
+}
+
 export default function RacingCarGame() {
     let cars = [];
     let numOfTry = 0;
@@ -59,10 +69,11 @@ export default function RacingCarGame() {
     this.setCars = (carNameArray) => {
         cars = carNameArray.map(carName => new Car(carName));
     }
+    this.getCars = () => cars;
     this.setNumOfTry = (numOfTryInput) => {
         numOfTry = parseInt(numOfTryInput);
     }
-
+    this.getNumOftry = () => numOfTry;
 }
 
 const game = new RacingCarGame();
