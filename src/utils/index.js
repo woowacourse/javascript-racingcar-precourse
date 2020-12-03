@@ -16,11 +16,19 @@ function isFiveUpper(names) {
 }
 
 function isZero(count) {
+  console.log(typeof count);
   if (count === '0') {
     return true;
   }
 
   return false;
+}
+
+function isNumber(count) {
+  if (count === '') {
+    return false;
+  }
+  return true;
 }
 
 function isNames(names) {
@@ -50,4 +58,5 @@ export {
   isFiveUpper,
   isNames,
   isZero,
+  isNumber,
 };

@@ -4,6 +4,7 @@ import {
   isFiveUpper,
   isNames,
   isZero,
+  isNumber,
 } from '../../../utils';
 
 export default class RacingCarView {
@@ -46,6 +47,11 @@ export default class RacingCarView {
 
   handleRacingCountSubmit() {
     const racingCount = document.getElementById('#racing-count-input').value;
+    const exception = this.validCount(racingCount);
+    if (exception) {
+      alert(exception);
+      return;
+    }
 
     for (let i = 0; i < racingCount; i++) {
       this.RacingCarModel.progress();
@@ -70,6 +76,15 @@ export default class RacingCarView {
     }
 
     return '';
+  }
+
+  validCount(count) {
+    if (!isNumber(count)) {
+      return '숫자만 입력해주세요.';
+    }
+    if (isZero(count)) {
+      return '1 이상의 수를 입력해주세요.';
+    }
   }
 
   decideWinners(sortedCars) {
