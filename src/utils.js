@@ -14,7 +14,6 @@ export const isUnderFiveDigits = (string) => {
 
 export const isOnlySpaceString = (string) => {
     const nonDuplicatedString = [...new Set(Array.from(string))];
-    console.log(nonDuplicatedString);
     if (nonDuplicatedString.length === 1) {
         if (nonDuplicatedString[0] === ' ') {
             return true;
@@ -26,3 +25,14 @@ export const isOnlySpaceString = (string) => {
 export const isValidCarName = (carNames) => carNames.every(
     carName => (isUnderFiveDigits(carName) && !isOnlySpaceString(carName))
 );
+
+export const printResultOfOneRound = (cars) => {
+    const resultArea = document.getElementById("app").querySelectorAll("div + div")[1];
+    const resultElem = document.createElement("p");
+    let resText = '';
+    for (const car of cars) {
+        resText += `${car.getCarName()}: ${'-'.repeat(car.getForwardCnt())}\n`;
+    }
+    resultElem.innerText(resText);
+    resultArea.appendChild(resultElem);
+}

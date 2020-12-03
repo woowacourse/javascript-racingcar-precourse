@@ -51,24 +51,25 @@ const init = () => {
     toggleDiplayResultArea();
 };
 
-const canForward = () => {
+const forward = (car) => {
     const digit = getRandomDigit();
-    return 4 <= digit ? true : false;
+    if (digit >= 4) {
+        car.setForwardCnt(car.getForwardCnt() + 1);
+    }
+    return car;
 }
 
 export default function RacingCarGame() {
     this.cars = [];
     this.numOfTry = 0;
     init();
-
-    this.roundStart = (cars) => {
-        const resultArea = document.getElementById("app").querySelectorAll("div + div")[1];
-        for (const car of cars) {
-            if (canForward()) {
-                car.setForwardCnt(car.getForwardCnt() + 1);
-            }
+    this.roundStart = () => {
+        // if(this.numOfTry===0) 
+        for (let idx = 0; idx < this.cars.length; idx++) {
+            this.cars[idx] = forward(this.cars[idx]);
         }
-        return;
+        printResultOfOneRound(this.cars);
+        this.numOfTry--;
     }
 }
 
