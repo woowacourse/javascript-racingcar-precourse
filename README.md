@@ -5,6 +5,7 @@
 - [ ] car names 입력값 받기
   - [ ] 올바른 입력값 판단
   - [ ] 잘못된 입력값 메시지(alert) 출력
+  - [x] racing count 요소 보여주기
 - [ ] racing count 입력값 받기
   - [ ] 올바른 입력값 판단
   - [ ] 잘못된 입력값 메시지(alert) 출력
