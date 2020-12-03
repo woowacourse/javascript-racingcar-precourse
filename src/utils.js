@@ -22,6 +22,12 @@ export const isOnlySpaceString = (string) => {
     return false;
 };
 
+export const hasDuplicatedName = (nameArray) => {
+    const originLen = nameArray.length;
+    const setLen = [...new Set(nameArray)].length;
+    return originLen === setLen ? false : true;
+}
+
 export const pageRefresh = () => {
     location.reload();
 }

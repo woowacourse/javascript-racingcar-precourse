@@ -1,7 +1,8 @@
 import {
     isUnderFiveDigits,
     isOnlySpaceString,
-    getRandomDigit
+    getRandomDigit,
+    hasDuplicatedName
 } from "./utils.js";
 
 export default function Car(name = '') {
@@ -17,6 +18,11 @@ Car.forwardCar = (car) => {
     return car;
 }
 
-Car.isValidCarName = (carNames) => carNames.every(
-    carName => (isUnderFiveDigits(carName) && !isOnlySpaceString(carName))
-);
+Car.isValidCarName = (carNames) => {
+    return carNames.every(
+            carName => (
+                isUnderFiveDigits(carName) &&
+                !isOnlySpaceString(carName))
+        ) &&
+        !hasDuplicatedName(carNames);
+}
