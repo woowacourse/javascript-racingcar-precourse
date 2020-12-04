@@ -2,7 +2,7 @@ import {
   hideCounterElement,
   hideResultElement,
 } from '../elements/hideElement.js';
-import {carInf, $carNameInput, $countInput} from './utils.js';
+import {carClass, $carNameInput, $countInput} from './utils.js';
 import RacingCarGame from '../index.js';
 
 const inputReset = () => {
@@ -14,5 +14,5 @@ export default function initGame() {
   hideCounterElement();
   hideResultElement();
   inputReset();
-  carInf.car = new RacingCarGame();
+  carClass.car = new RacingCarGame();
 }

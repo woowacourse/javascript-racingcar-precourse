@@ -10,6 +10,6 @@ export const $countInput = document.body.querySelector('#racing-count-input');
 export const MAX_NAME_LENGTH = 5;
 export const MAX_RANDOM_NUMBER = 9;
 
-export const carInf = {
+export const carClass = {
   car: null,
 };
