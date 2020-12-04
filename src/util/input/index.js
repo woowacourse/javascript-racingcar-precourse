@@ -12,9 +12,22 @@ const checkEmptyName = (namesArray) => {
   }
 };
 
+const checkOverFive = (namesArray) => {
+  const NUMBER = 5;
+
+  const isOverFive = namesArray.map((name) =>
+    name.length > NUMBER ? true : false
+  );
+
+  if (isOverFive.includes(true)) {
+    return true;
+  }
+};
+
 export const namesValidation = (names) => {
   const namesArray = splitByComma(names);
 
   const isEmptyInput = checkEmptyInput(names);
   const isEmptyName = checkEmptyName(namesArray);
+  const isOverFive = checkOverFive(namesArray);
 };
