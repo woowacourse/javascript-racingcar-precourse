@@ -1,10 +1,4 @@
-import {
-  splitString,
-  isLongerThan,
-  isNames,
-  isZero,
-  isNumber,
-} from '../../../utils';
+import { isLongerThan, isNames, isZero, isNumber } from '../../../utils';
 import { text } from '../../../constants';
 
 export default class RacingCarGameView {
@@ -28,7 +22,7 @@ export default class RacingCarGameView {
   }
 
   handleCarNamesSubmit() {
-    const splitedNames = splitString(this.carNamesInput.value, ',');
+    const splitedNames = this.carNamesInput.value.split(',');
     const exception = this.validNames(splitedNames);
     if (exception) {
       this.resetCarNamesInput();

@@ -42,8 +42,4 @@ function isNames(names) {
   return true;
 }
 
-function splitString(string, separator) {
-  return string.split(separator);
-}
-
-export { isHigherThan, splitString, isLongerThan, isNames, isZero, isNumber };
+export { isHigherThan, isLongerThan, isNames, isZero, isNumber };
