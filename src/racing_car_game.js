@@ -25,7 +25,6 @@ export default class RacingCarGame {
 
   onClick = event => {
     const target = event.target.id;
-    const countInput = document.querySelector("#racing-count-input");
 
     if (target === "car-names-submit") {
       this.setCarsList();
@@ -38,14 +37,12 @@ export default class RacingCarGame {
     const namesInput = document.querySelector("#car-names-input");
     const value = namesInput.value;
 
-    if (!this.checkValidation(value)) {
+    if (!this.util.checkValidation(value)) {
       namesInput.value = "";
+      this.util.alertMessage(namesInput);
       this.submitNames();
+
       return;
     }
-  };
-
-  checkValidation = value => {
-    return false;
   };
 }
