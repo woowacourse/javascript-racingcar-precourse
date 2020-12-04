@@ -1,5 +1,5 @@
 import makeNewCars from '../game/makeNewCars.js';
-import toggleRaceNumberInputScreen from '../utils/toggleRaceNumberInputScreen.js';
+import toggleRaceNumberInputScreen from '../init/toggleRaceNumberInputScreen.js';
 
 function checkLength(carName) {
   if (carName.length === 0) {
