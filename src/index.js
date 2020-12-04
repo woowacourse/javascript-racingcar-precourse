@@ -57,6 +57,22 @@ export default class RacingCarGame {
     }
     return isValid;
   }
-}
+  /**
+   * get Winner of Cars
+   * @param {Array} carList
+   * @return {Array} winners
+   */
+  getWinners(carList) {
+    const winners = [];
+    const positions = carList.map((car) => car.position);
+    const max = Math.max(...positions);
 
-new RacingCarGame();
+    carList.forEach((car) => {
+      if (car.position === max) {
+        winners.push(car.name);
+      }
+    });
+
+    return winners;
+  };
+}
