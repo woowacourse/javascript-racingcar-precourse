@@ -12,6 +12,7 @@ rAlphabet = /[a-zA-Z]/;
 */
 import variablesObj from "../constants/variales.js";
 
+const rNumber = /[^0-9]/g;
 const rString = /[^0-9|a-zA-Z|ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
 const rEmpty = /\s/g;
 
@@ -33,6 +34,23 @@ export const isCorrectCarNames = (inputCarNames) => {
     if (rString.test(carName)) {
       return false;
     }
+  }
+
+  return true;
+};
+
+export const isCorrectRacingCount = (inputRacingCount) => {
+  console.log(inputRacingCount);
+  if (inputRacingCount === "") {
+    return false;
+  }
+
+  if (inputRacingCount[0] === "0") {
+    return false;
+  }
+
+  if (rNumber.test(inputRacingCount)) {
+    return false;
   }
 
   return true;

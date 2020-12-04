@@ -32,6 +32,7 @@ export default class GetCarNames extends Component {
 
     if (!isCorrectCarNames(this.inputCarNames)) {
       alert("잘못된 입력값 입니다");
+      this.carNamesInput.value = "";
       return;
     }
 

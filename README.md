@@ -6,9 +6,9 @@
   - [x] 올바른 입력값 판단
   - [x] 잘못된 입력값 메시지(alert) 출력
   - [x] racing count 요소 보여주기
-- [ ] racing count 입력값 받기
-  - [ ] 올바른 입력값 판단
-  - [ ] 잘못된 입력값 메시지(alert) 출력
+- [x] racing count 입력값 받기
+  - [x] 올바른 입력값 판단
+  - [x] 잘못된 입력값 메시지(alert) 출력
 - [ ] racing count 횟수마다 게임 결과를 담을 store 변수
 - [ ] car 수 만큼 각각 0에서 9 사이에서 random 값 구하기
   - [ ] 4이상의 값 전진("-")
