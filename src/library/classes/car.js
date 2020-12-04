@@ -21,6 +21,10 @@ class Car {
   getDrivenDistance = () => {
     return this.#drivenDistance;
   };
+
+  resetDrivenDistance = () => {
+    this.#drivenDistance = 0;
+  };
 }
 
 export default Car;

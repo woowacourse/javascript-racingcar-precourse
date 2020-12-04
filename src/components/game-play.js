@@ -14,6 +14,7 @@ class GamePlay extends Component {
       this._$target.innerHTML += this.createRaceTemplate(cars);
     }
     this._$target.innerHTML += this.createWinnerTemplate(cars);
+    cars.forEach(car => car.resetDrivenDistance());
   };
 
   createHeaderTemplate = () => {
