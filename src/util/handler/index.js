@@ -1,5 +1,6 @@
 import { displayTag } from "../display/index.js";
 import { countValidation, namesValidation } from "../input/index.js";
+import { raceStart } from "../race/index.js";
 
 const namesButtonClick = () => {
   const namesInput = document.getElementById("car-names-input");
@@ -32,6 +33,8 @@ const countButtonClick = () => {
     displayTag(racingResult);
     countButton.removeEventListener("click", countButtonClick);
     countInput.setAttribute("readonly", true);
+
+    raceStart();
   }
 };
 

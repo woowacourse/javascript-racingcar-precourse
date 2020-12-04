@@ -17,7 +17,7 @@ export const retypeInput = (inputTag, message) => {
   inputTag.focus();
 };
 
-const splitByComma = (names) => names.split(",");
+export const splitByComma = (names) => names.split(",");
 
 const checkEmptyInput = (value) => (value.length === 0 ? true : false);
 
