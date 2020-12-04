@@ -6,11 +6,26 @@ export default class RacingCarGame {
     this.allClickEventListener();
   }
 
+  confirmInput() {
+    const carNamesInput = document.getElementById("car-names-input");
+    const carNames = carNamesInput.value.split(",");
+    const tempCars = [];
+    let i;
+    for (i = 0; i < carNames.length; i++) {
+      if (carNames[i].length > 5) {
+        alert("입력된 값이 잘못 되었습니다.");
+        carNamesInput.value = "";
+        return;
+      }
+      tempCars.push(new RacingCar(carNames[i]));
+    }
+    return tempCars;
+  }
+
   nameSubmitClickEvent() {
-    const carNames = document
-      .getElementById("car-names-input")
-      .value.split(",");
-    this.cars = carNames.map((carName) => new RacingCar(carName));
+    const carInstances = this.confirmInput();
+    if (carInstances === undefined) return;
+    this.cars = carInstances;
     const racingCountContainer = document.getElementById(
       "racing-count-container"
     );
