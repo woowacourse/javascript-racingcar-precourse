@@ -2,23 +2,17 @@ import CarNamesInputContainer from "./CarNamesInputContainer.js";
 import Car from "../classes/Car.js";
 
 import { ID } from "../utils/constants.js";
-import { showElement } from "../utils/domUtil.js";
+import { hideElement, showElement } from "../utils/domUtil.js";
 
 class RacingCarGame {
   constructor({ $target }) {
     this.$target = $target;
     this.mountDOM();
+    this.resetDOM();
     this.mountComponent();
     this.state = this.initState();
 
     console.log(this);
-  }
-
-  initState() {
-    return {
-      round: 0,
-      players: [],
-    };
   }
 
   mountDOM() {
@@ -33,11 +27,23 @@ class RacingCarGame {
     );
   }
 
+  resetDOM() {
+    hideElement(this.$RacingCountInputContainer);
+    hideElement(this.$RacingResultContainer);
+  }
+
   mountComponent() {
     this.carNamesInputContainer = new CarNamesInputContainer({
       $target: this.$CarNamesInputContainer,
       setPlayers: this.setPlayers.bind(this),
     });
+  }
+
+  initState() {
+    return {
+      round: 0,
+      players: [],
+    };
   }
 
   setPlayers(names) {
