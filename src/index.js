@@ -19,41 +19,36 @@ class Car {
     }
 }
 
-function makeNewCars(racingCountInputValue) {
-    const cars = getCarNames();
-    const tryCounts = racingCountInputValue;
-    const carsArray = cars.map((car) => new Car(car));
-
-    playRacingGames(tryCounts, carsArray);
+function makeNewCars() {
+    const carNames = getCarNames();
+    const newCars = carNames.map((car) => new Car(car));
+    return newCars;
 }
 
-function playRacingGames(tryCounts, carsArray) {
-    [...Array(Number(tryCounts))].forEach(() =>
-        carsArray.forEach((car) => car.go())
-    );
-
-    showRacingResultScreen(tryCounts, carsArray);
+function playRacingCarGames(newCars, racingCounts) {
+    const racingResult = newCars;
+    [...Array(racingCounts)].forEach(() => newCars.forEach((car) => car.go()));
+    return racingResult;
 }
 
-function showRacingResultScreen(tryCounts, carsArray) {
+function renderRacingResultScreen(racingResult, racingCounts) {
     const racingResultScreen = document.querySelector("#racing-result");
     racingResultScreen.innerHTML = `<h4>📄 실행 결과</h4>`;
 
-    [...Array(Number(tryCounts))].forEach((car, tryCount) => {
-        carsArray.forEach((car) => {
-            racingResultScreen.innerHTML += car.render(tryCount + 1);
+    [...Array(racingCounts)].forEach((car, racingCounts) => {
+        racingResult.forEach((car) => {
+            racingResultScreen.innerHTML += car.render(racingCounts + 1);
         });
         racingResultScreen.innerHTML += `<br/>`;
     });
-
-    showRacingGameWinner(carsArray, racingResultScreen);
+    return racingResultScreen;
 }
 
-function showRacingGameWinner(carsArray, racingResultScreen) {
-    const moveCounts = carsArray.map((car) => car.moveCounts);
+function renderRacingGameWinner(racingResult, racingResultScreen) {
+    const moveCounts = racingResult.map((car) => car.moveCounts);
     let winnerList = [];
 
-    carsArray.forEach((car) => {
+    racingResult.forEach((car) => {
         if (car.moveCounts === Math.max(...moveCounts)) {
             winnerList.push(car.name);
         }
@@ -62,7 +57,7 @@ function showRacingGameWinner(carsArray, racingResultScreen) {
     racingResultScreen.innerHTML += `
     <div>최종우승자: ${winnerList.join(", ")}</div>
     `;
-    console.log(carsArray);
+    console.log(racingResult);
     console.log(winnerList);
 }
 
@@ -88,12 +83,16 @@ function handleCarNamesSubmitClick() {
     const carNamesInput = getCarNamesInput();
     const carNames = getCarNames();
     const isValid = validateCarNames(carNames);
-    isValid ? renderTryCountScreen() : resetCarNamesInputValue(carNamesInput);
+    if (isValid) {
+        renderTryCountScreen();
+        handleRacingCountSubmitButton();
+    } else {
+        resetCarNamesInputValue(carNamesInput);
+    }
 }
 
 function resetCarNamesInputValue(carNamesInput) {
     alert("차 이름을 다시 입력해주세요");
-    [];
     carNamesInput.value = "";
     carNamesInput.focus();
 }
@@ -105,8 +104,6 @@ function renderTryCountScreen() {
           <input id="racing-count-input" type="number" />
           <button id="racing-count-submit">확인</button>
           `;
-
-    handleRacingCountSubmitButton();
 }
 
 function handleRacingCountSubmitButton() {
@@ -121,9 +118,14 @@ function handleRacingCountSubmitButton() {
 
 function handleRacingCountSubmitClick() {
     const racingCountInput = document.querySelector("#racing-count-input");
-    const racingCountInputValue = racingCountInput.value;
-
-    makeNewCars(racingCountInputValue);
+    const racingCounts = Number(racingCountInput.value);
+    const newCars = makeNewCars();
+    const racingResult = playRacingCarGames(newCars, racingCounts);
+    const racingResultScreen = renderRacingResultScreen(
+        racingResult,
+        racingCounts
+    );
+    renderRacingGameWinner(racingResult, racingResultScreen);
 }
 
 function init() {
