@@ -1,3 +1,8 @@
+import {
+  EMPTY_NAME_MESSAGE,
+  EMPTY_STRING_MESSAGE,
+  EXCEEDING_NAME_LENGTH_MESSAGE,
+} from '../library/constants/alert-message-names.js';
 import Component from '../library/core/component.js';
 
 class CarNamesInput extends Component {
@@ -86,13 +91,13 @@ class CarNamesInput extends Component {
     const carNames = input.split(',').map(carName => carName.trim());
     let errorMessage = [];
     if (input === '') {
-      errorMessage.push('공백');
+      errorMessage.push(EMPTY_STRING_MESSAGE);
     } else {
       if (this.hasNameWithMoreThan5Letters(carNames)) {
-        errorMessage.push('5자가 넘는 이름');
+        errorMessage.push(EXCEEDING_NAME_LENGTH_MESSAGE);
       }
       if (this.hasEmptyName(carNames)) {
-        errorMessage.push('공백인 이름');
+        errorMessage.push(EMPTY_NAME_MESSAGE);
       }
     }
     alert(`${errorMessage.join(', ')}을 입력하셨습니다. 다시 입력해주세요`);
