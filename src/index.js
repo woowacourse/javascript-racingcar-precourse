@@ -1,9 +1,11 @@
 export default function RacingCarGame() {
-  const carNamesInput = document.getElementById("car-names-input");
   const carNamesSubmit = document.getElementById("car-names-submit");
+  const racingCountSubmit = document.getElementById("racing-count-submit");
 
   this.getNamesFromInput = () => {
+    const carNamesInput = document.getElementById("car-names-input");
     const names = carNamesInput.value.split(",");
+
     this.checkErrorNames(names);
   };
 
@@ -12,6 +14,11 @@ export default function RacingCarGame() {
       alert(
         "자동차 이름을 5자 이하로 써주세요. 한 개라도 5자 이상일 경우 다음단계로 넘어가지 않습니다."
       );
+    } else {
+      const racingCountContainer = document.getElementById(
+        "racing-count-container"
+      );
+      racingCountContainer.style.visibility = "visible";
     }
   };
 
@@ -27,6 +34,16 @@ export default function RacingCarGame() {
     return result;
   };
 
+  this.getRacingCount = () => {
+    const racingCountInput = document.getElementById("racing-count-input");
+    const racingCount = racingCountInput.value;
+
+    this.checkRacingCountError(racingCount);
+  };
+
+  this.checkRacingCountError = (racingCount) => {};
+
   carNamesSubmit.addEventListener("click", this.getNamesFromInput);
+  racingCountSubmit.addEventListener("click", this.getRacingCount);
 }
 new RacingCarGame();
