@@ -5,6 +5,8 @@ import {
   COMMON_ALERT_MESSAGE,
   NAME_ALERT_MESSAGE,
   COUNT_ALERT_MESSAGE,
+  MOVE_TRIGGER,
+  RANDOM_TRIGGER,
 } from "./constants.js";
 
 export default class Util {
@@ -78,5 +80,15 @@ export default class Util {
       message += COUNT_ALERT_MESSAGE;
     }
     alert(message);
+  }
+
+  getDistance() {
+    const randomNumber = this.getRandomNumber();
+
+    return randomNumber >= MOVE_TRIGGER ? 1 : 0;
+  }
+
+  getRandomNumber() {
+    return Math.floor(Math.random() * RANDOM_TRIGGER);
   }
 }

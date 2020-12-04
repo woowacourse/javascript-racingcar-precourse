@@ -4,6 +4,7 @@ import Util from "./util.js";
 
 export default class RacingCarGame {
   util = new Util();
+  render = new Render();
 
   constructor() {
     this.init();
@@ -31,7 +32,7 @@ export default class RacingCarGame {
       this.setCarsList();
     }
     if (target === "racing-count-submit") {
-      this.runGame();
+      this.runRace();
     }
   };
 
@@ -63,9 +64,10 @@ export default class RacingCarGame {
     submitButton.addEventListener("click", this.onClick);
   };
 
-  runGame = () => {
+  runRace = () => {
     const countInput = document.querySelector("#racing-count-input");
-    const count = Number(countInput.value);
+    const resultContainer = document.querySelector(".result-container");
+    let count = Number(countInput.value);
 
     if (!this.util.checkValidation(countInput)) {
       this.handleError(countInput);
@@ -73,10 +75,20 @@ export default class RacingCarGame {
 
       return;
     }
+    resultContainer.style.display = "";
     for (let i = 0; i < count; i++) {
-      this.randomMove();
-      this.renderResult(this.carsList);
+      this.runRound();
     }
-    this.renderWinner(this.carsList);
+    // this.render.renderWinner(this.carsList);
+  };
+
+  runRound = () => {
+    const result = [];
+
+    this.carsList.forEach(car => {
+      car.position += this.util.getDistance();
+      result.push({ name: car.name, position: car.position });
+    });
+    this.render.renderResult(result);
   };
 }
