@@ -1,5 +1,11 @@
-export default function RacingCarGame() {}
-// export default class RacingCarGame {
-// }
+import { hideTags } from "./controlTags";
 
-new RacingCarGame();
+function gameStart() {
+  hideTags();
+}
+
+export default function RacingCarGame() {}
+
+const play = new RacingCarGame();
+
+gameStart(play);
