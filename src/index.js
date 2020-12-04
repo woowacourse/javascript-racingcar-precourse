@@ -8,15 +8,15 @@ export default class RacingCarGame {
     this.carEntry = [];
   }
 
-  getPlayingCarList(carNameList) {
-    const carNameListArray = carNameList.split(',');
-    for (const carName of carNameListArray) {
+  getPlayingCarList(carNameSet) {
+    const splitedCarNameSet = carNameSet.split(',');
+    for (const carName of splitedCarNameSet) {
       this.carEntry.push(new Car(carName));
     }
   }
 
-  gamePlay(times) {
-    for (let i = 0; i < times; i++) {
+  gamePlay(count) {
+    for (let i = 0; i < count; i++) {
       this.carEntry.forEach((car) => car.carMove());
       showOnGameProgress(this.carEntry);
     }

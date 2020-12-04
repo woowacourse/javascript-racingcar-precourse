@@ -17,15 +17,15 @@ const isRightNameInput = (nameInput) => {
   return true;
 };
 
-const isRightRacingTimesInput = (times) => {
-  if (parseInt(times, 10) <= 0) {
+const isRightRacingCountInput = (count) => {
+  if (parseInt(count, 10) <= 0) {
     return alert('1이상의 숫자를 입력해주세요.');
   }
-  if (times === '') {
+  if (count === '') {
     return alert('빈칸을 입력하셨습니다.');
   }
 
-  if (times.match(/\D/)) {
+  if (count.match(/\D/)) {
     return alert('숫자를 입력해주세요.');
   }
 
@@ -37,6 +37,6 @@ export default function checkInputValid(target, input) {
     return isRightNameInput(input.split(','));
   }
   if (target.id === 'racing-count-submit') {
-    return isRightRacingTimesInput(input);
+    return isRightRacingCountInput(input);
   }
 }

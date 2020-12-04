@@ -1,5 +1,5 @@
 import checkInputValid from './inputvalid.js';
-import {carInf, $carNameInput, $timesInput} from './utils.js';
+import {carInf, $carNameInput, $countInput} from './utils.js';
 import {
   showCounterElement,
   showResultElement,
@@ -15,12 +15,12 @@ export const onSubmitCarName = (e) => {
   return e.target.removeEventListener('click', onSubmitCarName);
 };
 
-export const onSubmitRacingTimes = (e) => {
-  if (!checkInputValid(e.target, $timesInput.value)) {
-    return ($timesInput.value = '');
+export const onSubmitRacingCount = (e) => {
+  if (!checkInputValid(e.target, $countInput.value)) {
+    return ($countInput.value = '');
   }
-  carInf.car.gamePlay($timesInput.value);
+  carInf.car.gamePlay($countInput.value);
   showResultElement();
 
-  return e.target.removeEventListener('click', onSubmitRacingTimes);
+  return e.target.removeEventListener('click', onSubmitRacingCount);
 };

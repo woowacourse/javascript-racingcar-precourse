@@ -11,7 +11,6 @@ export const createResultList = (carEntry) => {
   for (const car of carEntry) {
     $resultLi.appendChild(createResultText(car));
   }
-
   $resultLi.style.marginBottom = '30px';
   $resultUl.appendChild($resultLi);
 };
