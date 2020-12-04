@@ -21,6 +21,7 @@ const racingCountSubmitElement = document.getElementById('racing-count-submit');
 const racingProcessRecordsElement = document.getElementById(
   'racing-process-records'
 );
+const racingWinnersElement = document.getElementById('racing-winners');
 
 let carNameList = [];
 let tryCount = 0;
@@ -69,6 +70,8 @@ racingCountSubmitElement.addEventListener('click', () => {
     racingProcessRecordsElement.innerHTML = makeRaceCourseProcessRecordsTemplate(
       racingCarGame.raceCourseProcessRecords
     );
+    const winnerList = racingCarGame.getWinnerCarNameList();
+    racingWinnersElement.innerText = `최종 우승자: ${winnerList.join(', ')}`;
   } else {
     alert(INVALID_CAR_NAMES_MESSAGE);
   }
