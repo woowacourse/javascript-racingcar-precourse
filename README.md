@@ -2,29 +2,32 @@
 
 ## 🎯 구현할 기능 목록
 
--   1. 자동차 이름 유효성 확인
+### 1. 자동차 이름 유효성 확인
 
-    validateCarNames 함수를 통해 이름의 유효성을 판단한다.
-    이름이 유효한 경우, renderTryCountScreen 함수를 실행하여 시도횟수 화면을 출력하고,
-    makeRacingCountSubmitButton 함수를 실행하여 시도횟수 확인 버튼에 클릭이벤트를 설정한다.
-    이름이 유효하지 않을 경우, resetCarNamesInputValue 함수를 실행하여 재입력 메시지를 띄우고 인풋의 값을 초기화한다.
+`validateCarNames` 함수를 통해 이름의 유효성을 판단한다.
 
--   2. 자동차 객체 생성
+이름이 유효한 경우, `renderTryCountScreen` 함수를 실행하여 시도횟수 화면을 출력한다.
+`makeRacingCountSubmitButton` 함수를 실행하여 시도횟수 확인 버튼에 클릭이벤트를 설정한다.
 
-    Car 클래스를 만들고 Car 클래스의 go메서드와 render메서드를 통해 만들어진 객체의 전진횟수, 전진기호를 부여하고, 결과를 출력할 수 있게 한다.
-    makeNewCars 함수를 통해 car객체를 생성한다.
+이름이 유효하지 않을 경우, `resetCarNamesInputValue` 함수를 실행하여 `alert` 메시지를 띄우고 인풋의 값을 초기화한다.
 
-    3. 레이싱 게임 실행
+### 2. 자동차 객체 생성
 
-    playRacingCarGames 함수를 통해 car의 go메서드를 시도횟수만큼 반복한다.
+`Car` 클래스를 만들고 `Car` 클래스의 `go`메서드와 `render`메서드를 통해 만들어진 객체의 전진횟수, 전진기호를 부여하고, 결과를 출력할 수 있게 한다.
+`makeNewCars` 함수를 통해 car 객체를 생성한다.
 
--   4. 게임 결과 화면 출력
+### 3. 레이싱 게임 실행
 
-    renderRacingResultScreen 함수를 통해 시도횟수만큼 car의 render메서드를 실행하여 각 회차의 게임 결과 화면을 출력한다.
+`playRacingCarGames` 함수를 통해 car의 `go`메서드를 시도횟수만큼 반복한다.
 
--   5. 최종 우승자 표시
+### 4. 게임 결과 화면 출력
 
-    renderRacingGameWinner 함수를 통해 전진횟수가 가장 최종우승자의 이름을 결과화면에 출력한다.
+`renderRacingResultScreen` 함수를 통해 시도횟수만큼 car의 `render`메서드를 실행하여 각 회차의 게임 결과 화면을 출력한다.
+
+### 5. 최종 우승자 표시
+
+`renderRacingGameWinner` 함수를 통해 전진횟수가 가장 최종우승자의 이름을 결과화면에 출력한다.
+
 
 ## 🎯 기능 요구사항
 
