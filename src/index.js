@@ -41,7 +41,7 @@ function makeCarObj(carNames) {
     };
     carsArr.push(carObj);
   }
-  //   console.log(carsArr, carsArr.length);
+  console.log(carsArr);
   makeResultBox(carsArr);
 }
 
@@ -70,9 +70,27 @@ function makeResultBox(carsArr) {
 
 // 실행 결과창에 자동차의 이름, 랜덤숫자 출력해보기
 function printResult(resultBox, carsArr) {
+  let raceCars = [];
+  let printMove = "";
+
   for (let i = 0; i < carsArr.length; i++) {
-    resultBox.innerHTML += `${carsArr[i].name}: ${carsArr[i].randomNum}<br />`;
+    let moveCars = {
+      name: `${carsArr[i].name}`,
+      move: 0,
+    };
+    // 실행 결과창에 랜덤숫자가 4~9인 경우 전진 출력
+    if (carsArr[i].randomNum <= 9 && carsArr[i].randomNum >= 4) {
+      printMove = "-";
+      moveCars.move += 1;
+    } else {
+      printMove = "";
+    }
+    raceCars.push(moveCars);
+
+    resultBox.innerHTML += `${carsArr[i].name}: ${printMove}<br>`;
   }
+
+  console.log(raceCars);
 }
 
 // 횟수 입력 버튼에 이벤트 리스너 달기
@@ -87,5 +105,5 @@ function onRaceCountSubmit() {
   const raceCountInput = document.getElementsByTagName("input")[1];
   raceCountInput.id = "racing-count-input";
   let raceCount = raceCountInput.value;
-  console.log(raceCount);
+  return raceCount;
 }
