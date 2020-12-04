@@ -46,16 +46,4 @@ function splitString(string, separator) {
   return string.split(separator);
 }
 
-function compareDistance(a, b) {
-  return b.moveForwardDistance - a.moveForwardDistance;
-}
-
-export {
-  isHigherThan,
-  splitString,
-  compareDistance,
-  isLongerThan,
-  isNames,
-  isZero,
-  isNumber,
-};
+export { isHigherThan, splitString, isLongerThan, isNames, isZero, isNumber };

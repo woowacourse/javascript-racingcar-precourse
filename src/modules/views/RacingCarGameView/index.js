@@ -1,6 +1,5 @@
 import {
   splitString,
-  compareDistance,
   isLongerThan,
   isNames,
   isZero,
@@ -140,7 +139,9 @@ export default class RacingCarGameView {
 
   renderWinners(cars) {
     const sortedCars = [...cars];
-    sortedCars.sort(compareDistance);
+    sortedCars.sort((a, b) => {
+      return b.moveForwardDistance - a.moveForwardDistance;
+    });
     const winners = this.decideWinners(sortedCars);
     const winnersString = winners.join(', ');
 
