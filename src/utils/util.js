@@ -11,7 +11,7 @@ const getCarsNameList = inputString => {
   return result;
 };
 
-const getTryCount = inputString => {
+const getRacingCount = inputString => {
   const result = parseInt(inputString);
   return result > 0 ? result : 0;
 };
