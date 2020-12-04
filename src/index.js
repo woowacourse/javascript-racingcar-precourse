@@ -15,7 +15,7 @@ class Car {
 
     render(roundNumber) {
         const moveSign = this.moveList.slice(0, roundNumber).join("");
-        return `<div>${this.name}: ${moveSign}<div>`;
+        return `<div>${this.name}: ${moveSign}</div>`;
     }
 }
 
@@ -33,7 +33,6 @@ function playRacingGames(tryCounts, carsArray) {
     );
 
     showRacingResultScreen(tryCounts, carsArray);
-    console.log(carsArray);
 }
 
 function showRacingResultScreen(tryCounts, carsArray) {
@@ -42,10 +41,29 @@ function showRacingResultScreen(tryCounts, carsArray) {
 
     [...Array(Number(tryCounts))].forEach((car, tryCount) => {
         carsArray.forEach((car) => {
-            racingResultScreen.innerHTML += car.render(tryCount);
+            racingResultScreen.innerHTML += car.render(tryCount + 1);
         });
         racingResultScreen.innerHTML += `<br/>`;
     });
+
+    showRacingGameWinner(carsArray, racingResultScreen);
+}
+
+function showRacingGameWinner(carsArray, racingResultScreen) {
+    const moveCounts = carsArray.map((car) => car.moveCounts);
+    let winnerList = [];
+
+    carsArray.forEach((car) => {
+        if (car.moveCounts === Math.max(...moveCounts)) {
+            winnerList.push(car.name);
+        }
+    });
+
+    racingResultScreen.innerHTML += `
+    <div>최종우승자: ${winnerList.join(", ")}</div>
+    `;
+    console.log(carsArray);
+    console.log(winnerList);
 }
 
 function validateCarNames(carNamesInputValue) {
