@@ -34,7 +34,7 @@
 
 - [ ] 입력받기 : 몇 번의 이동을 할 것인지
   - [x] input validation : 숫자가 아닌 입력의 경우
-  - [ ] input validation : 음수의 경우
+  - [ ] input validation : 1 미만의 숫자의 경우
   - [ ] input validation : 소수점이 존재하는 경우
 
 ### Race - 경기진행 기능
@@ -50,6 +50,7 @@
 - 초기에는 count 입력받는 부분과 result 부분은 보이지 않아야 합니다.
 - input validation : 이름이 하나만 입력 될 경우 ( 어차피 그사람이 우승이므로 2명이상부터 진행)
 - input validation : 숫자가 아닌입력의 경우 input type이 number라서 자동으로 걸러짐.
+- input validation : 음수의 경우가 아니라 1미만의 숫자의 경우 필터링 (0회 진행은 의미없음.)
 
 ## 🎯 기능 요구사항
 
