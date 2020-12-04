@@ -14,7 +14,7 @@ export default class RacingCarGame {
     this.$racingCountInput = document.getElementById('racing-count-input');
     this.$racingCountSubmit = document.getElementById('racing-count-submit');
     this.$resultContainer = document.getElementById('result-container');
-    this.carNames = [];
+    this.cars = [];
     this.racingCount = null;
     this.totalDist = 0;
   }
@@ -24,7 +24,7 @@ export default class RacingCarGame {
   }
 
   _getWinCars() {
-    return this.carNames.reduce((acc, car) => {
+    return this.cars.reduce((acc, car) => {
       if(car.pos[this.racingCount-1] === this.totalDist) acc.push(car.name);
       return acc;
     }, []);
@@ -38,7 +38,7 @@ export default class RacingCarGame {
 
   moveCars(turn) {
     console.log(`turn ${turn}`);
-    this.carNames.forEach(car => {
+    this.cars.forEach(car => {
       car._play(this._createRandomNumber(), turn);
       this.totalDist = Math.max(car.pos[turn-1], this.totalDist);
     });
@@ -72,7 +72,7 @@ export default class RacingCarGame {
 
   submitCarNamesInput(carNames) {
     showContainer(this.$racingCountContainer);
-    this.carNames = carNames;
+    this.cars = carNames;
     return this.userInputRacingCount();
   }
 

@@ -28,3 +28,5 @@ export const disableInputs = ($input, $button) => {
   $input.setAttribute('disabled', 'true');
   $button.setAttribute('disabled', 'true');
 }
+
+//render step
