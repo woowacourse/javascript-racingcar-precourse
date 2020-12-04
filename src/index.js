@@ -18,22 +18,58 @@ const getCarNamesToList = function () {
       carNamesInput,
     );
   }
-  
+
   return carNamesList;
+};
+
+const setElemVisible = function (elem, visible) {
+  if (visible) {
+    elem.classList.replace('hide', 'visible');
+  } else {
+    elem.classList.replace('visible', 'hide');
+  }
 };
 
 const handleCarNamesSubmitBtn = function () {
   try {
     const carNamesList = getCarNamesToList();
     // TODO: 이름대로 car instant 생성해서 이름 지정하기
-    // TODO: 숨겨둔 횟수 div 보이기
+    setElemVisible(document.querySelector('#racing-count-container'), true);
   } catch (e) {
     alert(e.message);
     if (e.errElem) {
       e.errElem.focus();
-    } 
+    }
+  }
+};
+
+const getRacingCount = function () {
+  const racingCountInput = document.querySelector('#racing-count-input');
+  const racingCount = Number(racingCountInput.value);
+  if (!racingCountInput.value || Number.isNaN(racingCount)) {
+    throw new ValidationError('숫자를 입력해주세요', racingCountInput);
+  }
+  if (!Number.isInteger(racingCount) || racingCount <= 0) {
+    throw new ValidationError('자연수를 입력해주세요', racingCountInput);
+  }
+
+  return racingCount;
+};
+
+const handleCountSubmitBtn = function () {
+  try {
+    const racingCount = getRacingCount();
+    // TODO: 경기 횟수 지정하기
+  } catch (e) {
+    alert(e.message);
+    if (e.errElem) {
+      e.errElem.focus();
+    }
   }
 };
 
 const carNamesSubmitBtn = document.querySelector('#car-names-submit');
 carNamesSubmitBtn.addEventListener('click', handleCarNamesSubmitBtn);
+
+const racingCountSubmitbtn = document.querySelector('#racing-count-submit');
+racingCountSubmitbtn.addEventListener('click', handleCountSubmitBtn);
