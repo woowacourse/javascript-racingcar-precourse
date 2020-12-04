@@ -1,0 +1,18 @@
+export default class RacingCar {
+  constructor(name, position = 0) {
+    this._name = name;
+    this._position = position;
+  }
+
+  getName() {
+    return this._name;
+  }
+
+  getPosition() {
+    return this._position;
+  }
+
+  move() {
+    this._position += 1;
+  }
+}

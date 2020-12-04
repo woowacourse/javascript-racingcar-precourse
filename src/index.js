@@ -1,8 +1,7 @@
+import RacingCarGame from './racingCarGame.js';
 import ValidationError from './validationError.js';
 
-export default class RacingCarGame {}
-
-new RacingCarGame();
+const racingCarGame = new RacingCarGame();
 
 const getCarNamesToList = function () {
   const carNamesInput = document.querySelector('#car-names-input');
@@ -33,7 +32,7 @@ const setElemVisible = function (elem, visible) {
 const handleCarNamesSubmitBtn = function () {
   try {
     const carNamesList = getCarNamesToList();
-    // TODO: 이름대로 car instant 생성해서 이름 지정하기
+    racingCarGame.initCars(carNamesList);
     setElemVisible(document.querySelector('#racing-count-container'), true);
   } catch (e) {
     alert(e.message);
@@ -59,7 +58,8 @@ const getRacingCount = function () {
 const handleCountSubmitBtn = function () {
   try {
     const racingCount = getRacingCount();
-    // TODO: 경기 횟수 지정하기
+    // TODO: 경기 횟수만큼 레이싱하기
+    racingCarGame.setRacingCount(racingCount);
   } catch (e) {
     alert(e.message);
     if (e.errElem) {
