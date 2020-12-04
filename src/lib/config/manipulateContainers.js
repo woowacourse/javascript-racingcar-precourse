@@ -1,4 +1,4 @@
-import addIdsToNodes from '/src/lib/config/addIdsToNodes.js';
+import addIdsToNodes from './addIdsToNodes.js';
 
 export const hideContainer = $container => {
   if(typeof($container) !== 'object') return;

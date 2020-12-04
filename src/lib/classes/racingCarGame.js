@@ -1,10 +1,10 @@
-import { GO_AHEAD_MAX_VALUE } from '/src/lib/variables/constantNumbers.js';
-import InputsControl from '/src/lib/classes/checkUserInputs.js';
+import { GO_AHEAD_MAX_VALUE } from '../variables/constantNumbers.js';
+import InputsControl from '../classes/checkUserInputs.js';
 
 import {
   showContainer,
   disableInputs,
-} from '/src/lib/config/manipulateContainers.js';
+} from '../config/manipulateContainers.js';
 
 export default class RacingCarGame {
   constructor() {

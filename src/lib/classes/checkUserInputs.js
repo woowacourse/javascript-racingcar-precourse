@@ -1,5 +1,5 @@
-import { MAX_CAR_NAME_LENGTH } from '/src/lib/variables/constantNumbers.js';
-import Car from '/src/lib/classes/car.js';
+import { MAX_CAR_NAME_LENGTH } from '../variables/constantNumbers.js';
+import Car from './car.js';
 
 class InputResult {
   constructor(goToNextStep, inputData) {
