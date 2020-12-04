@@ -1,4 +1,4 @@
-import { checkCarNames } from './validation.js';
+import { getCarNamesCheckResult } from './validation.js';
 import { preProcessCarNames, preProcessTryCount } from './preProcess.js';
 
 it('preProcessCarNames', () => {
@@ -9,7 +9,8 @@ it('preProcessTryCount', () => {
   const preProcessedTryCount = preProcessTryCount(' 12 ');
   expect(preProcessedTryCount).toBe(12);
 });
-it('checkCarNames', () => {
-  const isValidNames = checkCarNames('north');
-  expect(isValidNames).toBe(true);
+it('getCarNamesCheckResult', () => {
+  expect(getCarNamesCheckResult('north')).toMatchObject({
+    isCarNumberNotEnough: true,
+  });
 });

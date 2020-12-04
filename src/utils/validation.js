@@ -12,17 +12,31 @@ const checkIsCarNameLong = (carNameList) => {
   return isCarNameLong;
 };
 
-export const checkCarNames = (names) => {
-  let isValid = true;
+const checkIsAllCarNameDifferent = (carNameList) => {
+  const isAllCarNameDifferent =
+    carNameList.length !== new Set(carNameList).size;
+
+  return isAllCarNameDifferent;
+};
+
+export const getCarNamesCheckResult = (names) => {
+  const carNameCheckResult = {
+    isCarNumberNotEnough: false,
+    isCarNameLong: false,
+    isAllCarNameDifferent: false,
+  };
   const carNameList = names.split(NAME_SEPERATOR);
-  if (carNameList.length === 0) {
-    isValid = false;
+  if (carNameList.length < 2) {
+    carNameCheckResult.isCarNumberNotEnough = true;
   }
   if (checkIsCarNameLong(carNameList)) {
-    isValid = false;
+    carNameCheckResult.isCarNameLong = true;
+  }
+  if (checkIsAllCarNameDifferent(carNameList)) {
+    carNameCheckResult.isAllCarNameDifferent = true;
   }
 
-  return isValid;
+  return carNameCheckResult;
 };
 export const checkTryCount = (tryCount) => {
   let isValid = true;
