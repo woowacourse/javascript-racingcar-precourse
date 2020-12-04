@@ -5,4 +5,5 @@ function Car(name) {
 export default function makeNewCars(carNamesArray) {
   const carList = carNamesArray.map((name) => new Car(name));
 
+  return carList;
 }
