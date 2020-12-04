@@ -12,6 +12,11 @@ class Car {
         const moveCount = move ? 1 : 0;
         this.moveCounts += moveCount;
     }
+
+    render(roundNumber) {
+        const moveSign = this.moveList.slice(0, roundNumber).join("");
+        return `<div>${this.name}: ${moveSign}<div>`;
+    }
 }
 
 function makeNewCars(racingCountInputValue) {
@@ -26,6 +31,21 @@ function playRacingGames(tryCounts, carsArray) {
     [...Array(Number(tryCounts))].forEach(() =>
         carsArray.forEach((car) => car.go())
     );
+
+    showRacingResultScreen(tryCounts, carsArray);
+    console.log(carsArray);
+}
+
+function showRacingResultScreen(tryCounts, carsArray) {
+    const racingResultScreen = document.querySelector("#racing-result");
+    racingResultScreen.innerHTML = `<h4>📄 실행 결과</h4>`;
+
+    [...Array(Number(tryCounts))].forEach((car, tryCount) => {
+        carsArray.forEach((car) => {
+            racingResultScreen.innerHTML += car.render(tryCount);
+        });
+        racingResultScreen.innerHTML += `<br/>`;
+    });
 }
 
 function validateCarNames(carNamesInputValue) {
