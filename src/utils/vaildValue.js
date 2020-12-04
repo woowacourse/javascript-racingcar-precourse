@@ -5,19 +5,34 @@ isCorrectCarNames
 - 알파벳,한글,숫자로 구성된 이름만 가능
 - 중복 이름 가능
 - 공백 포함된 이름 안됨
-*/
 
-const rKorean = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
-const rNumber = /[0-9]/;
-const rAlphabet = /[a-zA-Z]/;
+rKorean = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
+rNumber = /[0-9]/;
+rAlphabet = /[a-zA-Z]/;
+*/
+import variablesObj from "../constants/variales.js";
+
+const rString = /[^0-9|a-zA-Z|ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
 const rEmpty = /\s/g;
 
 export const isCorrectCarNames = (inputCarNames) => {
   for (const carName of inputCarNames) {
     const carNamelength = carName.length;
 
-    if (rEmpty.test(carName)) return false;
-    if (carNamelength > 5 || carNamelength < 1) return false;
+    if (rEmpty.test(carName)) {
+      return false;
+    }
+
+    if (
+      carNamelength > variablesObj.CAR_NAME_LENGTH_MAX ||
+      carNamelength < variablesObj.CAR_NAME_LENGTH_MIN
+    ) {
+      return false;
+    }
+
+    if (rString.test(carName)) {
+      return false;
+    }
   }
 
   return true;

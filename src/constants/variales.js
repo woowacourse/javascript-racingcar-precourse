@@ -7,7 +7,12 @@ random number min 0, max 9
 멈춤 ""
 우승자 글 템플릿
 */
+const carNameLengthMin = 1;
+const carNameLengthMax = 5;
 
-const variablesObj = {};
+const variablesObj = {
+  CAR_NAME_LENGTH_MIN: carNameLengthMin,
+  CAR_NAME_LENGTH_MAX: carNameLengthMax,
+};
 
 export default variablesObj;
