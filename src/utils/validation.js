@@ -28,10 +28,10 @@ const checkIsAllCarNameDifferent = (carNameList) => {
 export const makeCarNamesCheckResult = (names) => {
   const carNameList = names.split(NAME_SEPERATOR);
   if (carNameList.length < 2) {
-    carNameCheckResult.isCarNumberNotEnough = false;
+    carNameCheckResult.isCarNumberEnough = false;
   }
   if (checkIsCarNameLong(carNameList)) {
-    carNameCheckResult.isCarNameLong = false;
+    carNameCheckResult.isCarNameNotLong = false;
   }
   if (checkIsAllCarNameDifferent(carNameList)) {
     carNameCheckResult.isAllCarNameDifferent = false;
