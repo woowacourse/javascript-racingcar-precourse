@@ -20,7 +20,7 @@
 #### 공통기능
 
 - [x] input validation : 빈 입력인 경우
-- [ ] 잘못된 입력의 경우 alert message & clear input
+- [x] 잘못된 입력의 경우 alert message & clear input
 
 #### 자동차 이름 입력
 

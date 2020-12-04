@@ -2,7 +2,7 @@ import { namesValidation } from "../input/index.js";
 
 const namesButtonClick = (namesInput) => {
   const names = namesInput.value;
-  namesValidation(names);
+  const isValid = namesValidation(names, namesInput);
 };
 
 const handler = () => {
@@ -11,7 +11,7 @@ const handler = () => {
 
   if (namesButton) {
     namesButton.addEventListener("click", () => {
-      namesButtonClick(namesInput);
+      namesButtonClick(namesInput, namesInput);
     });
   }
 };
