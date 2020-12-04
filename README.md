@@ -27,6 +27,7 @@
   - [x] input validation : 입력받은 자동차 이름에 공백이름이 포함된 경우 alert message
   - [ ] input validation : 입력받은 자동차 이름 중 5자 초과하는 경우 alert message
   - [ ] input validation : 입력받은 자동차 이름 중 중복되는 이름이 있는 경우
+  - [ ] input validation : 이름이 하나만 입력 될 경우
 
 #### Count 입력
 
@@ -46,6 +47,7 @@
 ### 그외 개발하며 추가한 사항
 
 - 초기에는 count 입력받는 부분과 result 부분은 보이지 않아야 합니다.
+- input validation : 이름이 하나만 입력 될 경우 ( 어차피 그사람이 우승이므로 2명이상부터 진행)
 
 ## 🎯 기능 요구사항
 
