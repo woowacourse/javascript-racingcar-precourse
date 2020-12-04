@@ -4,10 +4,10 @@ const RETURN_MESSAGES = {
   ERROR_RACING_COUNT_NEGATIVE: "1 이상의 숫자를 넣어주세요!"
 };
 
-export default function carName() {
-  const carNames = document.getElementById("car-names-input").value;
+export function getUserInputValue(elementId) {
+  const inputValue = document.getElementById(elementId).value;
 
-  return carNames;
+  return inputValue;
 }
 
 export function isValidCarName(carNames) {
@@ -25,12 +25,6 @@ export function isValidCarName(carNames) {
       return isValid;
     }
   }
-}
-
-export function racingCount() {
-  const racingCount = document.getElementById("racing-count-input").value;
-
-  return racingCount;
 }
 
 export function isValidRacingCount(racingCount) {
