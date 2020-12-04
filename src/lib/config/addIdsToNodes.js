@@ -30,6 +30,17 @@ const addIdsToInputGetRacingCountNode = () => {
   $racingCountSubmit.id = 'racing-count-submit';
 }
 
+
+
+export const addIdsToResultContainerNode = $resultContainer => {
+  const $showGameStep = document.createElement("div");
+  const $showWinCars = document.createAttribute("div");
+  $showGameStep.id = "show-game-step";
+  $showWinCars.id = "show-win-cars";
+  $resultContainer.appendChild($showGameStep);
+  $resultContainer.appendChild($showWinCars);
+}
+
 export default () => {
   addIdsToParentNodes();
   addIdsToInputCarNamesNode();

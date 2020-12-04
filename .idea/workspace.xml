@@ -7,6 +7,9 @@
     <list default="true" id="d8d6e1d9-7c12-4bc6-84e0-9c2963f22680" name="Default Changelist" comment="setting eslint and prettier">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/classes/racingCarGame.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/classes/racingCarGame.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/config/addIdsToNodes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/config/addIdsToNodes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/config/manipulateContainers.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/config/manipulateContainers.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,6 +21,9 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/index.html" root0="SKIP_INSPECTION" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedIndex" value="1" />
   </component>
   <component name="ProjectId" id="1l9UcjGtl1cB51HMApIwnQqR1m7" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -61,7 +67,7 @@
       <updated>1607008885263</updated>
       <workItem from="1607008892962" duration="736000" />
       <workItem from="1607042143081" duration="9563000" />
-      <workItem from="1607060936625" duration="10714000" />
+      <workItem from="1607060936625" duration="12429000" />
     </task>
     <task id="LOCAL-00001" summary="setting eslint and prettier">
       <created>1607060398395</created>

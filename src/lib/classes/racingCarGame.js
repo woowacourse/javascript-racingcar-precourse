@@ -4,7 +4,7 @@ import InputsControl from '../classes/checkUserInputs.js';
 import {
   showContainer,
   disableInputs,
-  renderCarsMovingStep,
+  renderGameStep,
   renderWinCars,
 } from '../config/manipulateContainers.js';
 
@@ -34,21 +34,21 @@ export default class RacingCarGame {
 
   async getResult() {
     //manipulate result container
-    await renderCarsMovingStep(this.cars, this.racingCount);
+    await renderGameStep(this.cars, this.racingCount);
     await renderWinCars(this._getWinCars());
     await showContainer(this.$resultContainer);
   }
 
-  moveCars(turn) {
-    this.cars.forEach(car => {
+  async moveCars(turn) {
+    await this.cars.forEach(car => { //promise should be added
       car._play(this._createRandomNumber());
       this.totalDist = Math.max(car.pos[turn-1], this.totalDist);
     });
-    this.getResult();
+    await this.getResult();
   }
   
-  play() {
-    for(let turn = 1; turn <= this.racingCount; turn++) this.moveCars(turn);
+  async play() {
+    for(let turn = 1; turn <= this.racingCount; turn++) await this.moveCars(turn);
   }
 
   checkRacingCountInput(racingCountInputData) {

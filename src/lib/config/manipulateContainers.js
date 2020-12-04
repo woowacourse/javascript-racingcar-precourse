@@ -30,7 +30,7 @@ export const disableInputs = ($input, $button) => {
 }
 
 //render step
-export const renderCarsMovingStep = (cars, totalStep) => {
+export const renderGameStep = (cars, totalStep) => {
   console.log(cars, totalStep);
 }
 
