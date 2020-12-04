@@ -33,9 +33,11 @@ export default class RacingCarGame {
   }
 
   async getResult() {
+    const winCars = this._getWinCars();
+
     //manipulate result container
     await renderGameStep(this.cars, this.racingCount);
-    await renderWinCars(this._getWinCars());
+    await renderWinCars(winCars);
     //game steps should be rendered before show result container
 
     await showContainer(this.$resultContainer);
@@ -46,11 +48,11 @@ export default class RacingCarGame {
       car._play(this._createRandomNumber());
       this.totalDist = Math.max(car.pos[turn-1], this.totalDist);
     });
-    await this.getResult();
   }
   
   async play() {
     for(let turn = 1; turn <= this.racingCount; turn++) await this.moveCars(turn);
+    await this.getResult();
   }
 
   checkRacingCountInput(racingCountInputData) {
