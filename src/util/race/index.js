@@ -9,6 +9,8 @@ const initialState = (namesArray) => namesArray.map((name) => new Car(name, 0));
 
 const generateRandomNumber = () => Math.floor(Math.random() * 10);
 
+const moveOrStop = (number) => (number >= 4 ? true : false);
+
 export const raceStart = () => {
   const nameInput = document.getElementById("car-names-input");
   const countInput = document.getElementById("racing-count-input");
