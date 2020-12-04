@@ -18,3 +18,12 @@ export const displayEachRace = (namesArray, eachRaceResult, count) => {
     raceResult.appendChild(raceWrapper);
   }
 };
+
+export const displayWinner = (winnerNames) => {
+  const raceResult = document.getElementsByClassName("racing-result")[0];
+  const names = winnerNames.join(",");
+  const div = document.createElement("div");
+
+  div.innerText = `최종우승자 : ${names}`;
+  raceResult.appendChild(div);
+};

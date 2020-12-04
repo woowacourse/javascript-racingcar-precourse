@@ -1,4 +1,4 @@
-import { displayEachRace } from "../display/index.js";
+import { displayEachRace, displayWinner } from "../display/index.js";
 import { splitByComma } from "../input/index.js";
 
 function Car(name, moveDistance) {
@@ -55,4 +55,5 @@ export const raceStart = () => {
 
   const winnerNameArray = chooseWinner(cars, eachRaceResult);
   displayEachRace(namesArray, eachRaceResult, count);
+  displayWinner(winnerNameArray);
 };
