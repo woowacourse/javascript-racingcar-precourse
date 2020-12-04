@@ -1,16 +1,14 @@
 import {carNamesInput, racingCountInput} from "./view/input/input.js";
 import {carNamesButton, racingCountButton} from "./view/button/button.js";
 import Car from "./car/car.js";
-import Validation from "./utils/validation.js";
+import Validation from "./validation/validation.js";
 import Toggle from "./toggle/toggle.js";
 import Init from "./init/init.js";
 
 export default class RacingCarGame {
 	constructor() {
 		new Init();
-		
 		this.toggle = new Toggle();
-
 		this.carNames;
 		this.racingCount;
 
