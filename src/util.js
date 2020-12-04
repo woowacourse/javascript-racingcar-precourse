@@ -1,4 +1,5 @@
 import {
+  EMPTY_STRING,
   MIN_ELEM_COUNTS,
   MIN_ELEM_LENGTH,
   MAX_ELEM_LENGTH,
@@ -69,6 +70,11 @@ export default class Util {
   checkPositive = number => number > 0;
 
   checkInteger = number => number % 1 === 0;
+
+  handleAlert = node => {
+    node.value = EMPTY_STRING;
+    this.alertMessage(node);
+  };
 
   alertMessage(node) {
     let message = COMMON_ALERT_MESSAGE;

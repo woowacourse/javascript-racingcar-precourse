@@ -1,14 +1,18 @@
 import { DEFAULT_POSITION, EMPTY_ARRAY } from "./constants.js";
 
 export default class Winner {
-  constructor(carsList) {
-    this._carsList = carsList;
+  constructor(cars) {
+    this._cars = cars;
+  }
+
+  get cars() {
+    return this._cars;
   }
 
   getMaxDistance() {
     let maxDistance = DEFAULT_POSITION;
 
-    this._carsList.forEach(
+    this._cars.forEach(
       car => (maxDistance = Math.max(maxDistance, car.position))
     );
 
@@ -19,7 +23,7 @@ export default class Winner {
     const winners = EMPTY_ARRAY;
     const maxDistance = this.getMaxDistance();
 
-    this._carsList.forEach(car =>
+    this._cars.forEach(car =>
       car.position === maxDistance ? winners.push(car.name) : null
     );
 

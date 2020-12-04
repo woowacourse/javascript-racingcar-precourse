@@ -1,7 +1,7 @@
 import Car from "./car.js";
 import Render from "./render.js";
 import Util from "./util.js";
-import { EMPTY_ARRAY, EMPTY_STRING } from "./constants.js";
+import { EMPTY_ARRAY } from "./constants.js";
 
 export default class RacingCarGame {
   util = new Util();
@@ -30,31 +30,26 @@ export default class RacingCarGame {
     const target = event.target.id;
 
     if (target === "car-names-submit") {
-      this.setCarsList();
+      this.setCars();
     }
     if (target === "racing-count-submit") {
       this.runRace();
     }
   };
 
-  setCarsList = () => {
+  setCars = () => {
     const namesInput = document.querySelector("#car-names-input");
-    const value = namesInput.value;
+    let names;
 
     if (!this.util.checkValidation(namesInput)) {
-      this.handleError(namesInput);
+      this.util.handleAlert(namesInput);
       this.submitNames();
 
       return;
     }
-    this.carsList = value.split(",");
-    this.carsList = this.carsList.map(name => new Car(name));
+    names = namesInput.value.split(",");
+    this.cars = names.map(name => new Car(name));
     this.submitCounts();
-  };
-
-  handleError = node => {
-    node.value = EMPTY_STRING;
-    this.util.alertMessage(node);
   };
 
   submitCounts = () => {
@@ -66,12 +61,12 @@ export default class RacingCarGame {
   };
 
   runRace = () => {
-    const countInput = document.querySelector("#racing-count-input");
     const resultContainer = document.querySelector(".result-container");
-    let count = Number(countInput.value);
+    const countInput = document.querySelector("#racing-count-input");
+    const count = Number(countInput.value);
 
     if (!this.util.checkValidation(countInput)) {
-      this.handleError(countInput);
+      this.util.handleAlert(countInput);
       this.submitCounts();
 
       return;
@@ -80,16 +75,16 @@ export default class RacingCarGame {
     for (let i = 0; i < count; i++) {
       this.runRound();
     }
-    this.render.renderWinners(this.carsList);
+    this.render.renderWinners(this.cars);
   };
 
   runRound = () => {
-    const result = EMPTY_ARRAY;
+    const roundResult = EMPTY_ARRAY;
 
-    this.carsList.forEach(car => {
+    this.cars.forEach(car => {
       car.position += this.util.getDistance();
-      result.push({ name: car.name, position: car.position });
+      roundResult.push({ name: car.name, position: car.position });
     });
-    this.render.renderResult(result);
+    this.render.renderResult(roundResult);
   };
 }
