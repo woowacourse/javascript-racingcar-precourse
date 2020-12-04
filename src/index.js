@@ -1,7 +1,7 @@
 import {carNamesInput, racingCountInput} from "./view/input/input.js";
 import {carNamesButton, racingCountButton} from "./view/button/button.js";
 import Car from "./car/car.js";
-import Validity from "./utils/validity.js";
+import Validation from "./utils/validation.js";
 import Toggle from "./toggle/toggle.js";
 import Init from "./init/init.js";
 
@@ -9,49 +9,71 @@ export default class RacingCarGame {
 	constructor() {
 		new Init();
 		
-		this.validity = new Validity();
 		this.toggle = new Toggle();
 
-		this.carNamesValue;
-		this.racingCountValue;
+		this.carNames;
+		this.racingCount;
 
-		this.setHandlers();
+		this.setCarNamesButtonHandlers();
+		this.setRacingCountButtonHandlers();
 	}
 
-	setHandlers = () => {
-		carNamesButton.addEventListener("click", this.setCarNames);
-		racingCountButton.addEventListener("click", this.setRacingCount);
-		racingCountButton.addEventListener("click", this.startGame);
+	setCarNamesButtonHandlers = () => {
+		carNamesButton.addEventListener("click", this.continueGameIfValid);
 	}
 
-	setCarNames = () => {
-		this.carNamesValue = carNamesInput.value;
-
-		console.log(this.validity.isCarNameValid(this.carNames.split(",")));
+	setRacingCountButtonHandlers = () => {
+		racingCountButton.addEventListener("click", this.playGameIfValid);
 	}
 
-	setRacingCount = () => {
-		this.racingCountValue = Number(racingCountInput.value);
-	}
+	continueGameIfValid = () => {
+		const carNames = carNamesInput.value.split(",");
+		let carName;
 
-	startGame = () => {
-		if (this.validity.isRacingCountValid(this.racingCount)) {
-			const carNamesList = this.carNames.split(",");
-			const carObjects = this.getCarObjectsList(carNamesList);
-		
-			this.playGame(carObjects);
+		for (carName of carNames) {
+			if (!new Validation().isCarNameValid(carName)) return;
 		}
+
+		this.carNames = carNames;
+
+		this.showRacingCountInput();
+		this.showRacingCountButton();
 	}
 
-	getCarObjectsList = carNamesList => {
+	showRacingCountInput = () => {
+		this.toggle.showElement(racingCountInput);
+	}
+
+	showRacingCountButton = () => {
+		this.toggle.showElement(racingCountButton);
+	}
+
+	playGameIfValid = () => {
+		const racingCount = Number(racingCountInput.value);
+
+		if (!new Validation().isRacingCountValid(racingCount)) return;
+
+		this.racingCount = racingCount;
+
+		this.playGame();
+	}
+
+	playGame = () => {
+		const cars = this.getCarObjects(this.carNames);
+
+		for (let race = 0; race < this.racingCount; race++) {
+			cars.forEach(car => car.setDistance());
+		}
+
+		console.log(cars);
+	}
+
+	getCarObjects = carNamesList => {
 		const carObjects = [];
+		
 		carNamesList.forEach(carName => carObjects.push(new Car(carName)));
 
 		return carObjects;
-	}
-
-	playGame = (carObjects) => {
-		console.log(carObjects);
 	}
 }
 
