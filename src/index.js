@@ -17,18 +17,37 @@ export default class RacingCarGame {
       car.randomRacingNumbers = RacingUtil.randomNumbers(this.racingCount);
     });
 
-    this.showRacingResult(racingCars);
-
+    this.makeRacingResult(racingCars);
+    document.getElementById('racing-count-submit').disabled = true;
     console.log(racingCars);
   }
 
-  showRacingResult(racingCars) {
-    const resultArea = document.getElementById('result');
+  makeRacingResult(racingCars) {
+    document.getElementById('result').hidden = false;
+    const racingResultElement = document.getElementById('racing-result');
 
     for (let i = 0; i < this.racingCount; ++i) {
       const racingResult = this.getRacingResult(racingCars, i);
-      console.log(racingResult);
+      const racingResultDiv
+      = this.createRacingResultElement(racingCars, racingResult);
+      racingResultElement.appendChild(racingResultDiv);
+      racingResultElement.appendChild(document.createElement('br'));
     }
+  }
+
+  createRacingResultElement(racingCars, racingResult) {
+    const racingResultDiv = document.createElement('div');
+
+    racingCars.forEach((racingCar, i)=>{
+      if (racingResult[i]) racingCar.plusRacingResult();
+
+      const racingResultText = `${racingCar.name}: ${racingCar.racingResult}`;
+      const racingResultTextNode = document.createTextNode(racingResultText);
+      racingResultDiv.appendChild(racingResultTextNode);
+      racingResultDiv.appendChild(document.createElement('br'));
+    });
+
+    return racingResultDiv;
   }
 
   getRacingResult(racingCars, racingOrder) {
