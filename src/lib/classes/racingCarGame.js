@@ -4,8 +4,7 @@ import InputsControl from '../classes/checkUserInputs.js';
 import {
   showContainer,
   disableInputs,
-  renderGameStep,
-  renderWinCars,
+  renderResult
 } from '../config/manipulateContainers.js';
 
 export default class RacingCarGame {
@@ -35,11 +34,8 @@ export default class RacingCarGame {
   async getResult() {
     const winCars = this._getWinCars();
 
-    //manipulate result container
-    await renderGameStep(this.cars, this.racingCount);
-    await renderWinCars(winCars);
     //game steps should be rendered before show result container
-
+    await renderResult(this.$resultContainer, this.cars, winCars);
     await showContainer(this.$resultContainer);
   }
 

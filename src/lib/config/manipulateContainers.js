@@ -1,4 +1,4 @@
-import addIdsToNodes from './addIdsToNodes.js';
+import addIdsToNodes, { addIdsToResultContainer } from './addIdsToNodes.js';
 
 export const hideContainer = $container => {
   if(typeof($container) !== 'object') return;
@@ -31,10 +31,16 @@ export const disableInputs = ($input, $button) => {
 
 //render step
 //innerHTML should be used
-export const renderGameStep = async (cars, totalStep) => {
-  await console.log(cars, totalStep);
+const renderGameStep = (cars) => {
+  console.log(cars);
 }
 
-export const renderWinCars = (winCars) => {
+const renderWinCars = (winCars) => {
   console.log(winCars);
+}
+
+export const renderResult = ($resultContainer, cars, winCars) => {
+  addIdsToResultContainer($resultContainer);
+  renderGameStep(cars);
+  renderWinCars(winCars);
 }

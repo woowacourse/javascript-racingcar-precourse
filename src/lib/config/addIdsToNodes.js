@@ -31,6 +31,14 @@ const addIdsToInputGetRacingCountNode = () => {
 }
 
 //add child element to render result in the result container
+export const addIdsToResultContainer = $resultContainer => {
+  const $renderGameSteps = document.createElement('div');
+  const $renderWinCars = document.createElement('div');
+  $renderGameSteps.id = 'render-game-step';
+  $renderWinCars.id = 'render-win-cars';
+  $resultContainer.appendChild($renderGameSteps);
+  $resultContainer.appendChild($renderWinCars);
+}
 
 
 export default () => {
