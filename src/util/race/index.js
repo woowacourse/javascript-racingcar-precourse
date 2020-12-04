@@ -28,7 +28,10 @@ const calculateEachRace = (cars) => {
 
 const chooseWinner = (cars, eachRaceResult) => {
   const lastRaceResult = eachRaceResult[eachRaceResult.length - 1];
-  const winnerMoveScore = lastRaceResult.sort((a, b) => b - a)[0];
+  const lastScoreArray = [];
+
+  lastRaceResult.forEach((score) => lastScoreArray.push(score));
+  const winnerMoveScore = lastScoreArray.sort((a, b) => b - a)[0];
 
   const winner = cars.filter((car) => car.moveDistance === winnerMoveScore);
   const winnerName = winner.map((win) => win.name);
