@@ -1,3 +1,4 @@
+import { displayTag } from "../display/index.js";
 import { namesValidation } from "../input/index.js";
 
 const namesButtonClick = () => {
@@ -8,6 +9,11 @@ const namesButtonClick = () => {
 
   if (isValid) {
     const namesButton = document.getElementById("car-names-submit");
+    const countWrapper = document.getElementsByClassName(
+      "race-count-wrapper"
+    )[0];
+
+    displayTag(countWrapper);
     namesButton.removeEventListener("click", namesButtonClick);
   }
 };
