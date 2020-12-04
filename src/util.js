@@ -12,7 +12,7 @@ import {
 
 export default class Util {
   checkValidation = node => {
-    let isValidate = false;
+    let isValidate;
 
     if (node.id === "car-names-input") {
       isValidate = this.checkString(node.value);
@@ -25,33 +25,47 @@ export default class Util {
   };
 
   checkString = string => {
-    const elems = string.split(",");
+    const names = string.split(",");
+    let isValidate = false;
+
+    if (
+      this.checkNameCount(names) &&
+      names.every(this.checkNameLength) &&
+      names.every(this.checkNameLetter) &&
+      this.checkOverlap(names)
+    ) {
+      isValidate = true;
+    }
+
+    return isValidate;
+  };
+
+  checkNameCount = names => names.length >= MIN_ELEM_COUNTS;
+
+  checkNameLength = name =>
+    name.length >= MIN_ELEM_LENGTH && name.length <= MAX_ELEM_LENGTH;
+
+  checkNameLetter = name => {
+    const rException = /[^a-z0-9]/i;
     let isValidate = true;
 
-    if (!this.checkElemCount(elems)) {
-      isValidate = false;
-    }
-    if (!elems.every(this.checkElemLength)) {
-      isValidate = false;
-    }
-    if (!elems.every(this.checkElemLetter)) {
+    if (rException.test(name)) {
       isValidate = false;
     }
 
     return isValidate;
   };
 
-  checkElemCount = elems => elems.length >= MIN_ELEM_COUNTS;
-
-  checkElemLength = elem =>
-    elem.length >= MIN_ELEM_LENGTH && elem.length <= MAX_ELEM_LENGTH;
-
-  checkElemLetter = elem => {
-    const rException = /[^a-z0-9]/i;
+  checkOverlap = names => {
+    const hash = [];
     let isValidate = true;
 
-    if (rException.test(elem)) {
-      isValidate = false;
+    for (const name of names) {
+      if (hash[name]) {
+        isValidate = false;
+        break;
+      }
+      hash[name] = true;
     }
 
     return isValidate;
