@@ -35,7 +35,7 @@
 - [ ] 입력받기 : 몇 번의 이동을 할 것인지
   - [x] input validation : 숫자가 아닌 입력의 경우
   - [x] input validation : 1 미만의 숫자의 경우
-  - [ ] input validation : 소수점이 존재하는 경우
+  - [x] input validation : 소수점이 존재하는 경우
 
 ### Race - 경기진행 기능
 
