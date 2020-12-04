@@ -13,22 +13,28 @@ class CarNamesInput extends Component {
   }
 
   initializeEventListener() {
-    this._$target.addEventListener('click', event => this.handleEvent(event));
-    this._$target.addEventListener('keyup', event => this.handleEvent(event));
+    this._$target.addEventListener('click', event => {
+      if (event.target.id === 'car-names-submit') {
+        this.setCars(event);
+      }
+    });
+    this._$target.addEventListener('keyup', event => {
+      if (event.key === 'Enter') {
+        this.setCars(event);
+      }
+    });
   }
 
-  handleEvent(event) {
+  setCars() {
     let input;
     let carNames;
-    if (event.target.id === 'car-names-submit' || event.key === 'Enter') {
-      input = this.#$carNamesInput.value;
-      if (!this.isValidateInput(input)) {
-        this.handleError(input);
-        return;
-      }
-      carNames = this.getCarNames(input);
-      this._props.createCars(carNames);
+    input = this.#$carNamesInput.value;
+    if (!this.isValidateInput(input)) {
+      this.handleError(input);
+      return;
     }
+    carNames = this.getCarNames(input);
+    this._props.createCars(carNames);
   }
 
   handleError(input) {

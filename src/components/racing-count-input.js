@@ -15,20 +15,16 @@ class RacingCountInput extends Component {
   }
 
   initializeEventListener() {
-    this._$target.addEventListener('click', event => this.onClick(event));
-    this._$target.addEventListener('keyup', event => this.onKeyup(event));
-  }
-
-  onClick(event) {
-    if (event.target.id === 'racing-count-submit') {
-      this.setRacingCount();
-    }
-  }
-
-  onKeyup(event) {
-    if (event.key === 'Enter') {
-      this.setRacingCount();
-    }
+    this._$target.addEventListener('click', event => {
+      if (event.target.id === 'racing-count-submit') {
+        this.setRacingCount();
+      }
+    });
+    this._$target.addEventListener('keyup', event => {
+      if (event.key === 'Enter') {
+        this.setRacingCount();
+      }
+    });
   }
 
   setRacingCount() {
