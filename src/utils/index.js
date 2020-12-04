@@ -1,10 +1,3 @@
-function isHigherThanFour(number) {
-  if (number >= 4) {
-    return true;
-  }
-  return false;
-}
-
 function isLongerThanFive(names) {
   for (let i = 0; i < names.length; i++) {
     if (names[i].length > 5) {
@@ -13,6 +6,10 @@ function isLongerThanFive(names) {
   }
 
   return false;
+}
+
+function isHigherThan(number, comparison) {
+  return number >= comparison;
 }
 
 function isZero(count) {
@@ -55,7 +52,7 @@ function compareDistance(a, b) {
 }
 
 export {
-  isHigherThanFour,
+  isHigherThan,
   splitNamesString,
   compareDistance,
   isLongerThanFive,

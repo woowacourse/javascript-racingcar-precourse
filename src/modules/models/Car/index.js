@@ -1,4 +1,4 @@
-import { isHigherThanFour } from '../../../utils';
+import { isHigherThan } from '../../../utils';
 
 export default class Car {
   constructor(name) {
@@ -17,7 +17,7 @@ export default class Car {
   }
 
   moveForward() {
-    if (isHigherThanFour(this.randomNumber())) {
+    if (isHigherThan(this.randomNumber(), 4)) {
       this.moveForwardDistance++;
     }
   }
