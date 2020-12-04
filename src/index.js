@@ -41,7 +41,14 @@ export default function RacingCarGame() {
     this.checkRacingCountError(racingCount);
   };
 
-  this.checkRacingCountError = (racingCount) => {};
+  this.checkRacingCountError = (racingCount) => {
+    if (Number.isNaN(parseInt(racingCount))) {
+      alert("숫자만 입력해주세요!");
+    } else {
+      //TODOS:make instance
+      //TODOS:make random
+    }
+  };
 
   carNamesSubmit.addEventListener("click", this.getNamesFromInput);
   racingCountSubmit.addEventListener("click", this.getRacingCount);

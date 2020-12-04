@@ -70,7 +70,7 @@ class Car {
 - [X] checkNameLength: 자동차 이름의 오류 확인 하는 함수 ch
 - [X] checkNameLength: 이름이 5글자 이상이면 에러라고 말하는 함수
 - [X] getRacingCount: 시도할 횟수를 받아올 함수
-- 시도할 횟수의 오류를 검출할 함수
+- [X] checkRacingCountError: 시도할 횟수의 오류를 검출할 함수
 - 각 instance를 생성할 함수
 - 한 round 당 결과를 추출할 함수
 - 이긴 자동차를 정하는 함수
