@@ -1,9 +1,7 @@
 export class Printer {
-  showWinner = (cars) => {
-    const resultContainer = document.getElementById("result");
+  showWinner = cars => {
     let winner = [];
-
-    cars.forEach((car) => {
+    cars.forEach(car => {
       if (winner.length === 0 || winner[0].move < car.move) {
         winner = [car];
       } else if (winner[0].move === car.move) {
@@ -11,16 +9,18 @@ export class Printer {
       }
     });
 
-    let result = winner.map((car) => {
+    const resultContainer = document.getElementById("result");
+    const result = winner.map(car => {
       return car.name;
     });
+
     resultContainer.innerHTML += `최종 우승자: ${result.join(", ")}`;
   };
 
-  showGameResult = (cars) => {
+  showGameResult = cars => {
     const resultContainer = document.getElementById("result");
 
-    cars.forEach((car) => {
+    cars.forEach(car => {
       resultContainer.innerHTML += `${car.name}: ${"-".repeat(
         car.move
       )} <br />`;

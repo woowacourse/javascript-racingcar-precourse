@@ -1,3 +1,5 @@
+import { countContainer, resultContainer } from "./container.js";
+
 import { displayContainer, generateRandomNumber } from "./util.js";
 import { showWinner, showGameResult } from "./printer.js";
 
@@ -14,34 +16,30 @@ export default class Game {
     this.counts = 0;
   }
 
-  checkCarNameVaild = (carNames) => {
-    carNames.map((carName) => {
-      if (carName.length === 0) {
-        alert("주어진 자동차 이름중 공백인 이름이 있습니다");
+  checkCarNameVaild = names => {
+    for (let i = 0; i < names.length; i++) {
+      if (names[i].length === 0 || names[i].length > 5) {
+        alert("주어진 자동차 이름중 공백이거나 5글자 초과인 이름이 있습니다");
 
         return false;
-      } else if (carName.length > 5) {
-        alert("주어진 자동차 이름중 5글자 초과인 이름이 있습니다");
-
-        return false;
-      } else if (carNames.indexOf(carName) !== carNames.lastIndexOf(carName)) {
+      } else if (names.indexOf(names[i]) !== names.lastIndexOf(names[i])) {
         alert("주어진 자동차 이름중 중복된 이름이 존재합니다");
 
         return false;
       }
-    });
+    }
 
     return true;
   };
 
-  checkCountVaild = (counts) => {
-    if (isNaN(counts)) {
+  checkCountVaild = () => {
+    if (isNaN(this.counts)) {
       alert("입력한 횟수가 숫자가 아닙니다");
 
       return false;
     }
 
-    if (counts <= 0) {
+    if (this.counts <= 0) {
       alert("입력한 횟수가 올바른 값이 아닙니다");
 
       return false;
@@ -61,13 +59,12 @@ export default class Game {
   };
 
   // 주어진 cars 객체들 게임 한번 수행 메서드
-  play = (cars) => {
-    cars.forEach((car) => {
+  play = cars => {
+    cars.forEach(car => {
       if (this.moveCar()) {
         car.move += 1;
       }
     });
-
     showGameResult(this.cars);
   };
 
@@ -81,29 +78,27 @@ export default class Game {
 
   getCarNameInput = () => {
     const carNameInput = document.getElementById("car-names-input");
-    const carNameValue = carNameInput.value;
-    const carNames = carNameValue.split(",");
+    const carNames = carNameInput.value.split(",");
 
-    carNames.forEach((carName) => {
-      const car = new Car(carName);
-      this.cars.push(car);
+    carNames.forEach(carName => {
+      this.cars.push(new Car(carName));
     });
 
-    const countContainer = document.getElementById("car-game-count-container");
-    displayContainer(countContainer, true);
+    if (this.checkCarNameVaild(carNames)) {
+      displayContainer(countContainer, true);
+    } else {
+      this.cars = [];
+    }
   };
 
   getCountInput = () => {
     const countInput = document.getElementById("racing-count-input");
-    const counts = countInput.value;
-    this.counts = counts;
+    this.counts = countInput.value;
 
-    const resultContainer = document.getElementById(
-      "car-game-result-container"
-    );
-    displayContainer(resultContainer, true);
-
-    this.startGame();
+    if (this.checkCountVaild()) {
+      displayContainer(resultContainer, true);
+      this.startGame();
+    }
   };
 }
 
