@@ -64,10 +64,11 @@ class Car {
 - **git의 commit 단위는 앞 단계에서 README.md 파일에 정리한 기능 목록 단위로 추가**한다.
 - [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서 절차를 따라 미션을 제출한다.
 
-## 추가 될 기능
+## 💜추가 될 기능
 
-- 자동차 이름을 받아올 함수
-- 자동차 이름의 오류를 검출할 함수
+- [X] getNamesFromInput: 자동차 이름을 받아올 함수
+- 자동차 이름의 오류 확인 하는 함수 ch
+- 이름이 5글자 이상이면 에러라고 말하는 함수
 - 시도할 횟수를 받아올 함수
 - 시도할 횟수의 오류를 검출할 함수
 - 각 instance를 생성할 함수
