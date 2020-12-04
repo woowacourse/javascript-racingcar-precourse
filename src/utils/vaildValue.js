@@ -10,7 +10,7 @@ rKorean = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
 rNumber = /[0-9]/;
 rAlphabet = /[a-zA-Z]/;
 */
-import variablesObj from "../constants/variales.js";
+import variablesObj from "../constants/variables.js";
 
 const rNumber = /[^0-9]/g;
 const rString = /[^0-9|a-zA-Z|ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
