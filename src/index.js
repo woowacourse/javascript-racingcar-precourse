@@ -142,10 +142,31 @@ const isErrorRacingCount = (count) => {
 };
 
 const repeatTurns = (racingCount, cars) => {
+  for (let i = 0; i < racingCount; i++) {
+    playOneTurn(cars);
+  }
   console.log('repeatTurns');
-  return 'gameResult';
-  // 0 ~ 9 만들기
-  // car 점수기록
+  console.log(cars);
+  return cars;
+};
+
+const playOneTurn = (cars) => {
+  cars.forEach((v) => {
+    const randomNumber = generateRandomInteger(0, 9);
+    console.log(randomNumber);
+    if (randomNumber >= 4) {
+      v.score += '-';
+    }
+  });
+};
+
+const generateRandomInteger = (min, max) => {
+  if (min > max) {
+    let temp = min;
+    min = max;
+    max = temp;
+  }
+  return Math.floor(Math.random() * (max - min + 1) + min);
 };
 
 const showGameResult = (cars) => {
