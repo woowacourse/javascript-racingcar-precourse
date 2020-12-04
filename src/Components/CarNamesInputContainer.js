@@ -1,5 +1,5 @@
 import { getCarsNameList } from "../utils/inputUtil.js";
-import { showInputError } from "../utils/domUtil.js";
+import { blockContainer, showInputError } from "../utils/domUtil.js";
 import { isEmptyInput, isValidCarNames } from "../utils/validations.js";
 import { ID, MESSAGE } from "../utils/constants.js";
 
@@ -31,6 +31,7 @@ class CarNamesInputContainer {
     }
 
     this.setPlayers(names);
+    blockContainer(this.$input, target);
   }
 }
 
