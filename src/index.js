@@ -30,51 +30,54 @@ const handleCarNames = () => {
   const separator = ',';
   const carNamesInputElement = document.querySelector('#car-names-input');
   const carNames = carNamesInputElement.value.split(separator);
-  const errno = validateCarNames(carNames);
+  const error = isErrorCarNames(carNames);
 
-  if (errno) {
-    return requestInputAgain(errno, carNamesInputElement);
+  if (error) {
+    return requestInputAgain(error, carNamesInputElement);
   }
 
   let cars = createCars(carNames);
   showRacingCountTags(cars);
 };
 
-const validateCarNames = (carNames) => {
-  if (carNames == '') {
-    return 'emptyInput';
+const isErrorCarNames = (carNames) => {
+  if (carNames === '') {
+    return 'nameEmpty';
   }
   if (carNames.length <= 1) {
-    return 'oneCar';
+    return 'nameOnlyOne';
   }
-  if (carNames.length != new Set(carNames).size) {
-    return 'redundantCarName';
+  if (carNames.length !== new Set(carNames).size) {
+    return 'nameRedundant';
   }
   for (let name of carNames) {
     if (name.length < 1) {
-      return 'noCarName';
+      return 'nameTooShort';
     }
     if (name.length > 5) {
-      return 'tooLongCarName';
+      return 'nameTooLong';
     }
     if (name.replace(' ', '').length < 1) {
-      return 'onlySpaceCarName';
+      return 'nameOnlySpace';
     }
   }
   return false;
 };
 
-const requestInputAgain = (errno, element) => {
+const requestInputAgain = (error, element) => {
   const messages = {
-    emptyInput: `\n🚨 안내 🚨\n\n 아무것도 입력되지 않았습니다.\n 게임 진행을 위해 자동차 이름을 입력해 주세요.`,
-    oneCar: `\n🚨 안내 🚨\n\n 하나의 자동차 이름만 입력되었습니다.\n 경주를 위해 둘 이상의 자동차 이름을 입력해 주세요.`,
-    redundantCarName: `\n🚨 안내 🚨\n\n 자동차의 이름이 서로 중복됩니다.\n 서로 다른 자동차 이름을 입력해 주세요.`,
-    noCarName: `\n🚨 안내 🚨\n\n 콤마 뒤에 자동차이름이 입력되지 않았습니다.\n 자동차 이름을 콤마로 구분해서 입력해 주세요.`,
-    tooLongCarName: `\n🚨 안내 🚨\n\n 자동차의 이름이 너무 깁니다.\n 5자 이하의 자동차 이름을 입력해 주세요.`,
-    onlySpaceCarName: `\n🚨 안내 🚨\n\n 공백만으로는 이름이 될 수 없습니다.\n 구분 가능한 자동차 이름을 입력해 주세요.`,
+    nameEmpty: `\n🚨 안내 🚨\n\n 아무것도 입력되지 않았습니다.\n 게임 진행을 위해 자동차 이름을 입력해 주세요.`,
+    nameOnlyOne: `\n🚨 안내 🚨\n\n 하나의 자동차 이름만 입력되었습니다.\n 경주를 위해 둘 이상의 자동차 이름을 입력해 주세요.`,
+    nameRedundant: `\n🚨 안내 🚨\n\n 자동차의 이름이 서로 중복됩니다.\n 서로 다른 자동차 이름을 입력해 주세요.`,
+    nameTooShort: `\n🚨 안내 🚨\n\n 콤마 뒤에 자동차이름이 입력되지 않았습니다.\n 자동차 이름을 콤마로 구분해서 입력해 주세요.`,
+    nameTooLong: `\n🚨 안내 🚨\n\n 자동차의 이름이 너무 깁니다.\n 5자 이하의 자동차 이름을 입력해 주세요.`,
+    nameOnlySpace: `\n🚨 안내 🚨\n\n 공백만으로는 이름이 될 수 없습니다.\n 구분 가능한 자동차 이름을 입력해 주세요.`,
+    countEmpty: `\n🚨 안내 🚨\n\n 유효한 숫자가 입력되지 않았습니다.\n 게임 진행을 위해 시도횟수를 입력해 주세요.`,
+    countNotInteger: `\n🚨 안내 🚨\n\n 소수가 입력되었습니다\n 시도횟수를 정수로 입력해 주세요.`,
+    countTooSmall: `\n🚨 안내 🚨\n\n 0 이하의 값이 입력되었습니다.\n 시도횟수를 양수로 입력해 주세요.`,
   };
 
-  alert(messages[errno]);
+  alert(messages[error]);
   element.value = '';
   element.focus();
 };
@@ -111,32 +114,43 @@ const showRacingCountTags = (cars) => {
 };
 
 const handleRacingCount = (e) => {
+  let cars = e.currentTarget.cars;
   const racingCountInputElement = document.querySelector('#racing-count-input');
   const racingCount = racingCountInputElement.value;
-  let cars = e.currentTarget.cars;
 
-  const errno = validateRacingCount(racingCount);
-  if (errno) {
-    return requestInputAgain(errno, racingCountInputElement);
+  const error = isErrorRacingCount(racingCount);
+  if (error) {
+    return requestInputAgain(error, racingCountInputElement);
   }
 
   let gameResult = repeatTurns(racingCount, cars);
   showGameResult(gameResult);
 };
 
-const validateRacingCount = (count) => {
-  // 문자
-  // 소수
-  // 0 이하
+const isErrorRacingCount = (count) => {
+  console.log(count);
+  if (count === '') {
+    return 'countEmpty';
+  }
+  if (!Number.isInteger(+count)) {
+    return 'countNotInteger';
+  }
+  if (+count <= 0) {
+    return 'countTooSmall';
+  }
+  return false;
 };
 
 const repeatTurns = (racingCount, cars) => {
+  console.log('repeatTurns');
+  return 'gameResult';
   // 0 ~ 9 만들기
   // car 점수기록
 };
 
 const showGameResult = (cars) => {
   // cars 순회하며 점수 보여주기
+  console.log('showGameResult');
 };
 
 new RacingCarGame();
