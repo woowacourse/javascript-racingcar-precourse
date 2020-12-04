@@ -1,3 +1,5 @@
+import { CAR_GAME_GUIDE as GAME_GUIDE } from "./constants.js";
+
 export default function RacingCarGame() {
   const carNamesSubmit = document.getElementById("car-names-submit");
   const racingCountSubmit = document.getElementById("racing-count-submit");
@@ -11,9 +13,7 @@ export default function RacingCarGame() {
 
   this.checkErrorNames = (names) => {
     if (!this.checkNameLength(names)) {
-      alert(
-        "자동차 이름을 5자 이하로 써주세요. 한 개라도 5자 이상일 경우 다음단계로 넘어가지 않습니다."
-      );
+      alert(GAME_GUIDE.CAR_NAME_ERROR);
     } else {
       const racingCountContainer = document.getElementById(
         "racing-count-container"
@@ -43,7 +43,7 @@ export default function RacingCarGame() {
 
   this.checkRacingCountError = (racingCount) => {
     if (Number.isNaN(parseInt(racingCount))) {
-      alert("숫자만 입력해주세요!");
+      alert(GAME_GUIDE.ONLY_NUMBER);
     } else {
       //TODOS:make instance
       //TODOS:make random
