@@ -1,4 +1,4 @@
-import {MAX_RANDOM_NUMBER} from '../modules/utils.js';
+import isCarMove from '../modules/move.js';
 
 export default class Car {
   constructor(name) {
@@ -14,17 +14,3 @@ export default class Car {
     return null;
   }
 }
-
-const isCarMove = () => {
-  if (createRandomNumber() >= 4) {
-    return true;
-  }
-
-  return false;
-};
-
-const createRandomNumber = () => {
-  const randomNumber = Math.floor(Math.random() * (MAX_RANDOM_NUMBER + 1));
-
-  return randomNumber;
-};
