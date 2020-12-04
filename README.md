@@ -68,7 +68,7 @@ class Car {
 
 - [X] getNamesFromInput: 자동차 이름을 받아올 함수
 - [X] checkNameLength: 자동차 이름의 오류 확인 하는 함수 ch
-- 이름이 5글자 이상이면 에러라고 말하는 함수
+- [X] checkNameLength: 이름이 5글자 이상이면 에러라고 말하는 함수
 - 시도할 횟수를 받아올 함수
 - 시도할 횟수의 오류를 검출할 함수
 - 각 instance를 생성할 함수

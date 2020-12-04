@@ -15,7 +15,17 @@ export default function RacingCarGame() {
     }
   };
 
-  this.checkNameLength = (names) => {};
+  this.checkNameLength = (names) => {
+    let result = true;
+
+    names.forEach((name) => {
+      if (name.length > 5) {
+        result = false;
+      }
+    });
+
+    return result;
+  };
 
   carNamesSubmit.addEventListener("click", this.getNamesFromInput);
 }
