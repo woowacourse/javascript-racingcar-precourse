@@ -11,3 +11,13 @@ export const ID = {
 
   RACING_RESULT_CONTAINER: "racing-result-container",
 };
+
+export const NUM = {
+  NAME_LIMIT: 5,
+
+  RANGE: 10,
+  BOUND: 3,
+
+  GO: 1,
+  STOP: 0,
+};
