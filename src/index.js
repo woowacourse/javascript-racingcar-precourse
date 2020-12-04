@@ -9,6 +9,7 @@ export default function RacingCarGame() {
   let gameContainer = document.getElementsByClassName("car-game-container")[0];
   let textSubmitBtn = document.getElementById("car-names-submit");
   let appContainer = document.getElementById("app");
+  let numSubmitBtn;
 
   this.makeElement = (element, id, text) => {
     const newElement = document.createElement(element);
@@ -31,36 +32,34 @@ export default function RacingCarGame() {
 
   this.onTextSubmit = () => {
     let inputStrings = document.getElementById("car-names-input").value;
-
     words = inputCheck.textCheck(inputStrings);
     if (words === false) {
       return;
     }
 
+    textSubmitBtn.removeEventListener("click", this.onTextSubmit);
     let container = this.makeElement("div", "", "");
     container.appendChild(this.makeElement("h4", "", "시도할 횟수를 입력해주세요"));
     container.appendChild(this.makeElement("input", "racing-count-input", ""));
     container.appendChild(this.makeElement("button", "racing-count-submit", "확인"));
     gameContainer.appendChild(container);
-    let numSubmitBtn = document.getElementById("racing-count-submit");
+    numSubmitBtn = document.getElementById("racing-count-submit");
     numSubmitBtn.addEventListener("click", this.onNumSubmit);
   };
 
   this.onNumSubmit = () => {
-    let i;
     let inputNum = Number(document.getElementById("racing-count-input").value);
-
     if (inputNum <= 0) {
       alert("1 이상의 수를 입력하세요!");
       return;
     }
 
+    numSubmitBtn.removeEventListener("click", this.onNumSubmit);
     let container = this.makeElement("div", "result", "");
     container.appendChild(this.makeElement("h4", "", "📄 실행 결과"));
     appContainer.appendChild(container);
-
     getResult.makeCars(words);
-    for (i = 0; i < inputNum; i++) {
+    for (let i = 0; i < inputNum; i++) {
       getResult.printResult(words, result);
     }
     getResult.printWinner(result);

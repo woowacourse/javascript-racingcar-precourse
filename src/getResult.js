@@ -8,8 +8,7 @@ export default function getResult() {
 
   // Car 객체의 인스턴스 만들기
   this.makeCars = (words) => {
-    let i;
-    for (i = 0; i < words.length; i++) {
+    for (let i = 0; i < words.length; i++) {
       cars[i] = new Car(words[i], "");
     }
   };
@@ -19,8 +18,7 @@ export default function getResult() {
   };
 
   this.printResult = (words, result) => {
-    let i;
-    for (i = 0; i < words.length; i++) {
+    for (let i = 0; i < words.length; i++) {
       if (this.getRandomNum() >= 4) {
         cars[i].position += "-";
         result.innerHTML += `<div>${words[i]}: ${cars[i].position}</div>`;
@@ -32,18 +30,17 @@ export default function getResult() {
   };
 
   this.printWinner = (result) => {
-    let i;
     let maxValue = 0;
-    let winners = [];
-
-    for (i = 0; i < cars.length; i++) {
+    for (let i = 0; i < cars.length; i++) {
       if (maxValue < cars[i].position.length) {
         maxValue = cars[i].position.length;
       }
     }
-    for (i = 0; i < cars.length; i++) {
-      if (maxValue === cars[i].position.length) {
-        winners.push(cars[i].name);
+
+    let winners = [];
+    for (let j = 0; j < cars.length; j++) {
+      if (maxValue === cars[j].position.length) {
+        winners.push(cars[j].name);
       }
     }
 
