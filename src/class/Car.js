@@ -3,12 +3,12 @@ import {MAX_RANDOM_NUMBER} from '../modules/utils.js';
 export default class Car {
   constructor(name) {
     this.name = name;
-    this.length = '';
+    this.distance = '';
   }
 
   carMove() {
     if (isCarMove()) {
-      return (this.length += '-');
+      return (this.distance += '-');
     }
 
     return null;

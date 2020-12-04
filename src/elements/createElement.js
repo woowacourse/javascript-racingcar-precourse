@@ -19,7 +19,7 @@ export const createResultList = (carsArray) => {
 const createResultText = (car) => {
   const $resultText = document.createElement('div');
   $resultText.textContent += `
-    ${car.name}: ${car.length}
+    ${car.name}: ${car.distance}
     `;
 
   return $resultText;

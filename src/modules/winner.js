@@ -1,15 +1,15 @@
 import {createWinnerElement} from '../elements/createElement.js';
 
 const pickWinner = (carsArray) => {
-  const maxLength = findMaxLengthCar(carsArray);
-  const winner = carsArray.filter((car) => car.length.length === maxLength);
+  const maxLength = findMaxDistanceCar(carsArray);
+  const winner = carsArray.filter((car) => car.distance.length === maxLength);
 
   return winner;
 };
 
-const findMaxLengthCar = (carsArray) => {
+const findMaxDistanceCar = (carsArray) => {
   const lengthArray = [];
-  carsArray.forEach((car) => lengthArray.push(car.length.length));
+  carsArray.forEach((car) => lengthArray.push(car.distance.length));
 
   return Math.max(...lengthArray);
 };
