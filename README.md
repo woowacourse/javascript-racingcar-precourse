@@ -19,20 +19,21 @@
 
 #### 공통기능
 
-- [ ] input validation : 빈 입력인 경우 alert message
+- [ ] input validation : 빈 입력인 경우
+- [ ] 잘못된 입력의 경우 alert message & clear input
 
 #### 자동차 이름 입력
 
 - [x] 입력받기 : 자동차 n대의 이름을 comma로 구분하여 받음.
-  - [x] input validation : 입력받은 자동차 이름에 공백이름이 포함된 경우 alert message
-  - [ ] input validation : 입력받은 자동차 이름 중 5자 초과하는 경우 alert message
+  - [x] input validation : 입력받은 자동차 이름에 공백이름이 포함된 경우
+  - [ ] input validation : 입력받은 자동차 이름 중 5자 초과하는 경우
   - [ ] input validation : 입력받은 자동차 이름 중 중복되는 이름이 있는 경우
   - [ ] input validation : 이름이 하나만 입력 될 경우
 
 #### Count 입력
 
 - [ ] 입력받기 : 몇 번의 이동을 할 것인지
-  - [ ] input validation : 숫자가 아닌 입력의 경우 alert message
+  - [ ] input validation : 숫자가 아닌 입력의 경우
   - [ ] input validation : 음수의 경우
   - [ ] input validation : 소수점이 존재하는 경우
 
