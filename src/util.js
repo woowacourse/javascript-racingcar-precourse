@@ -2,18 +2,20 @@ import {
   MIN_ELEM_COUNTS,
   MIN_ELEM_LENGTH,
   MAX_ELEM_LENGTH,
+  COMMON_ALERT_MESSAGE,
   NAME_ALERT_MESSAGE,
+  COUNT_ALERT_MESSAGE,
 } from "./constants.js";
 
 export default class Util {
-  checkValidation = value => {
+  checkValidation = node => {
     let isValidate = false;
 
-    if (typeof value === "string") {
-      isValidate = this.checkString(value);
+    if (node.id === "car-names-input") {
+      isValidate = this.checkString(node.value);
     }
-    if (typeof value === "number") {
-      isValidate = this.checkNumber(value);
+    if (node.id === "racing-count-input") {
+      isValidate = this.checkNumber(node.value);
     }
 
     return isValidate;
@@ -52,11 +54,28 @@ export default class Util {
     return isValidate;
   };
 
+  checkNumber = number => {
+    let isValidate = true;
+
+    if (!(this.checkPositive(number) && this.checkInteger(number))) {
+      isValidate = false;
+    }
+
+    return isValidate;
+  };
+
+  checkPositive = number => number > 0;
+
+  checkInteger = number => number % 1 === 0;
+
   alertMessage(node) {
-    let message = "";
+    let message = COMMON_ALERT_MESSAGE;
 
     if (node.id === "car-names-input") {
-      message = NAME_ALERT_MESSAGE;
+      message += NAME_ALERT_MESSAGE;
+    }
+    if (node.id === "racing-count-input") {
+      message += COUNT_ALERT_MESSAGE;
     }
     alert(message);
   }
