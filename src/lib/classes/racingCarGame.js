@@ -27,7 +27,7 @@ export default class RacingCarGame {
 
   moveCars(turn) {
     console.log(`turn ${turn}`);
-    this.carNames.forEach(car => car._runOrPause(this._createRandomNumber(), turn));
+    this.carNames.forEach(car => car._play(this._createRandomNumber(), turn));
     this.getResult();
   }
   
