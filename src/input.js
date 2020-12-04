@@ -25,3 +25,9 @@ export function isValidCarName(carNames) {
     }
   }
 }
+
+export function racingCount() {
+  const racingCount = document.getElementById("racing-count-input").value;
+
+  return racingCount;
+}
