@@ -1,5 +1,8 @@
 export default function RacingCarGame() {}
 
+const namesSubmitButton = document.getElementById('car-names-submit');
+const timesSubmitButton = document.getElementById('racing-count-submit');
+
 function Car(name) {
   this.name = name;
   this.forwardCount = 0;
@@ -44,9 +47,19 @@ const carsToObject = (carsName) => {
   });
 };
 
-const namesSubmitButton = document.getElementById('car-names-submit');
+const getTimes = () => {
+  let times = document.getElementById('racing-count-input').value;
+  if (times < 1) {
+    alert('값을 1 이상 입력해주세요!');
+  }
+};
+
 if (namesSubmitButton) {
   namesSubmitButton.addEventListener('click', getCarsName);
+}
+
+if (timesSubmitButton) {
+  timesSubmitButton.addEventListener('click', getTimes);
 }
 
 new RacingCarGame();
