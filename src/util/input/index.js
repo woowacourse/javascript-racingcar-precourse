@@ -1,5 +1,7 @@
 const splitByComma = (names) => names.split(",");
 
+const checkEmptyInput = (value) => (value.length === 0 ? true : false);
+
 const checkEmptyName = (namesArray) => {
   const isEmpty = namesArray.map((name) =>
     name.trim().length === 0 ? true : false
@@ -12,5 +14,7 @@ const checkEmptyName = (namesArray) => {
 
 export const namesValidation = (names) => {
   const namesArray = splitByComma(names);
+
+  const isEmptyInput = checkEmptyInput(names);
   const isEmptyName = checkEmptyName(namesArray);
 };
