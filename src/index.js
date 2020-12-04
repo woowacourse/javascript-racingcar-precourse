@@ -1,4 +1,4 @@
-import { RacingCarGame } from './modules/models';
+import { RacingCarGameViewModel } from './modules/models';
 import { RacingCarGameView } from './modules/views';
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -10,7 +10,7 @@ window.addEventListener('DOMContentLoaded', () => {
   const carRacingResultDiv = document.getElementById(
     '#car-racing-result-container',
   );
-  const gameModel = new RacingCarGame();
+  const gameModel = new RacingCarGameViewModel();
   const gameView = new RacingCarGameView(
     gameModel,
     carNamesInput,

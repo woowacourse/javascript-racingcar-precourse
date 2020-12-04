@@ -1,4 +1,4 @@
 import Car from './Car';
-import RacingCarGame from './RacingCarGame';
+import RacingCarGameViewModel from './RacingCarGameViewModel';
 
-export { Car, RacingCarGame };
+export { Car, RacingCarGameViewModel };

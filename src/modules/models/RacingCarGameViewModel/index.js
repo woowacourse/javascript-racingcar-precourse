@@ -1,6 +1,6 @@
 import { Car } from '../../models';
 
-export default class RacingCarGame {
+export default class RacingCarGameViewModel {
   constructor() {
     this._carInstances = null;
   }
