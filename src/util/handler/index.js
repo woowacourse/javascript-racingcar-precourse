@@ -1,5 +1,8 @@
+import { splitByComma } from "../input/index.js";
+
 const namesButtonClick = (namesInput) => {
   const names = namesInput.value;
+  const namesArray = splitByComma(names);
 };
 
 const handler = () => {
