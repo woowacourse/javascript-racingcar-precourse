@@ -1,4 +1,4 @@
-import addIdsToNodes, { addIdsToResultContainer } from './addIdsToNodes.js';
+import addIdsToNodes from './addIdsToNodes.js';
 
 export const hideContainer = $container => {
   if(typeof($container) !== 'object') return;
@@ -29,18 +29,35 @@ export const disableInputs = ($input, $button) => {
   $button.setAttribute('disabled', 'true');
 }
 
-//render step
-//innerHTML should be used
-const renderGameStep = (cars) => {
-  console.log(cars);
+const getGameStepElements = cars => {
+  //create array of elements to render each step
+  //innerHtml should be used
+  console.log(cars.map(car => car.name));
 }
 
-const renderWinCars = (winCars) => {
-  console.log(winCars);
+const renderGameSteps = (cars, $resultContainer) => {
+  const $renderGameSteps = document.createElement('div');
+  $renderGameSteps.id = 'render-game-step';
+
+  getGameStepElements(cars);
+
+  $resultContainer.appendChild($renderGameSteps);
+}
+
+const getWinCarsElement = winCars => {
+  console.log(winCars.length === 1 ? winCars : winCars.join(','));
+}
+
+const renderWinCars = (winCars, $resultContainer) => {
+  const $renderWinCars = document.createElement('div');
+  $renderWinCars.id = 'render-win-cars';
+
+  getWinCarsElement(winCars);
+
+  $resultContainer.appendChild($renderWinCars);
 }
 
 export const renderResult = ($resultContainer, cars, winCars) => {
-  addIdsToResultContainer($resultContainer);
-  renderGameStep(cars);
-  renderWinCars(winCars);
+  renderGameSteps(cars, $resultContainer);
+  renderWinCars(winCars, $resultContainer);
 }
