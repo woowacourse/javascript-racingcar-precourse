@@ -1,7 +1,7 @@
 export default function RacingCarGame() {	
   function isSpecialCharacter(carNamesInput) {
-    const specialCharacter = /[^가-힣ㄱ-하-ㅣa-zA-z0-9,]/;
-    return specialCharacter.test(carNamesInput);
+    const rSpecialCharacter = /[^가-힣ㄱ-하-ㅣa-zA-z0-9,]/;
+    return rSpecialCharacter.test(carNamesInput);
   }
 
   function isAvailableLength(carNamesInput) {
@@ -23,7 +23,7 @@ export default function RacingCarGame() {
     const carNamesSubmit = document.querySelector("#car-names-submit");
     carNamesSubmit.addEventListener("click", () => {
       const carNamesInput = document.querySelector("#car-names-input").value;
-      
+
       if (isSpecialCharacter(carNamesInput) === false && isAvailableLength(carNamesInput) === true) {
         return carNamesInput;
       } else {
