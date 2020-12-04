@@ -79,7 +79,7 @@ export default class RacingCarGame {
     for (let i = 0; i < count; i++) {
       this.runRound();
     }
-    // this.render.renderWinner(this.carsList);
+    this.render.renderWinners(this.carsList);
   };
 
   runRound = () => {
