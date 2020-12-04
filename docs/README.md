@@ -21,13 +21,19 @@
 
 ## 📋  기능 목록
 
-* 자동차 이름 입력 받기 `event`
-* 자동차 이름 검증 -  `method`
-* 시도할 횟수 입력 받기  `event`
-* 자동차 - `object` (프로그래밍 요구사항)
-* 레이싱 게임 진행 - `method`
-* (0 ~ 9) random 값 생성 - `method`
-* 자동차 이동 (random 값) 판별 - `method`
-* 자동차 이동 기록 - `method`
-* 최종 우승자 결정 - `method`
-* 결과 출력 - `event`
+* 자동차 이름 입력 받기 `eventListener`
+* 자동차 이름 검증 -  `function`
+* 시도할 횟수 입력 받기  `eventListener`
+* 자동차 - `class` (프로그래밍 요구사항)
+* 레이싱 게임 진행 - `function`
+* (0 ~ 9) random 값 생성 - `function`
+* 자동차 이동 (random 값) 판별 - `function`
+* 자동차 이동 기록 - `function`
+* 최종 우승자 결정 - `function`
+* 결과 출력 - `function`
+
+## 💻  기능  구현
+
+- index.js
+  - 자동차 이름 입력 받기
+  - 시도할 횟수 입력 받기
