@@ -1,5 +1,10 @@
 export default function RacingCarGame() {}
 
+function Car(name) {
+  this.name = name;
+  this.forwardCount = 0;
+}
+
 const validateCarsName = (array) => {
   let flag = true;
   array.forEach((e) => {
@@ -20,10 +25,23 @@ export const getCarsName = () => {
 
   carsArray = carNameInput.split(',');
   if (carsArray.length > 1 && validateCarsName(carsArray)) {
-    console.log('true');
+    carsToObject(carsArray);
   } else {
     alert('예시를 다시 확인하고 입력해주세요!');
   }
+};
+
+const carsToObject = (carsName) => {
+  let carObjectArray = [];
+
+  carsName.forEach((carName) => {
+    carObjectArray.push(new Car(carName));
+  });
+
+  // test
+  carObjectArray.forEach((e) => {
+    console.log(e.name, e.forwardCount);
+  });
 };
 
 const namesSubmitButton = document.getElementById('car-names-submit');
