@@ -14,9 +14,9 @@ export default class GetRacingCount extends GetCarNames {
   }
 
   _onClickRacingCount() {
-    this.inputRacingCount = this.racingCountInput.value;
+    const inputRacingCount = this.racingCountInput.value;
 
-    if (!isCorrectRacingCount(this.inputRacingCount)) {
+    if (!isCorrectRacingCount(inputRacingCount)) {
       alert("1이상의 올바른 횟수값을 입력해 주세요");
       this.racingCountInput.value = "";
       return;

@@ -12,7 +12,6 @@ export default class GetCarNames extends Component {
       this._onClickCarNames.bind(this)
     );
     this.isHiddenRacingCountDiv = true;
-    this.inputCarNames = "";
   }
 
   _visiable() {
@@ -27,10 +26,9 @@ export default class GetCarNames extends Component {
   }
 
   _onClickCarNames() {
-    console.log(this.carNamesInput.value);
-    this.inputCarNames = this.carNamesInput.value.split(",");
+    const inputCarNames = this.carNamesInput.value.split(",");
 
-    if (!isCorrectCarNames(this.inputCarNames)) {
+    if (!isCorrectCarNames(inputCarNames)) {
       alert("잘못된 입력값 입니다");
       this.carNamesInput.value = "";
       return;
