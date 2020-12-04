@@ -50,4 +50,24 @@ const setCarNames = function () {
   return carNames;
 };
 
-export { setCarNames };
+const isZero = function (value) {
+  if (value === 0) {
+    return true;
+  }
+};
+
+const getRacingCount = function () {
+  const racingCount = document.getElementById('racing-count-input').value;
+
+  if (isNull(racingCount)) {
+    alert('시도할 횟수를 입력해주세요.');
+    return;
+  } else if (isZero(racingCount)) {
+    alert('0보다 큰 수를 입력해주세요.');
+    return;
+  }
+
+  return racingCount;
+};
+
+export { setCarNames, getRacingCount };
