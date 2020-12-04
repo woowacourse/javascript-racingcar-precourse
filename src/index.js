@@ -7,7 +7,7 @@ const carNameSubmitBtn = carNameContainer.querySelector('button');
 
 export default class RacingCarGame {
   constructor() {
-    carNameInput.focus();
+    this.resetTextInput();
     this.setEventListeners();
   }
 
@@ -19,21 +19,50 @@ export default class RacingCarGame {
   handleCarNameInput() {
     const carNameString = carNameInput.value;
     if (this.isEmptyString(carNameString)) {
+      alert('값을 입력해주세요.');
+      this.resetTextInput();
+      return;
+    }
+
+    const carNames = this.getCarNamesArray(carNameString);
+    if (this.isNotProperCarNamesArray(carNames)) {
+      this.resetTextInput();
       return;
     }
   }
 
-  // 이름이 각각 5자 이상인지, 빈 문자열인 이름을 포함하고 있는지는 배열로 변환한 이후에 검사
-
   isEmptyString(value) {
+    return !value;
+  }
+
+  getCarNamesArray(value) {
+    return value.split(',').map(name => name.trim());
+  }
+
+  isNotProperCarNamesArray(arr) {
     let result = false;
-    if (!value) {
-      alert('값을 입력해주세요.');
-      carNameInput.focus();
-      result = true;
-    }
+    arr.forEach(carName => {
+      if (result === false) {
+        if (this.isLongerThanFive(carName)) {
+          alert('5자가 넘는 이름이 존재합니다.');
+          result = true;
+        } else if (this.isEmptyString(carName)) {
+          alert('이름 중에 빈 문자열이 존재합니다.');
+          result = true;
+        }
+      }
+    });
 
     return result;
+  }
+
+  isLongerThanFive(value) {
+    return value.length > 5;
+  }
+
+  resetTextInput() {
+    carNameInput.value = '';
+    carNameInput.focus();
   }
 }
 
