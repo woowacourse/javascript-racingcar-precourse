@@ -5,22 +5,22 @@ import {gameStart, gameRestart} from './modules/game.js';
 
 export default class RacingCarGame {
   constructor() {
-    this.carsArray = [];
+    this.carEntry = [];
   }
 
   getPlayingCarList(carNameList) {
     const carNameListArray = carNameList.split(',');
     for (const carName of carNameListArray) {
-      this.carsArray.push(new Car(carName));
+      this.carEntry.push(new Car(carName));
     }
   }
 
   gamePlay(times) {
     for (let i = 0; i < times; i++) {
-      this.carsArray.forEach((car) => car.carMove());
-      showOnGameProgress(this.carsArray);
+      this.carEntry.forEach((car) => car.carMove());
+      showOnGameProgress(this.carEntry);
     }
-    showWinner(this.carsArray);
+    showWinner(this.carEntry);
 
     return gameRestart();
   }

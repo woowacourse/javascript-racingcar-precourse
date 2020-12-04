@@ -5,10 +5,10 @@ export const createWinnerElement = (winner) => {
   $resultContainer.appendChild($winnerText);
 };
 
-export const createResultList = (carsArray) => {
+export const createResultList = (carEntry) => {
   const $resultUl = document.body.querySelector('#result-list');
   const $resultLi = document.createElement('li');
-  for (const car of carsArray) {
+  for (const car of carEntry) {
     $resultLi.appendChild(createResultText(car));
   }
 
