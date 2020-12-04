@@ -8,28 +8,25 @@ export default class RacingCarGame {
   constructor() {
     this.winners = [];
     this.cars = [];
+    this.tryCount = 0;
   };
   /**
    * get Car lists
-   * @return {Array}
    */
   getCarList() {
-    const carList =
-      document.getElementById('car-names-input').nodeValue.split(',');
-    return carList;
+    cars = document.getElementById('car-names-input').nodeValue.split(',');
   };
   /**
    * check Validation of UserInput
-   * @param {Array} carList
    * @return {boolean}
    */
-  checkCarList(carList) {
+  checkCarList() {
     let isValid = true;
 
-    if (carList.length <= 1) {
+    if (cars.length <= 1) {
       isValid = false;
     }
-    carList.forEach((car) => {
+    cars.forEach((car) => {
       if (car.length > 5) {
         isValid = false;
       }
@@ -38,19 +35,15 @@ export default class RacingCarGame {
   };
   /**
    * getTryCount
-   * @return {number}
    */
   getTryCount() {
-    const tryCount =
-      Number(document.getElementById('#racing-count-input').nodeValue);
-    return tryCount;
+    tryCount = Number(document.getElementById('#racing-count-input').nodeValue);
   };
   /**
    * check TryCount Validtion
-   * @param {number} tryCount
    * @return {boolean}
    */
-  checkTryCount(tryCount) {
+  checkTryCount() {
     const isValid = true;
     if (tryCount <= 0) {
       isValid = false;
@@ -59,20 +52,17 @@ export default class RacingCarGame {
   }
   /**
    * get Winner of Cars
-   * @param {Array} carList
-   * @return {Array} winners
    */
-  getWinners(carList) {
-    const winners = [];
-    const positions = carList.map((car) => car.position);
+  getWinners() {
+    const positions = cars.map((car) => car.position);
     const max = Math.max(...positions);
 
-    carList.forEach((car) => {
+    cars.forEach((car) => {
       if (car.position === max) {
         winners.push(car.name);
       }
     });
-
-    return winners;
   };
 }
+
+new RacingCarGame();
