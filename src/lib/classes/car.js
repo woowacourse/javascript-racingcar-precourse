@@ -1,7 +1,7 @@
 export default class Car {
   constructor(name) { 
-		this.name = name;
-		this.result = [];
+    this.name = name;
+    this.result = [];
   }
 
   _runOrPause(randomNumber, turn) {
