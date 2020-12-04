@@ -1,5 +1,11 @@
 import { NAME_SEPERATOR } from '../constants/configuration.js';
 
+const carNameCheckResult = {
+  isCarNumberNotEnough: false,
+  isCarNameLong: false,
+  isAllCarNameDifferent: false,
+};
+
 const checkIsCarNameLong = (carNameList) => {
   let isCarNameLong = false;
   for (let i = 0; i < carNameList.length; i += 1) {
@@ -20,11 +26,6 @@ const checkIsAllCarNameDifferent = (carNameList) => {
 };
 
 export const getCarNamesCheckResult = (names) => {
-  const carNameCheckResult = {
-    isCarNumberNotEnough: false,
-    isCarNameLong: false,
-    isAllCarNameDifferent: false,
-  };
   const carNameList = names.split(NAME_SEPERATOR);
   if (carNameList.length < 2) {
     carNameCheckResult.isCarNumberNotEnough = true;
