@@ -2,7 +2,7 @@ const racingCountContainer = document.querySelector('.racing-count');
 const carNameInput = document.getElementById('car-names-input');
 const carNameSubmitBtn = document.getElementById('car-names-submit');
 const racingCountInput = document.getElementById('racing-count-input');
-// const racingCountSubmitBtn = document.getElementById('racing-count-submit');
+const racingCountSubmitBtn = document.getElementById('racing-count-submit');
 const resultDiv = document.querySelector('.result');
 
 export default class RacingCarGame {
@@ -29,22 +29,29 @@ export default class RacingCarGame {
         this.handleCarNameInput();
       }
     });
+    this.handleRacingCountInput = this.handleRacingCountInput.bind(this);
+    racingCountSubmitBtn.addEventListener('click', this.handleRacingCountInput);
+    racingCountInput.addEventListener('keydown', e => {
+      if (e.key === 'Enter') {
+        this.handleRacingCountInput();
+      }
+    });
   }
 
   handleCarNameInput() {
-    const carNameString = carNameInput.value;
-    if (this.isEmptyString(carNameString)) {
+    const carNameInputValue = carNameInput.value;
+    if (this.isEmptyString(carNameInputValue)) {
       alert('값을 입력해주세요.');
       this.resetCarNameInput();
       return;
     }
-
-    const carNames = this.getCarNamesArray(carNameString);
+    const carNames = this.getCarNamesArray(carNameInputValue);
     if (this.isNotProperCarNamesArray(carNames)) {
       this.resetCarNameInput();
       return;
     }
 
+    this.nameOfCars = carNames;
     this.showRacingCountUI();
   }
 
@@ -84,6 +91,31 @@ export default class RacingCarGame {
 
   showRacingCountUI() {
     racingCountContainer.style.visibility = 'visible';
+    racingCountInput.focus();
+  }
+
+  handleRacingCountInput() {
+    const racingCountInputValue = racingCountInput.value;
+    if (this.isNotProperRacingCountInputValue(racingCountInputValue)) {
+      this.resetRacingCountInput();
+      return;
+    }
+    this.racingCount = racingCountInputValue;
+    console.log(this.racingCount);
+  }
+
+  isNotProperRacingCountInputValue(value) {
+    let result = false;
+    if (this.isEmptyString(value) || isNaN(value)) {
+      alert('숫자를 입력해주세요.');
+      result = true;
+    }
+
+    return result;
+  }
+
+  resetRacingCountInput() {
+    racingCountInput.value = '';
     racingCountInput.focus();
   }
 }
