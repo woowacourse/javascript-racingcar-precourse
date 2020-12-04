@@ -9,6 +9,7 @@ export default class InterfacetoHtml {
     this.drawNameInput();
   }
 
+  //html 그리기 메서드들
   drawNameInput() {
     this.drawHTML({
       containerWhereToDraw: this.carGameContainer,
@@ -36,6 +37,7 @@ export default class InterfacetoHtml {
     });
   }
 
+  //그리기 메서드들에서 사용하는 공통 메서드들
   drawHTML({ containerWhereToDraw, htmlToDraw }) {
     containerWhereToDraw.insertAdjacentHTML("beforeend", htmlToDraw);
   }
@@ -51,7 +53,6 @@ export default class InterfacetoHtml {
       stepOfButton,
       input.value
     );
-    console.log(isValidInput);
     if (this.currentGameStep !== stepOfButton || !isValidInput) {
       return;
     }
@@ -63,6 +64,7 @@ export default class InterfacetoHtml {
     this.currentGameStep++;
   }
 
+  //입력값 체크 함수들
   checkInput(gameStep, inputValue) {
     let isValidInput = false;
     let processedInput = null;
@@ -72,7 +74,7 @@ export default class InterfacetoHtml {
         isValidInput = this.checkNameInputValue(processedInput);
         break;
       case STEP.RACING_COUNT:
-        processedInput = inputValue * 1;
+        processedInput = Number(inputValue);
         isValidInput = this.checkRacingCountValue(processedInput);
         break;
       default:
