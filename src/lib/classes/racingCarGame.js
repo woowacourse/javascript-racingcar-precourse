@@ -4,6 +4,8 @@ import InputsControl from '../classes/checkUserInputs.js';
 import {
   showContainer,
   disableInputs,
+  renderCarsMovingStep,
+  renderWinCars,
 } from '../config/manipulateContainers.js';
 
 export default class RacingCarGame {
@@ -30,16 +32,16 @@ export default class RacingCarGame {
     }, []);
   }
 
-  getResult() {
+  async getResult() {
     //manipulate result container
-    console.log(this._getWinCars());
-    showContainer(this.$resultContainer);
+    await renderCarsMovingStep(this.cars, this.racingCount);
+    await renderWinCars(this._getWinCars());
+    await showContainer(this.$resultContainer);
   }
 
   moveCars(turn) {
-    console.log(`turn ${turn}`);
     this.cars.forEach(car => {
-      car._play(this._createRandomNumber(), turn);
+      car._play(this._createRandomNumber());
       this.totalDist = Math.max(car.pos[turn-1], this.totalDist);
     });
     this.getResult();

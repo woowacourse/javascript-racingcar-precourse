@@ -13,9 +13,7 @@ export default class Car {
     return this.result.filter(go => go === true).length;
   }
 
-  _play(randomNumber, turn) {
-    //해당 주석은 과제 제출 전까지 지우지 말 것(!!)
-    console.log(`carName ${this.name}, random ${randomNumber}, turn ${turn}, ${this.result}`);
+  _play(randomNumber) {
     this.result.push(this._canGo(randomNumber));
     this.pos.push(this._getCurrentPos());
   }
