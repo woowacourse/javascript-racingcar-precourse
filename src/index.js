@@ -1,4 +1,4 @@
-import RacingCar from "./RacingCar.js";
+import Car from "./Car.js";
 
 export default class RacingCarGame {
   cars = [];
@@ -17,7 +17,7 @@ export default class RacingCarGame {
         carNamesInput.value = "";
         return;
       }
-      tempCars.push(new RacingCar(carNames[i]));
+      tempCars.push(new Car(carNames[i]));
     }
     return tempCars;
   }
