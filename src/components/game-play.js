@@ -33,7 +33,6 @@ class GamePlay extends Component {
   };
 
   createWinnerTemplate = cars => {
-    console.log(this.getWinners(cars));
     const winners = this.getWinners(cars)
       .map(car => car.name)
       .join(', ');
@@ -44,7 +43,6 @@ class GamePlay extends Component {
   getWinners = cars => {
     let maxDrivenDistance = -Infinity;
     cars.forEach(car => {
-      console.log(car);
       if (car.getDrivenDistance() > maxDrivenDistance) {
         maxDrivenDistance = car.getDrivenDistance();
       }
