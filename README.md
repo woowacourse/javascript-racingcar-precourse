@@ -28,7 +28,7 @@
   - [x] input validation : 입력받은 자동차 이름에 공백이름이 포함된 경우
   - [x] input validation : 입력받은 자동차 이름 중 5자 초과하는 경우
   - [x] input validation : 입력받은 자동차 이름 중 중복되는 이름이 있는 경우
-  - [ ] input validation : 이름이 하나만 입력 될 경우
+  - [x] input validation : 이름이 하나만 입력 될 경우
 
 #### Count 입력
 

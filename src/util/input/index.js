@@ -32,11 +32,14 @@ const checkDuplicateName = (namesArray) => {
   }
 };
 
+const checkSingle = (namesArray) => (namesArray.length < 2 ? true : false);
+
 export const namesValidation = (names) => {
   const namesArray = splitByComma(names);
 
   const isEmptyInput = checkEmptyInput(names);
   const isEmptyName = checkEmptyName(namesArray);
+  const isSingle = checkSingle(namesArray);
   const isOverFive = checkOverFive(namesArray);
   const isDuplicate = checkDuplicateName(namesArray);
 };
