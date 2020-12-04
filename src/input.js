@@ -14,10 +14,10 @@ export function isValidCarName(carNames) {
   let isValid = false;
 
   for (let i = 0; i < carNameArray.length; i++) {
-    if (carNameArray[i].length > 5) {
-      alert(RETURN_MESSAGES.ERROR_NAME_LENGTH_EXCEEDED);
-    } else if (carNameArray[i].length === 0) {
+    if (carNameArray[i].length === 0) {
       alert(RETURN_MESSAGES.ERROR_NAME_INPUT_NONE);
+    } else if (carNameArray[i].length > 5) {
+      alert(RETURN_MESSAGES.ERROR_NAME_LENGTH_EXCEEDED);
     } else {
       isValid = true;
 
