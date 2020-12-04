@@ -55,11 +55,31 @@ const getRacingCount = function () {
   return racingCount;
 };
 
+const printRoundResult = function (printContainer) {
+  const carGameResultContainer = printContainer;
+  const oneRoundResultDiv = document.createElement('div');
+  racingCarGame.carList.forEach(car => {
+    oneRoundResultDiv.innerHTML += `
+    ${car.getName()}: ${'-'.repeat(car.getPosition())} <br/>`;
+  });
+  oneRoundResultDiv.innerHTML += '<br/>';
+  carGameResultContainer.appendChild(oneRoundResultDiv);
+};
+
 const handleCountSubmitBtn = function () {
   try {
     const racingCount = getRacingCount();
-    // TODO: 경기 횟수만큼 레이싱하기
+    const carGameResultContainer = document.querySelector(
+      '#car-game-result-container',
+    );
+    carGameResultContainer.innerHTML = '<h4>📄 실행 결과</h4>';
     racingCarGame.setRacingCount(racingCount);
+    racingCarGame.clearCarPositions();
+    while (racingCarGame.racingCount--) {
+      racingCarGame.raceOneRound();
+      printRoundResult(carGameResultContainer);
+    }
+    setElemVisible(carGameResultContainer, true);
   } catch (e) {
     alert(e.message);
     if (e.errElem) {

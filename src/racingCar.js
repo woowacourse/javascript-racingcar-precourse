@@ -15,4 +15,8 @@ export default class RacingCar {
   move() {
     this._position += 1;
   }
+
+  clearPosition() {
+    this._position = 0;
+  }
 }

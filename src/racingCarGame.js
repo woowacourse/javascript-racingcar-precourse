@@ -10,6 +10,12 @@ export default class RacingCarGame {
     this.carList = carNamesList.map(name => new RacingCar(name));
   }
 
+  clearCarPositions() {
+    this.carList.forEach(car => {
+      car.clearPosition();
+    });
+  }
+
   raceOneRound() {
     this.carList.forEach(car => {
       const movable = Math.random() * 9;
