@@ -3,5 +3,3 @@ export default class Car {
     this.name = name;
   }
 }
-
-export { Car };
