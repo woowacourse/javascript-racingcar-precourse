@@ -1,4 +1,5 @@
 import CarName from './CarName.js';
+import Car from './Car.js';
 
 export default class RacingCarGame {
   constructor() {
@@ -10,19 +11,28 @@ export default class RacingCarGame {
 
     carNamesSubmitButton.addEventListener('click', () => {
       const carNames = new CarName();
+      let carObjArray = [];
 
       if (carNames.names != null) {
-        this.countRacing();
+        this.showCountRacing();
+        carObjArray = this.setCar(carNames.names);
+        //시도 횟수 받기
       }
-
-      console.log(carNames.names);
+      console.log(carObjArray);
     });
   }
 
-  countRacing() {
+  showCountRacing() {
     const countContainer = document.querySelector('#count-container');
 
     countContainer.style.display = 'block';
+  }
+
+  setCar(_carNames) {
+    // Car 객체에 이름별로 담아 배열로 다시 리턴
+    const carObjArray = _carNames.map((name) => new Car(name));
+
+    return carObjArray;
   }
 }
 
