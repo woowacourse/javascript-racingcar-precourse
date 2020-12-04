@@ -26,6 +26,16 @@ const calculateEachRace = (cars) => {
   return eachResult;
 };
 
+const chooseWinner = (cars, eachRaceResult) => {
+  const lastRaceResult = eachRaceResult[eachRaceResult.length - 1];
+  const winnerMoveScore = lastRaceResult.sort((a, b) => b - a)[0];
+
+  const winner = cars.filter((car) => car.moveDistance === winnerMoveScore);
+  const winnerName = winner.map((win) => win.name);
+
+  return winnerName;
+};
+
 export const raceStart = () => {
   const nameInput = document.getElementById("car-names-input");
   const countInput = document.getElementById("racing-count-input");
@@ -38,4 +48,6 @@ export const raceStart = () => {
   for (let i = 0; i < count; i++) {
     eachRaceResult[i] = calculateEachRace(cars);
   }
+
+  const winnerNameArray = chooseWinner(cars, eachRaceResult);
 };
