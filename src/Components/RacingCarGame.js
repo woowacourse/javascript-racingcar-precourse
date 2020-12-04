@@ -1,11 +1,12 @@
-import CarNamesInputContainer from "./CarNamesInputContainer.js";
 import { ID } from "../utils/constants.js";
 
 class RacingCarGame {
   constructor({ $target }) {
     this.$target = $target;
+    this.mountDOM();
     this.state = this.initState();
-    this.mount();
+
+    console.log(this);
   }
 
   initState() {
@@ -15,14 +16,19 @@ class RacingCarGame {
     };
   }
 
-  mount() {
-    this.carNamesInputContainer = new CarNamesInputContainer({
-      $target: document.querySelector(`.${ID.CAR_NAMES_INPUT_CONTAINER}`),
-      setPlayers: this.setPlayers.bind(this),
-    });
+  mountDOM() {
+    this.$CarNamesInputContainer = this.$target.querySelector(
+      `.${ID.CAR_NAMES_INPUT_CONTAINER}`,
+    );
+    this.$RacingCountInputContainer = this.$target.querySelector(
+      `.${ID.RACING_COUNT_INPUT_CONTAINER}`,
+    );
+    this.$RacingResultContainer = this.$target.querySelector(
+      `.${ID.RACING_RESULT_CONTAINER}`,
+    );
   }
 
-  setPlayers() {}
+  setPlayers(names) {}
 }
 
 export default RacingCarGame;
