@@ -9,5 +9,9 @@
   "parserOptions": {
     "sourceType": "module",
     "ecmaVersion": 8
+  },
+  "env": {
+    "browser": true,
+    "node": true
   }
 }

@@ -3,5 +3,6 @@
   "useTabs": false,
   "semi": true,
   "bracketSpacing": true,
-  "arrowParens": "avoid"
+  "arrowParens": "avoid",
+  "singleQuote": true
 }
