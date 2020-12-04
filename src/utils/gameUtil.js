@@ -1,5 +1,5 @@
 import { NUM } from "./constants.js";
 
-const getRandomNumber = () => Matht.floor(Math.random() * NUM.RANGE);
+export const getRandomNumber = () => Matht.floor(Math.random() * NUM.RANGE);
 
-const getForwardSteps = num => (num <= NUM.BOUND ? NUM.STOP : NUM.GO);
+export const getForwardSteps = num => (num <= NUM.BOUND ? NUM.STOP : NUM.GO);
