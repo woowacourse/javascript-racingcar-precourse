@@ -4,8 +4,7 @@ export default function toggleRaceNumberInputScreen() {
   );
 
   if ($inputRaceNumberScreen.style.display === 'none') {
-    $inputRaceNumberScreen.style.display = 'inline';
-    return;
+    return ($inputRaceNumberScreen.style.display = 'inline');
   }
-  $inputRaceNumberScreen.style.display = 'none';
+  return ($inputRaceNumberScreen.style.display = 'none');
 }

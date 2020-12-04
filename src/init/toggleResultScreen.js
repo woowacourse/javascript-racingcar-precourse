@@ -2,8 +2,7 @@ export default function hideResultScreen() {
   const $resultScreen = document.querySelector('#app > div:last-child');
 
   if ($resultScreen.style.display === 'none') {
-    $resultScreen.style.display = 'inline';
-    return;
+    return ($resultScreen.style.display = 'inline');
   }
-  $resultScreen.style.display = 'none';
+  return ($resultScreen.style.display = 'none');
 }

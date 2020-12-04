@@ -1,4 +1,4 @@
-import playGame from './playGame.js';
+import playGame from '../game/playGame.js';
 
 function Car(name) {
   this.name = name;
