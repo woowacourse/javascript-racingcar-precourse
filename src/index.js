@@ -85,7 +85,7 @@ function handleCarNamesSubmitClick() {
     const isValid = validateCarNames(carNames);
     if (isValid) {
         renderTryCountScreen();
-        handleRacingCountSubmitButton();
+        makeRacingCountSubmitButton();
     } else {
         resetCarNamesInputValue(carNamesInput);
     }
@@ -106,7 +106,7 @@ function renderTryCountScreen() {
           `;
 }
 
-function handleRacingCountSubmitButton() {
+function makeRacingCountSubmitButton() {
     const racingCountSubmitButton = document.querySelector(
         "#racing-count-submit"
     );
