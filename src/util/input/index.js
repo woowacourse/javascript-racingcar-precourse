@@ -1,3 +1,4 @@
+import { checkUnderOne } from "./countValidation.js";
 import {
   checkDuplicateName,
   checkEmptyName,
@@ -56,4 +57,9 @@ export const namesValidation = (names, namesInput) => {
   };
 
   return checkNamesInput(checkList, namesInput);
+};
+
+export const countValidation = (count, countInput) => {
+  const isEmptyInput = checkEmptyInput(count);
+  const isUnderOne = checkUnderOne(count);
 };

@@ -1,5 +1,5 @@
 import { displayTag } from "../display/index.js";
-import { namesValidation } from "../input/index.js";
+import { countValidation, namesValidation } from "../input/index.js";
 
 const namesButtonClick = () => {
   const namesInput = document.getElementById("car-names-input");
@@ -20,7 +20,9 @@ const namesButtonClick = () => {
 
 const countButtonClick = () => {
   const countInput = document.getElementById("racing-count-input");
-  const count = parseInt(countInput.value);
+  const count = countInput.value;
+
+  const isValid = countValidation(count, countInput);
 };
 
 const handler = () => {
