@@ -7,7 +7,7 @@ export default class Car {
 	}
 	
 	setDistance = () => {
-		if (new Random.getRandomNumber() >= 4) {
+		if (new Random().getRandomNumber() >= 4) {
 			this.distance += 1;
 		}	
 	}

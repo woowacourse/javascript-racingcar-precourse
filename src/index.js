@@ -1,57 +1,37 @@
-import {carNamesInput, racingCountInput} from "/src/view/input/input.js";
-import {carNamesButton, racingCountButton} from "/src/view/button/button.js";
-import Car from "/src/car/car.js";
-import Handler from "/src/handler/handler.js";
-import Validity from "/src/utils/validity.js";
-
+import {carNamesInput, racingCountInput} from "./view/input/input.js";
+import {carNamesButton, racingCountButton} from "./view/button/button.js";
+import Car from "./car/car.js";
+import Validity from "./utils/validity.js";
+import Toggle from "./toggle/toggle.js";
+import Init from "./init/init.js";
 
 export default class RacingCarGame {
 	constructor() {
-		this.handler = new Handler();
+		new Init();
+		
 		this.validity = new Validity();
+		this.toggle = new Toggle();
 
-		this.handler.setClickHandler(carNamesButton, [this.setCarNames, this.displayRacingCountInput, this.displayRacingCountButton]);
-		this.handler.setClickHandler(racingCountButton, [this.setRacingCount, this.startGame]);
+		this.carNamesValue;
+		this.racingCountValue;
 
-		this.carNames = "";
-		this.racingCount = 0;
-
-		this.hideRacingCountInput();
-		this.hideRacingCountButton();
-		this.setAttributes();
+		this.setHandlers();
 	}
 
-	setAttributes = () => {
-		carNamesInput.setAttribute("id", "car-names-input");
-		carNamesButton.setAttribute("id", "car-names-submit");
-		racingCountInput.setAttribute("id", "racing-count-input");
-		racingCountButton.setAttribute("id", "racing-count-submit");
+	setHandlers = () => {
+		carNamesButton.addEventListener("click", this.setCarNames);
+		racingCountButton.addEventListener("click", this.setRacingCount);
+		racingCountButton.addEventListener("click", this.startGame);
 	}
 
 	setCarNames = () => {
-		this.carNames = carNamesInput.value;
+		this.carNamesValue = carNamesInput.value;
 
-		console.log(this.validity.isCarNameValid(this.carNames.split(",")[0]));
+		console.log(this.validity.isCarNameValid(this.carNames.split(",")));
 	}
 
 	setRacingCount = () => {
-		this.racingCount = Number(racingCountInput.value);
-	}
-
-	hideRacingCountInput = () => {
-		racingCountInput.style.display = "none";
-	};
-
-	hideRacingCountButton = () => {
-		racingCountButton.style.display = "none";
-	}
-
-	displayRacingCountInput = () => {
-		racingCountInput.style.display = "inline";
-	};
-
-	displayRacingCountButton = () => {
-		racingCountButton.style.display = "inline-block";
+		this.racingCountValue = Number(racingCountInput.value);
 	}
 
 	startGame = () => {
