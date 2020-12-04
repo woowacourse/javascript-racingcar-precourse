@@ -1,4 +1,4 @@
-class RacingCountContainer {
+class RacingCountInputContainer {
   constructor({ $target, setRound }) {
     this.$target = $target;
 
@@ -10,4 +10,4 @@ class RacingCountContainer {
   bindEvents() {}
 }
 
-export default RacingCountContainer;
+export default RacingCountInputContainer;
