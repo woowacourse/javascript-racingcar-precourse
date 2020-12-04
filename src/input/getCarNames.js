@@ -1,5 +1,4 @@
 import makeNewCars from '../game/makeNewCars.js';
-import toggleRaceNumberInputScreen from '../init/toggleRaceNumberInputScreen.js';
 
 function checkLength(carName) {
   if (carName.length === 0) {
@@ -27,6 +26,5 @@ export default function getCarNames() {
     alert('잘못 된 입력입니다! 다시 입력해주세요!');
     return false;
   }
-  toggleRaceNumberInputScreen();
   return makeNewCars(carNamesArray);
 }
