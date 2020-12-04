@@ -18,23 +18,34 @@ export default class RacingCarGame {
     });
 
     this.makeRacingResult(racingCars);
-    this.findWinner(racingCars);
+    this.printWinnersName(racingCars);
     document.getElementById('racing-count-submit').disabled = true;
     console.log(racingCars);
   }
 
-  findWinner(racingCars) {
-    const racingDistance = racingCars.map(racingCar =>
-      racingCar.racingResult.length,
-    );
+  printWinnersName(racingCars) {
+    const racingResultElement = document.getElementById('racing-result');
+    const winnersName = this.findWinnersName(racingCars);
+    const winnersNameText = `최종 우승자: ${winnersName.join(', ')}`;
+    const winnersNameTextNode = document.createTextNode(winnersNameText);
+    const winnersNameDiv = document.createElement('div');
+
+    winnersNameDiv.appendChild(winnersNameTextNode);
+    racingResultElement.appendChild(winnersNameDiv);
+  }
+
+  findWinnersName(racingCars) {
+    const racingDistance = racingCars.map((racingCar) => {
+      return racingCar.racingResult.length;
+    });
 
     const maxRacingDistance = Math.max(...racingDistance);
-    const winner = racingCars.filter(racingCar =>
-      racingCar.racingResult.length === maxRacingDistance,
-    );
 
-    console.log('winner', winner);
-    return winner;
+    return racingCars
+        .filter((racingCar) => {
+          return racingCar.racingResult.length === maxRacingDistance;
+        })
+        .map(racingCar => racingCar.name);
   }
 
   makeRacingResult(racingCars) {
@@ -45,6 +56,7 @@ export default class RacingCarGame {
       const racingResult = this.getRacingResult(racingCars, i);
       const racingResultDiv
       = this.createRacingResultElement(racingCars, racingResult);
+
       racingResultElement.appendChild(racingResultDiv);
       racingResultElement.appendChild(document.createElement('br'));
     }
