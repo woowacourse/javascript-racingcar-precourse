@@ -1,3 +1,6 @@
+export const EMPTY_STRING = "";
+export const EMPTY_ARRAY = [];
+
 // used in Util class
 export const MIN_ELEM_COUNTS = 2;
 export const MIN_ELEM_LENGTH = 1;

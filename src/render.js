@@ -1,3 +1,4 @@
+import { EMPTY_STRING } from "./constants.js";
 import Winner from "./winner.js";
 
 export default class Render {
@@ -15,7 +16,7 @@ export default class Render {
   };
 
   renderBars = number => {
-    let bars = "";
+    let bars = EMPTY_STRING;
 
     for (let i = 0; i < number; i++) {
       bars += "-";
