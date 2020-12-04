@@ -1,3 +1,4 @@
+import Car from "./car.js";
 import Render from "./render.js";
 import Util from "./util.js";
 
@@ -30,6 +31,7 @@ export default class RacingCarGame {
       this.setCarsList();
     }
     if (target === "racing-count-submit") {
+      this.runGame();
     }
   };
 
@@ -37,12 +39,44 @@ export default class RacingCarGame {
     const namesInput = document.querySelector("#car-names-input");
     const value = namesInput.value;
 
-    if (!this.util.checkValidation(value)) {
-      namesInput.value = "";
-      this.util.alertMessage(namesInput);
+    if (!this.util.checkValidation(namesInput)) {
+      this.handleError(namesInput);
       this.submitNames();
 
       return;
     }
+    this.carsList = value.split(",");
+    this.carsList = this.carsList.map(name => new Car(name));
+    this.submitCounts();
+  };
+
+  handleError = node => {
+    node.value = "";
+    this.util.alertMessage(node);
+  };
+
+  submitCounts = () => {
+    const countForm = document.querySelector(".racing-count-form");
+    const submitButton = document.querySelector("#racing-count-submit");
+
+    countForm.style.display = "";
+    submitButton.addEventListener("click", this.onClick);
+  };
+
+  runGame = () => {
+    const countInput = document.querySelector("#racing-count-input");
+    const count = Number(countInput.value);
+
+    if (!this.util.checkValidation(countInput)) {
+      this.handleError(countInput);
+      this.submitCounts();
+
+      return;
+    }
+    for (let i = 0; i < count; i++) {
+      this.randomMove();
+      this.renderResult(this.carsList);
+    }
+    this.renderWinner(this.carsList);
   };
 }
