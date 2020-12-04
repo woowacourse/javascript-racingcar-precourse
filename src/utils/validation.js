@@ -44,6 +44,9 @@ export const checkTryCount = (tryCount) => {
   if (tryCount <= 0) {
     isValid = false;
   }
+  if (Math.round(tryCount) !== tryCount) {
+    isValid = false;
+  }
 
   return isValid;
 };
