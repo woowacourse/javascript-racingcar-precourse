@@ -24,10 +24,19 @@ const checkOverFive = (namesArray) => {
   }
 };
 
+const checkDuplicateName = (namesArray) => {
+  const namesSet = new Set(namesArray);
+
+  if (namesSet.size !== namesArray.length) {
+    return true;
+  }
+};
+
 export const namesValidation = (names) => {
   const namesArray = splitByComma(names);
 
   const isEmptyInput = checkEmptyInput(names);
   const isEmptyName = checkEmptyName(namesArray);
   const isOverFive = checkOverFive(namesArray);
+  const isDuplicate = checkDuplicateName(namesArray);
 };
