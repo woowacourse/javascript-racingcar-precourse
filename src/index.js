@@ -52,6 +52,16 @@ export default class RacingCarGame {
     return isValid;
   }
   /**
+   * play each game
+   */
+  playEachGame() {
+    this.cars.forEach((car) => {
+      if (car.getNumber() >= 4) {
+        car.go();
+      }
+    });
+  }
+  /**
    * get Winner of Cars
    */
   getWinners() {
