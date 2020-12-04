@@ -17,7 +17,24 @@ export default class RacingCarGame {
       car.randomRacingNumbers = RacingUtil.randomNumbers(this.racingCount);
     });
 
+    this.showRacingResult(racingCars);
+
     console.log(racingCars);
+  }
+
+  showRacingResult(racingCars) {
+    const resultArea = document.getElementById('result');
+
+    for (let i = 0; i < this.racingCount; ++i) {
+      const racingResult = this.getRacingResult(racingCars, i);
+      console.log(racingResult);
+    }
+  }
+
+  getRacingResult(racingCars, racingOrder) {
+    return racingCars.map(racingCar =>
+      RacingUtil.isForward(racingCar.randomRacingNumbers[racingOrder]),
+    );
   }
 
   setCarNames(carNames) {
@@ -75,9 +92,7 @@ export default class RacingCarGame {
   }
 
   isValidRacingCount(racingCount) {
-    if (racingCount < 1) {
-      return false;
-    }
+    if (racingCount < 1) return false;
 
     return true;
   }
