@@ -34,7 +34,7 @@ class CarNamesInput extends Component {
     let input;
     let carNames;
     input = this.#$carNamesInput.value;
-    if (!this.isValidateInput(input)) {
+    if (!this.isValidInput(input)) {
       this.handleError(input);
       return;
     }
@@ -52,7 +52,7 @@ class CarNamesInput extends Component {
     return input.split(',').map(carName => carName.trim());
   }
 
-  isValidateInput(input) {
+  isValidInput(input) {
     const carNames = input.split(',').map(carName => carName.trim());
     if (input === '') {
       return false;
