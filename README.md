@@ -24,7 +24,7 @@
 #### 자동차 이름 입력
 
 - [x] 입력받기 : 자동차 n대의 이름을 comma로 구분하여 받음.
-  - [ ] input validation : 입력받은 자동차 이름에 공백이름이 포함된 경우 alert message
+  - [x] input validation : 입력받은 자동차 이름에 공백이름이 포함된 경우 alert message
   - [ ] input validation : 입력받은 자동차 이름 중 5자 초과하는 경우 alert message
   - [ ] input validation : 입력받은 자동차 이름 중 중복되는 이름이 있는 경우
 

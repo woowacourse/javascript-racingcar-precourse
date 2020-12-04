@@ -1,8 +1,8 @@
-import { splitByComma } from "../input/index.js";
+import { namesValidation } from "../input/index.js";
 
 const namesButtonClick = (namesInput) => {
   const names = namesInput.value;
-  const namesArray = splitByComma(names);
+  namesValidation(names);
 };
 
 const handler = () => {
