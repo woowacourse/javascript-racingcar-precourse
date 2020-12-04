@@ -30,10 +30,11 @@ export const disableInputs = ($input, $button) => {
 }
 
 //render step
-export const renderGameStep = (cars, totalStep) => {
-  console.log(cars, totalStep);
+//innerHTML should be used
+export const renderGameStep = async (cars, totalStep) => {
+  await console.log(cars, totalStep);
 }
 
-export const renderWinCars = winCars => {
+export const renderWinCars = (winCars) => {
   console.log(winCars);
 }

@@ -36,6 +36,8 @@ export default class RacingCarGame {
     //manipulate result container
     await renderGameStep(this.cars, this.racingCount);
     await renderWinCars(this._getWinCars());
+    //game steps should be rendered before show result container
+
     await showContainer(this.$resultContainer);
   }
 
