@@ -42,9 +42,8 @@ function isNames(names) {
   return true;
 }
 
-function splitNamesString(names) {
-  const splitedNames = names.split(',');
-  return splitedNames;
+function splitString(string, separator) {
+  return string.split(separator);
 }
 
 function compareDistance(a, b) {
@@ -53,7 +52,7 @@ function compareDistance(a, b) {
 
 export {
   isHigherThan,
-  splitNamesString,
+  splitString,
   compareDistance,
   isLongerThan,
   isNames,

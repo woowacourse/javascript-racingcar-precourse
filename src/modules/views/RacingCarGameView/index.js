@@ -1,5 +1,5 @@
 import {
-  splitNamesString,
+  splitString,
   compareDistance,
   isLongerThan,
   isNames,
@@ -29,7 +29,7 @@ export default class RacingCarGameView {
   }
 
   handleCarNamesSubmit() {
-    const splitedNames = splitNamesString(this.carNamesInput.value);
+    const splitedNames = splitString(this.carNamesInput.value, ',');
     const exception = this.validNames(splitedNames);
     if (exception) {
       this.resetCarNamesInput();
