@@ -18,10 +18,17 @@ const namesButtonClick = () => {
   }
 };
 
+const countButtonClick = () => {
+  const countInput = document.getElementById("racing-count-input");
+  const count = parseInt(countInput.value);
+};
+
 const handler = () => {
   const namesButton = document.getElementById("car-names-submit");
+  const raceCountButton = document.getElementById("racing-count-submit");
 
   namesButton.addEventListener("click", namesButtonClick);
+  raceCountButton.addEventListener("click", countButtonClick);
 };
 
 export default handler;

@@ -5,7 +5,7 @@
 ### Handler - click에 대한 동작
 
 - [x] 자동차의 이름을 제출하는 button 동작
-- [ ] 레이싱 횟수을 제출하는 button 동작
+- [x] 레이싱 횟수을 제출하는 button 동작
 
 ### Display - 페이지 출력
 
