@@ -5,3 +5,5 @@ export const isValidCarNames = nameList => {
 };
 
 export const isEmptyInput = inputData => !inputData;
+
+export const isPositiveNumber = num => parseInt(num) > 0;
