@@ -9,11 +9,15 @@ class GamePlay extends Component {
 
   render = () => {
     const { racingCount, cars } = this._props.gameData.value;
-    this._$target.innerHTML = '<h4>📄 실행 결과</h4>';
+    this._$target.innerHTML = this.createHeaderTemplate();
     for (let i = 0; i < racingCount; i++) {
       this._$target.innerHTML += this.createRaceTemplate(cars);
     }
     this._$target.innerHTML += this.createWinnerTemplate(cars);
+  };
+
+  createHeaderTemplate = () => {
+    return '<h4>📄 실행 결과</h4>';
   };
 
   createRaceTemplate = cars => {
