@@ -1,7 +1,6 @@
 import Car from "./car.js";
 import Render from "./render.js";
 import Util from "./util.js";
-import { EMPTY_ARRAY } from "./constants.js";
 
 export default class RacingCarGame {
   util = new Util();
@@ -79,7 +78,7 @@ export default class RacingCarGame {
   };
 
   runRound = () => {
-    const roundResult = EMPTY_ARRAY;
+    const roundResult = [];
 
     this.cars.forEach(car => {
       car.position += this.util.getDistance();
