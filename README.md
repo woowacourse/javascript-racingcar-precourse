@@ -33,6 +33,7 @@
 ### 경주 결과 보여주기
 
 <br/>
+- 자동차 이름들 & 시도 횟수 입력값이 유효하지 않을 경우 경고창 띄우기 (alert invalid inputs)
 - 경주 진행과정 보여주기 (show race process)
 - 최종 우승자 보여주기 (show winners)
   <br/><br/>
