@@ -2,6 +2,7 @@ import {
   MIN_ELEM_COUNTS,
   MIN_ELEM_LENGTH,
   MAX_ELEM_LENGTH,
+  NAME_ALERT_MESSAGE,
 } from "./constants.js";
 
 export default class Util {
@@ -22,7 +23,6 @@ export default class Util {
     const elems = string.split(",");
     let isValidate = true;
 
-    console.log(elems);
     if (!this.checkElemCount(elems)) {
       isValidate = false;
     }
@@ -53,6 +53,11 @@ export default class Util {
   };
 
   alertMessage(node) {
-    alert("옳지 않은 값입니다.");
+    let message = "";
+
+    if (node.id === "car-names-input") {
+      message = NAME_ALERT_MESSAGE;
+    }
+    alert(message);
   }
 }
