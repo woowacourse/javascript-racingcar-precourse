@@ -21,3 +21,7 @@ export const NUM = {
   GO: 1,
   STOP: 0,
 };
+
+export const MESSAGE = {
+  NAME_INPUT_ERROR: "각 이름을 5자 이하로 입력해주세요 !",
+};
