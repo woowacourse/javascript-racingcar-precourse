@@ -6,10 +6,23 @@ const ONLY_SPACE = 4;
 export default function RacingCarGame() {
   const inputElements = document.querySelectorAll('.car-game-container input');
   const submitButtons = document.querySelectorAll('.car-game-container button');
+  const racingCountHeader = document.querySelector('.car-game-container h4');
+  const gameResultHeader = document.querySelector('#app h4:last-child');
   let carNamesInputElement = inputElements[0];
   let carNamesSubmitButton = submitButtons[0];
+  let racingCountInputElement = inputElements[1];
+  let racingCountSubmitButton = submitButtons[1];
+
   carNamesInputElement.id = 'car-names-input';
   carNamesSubmitButton.id = 'car-names-submit';
+  racingCountInputElement.id = 'racing-count-input';
+  racingCountSubmitButton.id = 'racing-count-submit';
+  racingCountHeader.id = 'racing-count-header';
+
+  racingCountInputElement.style.display = 'none';
+  racingCountSubmitButton.style.display = 'none';
+  racingCountHeader.style.display = 'none';
+  gameResultHeader.style.display = 'none';
   carNamesSubmitButton.addEventListener('click', handleCarNames);
 }
 
@@ -18,14 +31,16 @@ const handleCarNames = () => {
   const carNamesInputElement = document.querySelector('#car-names-input');
   let carNames = carNamesInputElement.value.split(separator);
 
-  let errno = validateCarName(carNames);
+  let errno = validateCarNames(carNames);
   if (errno) {
     return requestInputAgain(errno, carNamesInputElement);
   }
-  // createRacingCountTags();
+
+  let cars = createCars(carNames);
+  showRacingCountTags(cars);
 };
 
-const validateCarName = (carNames) => {
+const validateCarNames = (carNames) => {
   if (carNames == '') {
     return 'emptyInput';
   }
@@ -61,6 +76,34 @@ const requestInputAgain = (errno, element) => {
   alert(messages[errno]);
   element.value = '';
   element.focus();
+};
+
+const createCars = (carNames) => {
+  let cars = [];
+  for (let name of carNames) {
+    cars.push(new Car(name));
+  }
+  return cars;
+};
+
+class Car {
+  constructor(name) {
+    this.name = name;
+    this.score = '';
+  }
+}
+
+const showRacingCountTags = () => {
+  const racingCountInputElement = document.querySelector('#racing-count-input');
+  const racingCountSubmitButton = document.querySelector(
+    '#racing-count-submit'
+  );
+  const racingCountHeader = document.querySelector('#racing-count-header');
+
+  racingCountInputElement.style.display = 'inline-block';
+  racingCountSubmitButton.style.display = 'inline-block';
+  racingCountHeader.style.display = 'block';
+  racingCountInputElement.focus();
 };
 
 new RacingCarGame();
