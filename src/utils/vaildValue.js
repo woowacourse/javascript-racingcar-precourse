@@ -20,18 +20,12 @@ export const isCorrectCarNames = (inputCarNames) => {
   for (const carName of inputCarNames) {
     const carNamelength = carName.length;
 
-    if (rEmpty.test(carName)) {
-      return false;
-    }
-
+    if (rEmpty.test(carName)) return false;
+    if (rString.test(carName)) return false;
     if (
       carNamelength > variablesObj.CAR_NAME_LENGTH_MAX ||
       carNamelength < variablesObj.CAR_NAME_LENGTH_MIN
     ) {
-      return false;
-    }
-
-    if (rString.test(carName)) {
       return false;
     }
   }
@@ -40,18 +34,9 @@ export const isCorrectCarNames = (inputCarNames) => {
 };
 
 export const isCorrectRacingCount = (inputRacingCount) => {
-  console.log(inputRacingCount);
-  if (inputRacingCount === "") {
-    return false;
-  }
-
-  if (inputRacingCount[0] === "0") {
-    return false;
-  }
-
-  if (rNumber.test(inputRacingCount)) {
-    return false;
-  }
+  if (inputRacingCount === "") return false;
+  if (inputRacingCount[0] === "0") return false;
+  if (rNumber.test(inputRacingCount)) return false;
 
   return true;
 };
