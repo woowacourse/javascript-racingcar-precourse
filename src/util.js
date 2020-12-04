@@ -15,7 +15,7 @@ export default class Util {
       isValidate = this.checkString(node.value);
     }
     if (node.id === "racing-count-input") {
-      isValidate = this.checkNumber(node.value);
+      isValidate = this.checkNumber(Number(node.value));
     }
 
     return isValidate;
