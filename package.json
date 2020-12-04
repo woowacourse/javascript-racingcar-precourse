@@ -1,0 +1,23 @@
+{
+  "name": "javascript-racingcar-precourse",
+  "version": "1.0.0",
+  "description": "## 🎯 기능 요구사항",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zigsong/javascript-racingcar-precourse.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zigsong/javascript-racingcar-precourse/issues"
+  },
+  "homepage": "https://github.com/zigsong/javascript-racingcar-precourse#readme",
+  "devDependencies": {
+    "eslint": "^7.14.0"
+  }
+}
