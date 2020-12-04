@@ -44,7 +44,7 @@ export default class RacingCarGame {
    * @return {boolean}
    */
   checkTryCount() {
-    const isValid = true;
+    let isValid = true;
     if (tryCount <= 0) {
       isValid = false;
     }
