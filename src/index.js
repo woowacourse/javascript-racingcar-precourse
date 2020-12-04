@@ -7,12 +7,11 @@ import Validity from "/src/utils/validity.js";
 
 export default class RacingCarGame {
 	constructor() {
-		new Handler().setClickHandler(carNamesButton, this.setCarNames);
-		new Handler().setClickHandler(carNamesButton, this.displayRacingCountInput);
-		new Handler().setClickHandler(carNamesButton, this.displayRacingCountButton);
+		this.handler = new Handler();
+		this.validity = new Validity();
 
-		new Handler().setClickHandler(racingCountButton, this.setRacingCount);
-		new Handler().setClickHandler(racingCountButton, this.startGame);
+		this.handler.setClickHandler(carNamesButton, [this.setCarNames, this.displayRacingCountInput, this.displayRacingCountButton]);
+		this.handler.setClickHandler(racingCountButton, [this.setRacingCount, this.startGame]);
 
 		this.carNames = "";
 		this.racingCount = 0;
@@ -31,7 +30,8 @@ export default class RacingCarGame {
 
 	setCarNames = () => {
 		this.carNames = carNamesInput.value;
-		console.log(new Validity().isCarNamesValid(this.carNames.split(",")));
+
+		console.log(this.validity.isCarNameValid(this.carNames.split(",")[0]));
 	}
 
 	setRacingCount = () => {
@@ -55,7 +55,7 @@ export default class RacingCarGame {
 	}
 
 	startGame = () => {
-		if (this.isRacingCountValid(this.racingCount)) {
+		if (this.validity.isRacingCountValid(this.racingCount)) {
 			const carNamesList = this.carNames.split(",");
 			const carObjects = this.getCarObjectsList(carNamesList);
 		
