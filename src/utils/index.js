@@ -1,6 +1,6 @@
-function isLongerThanFive(names) {
+function isLongerThan(names, comparison) {
   for (let i = 0; i < names.length; i++) {
-    if (names[i].length > 5) {
+    if (names[i].length > comparison) {
       return true;
     }
   }
@@ -9,7 +9,7 @@ function isLongerThanFive(names) {
 }
 
 function isHigherThan(number, comparison) {
-  return number >= comparison;
+  return number > comparison;
 }
 
 function isZero(count) {
@@ -55,7 +55,7 @@ export {
   isHigherThan,
   splitNamesString,
   compareDistance,
-  isLongerThanFive,
+  isLongerThan,
   isNames,
   isZero,
   isNumber,

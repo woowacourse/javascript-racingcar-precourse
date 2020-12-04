@@ -17,7 +17,7 @@ export default class Car {
   }
 
   moveForward() {
-    if (isHigherThan(this.randomNumber(), 4)) {
+    if (isHigherThan(this.randomNumber(), 3)) {
       this.moveForwardDistance++;
     }
   }

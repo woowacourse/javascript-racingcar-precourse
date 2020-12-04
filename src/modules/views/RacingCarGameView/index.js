@@ -1,7 +1,7 @@
 import {
   splitNamesString,
   compareDistance,
-  isLongerThanFive,
+  isLongerThan,
   isNames,
   isZero,
   isNumber,
@@ -70,7 +70,7 @@ export default class RacingCarGameView {
     if (!isNames(names)) {
       return text.WARNING_FOR_WHITE_SPACE;
     }
-    if (isLongerThanFive(names)) {
+    if (isLongerThan(names, 5)) {
       return text.WARNING_FOR_NAME_LONGER_THAN_FIVE;
     }
 
