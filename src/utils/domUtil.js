@@ -5,3 +5,8 @@ export const hideElement = element => {
 export const showElement = element => {
   element.style.display = "block";
 };
+
+export const showInputError = ($input, message) => {
+  alert(message);
+  $input.value = "";
+};
