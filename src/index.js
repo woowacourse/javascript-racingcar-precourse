@@ -1,34 +1,51 @@
-const carNameContainer = document.querySelector('.car-name');
-// const tryNumberContainer = document.querySelector(".try-number");
-const carNameInput = carNameContainer.querySelector("input[type='text']");
-const carNameSubmitBtn = carNameContainer.querySelector('button');
-// const tryNumberInput = tryNumberContainer.querySelector("input[type='number']");
-// const tryNumberSubmitBtn = tryNumberContainer.querySelector("button");
+const racingCountContainer = document.querySelector('.racing-count');
+const carNameInput = document.getElementById('car-names-input');
+const carNameSubmitBtn = document.getElementById('car-names-submit');
+const racingCountInput = document.getElementById('racing-count-input');
+// const racingCountSubmitBtn = document.getElementById('racing-count-submit');
+const resultDiv = document.querySelector('.result');
 
 export default class RacingCarGame {
   constructor() {
-    this.resetTextInput();
+    this.nameOfCars = [];
+    this.racingCount = 0;
+
+    this.hideUIs();
     this.setEventListeners();
+    this.resetCarNameInput();
+  }
+
+  // hide racing-count-input, racing-count-submit & result
+  hideUIs() {
+    racingCountContainer.style.visibility = 'hidden';
+    resultDiv.style.visibility = 'hidden';
   }
 
   setEventListeners() {
     this.handleCarNameInput = this.handleCarNameInput.bind(this);
     carNameSubmitBtn.addEventListener('click', this.handleCarNameInput);
+    carNameInput.addEventListener('keydown', e => {
+      if (e.key === 'Enter') {
+        this.handleCarNameInput();
+      }
+    });
   }
 
   handleCarNameInput() {
     const carNameString = carNameInput.value;
     if (this.isEmptyString(carNameString)) {
       alert('값을 입력해주세요.');
-      this.resetTextInput();
+      this.resetCarNameInput();
       return;
     }
 
     const carNames = this.getCarNamesArray(carNameString);
     if (this.isNotProperCarNamesArray(carNames)) {
-      this.resetTextInput();
+      this.resetCarNameInput();
       return;
     }
+
+    this.showRacingCountUI();
   }
 
   isEmptyString(value) {
@@ -60,9 +77,14 @@ export default class RacingCarGame {
     return value.length > 5;
   }
 
-  resetTextInput() {
+  resetCarNameInput() {
     carNameInput.value = '';
     carNameInput.focus();
+  }
+
+  showRacingCountUI() {
+    racingCountContainer.style.visibility = 'visible';
+    racingCountInput.focus();
   }
 }
 
