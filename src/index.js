@@ -14,7 +14,7 @@ export default class RacingCarGame {
    * get Car lists
    */
   getCarList() {
-    cars = document.getElementById('car-names-input').nodeValue.split(',');
+    this.cars = document.getElementById('car-names-input').nodeValue.split(',');
   };
   /**
    * check Validation of UserInput
@@ -23,10 +23,10 @@ export default class RacingCarGame {
   checkCarList() {
     let isValid = true;
 
-    if (cars.length <= 1) {
+    if (this.cars.length <= 1) {
       isValid = false;
     }
-    cars.forEach((car) => {
+    this.cars.forEach((car) => {
       if (car.length > 5) {
         isValid = false;
       }
@@ -37,7 +37,8 @@ export default class RacingCarGame {
    * getTryCount
    */
   getTryCount() {
-    tryCount = Number(document.getElementById('#racing-count-input').nodeValue);
+    this.tryCount =
+        Number(document.getElementById('#racing-count-input').nodeValue);
   };
   /**
    * check TryCount Validtion
@@ -45,7 +46,7 @@ export default class RacingCarGame {
    */
   checkTryCount() {
     let isValid = true;
-    if (tryCount <= 0) {
+    if (this.tryCount <= 0) {
       isValid = false;
     }
     return isValid;
@@ -54,12 +55,12 @@ export default class RacingCarGame {
    * get Winner of Cars
    */
   getWinners() {
-    const positions = cars.map((car) => car.position);
+    const positions = this.cars.map((car) => car.position);
     const max = Math.max(...positions);
 
-    cars.forEach((car) => {
+    this.cars.forEach((car) => {
       if (car.position === max) {
-        winners.push(car.name);
+        this.winners.push(car.name);
       }
     });
   };
