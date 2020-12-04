@@ -1,9 +1,3 @@
-const carNameCheckResult = {
-  isCarNumberEnough: true,
-  isCarNameNotLong: true,
-  isAllCarNameDifferent: true,
-};
-
 const checkIsCarNameLong = (carNameList) => {
   let isCarNameLong = false;
   for (let i = 0; i < carNameList.length; i += 1) {
@@ -24,15 +18,12 @@ const checkIsAllCarNameDifferent = (carNameList) => {
 };
 
 export const makeCarNamesCheckResult = (carNameList) => {
-  if (carNameList.length < 2) {
-    carNameCheckResult.isCarNumberEnough = false;
-  }
-  if (checkIsCarNameLong(carNameList)) {
-    carNameCheckResult.isCarNameNotLong = false;
-  }
-  if (checkIsAllCarNameDifferent(carNameList)) {
-    carNameCheckResult.isAllCarNameDifferent = false;
-  }
+  const carNameCheckResult = {};
+  carNameCheckResult.isCarNumberEnough = carNameList.length >= 2;
+  carNameCheckResult.isCarNameNotLong = !checkIsCarNameLong(carNameList);
+  carNameCheckResult.isAllCarNameDifferent = !checkIsAllCarNameDifferent(
+    carNameList
+  );
 
   return carNameCheckResult;
 };
