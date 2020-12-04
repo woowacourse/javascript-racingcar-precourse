@@ -15,6 +15,7 @@ const namesButtonClick = () => {
 
     displayTag(countWrapper);
     namesButton.removeEventListener("click", namesButtonClick);
+    namesInput.setAttribute("readonly", true);
   }
 };
 
@@ -30,6 +31,7 @@ const countButtonClick = () => {
 
     displayTag(racingResult);
     countButton.removeEventListener("click", countButtonClick);
+    countInput.setAttribute("readonly", true);
   }
 };
 

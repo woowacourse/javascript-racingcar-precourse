@@ -51,6 +51,7 @@
 - input validation : 이름이 하나만 입력 될 경우 ( 어차피 그사람이 우승이므로 2명이상부터 진행)
 - input validation : 숫자가 아닌입력의 경우 input type이 number라서 자동으로 걸러짐.
 - input validation : 음수의 경우가 아니라 1미만의 숫자의 경우 필터링 (0회 진행은 의미없음.)
+- race 진행을 위해 input을 readonly로 만들어 수정할 수 없게 만듭니다.
 
 ## 🎯 기능 요구사항
 
