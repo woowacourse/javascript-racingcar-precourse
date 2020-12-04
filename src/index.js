@@ -7,7 +7,15 @@ export default function RacingCarGame() {
     this.checkErrorNames(names);
   };
 
-  this.checkErrorNames = (names) => {};
+  this.checkErrorNames = (names) => {
+    if (!this.checkNameLength(names)) {
+      alert(
+        "자동차 이름을 5자 이하로 써주세요. 한 개라도 5자 이상일 경우 다음단계로 넘어가지 않습니다."
+      );
+    }
+  };
+
+  this.checkNameLength = (names) => {};
 
   carNamesSubmit.addEventListener("click", this.getNamesFromInput);
 }
