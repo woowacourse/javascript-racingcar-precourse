@@ -52,15 +52,19 @@ export default class RacingCarGame {
   };
 
   submitCounts = () => {
-    const countForm = document.querySelector(".racing-count-form");
     const submitButton = document.querySelector("#racing-count-submit");
 
-    countForm.style.display = "";
+    this.initCountForm();
     submitButton.addEventListener("click", this.onClick);
   };
 
+  initCountForm = () => {
+    const countForm = document.querySelector(".racing-count-form");
+
+    countForm.style.display = "";
+  };
+
   runRace = () => {
-    const resultContainer = document.querySelector(".result-container");
     const countInput = document.querySelector("#racing-count-input");
     const count = Number(countInput.value);
 
@@ -70,11 +74,23 @@ export default class RacingCarGame {
 
       return;
     }
-    resultContainer.style.display = "";
+    this.initCars();
+    this.initResult();
     for (let i = 0; i < count; i++) {
       this.runRound();
     }
     this.render.renderWinners(this.cars);
+  };
+
+  initCars = () => {
+    this.cars.forEach(car => (car.position = 0));
+  };
+
+  initResult = () => {
+    const resultContainer = document.querySelector(".result-container");
+
+    resultContainer.style.display = "";
+    resultContainer.innerHTML = "";
   };
 
   runRound = () => {
