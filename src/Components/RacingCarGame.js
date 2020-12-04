@@ -1,5 +1,8 @@
 import CarNamesInputContainer from "./CarNamesInputContainer.js";
+import Car from "../classes/Car.js";
+
 import { ID } from "../utils/constants.js";
+import { showElement } from "../utils/domUtil.js";
 
 class RacingCarGame {
   constructor({ $target }) {
@@ -37,7 +40,11 @@ class RacingCarGame {
     });
   }
 
-  setPlayers(names) {}
+  setPlayers(names) {
+    this.state.players = names.map(name => new Car(name));
+
+    showElement(this.$RacingCountInputContainer);
+  }
 }
 
 export default RacingCarGame;
