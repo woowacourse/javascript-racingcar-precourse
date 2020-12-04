@@ -1,8 +1,23 @@
+import * as RacingUtil from './racing-util.js';
+import Car from './car.js';
+
 export default class RacingCarGame {
   constructor(app) {
     app.onclick = this.onClick.bind(this);
     this.carNames = [];
     this.racingCount = 0;
+  }
+
+  start() {
+    if (this.racingCount === 0) return;
+
+    const racingCars = this.carNames.map(carName => new Car(carName));
+
+    racingCars.forEach((car) => {
+      car.randomRacingNumbers = RacingUtil.randomNumbers(this.racingCount);
+    });
+
+    console.log(racingCars);
   }
 
   setCarNames(carNames) {
@@ -25,6 +40,12 @@ export default class RacingCarGame {
     console.log(this.racingCount);
   }
 
+  splitCarNamesWithComma(carNames) {
+    return carNames.split(',')
+        .filter(carName => carName.trim().length !== 0)
+        .map(carName => carName.trim());
+  }
+
   invaildCarNameAlert(carNames) {
     if (carNames.length === 0) {
       return alert('자동차 이름을 입력해주세요.');
@@ -41,12 +62,6 @@ export default class RacingCarGame {
     if (racingCount < 1) {
       return alert('1 이상의 숫자를 입력해주세요.');
     }
-  }
-
-  splitCarNamesWithComma(carNames) {
-    return carNames.split(',')
-        .filter(carName => carName.trim().length !== 0)
-        .map(carName => carName.trim());
   }
 
   isValidCarNames(carNames) {
@@ -84,18 +99,18 @@ export default class RacingCarGame {
   }
 
   onClick(event) {
-    const targetId = event.target.id;
-
-    if (targetId === 'car-names-submit') {
+    if (event.target.id === 'car-names-submit') {
       const carNames = document.getElementById('car-names-input').value;
 
       this.setCarNames(carNames);
       this.showRacingCount();
     }
 
-    if (targetId === 'racing-count-submit') {
+    if (event.target.id === 'racing-count-submit') {
       const racingCount = document.getElementById('racing-count-input').value;
+
       this.setRacingCount(racingCount);
+      this.start();
     }
   }
 }
