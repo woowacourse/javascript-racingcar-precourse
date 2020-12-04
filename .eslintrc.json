@@ -10,6 +10,7 @@
     "no-alert": "off",
     "no-plusplus": "off",
     "no-param-reassign": "off",
+    "no-return-assign": "off",
     "import/no-cycle": "off",
     "import/extensions": "off",
     "max-depth": ["error", 2],
