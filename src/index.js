@@ -1,7 +1,3 @@
-// export default function RacingCarGame() {}
-
-// new RacingCarGame();
-
 class Car {
     constructor(name) {
         this.name = name;
@@ -18,10 +14,18 @@ class Car {
     }
 }
 
-function makeNewCars() {
+function makeNewCars(racingCountInputValue) {
     const cars = takeCarNamesInputValue();
+    const tryCounts = racingCountInputValue;
     const carsArray = cars.map((car) => new Car(car));
-    console.log(carsArray);
+
+    playRacingGames(tryCounts, carsArray);
+}
+
+function playRacingGames(tryCounts, carsArray) {
+    [...Array(Number(tryCounts))].forEach(() =>
+        carsArray.forEach((car) => car.go())
+    );
 }
 
 function validateCarNames(carNamesInputValue) {
@@ -80,8 +84,7 @@ function handleRacingCountSubmitClick() {
     const racingCountInput = document.querySelector("#racing-count-input");
     const racingCountInputValue = racingCountInput.value;
 
-    makeNewCars();
-    console.log(racingCountInputValue);
+    makeNewCars(racingCountInputValue);
 }
 
 function init() {
