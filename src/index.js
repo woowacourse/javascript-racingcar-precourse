@@ -18,8 +18,23 @@ export default class RacingCarGame {
     });
 
     this.makeRacingResult(racingCars);
+    this.findWinner(racingCars);
     document.getElementById('racing-count-submit').disabled = true;
     console.log(racingCars);
+  }
+
+  findWinner(racingCars) {
+    const racingDistance = racingCars.map(racingCar =>
+      racingCar.racingResult.length,
+    );
+
+    const maxRacingDistance = Math.max(...racingDistance);
+    const winner = racingCars.filter(racingCar =>
+      racingCar.racingResult.length === maxRacingDistance,
+    );
+
+    console.log('winner', winner);
+    return winner;
   }
 
   makeRacingResult(racingCars) {
