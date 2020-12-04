@@ -20,7 +20,7 @@ class Car {
 }
 
 function makeNewCars(racingCountInputValue) {
-    const cars = takeCarNamesInputValue();
+    const cars = getCarNames();
     const tryCounts = racingCountInputValue;
     const carsArray = cars.map((car) => new Car(car));
 
@@ -66,45 +66,46 @@ function showRacingGameWinner(carsArray, racingResultScreen) {
     console.log(winnerList);
 }
 
-function validateCarNames(carNamesInputValue) {
-    const isValid = carNamesInputValue.every(
+function validateCarNames(carNames) {
+    const isValid = carNames.every(
         (carName) => 0 < carName.length && carName.length < 6
     );
     return isValid;
 }
 
-function takeCarNamesInput() {
+function getCarNamesInput() {
     const carNamesInput = document.querySelector("#car-names-input");
     return carNamesInput;
 }
 
-function takeCarNamesInputValue() {
-    const carNamesInput = takeCarNamesInput();
-    const carNamesInputValue = carNamesInput.value.split(",");
-    return carNamesInputValue;
+function getCarNames() {
+    const carNamesInput = getCarNamesInput();
+    const carNames = carNamesInput.value.split(",");
+    return carNames;
 }
 
 function handleCarNamesSubmitClick() {
-    const carNamesInput = takeCarNamesInput();
-    const carNamesInputValue = takeCarNamesInputValue();
-    const isValid = validateCarNames(carNamesInputValue);
-
-    isValid ? showTryCountScreen() : resetCarNamesInputValue(carNamesInput);
+    const carNamesInput = getCarNamesInput();
+    const carNames = getCarNames();
+    const isValid = validateCarNames(carNames);
+    isValid ? renderTryCountScreen() : resetCarNamesInputValue(carNamesInput);
 }
 
 function resetCarNamesInputValue(carNamesInput) {
     alert("차 이름을 다시 입력해주세요");
+    [];
     carNamesInput.value = "";
     carNamesInput.focus();
 }
 
-function showTryCountScreen() {
+function renderTryCountScreen() {
     const racingCount = document.querySelector("#racing-count");
     racingCount.innerHTML = `
           <h4>시도할 횟수를 입력해주세요.</h4>
           <input id="racing-count-input" type="number" />
           <button id="racing-count-submit">확인</button>
           `;
+
     handleRacingCountSubmitButton();
 }
 
@@ -129,4 +130,5 @@ function init() {
     const carNamesSubmitButton = document.querySelector("#car-names-submit");
     carNamesSubmitButton.addEventListener("click", handleCarNamesSubmitClick);
 }
+
 init();
