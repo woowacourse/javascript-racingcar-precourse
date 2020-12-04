@@ -1,3 +1,9 @@
+import {
+  MIN_ELEM_COUNTS,
+  MIN_ELEM_LENGTH,
+  MAX_ELEM_LENGTH,
+} from "./constants.js";
+
 export default class Util {
   checkValidation = value => {
     let isValidate = false;
@@ -30,9 +36,10 @@ export default class Util {
     return isValidate;
   };
 
-  checkElemCount = elems => elems.length >= 2;
+  checkElemCount = elems => elems.length >= MIN_ELEM_COUNTS;
 
-  checkElemLength = elem => elem.length > 0 && elem.length <= 5;
+  checkElemLength = elem =>
+    elem.length >= MIN_ELEM_LENGTH && elem.length <= MAX_ELEM_LENGTH;
 
   checkElemLetter = elem => {
     const rException = /[^a-z0-9]/i;
