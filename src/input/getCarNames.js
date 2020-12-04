@@ -1,4 +1,4 @@
-import makeNewCars from '../game/makeNewCars.js';
+import makeNewCars from './makeNewCars.js';
 
 function checkLength(carName) {
   if (carName.length === 0) {
@@ -23,8 +23,7 @@ export default function getCarNames() {
 
   if (!checkValidCarName(carNamesArray)) {
     $carNamesInput.value = '';
-    alert('잘못 된 입력입니다! 다시 입력해주세요!');
-    return false;
+    return alert('잘못 된 입력입니다! 다시 입력해주세요!');
   }
   return makeNewCars(carNamesArray);
 }

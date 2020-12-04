@@ -7,5 +7,5 @@ function Car(name) {
 export default function makeNewCars(carNamesArray) {
   const carList = carNamesArray.map((name) => new Car(name));
   carList.forEach((car) => (car.count = 0));
-  playGame(carList);
+  return playGame(carList);
 }
