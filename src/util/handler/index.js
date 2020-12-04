@@ -23,6 +23,14 @@ const countButtonClick = () => {
   const count = countInput.value;
 
   const isValid = countValidation(count, countInput);
+
+  if (isValid) {
+    const countButton = document.getElementById("racing-count-submit");
+    const racingResult = document.getElementsByClassName("racing-result")[0];
+
+    displayTag(racingResult);
+    countButton.removeEventListener("click", countButtonClick);
+  }
 };
 
 const handler = () => {
