@@ -29,9 +29,9 @@ export default function RacingCarGame() {
 const handleCarNames = () => {
   const separator = ',';
   const carNamesInputElement = document.querySelector('#car-names-input');
-  let carNames = carNamesInputElement.value.split(separator);
+  const carNames = carNamesInputElement.value.split(separator);
+  const errno = validateCarNames(carNames);
 
-  let errno = validateCarNames(carNames);
   if (errno) {
     return requestInputAgain(errno, carNamesInputElement);
   }
@@ -65,7 +65,7 @@ const validateCarNames = (carNames) => {
 };
 
 const requestInputAgain = (errno, element) => {
-  let messages = {
+  const messages = {
     emptyInput: `\n🚨 안내 🚨\n\n 아무것도 입력되지 않았습니다.\n 게임 진행을 위해 자동차 이름을 입력해 주세요.`,
     oneCar: `\n🚨 안내 🚨\n\n 하나의 자동차 이름만 입력되었습니다.\n 경주를 위해 둘 이상의 자동차 이름을 입력해 주세요.`,
     redundantCarName: `\n🚨 안내 🚨\n\n 자동차의 이름이 서로 중복됩니다.\n 서로 다른 자동차 이름을 입력해 주세요.`,
@@ -73,6 +73,7 @@ const requestInputAgain = (errno, element) => {
     tooLongCarName: `\n🚨 안내 🚨\n\n 자동차의 이름이 너무 깁니다.\n 5자 이하의 자동차 이름을 입력해 주세요.`,
     onlySpaceCarName: `\n🚨 안내 🚨\n\n 공백만으로는 이름이 될 수 없습니다.\n 구분 가능한 자동차 이름을 입력해 주세요.`,
   };
+
   alert(messages[errno]);
   element.value = '';
   element.focus();
@@ -93,7 +94,7 @@ class Car {
   }
 }
 
-const showRacingCountTags = () => {
+const showRacingCountTags = (cars) => {
   const racingCountInputElement = document.querySelector('#racing-count-input');
   const racingCountSubmitButton = document.querySelector(
     '#racing-count-submit'
@@ -104,6 +105,38 @@ const showRacingCountTags = () => {
   racingCountSubmitButton.style.display = 'inline-block';
   racingCountHeader.style.display = 'block';
   racingCountInputElement.focus();
+
+  racingCountSubmitButton.cars = cars;
+  racingCountSubmitButton.addEventListener('click', handleRacingCount);
+};
+
+const handleRacingCount = (e) => {
+  const racingCountInputElement = document.querySelector('#racing-count-input');
+  const racingCount = racingCountInputElement.value;
+  let cars = e.currentTarget.cars;
+
+  const errno = validateRacingCount(racingCount);
+  if (errno) {
+    return requestInputAgain(errno, racingCountInputElement);
+  }
+
+  let gameResult = repeatTurns(racingCount, cars);
+  showGameResult(gameResult);
+};
+
+const validateRacingCount = (count) => {
+  // 문자
+  // 소수
+  // 0 이하
+};
+
+const repeatTurns = (racingCount, cars) => {
+  // 0 ~ 9 만들기
+  // car 점수기록
+};
+
+const showGameResult = (cars) => {
+  // cars 순회하며 점수 보여주기
 };
 
 new RacingCarGame();
