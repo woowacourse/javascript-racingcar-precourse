@@ -68,7 +68,7 @@ class Car {
 ## 구현 목록
 
 - [X] eslint 설치 및 rule 설정
-- [] RacingCarGame 클래스 모듈에서 게임 화면을 화면에 보여준다.
+- [X] RacingCarGame 클래스 모듈에서 게임 화면을 화면에 보여준다.
 - [] racing-count-input과 결과 화면이 화면에서 보이지 않도록 한다.
 - [] car-game-container를 구현한다.
   - [] car-names-input을 화면에 보여주는 클래스 모듈을 작성한다.
