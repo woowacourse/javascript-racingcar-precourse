@@ -8,6 +8,10 @@ export default class Car {
     this.count++;
   }
 
+  getName() {
+    return this.name;
+  }
+
   getCount() {
     return this.count;
   }

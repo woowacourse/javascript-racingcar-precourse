@@ -34,6 +34,7 @@ export const moveCar = cars => {
       car.move();
     }
   }
+  printProcess(cars);
 };
 
 export const getWinners = cars => {
@@ -51,4 +52,17 @@ export const getWinners = cars => {
       break;
     }
   }
+};
+
+export const printProcess = cars => {
+  const resultArea = document.getElementById('result');
+  const processArea = document.createElement('p');
+  for (let car of cars) {
+    const currCarString = document.createTextNode(
+      `${car.getName()}: ${'-'.repeat(car.getCount())}`,
+    );
+    processArea.appendChild(currCarString);
+    processArea.appendChild(document.createElement('br'));
+  }
+  resultArea.appendChild(processArea);
 };
