@@ -1,9 +1,15 @@
 import { Car } from "./Car.js";
+import { isMovingForward } from "./util.js";
 
 export class RacingCarGame {
   constructor() {
+    this.initializeVariables();
     this.selectDOMNode();
     this.addEventListeners();
+  }
+
+  initializeVariables() {
+    this.roundResultHTMLs = [];
   }
 
   selectDOMNode() {
@@ -19,6 +25,7 @@ export class RacingCarGame {
     this.$racingCountSubmit = document.querySelector("#racing-count-submit");
 
     this.$carGameResultContainer = document.querySelector(".car-game-result-container");
+    this.$carGameResult = document.querySelector(".car-game-result");
   }
 
   addEventListeners() {
@@ -116,6 +123,30 @@ export class RacingCarGame {
   }
 
   play() {
-    //TODO: 🏎 play: 자동차 경주 게임을 시작
+    for (let i = 0; i < this.racingCountNumber; i++) {
+      this.playRound();
+    };
+  }
+
+  playRound() {
+    const roundResultHTML = this.cars.map(car => {
+      if (isMovingForward()) {
+        car.move();
+      };
+
+      return car.getCurrentStateHTML();
+    }).join("");
+
+    this.setState(roundResultHTML);
+  }
+
+  setState(nextRoundResultHTML) {
+    this.roundResultHTMLs = [...this.roundResultHTMLs, nextRoundResultHTML];
+    
+    this.render();
+  }
+
+  render() {  
+    this.$carGameResult.innerHTML = this.roundResultHTMLs.map(roundResultHTML => `<div>${roundResultHTML}</div>`).join("<br>");
   }
 }
