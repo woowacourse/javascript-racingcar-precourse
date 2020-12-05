@@ -20,13 +20,13 @@ class CarNamesInputContainer {
   onSubmit({ target }) {
     if (target.id !== ID.CAR_NAMES_SUBMIT_BUTTON) return;
 
-    const inputData = this.$input.value.trim();
-    if (isEmptyInput(inputData)) {
+    const names = getCarsNameList(this.$input.value.trim());
+
+    if (isEmptyInput(names)) {
       showInputError(this.$input, MESSAGE.EMPTY_INPUT_ERROR);
       return;
     }
 
-    const names = getCarsNameList(inputData);
     if (!isValidCarNames(names)) {
       showInputError(this.$input, MESSAGE.NAME_INPUT_ERROR);
       return;
