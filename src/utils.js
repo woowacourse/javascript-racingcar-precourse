@@ -27,7 +27,7 @@ export const startRace = (cars, count) => {
   getWinners(cars);
 };
 
-export const moveCar = cars => {
+const moveCar = cars => {
   for (let car of cars) {
     let randNum = Math.random() * 10;
     if (randNum >= 4) {
@@ -37,7 +37,7 @@ export const moveCar = cars => {
   printProcess(cars);
 };
 
-export const getWinners = cars => {
+const getWinners = cars => {
   let winners = [];
   cars.sort((car1, car2) => {
     return car2.getCount() - car1.getCount();
@@ -56,7 +56,7 @@ export const getWinners = cars => {
   printWinners(winners);
 };
 
-export const printProcess = cars => {
+const printProcess = cars => {
   const resultArea = document.getElementById('result');
   const processArea = document.createElement('p');
   for (let car of cars) {
@@ -69,7 +69,7 @@ export const printProcess = cars => {
   resultArea.appendChild(processArea);
 };
 
-export const printWinners = winners => {
+const printWinners = winners => {
   const resultArea = document.getElementById('result');
   const winnerNode = document.createElement('p');
   winnerNode.appendChild(document.createTextNode('최종 우승자: '));
