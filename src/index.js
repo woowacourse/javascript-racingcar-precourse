@@ -1,8 +1,11 @@
-export default function RacingCarGame() {}
+export default function RacingCarGame(racingCount, cars) {
+  console.log(racingCount, cars);
+}
 
 function Car(name) {
   this.name = name;
 }
+let cars = [];
 console.log("east, west, south, north");
 const btnCarNames = document.getElementById("car-names-submit");
 const inputCarNames = document.getElementById("car-names-input");
@@ -32,13 +35,17 @@ btnCarNames.onclick = function () {
   const racingBox = document.getElementById("racing-count-box");
   if (!correctCarNames.includes(undefined)) {
     racingBox.style.display = "block";
+    correctCarNames.forEach((correctCar) => {
+      cars.push(new Car(correctCar));
+    });
   }
 };
 
 const btnRacingCount = document.getElementById("racing-count-submit");
 const inputRacingCount = document.getElementById("racing-count-input");
+const racingCount = -1;
 btnRacingCount.onclick = function () {
-  const racingCount = Number(inputRacingCount.value);
+  racingCount = Number(inputRacingCount.value);
   console.log(racingCount);
 };
-new RacingCarGame();
+new RacingCarGame(racingCount, cars);
