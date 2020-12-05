@@ -2,7 +2,8 @@
   "name": "javascript-racingcar-precourse",
   "version": "1.0.0",
   "description": "우테코 프리코스 2주차 과제",
-  "main": "/src/index.js",
+  "main": "index.js",
+  "type": "module",
   "dependencies": {
     "eslint": "^7.14.0",
     "eslint-config-airbnb-base": "^14.2.1",
@@ -24,5 +25,5 @@
   "bugs": {
     "url": "https://github.com/loquemedalagana/javascript-racingcar-precourse/issues"
   },
-  "homepage": ""
+  "homepage": "https://github.com/loquemedalagana/javascript-racingcar-precourse/#readme"
 }
