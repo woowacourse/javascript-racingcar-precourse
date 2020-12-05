@@ -7,4 +7,8 @@ export class Car {
   go() {
     this.distance += 1;
   }
+
+  stop() {
+    this.distance += 0;
+  }
 }

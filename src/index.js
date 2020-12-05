@@ -1,11 +1,13 @@
 import { CAR_GAME_GUIDE as GAME_GUIDE } from "./constants.js";
 import { Car } from "./Car.js";
-import { getRandomNumber } from "./utils";
+import { getRandomNumber } from "./utils.js";
 
 export default function RacingCarGame() {
   const carNamesSubmit = document.getElementById("car-names-submit");
   const racingCountSubmit = document.getElementById("racing-count-submit");
-  const names = [];
+  let names = [];
+  const RANDOM_START = 0;
+  const RANDOM_END = 9;
 
   this.getNamesFromInput = () => {
     const carNamesInput = document.getElementById("car-names-input");
@@ -60,13 +62,17 @@ export default function RacingCarGame() {
 
   this.isDuplicate = (names) => {
     let result = false;
+    let namesForChecking = [];
 
     names.forEach((name) => {
-      if (names.includes(name)) {
+      if (namesForChecking.includes(name)) {
         result = true;
         return result;
+      } else {
+        namesForChecking.push(name);
       }
     });
+
     return result;
   };
 
@@ -104,9 +110,10 @@ export default function RacingCarGame() {
     let cars = [];
 
     names.forEach((name) => {
-      cars.append(new Car(name));
+      cars.push(new Car(name));
     });
 
+    console.log(cars);
     return cars;
   };
 
