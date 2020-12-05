@@ -16,8 +16,7 @@ export const iterateBy = ({ iterator, callbacks }) => {
 export const splitNamesByComma = (carNames) =>
   carNames
     .split("")
-    .filter((value) => value !== " ")
+    .filter((f) => f !== " ") // 공백 없애기
     .join("")
-    .split(",")
-    .join("")
-    .split("");
+    .split(",") // 컴마 기준으로 잘라서 배열 생성
+    .filter((f) => f !== ""); // ,, 이렇게 컴마 사이에 값 없는 경우와 맨 앞, 맨 뒤에 컴마 있을 경우 처리
