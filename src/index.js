@@ -1,8 +1,3 @@
-const ONE_CAR = 1;
-const REDUNDANT = 2;
-const TOO_LONG = 3;
-const ONLY_SPACE = 4;
-
 export default function RacingCarGame() {
   const inputElements = document.querySelectorAll('.car-game-container input');
   const submitButtons = document.querySelectorAll('.car-game-container button');
@@ -18,6 +13,7 @@ export default function RacingCarGame() {
   racingCountInputElement.id = 'racing-count-input';
   racingCountSubmitButton.id = 'racing-count-submit';
   racingCountHeader.id = 'racing-count-header';
+  gameResultHeader.id = 'game-result-header';
 
   racingCountInputElement.style.display = 'none';
   racingCountSubmitButton.style.display = 'none';
@@ -102,13 +98,12 @@ const showRacingCountTags = (cars) => {
   const racingCountSubmitButton = document.querySelector(
     '#racing-count-submit'
   );
-  const racingCountHeader = document.querySelector('#racing-count-header');
 
-  racingCountInputElement.style.display = 'inline-block';
-  racingCountSubmitButton.style.display = 'inline-block';
-  racingCountHeader.style.display = 'block';
+  displayElement('racing-count-header', 'block');
+  displayElement('racing-count-input', 'inline-block');
+  displayElement('racing-count-submit', 'inline-block');
+
   racingCountInputElement.focus();
-
   racingCountSubmitButton.cars = cars;
   racingCountSubmitButton.addEventListener('click', handleRacingCount);
 };
@@ -123,8 +118,7 @@ const handleRacingCount = (e) => {
     return requestInputAgain(error, racingCountInputElement);
   }
 
-  let gameResult = repeatTurns(racingCount, cars);
-  showGameResult(gameResult);
+  playGame(racingCount, cars);
 };
 
 const isErrorRacingCount = (count) => {
@@ -141,13 +135,19 @@ const isErrorRacingCount = (count) => {
   return false;
 };
 
-const repeatTurns = (racingCount, cars) => {
+const playGame = (racingCount, cars) => {
+  displayElement('game-result-header', 'block');
   for (let i = 0; i < racingCount; i++) {
     playOneTurn(cars);
+    showCurrentScore(cars);
   }
-  console.log('repeatTurns');
+  showFinalResult(cars);
   console.log(cars);
   return cars;
+};
+
+const displayElement = (id, value) => {
+  document.querySelector(`#${id}`).style.display = value;
 };
 
 const playOneTurn = (cars) => {
@@ -169,9 +169,27 @@ const generateRandomInteger = (min, max) => {
   return Math.floor(Math.random() * (max - min + 1) + min);
 };
 
-const showGameResult = (cars) => {
-  // cars 순회하며 점수 보여주기
+const showCurrentScore = (cars) => {
+  cars.forEach((v) => appendAtEnd('#app', 'div', `${v.name}: ${v.score}`));
+  appendAtEnd('#app', 'br', '');
   console.log('showGameResult');
+};
+
+const appendAtEnd = (parent, type, text) => {
+  const parentNode = document.querySelector(parent);
+  let newNode = document.createElement(type);
+
+  newNode.innerHTML = text;
+  parentNode.append(newNode);
+};
+
+const showFinalResult = (cars) => {
+  // let max = 0;
+  // let winners = '';
+  // cars.sort((a, b) => b.score.length - a.score.length);
+  // max = cars[0].score.length;
+  // winners = cars.filter((v) => v.score.length === max);
+  // appendAtEnd('#app', 'h4', `최종 우승자: ${Object.keys(winners).join(',')}`);
 };
 
 new RacingCarGame();
