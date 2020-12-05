@@ -5,7 +5,7 @@ const carNameInput = document.getElementById('car-names-input');
 const carNameSubmitBtn = document.getElementById('car-names-submit');
 const racingCountInput = document.getElementById('racing-count-input');
 const racingCountSubmitBtn = document.getElementById('racing-count-submit');
-const resultDiv = document.querySelector('.result');
+const resultBoard = document.querySelector('.result');
 
 export default class RacingCarGame {
   constructor() {
@@ -20,7 +20,7 @@ export default class RacingCarGame {
   // hide racing-count-input, racing-count-submit & result
   hideUIs() {
     racingCountContainer.style.visibility = 'hidden';
-    resultDiv.style.visibility = 'hidden';
+    resultBoard.style.visibility = 'hidden';
   }
 
   setEventListeners() {
@@ -97,9 +97,11 @@ export default class RacingCarGame {
   }
 
   setCarObjects(arr) {
+    const newCars = [];
     arr.forEach(carName => {
-      this.cars.push(new Car(carName));
+      newCars.push(new Car(carName));
     });
+    this.cars = newCars;
   }
 
   handleRacingCountInput() {
@@ -109,7 +111,8 @@ export default class RacingCarGame {
       return;
     }
     this.racingCount = racingCountInputValue;
-    console.log(this.racingCount);
+    this.showResultUI();
+    // this.startRace();
   }
 
   isNotProperRacingCountInputValue(value) {
@@ -125,6 +128,10 @@ export default class RacingCarGame {
   resetRacingCountInput() {
     racingCountInput.value = '';
     racingCountInput.focus();
+  }
+
+  showResultUI() {
+    resultBoard.style.visibility = 'visible';
   }
 }
 
