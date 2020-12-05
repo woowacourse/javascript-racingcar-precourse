@@ -23,6 +23,32 @@ function printRaceResult(car) {
   $resultScreen.insertAdjacentHTML('beforeend', raceResultTemplate(car));
 }
 
+function getMaxCount(carList) {
+  let maxCount = 0;
+  carList.forEach((car) => {
+    if (maxCount < car.count) {
+      maxCount = car.count;
+    }
+  });
+
+  return maxCount;
+}
+
+function getWinner(carList) {
+  const maxCount = getMaxCount(carList);
+  return carList.filter((car) => {
+    if (car.count === maxCount) {
+      return true;
+    }
+    return false;
+  });
+}
+
+function printFinalResult(carList) {
+  const winner = getWinner(carList);
+  return winner.map((car) => car.name).join(', ');
+}
+
 export default function printResult(carList, racingCount) {
   const $resultScreen = document.querySelector('#app > div:last-child');
 
