@@ -1,5 +1,17 @@
 # 🏎️ 자동차 경주 게임
 
+## ✏️ Todos
+- [X] 기능 목록 정리
+- [ ] utils.js, Car.js 파일 생성
+- [ ] Car class 생성
+- [ ] 자동차 이름 input 받기 & 5자 validation
+- [ ] input에 기반한 Car instance 생성
+- [ ] 이동 횟수 input 받기
+- [ ] 전진 여부 선택하는 random 함수
+- [ ] 각 Car instance의 전진 횟수 저장
+- [ ] 우승자 판별
+- [ ] 우승자 출력
+
 ## 🎯 기능 요구사항
 
 - 주어진 횟수 동안 n대의 자동차는 전진 또는 멈출 수 있다.
