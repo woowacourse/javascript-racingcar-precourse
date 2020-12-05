@@ -2,7 +2,7 @@
 
 ## ✏️ Todos
 - [X] 기능 목록 정리
-- [ ] utils.js, Car.js 파일 생성
+- [X] utils.js, Car.js 파일 생성
 - [ ] Car class 생성
 - [ ] 자동차 이름 input 받기 & 5자 validation
 - [ ] input에 기반한 Car instance 생성
