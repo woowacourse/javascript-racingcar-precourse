@@ -1,9 +1,5 @@
-import {
-  showOneResult,
-  getWinnerNames,
-  makeNamesToStr,
-  showFinalWinners,
-} from "./library/result-box.js";
+import { addCorrectCarNames } from "./library/car-names.js";
+import { showOneResult, showFinalWinners } from "./library/result-box.js";
 
 export default function RacingCarGame(racingCount, cars) {
   this.play = function () {
@@ -27,30 +23,6 @@ let cars = [];
 console.log("east, west, south, north");
 const btnCarNames = document.getElementById("car-names-submit");
 const inputCarNames = document.getElementById("car-names-input");
-
-function isCorrectCarNames(carName) {
-  if (carName.length > 0 && carName.length <= 5) {
-    return true;
-  }
-
-  return false;
-}
-
-function addCorrectCarNames(carNames) {
-  const correctCarNames = carNames.map(function (carName) {
-    carName = carName.trim();
-    if (!isCorrectCarNames(carName)) {
-      alert("모든 자동차의 이름을 5자 이하로 입력해주세요.");
-      inputCarNames.value = "";
-
-      return;
-    }
-
-    return carName;
-  });
-
-  return correctCarNames;
-}
 
 function makeElementBlock(element) {
   return (element.style.display = "block");
