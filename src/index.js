@@ -17,6 +17,10 @@ const isValidNames = (namesArray) => {
       alert("자동차의 이름은 5자 이하만 허용됩니다.");
       result = false;
       break;
+    } else if (namesArray[i].length === 0) {
+      alert("입력되지 않은 이름이 존재합니다.");
+      result = false;
+      break;
     }
   }
 
