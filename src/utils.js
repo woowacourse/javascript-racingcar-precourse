@@ -33,3 +33,9 @@ export const checkCarNameValidity = (carNames) => {
 };
 
 export const switchToCarInstance = (value) => new Car(value);
+
+export const showIteratorElements = () => {
+  document.getElementById("racing-count-title").style.display = "block";
+  document.getElementById("racing-count-input").style.display = "unset";
+  document.getElementById("racing-count-submit").style.display = "unset";
+};
