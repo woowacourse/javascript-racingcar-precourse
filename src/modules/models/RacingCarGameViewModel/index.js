@@ -36,7 +36,6 @@ export default class RacingCarGameViewModel {
 
     while (target._racingCount) {
       target.gameContinue();
-      target._racingCount--;
     }
 
     return true;
@@ -58,6 +57,7 @@ export default class RacingCarGameViewModel {
     this._carInstances.forEach(car => {
       car.moveForward();
     });
+    this._racingCount--;
 
     this.notifyChange();
   }
