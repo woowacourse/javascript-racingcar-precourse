@@ -3,7 +3,7 @@ import {
   onBtnRacingCountClicked,
 } from "./library/btn-clicked.js";
 
-export default function RacingCarGame(racingCount, cars) {
+export default function RacingCarGame(cars) {
   this.play = function () {
     let randomNums = [];
     for (let i = 0; i < cars.length; i++) {
@@ -18,7 +18,6 @@ export default function RacingCarGame(racingCount, cars) {
 }
 
 let cars = [];
-console.log("east, west, south, north");
 
 const btnCarNames = document.getElementById("car-names-submit");
 const inputCarNames = document.getElementById("car-names-input");
