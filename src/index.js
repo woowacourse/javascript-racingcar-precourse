@@ -45,13 +45,17 @@ function addCorrectCarNames(carNames) {
   return correctCarNames;
 }
 
+function makeElementBlock(element) {
+  return (element.style.display = "block");
+}
+
 btnCarNames.onclick = function () {
   const carNames = inputCarNames.value.split(",");
   const correctCarNames = addCorrectCarNames(carNames);
   const racingBox = document.getElementById("racing-count-box");
 
   if (!correctCarNames.includes(undefined)) {
-    racingBox.style.display = "block";
+    makeElementBlock(racingBox);
     correctCarNames.forEach((correctCar) => {
       cars.push(new Car(correctCar));
     });
@@ -61,20 +65,20 @@ btnCarNames.onclick = function () {
 const btnRacingCount = document.getElementById("racing-count-submit");
 const inputRacingCount = document.getElementById("racing-count-input");
 let racingCount = -1;
-btnRacingCount.onclick = function (event) {
+btnRacingCount.onclick = function () {
   racingCount = Number(inputRacingCount.value);
-
   const resultBox = document.getElementById("result-box");
-  resultBox.style.display = "block";
-  const r = new RacingCarGame(racingCount, cars);
+  makeElementBlock(resultBox);
+
+  const racingGame = new RacingCarGame(racingCount, cars);
   for (let i = 0; i < racingCount; i++) {
-    r.play();
+    racingGame.play();
     const result = document.createElement("div");
     document.getElementById("result-box").appendChild(result);
     for (let s in cars) {
       result.innerHTML += `<div>
         ${cars[s].name}: ${"-".repeat(cars[s].position)}
-        </div>`;
+      </div>`;
     }
     result.innerHTML += `<br>`;
   }
