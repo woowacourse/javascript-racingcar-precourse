@@ -7,13 +7,15 @@ export default function RacingCarGame() {
   this.getNamesFromInput = () => {
     const carNamesInput = document.getElementById("car-names-input");
     const names = carNamesInput.value.split(",");
-
+    console.log(names);
     this.checkErrorNames(names);
   };
 
   this.checkErrorNames = (names) => {
-    if (!this.checkNameLength(names)) {
+    if (this.checkNameLength(names)) {
       alert(GAME_GUIDE.CAR_NAME_ERROR);
+    } else if (this.hasSpaceInName(names)) {
+      alert(GAME_GUIDE.HAME_SPACE);
     } else {
       const racingCountContainer = document.getElementById(
         "racing-count-container"
@@ -23,10 +25,26 @@ export default function RacingCarGame() {
   };
 
   this.checkNameLength = (names) => {
-    let result = true;
+    let result = false;
 
-    names.forEach((name) => {
-      result = name.length > 5 ? false : true;
+    names.some((name) => {
+      if (name.length > 5) {
+        result = true;
+        return result;
+      }
+    });
+
+    return result;
+  };
+
+  this.hasSpaceInName = (names) => {
+    let result = false;
+
+    names.some((name) => {
+      if (name.search(/\s/) !== -1) {
+        result = true;
+        return result;
+      }
     });
 
     return result;
