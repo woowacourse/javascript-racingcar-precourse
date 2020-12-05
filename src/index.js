@@ -1,3 +1,5 @@
+import handleInput from './handleInput.js';
+
 export default class RacingCarGame {
   constructor() {
     this.selectDOM();
@@ -12,17 +14,22 @@ export default class RacingCarGame {
   }
 
   addEventListener() {
-    this.$nameButton.addEventListener("click", () => this.getInput());
+    this.$nameButton.addEventListener("click", () => this.getCarNames());
     this.$nameInput.addEventListener("keypress", (e) => {
-      if (e.keyCode === 13) this.getInput();
+      if (e.keyCode === 13) this.getCarNames();
     });
   }
 
   getCarNames() {
     const userNameInput = this.$nameInput.value;
-    const carNames = userNameInput.split(",");
-    console.log(carNames);
+    this.$carNames = userNameInput.split(",");
+    console.log(this.$carNames);
+
+    const InputUtils = new handleInput();
+    InputUtils.checkNameValidity(this.$carNames);
   }
+
+  
 }
 
 new RacingCarGame();
