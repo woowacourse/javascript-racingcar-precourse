@@ -1,7 +1,7 @@
 import { showOneResult, showFinalWinners } from "./result-box.js";
 import { makeElementBlock } from "./make-element-block.js";
 import { addCorrectCarNames } from "./car-names.js";
-import { Car } from "./car.js";
+import Car from "./car.js";
 import RacingCarGame from "../index.js";
 
 export function onBtnCarNamesClicked(cars, inputCarNames) {
@@ -25,6 +25,7 @@ export function onBtnRacingCountClicked(inputRacingCount, cars) {
   makeElementBlock(resultBox);
 
   const racingGame = new RacingCarGame(racingCount, cars);
+  console.log(racingGame);
   for (let i = 0; i < racingCount; i++) {
     racingGame.play();
     showOneResult(cars);
