@@ -23,4 +23,23 @@ export const startGame = (times, cars) => {
   cars.forEach((e) => {
     console.log(e.name, e.forwardCount);
   });
+
+  whoIsWinner(cars);
+};
+
+const whoIsWinner = (cars) => {
+  let maxValue = 0;
+  let winner = [];
+
+  cars.forEach((car) => {
+    if (car.forwardCount > maxValue) {
+      maxValue = car.forwardCount;
+    }
+  });
+
+  cars.forEach((car) => {
+    if (car.forwardCount === maxValue) {
+      winner.push(car);
+    }
+  });
 };
