@@ -9,6 +9,12 @@ export default function InputCheck() {
         );
         return false;
       }
+      // 중복된 자동차 이름이 있는지 체크
+      console.log([...words.slice(0, i), ...words.slice(i + 1)]);
+      if ([...words.slice(0, i), ...words.slice(i + 1)].includes(words[i])) {
+        alert(`중복된 이름이 있습니다. 다시 입력해주세요!\n + 중복이름: ${words[i]}`);
+        return false;
+      }
     }
 
     return words;
