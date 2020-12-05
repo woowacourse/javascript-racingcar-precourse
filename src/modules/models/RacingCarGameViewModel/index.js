@@ -30,9 +30,13 @@ export default class RacingCarGameViewModel {
   publish() {
     const self = this;
     this.subscribers.every(subscriber => {
-      subscriber.update(self);
+      subscriber.observe(self);
       return true;
     });
+  }
+
+  registerViews(target) {
+    this.subscribers.push(target);
   }
 
   gameContinue() {
