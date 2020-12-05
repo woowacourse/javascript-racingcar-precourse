@@ -16,3 +16,5 @@
 9. 한 번 클릭된 버튼은 다시 눌리지 않도록 만들기
 
    -> target.removeEventListener(type, listener);
+
+(images/result.jpg)
