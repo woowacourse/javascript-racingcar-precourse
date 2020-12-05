@@ -3,6 +3,7 @@ import Car from './car.js';
 
 export default class RacingCarGame {
   constructor() {
+    document.body.style.fontFamily = 'Arial';
     this.addElementId();
     this.selectDOM();
     this.addEventListener();
@@ -16,6 +17,7 @@ export default class RacingCarGame {
     document.querySelectorAll("button")[0].setAttribute('id', 'car-names-submit');
     document.querySelector("input[type=number]").setAttribute('id', 'racing-count-input');
     document.querySelectorAll("button")[1].setAttribute('id', 'racing-count-submit');
+    document.querySelector("div:nth-child(4)").setAttribute('id', 'resultArea');
   }
 
   selectDOM() {
@@ -23,6 +25,7 @@ export default class RacingCarGame {
     this.$nameButton = document.getElementById('car-names-submit');
     this.$countInput = document.getElementById('racing-count-input');
     this.$countButton = document.getElementById('racing-count-submit');
+    this.$resultArea = document.getElementById('resultArea');
   }
 
   addEventListener() {
@@ -64,10 +67,31 @@ export default class RacingCarGame {
   }
 
   createNewCar() {
-    let cars = [];
+    this.$cars = [];
     this.$carNameArray.forEach((element) => {
-      cars.push(new Car(element, 0));
+      this.$cars.push(new Car(element, 0));
     });
+    this.startRace();
+  }
+
+  startRace() {
+    for (let i = 0; i < this.$countInput.value; i++)
+      this.playRound();
+
+    this.displayWinner();
+  }
+
+  playRound() {
+    this.$cars.forEach((car) => {
+      const number = this.getRandomNumber();
+      if (number >= 4)
+        car.location += 1;
+    })
+    this.displayGameProcess();
+  }
+
+  getRandomNumber() {
+    return Math.floor(Math.random() * 10);
   }
 
 }
