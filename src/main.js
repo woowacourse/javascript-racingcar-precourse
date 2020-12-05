@@ -29,14 +29,40 @@ export default function main() {
   function onNameSubmit() {
     // 만약 input.value의 형태가 맞지 않으면 alert받기
 
-    let carNames = document.getElementById("car-names-input").value.split(",");
+    let alertMsg = verifyInput(document.getElementById("car-names-input").value);
 
+    if (alertMsg !== "") {
+      alert(alertMsg);
+      document.getElementById("car-names-input").focus();
+
+      return;
+    }
+
+    let carNames = document.getElementById("car-names-input").value.split(",");
     for (let i = 0; i < carNames.length; i++) {
       cars.push(new Car(carNames[i]));
     }
 
     // 횟수 입력창 보여주기
     showCountSubmitForm();
+  }
+
+  // 자동차 이름 검증
+  function verifyInput(input) {
+    let names = input.split(",");
+    console.log(names);
+
+    let alertMsg = "";
+
+    for (let i = 0; i < names.length; i++) {
+      if (names[i].length > 5) {
+        alertMsg = "자동차 이름을 5자 이하로 콤마로 구분하여 입력해주세요.";
+      } else if (names[i].length === 0) {
+        alertMsg = "자동차 이름을 1자 이상 입력해주세요.";
+      }
+    }
+
+    return alertMsg;
   }
 
   // 횟수 입력받기
