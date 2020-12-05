@@ -31,3 +31,5 @@ export const checkCarNameValidity = (carNames) => {
     return { value: false, errorMessage: "Car names should be less than 5" };
   return { value: resultOfSpliting, errorMessage: "" };
 };
+
+export const switchToCarInstance = (value) => new Car(value);
