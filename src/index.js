@@ -121,7 +121,6 @@ const passNamesInputToGameController = (e) => {
 
   gameController.setRacingCars(namesArray);
   addRacingCountForm(e);
-  deactivateForm(e);
 };
 
 const renderRacingRecord = (e) => {
@@ -140,8 +139,10 @@ const renderRacingRecord = (e) => {
 const routeDocClickEvent = (e) => {
   if (e.target.id === "car-names-submit") {
     passNamesInputToGameController(e);
+    deactivateForm(e);
   } else if (e.target.id === "racing-count-submit") {
     renderRacingRecord(e);
+    deactivateForm(e);
   }
 };
 
