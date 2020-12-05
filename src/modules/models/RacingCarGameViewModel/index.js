@@ -42,9 +42,8 @@ export default class RacingCarGameViewModel {
   }
 
   notifyChange() {
-    const self = this;
     this.subscribers.every(subscriber => {
-      subscriber.updateChange(self);
+      subscriber.updateChange(this);
       return true;
     });
   }
