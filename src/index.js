@@ -111,6 +111,7 @@ export default class RacingCarGame {
       return;
     }
     this.racingCount = racingCountInputValue;
+    this.resetPrevRace();
     this.showResultUI();
     this.startRace();
   }
@@ -134,10 +135,18 @@ export default class RacingCarGame {
     resultBoard.style.visibility = 'visible';
   }
 
+  resetPrevRace() {
+    this.cars.forEach(car => {
+      car.resetRaceResult();
+    });
+    resultBoard.textContent = '';
+  }
+
   startRace() {
     for (let i = 0; i < this.racingCount; i++) {
       this.printTrialResult(this.cars);
     }
+    console.log(this.getWinnerName());
   }
 
   printTrialResult(cars) {
@@ -150,6 +159,23 @@ export default class RacingCarGame {
     });
     trialResult.innerHTML = resultContent;
     resultBoard.appendChild(trialResult);
+  }
+
+  getWinnerName() {
+    let winnerLength = 0;
+
+    return this.cars.reduce((winners, car) => {
+      const carResultLength = car.raceResult.length;
+      let newWinners = winners;
+      if (carResultLength === winnerLength) {
+        newWinners = winners.concat(car.carName);
+      } else if (carResultLength > winnerLength) {
+        winnerLength = carResultLength;
+        newWinners = [car.carName];
+      }
+
+      return newWinners;
+    }, []);
   }
 }
 

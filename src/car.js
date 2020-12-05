@@ -21,4 +21,8 @@ export default class Car {
   getRandomNumber() {
     return Math.floor(Math.random() * 10);
   }
+
+  resetRaceResult() {
+    this.race = '';
+  }
 }
