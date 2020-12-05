@@ -29,8 +29,7 @@ function isCorrectCarNames(carName) {
   return false;
 }
 
-btnCarNames.onclick = function () {
-  const carNames = inputCarNames.value.split(",");
+function addCorrectCarNames(carNames) {
   const correctCarNames = carNames.map(function (carName) {
     carName = carName.trim();
     if (!isCorrectCarNames(carName)) {
@@ -42,8 +41,15 @@ btnCarNames.onclick = function () {
 
     return carName;
   });
-  console.log(correctCarNames);
+
+  return correctCarNames;
+}
+
+btnCarNames.onclick = function () {
+  const carNames = inputCarNames.value.split(",");
+  const correctCarNames = addCorrectCarNames(carNames);
   const racingBox = document.getElementById("racing-count-box");
+
   if (!correctCarNames.includes(undefined)) {
     racingBox.style.display = "block";
     correctCarNames.forEach((correctCar) => {
