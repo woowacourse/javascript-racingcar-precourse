@@ -2,12 +2,12 @@ import { STEP } from "./sharedVariable.js";
 import Car from "./car.js";
 
 export default class RacingCarGame {
-  constructor() {
-    this.initRacingGame();
-  }
-
-  initRacingGame() {
+  constructor() {}
+  initClass(interfaceToHtml) {
+    this.carNameOfWinners = [];
     this.carsInRacing = [];
+    this.resultMessage = "";
+    this.interfaceToHtml = interfaceToHtml;
   }
 
   updateInputFromHtml(gameStep, inputValue) {
@@ -29,14 +29,44 @@ export default class RacingCarGame {
   }
   processRacingCount(racingCount) {
     for (let i = 0; i < racingCount; i++) {
-      this.driveGameOnce();
+      this.progressGameOnce();
+      this.addCarsPositionToResultMessage();
     }
+    this.determineWinners();
+    this.addWinnersToResultMessage();
+    this.interfaceToHtml.drawGameResult(this.resultMessage);
   }
 
-  driveGameOnce() {
+  progressGameOnce() {
     this.carsInRacing.forEach((car) => {
       car.drive();
-      console.log(car, "게임진행");
     });
+  }
+  addCarsPositionToResultMessage() {
+    this.carsInRacing.forEach((car) => {
+      this.resultMessage += `
+      ${car.name}: ${"-".repeat(car.positionInRace)}<br>
+      `;
+    });
+    this.resultMessage += "<br>";
+  }
+  determineWinners() {
+    let maxPositionAmongCars = 0;
+    this.carsInRacing.forEach((car) => {
+      maxPositionAmongCars = Math.max(maxPositionAmongCars, car.positionInRace);
+    });
+    this.carsInRacing.forEach((car) => {
+      if (car.positionInRace === maxPositionAmongCars) {
+        this.carNameOfWinners.push(car.name);
+      }
+    });
+  }
+  addWinnersToResultMessage() {
+    let stringToAdd = "";
+    this.carNameOfWinners.forEach((name) => {
+      stringToAdd += `, ${name}`;
+    });
+    stringToAdd = stringToAdd.slice(1);
+    this.resultMessage += `최종우승자:${stringToAdd}`;
   }
 }

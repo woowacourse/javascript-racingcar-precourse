@@ -5,7 +5,7 @@ export default class Car {
   }
 
   drive() {
-    const myRandom = Math.floor(Math.random() * 10);
+    const myRandom = Math.floor(Math.random() *10);
     if (myRandom >= 4) {
       this.goFront();
     }

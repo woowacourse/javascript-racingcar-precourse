@@ -1,9 +1,10 @@
 import { STEP, ID_NAME } from "./sharedVariable.js";
 
-export default class InterfacetoHtml {
-  constructor({ racingCarGame, carGameContainer, gameResultContainer }) {
-    this.racingCarGame = racingCarGame;
+export default class InterfaceToHtml {
+  constructor() {}
+  initClass({ racingCarGame, carGameContainer, gameResultContainer }) {
     this.currentGameStep = STEP.NAME_INPUT;
+    this.racingCarGame = racingCarGame;
     this.carGameContainer = carGameContainer;
     this.gameResultContainer = gameResultContainer;
     this.drawNameInput();
@@ -34,7 +35,10 @@ export default class InterfacetoHtml {
   drawGameResult(resultMessage) {
     this.drawHTML({
       containerWhereToDraw: this.gameResultContainer,
-      htmlToDraw: HTML_TEMPLATE.RESULT + resultMessage,
+      htmlToDraw: `
+        ${HTML_TEMPLATE.RESULT}
+        ${resultMessage}
+      `,
     });
   }
 
