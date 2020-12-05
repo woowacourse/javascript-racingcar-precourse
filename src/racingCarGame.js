@@ -28,5 +28,15 @@ export default class RacingCarGame {
     });
   }
   processRacingCount(racingCount) {
+    for (let i = 0; i < racingCount; i++) {
+      this.driveGameOnce();
+    }
+  }
+
+  driveGameOnce() {
+    this.carsInRacing.forEach((car) => {
+      //car.drive();
+      console.log(car, "게임진행");
+    });
   }
 }
