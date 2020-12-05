@@ -1,5 +1,6 @@
 import CarNamesInputContainer from "./CarNamesInputContainer.js";
 import RacingCountInputContainer from "./RacingCountInputContainer.js";
+import RacingResultContainer from "./RacingResultContainer.js";
 import Car from "../classes/Car.js";
 
 import { ID } from "../utils/constants.js";
@@ -43,6 +44,11 @@ class RacingCarGame {
       $target: this.$RacingCountInputContainer,
       setRound: this.setRound.bind(this),
     });
+
+    this.racingResultContainer = new RacingResultContainer({
+      $target: this.$RacingResultContainer,
+      getPlayers: this.getPlayers.bind(this),
+    });
   }
 
   initState() {
@@ -50,6 +56,10 @@ class RacingCarGame {
       round: 0,
       players: [],
     };
+  }
+
+  getPlayers() {
+    return [...this.state.players];
   }
 
   setPlayers(names) {

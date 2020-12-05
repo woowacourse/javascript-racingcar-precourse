@@ -1,6 +1,9 @@
 class RacingResultContainer {
-  constructor({ $target }) {
+  constructor({ $target, getPlayers }) {
     this.$target = $target;
+    this.getPlayers = getPlayers;
+
+    this.resultHTML = "";
   }
 
   render() {}
