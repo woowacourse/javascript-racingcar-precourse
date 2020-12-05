@@ -1,3 +1,7 @@
 #racing-count-container{
     visibility: hidden;
 }
+
+#result-container{
+    visibility: hidden;
+}

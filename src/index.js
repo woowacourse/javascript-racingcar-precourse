@@ -1,5 +1,6 @@
 import { CAR_GAME_GUIDE as GAME_GUIDE } from "./constants.js";
 import { Car } from "./Car.js";
+import { getRandomNumber } from "./utils";
 
 export default function RacingCarGame() {
   const carNamesSubmit = document.getElementById("car-names-submit");
@@ -95,6 +96,7 @@ export default function RacingCarGame() {
     } else {
       console.log(racingCount);
       let cars = this.makeInstances();
+      this.startRacingGame(cars, racingCount);
     }
   };
 
@@ -107,6 +109,9 @@ export default function RacingCarGame() {
 
     return cars;
   };
+
+  this.startRacingGame = (cars, racingCount) => {};
+
   carNamesSubmit.addEventListener("click", this.getNamesFromInput);
   racingCountSubmit.addEventListener("click", this.getRacingCount);
 }
