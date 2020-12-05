@@ -1,10 +1,10 @@
 import RacingCarGame from "./racing_car_game.js";
 
-const isNamesArrayEmpty = (namesArray) => {
+const isInputEmpty = (input) => {
   let result = false;
 
-  if (!namesArray.length) {
-    alert("자동차의 이름을 임력해주세요");
+  if (!input.length) {
+    alert("입력된 값이 없습니다.");
     result = true;
   }
 
@@ -45,7 +45,7 @@ const passNamesInputToGameController = (e) => {
   const nameInputStr = e.target.parentNode.children[0].value;
   const namesArray = nameInputStr.split(",").map((_name) => _name.trim());
 
-  if (!isValidNames(namesArray) || isNamesArrayEmpty(namesArray)) {
+  if (!isValidNames(nameInputStr) || isInputEmpty(namesArray)) {
     return;
   }
   gameController.setRacingCars(namesArray);
