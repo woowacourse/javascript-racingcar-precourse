@@ -3,6 +3,7 @@ import { getRandomNumber } from "./Utils.js";
 
 export default class RacingCarGame {
   constructor(carNames, racingCount) {
+    this.gameResultContainer = document.querySelector("#car-game-result");
     this.carNames = carNames;
     this.racingCount = racingCount;
     this.racingCars = [];
@@ -34,7 +35,25 @@ export default class RacingCarGame {
     racingResult.innerHTML += carStatus;
   };
 
+  checkRacingResult = () => {
+    this.gameResultContainer.innerHTML = "<h4>📄 실행 결과</h4>";
+
+    while (this.racingCount > 0) {
+      const racingResult = document.createElement("div");
+      racingResult.classList.add("racing-result");
+
+      this.racingCars.forEach(car => {
+        this.updateCarStep(car);
+        this.printRacingResult(racingResult, car);
+      });
+
+      this.gameResultContainer.appendChild(racingResult);
+      this.racingCount--;
+    }
+  };
+
   play = () => {
     this.setRacingCars();
+    this.checkRacingResult();
   };
 }
