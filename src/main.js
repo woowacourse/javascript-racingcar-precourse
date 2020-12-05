@@ -1,8 +1,15 @@
+import RacingCarGame from "./racingCarGame.js";
+
 function Car(name) {
   this.name = name;
   this.randomNumbers = [];
+  this.move = "";
   this.update = function () {
-    this.randomNumbers.push(Math.floor(Math.random() * 10));
+    let randomNum = Math.floor(Math.random() * 10);
+    this.randomNumbers.push(randomNum);
+    if (randomNum >= 4) {
+      this.move += "-";
+    }
   };
 }
 
@@ -16,7 +23,6 @@ export default function main() {
   hideCode();
 
   // 자동차 이름 입력받기
-
   document.getElementById("car-names-submit").addEventListener("click", onNameSubmit);
   document.getElementById("racing-count-submit").addEventListener("click", onRoundSubmit);
 
@@ -28,23 +34,37 @@ export default function main() {
     for (let i = 0; i < carNames.length; i++) {
       cars.push(new Car(carNames[i]));
     }
-    console.dir(cars);
+
     // 횟수 입력창 보여주기
     showCountSubmitForm();
   }
 
+  // 횟수 입력받기
   function onRoundSubmit() {
     let round = document.getElementById("racing-count-input").value;
 
     for (let i = 0; i < round; i++) {
       for (let j = 0; j < cars.length; j++) {
+        // let move = "";
         cars[j].update();
-        document.getElementById("print-result-form").innerHTML += `${cars[j].name}: ${cars[j].randomNumbers}<br>`;
+
+        // if (cars[j].randomNumbers >= 4 && cars[j].randomNumbers <= 9) {
+        //   move = "-";
+        // } else {
+        //   move = "";
+        // }
+
+        // 라운드별로 랜덤 숫자 표기
+        document.getElementById("print-result-form").innerHTML += `${cars[j].name}: ${cars[j].move}<br>`;
       }
+
+      // 개행
       document.getElementById("print-result-form").innerHTML += "<br />";
-      // 전진 여부 라운드마다 표시
+      //
     }
     // 결과창 보여주기
+    const game = new RacingCarGame();
+    let winner = game.play(cars);
     showResultForm();
   }
 }
