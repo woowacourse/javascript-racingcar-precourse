@@ -58,4 +58,8 @@ export default function printResult(carList, racingCount) {
     carList.forEach((car) => printRaceResult(car));
     $resultScreen.insertAdjacentHTML('beforeend', '<br>');
   }
+  $resultScreen.insertAdjacentHTML(
+    'beforeend',
+    `최종우승자 : ${printFinalResult(carList)}`,
+  );
 }
