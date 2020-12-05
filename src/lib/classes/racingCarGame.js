@@ -35,7 +35,7 @@ export default class RacingCarGame {
     const winCars = this._getWinCars();
 
     //game steps should be rendered before show result container
-    await renderResult(this.$resultContainer, this.cars, winCars);
+    await renderResult(this.$resultContainer, this.cars, this.racingCount, winCars);
     await showContainer(this.$resultContainer);
   }
 
