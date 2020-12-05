@@ -6,4 +6,19 @@ const setRacingCars = function (_carNames) {
   return racingCars;
 };
 
-export { setRacingCars };
+const setRandomNumber = function () {
+  return Math.floor(Math.random() * 9) + 1;
+};
+
+const moveRacingCars = function (_racingCars) {
+  for (let i = 0; i < _racingCars.length; i++) {
+    const racingCar = _racingCars[i];
+    const randomNumber = setRandomNumber();
+
+    if (randomNumber >= 4) {
+      racingCar.moveCount += 1;
+    }
+  }
+};
+
+export { setRacingCars, moveRacingCars };

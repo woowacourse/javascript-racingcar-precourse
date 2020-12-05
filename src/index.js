@@ -1,5 +1,5 @@
 import { setCarNames, getRacingCount } from './user/actions.js';
-import { setRacingCars } from './car/actions.js';
+import { setRacingCars, moveRacingCars } from './car/actions.js';
 
 export default function RacingCarGame() {
   const carNamesSubmitBtn = document.getElementById('car-names-submit');
@@ -7,6 +7,10 @@ export default function RacingCarGame() {
 
   const play = function (_carNames, _racingCount) {
     const racingCars = setRacingCars(_carNames);
+
+    for (let i = 0; i < _racingCount; i++) {
+      moveRacingCars(racingCars);
+    }
   };
 
   carNamesSubmitBtn.addEventListener('click', () => {
