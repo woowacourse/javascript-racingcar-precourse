@@ -8,7 +8,7 @@ export default function RacingCarGame() {
   let names = [];
   const RANDOM_START = 0;
   const RANDOM_END = 9;
-
+  const GO_FORWARD_CONDITION = 4;
   this.getNamesFromInput = () => {
     const carNamesInput = document.getElementById("car-names-input");
     names = carNamesInput.value.split(",");
@@ -119,17 +119,26 @@ export default function RacingCarGame() {
 
   this.startRacingGame = (cars, racingCount) => {
     for (let i = 0; i < racingCount; i++) {
-      this.startRacingInRound(cars, racingCount);
-      console.log(`${i}round`, cars);
+      this.racingInRound(cars, racingCount);
+      this.getResultString(cars);
     }
   };
 
   this.racingInRound = (cars) => {
     cars.forEach((car) => {
-      getRandomNumber(RANDOM_START, RANDOM_END) >= 4 ? car.go() : car.stop();
+      getRandomNumber(RANDOM_START, RANDOM_END) >= GO_FORWARD_CONDITION
+        ? car.go()
+        : car.stop();
     });
   };
 
+  this.getResultString = (cars) => {
+    let result = ``;
+
+    cars.forEach((car) => {
+      result += `${car.name}: ${"-".repeat(`${car.distance}`)}\n`;
+    });
+  };
   carNamesSubmit.addEventListener("click", this.getNamesFromInput);
   racingCountSubmit.addEventListener("click", this.getRacingCount);
 }
