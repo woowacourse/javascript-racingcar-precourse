@@ -23,6 +23,19 @@ const isValidNames = (namesArray) => {
   return result;
 };
 
+const isValidCountNum = (input) => {
+  let result = true;
+  if (!input.length) {
+    alert("숫자를 입력해주세요.");
+    result = false;
+  } else if (input === "0") {
+    alert("1 이상의 수를 입력해주세요.");
+    result = false;
+  }
+
+  return result;
+};
+
 const addRacingCountForm = (e) => {
   const racingCountForm = document.createElement("div");
   racingCountForm.innerHTML = `
@@ -38,10 +51,70 @@ const deactivateForm = (e) => {
   e.target.parentNode.children[0].setAttribute("readonly", "readonly");
 };
 
+const getWinners = () => {
+  const winners = [];
+  const finalMoveStateArray = gameController.cars.map((_car) => {
+    return _car.movedDistance;
+  });
+  const maxDistance = Math.max.apply(null, finalMoveStateArray);
+  gameController.cars.forEach((_car) => {
+    if (_car.movedDistance === maxDistance) {
+      winners.push(_car.name);
+    }
+  });
+
+  return winners;
+};
+
+const stringifyListElements = (list) => {
+  let resultString = "";
+  list.forEach((_elem, i) => {
+    if (i !== 0) {
+      resultString += ", ";
+    }
+    resultString += _elem;
+  });
+
+  return resultString;
+};
+
+const getRacingRecord = (countInput) => {
+  const racingRecord = [];
+  for (let i = 0; i < countInput; i++) {
+    racingRecord.push(gameController.play());
+  }
+
+  return racingRecord;
+};
+
+const getRacingStatusBars = (record) => {
+  return record.map((_status) => {
+    let statusBar = "";
+    for (let i = 0; i < _status; i++) {
+      statusBar += "-";
+    }
+
+    return statusBar;
+  });
+};
+
+const getResultHTML = (record) => {
+  const racingStatusBars = getRacingStatusBars(record);
+  const resultContainer = document.createElement("div");
+  resultContainer.style.marginBottom = "25px";
+  for (let i = 0; i < racingStatusBars.length; i++) {
+    resultContainer.innerHTML += `
+      ${gameController.cars[i].name}: ${racingStatusBars[i]}
+      <br />
+    `;
+  }
+
+  return resultContainer;
+};
+
 const passNamesInputToGameController = (e) => {
   const nameInputStr = e.target.parentNode.children[0].value;
   const namesArray = nameInputStr.split(",").map((_name) => _name.trim());
-
   if (!isValidNames(namesArray) || isInputEmpty(nameInputStr)) {
     return;
   }
@@ -51,9 +124,24 @@ const passNamesInputToGameController = (e) => {
   deactivateForm(e);
 };
 
+const renderRacingRecord = (e) => {
+  const countInput = e.target.parentNode.children[1].value;
+  if (!isValidCountNum(countInput)) {
+    return;
+  }
+
+  const app = e.target.closest("#app").children[3];
+  getRacingRecord(countInput).forEach((_record) => {
+    app.append(getResultHTML(_record));
+  });
+  app.append(`최종 우승자: ${stringifyListElements(getWinners())}`);
+};
+
 const routeDocClickEvent = (e) => {
   if (e.target.id === "car-names-submit") {
     passNamesInputToGameController(e);
+  } else if (e.target.id === "racing-count-submit") {
+    renderRacingRecord(e);
   }
 };
 
