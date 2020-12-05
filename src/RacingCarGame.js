@@ -54,11 +54,19 @@ export default class RacingCarGame {
     racingCountSubmit.addEventListener(
       'click',
       () => {
+        // TODO: ExceptionHandler로 여기서 예외처리 하기
         countNumber = this.getCountNumber();
         this.repeatRunRacing(countNumber, _carNames);
+        this.showResult();
       },
       { once: true }
     );
+  }
+
+  showResult() {
+    const resultContainer = document.querySelector('#result-container');
+
+    resultContainer.style.display = 'block';
   }
 
   getCountNumber() {
@@ -73,9 +81,11 @@ export default class RacingCarGame {
     if (this.exceptionHandler.isCountNumber(_countNumber)) {
       for (let i = 0; i < _countNumber; i++) {
         this.runRacing(carObjArray);
+        this.spaceHTML();
       }
     } else {
       alert('알맞은 숫자를 입력해 주세요');
+      // TODO: 시도횟수가 예외일 때 다시 클릭했을 때 실행되게끔 예외처리
     }
     console.log(carObjArray); // TODO: 결과 출력
   }
@@ -96,20 +106,36 @@ export default class RacingCarGame {
         car.position++;
       }
 
-      console.log(this.htmlString(car));
+      this.stringHTMLToDOM(this.stringHTML(car));
     });
   }
 
-  htmlString(car) {
+  spaceHTML() {
+    const p = document.createElement('br');
+
+    document.querySelector('#result-container').appendChild(p);
+  }
+
+  stringHTML(_car) {
     const distance = '-';
     let totalDistance = '';
 
-    if (car.position > 0) {
-      for (let i = 0; i < car.position; i++) {
+    if (_car.position > 0) {
+      for (let i = 0; i < _car.position; i++) {
         totalDistance += distance;
       }
     }
 
-    return `${car.name}: ${totalDistance}`;
+    return `${_car.name}: ${totalDistance}`;
+  }
+
+  stringHTMLToDOM(_htmlString) {
+    const p = document.createElement('p');
+
+    p.innerHTML = _htmlString;
+    document.querySelector('#result-container').appendChild(p);
+    // TODO: querySelector 위에 상수로 모아버리기.
   }
 }
+
+// TODO: 함수 단위 기능별로 쪼개기.
