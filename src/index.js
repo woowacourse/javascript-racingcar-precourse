@@ -1,3 +1,10 @@
+import {
+  showOneResult,
+  getWinnerNames,
+  makeNamesToStr,
+  showFinalWinners,
+} from "./library/result-box.js";
+
 export default function RacingCarGame(racingCount, cars) {
   this.play = function () {
     let randomNums = [];
@@ -62,74 +69,19 @@ btnCarNames.onclick = function () {
   }
 };
 
-function showOneResult() {
-  const result = document.createElement("div");
-  document.getElementById("result-box").appendChild(result);
-
-  for (let idx in cars) {
-    result.innerHTML += `<div>
-      ${cars[idx].name}: ${"-".repeat(cars[idx].position)}
-    </div>`;
-  }
-  result.innerHTML += `<br>`;
-
-  return;
-}
-
-function getWinnerNames(names, positions) {
-  let winnerNames = [];
-
-  for (let car of cars) {
-    names.push(car.name);
-    positions.push(car.position);
-  }
-
-  const winnerPosition = Math.max.apply(null, positions);
-  positions.forEach((p, idx) => {
-    if (p === winnerPosition) {
-      winnerNames.push(names[idx]);
-    }
-  });
-
-  return winnerNames;
-}
-
-function makeNamesToStr(winnerNames) {
-  let winners = ``;
-  for (let idx in winnerNames) {
-    if (winners.length == 0) {
-      winners += `${winnerNames[idx]}`;
-    } else {
-      winners += `, ${winnerNames[idx]}`;
-    }
-  }
-
-  return winners;
-}
-function showFinalWinners() {
-  let names = [];
-  let positions = [];
-  let winnerNames = getWinnerNames(names, positions);
-  let winners = makeNamesToStr(winnerNames);
-
-  const finalWinner = document.createElement("div");
-  finalWinner.innerHTML += `<div>최종 우승자: ${winners}</div>`;
-  document.getElementById("result-box").appendChild(finalWinner);
-}
-
 const btnRacingCount = document.getElementById("racing-count-submit");
 const inputRacingCount = document.getElementById("racing-count-input");
-let racingCount = -1;
+
 btnRacingCount.onclick = function () {
-  racingCount = Number(inputRacingCount.value);
+  let racingCount = Number(inputRacingCount.value);
   const resultBox = document.getElementById("result-box");
   makeElementBlock(resultBox);
 
   const racingGame = new RacingCarGame(racingCount, cars);
   for (let i = 0; i < racingCount; i++) {
     racingGame.play();
-    showOneResult();
+    showOneResult(cars);
   }
 
-  showFinalWinners();
+  showFinalWinners(cars);
 };
