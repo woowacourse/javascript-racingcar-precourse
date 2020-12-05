@@ -46,9 +46,14 @@ const addRacingCountForm = (e) => {
   e.target.closest(".car-game-container").append(racingCountForm);
 };
 
-const deactivateForm = (e) => {
+const deactivateCarNameForm = (e) => {
   e.target.setAttribute("disabled", "disabled");
   e.target.parentNode.children[0].setAttribute("readonly", "readonly");
+};
+
+const deactivateRacingCountForm = (e) => {
+  e.target.setAttribute("disabled", "disabled");
+  e.target.parentNode.children[1].setAttribute("readonly", "readonly");
 };
 
 const getWinners = () => {
@@ -139,10 +144,10 @@ const renderRacingRecord = (e) => {
 const routeDocClickEvent = (e) => {
   if (e.target.id === "car-names-submit") {
     passNamesInputToGameController(e);
-    deactivateForm(e);
+    deactivateCarNameForm(e);
   } else if (e.target.id === "racing-count-submit") {
     renderRacingRecord(e);
-    deactivateForm(e);
+    deactivateRacingCountForm(e);
   }
 };
 
