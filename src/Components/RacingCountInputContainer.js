@@ -22,10 +22,12 @@ class RacingCountInputContainer {
     const round = this.$input.value.trim();
     if (isEmptyInput(round)) {
       showInputError(this.$input, MESSAGE.EMPTY_INPUT_ERROR);
+      return;
     }
 
     if (!isPositiveNumber(round)) {
       showInputError(this.$input, MESSAGE.NEGATIVE_NUMBER_ERROR);
+      return;
     }
 
     this.setRound(parseInt(round));

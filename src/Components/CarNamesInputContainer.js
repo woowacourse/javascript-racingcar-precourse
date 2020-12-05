@@ -23,11 +23,13 @@ class CarNamesInputContainer {
     const inputData = this.$input.value.trim();
     if (isEmptyInput(inputData)) {
       showInputError(this.$input, MESSAGE.EMPTY_INPUT_ERROR);
+      return;
     }
 
     const names = getCarsNameList(inputData);
     if (!isValidCarNames(names)) {
       showInputError(this.$input, MESSAGE.NAME_INPUT_ERROR);
+      return;
     }
 
     this.setPlayers(names);
