@@ -13,8 +13,6 @@ class RacingCarGame {
     this.resetDOM();
     this.mountComponent();
     this.state = this.initState();
-
-    console.log(this);
   }
 
   mountDOM() {
