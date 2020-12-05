@@ -59,8 +59,7 @@ export default class RacingCarGameView {
     }
 
     this.submitRacingCount(racingCount);
-
-    this.renderResult(racingCount);
+    // this.renderResult(racingCount);
   }
 
   addEventListenerToRacingCountSubmitButton() {

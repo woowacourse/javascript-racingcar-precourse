@@ -11,6 +11,12 @@ function setInstances(target, property, names) {
 
 function setRacingCount(target, property, count) {
   target._racingCount = count;
+
+  while (target._racingCount) {
+    target.gameContinue();
+    target._racingCount--;
+  }
+
   return true;
 }
 
@@ -53,6 +59,6 @@ export default class RacingCarGameViewModel {
       car.moveForward();
     });
 
-    // publish();
+    this.publish();
   }
 }
