@@ -7,8 +7,8 @@
 - [X] 자동차 이름 input 받기 & 5자 validation
 - [X] input에 기반한 Car instance 생성
 - [X] 이동 횟수 input 받기
-- [ ] 전진 여부 선택하는 random 함수
-- [ ] 각 Car instance의 전진 횟수 저장
+- [X] 전진 여부 선택하는 random 함수
+- [X] 각 Car instance의 전진 횟수 저장
 - [ ] 우승자 판별
 - [ ] 우승자 출력
 

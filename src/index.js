@@ -1,4 +1,4 @@
-import { makeCars, validateNameInput } from './utils.js';
+import { makeCars, startRace, validateNameInput } from './utils.js';
 
 export default function RacingCarGame() {
   const carNamesInput = document.getElementById('car-names-input');
@@ -14,7 +14,7 @@ export default function RacingCarGame() {
   });
 
   racingCountBtn.addEventListener('click', () => {
-    console.log(racingCountInput.value);
+    startRace(cars, racingCountInput.value);
   });
 }
 

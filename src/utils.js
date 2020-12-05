@@ -19,3 +19,18 @@ export const makeCars = names => {
   }
   return cars;
 };
+
+export const startRace = (cars, count) => {
+  for (let i = 0; i < count; i++) {
+    moveCar(cars);
+  }
+};
+
+export const moveCar = cars => {
+  for (let car of cars) {
+    let randNum = Math.random() * 10;
+    if (randNum >= 4) {
+      car.move();
+    }
+  }
+};
