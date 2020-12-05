@@ -12,3 +12,25 @@ export const isMovingForward = () => {
 
   return randomNumber >= BASE_POINT;
 };
+
+export const isValidCarNamesInput = carNamesInput => {
+  const MIN_CAR_NUMBER = 2;
+  const MAX_CAR_NAME_LENGTH = 5;
+
+  const carNames = carNamesInput.split(",");
+
+  const hasMinCarNumbers =
+    (carNames.length >= MIN_CAR_NUMBER);
+  
+  const isEveryCarNameLengthLessThanMaxLength =
+    (carNames.every(carName => carName.length <= MAX_CAR_NAME_LENGTH));
+
+  return hasMinCarNumbers && isEveryCarNameLengthLessThanMaxLength;
+};
+
+export const isValidRacingCount = racingCountNumber => {
+  const MIN_COUNT = 0;
+  
+  return Number.isInteger(racingCountNumber) &&
+    (racingCountNumber > MIN_COUNT);
+};

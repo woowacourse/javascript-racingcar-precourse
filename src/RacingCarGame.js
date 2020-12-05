@@ -1,5 +1,9 @@
 import { Car } from "./Car.js";
-import { isMovingForward } from "./util.js";
+import {
+  isMovingForward,
+  isValidCarNamesInput,
+  isValidRacingCount
+} from "./util.js";
 
 export class RacingCarGame {
   constructor() {
@@ -50,7 +54,7 @@ export class RacingCarGame {
     const carNamesInput = this.$carNamesInput.value;
     if (carNamesInput === "") return;
 
-    if (this.isValidCarNamesInput(carNamesInput)) {
+    if (isValidCarNamesInput(carNamesInput)) {
       this.showRacingCountContainer();
       this.disableCarNamesNodes();
       this.$racingCountInput.focus();
@@ -60,19 +64,6 @@ export class RacingCarGame {
       this.$carNamesInput.value = "";
       this.$carNamesInput.focus();
     }
-  }
-
-  isValidCarNamesInput(carNamesInput) {
-    const MIN_CAR_NUMBER = 2;
-    const MAX_CAR_NAME_LENGTH = 5;
-
-    const carNames = carNamesInput.split(",");
-    const hasMinCarNumbers =
-      (carNames.length >= MIN_CAR_NUMBER);
-    const isEveryCarNameLengthLessThanMaxLength =
-      (carNames.every(carName => carName.length <= MAX_CAR_NAME_LENGTH));
-
-    return hasMinCarNumbers && isEveryCarNameLengthLessThanMaxLength;
   }
 
   showRacingCountContainer() {
@@ -94,7 +85,7 @@ export class RacingCarGame {
     const racingCountNumber = Number(this.$racingCountInput.value);
     console.log(`시도할 횟수: ${racingCountNumber}`);
 
-    if (this.isValidRacingCount(racingCountNumber)) {
+    if (isValidRacingCount(racingCountNumber)) {
       this.disableRacingCountNodes();
       this.showCarGameResultContainer();
       this.racingCountNumber = racingCountNumber;
@@ -104,13 +95,6 @@ export class RacingCarGame {
       this.$racingCountInput.value = "";
       this.$racingCountInput.focus();
     }
-  }
-
-  isValidRacingCount(racingCountNumber) {
-    const MIN_COUNT = 0;
-    
-    return Number.isInteger(racingCountNumber) &&
-      (racingCountNumber > MIN_COUNT);
   }
 
   disableRacingCountNodes() {
