@@ -33,7 +33,6 @@ export default class HandleInput {
         errortype.MIN_LENGTH = 1;
     });
 
-    console.log(errortype);
     if (errortype.MAX_LENGTH + errortype.OVERLAP + errortype.MIN_LENGTH > 0) {
       this.createErrorMessage(errortype);
 
@@ -53,7 +52,7 @@ export default class HandleInput {
   overlap(name, carNames) {
     const carNameSet = new Set(carNames);
 
-    if (carNameSet.length !== carNames.length)
+    if (carNameSet.size !== carNames.length)
       return this.IS_NOT_VALID;
     
     return this.IS_VALID;
