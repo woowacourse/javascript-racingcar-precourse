@@ -13,6 +13,7 @@ export const iterateBy = ({ iterator, callbacks }) => {
     callbacks.forEach((callback) => callback(i));
   }
 };
+
 export const splitNamesByComma = (carNames) =>
   carNames
     .split("")
@@ -53,3 +54,14 @@ export const checkIteratorValidity = (iteratorInput) => {
 };
 
 export const isBiggerThanFour = (number) => number >= 4;
+
+function callbackToIterateInCarArray(i) {
+  if (isBiggerThanFour(getRandomNumber()))
+    this.carArray[i].setLocation(this.carArray[i].location + 1);
+}
+export function iterateByCarArrayLength() {
+  iterateBy({
+    iterator: this.carArray.length,
+    callbacks: [callbackToIterateInCarArray.bind(this)],
+  });
+}
