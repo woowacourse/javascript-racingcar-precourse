@@ -1,4 +1,4 @@
-import { isLongerThan, isNames, isZero, isNumber } from '../../../utils';
+import { isLongerThan, isNames, isLowerThan, isNumber } from '../../../utils';
 import { text } from '../../../constants';
 
 export default class RacingCarGameView {
@@ -88,8 +88,8 @@ export default class RacingCarGameView {
     if (!isNumber(count)) {
       return text.WARNING_FOR_COUNT_NOT_NUMBER;
     }
-    if (isZero(count)) {
-      return text.WARNING_FOR_COUNT_ZERO;
+    if (isLowerThan(count, 1)) {
+      return text.WARNING_FOR_COUNT_LOWER_THAN_ONE;
     }
 
     return '';
