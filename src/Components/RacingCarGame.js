@@ -72,6 +72,17 @@ class RacingCarGame {
     this.state.round = num;
 
     showElement(this.$RacingResultContainer);
+    this.play();
+  }
+
+  play() {
+    while (this.state.round !== 0) {
+      this.state.players.forEach(car => car.go());
+
+      this.state.round -= 1;
+    }
+
+    this.racingResultContainer.render();
   }
 }
 
