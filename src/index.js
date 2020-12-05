@@ -6,7 +6,7 @@ import {
 export default function RacingCarGame(racingCount, cars) {
   this.play = function () {
     let randomNums = [];
-    for (let i = 0; i < racingCount; i++) {
+    for (let i = 0; i < cars.length; i++) {
       randomNums.push(Math.floor(Math.random() * 10));
     }
     randomNums.forEach((randomNum, idx) => {
