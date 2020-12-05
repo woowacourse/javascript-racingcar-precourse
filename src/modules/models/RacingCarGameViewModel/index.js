@@ -42,10 +42,10 @@ export default class RacingCarGameViewModel {
     });
   }
 
-  publish() {
+  notifyChange() {
     const self = this;
     this.subscribers.every(subscriber => {
-      subscriber.update(self);
+      subscriber.updateChange(self);
       return true;
     });
   }
@@ -59,6 +59,6 @@ export default class RacingCarGameViewModel {
       car.moveForward();
     });
 
-    this.publish();
+    this.notifyChange();
   }
 }

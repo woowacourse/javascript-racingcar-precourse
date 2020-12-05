@@ -14,25 +14,12 @@ export default class RacingCarGameView {
     this.carNamesSubmitButtton = carNamesSubmitButtton;
     this.carRacingCountDiv = carRacingCountDiv;
     this.carRacingResultDiv = carRacingResultDiv;
-    this.carInstances = [];
     this.init();
   }
 
   init() {
     this.addEventListenerToCarNamesSubmitButtton();
-    this.subscribe(this.RacingCarGameViewModel);
-  }
-
-  subscribe(target) {
-    target.registerViews(this);
-  }
-
-  update(target) {
-    this.renderIntermediateResult(target['_carInstances']);
-  }
-
-  submitRacingCount(count) {
-    this.RacingCarGameViewModel['_racingCount'] = count;
+    this.subscribeViewModel(this.RacingCarGameViewModel);
   }
 
   handleCarNamesSubmit() {
@@ -58,8 +45,7 @@ export default class RacingCarGameView {
       return;
     }
 
-    this.submitRacingCount(racingCount);
-    // this.renderResult(racingCount);
+    this.renderResult(racingCount);
   }
 
   addEventListenerToRacingCountSubmitButton() {
@@ -73,6 +59,18 @@ export default class RacingCarGameView {
       'click',
       this.handleCarNamesSubmit.bind(this),
     );
+  }
+
+  submitRacingCount(count) {
+    this.RacingCarGameViewModel['_racingCount'] = count;
+  }
+
+  subscribeViewModel(target) {
+    target.registerViews(this);
+  }
+
+  updateChange(target) {
+    this.renderIntermediateResult(target['_carInstances']);
   }
 
   validNames(names) {
@@ -164,14 +162,7 @@ export default class RacingCarGameView {
 
   renderResult(count) {
     this.renderResultHeading();
-
-    for (let i = 0; i < count; i++) {
-      this.RacingCarGameViewModel.gameContinue();
-      this.renderIntermediateResult(
-        this.RacingCarGameViewModel['_carInstances'],
-      );
-    }
-
+    this.submitRacingCount(count);
     this.renderWinners(this.RacingCarGameViewModel['_carInstances']);
   }
 }
