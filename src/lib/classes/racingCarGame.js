@@ -31,25 +31,25 @@ export default class RacingCarGame {
     }, []);
   }
 
-  async getResult() {
+  async _getResult() {
     const winCars = this._getWinCars();
     await renderResult(this.$resultContainer, this.cars, this.racingCount, winCars);
     await showContainer(this.$resultContainer);
   }
 
-  async moveCars(turn) {
+  async _moveCars(turn) {
     await this.cars.forEach(car => {
       car.play(this._createRandomNumber());
       this.totalDist = Math.max(car.pos[turn-1], this.totalDist);
     });
   }
   
-  async play() {
-    for(let turn = 1; turn <= this.racingCount; turn++) await this.moveCars(turn);
-    await this.getResult();
+  async _play() {
+    for(let turn = 1; turn <= this.racingCount; turn++) await this._moveCars(turn);
+    await this._getResult();
   }
 
-  checkRacingCountInput(racingCountInputData) {
+  _checkRacingCountInput(racingCountInputData) {
     const {
       goToNextStep,
       inputData
@@ -58,24 +58,24 @@ export default class RacingCarGame {
     if(goToNextStep) {
       disableInputs(this.$racingCountInput, this.$racingCountSubmit);
       this.racingCount = inputData;
-      return this.play();
+      return this._play();
     }
     return this.$racingCountInput.value = '';
   }
 
-  userInputRacingCount() {
-    this.$racingCountSubmit.addEventListener('click', () => this.checkRacingCountInput(
+  _userInputRacingCount() {
+    this.$racingCountSubmit.addEventListener('click', () => this._checkRacingCountInput(
       new InputsControl(this.$racingCountInput.value),
     ));
   }
 
-  submitCarNamesInput(carNames) {
+  _submitCarNamesInput(carNames) {
     showContainer(this.$racingCountContainer);
     this.cars = carNames;
-    return this.userInputRacingCount();
+    return this._userInputRacingCount();
   }
 
-  checkCarNamesInput(carNamesInputData) {
+  _checkCarNamesInput(carNamesInputData) {
     const {
       goToNextStep,
       inputData
@@ -83,18 +83,18 @@ export default class RacingCarGame {
   
     if(goToNextStep) {
       disableInputs(this.$carNamesInput, this.$carNamesSubmit);
-      return this.submitCarNamesInput(inputData);
+      return this._submitCarNamesInput(inputData);
     }
     return this.$carNamesInput.value = '';
   }
 
-  userInputCarNames() {  
-    this.$carNamesSubmit.addEventListener('click', () => this.checkCarNamesInput(
+  _userInputCarNames() {
+    this.$carNamesSubmit.addEventListener('click', () => this._checkCarNamesInput(
       new InputsControl(this.$carNamesInput.value)
     ));
   }
 
   startGame() {
-    this.userInputCarNames();
+    this._userInputCarNames();
   }
 }
