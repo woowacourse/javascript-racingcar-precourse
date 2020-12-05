@@ -60,82 +60,7 @@ const deactivateRacingCountForm = (e) => {
   e.target.parentNode.children[1].setAttribute("readonly", "readonly");
 };
 
-const getWinners = () => {
-  const winners = [];
-  const finalMoveStateArray = gameController.cars.map((_car) => {
-    return _car.movedDistance;
-  });
-  let maxDistance = Math.max.apply(null, finalMoveStateArray);
-  if (maxDistance === 0) {
-    maxDistance = -1; // 모든 차량의 이동거리가 0일 경우 우승자 없음
-  }
-  gameController.cars.forEach((_car) => {
-    if (_car.movedDistance === maxDistance) {
-      winners.push(_car.name);
-    }
-  });
-
-  return winners;
-};
-
-const stringifyListElements = (list) => {
-  let resultString = "";
-  list.forEach((_elem, i) => {
-    if (i !== 0) {
-      resultString += ", ";
-    }
-    resultString += _elem;
-  });
-
-  return resultString;
-};
-
-const getWinnersString = () => {
-  const winners = getWinners();
-  let resultString = "";
-  if (winners.length) {
-    resultString = stringifyListElements(winners);
-  } else {
-    resultString = "우승자가 없습니다.";
-  }
-
-  return resultString;
-};
-
-const getRacingRecord = (countInput) => {
-  const racingRecord = [];
-  for (let i = 0; i < countInput; i++) {
-    racingRecord.push(gameController.moveForwordAll());
-  }
-
-  return racingRecord;
-};
-
-const getRacingStatusBars = (record) => {
-  return record.map((_status) => {
-    let statusBar = "";
-    for (let i = 0; i < _status; i++) {
-      statusBar += "-";
-    }
-
-    return statusBar;
-  });
-};
-
-const getResultHTML = (record) => {
-  const racingStatusBars = getRacingStatusBars(record);
-  const resultContainer = document.createElement("div");
-  resultContainer.style.marginBottom = "25px";
-  for (let i = 0; i < racingStatusBars.length; i++) {
-    resultContainer.innerHTML += `
-      ${gameController.cars[i].name}: ${racingStatusBars[i]}
-      <br />
-    `;
-  }
-
-  return resultContainer;
-};
-
+////
 const passNamesInputToGameController = (e) => {
   const nameInputStr = e.target.parentNode.children[0].value;
   const namesArray = nameInputStr.split(",").map((_name) => _name.trim());
@@ -155,10 +80,10 @@ const renderRacingRecord = (e) => {
   }
 
   const app = e.target.closest("#app").children[3];
-  getRacingRecord(countInput).forEach((_record) => {
-    app.append(getResultHTML(_record));
+  gameController.getRacingRecord(countInput).forEach((_record) => {
+    app.append(gameController.getResultHTML(_record));
   });
-  app.append(`최종 우승자: ${getWinnersString()}`);
+  app.append(`최종 우승자: ${gameController.getWinnersString()}`);
   deactivateRacingCountForm(e);
 };
 
