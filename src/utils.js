@@ -39,3 +39,5 @@ export const showIteratorElements = () => {
   document.getElementById("racing-count-input").style.display = "unset";
   document.getElementById("racing-count-submit").style.display = "unset";
 };
+
+export const getRandomNumber = () => Math.floor(Math.random() * 9 + 1);
