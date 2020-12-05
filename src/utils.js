@@ -80,3 +80,12 @@ const printWinners = winners => {
   winnerNode.innerHTML = winnerNode.innerHTML.replace(/,(?=[^,]*$)/, '');
   resultArea.appendChild(winnerNode);
 };
+
+export const removeResult = () => {
+  const resultArea = document.getElementById('result');
+  const results = resultArea.getElementsByTagName('p');
+  let i = results.length;
+  while (i--) {
+    resultArea.removeChild(results[i]);
+  }
+};
