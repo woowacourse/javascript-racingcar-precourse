@@ -9,3 +9,7 @@ export default function getUserInputValue(elementId) {
 
   return inputValue;
 }
+
+export function clearInput(inputId) {
+  document.getElementById(inputId).value = "";
+}
