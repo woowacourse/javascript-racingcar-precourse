@@ -1,3 +1,4 @@
+/* eslint-disable max-lines-per-function */
 import CarNamesInput from '../src/components/car-names-input.js';
 
 describe('자동차 이름 입력 검증', () => {
@@ -18,5 +19,9 @@ describe('자동차 이름 입력 검증', () => {
 
   test('이름이 빈 문자열이면 안된다', () => {
     expect(carGameContainer.isValidInput('1,,2')).toBe(false);
+  });
+
+  test('중복된 이름이 있으면 안된다', () => {
+    expect(carGameContainer.isValidInput('1,1,2')).toBe(false);
   });
 });
