@@ -9,7 +9,7 @@ const InputResult = (goToNextStep, inputData) => ({
 export default class InputsControl {
   constructor(inputs) {
     this.inputs = inputs;
-    this._carNames = inputs.split(',').filter(carName => carName.length > 0);
+    this._carNames = inputs.split(',');
     this._racingCount = Number(inputs);
   }
 
@@ -32,6 +32,14 @@ export default class InputsControl {
   checkMoreThanFiveChars() {
     if(this._carNames.some(carName => carName.length > MAX_CAR_NAME_LENGTH)) {
       alert(`자동차 이름은 ${MAX_CAR_NAME_LENGTH}글자를 넘을 수 없습니다.`);
+      return true;
+    }
+    return false;
+  }
+
+  checkLessThanOneChar() {
+    if(this._carNames.some(carName => carName.length === 0)) {
+      alert(`자동차 이름은 한 글자 이상이어야 합니다.`);
       return true;
     }
     return false;
@@ -85,7 +93,7 @@ export default class InputsControl {
     $carNamesInput.focus();
     if(!this.checkIsEmpty() && !this.checkSpace() && !this.checkSameNames()
       && !this.checkLessThanOneCars() 
-      && !this.checkMoreThanFiveChars()
+      && !this.checkMoreThanFiveChars() && !this.checkLessThanOneChar()
     ) {
       return InputResult(true, this.getCarNames());
     }
