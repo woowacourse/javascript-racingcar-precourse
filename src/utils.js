@@ -42,7 +42,8 @@ export const showIteratorElements = () => {
 
 export const getRandomNumber = () => Math.floor(Math.random() * 9 + 1);
 
-export const checkIteratorValidity = (iteratorNumber) => {
+export const checkIteratorValidity = (iteratorInput) => {
+  const iteratorNumber = parseFloat(iteratorInput, 10);
   if (Math.floor(iteratorNumber) !== iteratorNumber)
     return {
       value: false,
