@@ -29,6 +29,11 @@ export default class RacingCarGame {
     }
   };
 
+  printRacingResult = (racingResult, car) => {
+    const carStatus = car.getCarStatus();
+    racingResult.innerHTML += carStatus;
+  };
+
   play = () => {
     this.setRacingCars();
   };
