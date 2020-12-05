@@ -4,8 +4,8 @@
 
 - 입력받은 자동차 이름들의 유효성을 검사하는 `checkCarNamesValidity`. 객체를 반환하고, 에러가 있을 시 객체의 errorMessage에 에러 메시지를 적어서 반환한다.
 - 입력받은 자동차 이름들을 `,`를 기준으로 분열시켜 배열을 반환하는 `splitNamesByComma`.
-- ,를 기준으로 분열된, 레이싱 카의 이름들이 담긴 배열을 각 요소가 인스턴스로 변환되게 한 뒤 그 배열을 반환하는 `switchToInstance`.
-- `switchToInstance`에서 반환된 값을 인수로 받아 `RacingCarGame` 에 `carArray`라는 이름으로 그 값을 설정해주는 `setCarArray`.
+- ,를 기준으로 분열된, 레이싱 카의 이름들이 담긴 배열을 각 요소가 인스턴스로 변환되게 한 뒤 그 배열을 반환하는 `switchToCarInstance`.
+- `switchToCarInstance`에서 반환된 값을 인수로 받아 `RacingCarGame` 에 `carArray`라는 이름으로 그 값을 설정해주는 `setCarArray`.
 - 레이싱 횟수에 대한 input, button, h4 요소가 보이게 설정하는 `showIteratorElements`.
 - 입력받은 레이싱 횟수 값의 유효성을 검사하는 `checkIteratorValidity`.
 - 1 이상 9 이하의 무작위 자연수를 반환하는 `getRandomNumber`.
