@@ -67,6 +67,19 @@ export default function RacingCarGame() {
     return result;
   };
 
+  this.hasEmptyName = (names) => {
+    let result = false;
+
+    names.some((name) => {
+      if (name === "") {
+        result = true;
+        return result;
+      }
+    });
+
+    return result;
+  };
+
   this.getRacingCount = () => {
     const racingCountInput = document.getElementById("racing-count-input");
     const racingCount = racingCountInput.value;
