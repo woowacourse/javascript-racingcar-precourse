@@ -10,9 +10,10 @@ window.addEventListener('DOMContentLoaded', () => {
   const carRacingResultDiv = document.getElementById(
     '#car-racing-result-container',
   );
-  const gameModel = new RacingCarGameViewModel();
+  const gameViewModel = new RacingCarGameViewModel();
+
   const gameView = new RacingCarGameView(
-    gameModel,
+    gameViewModel,
     carNamesInput,
     carNamesSubmitButtton,
     carRacingCountDiv,

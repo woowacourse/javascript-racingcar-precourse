@@ -3,13 +3,13 @@ import { text } from '../../../constants';
 
 export default class RacingCarGameView {
   constructor(
-    RacingCarGame,
+    RacingCarGameViewModel,
     carNamesInput,
     carNamesSubmitButtton,
     carRacingCountDiv,
     carRacingResultDiv,
   ) {
-    this.RacingCarGame = RacingCarGame;
+    this.RacingCarGameViewModel = RacingCarGameViewModel;
     this.carNamesInput = carNamesInput;
     this.carNamesSubmitButtton = carNamesSubmitButtton;
     this.carRacingCountDiv = carRacingCountDiv;
@@ -30,12 +30,14 @@ export default class RacingCarGameView {
       return;
     }
 
-    this.RacingCarGame.makeCarInstances(splitedNames);
+    this.RacingCarGameViewModel.carInstances = splitedNames;
+    // console.log(this.RacingCarGameViewModel.getCarInstances());
     this.renderRacingCountInputAndSubmitButton();
   }
 
   handleRacingCountSubmit() {
     const racingCount = document.getElementById('#racing-count-input').value;
+
     const exception = this.validCount(racingCount);
     if (exception) {
       this.resetRacingCountInput();
@@ -150,10 +152,12 @@ export default class RacingCarGameView {
     this.renderResultHeading();
 
     for (let i = 0; i < count; i++) {
-      this.RacingCarGame.gameContinue();
-      this.renderIntermediateResult(this.RacingCarGame.getCarInstances());
+      this.RacingCarGameViewModel.gameContinue();
+      this.renderIntermediateResult(
+        this.RacingCarGameViewModel['_carInstances'],
+      );
     }
 
-    this.renderWinners(this.RacingCarGame.getCarInstances());
+    this.renderWinners(this.RacingCarGameViewModel['_carInstances']);
   }
 }

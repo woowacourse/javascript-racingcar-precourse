@@ -1,20 +1,30 @@
 import { Car } from '../../models';
 
-export default class RacingCarGameViewModel {
-  constructor() {
-    this._carInstances = null;
-  }
-
-  makeCarInstances(splitedNames) {
-    const instances = splitedNames.map(name => {
+function setInstances(target, property, names) {
+  if (property === 'carInstances') {
+    const instances = names.map(name => {
       return new Car(name);
     });
+    target._carInstances = instances;
 
-    this._carInstances = instances;
+    return true;
   }
+}
 
-  getCarInstances() {
-    return this._carInstances;
+export default class RacingCarGameViewModel {
+  constructor() {
+    this.subscribers = [];
+    this._carInstances = null;
+
+    return new Proxy(this, {
+      get(target, property) {
+        return target[property];
+      },
+
+      set(target, property, names) {
+        return setInstances(target, property, names);
+      },
+    });
   }
 
   gameContinue() {
