@@ -10,37 +10,50 @@ function Car(name) {
 
 const validateCarsName = (array) => {
   let flag = true;
-  array.forEach((e) => {
-    if (e.length > 5) {
+
+  array.forEach((name) => {
+    if (name === ' ' || name.length > 5) {
       flag = false;
     }
   });
-  if (flag) {
-    return true;
-  } else {
-    return false;
-  }
+
+  return flag ? true : false;
+};
+
+const isDuplicateName = (array) => {
+  let flag = true;
+
+  array.forEach((name) => {
+    let duplicatedName = array.filter((e) => e === name).length;
+
+    if (duplicatedName > 1) {
+      flag = false;
+    }
+  });
+
+  return flag ? true : false;
 };
 
 export const getCarsName = () => {
   const carNameInput = document.getElementById('car-names-input').value;
+  const carsArray = carNameInput.split(',');
 
-  let carsArray = carNameInput.split(',');
-  if (carsArray.length > 1 && validateCarsName(carsArray)) {
-    carsToObject(carsArray);
-  } else {
+  console.log(carsArray);
+
+  if (!validateCarsName(carsArray)) {
     alert('예시를 다시 확인하고 입력해주세요!');
+  } else if (!isDuplicateName(carsArray)) {
+    alert('자동차의 이름이 중복되지 않게 입력해주세요!');
+  } else if (carsArray.length < 2) {
+    alert('차를 두 대 이상 입력해주세요!');
+  } else {
+    carsToObject(carsArray);
   }
 };
 
-const carsToObject = (carsName) => {
-  carsName.forEach((carName) => {
-    carObjectArray.push(new Car(carName));
-  });
-
-  // test
-  carObjectArray.forEach((e) => {
-    console.log(e.name, e.forwardCount);
+const carsToObject = (carsArray) => {
+  carsArray.forEach((car) => {
+    carObjectArray.push(new Car(car));
   });
 };
 
