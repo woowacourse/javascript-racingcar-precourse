@@ -9,7 +9,7 @@
 - 레이싱 횟수에 대한 input, button, h4 요소가 보이게 설정하는 `showIteratorElements`.
 - 입력받은 레이싱 횟수 값의 유효성을 검사하는 `checkIteratorValidity`.
 - 1 이상 9 이하의 무작위 자연수를 반환하는 `getRandomNumber`.
-- `getRandomNumber`를 실행하여 그 값이 4 이상이면 `true`, 그렇지 않으면 `false`를 반환하는 `isBiggerThanFour`.
+- 값을 인수로 받아 그 값이 4 이상이면 `true`, 그렇지 않으면 `false`를 반환하는 `isBiggerThanFour`.
 - `Car` 인스턴스에 `location`이라는 값을 설정하는 `setLocation`.
 - 반복 할 횟수와 정해지지 않은 수의 콜백함수들을 인수로 받아 for문을 돌며 콜백함수들을 실행하는 `iterateBy`.
 - `iterateBy`함수를 이용해 `RacingCarGame`에 있는 `carArray`의 길이만큼 반복하며 `carArray`의 값을 바꾸는 `iterateByCarArrayLength`.
