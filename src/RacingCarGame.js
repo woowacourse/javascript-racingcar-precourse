@@ -1,4 +1,8 @@
+import CarNamesInput from './CarNamesInput.js';
+
 export default class RacingCarGame {
+  carNamesContainer = null;
+
   constructor(target) {
     this.target = target;
     this.createHeader(target);
@@ -27,11 +31,11 @@ export default class RacingCarGame {
     const _container = document.createElement('div');
     _container.className = 'car-game-container';
 
-    _container.innerHTML = `
-      <div>
-        <input type="text" id="car-names-input" />
-        <button id="car-names-submit">확인</button>
-      </div>
+    this.carNamesContainer = new CarNamesInput({
+      target: _container,
+    });
+
+    _container.innerHTML += `
       <div class="hidden">
         <h4>시도할 횟수를 입력해주세요.</h4>
         <input type="number" id="racing-count-input" />
