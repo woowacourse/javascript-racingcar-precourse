@@ -12,7 +12,7 @@ export default class RacingCarGame {
     });
   }
 
-  play() {
+  moveForwordAll() {
     return this.cars.map((_car) => {
       _car.moveForwordByRandom();
       return _car.movedDistance;

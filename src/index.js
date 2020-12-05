@@ -105,7 +105,7 @@ const getWinnersString = () => {
 const getRacingRecord = (countInput) => {
   const racingRecord = [];
   for (let i = 0; i < countInput; i++) {
-    racingRecord.push(gameController.play());
+    racingRecord.push(gameController.moveForwordAll());
   }
 
   return racingRecord;
