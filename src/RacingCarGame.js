@@ -1,7 +1,9 @@
 import CarNamesInput from './CarNamesInput.js';
+import RacingCountInput from './RacingCountInput.js';
 
 export default class RacingCarGame {
   carNamesContainer = null;
+  racingCountContainer = null;
 
   constructor(target) {
     this.target = target;
@@ -35,13 +37,9 @@ export default class RacingCarGame {
       target: _container,
     });
 
-    _container.innerHTML += `
-      <div class="hidden">
-        <h4>시도할 횟수를 입력해주세요.</h4>
-        <input type="number" id="racing-count-input" />
-        <button id="racing-count-submit">확인</button>
-      </div>
-    `;
+    this.racingCountContainer = new RacingCountInput({
+      target: _container,
+    });
 
     target.appendChild(_container);
   }
