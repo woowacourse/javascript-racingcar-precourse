@@ -31,6 +31,10 @@ export default class RacingCarGameView {
     this.renderIntermediateResult(target['_carInstances']);
   }
 
+  submitRacingCount(count) {
+    this.RacingCarGameViewModel['_racingCount'] = count;
+  }
+
   handleCarNamesSubmit() {
     const splitedNames = this.carNamesInput.value.split(',');
     const exception = this.validNames(splitedNames);
@@ -40,7 +44,7 @@ export default class RacingCarGameView {
       return;
     }
 
-    this.RacingCarGameViewModel.carInstances = splitedNames;
+    this.RacingCarGameViewModel['_carInstances'] = splitedNames;
     this.renderRacingCountInputAndSubmitButton();
   }
 
@@ -53,6 +57,8 @@ export default class RacingCarGameView {
       alert(exception);
       return;
     }
+
+    this.submitRacingCount(racingCount);
 
     this.renderResult(racingCount);
   }

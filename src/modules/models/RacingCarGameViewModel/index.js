@@ -1,28 +1,37 @@
 import { Car } from '../../models';
 
 function setInstances(target, property, names) {
-  if (property === 'carInstances') {
-    const instances = names.map(name => {
-      return new Car(name);
-    });
-    target._carInstances = instances;
+  const instances = names.map(name => {
+    return new Car(name);
+  });
+  target._carInstances = instances;
 
-    return true;
-  }
+  return true;
+}
+
+function setRacingCount(target, property, count) {
+  target._racingCount = count;
+  return true;
 }
 
 export default class RacingCarGameViewModel {
   constructor() {
     this.subscribers = [];
     this._carInstances = null;
+    this._racingCount = null;
 
     return new Proxy(this, {
       get(target, property) {
         return target[property];
       },
 
-      set(target, property, names) {
-        return setInstances(target, property, names);
+      set(target, property, value) {
+        if (property === '_carInstances') {
+          return setInstances(target, property, value);
+        }
+        if (property === '_racingCount') {
+          return setRacingCount(target, property, value);
+        }
       },
     });
   }
@@ -43,5 +52,7 @@ export default class RacingCarGameViewModel {
     this._carInstances.forEach(car => {
       car.moveForward();
     });
+
+    // publish();
   }
 }
