@@ -71,7 +71,7 @@ export default class InputsControl {
   }
 
   _checkChars() {
-    if(/[^1-9]+/g.test(this.inputs)) {
+    if(/[^0-9]+/g.test(this.inputs)) {
       alert('숫자 외에는 입력받을 수 없습니다.');
       return true;
     }
