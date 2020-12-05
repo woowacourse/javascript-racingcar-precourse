@@ -29,5 +29,9 @@ btnCarNames.onclick = function () {
     return carName;
   });
   console.log(correctCarNames);
+  const racingBox = document.getElementById("racing-count-box");
+  if (!correctCarNames.includes(undefined)) {
+    racingBox.style.display = "block";
+  }
 };
 new RacingCarGame();
