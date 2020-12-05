@@ -1,4 +1,9 @@
 import Car from './car.js';
+import {
+  isEmptyString,
+  isNotProperCarName,
+  isNotProperRacingCountInputValue,
+} from './valid.js';
 import { DOMs, DOMCtrl } from './doms.js';
 
 export default class RacingCarGame {
@@ -34,14 +39,14 @@ export default class RacingCarGame {
    */
   handleCarNameInput() {
     const carNameInputValue = DOMs.carNameInput.value;
-    if (this.isEmptyString(carNameInputValue)) {
+    if (isEmptyString(carNameInputValue)) {
       alert('값을 입력해주세요.');
       DOMCtrl.resetCarNameInput();
       return;
     }
     const carNames = this.getCarNamesArray(carNameInputValue);
     for (let i = 0; i < carNames.length; i++) {
-      if (this.isNotProperCarName(carNames[i])) {
+      if (isNotProperCarName(carNames[i])) {
         DOMCtrl.resetCarNameInput();
         return;
       }
@@ -50,30 +55,8 @@ export default class RacingCarGame {
     DOMCtrl.showRacingCountUI();
   }
 
-  isEmptyString(inputValue) {
-    return !inputValue;
-  }
-
   getCarNamesArray(inputValue) {
     return inputValue.split(',').map(name => name.trim());
-  }
-
-  // if car name is empty string or longer than 5, it's not proper.
-  isNotProperCarName(carName) {
-    let result = false;
-    if (this.isLongerThanFive(carName)) {
-      alert('5자가 넘는 이름이 존재합니다.');
-      result = true;
-    } else if (this.isEmptyString(carName)) {
-      alert('이름 중에 빈 문자열이 존재합니다.');
-      result = true;
-    }
-
-    return result;
-  }
-
-  isLongerThanFive(carName) {
-    return carName.length > 5;
   }
 
   // create Car objects with car names.
@@ -91,7 +74,7 @@ export default class RacingCarGame {
    */
   handleRacingCountInput() {
     const racingCountInputValue = DOMs.racingCountInput.value;
-    if (this.isNotProperRacingCountInputValue(racingCountInputValue)) {
+    if (isNotProperRacingCountInputValue(racingCountInputValue)) {
       DOMCtrl.resetRacingCountInput();
       return;
     }
@@ -100,27 +83,6 @@ export default class RacingCarGame {
     DOMCtrl.showResultUI();
     this.startRace();
     this.printWinnersName();
-  }
-
-  // if racing count input is an empty string or not a number, it's not proper.
-  isNotProperRacingCountInputValue(inputValue) {
-    let result = false;
-    if (this.isEmptyString(inputValue)) {
-      alert('값을 입력해주세요.');
-      result = true;
-    } else if (this.isNaN(inputValue)) {
-      alert('숫자를 입력해주세요.');
-      result = true;
-    } else if (this.isLessThanOne(inputValue)) {
-      alert('1 이상의 숫자를 입력해주세요.');
-      result = true;
-    }
-
-    return result;
-  }
-
-  isLessThanOne(inputValue) {
-    return +inputValue <= 0;
   }
 
   resetPrevRace() {
