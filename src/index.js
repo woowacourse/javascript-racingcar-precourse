@@ -6,15 +6,25 @@ export default class RacingCarGame {
     this.allClickEventListener();
   }
 
-  confirmInput() {
-    const carNamesInput = document.getElementById("car-names-input");
-    const carNames = carNamesInput.value.split(",");
+  validateCarName(carName) {
+    if (carName.length > 5) {
+      alert("입력된 값이 잘못 되었습니다.");
+      const carNamesInput = document.getElementById("car-names-input");
+      carNamesInput.value = "";
+      return false;
+    }
+    return true;
+  }
+
+  getCarInstances() {
+    const carNames = document
+      .getElementById("car-names-input")
+      .value.split(",");
     const tempCars = [];
     let i;
     for (i = 0; i < carNames.length; i++) {
-      if (carNames[i].length > 5) {
-        alert("입력된 값이 잘못 되었습니다.");
-        carNamesInput.value = "";
+      const carNameValidation = this.validateCarName(carNames[i]);
+      if (!carNameValidation) {
         return;
       }
       tempCars.push(new Car(carNames[i]));
@@ -22,14 +32,21 @@ export default class RacingCarGame {
     return tempCars;
   }
 
+  showElementById(id) {
+    const element = document.getElementById(id);
+    element.style.display = "block";
+  }
+
   nameSubmitClickEvent() {
-    const carInstances = this.confirmInput();
+    const carInstances = this.getCarInstances();
     if (carInstances === undefined) return;
     this.cars = carInstances;
-    const racingCountContainer = document.getElementById(
-      "racing-count-container"
-    );
-    racingCountContainer.style.display = "block";
+    this.showElementById("racing-count-container");
+  }
+
+  appendElementToResultContainer(element) {
+    const resultContainer = document.getElementById("result-container");
+    resultContainer.appendChild(element);
   }
 
   printMoveStatus() {
@@ -38,12 +55,11 @@ export default class RacingCarGame {
       .map((car) => `${car.name}: ${"-".repeat(car.distance)}`)
       .join("<br />");
     moveStatusEl.style.marginBottom = "30px";
-    const resultContainer = document.getElementById("result-container");
-    resultContainer.appendChild(moveStatusEl);
+    this.appendElementToResultContainer(moveStatusEl);
   }
 
-  printWinner() {
-    const winners = this.cars.reduce((acc, car) => {
+  computeWinners(cars) {
+    return cars.reduce((acc, car) => {
       if (acc.length === 0 || acc[0].distance === car.distance) {
         return [...acc, car];
       }
@@ -52,12 +68,15 @@ export default class RacingCarGame {
       }
       return acc;
     }, []);
+  }
+
+  printWinner() {
+    const winners = this.computeWinners(this.cars);
     const winnerEl = document.createElement("span");
     winnerEl.innerHTML = `최종 우승자: ${winners
       .map((car) => car.name)
       .join(", ")}`;
-    const resultContainer = document.getElementById("result-container");
-    resultContainer.appendChild(winnerEl);
+    this.appendElementToResultContainer(winnerEl);
   }
 
   countSubmitClickEvent() {
@@ -68,8 +87,7 @@ export default class RacingCarGame {
       this.printMoveStatus();
     }
     this.printWinner();
-    const resultContainer = document.getElementById("result-container");
-    resultContainer.style.display = "block";
+    this.showElementById("result-container");
   }
 
   allClickEventListener() {
