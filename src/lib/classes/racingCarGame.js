@@ -38,7 +38,7 @@ export default class RacingCarGame {
   }
 
   async moveCars(turn) {
-    await this.cars.forEach(car => { //promise should be added
+    await this.cars.forEach(car => {
       car.play(this._createRandomNumber());
       this.totalDist = Math.max(car.pos[turn-1], this.totalDist);
     });
@@ -60,7 +60,6 @@ export default class RacingCarGame {
       this.racingCount = inputData;
       return this.play();
     }
-  
     return this.$racingCountInput.value = '';
   }
 
@@ -86,7 +85,6 @@ export default class RacingCarGame {
       disableInputs(this.$carNamesInput, this.$carNamesSubmit);
       return this.submitCarNamesInput(inputData);
     }
-
     return this.$carNamesInput.value = '';
   }
 

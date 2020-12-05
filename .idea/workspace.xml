@@ -6,8 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="d8d6e1d9-7c12-4bc6-84e0-9c2963f22680" name="Default Changelist" comment="setting eslint and prettier">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lib/classes/car.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/classes/car.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/classes/checkUserInputs.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/classes/checkUserInputs.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lib/classes/racingCarGame.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/classes/racingCarGame.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lib/config/manipulateContainers.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/config/manipulateContainers.js" afterDir="false" />
     </list>
@@ -17,7 +17,13 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="seongwon" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RESET_MODE" value="MIXED" />
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/index.html" root0="SKIP_INSPECTION" />

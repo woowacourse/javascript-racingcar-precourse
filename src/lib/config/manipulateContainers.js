@@ -49,7 +49,7 @@ const $getWinCarsElement = winCars => {
   return $printWinCars;
 }
 
-const renderWinCars = (winCars, $resultContainer) => {
+const renderWinCars = (cars, winCars, $resultContainer) => {
   const $renderWinCars = document.createElement('div');
   $renderWinCars.id = 'render-win-cars';
   $renderWinCars.appendChild($getWinCarsElement(winCars));
@@ -58,5 +58,5 @@ const renderWinCars = (winCars, $resultContainer) => {
 
 export const renderResult = ($resultContainer, cars, racingCount, winCars) => {
   renderGameSteps(cars, racingCount, $resultContainer);
-  renderWinCars(winCars, $resultContainer);
+  renderWinCars(cars, winCars, $resultContainer);
 }

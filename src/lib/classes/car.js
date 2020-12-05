@@ -3,6 +3,7 @@ export default class Car {
     this.name = name;
     this.result = [];
     this.pos = [];
+    this.isWin = false;
   }
 
   _canGo(randomNumber) {
@@ -11,6 +12,10 @@ export default class Car {
 
   _getCurrentPos() {
     return this.result.filter(go => go === true).length;
+  }
+
+  isWinThisCar(maxDist) {
+    return this.isWin = this.pos[this.pos.length-1] === maxDist;
   }
 
   play(randomNumber) {
