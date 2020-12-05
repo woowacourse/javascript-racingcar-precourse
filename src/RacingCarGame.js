@@ -73,11 +73,11 @@ export default class RacingCarGame {
     if (this.exceptionHandler.isCountNumber(_countNumber)) {
       for (let i = 0; i < _countNumber; i++) {
         this.runRacing(carObjArray);
-        console.log(carObjArray); // TODO: 결과 출력
       }
     } else {
       alert('알맞은 숫자를 입력해 주세요');
     }
+    console.log(carObjArray); // TODO: 결과 출력
   }
 
   setCar(_carNames) {
@@ -96,7 +96,20 @@ export default class RacingCarGame {
         car.position++;
       }
 
-      console.log(car, goSign); // TODO: html 출력 String 넣기
+      console.log(this.htmlString(car));
     });
+  }
+
+  htmlString(car) {
+    const distance = '-';
+    let totalDistance = '';
+
+    if (car.position > 0) {
+      for (let i = 0; i < car.position; i++) {
+        totalDistance += distance;
+      }
+    }
+
+    return `${car.name}: ${totalDistance}`;
   }
 }
