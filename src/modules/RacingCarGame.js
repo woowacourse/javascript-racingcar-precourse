@@ -30,9 +30,36 @@ export default class RacingCarGame {
     }
   };
 
+  getMaxStep = () => {
+    const allSteps = this.racingCars.map(car => car.step);
+    const maxStep = Math.max.apply(null, allSteps);
+
+    return maxStep;
+  };
+
+  getWinners = () => {
+    const maxStep = this.getMaxStep();
+    const winners = this.racingCars.filter(car => car.step === maxStep);
+
+    return winners;
+  };
+
   printRacingResult = (racingResult, car) => {
     const carStatus = car.getCarStatus();
     racingResult.innerHTML += carStatus;
+  };
+
+  printWinner = () => {
+    const winners = this.getWinners();
+    const winnersName = [];
+
+    winners.forEach(winner => {
+      winnersName.push(winner.name);
+    });
+
+    this.gameResultContainer.innerHTML += `<p>
+      최종 우승자: ${winnersName.join(", ")}
+    </p>`;
   };
 
   checkRacingResult = () => {
@@ -55,5 +82,6 @@ export default class RacingCarGame {
   play = () => {
     this.setRacingCars();
     this.checkRacingResult();
+    this.printWinner();
   };
 }
