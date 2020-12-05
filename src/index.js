@@ -1,40 +1,39 @@
 import * as RacingUtil from './racing-util.js';
+import AppContainer from './app-container.js';
 import {printRacingResult, printWinnersName} from './print.js';
 import Car from './car.js';
 
 export default class RacingCarGame {
-  constructor(app) {
-    app.onclick = this.onClick.bind(this);
-    this.carNames = [];
+  constructor() {
+    this.cars = [];
     this.racingCount = 0;
+    new AppContainer(document.getElementById('app'), this);
   }
 
   start() {
     if (this.racingCount === 0) return;
 
-    const racingCars = this.carNames.map(carName => new Car(carName));
-
-    racingCars.forEach((car) => {
+    this.cars.forEach((car) => {
       car.randomRacingNumbers = RacingUtil.randomNumbers(this.racingCount);
     });
 
     document.getElementById('result').hidden = false;
 
-    printRacingResult(racingCars, this.racingCount);
-    printWinnersName(racingCars);
+    printRacingResult(this.cars, this.racingCount);
+    printWinnersName(this.cars);
     document.getElementById('racing-count-submit').disabled = true;
-    console.log(racingCars);
+    console.log(this.cars);
   }
 
-  setCarNames(carNames) {
+  setCars(carNames) {
     carNames = this.splitCarNamesWithComma(carNames);
 
     if (!this.isValidCarNames(carNames)) {
       return this.invaildCarNameAlert(carNames);
     }
 
-    this.carNames = carNames;
-    console.log(this.carNames);
+    this.cars = carNames.map(carName => new Car(carName));
+    console.log(this.cars);
   }
 
   setRacingCount(racingCount) {
@@ -95,29 +94,6 @@ export default class RacingCarGame {
       carNames.indexOf(carName) !== carNames.lastIndexOf(carName),
     );
   }
-
-  showRacingCount() {
-    if (this.carNames.length > 0) {
-      document.getElementById('racing-count').hidden = false;
-    }
-  }
-
-  onClick(event) {
-    if (event.target.id === 'car-names-submit') {
-      const carNames = document.getElementById('car-names-input').value;
-
-      this.setCarNames(carNames);
-      this.showRacingCount();
-    }
-
-    if (event.target.id === 'racing-count-submit') {
-      const racingCount = document.getElementById('racing-count-input').value;
-
-      this.setRacingCount(racingCount);
-      this.start();
-    }
-  }
 }
 
-
-new RacingCarGame(document.getElementById('app'));
+new RacingCarGame();
