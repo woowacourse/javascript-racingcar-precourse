@@ -1,3 +1,5 @@
+import { showResult } from './print.js';
+
 const getRandomNumber = () => {
   let number = Math.floor(Math.random() * 9);
   console.log('숫자는', number);
@@ -27,15 +29,22 @@ export const startGame = (times, cars) => {
   whoIsWinner(cars);
 };
 
-const whoIsWinner = (cars) => {
+const getMaxValue = (carArray) => {
   let maxValue = 0;
-  let winner = [];
 
-  cars.forEach((car) => {
+  carArray.forEach((car) => {
     if (car.forwardCount > maxValue) {
       maxValue = car.forwardCount;
     }
   });
+
+  return maxValue;
+};
+
+const whoIsWinner = (cars) => {
+  let winner = [];
+
+  let maxValue = getMaxValue(cars);
 
   cars.forEach((car) => {
     if (car.forwardCount === maxValue) {
