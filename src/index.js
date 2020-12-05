@@ -4,10 +4,11 @@ import { Car } from "./Car.js";
 export default function RacingCarGame() {
   const carNamesSubmit = document.getElementById("car-names-submit");
   const racingCountSubmit = document.getElementById("racing-count-submit");
+  const names = [];
 
   this.getNamesFromInput = () => {
     const carNamesInput = document.getElementById("car-names-input");
-    const names = carNamesInput.value.split(",");
+    names = carNamesInput.value.split(",");
     console.log(names);
     this.checkErrorNames(names);
   };
@@ -93,11 +94,19 @@ export default function RacingCarGame() {
       alert(GAME_GUIDE.ONLY_NUMBER);
     } else {
       console.log(racingCount);
-      //TODOS:make instance
-      //TODOS:make random
+      let cars = this.makeInstances();
     }
   };
 
+  this.makeInstances = () => {
+    let cars = [];
+
+    names.forEach((name) => {
+      cars.append(new Car(name));
+    });
+
+    return cars;
+  };
   carNamesSubmit.addEventListener("click", this.getNamesFromInput);
   racingCountSubmit.addEventListener("click", this.getRacingCount);
 }

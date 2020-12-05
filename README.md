@@ -75,7 +75,7 @@ class Car {
     - [X] 예외1-5 이름을 모두 받으면, 횟수를 받아오는 단계에서는 이름을 또 받을 수 없도록 button disable 처리
 - [X] getRacingCount: 시도할 횟수를 받아올 함수
   - [X] 예외2 checkRacingCountError: 시도할 횟수의 오류를 검출할 함수
-- [] 각 instance를 생성할 함수
+- [X] makeInstances: 각 instance를 생성할 함수
 - [] 한 round 당 결과를 추출할 함수
 - [] 이긴 자동차를 정하는 함수
 - [] 결과창을 내보내는 함수
