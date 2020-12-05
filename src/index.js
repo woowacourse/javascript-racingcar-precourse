@@ -17,14 +17,20 @@ function gameStart(play) {
 }
 
 export default function RacingCarGame() {
+  this.maxValue = 0;
+  this.winner = [];
   this.car = [];
   this.count;
   this.racing = function () {
-    // console.log(this.car);
     while (this.count--) {
-      getRandomNum(this.car);
+      this.maxValue = getRandomNum(this.car);
       moveCar(this.car);
     }
+  };
+  this.racingEnd = function () {
+    this.car.forEach((v) => {
+      if (this.maxValue === v.go) this.winner.push(v.name);
+    });
   };
 }
 

@@ -1,4 +1,5 @@
 import Car from "./Car.js";
+import { printResult } from "./printResult.js";
 import { showCountTags, showResultTags } from "./controlTags.js";
 import {
   validateCarInput,
@@ -24,9 +25,9 @@ export function racingCountSubmitHandler(play) {
   if (validateRacingCountInput(racingCountInput.value)) {
     showResultTags();
     play.count = racingCountInput.value;
-    // console.log("1==> ", play.car);
     play.racing();
-    // console.log(play.count);
+    play.racingEnd();
+    printResult(play.winner);
   } else {
     racingCountInput.value = "";
     racingCountInput.focus();
