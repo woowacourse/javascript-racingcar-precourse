@@ -18,3 +18,13 @@ export function validateCarInput(carNamesInput) {
   }
   return check;
 }
+
+export function validateRacingCountInput(racingCountInput) {
+  let check = true;
+  // console.log(racingCountInput);
+  if (!isFinite(racingCountInput) || racingCountInput < 1) {
+    alert("올바른 숫자를 입력하세요. [단,1이상의 숫자를 입력 할 것]");
+    check = false;
+  }
+  return check;
+}

@@ -10,3 +10,7 @@ export function showCountTags() {
   document.querySelector("#racing-count-input").style.visibility = "visible";
   document.querySelectorAll("h4")[0].style.visibility = "visible";
 }
+
+export function showResultTags() {
+  document.querySelectorAll("h4")[1].style.visibility = "visible";
+}
