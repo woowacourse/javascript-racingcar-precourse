@@ -51,3 +51,5 @@ export const checkIteratorValidity = (iteratorInput) => {
     };
   return { value: iteratorNumber, errorMessage: "" };
 };
+
+export const isBiggerThanFour = (number) => isBiggerThanFour >= 4;
