@@ -12,11 +12,17 @@ export default class Car {
     return randomNumber;
   }
 
-  go() {
+  canMove() {
     const randomNumber = this.randomNumber();
 
     if (randomNumber >= 4) {
-      this.position += 1;
+      return true;
     }
+
+    return false;
+  }
+
+  move() {
+    this.position += 1;
   }
 }
