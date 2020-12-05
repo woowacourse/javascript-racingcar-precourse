@@ -1,4 +1,5 @@
 import * as RacingUtil from './racing-util.js';
+import {printRacingResult, printWinnersName} from './print.js';
 import Car from './car.js';
 
 export default class RacingCarGame {
@@ -17,70 +18,12 @@ export default class RacingCarGame {
       car.randomRacingNumbers = RacingUtil.randomNumbers(this.racingCount);
     });
 
-    this.makeRacingResult(racingCars);
-    this.printWinnersName(racingCars);
+    document.getElementById('result').hidden = false;
+
+    printRacingResult(racingCars, this.racingCount);
+    printWinnersName(racingCars);
     document.getElementById('racing-count-submit').disabled = true;
     console.log(racingCars);
-  }
-
-  printWinnersName(racingCars) {
-    const racingResultElement = document.getElementById('racing-result');
-    const winnersName = this.findWinnersName(racingCars);
-    const winnersNameText = `최종 우승자: ${winnersName.join(', ')}`;
-    const winnersNameTextNode = document.createTextNode(winnersNameText);
-    const winnersNameDiv = document.createElement('div');
-
-    winnersNameDiv.appendChild(winnersNameTextNode);
-    racingResultElement.appendChild(winnersNameDiv);
-  }
-
-  findWinnersName(racingCars) {
-    const racingDistance = racingCars.map((racingCar) => {
-      return racingCar.racingResult.length;
-    });
-
-    const maxRacingDistance = Math.max(...racingDistance);
-
-    return racingCars
-        .filter((racingCar) => {
-          return racingCar.racingResult.length === maxRacingDistance;
-        })
-        .map(racingCar => racingCar.name);
-  }
-
-  makeRacingResult(racingCars) {
-    document.getElementById('result').hidden = false;
-    const racingResultElement = document.getElementById('racing-result');
-
-    for (let i = 0; i < this.racingCount; ++i) {
-      const racingResult = this.getRacingResult(racingCars, i);
-      const racingResultDiv
-      = this.createRacingResultElement(racingCars, racingResult);
-
-      racingResultElement.appendChild(racingResultDiv);
-      racingResultElement.appendChild(document.createElement('br'));
-    }
-  }
-
-  createRacingResultElement(racingCars, racingResult) {
-    const racingResultDiv = document.createElement('div');
-
-    racingCars.forEach((racingCar, i)=>{
-      if (racingResult[i]) racingCar.plusRacingResult();
-
-      const racingResultText = `${racingCar.name}: ${racingCar.racingResult}`;
-      const racingResultTextNode = document.createTextNode(racingResultText);
-      racingResultDiv.appendChild(racingResultTextNode);
-      racingResultDiv.appendChild(document.createElement('br'));
-    });
-
-    return racingResultDiv;
-  }
-
-  getRacingResult(racingCars, racingOrder) {
-    return racingCars.map(racingCar =>
-      RacingUtil.isForward(racingCar.randomRacingNumbers[racingOrder]),
-    );
   }
 
   setCarNames(carNames) {
