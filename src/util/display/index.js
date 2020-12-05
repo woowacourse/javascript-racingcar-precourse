@@ -9,11 +9,11 @@ export const displayEachRace = (namesArray, eachRaceResult, count) => {
     const raceWrapper = document.createElement("div");
     raceWrapper.style = "margin-bottom: 15px;";
 
-    for (let j = 0; j < namesArray.length; j++) {
+    namesArray.forEach((name, index) => {
       const car = document.createElement("div");
-      car.innerText = `${namesArray[j]} : ${"-".repeat(eachRaceResult[i][j])}`;
+      car.innerText = `${name} : ${"-".repeat(eachRaceResult[i][index])}`;
       raceWrapper.appendChild(car);
-    }
+    });
 
     raceResult.appendChild(raceWrapper);
   }
