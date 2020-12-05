@@ -17,4 +17,4 @@
 
    -> target.removeEventListener(type, listener);
 
-(images/result.jpg)
+![실행이미지](images/result.jpg)
