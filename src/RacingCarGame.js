@@ -58,7 +58,7 @@ export class RacingCarGame {
       this.showRacingCountContainer();
       this.disableCarNamesNodes();
       this.$racingCountInput.focus();
-      this.cars = carNamesInput.split(",").map(carName => new Car(carName));
+      this.cars = carNamesInput.split(",").map(carName => new Car(carName.trim()));
     } else {
       alert(`${carNamesInput}은 유효하지 않은 입력입니다. 재입력해주세요`);
       this.$carNamesInput.value = "";

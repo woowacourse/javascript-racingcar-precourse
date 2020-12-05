@@ -17,7 +17,7 @@ export const isValidCarNamesInput = carNamesInput => {
   const MIN_CAR_NUMBER = 2;
   const MAX_CAR_NAME_LENGTH = 5;
 
-  const carNames = carNamesInput.split(",");
+  const carNames = carNamesInput.split(",").map(carName => carName.trim());
 
   const hasMinCarNumbers =
     (carNames.length >= MIN_CAR_NUMBER);
