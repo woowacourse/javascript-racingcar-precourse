@@ -11,4 +11,12 @@ export default class Car {
 
     return randomNumber;
   }
+
+  go() {
+    const randomNumber = this.randomNumber();
+
+    if (randomNumber >= 4) {
+      this.position += 1;
+    }
+  }
 }
