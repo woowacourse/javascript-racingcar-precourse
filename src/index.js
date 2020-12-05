@@ -61,7 +61,10 @@ const getWinners = () => {
   const finalMoveStateArray = gameController.cars.map((_car) => {
     return _car.movedDistance;
   });
-  const maxDistance = Math.max.apply(null, finalMoveStateArray);
+  let maxDistance = Math.max.apply(null, finalMoveStateArray);
+  if (maxDistance === 0) {
+    maxDistance = -1; // 모든 차량의 이동거리가 0일 경우 우승자 없음
+  }
   gameController.cars.forEach((_car) => {
     if (_car.movedDistance === maxDistance) {
       winners.push(_car.name);
@@ -79,6 +82,18 @@ const stringifyListElements = (list) => {
     }
     resultString += _elem;
   });
+
+  return resultString;
+};
+
+const getWinnersString = () => {
+  const winners = getWinners();
+  let resultString = "";
+  if (winners.length) {
+    resultString = stringifyListElements(winners);
+  } else {
+    resultString = "우승자가 없습니다.";
+  }
 
   return resultString;
 };
@@ -138,7 +153,7 @@ const renderRacingRecord = (e) => {
   getRacingRecord(countInput).forEach((_record) => {
     app.append(getResultHTML(_record));
   });
-  app.append(`최종 우승자: ${stringifyListElements(getWinners())}`);
+  app.append(`최종 우승자: ${getWinnersString()}`);
 };
 
 const routeDocClickEvent = (e) => {
