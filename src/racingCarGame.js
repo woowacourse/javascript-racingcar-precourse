@@ -35,7 +35,7 @@ export default class RacingCarGame {
 
   driveGameOnce() {
     this.carsInRacing.forEach((car) => {
-      //car.drive();
+      car.drive();
       console.log(car, "게임진행");
     });
   }

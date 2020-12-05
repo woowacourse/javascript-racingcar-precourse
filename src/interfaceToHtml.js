@@ -27,13 +27,14 @@ export default class InterfacetoHtml {
     });
     this.addEventToButton({
       stepOfButton: this.currentGameStep,
-      functionToDrawNextStep: this.drawGameResult,
+      functionToDrawNextStep: null,
     });
   }
-  drawGameResult() {
+  //racingCarGame 클래스에서 호출
+  drawGameResult(resultMessage) {
     this.drawHTML({
       containerWhereToDraw: this.gameResultContainer,
-      htmlToDraw: HTML_TEMPLATE.RESULT,
+      htmlToDraw: HTML_TEMPLATE.RESULT + resultMessage,
     });
   }
 
@@ -57,7 +58,9 @@ export default class InterfacetoHtml {
       return;
     }
     this.changeToNextStep();
-    functionToDrawNextStep.bind(this)();
+    if (functionToDrawNextStep !== null) {
+      functionToDrawNextStep.bind(this)();
+    }
     this.racingCarGame.updateInputFromHtml(stepOfButton, processedInput);
   }
   changeToNextStep() {
