@@ -1,7 +1,3 @@
-export default function RacingCarGame() {
-}
-// export default class RacingCarGame {
-// }
-
+export default function RacingCarGame() {}
 
 new RacingCarGame();
