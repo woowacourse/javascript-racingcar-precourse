@@ -85,7 +85,7 @@ export default class Util {
 
   checkInteger = number => number % 1 === 0;
 
-  handleAlert = node => {
+  handleError = node => {
     node.value = EMPTY_STRING;
     this.alertMessage(node);
   };

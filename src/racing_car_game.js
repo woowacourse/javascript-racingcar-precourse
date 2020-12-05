@@ -30,6 +30,8 @@ export default class RacingCarGame {
 
     if (target === "car-names-submit") {
       this.setCars();
+      this.displayCountForm();
+      this.submitCounts();
     }
     if (target === "racing-count-submit") {
       this.runRace();
@@ -41,27 +43,25 @@ export default class RacingCarGame {
     let names;
 
     if (!this.util.checkValidation(namesInput)) {
-      this.util.handleAlert(namesInput);
+      this.util.handleError(namesInput);
       this.submitNames();
 
       return;
     }
     names = namesInput.value.split(",");
     this.cars = names.map(name => new Car(name));
-    this.submitCounts();
+  };
+
+  displayCountForm = () => {
+    const countForm = document.querySelector(".racing-count-form");
+
+    countForm.style.display = "";
   };
 
   submitCounts = () => {
     const submitButton = document.querySelector("#racing-count-submit");
 
-    this.initCountForm();
     submitButton.addEventListener("click", this.onClick);
-  };
-
-  initCountForm = () => {
-    const countForm = document.querySelector(".racing-count-form");
-
-    countForm.style.display = "";
   };
 
   runRace = () => {
@@ -69,12 +69,12 @@ export default class RacingCarGame {
     const count = Number(countInput.value);
 
     if (!this.util.checkValidation(countInput)) {
-      this.util.handleAlert(countInput);
+      this.util.handleError(countInput);
       this.submitCounts();
 
       return;
     }
-    this.initCars();
+    this.initPosition();
     this.initResult();
     for (let i = 0; i < count; i++) {
       this.runRound();
@@ -82,7 +82,7 @@ export default class RacingCarGame {
     this.render.renderWinners(this.cars);
   };
 
-  initCars = () => {
+  initPosition = () => {
     this.cars.forEach(car => (car.position = 0));
   };
 
