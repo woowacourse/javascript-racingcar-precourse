@@ -1,0 +1,25 @@
+{
+  "name": "javascript-racingcar-precourse",
+  "version": "1.0.0",
+  "description": "## 🎯 기능 요구사항",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kwakcena/javascript-racingcar-precourse.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Kwakcena/javascript-racingcar-precourse/issues"
+  },
+  "homepage": "https://github.com/Kwakcena/javascript-racingcar-precourse#readme",
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.15.0",
+    "eslint-config-google": "^0.14.0"
+  }
+}
