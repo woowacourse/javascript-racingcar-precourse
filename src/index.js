@@ -1,5 +1,6 @@
-import handleInput from './handleInput.js';
+import inputUtils from './inputUtils.js';
 import Car from './car.js';
+import playUtils from './playUtils.js';
 
 export default class RacingCarGame {
   constructor() {
@@ -9,7 +10,8 @@ export default class RacingCarGame {
     this.addEventListener();
     this.IS_VALID = 1;
     this.IS_NOT_VALID = 0;
-    this.$InputUtils = new handleInput();
+    this.$InputUtils = new inputUtils();
+    this.$PlayUtils = new playUtils();
   }
 
   addElementId() {
@@ -47,7 +49,6 @@ export default class RacingCarGame {
 
     if (this.$InputUtils.checkNameValidity(this.$carNameArray) === this.IS_VALID) {
       this.$countInput.focus();
-      console.log(this.$carNameArray);
       return 0;
     }
 
@@ -58,7 +59,6 @@ export default class RacingCarGame {
   getCount() {
     if (this.$InputUtils.checkCountValidity(this.$countInput.value) === this.IS_VALID) {
       this.createNewCar();
-      console.log(this.$countInput.value);
       return 0;
     }
 
@@ -78,62 +78,16 @@ export default class RacingCarGame {
     for (let i = 0; i < this.$countInput.value; i++)
       this.playRound();
 
-    this.displayWinner();
+      this.$PlayUtils.displayWinner(this.$cars);
   }
 
   playRound() {
     this.$cars.forEach((car) => {
-      const number = this.getRandomNumber();
+      const number = this.$PlayUtils.getRandomNumber();
       if (number >= 4)
         car.location += 1;
     })
-    this.displayGameProcess();
-  }
-
-  getRandomNumber() {
-    return Math.floor(Math.random() * 10);
-  }
-
-  displayGameProcess() {
-    const result = document.createElement('div');
-    const resultMessage = this.getGameProcess();
-
-    result.innerText = `${resultMessage}\n`;
-    this.$resultArea.appendChild(result);
-  }
-
-  getGameProcess() {
-    let gameProcess = '';
-
-    this.$cars.forEach((car) => {
-      gameProcess += `${car.name}: ${'-'.repeat(car.location)}\n`;
-    })
-
-    return gameProcess;
-  }
-
-  displayWinner() {
-    const winner = document.createElement('div');
-    const winnerList = this.getWinnerList();
-    
-    winner.innerText = `최종 우승자: ${winnerList}`;
-    this.$resultArea.appendChild(winner);
-  }
-
-  getWinnerList() {
-    let max = 0;
-    let winnerList = [];
-
-    for (const car of this.$cars) {
-      if (car.location > max) {
-        max = car.location;
-        winnerList = [car.name];
-      } 
-      else if (car.location === max)
-        winnerList.push(car.name);
-    }
-
-    return winnerList.join(', ');
+    this.$PlayUtils.displayGameProcess(this.$cars);
   }
 }
 

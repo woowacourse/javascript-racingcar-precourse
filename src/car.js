@@ -3,8 +3,4 @@ export default class Car {
     this.name = name;
     this.location = location;
   }
-
-
-
-  
 }

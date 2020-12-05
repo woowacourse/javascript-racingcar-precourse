@@ -1,4 +1,4 @@
-export default class HandleInput {
+export default class InputUtils {
   constructor() {
     this.is_VALID = 1;
     this.is_NOT_VALID = 0;
