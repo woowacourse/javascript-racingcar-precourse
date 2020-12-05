@@ -105,12 +105,22 @@ export default class RacingCarGame {
   // if racing count input is an empty string or not a number, it's not proper.
   isNotProperRacingCountInputValue(inputValue) {
     let result = false;
-    if (this.isEmptyString(inputValue) || isNaN(inputValue)) {
+    if (this.isEmptyString(inputValue)) {
+      alert('값을 입력해주세요.');
+      result = true;
+    } else if (this.isNaN(inputValue)) {
       alert('숫자를 입력해주세요.');
+      result = true;
+    } else if (this.isLessThanOne(inputValue)) {
+      alert('1 이상의 숫자를 입력해주세요.');
       result = true;
     }
 
     return result;
+  }
+
+  isLessThanOne(inputValue) {
+    return +inputValue <= 0;
   }
 
   resetPrevRace() {
@@ -139,13 +149,13 @@ export default class RacingCarGame {
 
   printWinnersName() {
     const winnersName = document.createElement('p');
-    const winners = this.getWinnerName();
+    const winners = this.getWinnersName();
     winnersName.textContent = `최종 우승자: ${winners.join(', ')}`;
     DOMs.resultBoard.appendChild(winnersName);
   }
 
   // compare the results and select a winner(or winners).
-  getWinnerName() {
+  getWinnersName() {
     let winnerLength = 0;
     return this.cars.reduce((winners, car) => {
       const carResultLength = car.raceResult.length;
