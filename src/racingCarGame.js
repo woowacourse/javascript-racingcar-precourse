@@ -18,6 +18,6 @@ export default function RacingCarGame() {
     let winnerNames = [];
     winner.forEach((x) => winnerNames.push(x.name));
 
-    return winnerNames.join();
+    return winnerNames.join(", ");
   };
 }

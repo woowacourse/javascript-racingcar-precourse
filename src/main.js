@@ -65,6 +65,7 @@ export default function main() {
     // 결과창 보여주기
     const game = new RacingCarGame();
     let winner = game.play(cars);
+    document.getElementById("print-result-form").innerHTML += `최종 우승자: ${winner}`;
     showResultForm();
   }
 }
