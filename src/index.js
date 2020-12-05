@@ -145,6 +145,7 @@ const passNamesInputToGameController = (e) => {
 
   gameController.setRacingCars(namesArray);
   addRacingCountForm(e);
+  deactivateCarNameForm(e);
 };
 
 const renderRacingRecord = (e) => {
@@ -158,15 +159,14 @@ const renderRacingRecord = (e) => {
     app.append(getResultHTML(_record));
   });
   app.append(`최종 우승자: ${getWinnersString()}`);
+  deactivateRacingCountForm(e);
 };
 
 const routeDocClickEvent = (e) => {
   if (e.target.id === "car-names-submit") {
     passNamesInputToGameController(e);
-    deactivateCarNameForm(e);
   } else if (e.target.id === "racing-count-submit") {
     renderRacingRecord(e);
-    deactivateRacingCountForm(e);
   }
 };
 
