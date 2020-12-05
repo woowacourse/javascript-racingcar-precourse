@@ -12,7 +12,6 @@ export const showInputError = ($input, message) => {
 };
 
 export const blockContainer = ($input, $button) => {
-  $input.value = "";
   $input.disabled = true;
   $button.disabled = true;
 };
