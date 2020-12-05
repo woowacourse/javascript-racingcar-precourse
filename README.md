@@ -77,7 +77,8 @@ class Car {
   - [X] 예외2 checkRacingCountError: 시도할 횟수의 오류를 검출할 함수
 - [X] makeInstances: 각 instance를 생성할 함수
 - [X] getRandomNumber: 랜덤 값 받아올 함수
-- [] 한 round 당 결과를 추출할 함수
+- [X] startRacingGame: 레이싱 게임을 시작하는 함수
+- [X] racingInRound: 한 round 당 random값을 받아 게임을 진행하는 함수
 - [] 이긴 자동차를 정하는 함수
 - [] 결과창을 내보내는 함수
 - [] Car class

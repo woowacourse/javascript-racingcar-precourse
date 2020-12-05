@@ -117,7 +117,18 @@ export default function RacingCarGame() {
     return cars;
   };
 
-  this.startRacingGame = (cars, racingCount) => {};
+  this.startRacingGame = (cars, racingCount) => {
+    for (let i = 0; i < racingCount; i++) {
+      this.startRacingInRound(cars, racingCount);
+      console.log(`${i}round`, cars);
+    }
+  };
+
+  this.racingInRound = (cars) => {
+    cars.forEach((car) => {
+      getRandomNumber(RANDOM_START, RANDOM_END) >= 4 ? car.go() : car.stop();
+    });
+  };
 
   carNamesSubmit.addEventListener("click", this.getNamesFromInput);
   racingCountSubmit.addEventListener("click", this.getRacingCount);
