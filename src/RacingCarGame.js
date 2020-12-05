@@ -32,7 +32,7 @@ export default class RacingCarGame {
         <input type="text" id="car-names-input" />
         <button id="car-names-submit">확인</button>
       </div>
-      <div>
+      <div class="hidden">
         <h4>시도할 횟수를 입력해주세요.</h4>
         <input type="number" id="racing-count-input" />
         <button id="racing-count-submit">확인</button>
@@ -45,6 +45,7 @@ export default class RacingCarGame {
   createResult(target) {
     const _result = document.createElement('div');
     _result.innerHTML = `<h4>📄 실행 결과</h4>`;
+    _result.className = 'hidden';
 
     target.appendChild(_result);
   }
