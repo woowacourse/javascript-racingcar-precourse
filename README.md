@@ -1,4 +1,5 @@
-# 🏎️ 자동차 경주 게임 README by Seongwon Kim
+# 자동차 경주 게임 README by Seongwon Kim
+[실행해보기](https://loquemedalagana.github.io/javascript-racingcar-precourse/) 
 
 ## 요구사항
 - 자동차의 이름을 입력하는 input 태그는 `#car-names-input` id값을 가진다.
@@ -70,7 +71,8 @@
 
 ## 주의사항 정리
   - dom 조작 시 원래 default된 상태와 변화된 상태를 구분하자 -> 비동기의 핵심!
-  - 이번 미션은 추가기능 욕심보다 비동기 개념을 익히자
+  - 이번 미션은 추가기능 욕심보다 어설프게 알던 개념부터 제대로 짚자.
+  - 일부러 index.html 파일은 손대지 않았다. 모두 js에서 처리함
 
 ## 개발일지
 
@@ -96,6 +98,7 @@
   - setAttribute를 활용해서 숨겼다가 뺏다 하기
   - <del>클래스 상속</del>
   - **비동기 동작 원리**
+  - [module 제대로 알고 넘어가자!!](https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Modules)
 
 #### input을 어떻게 처리하지?
   - dom init를 구현할 것
@@ -147,3 +150,5 @@
 
 4. 리팩토링 하다가 두 번 랜더링되는 오류 발견
   - 복구 과정에서 오류 발생으로 브랜치 새로 생성, 기본 기능까진 원상복귀
+
+5. 이걸 너무 수작업하면.. 안된다ㅠㅠ TDD 한번 시도해볼까?
