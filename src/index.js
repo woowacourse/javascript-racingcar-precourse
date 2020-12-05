@@ -1,16 +1,17 @@
 import { getCarsName, getTimes } from './input.js';
+import { isForward } from './utils.js';
 
-export default function RacingCarGame() {}
+export default function RacingCarGame() {
+  const namesSubmitButton = document.getElementById('car-names-submit');
+  const timesSubmitButton = document.getElementById('racing-count-submit');
 
-const namesSubmitButton = document.getElementById('car-names-submit');
-const timesSubmitButton = document.getElementById('racing-count-submit');
+  if (namesSubmitButton) {
+    namesSubmitButton.addEventListener('click', getCarsName);
+  }
 
-if (namesSubmitButton) {
-  namesSubmitButton.addEventListener('click', getCarsName);
-}
-
-if (timesSubmitButton) {
-  timesSubmitButton.addEventListener('click', getTimes);
+  if (timesSubmitButton) {
+    timesSubmitButton.addEventListener('click', getTimes);
+  }
 }
 
 new RacingCarGame();
