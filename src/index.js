@@ -1,3 +1,5 @@
+import { isValidInputNames, isValidInputCount } from "./util";
+
 export default function RacingCarGame() {
   const carNamesSubmitBtn = document.querySelector("#car-names-submit");
   const carNamesInput = document.querySelector("#car-names-input");
@@ -5,11 +7,19 @@ export default function RacingCarGame() {
   const racingCountSubmitBtn = document.querySelector("#racing-count-submit");
 
   const gameStart = () => {
-    console.log("game start!");
+    if (isValidInputNames(carNamesInput.value)) {
+      console.log("ok");
+    } else {
+      console.log("invalid");
+    }
   };
 
   const setRaceRound = () => {
-    console.log("set round");
+    if (isValidInputCount(racingCountInput.value)) {
+      console.log("ok");
+    } else {
+      console.log("invalid");
+    }
   };
 
   const init = () => {
