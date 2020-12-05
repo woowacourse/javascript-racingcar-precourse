@@ -1,13 +1,13 @@
 import * as RacingUtil from './racing-util.js';
 import AppContainer from './app-container.js';
-import {printRacingResult, printWinnersName} from './print.js';
 import Car from './car.js';
 
 export default class RacingCarGame {
   constructor() {
+    new AppContainer(document.getElementById('app'), this);
     this.cars = [];
     this.racingCount = 0;
-    new AppContainer(document.getElementById('app'), this);
+    this.isEnd = false;
   }
 
   start() {
@@ -17,11 +17,7 @@ export default class RacingCarGame {
       car.randomRacingNumbers = RacingUtil.randomNumbers(this.racingCount);
     });
 
-    document.getElementById('result').hidden = false;
-
-    printRacingResult(this.cars, this.racingCount);
-    printWinnersName(this.cars);
-    document.getElementById('racing-count-submit').disabled = true;
+    this.isEnd = true;
     console.log(this.cars);
   }
 
@@ -29,7 +25,7 @@ export default class RacingCarGame {
     carNames = this.splitCarNamesWithComma(carNames);
 
     if (!this.isValidCarNames(carNames)) {
-      return this.invaildCarNameAlert(carNames);
+      return this.alertInvalidCarName(carNames);
     }
 
     this.cars = carNames.map(carName => new Car(carName));
@@ -38,7 +34,7 @@ export default class RacingCarGame {
 
   setRacingCount(racingCount) {
     if (!this.isValidRacingCount(racingCount)) {
-      return this.invaildRacingCountAlert(racingCount);
+      return this.alertInvalidRacingCount(racingCount);
     }
 
     this.racingCount = racingCount;
@@ -51,7 +47,7 @@ export default class RacingCarGame {
         .map(carName => carName.trim());
   }
 
-  invaildCarNameAlert(carNames) {
+  alertInvalidCarName(carNames) {
     if (carNames.length === 0) {
       return alert('자동차 이름을 입력해주세요.');
     }
@@ -63,7 +59,7 @@ export default class RacingCarGame {
     alert('자동차 이름을 중복되지 않게 입력해주세요.');
   }
 
-  invaildRacingCountAlert(racingCount) {
+  alertInvalidRacingCount(racingCount) {
     if (racingCount < 1) {
       return alert('1 이상의 숫자를 입력해주세요.');
     }

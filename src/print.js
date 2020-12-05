@@ -1,12 +1,12 @@
 import * as RacingUtil from './racing-util.js';
 
-function createRacingResultElement(racingCars, racingResult) {
+function createRacingResultElement(cars, racingResult) {
   const racingResultDiv = document.createElement('div');
 
-  racingCars.forEach((racingCar, i)=>{
-    if (racingResult[i]) racingCar.plusRacingResult();
+  cars.forEach((car, i)=>{
+    if (racingResult[i]) car.plusRacingResult();
 
-    const racingResultText = `${racingCar.name}: ${racingCar.racingResult}`;
+    const racingResultText = `${car.name}: ${car.racingResult}`;
     const racingResultTextNode = document.createTextNode(racingResultText);
     racingResultDiv.appendChild(racingResultTextNode);
     racingResultDiv.appendChild(document.createElement('br'));
@@ -15,42 +15,43 @@ function createRacingResultElement(racingCars, racingResult) {
   return racingResultDiv;
 }
 
-function findWinnersName(racingCars) {
-  const racingDistance = racingCars.map((racingCar) => {
-    return racingCar.racingResult.length;
+function findWinnersName(cars) {
+  const racingDistance = cars.map((car) => {
+    return car.racingResult.length;
   });
 
   const maxRacingDistance = Math.max(...racingDistance);
 
-  return racingCars
-      .filter((racingCar) => {
-        return racingCar.racingResult.length === maxRacingDistance;
+  return cars
+      .filter((car) => {
+        return car.racingResult.length === maxRacingDistance;
       })
-      .map(racingCar => racingCar.name);
+      .map(car => car.name);
 }
 
-function getRacingResult(racingCars, racingOrder) {
-  return racingCars.map(racingCar =>
-    RacingUtil.isForward(racingCar.randomRacingNumbers[racingOrder]),
+function getRacingResult(cars, racingOrder) {
+  return cars.map(car =>
+    RacingUtil.isForward(car.randomRacingNumbers[racingOrder]),
   );
 }
 
-export function printRacingResult(racingCars, racingCount) {
+export function printRacingResult({cars, racingCount}) {
+  document.getElementById('result').hidden = false;
   const racingResultElement = document.getElementById('racing-result');
 
   for (let i = 0; i < racingCount; ++i) {
-    const racingResult = getRacingResult(racingCars, i);
+    const racingResult = getRacingResult(cars, i);
     const racingResultDiv
-    = createRacingResultElement(racingCars, racingResult);
+    = createRacingResultElement(cars, racingResult);
 
     racingResultElement.appendChild(racingResultDiv);
     racingResultElement.appendChild(document.createElement('br'));
   }
 }
 
-export function printWinnersName(racingCars) {
+export function printWinnersName(cars) {
   const racingResultElement = document.getElementById('racing-result');
-  const winnersName = findWinnersName(racingCars);
+  const winnersName = findWinnersName(cars);
   const winnersNameText = `최종 우승자: ${winnersName.join(', ')}`;
   const winnersNameTextNode = document.createTextNode(winnersNameText);
   const winnersNameDiv = document.createElement('div');
