@@ -1,4 +1,4 @@
-import RacingCarGame from "./racing_car_game.js";
+import RacingCarGame from "./racing-car-game.js";
 
 const isInputEmpty = (input) => {
   let result = false;
