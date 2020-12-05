@@ -1,5 +1,7 @@
-import { onBtnCarNamesClicked } from "./library/car-names.js";
-import { onBtnRacingCountClicked } from "./library/btn-clicked.js";
+import {
+  onBtnCarNamesClicked,
+  onBtnRacingCountClicked,
+} from "./library/btn-clicked.js";
 
 export default function RacingCarGame(racingCount, cars) {
   this.play = function () {
