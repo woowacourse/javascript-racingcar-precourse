@@ -27,6 +27,10 @@ export default class RacingCarGameView {
     target.registerViews(this);
   }
 
+  update(target) {
+    this.renderIntermediateResult(target['_carInstances']);
+  }
+
   handleCarNamesSubmit() {
     const splitedNames = this.carNamesInput.value.split(',');
     const exception = this.validNames(splitedNames);
