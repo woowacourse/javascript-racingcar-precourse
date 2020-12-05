@@ -61,7 +61,8 @@ btnCarNames.onclick = function () {
     });
   }
 };
-function showOneResultDiv() {
+
+function showOneResult() {
   const result = document.createElement("div");
   document.getElementById("result-box").appendChild(result);
 
@@ -74,6 +75,8 @@ function showOneResultDiv() {
 
   return;
 }
+function showWinners()
+
 const btnRacingCount = document.getElementById("racing-count-submit");
 const inputRacingCount = document.getElementById("racing-count-input");
 let racingCount = -1;
@@ -85,7 +88,7 @@ btnRacingCount.onclick = function () {
   const racingGame = new RacingCarGame(racingCount, cars);
   for (let i = 0; i < racingCount; i++) {
     racingGame.play();
-    showOneResultDiv();
+    showOneResult();
   }
 
   let names = [];
