@@ -70,6 +70,8 @@ class Car {
   - [X] 예외1 checkNameLength: 자동차 이름의 오류 확인 하는 함수 
     - [X] 예외1-1 checkNameLength: 이름이 5글자 이상이면 에러라고 말하는 함수
     - [X] 예외1-2 hasSpaceInName: 이름 내에 공백이 있다면 에러라고 말하는 함수
+    - [X] 예외1-3 isDuplicate: 중복 이름 유무 체크 함수
+    - [X] 예외1-3 이름을 모두 받으면, 횟수를 받아오는 단계에서는 이름을 또 받을 수 없도록 button disable 처리
 - [X] getRacingCount: 시도할 횟수를 받아올 함수
   - [X] 예외2 checkRacingCountError: 시도할 횟수의 오류를 검출할 함수
 - [] 각 instance를 생성할 함수

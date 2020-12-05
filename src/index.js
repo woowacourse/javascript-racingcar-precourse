@@ -16,10 +16,15 @@ export default function RacingCarGame() {
       alert(GAME_GUIDE.CAR_NAME_ERROR);
     } else if (this.hasSpaceInName(names)) {
       alert(GAME_GUIDE.HAME_SPACE);
+    } else if (this.isDuplicate(names)) {
+      alert(GAME_GUIDE.IS_DUPLICATE);
+    } else if (this.hasEmptyName(names)) {
+      alert(GAME_GUIDE.HAS_EMPTY_NAME);
     } else {
       const racingCountContainer = document.getElementById(
         "racing-count-container"
       );
+      carNamesSubmit.disabled = true;
       racingCountContainer.style.visibility = "visible";
     }
   };
@@ -50,6 +55,18 @@ export default function RacingCarGame() {
     return result;
   };
 
+  this.isDuplicate = (names) => {
+    let result = false;
+
+    names.forEach((name) => {
+      if (names.includes(name)) {
+        result = true;
+        return result;
+      }
+    });
+    return result;
+  };
+
   this.getRacingCount = () => {
     const racingCountInput = document.getElementById("racing-count-input");
     const racingCount = racingCountInput.value;
@@ -61,6 +78,7 @@ export default function RacingCarGame() {
     if (Number.isNaN(parseInt(racingCount))) {
       alert(GAME_GUIDE.ONLY_NUMBER);
     } else {
+      console.log(racingCount);
       //TODOS:make instance
       //TODOS:make random
     }
