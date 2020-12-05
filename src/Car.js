@@ -1,7 +1,7 @@
 export default class Car {
-  constructor(name, count) {
+  constructor(name) {
     this.name = name;
-    this.count = count;
+    this.count = 0;
   }
 
   move() {
