@@ -1,6 +1,7 @@
-import { addCorrectCarNames } from "./library/car-names.js";
+import { onBtnCarNamesClicked } from "./library/car-names.js";
 import { showOneResult, showFinalWinners } from "./library/result-box.js";
 import { makeElementBlock } from "./library/make-element-block.js";
+
 export default function RacingCarGame(racingCount, cars) {
   this.play = function () {
     let randomNums = [];
@@ -15,26 +16,14 @@ export default function RacingCarGame(racingCount, cars) {
   };
 }
 
-function Car(name) {
-  this.name = name;
-  this.position = 0;
-}
 let cars = [];
 console.log("east, west, south, north");
+
 const btnCarNames = document.getElementById("car-names-submit");
 const inputCarNames = document.getElementById("car-names-input");
 
 btnCarNames.onclick = function () {
-  const carNames = inputCarNames.value.split(",");
-  const correctCarNames = addCorrectCarNames(carNames);
-  const racingBox = document.getElementById("racing-count-box");
-
-  if (!correctCarNames.includes(undefined)) {
-    makeElementBlock(racingBox);
-    correctCarNames.forEach((correctCar) => {
-      cars.push(new Car(correctCar));
-    });
-  }
+  onBtnCarNamesClicked(cars, inputCarNames);
 };
 
 const btnRacingCount = document.getElementById("racing-count-submit");
