@@ -2,6 +2,7 @@ import { GO_AHEAD_MAX_VALUE } from '../variables/constantNumbers.js';
 import InputsControl from '../classes/checkUserInputs.js';
 
 import {
+  settingGame,
   showContainer,
   disableInputs,
   renderResult
@@ -9,6 +10,7 @@ import {
 
 export default class RacingCarGame {
   constructor() {
+    settingGame();
     this.$carNamesInput = document.getElementById('car-names-input');
     this.$carNamesSubmit = document.getElementById('car-names-submit');
     this.$racingCountContainer = document.getElementById('racing-count-container');

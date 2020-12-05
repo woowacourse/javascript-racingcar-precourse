@@ -3,7 +3,6 @@ export default class Car {
     this.name = name;
     this.result = [];
     this.pos = [];
-    this.isWin = false;
   }
 
   _canGo(randomNumber) {

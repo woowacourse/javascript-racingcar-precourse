@@ -5,13 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d8d6e1d9-7c12-4bc6-84e0-9c2963f22680" name="Default Changelist" comment="setting eslint and prettier">
-      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/lib/variables/alertMessages.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.eslintrc.js" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintrc.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/lib/classes/car.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/classes/car.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/classes/checkUserInputs.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/classes/checkUserInputs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/lib/classes/racingCarGame.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/classes/racingCarGame.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
