@@ -22,10 +22,7 @@ export default class RacingCarGame {
   start() {
     for (let i = 0; i < this.count; i++) {
       for (const car of this.cars) {
-        const randomNumber = Math.floor(Math.random() * 10);
-        if (randomNumber >= 4) {
-          car.go++;
-        }
+        car.go();
       }
     }
   }
