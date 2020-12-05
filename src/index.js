@@ -36,13 +36,19 @@ export default function RacingCarGame() {
     const racingCountSubmit = document.querySelector("#racing-count-submit");
     racingCountSubmit.addEventListener("click", () => {
       const racingCountInput = document.querySelector("#racing-count-input").value;
-      return racingCountInput
+      return racingCountInput;
     });
+  }
+
+  function createRandomNumber() {
+    const randomNumber = Math.floor(Math.random() * 10);
+    return randomNumber;
   }
 
   function init() {
     getCarNamesInput();
     getRacingCountInput();
+    createRandomNumber();
   }
 
   init();
