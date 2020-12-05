@@ -1,0 +1,26 @@
+{
+  "name": "javascript-racingcar-precourse",
+  "version": "1.0.0",
+  "description": "## 🎯 기능 요구사항",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tanney-102/javascript-racingcar-precourse.git"
+  },
+  "author": "Tanney",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tanney-102/javascript-racingcar-precourse/issues"
+  },
+  "homepage": "https://github.com/Tanney-102/javascript-racingcar-precourse#readme",
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.14.0",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-prettier": "^3.2.0",
+    "prettier": "^2.2.1"
+  }
+}
