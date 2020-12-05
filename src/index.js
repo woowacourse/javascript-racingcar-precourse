@@ -1,10 +1,13 @@
 import { setCarNames, getRacingCount } from './user/actions.js';
+import { setRacingCars } from './car/actions.js';
 
 export default function RacingCarGame() {
-  const carNames = '';
-  const racingCount = '';
   const carNamesSubmitBtn = document.getElementById('car-names-submit');
   const racingCountSubmitBtn = document.getElementById('racing-count-submit');
+
+  const play = function (_carNames, _racingCount) {
+    const racingCars = setRacingCars(_carNames);
+  };
 
   carNamesSubmitBtn.addEventListener('click', () => {
     this.carNames = setCarNames();
@@ -23,8 +26,7 @@ export default function RacingCarGame() {
       return;
     }
 
-    // 게임 진행
-    console.log(this.carNames, this.racingCount);
+    play(this.carNames, this.racingCount);
 
     document.getElementById('game-result-container').hidden = false;
   });
