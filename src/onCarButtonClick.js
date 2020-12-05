@@ -7,12 +7,14 @@ import {
 
 const onCarButtonClick = function () {
   const checkedCarNames = checkCarNameValidity(carInput.value);
-  if (checkedCarNames.value) {
-    this.setCarArray(
-      checkedCarNames.value.map((name) => switchToCarInstance(name))
-    );
-    showIteratorElements();
-  } else alert(checkedCarNames.errorMessage);
+  if (!checkedCarNames.value) {
+    alert(checkedCarNames.errorMessage);
+    return;
+  }
+  this.setCarArray(
+    checkedCarNames.value.map((name) => switchToCarInstance(name))
+  );
+  showIteratorElements();
 };
 
 export default onCarButtonClick;
