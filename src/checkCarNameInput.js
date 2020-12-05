@@ -5,12 +5,13 @@ export default function checkCarName(carNameInput) {
   } else if (checkEmptyName(carNameArray)) {
     alert('공백인 이름이 존재합니다.');
   } else if (checkOverFive(carNameArray)) {
-    alert('5자 이상의 이름이 존재합니다.');
+    alert('5자가 넘는 이름이 존재합니다.');
   } else if (checkDuplicated(carNameArray)) {
     alert('중복된 이름이 존재합니다.');
   } else {
     return true;
   }
+  return false;
 }
 
 const checkEmptyInput = carNameInput => {
