@@ -36,6 +36,11 @@ const addRacingCountForm = (e) => {
   e.target.closest(".car-game-container").append(racingCountForm);
 };
 
+const deactivateForm = (e) => {
+  e.target.setAttribute("disabled", "disabled");
+  e.target.parentNode.children[0].setAttribute("readonly", "readonly");
+};
+
 const passNamesInputToGameController = (e) => {
   const nameInputStr = e.target.parentNode.children[0].value;
   const namesArray = nameInputStr.split(",").map((_name) => _name.trim());
@@ -45,6 +50,7 @@ const passNamesInputToGameController = (e) => {
   }
   gameController.setRacingCars(namesArray);
   addRacingCountForm(e);
+  deactivateForm(e);
 };
 
 const routeDocClickEvent = (e) => {
