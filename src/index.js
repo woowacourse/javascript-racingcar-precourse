@@ -1,4 +1,5 @@
 import handleInput from './handleInput.js';
+import Car from './car.js';
 
 export default class RacingCarGame {
   constructor() {
@@ -53,7 +54,7 @@ export default class RacingCarGame {
 
   getCount() {
     if (this.$InputUtils.checkCountValidity(this.$countInput.value) === this.IS_VALID) {
-      this.createNewCar(this.$carNameArray);
+      this.createNewCar();
       console.log(this.$countInput.value);
       return 0;
     }
@@ -63,8 +64,12 @@ export default class RacingCarGame {
   }
 
   createNewCar() {
-
+    let cars = [];
+    this.$carNameArray.forEach((element) => {
+      cars.push(new Car(element, 0));
+    });
   }
+
 }
 
 new RacingCarGame();
