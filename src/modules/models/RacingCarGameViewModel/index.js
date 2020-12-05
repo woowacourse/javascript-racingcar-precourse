@@ -1,25 +1,5 @@
 import { Car } from '../../models';
 
-function setInstances(target, property, names) {
-  const instances = names.map(name => {
-    return new Car(name);
-  });
-  target._carInstances = instances;
-
-  return true;
-}
-
-function setRacingCount(target, property, count) {
-  target._racingCount = count;
-
-  while (target._racingCount) {
-    target.gameContinue();
-    target._racingCount--;
-  }
-
-  return true;
-}
-
 export default class RacingCarGameViewModel {
   constructor() {
     this.subscribers = [];
@@ -33,13 +13,33 @@ export default class RacingCarGameViewModel {
 
       set(target, property, value) {
         if (property === '_carInstances') {
-          return setInstances(target, property, value);
+          return target.setInstances(target, property, value);
         }
         if (property === '_racingCount') {
-          return setRacingCount(target, property, value);
+          return target.setRacingCountAndGameContinue(target, property, value);
         }
       },
     });
+  }
+
+  setInstances(target, property, names) {
+    const instances = names.map(name => {
+      return new Car(name);
+    });
+    target._carInstances = instances;
+
+    return true;
+  }
+
+  setRacingCountAndGameContinue(target, property, count) {
+    target._racingCount = count;
+
+    while (target._racingCount) {
+      target.gameContinue();
+      target._racingCount--;
+    }
+
+    return true;
   }
 
   notifyChange() {
