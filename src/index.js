@@ -72,4 +72,34 @@ btnRacingCount.onclick = function (event) {
     }
     result.innerHTML += `<br>`;
   }
+
+  let names = [];
+  let positions = [];
+  let winnerNames = [];
+
+  for (let car of cars) {
+    // console.log(key, cars[key]);
+    names.push(car.name);
+    positions.push(car.position);
+  }
+
+  const winnerPosition = Math.max.apply(null, positions);
+  positions.forEach((p, idx) => {
+    if (p === winnerPosition) {
+      winnerNames.push(names[idx]);
+    }
+  });
+
+  let winners = ``;
+  for (let i in winnerNames) {
+    if (winners.length == 0) {
+      winners += `${winnerNames[i]}`;
+    } else {
+      winners += `, ${winnerNames[i]}`;
+    }
+  }
+
+  const finalWinner = document.createElement("div");
+  finalWinner.innerHTML += `<div>최종 우승자: ${winners}</div>`;
+  document.getElementById("result-box").appendChild(finalWinner);
 };
