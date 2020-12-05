@@ -30,6 +30,49 @@
 9. 최종 우승자 출력하기
    1. 여러 명일 경우 콤마(,)를 이용하여 구분
 
+## 디렉토리 구조
+
+```
+├── LICENSE
+├── README.md
+├── babel.config.js
+├── docs
+│   └── README.md
+├── images
+│   ├── result.gif
+│   └── result.jpg
+├── index.css
+├── index.html
+├── jest.config.js
+├── package-lock.json
+├── package.json
+├── src
+│   ├── components
+│   │   ├── car-game-container.js
+│   │   ├── car-names-input.js
+│   │   ├── game-play.js
+│   │   └── racing-count-input.js
+│   ├── index.js
+│   └── library
+│       ├── classes
+│       │   └── car.js
+│       ├── constants
+│       │   ├── alert-maessage-racing-count.js
+│       │   └── alert-message-names.js
+│       ├── core
+│       │   ├── component.js
+│       │   └── state.js
+│       └── utils
+│           ├── bar.js
+│           ├── random-number.js
+│           └── validation.js
+└── test
+    ├── utils.spec.js
+    └── validation.spec.js
+
+10 directories, 26 files
+```
+
 ## 주의사항
 
 - **함수(또는 메소드)의 길이가 15라인을 넘어가지 않도록 구현한다.**
