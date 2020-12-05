@@ -6,4 +6,10 @@ export const isValidCarNames = nameList => {
 
 export const isEmptyInput = nameList => !nameList.length;
 
+export const isDuplicatedNames = nameList => {
+  const nameSet = new Set(nameList);
+
+  return nameList.length !== nameSet.size;
+};
+
 export const isPositiveNumber = num => parseInt(num) > 0;

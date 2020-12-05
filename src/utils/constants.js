@@ -25,5 +25,6 @@ export const NUM = {
 export const MESSAGE = {
   NAME_INPUT_ERROR: "각 이름을 5자 이하로 입력해주세요 !",
   EMPTY_INPUT_ERROR: "값을 입력해주세요 !",
+  DUPLICATED_INPUT_ERROR: "중복된 이름이 존재합니다 !",
   NEGATIVE_NUMBER_ERROR: "양수를 입력해주세요 !",
 };
