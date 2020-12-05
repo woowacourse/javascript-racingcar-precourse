@@ -4,8 +4,9 @@ export default function RacingCarGame() {
 
   const handleClickCarNamesSubmit = () => {
     const carNamesList = carNamesInput.value.split(',');
-    console.log(carNamesList);
-    console.log(isValidCarNames(carNamesList));
+    if (!isValidCarNames(carNamesList)) {
+      return alert('잘못된 자동차 이름입니다.');
+    }
   };
 
   const isValidCarNames = carNames => {
