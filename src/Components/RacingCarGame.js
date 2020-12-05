@@ -12,7 +12,7 @@ class RacingCarGame {
     this.mountDOM();
     this.resetDOM();
     this.mountComponent();
-    this.state = this.initState();
+    this.initState();
   }
 
   mountDOM() {
@@ -51,7 +51,7 @@ class RacingCarGame {
   }
 
   initState() {
-    return {
+    this.state = {
       round: 0,
       players: [],
     };
