@@ -41,3 +41,12 @@ export const showIteratorElements = () => {
 };
 
 export const getRandomNumber = () => Math.floor(Math.random() * 9 + 1);
+
+export const checkIteratorValidity = (iteratorNumber) => {
+  if (Math.floor(iteratorNumber) !== iteratorNumber)
+    return {
+      value: false,
+      errorMessage: "Please write natural number and try again.",
+    };
+  return { value: iteratorNumber, errorMessage: "" };
+};
