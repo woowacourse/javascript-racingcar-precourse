@@ -94,6 +94,24 @@ export default class RacingCarGame {
     return Math.floor(Math.random() * 10);
   }
 
+  displayGameProcess() {
+    const result = document.createElement('div');
+    const resultMessage = this.getGameProcess();
+
+    result.innerText = `${resultMessage}\n`;
+    this.$resultArea.appendChild(result);
+  }
+
+  getGameProcess() {
+    let gameProcess = '';
+
+    this.$cars.forEach((car) => {
+      gameProcess += `${car.name}: ${'-'.repeat(car.location)}\n`;
+    })
+
+    return gameProcess;
+  }
+
 }
 
 new RacingCarGame();
