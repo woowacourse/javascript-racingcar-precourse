@@ -6,8 +6,8 @@ export default class RacingCarGame {
     this.cars = [];
     this.racingCount = 0;
 
-    DOMCtrl.hideUIs();
     this.setEventListeners();
+    DOMCtrl.hideUIs();
     DOMCtrl.resetCarNameInput();
   }
 
