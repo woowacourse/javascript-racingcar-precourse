@@ -13,7 +13,7 @@ export default class Car {
     return this.result.filter(go => go === true).length;
   }
 
-  _play(randomNumber) {
+  play(randomNumber) {
     this.result.push(this._canGo(randomNumber));
     this.pos.push(this._getCurrentPos());
   }

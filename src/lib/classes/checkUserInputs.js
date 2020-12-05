@@ -1,12 +1,10 @@
 import { MAX_CAR_NAME_LENGTH } from '../variables/constantNumbers.js';
 import Car from './car.js';
 
-class InputResult {
-  constructor(goToNextStep, inputData) {
-    this.goToNextStep = goToNextStep;
-    this.inputData = inputData;
-  }
-}
+const InputResult = (goToNextStep, inputData) => ({
+  goToNextStep,
+  inputData
+});
 
 export default class InputsControl {
   constructor(inputs) {
@@ -89,16 +87,16 @@ export default class InputsControl {
       && !this.checkLessThanOneCars() 
       && !this.checkMoreThanFiveChars()
     ) {
-      return new InputResult(true, this.getCarNames(), '');
+      return InputResult(true, this.getCarNames());
     }
-    return new InputResult(false, null);
+    return InputResult(false, null);
   }
 
   getResultOfRacingCountNumber($racingCountInput) {
     $racingCountInput.focus();
     if(!this.checkIsEmpty() && !this.checkSpace() && !this.checkInvalidNumber() && !this.checkChars()) {
-      return new InputResult(true, this.getRacingCountNumber(), '');
+      return InputResult(true, this.getRacingCountNumber());
     }
-    return new InputResult(false, null);
+    return InputResult(false, null);
   }
 }

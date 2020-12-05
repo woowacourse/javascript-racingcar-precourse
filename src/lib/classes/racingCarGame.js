@@ -33,15 +33,13 @@ export default class RacingCarGame {
 
   async getResult() {
     const winCars = this._getWinCars();
-
-    //game steps should be rendered before show result container
     await renderResult(this.$resultContainer, this.cars, this.racingCount, winCars);
     await showContainer(this.$resultContainer);
   }
 
   async moveCars(turn) {
     await this.cars.forEach(car => { //promise should be added
-      car._play(this._createRandomNumber());
+      car.play(this._createRandomNumber());
       this.totalDist = Math.max(car.pos[turn-1], this.totalDist);
     });
   }

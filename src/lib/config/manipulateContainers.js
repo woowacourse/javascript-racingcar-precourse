@@ -30,17 +30,15 @@ export const disableInputs = ($input, $button) => {
 }
 
 const $getGameStepElement = (cars, step) => cars.reduce(($thisStep, car) => {
-  $thisStep.innerHTML += `<p>${car.name}: ${'-'.repeat(car.pos[step-1])}</p>`;
+  $thisStep.innerHTML += `${car.name}: ${'-'.repeat(car.pos[step-1])}<br/>`;
   return $thisStep;
-}, document.createElement('div'));
+}, document.createElement('p'));
 
 const renderGameSteps = (cars, racingCount, $resultContainer) => {
   const $renderGameSteps = document.createElement('div');
-  const $spaceBetweenSteps = document.createElement('br');
   $renderGameSteps.id = 'render-game-step';
   for(let step = 1; step <= racingCount; step++) {
     $renderGameSteps.appendChild($getGameStepElement(cars, step));
-    //$renderGameSteps.appendChild($spaceBetweenSteps);
   }
   $resultContainer.appendChild($renderGameSteps);
 }
