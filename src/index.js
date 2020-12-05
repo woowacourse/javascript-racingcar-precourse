@@ -114,6 +114,7 @@ export default class RacingCarGame {
     this.resetPrevRace();
     this.showResultUI();
     this.startRace();
+    this.printWinnersName();
   }
 
   isNotProperRacingCountInputValue(value) {
@@ -146,7 +147,6 @@ export default class RacingCarGame {
     for (let i = 0; i < this.racingCount; i++) {
       this.printTrialResult(this.cars);
     }
-    console.log(this.getWinnerName());
   }
 
   printTrialResult(cars) {
@@ -159,6 +159,13 @@ export default class RacingCarGame {
     });
     trialResult.innerHTML = resultContent;
     resultBoard.appendChild(trialResult);
+  }
+
+  printWinnersName() {
+    const winnersName = document.createElement('p');
+    const winners = this.getWinnerName();
+    winnersName.textContent = '최종 우승자: ' + winners.join(', ');
+    resultBoard.appendChild(winnersName);
   }
 
   getWinnerName() {
