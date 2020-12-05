@@ -27,6 +27,14 @@ export default class RacingCarGameViewModel {
     });
   }
 
+  publish() {
+    const self = this;
+    this.subscribers.every(subscriber => {
+      subscriber.update(self);
+      return true;
+    });
+  }
+
   gameContinue() {
     this._carInstances.forEach(car => {
       car.moveForward();
