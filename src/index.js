@@ -2,6 +2,7 @@ import { hideTags } from "./controlTags.js";
 import { carNamesSubmitHandler } from "./eventHandler.js";
 function gameStart(play) {
   const carNamesSubmit = document.querySelector("#car-names-submit");
+  const RacingCountSubmit = document.querySelector("#racing-count-submit");
   hideTags();
   carNamesSubmit.addEventListener("click", () => carNamesSubmitHandler(play));
 }

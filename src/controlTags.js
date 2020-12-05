@@ -4,3 +4,9 @@ export function hideTags() {
   document.querySelectorAll("h4")[0].style.visibility = "hidden";
   document.querySelectorAll("h4")[1].style.visibility = "hidden";
 }
+
+export function showCountTags() {
+  document.querySelector("#racing-count-submit").style.visibility = "visible";
+  document.querySelector("#racing-count-input").style.visibility = "visible";
+  document.querySelectorAll("h4")[0].style.visibility = "visible";
+}
