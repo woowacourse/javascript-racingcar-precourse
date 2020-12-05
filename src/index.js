@@ -1,4 +1,5 @@
 import { CAR_GAME_GUIDE as GAME_GUIDE } from "./constants.js";
+import { Car } from "./Car.js";
 
 export default function RacingCarGame() {
   const carNamesSubmit = document.getElementById("car-names-submit");
