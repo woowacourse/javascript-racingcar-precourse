@@ -17,4 +17,16 @@ export default class RacingCarGame {
     carArr.map(car => new Car(car));
     return carArr;
   }
+
+  // 경주 진행
+  start() {
+    for (let i = 0; i < this.count; i++) {
+      for (const car of this.cars) {
+        const randomNumber = Math.floor(Math.random() * 10);
+        if (randomNumber >= 4) {
+          car.go++;
+        }
+      }
+    }
+  }
 }
