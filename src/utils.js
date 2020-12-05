@@ -24,6 +24,7 @@ export const startRace = (cars, count) => {
   for (let i = 0; i < count; i++) {
     moveCar(cars);
   }
+  getWinners(cars);
 };
 
 export const moveCar = cars => {
@@ -31,6 +32,23 @@ export const moveCar = cars => {
     let randNum = Math.random() * 10;
     if (randNum >= 4) {
       car.move();
+    }
+  }
+};
+
+export const getWinners = cars => {
+  let winners = [];
+  cars.sort((car1, car2) => {
+    return car2.getCount() - car1.getCount();
+  });
+  winners.push(cars[0]);
+
+  const maxCount = cars[0].getCount();
+  for (let i = 1; i < cars.length; i++) {
+    if (cars[i].getCount() === maxCount) {
+      winners.push(cars[i]);
+    } else {
+      break;
     }
   }
 };
