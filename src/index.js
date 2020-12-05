@@ -7,6 +7,7 @@ export default class RacingCarGame {
     this.addEventListener();
     this.IS_VALID = 1;
     this.IS_NOT_VALID = 0;
+    this.$InputUtils = new handleInput();
   }
 
   addElementId() {
@@ -30,28 +31,40 @@ export default class RacingCarGame {
       if (e.keyCode === 13)
         this.getCarNames();
     });
+    this.$countButton.addEventListener('click', () => this.getCount());
+    this.$countInput.addEventListener('keypress', (e) => {
+      if (e.keyCode === 13)
+        this.getCount();
+    })
   }
 
   getCarNames() {
-    const InputUtils = new handleInput();
+    this.$carNameArray = this.$InputUtils.splitWithComma(this.$nameInput.value);
 
-    this.$carNameArray = InputUtils.splitWithComma(this.$nameInput.value);
-    console.log(this.$carNameArray);
-
-    if (InputUtils.checkNameValidity(this.$carNameArray) === this.IS_VALID) {
-      this.createNewCar(this.$carNameArray);
+    if (this.$InputUtils.checkNameValidity(this.$carNameArray) === this.IS_VALID) {
       this.$countInput.focus();
+      console.log(this.$carNameArray);
       return 0;
     }
 
+    this.$nameInput.value = '';
     this.$nameInput.focus();
+  }
+
+  getCount() {
+    if (this.$InputUtils.checkCountValidity(this.$countInput.value) === this.IS_VALID) {
+      this.createNewCar(this.$carNameArray);
+      console.log(this.$countInput.value);
+      return 0;
+    }
+
+    this.$countInput.value = '';
+    this.$countInput.focus();
   }
 
   createNewCar() {
 
   }
-
-  
 }
 
 new RacingCarGame();

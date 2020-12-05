@@ -5,6 +5,7 @@ export default class HandleInput {
     this.MAX_LENGTH = '5자 이하로';
     this.OVERLAP = '중복 없이'
     this.MIN_LENGTH = '한 자 이상';
+    this.IS_ZERO = '1이상의 수를 입력해주세요';
     this.IS_VALID = 1;
     this.IS_NOT_VALID = 0;
   }
@@ -63,6 +64,22 @@ export default class HandleInput {
       return this.is_NOT_VALID;
 
     return this.is_VALID;
+  }
+
+  checkCountValidity(countInput) {
+    if (this.isZero(countInput) === this.IS_NOT_VALID) {
+      alert(this.IS_ZERO);
+      return this.IS_NOT_VALID;
+    }
+
+    return this.IS_VALID;
+  }
+
+  isZero(number) {
+    if (number[0] === '0')
+      return this.IS_NOT_VALID;
+    
+    return this.IS_VALID;
   }
 
   createErrorMessage(errortype) {
