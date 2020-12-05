@@ -99,9 +99,9 @@ const showRacingCountTags = (cars) => {
     '#racing-count-submit'
   );
 
-  displayElement('racing-count-header', 'block');
-  displayElement('racing-count-input', 'inline-block');
-  displayElement('racing-count-submit', 'inline-block');
+  displayElement('#racing-count-header', 'block');
+  displayElement('#racing-count-input', 'inline-block');
+  displayElement('#racing-count-submit', 'inline-block');
 
   racingCountInputElement.focus();
   racingCountSubmitButton.cars = cars;
@@ -122,7 +122,6 @@ const handleRacingCount = (e) => {
 };
 
 const isErrorRacingCount = (count) => {
-  console.log(count);
   if (count === '') {
     return 'countEmpty';
   }
@@ -136,24 +135,27 @@ const isErrorRacingCount = (count) => {
 };
 
 const playGame = (racingCount, cars) => {
-  displayElement('game-result-header', 'block');
+  const gameResultHeader = document.querySelector('#game-result-header');
+  gameResultHeader.insertAdjacentHTML(
+    'afterend',
+    '<div id="game-result-content"></div>'
+  );
+  displayElement('#game-result-header', 'block');
   for (let i = 0; i < racingCount; i++) {
     playOneTurn(cars);
     showCurrentScore(cars);
   }
   showFinalResult(cars);
-  console.log(cars);
   return cars;
 };
 
-const displayElement = (id, value) => {
-  document.querySelector(`#${id}`).style.display = value;
+const displayElement = (cssSelector, value) => {
+  document.querySelector(cssSelector).style.display = value;
 };
 
 const playOneTurn = (cars) => {
   cars.forEach((v) => {
     const randomNumber = generateRandomInteger(0, 9);
-    console.log(randomNumber);
     if (randomNumber >= 4) {
       v.score += '-';
     }
@@ -170,13 +172,14 @@ const generateRandomInteger = (min, max) => {
 };
 
 const showCurrentScore = (cars) => {
-  cars.forEach((v) => appendAtEnd('#app', 'div', `${v.name}: ${v.score}`));
-  appendAtEnd('#app', 'br', '');
-  console.log('showGameResult');
+  cars.forEach((v) =>
+    appendAtEnd('#game-result-content', 'div', `${v.name}: ${v.score}`)
+  );
+  appendAtEnd('#game-result-content', 'br', '');
 };
 
-const appendAtEnd = (parent, type, text) => {
-  const parentNode = document.querySelector(parent);
+const appendAtEnd = (cssSelector, type, text) => {
+  const parentNode = document.querySelector(cssSelector);
   let newNode = document.createElement(type);
 
   newNode.innerHTML = text;
@@ -184,12 +187,18 @@ const appendAtEnd = (parent, type, text) => {
 };
 
 const showFinalResult = (cars) => {
-  // let max = 0;
-  // let winners = '';
-  // cars.sort((a, b) => b.score.length - a.score.length);
-  // max = cars[0].score.length;
-  // winners = cars.filter((v) => v.score.length === max);
-  // appendAtEnd('#app', 'h4', `최종 우승자: ${Object.keys(winners).join(',')}`);
+  let max;
+  let winners = '';
+
+  cars.sort((a, b) => b.score.length - a.score.length);
+  max = cars[0].score.length;
+  winners = cars.filter((v) => v.score.length === max).map((car) => car.name);
+
+  appendAtEnd(
+    '#game-result-content',
+    'div',
+    `🥇최종 우승자: ${winners.join(', ')}`
+  );
 };
 
 new RacingCarGame();
