@@ -30,7 +30,7 @@ export default class RacingCarGame {
 
   /*
    * tests whether the input value is proper.
-   * if it is, then show UIs about racing count.
+   * if it is, then create Car objects and show UIs about racing count.
    */
   handleCarNameInput() {
     const carNameInputValue = DOMs.carNameInput.value;
@@ -40,11 +40,12 @@ export default class RacingCarGame {
       return;
     }
     const carNames = this.getCarNamesArray(carNameInputValue);
-    if (this.isNotProperCarNamesArray(carNames)) {
-      DOMCtrl.resetCarNameInput();
-      return;
+    for (let i = 0; i < carNames.length; i++) {
+      if (this.isNotProperCarName(carNames[i])) {
+        DOMCtrl.resetCarNameInput();
+        return;
+      }
     }
-
     this.setCarObjects(carNames);
     DOMCtrl.showRacingCountUI();
   }
@@ -58,19 +59,15 @@ export default class RacingCarGame {
   }
 
   // if car name is empty string or longer than 5, it's not proper.
-  isNotProperCarNamesArray(carNamesArray) {
+  isNotProperCarName(carName) {
     let result = false;
-    carNamesArray.forEach(carName => {
-      if (result === false) {
-        if (this.isLongerThanFive(carName)) {
-          alert('5자가 넘는 이름이 존재합니다.');
-          result = true;
-        } else if (this.isEmptyString(carName)) {
-          alert('이름 중에 빈 문자열이 존재합니다.');
-          result = true;
-        }
-      }
-    });
+    if (this.isLongerThanFive(carName)) {
+      alert('5자가 넘는 이름이 존재합니다.');
+      result = true;
+    } else if (this.isEmptyString(carName)) {
+      alert('이름 중에 빈 문자열이 존재합니다.');
+      result = true;
+    }
 
     return result;
   }
