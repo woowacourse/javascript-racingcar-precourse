@@ -27,3 +27,19 @@ export default class RacingCarGame {
     }
   }
 }
+
+const carNamesInput = document.getElementById('car-names-input');
+const racingCountDiv = document.getElementById('racing-count-div');
+
+let carArr;
+
+function clickCarNamesSubmit() {
+  "use strict";
+
+  carArr = RacingCarGame.inputCarName(carNamesInput.value);
+  if (carArr === null) {
+    alert('자동차 이름을 5자 이하로 콤마로 구분하여 입력해주세요.');
+    return;
+  }
+  racingCountDiv.classList.remove('d-none');
+}
