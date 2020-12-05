@@ -5,7 +5,7 @@
 - [X] utils.js, Car.js 파일 생성
 - [X] Car class 생성
 - [X] 자동차 이름 input 받기 & 5자 validation
-- [ ] input에 기반한 Car instance 생성
+- [X] input에 기반한 Car instance 생성
 - [ ] 이동 횟수 input 받기
 - [ ] 전진 여부 선택하는 random 함수
 - [ ] 각 Car instance의 전진 횟수 저장
