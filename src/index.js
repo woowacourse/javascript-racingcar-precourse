@@ -34,4 +34,11 @@ btnCarNames.onclick = function () {
     racingBox.style.display = "block";
   }
 };
+
+const btnRacingCount = document.getElementById("racing-count-submit");
+const inputRacingCount = document.getElementById("racing-count-input");
+btnRacingCount.onclick = function () {
+  const racingCount = Number(inputRacingCount.value);
+  console.log(racingCount);
+};
 new RacingCarGame();
