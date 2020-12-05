@@ -74,3 +74,26 @@ export function renderCurrentState() {
   const brTag = document.createElement("br");
   resultDIV.appendChild(brTag);
 }
+
+const getWinner = (carArray) => {
+  let maxLocation = 0;
+  let winnerNames = [];
+  iterateBy(carArray.length, (i) => {
+    if (carArray[i].location === maxLocation)
+      winnerNames.push(carArray[i].name);
+    if (carArray[i].location > maxLocation) {
+      maxLocation = carArray[i].location;
+      winnerNames = [carArray[i].name];
+    }
+  });
+  return winnerNames.join(", ");
+};
+export const renderWinner = (carArray) => {
+  const resultDIV = document.getElementById("result-div");
+  const aWinnerNode = document.createElement("div");
+  const winnerText = document.createTextNode(
+    `최종 우승자: ${getWinner(carArray)}`
+  );
+  aWinnerNode.appendChild(winnerText);
+  resultDIV.appendChild(aWinnerNode);
+};
