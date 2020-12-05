@@ -2,7 +2,6 @@ import RacingCarGame from "./racing_car_game.js";
 
 const isInputEmpty = (input) => {
   let result = false;
-
   if (!input.length) {
     alert("입력된 값이 없습니다.");
     result = true;
@@ -13,7 +12,6 @@ const isInputEmpty = (input) => {
 
 const isValidNames = (namesArray) => {
   let result = true;
-
   for (let i = 0; i < namesArray.length; i++) {
     if (namesArray[i].length > 5) {
       alert("자동차의 이름은 5자 이하만 허용됩니다.");
@@ -27,7 +25,6 @@ const isValidNames = (namesArray) => {
 
 const addRacingCountForm = (e) => {
   const racingCountForm = document.createElement("div");
-
   racingCountForm.innerHTML = `
   <h4>시도할 횟수를 입력해주세요.</h4>
   <input id="racing-count-input" type="number" />
@@ -45,9 +42,10 @@ const passNamesInputToGameController = (e) => {
   const nameInputStr = e.target.parentNode.children[0].value;
   const namesArray = nameInputStr.split(",").map((_name) => _name.trim());
 
-  if (!isValidNames(nameInputStr) || isInputEmpty(namesArray)) {
+  if (!isValidNames(namesArray) || isInputEmpty(nameInputStr)) {
     return;
   }
+
   gameController.setRacingCars(namesArray);
   addRacingCountForm(e);
   deactivateForm(e);
