@@ -1,3 +1,5 @@
+import Car from './car.js';
+
 const racingCountContainer = document.querySelector('.racing-count');
 const carNameInput = document.getElementById('car-names-input');
 const carNameSubmitBtn = document.getElementById('car-names-submit');
@@ -7,7 +9,7 @@ const resultDiv = document.querySelector('.result');
 
 export default class RacingCarGame {
   constructor() {
-    this.nameOfCars = [];
+    this.cars = [];
     this.racingCount = 0;
 
     this.hideUIs();
@@ -51,7 +53,7 @@ export default class RacingCarGame {
       return;
     }
 
-    this.nameOfCars = carNames;
+    this.setCarObjects(carNames);
     this.showRacingCountUI();
   }
 
@@ -92,6 +94,12 @@ export default class RacingCarGame {
   showRacingCountUI() {
     racingCountContainer.style.visibility = 'visible';
     racingCountInput.focus();
+  }
+
+  setCarObjects(arr) {
+    arr.forEach(carName => {
+      this.cars.push(new Car(carName));
+    });
   }
 
   handleRacingCountInput() {
