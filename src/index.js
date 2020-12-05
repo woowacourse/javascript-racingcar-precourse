@@ -28,6 +28,10 @@ export default class RacingCarGame {
     });
   }
 
+  /*
+   * tests whether the input value is proper.
+   * if it is, then show UIs about racing count.
+   */
   handleCarNameInput() {
     const carNameInputValue = DOMs.carNameInput.value;
     if (this.isEmptyString(carNameInputValue)) {
@@ -53,6 +57,7 @@ export default class RacingCarGame {
     return inputValue.split(',').map(name => name.trim());
   }
 
+  // if car name is empty string or longer than 5, it's not proper.
   isNotProperCarNamesArray(carNamesArray) {
     let result = false;
     carNamesArray.forEach(carName => {
@@ -74,6 +79,7 @@ export default class RacingCarGame {
     return carName.length > 5;
   }
 
+  // create Car objects with car names.
   setCarObjects(carNames) {
     const newCars = [];
     carNames.forEach(carName => {
@@ -82,6 +88,10 @@ export default class RacingCarGame {
     this.cars = newCars;
   }
 
+  /*
+   * tests whether racing count input is proper.
+   * if it is, then start a new race and print the result on the page.
+   */
   handleRacingCountInput() {
     const racingCountInputValue = DOMs.racingCountInput.value;
     if (this.isNotProperRacingCountInputValue(racingCountInputValue)) {
@@ -95,6 +105,7 @@ export default class RacingCarGame {
     this.printWinnersName();
   }
 
+  // if racing count input is an empty string or not a number, it's not proper.
   isNotProperRacingCountInputValue(inputValue) {
     let result = false;
     if (this.isEmptyString(inputValue) || isNaN(inputValue)) {
@@ -123,8 +134,7 @@ export default class RacingCarGame {
     let resultContent = '';
     cars.forEach(car => {
       car.getTrialResult();
-      resultContent += `${car.carName}: ${car.raceResult}`;
-      resultContent += '<br>';
+      resultContent += `${car.carName}: ${car.raceResult}<br>`;
     });
     trialResult.innerHTML = resultContent;
     DOMs.resultBoard.appendChild(trialResult);
@@ -133,13 +143,13 @@ export default class RacingCarGame {
   printWinnersName() {
     const winnersName = document.createElement('p');
     const winners = this.getWinnerName();
-    winnersName.textContent = '최종 우승자: ' + winners.join(', ');
+    winnersName.textContent = `최종 우승자: ${winners.join(', ')}`;
     DOMs.resultBoard.appendChild(winnersName);
   }
 
+  // compare the results and select a winner(or winners).
   getWinnerName() {
     let winnerLength = 0;
-
     return this.cars.reduce((winners, car) => {
       const carResultLength = car.raceResult.length;
       let newWinners = winners;
@@ -149,7 +159,6 @@ export default class RacingCarGame {
         winnerLength = carResultLength;
         newWinners = [car.carName];
       }
-
       return newWinners;
     }, []);
   }

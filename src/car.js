@@ -12,6 +12,11 @@ export default class Car {
     return this.race;
   }
 
+  /*
+   * get a random number.
+   * if number is larger or equal than 4, the car moves forward.
+   * or else, the car stops.
+   */
   getTrialResult() {
     const trialNumber = this.getRandomNumber();
     const trialResult = trialNumber >= 4 ? '-' : '';
