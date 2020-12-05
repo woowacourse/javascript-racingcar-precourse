@@ -22,4 +22,11 @@ export default class RacingCarGame {
         console.log(inputValue, "오류");
     }
   }
+  processNameInput(carNameArray) {
+    carNameArray.forEach((carName) => {
+      this.carsInRacing.push(new Car(carName));
+    });
+  }
+  processRacingCount(racingCount) {
+  }
 }
