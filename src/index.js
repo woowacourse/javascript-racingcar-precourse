@@ -63,8 +63,13 @@ btnRacingCount.onclick = function (event) {
   const r = new RacingCarGame(racingCount, cars);
   for (let i = 0; i < racingCount; i++) {
     r.play();
+    const result = document.createElement("div");
+    document.getElementById("result-box").appendChild(result);
     for (let s in cars) {
-      console.log(cars[s].position);
+      result.innerHTML += `<div>
+        ${cars[s].name}: ${"-".repeat(cars[s].position)}
+        </div>`;
     }
+    result.innerHTML += `<br>`;
   }
 };
