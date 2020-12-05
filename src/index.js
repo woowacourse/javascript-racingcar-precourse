@@ -4,6 +4,8 @@ export default class RacingCarGame {
   constructor() {
     this.selectDOM();
     this.addEventListener();
+    this.IS_VALID = 1;
+    this.IS_NOT_VALID = 0;
   }
 
   selectDOM() {
@@ -16,17 +18,23 @@ export default class RacingCarGame {
   addEventListener() {
     this.$nameButton.addEventListener("click", () => this.getCarNames());
     this.$nameInput.addEventListener("keypress", (e) => {
-      if (e.keyCode === 13) this.getCarNames();
+      if (e.keyCode === 13)
+        this.getCarNames();
     });
   }
 
   getCarNames() {
-    const userNameInput = this.$nameInput.value;
-    this.$carNames = userNameInput.split(",");
-    console.log(this.$carNames);
-
     const InputUtils = new handleInput();
-    InputUtils.checkNameValidity(this.$carNames);
+
+    this.$carNameArray = InputUtils.splitWithComma(this.$nameInput.value);
+    console.log(this.$carNameArray);
+
+    if (InputUtils.checkNameValidity(this.$carNameArray) === this.IS_VALID)
+      this.createNewCar(this.$carNameArray);
+  }
+
+  createNewCar() {
+
   }
 
   
