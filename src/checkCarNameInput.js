@@ -9,7 +9,7 @@ export default function checkCarName(carNameInput) {
   } else if (checkDuplicated(carNameArray)) {
     alert('중복된 이름이 존재합니다.');
   } else {
-    return true;
+    return carNameArray;
   }
   return false;
 }
