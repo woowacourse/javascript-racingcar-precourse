@@ -112,6 +112,29 @@ export default class RacingCarGame {
     return gameProcess;
   }
 
+  displayWinner() {
+    const winner = document.createElement('div');
+    const winnerList = this.getWinnerList();
+    
+    winner.innerText = `최종 우승자: ${winnerList}`;
+    this.$resultArea.appendChild(winner);
+  }
+
+  getWinnerList() {
+    let max = 0;
+    let winnerList = [];
+
+    for (const car of this.$cars) {
+      if (car.location > max) {
+        max = car.location;
+        winnerList = [car.name];
+      } 
+      else if (car.location === max)
+        winnerList.push(car.name);
+    }
+
+    return winnerList.join(', ');
+  }
 }
 
 new RacingCarGame();
