@@ -32,8 +32,17 @@ export default function RacingCarGame() {
     }); 
   }
 
+  function getRacingCountInput() {
+    const racingCountSubmit = document.querySelector("#racing-count-submit");
+    racingCountSubmit.addEventListener("click", () => {
+      const racingCountInput = document.querySelector("#racing-count-input").value;
+      return racingCountInput
+    });
+  }
+
   function init() {
     getCarNamesInput();
+    getRacingCountInput();
   }
 
   init();
