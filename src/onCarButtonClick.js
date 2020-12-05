@@ -1,4 +1,4 @@
-const rawCarNames = document.getElementById("car-names-input");
+import { carInput } from "./utils.js";
 
 const onCarButtonClick = function () {};
 

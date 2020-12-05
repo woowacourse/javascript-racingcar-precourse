@@ -1,4 +1,4 @@
-const rawIterator = document.getElementById("racing-count-input");
+import { iteratorInput } from "./utils.js";
 
 const onIteratorClick = function () {};
 
