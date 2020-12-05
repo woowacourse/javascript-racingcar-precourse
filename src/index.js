@@ -29,6 +29,7 @@ const setElemVisible = function (elem, visible) {
   }
 };
 
+// TODO: 이름 다시 세팅하면 게임 결과 지우기
 const handleCarNamesSubmitBtn = function () {
   try {
     const carNamesList = getCarNamesToList();
@@ -66,6 +67,19 @@ const printRoundResult = function (printContainer) {
   carGameResultContainer.appendChild(oneRoundResultDiv);
 };
 
+const printWinner = function (printContainer) {
+  const carGameResultContainer = printContainer;
+  const winnerResultDiv = document.createElement('div');
+  const winPosition = Math.max(
+    ...racingCarGame.carList.map(car => car.getPosition()),
+  );
+  const winners = racingCarGame.carList
+    .filter(car => car.getPosition() === winPosition)
+    .map(car => car.getName());
+  winnerResultDiv.innerHTML = `최종 우승자: ${winners.join(', ')}`;
+  carGameResultContainer.appendChild(winnerResultDiv);
+};
+
 const handleCountSubmitBtn = function () {
   try {
     const racingCount = getRacingCount();
@@ -79,8 +93,10 @@ const handleCountSubmitBtn = function () {
       racingCarGame.raceOneRound();
       printRoundResult(carGameResultContainer);
     }
+    printWinner(carGameResultContainer);
     setElemVisible(carGameResultContainer, true);
   } catch (e) {
+    // TODO: 알림 메소드 따로 빼기
     alert(e.message);
     if (e.errElem) {
       e.errElem.focus();
