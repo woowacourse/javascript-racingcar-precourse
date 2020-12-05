@@ -61,7 +61,19 @@ btnCarNames.onclick = function () {
     });
   }
 };
+function showOneResultDiv() {
+  const result = document.createElement("div");
+  document.getElementById("result-box").appendChild(result);
 
+  for (let idx in cars) {
+    result.innerHTML += `<div>
+      ${cars[idx].name}: ${"-".repeat(cars[idx].position)}
+    </div>`;
+  }
+  result.innerHTML += `<br>`;
+
+  return;
+}
 const btnRacingCount = document.getElementById("racing-count-submit");
 const inputRacingCount = document.getElementById("racing-count-input");
 let racingCount = -1;
@@ -73,14 +85,7 @@ btnRacingCount.onclick = function () {
   const racingGame = new RacingCarGame(racingCount, cars);
   for (let i = 0; i < racingCount; i++) {
     racingGame.play();
-    const result = document.createElement("div");
-    document.getElementById("result-box").appendChild(result);
-    for (let s in cars) {
-      result.innerHTML += `<div>
-        ${cars[s].name}: ${"-".repeat(cars[s].position)}
-      </div>`;
-    }
-    result.innerHTML += `<br>`;
+    showOneResultDiv();
   }
 
   let names = [];
