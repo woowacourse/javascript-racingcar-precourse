@@ -10,7 +10,7 @@ export default class RacingCarGame {
     this.interfaceToHtml = interfaceToHtml;
   }
 
-  updateInputFromHtml(gameStep, inputValue) {
+  updateFromHtmlInput(gameStep, inputValue) {
     switch (gameStep) {
       case STEP.NAME_INPUT:
         this.processNameInput(inputValue);
@@ -22,27 +22,28 @@ export default class RacingCarGame {
         console.log(inputValue, "오류");
     }
   }
+
   processNameInput(carNameArray) {
     carNameArray.forEach((carName) => {
       this.carsInRacing.push(new Car(carName));
     });
   }
+
   processRacingCount(racingCount) {
     for (let i = 0; i < racingCount; i++) {
       this.progressGameOnce();
-      this.addCarsPositionToResultMessage();
+      this.writeMessageAboutCarsPosition();
     }
     this.determineWinners();
-    this.addWinnersToResultMessage();
+    this.writeMessageAboutWinner();
     this.interfaceToHtml.drawGameResult(this.resultMessage);
   }
-
   progressGameOnce() {
     this.carsInRacing.forEach((car) => {
       car.drive();
     });
   }
-  addCarsPositionToResultMessage() {
+  writeMessageAboutCarsPosition() {
     this.carsInRacing.forEach((car) => {
       this.resultMessage += `
       ${car.name}: ${"-".repeat(car.positionInRace)}<br>
@@ -61,7 +62,7 @@ export default class RacingCarGame {
       }
     });
   }
-  addWinnersToResultMessage() {
+  writeMessageAboutWinner() {
     let stringToAdd = "";
     this.carNameOfWinners.forEach((name) => {
       stringToAdd += `, ${name}`;

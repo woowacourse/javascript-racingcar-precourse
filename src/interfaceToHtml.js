@@ -65,7 +65,7 @@ export default class InterfaceToHtml {
     if (functionToDrawNextStep !== null) {
       functionToDrawNextStep.bind(this)();
     }
-    this.racingCarGame.updateInputFromHtml(stepOfButton, processedInput);
+    this.racingCarGame.updateFromHtmlInput(stepOfButton, processedInput);
   }
   changeToNextStep() {
     this.currentGameStep++;
@@ -84,8 +84,6 @@ export default class InterfaceToHtml {
         processedInput = Number(inputValue);
         isValidInput = this.checkRacingCountValue(processedInput);
         break;
-      default:
-        console.log("오류");
     }
     return { isValidInput, processedInput };
   }
