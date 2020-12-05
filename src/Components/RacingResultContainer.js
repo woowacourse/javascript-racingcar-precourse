@@ -3,6 +3,7 @@ import { resultTitleHTML, playerHTML, winnerHTML } from "../utils/templates.js";
 class RacingResultContainer {
   constructor({ $target, getPlayers, getWinnerNameList }) {
     this.$target = $target;
+
     this.getPlayers = getPlayers;
     this.getWinnerNameList = getWinnerNameList;
 
