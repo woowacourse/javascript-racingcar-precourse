@@ -13,7 +13,3 @@
 8. 최종 승자 선정
 9. 한 번 클릭된 버튼은 다시 눌리지 않도록 만들기
    -> target.removeEventListener(type, listener);
-
-++++++ 해야할 일
-
-1. 컨벤션과 프로그래밍 요구사항에 맞추기

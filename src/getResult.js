@@ -1,10 +1,7 @@
+import Car from "./car.js";
+
 export default function getResult() {
   let cars = []; // Car 인스턴스들의 저장을 위한 배열
-
-  function Car(name, position) {
-    this.name = name;
-    this.position = position;
-  }
 
   // Car 객체의 인스턴스 만들기
   this.makeCars = (words) => {
