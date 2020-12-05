@@ -1,8 +1,13 @@
 import { STEP } from "./sharedVariable.js";
+import Car from "./car.js";
 
 export default class RacingCarGame {
   constructor() {
+    this.initRacingGame();
+  }
 
+  initRacingGame() {
+    this.carsInRacing = [];
   }
 
   updateInputFromHtml(gameStep, inputValue) {
@@ -11,13 +16,10 @@ export default class RacingCarGame {
         this.processNameInput(inputValue);
         break;
       case STEP.RACING_COUNT:
-        console.log(inputValue, "RACING_COUNT_STEP");
+        this.processRacingCount(inputValue);
         break;
       default:
         console.log(inputValue, "오류");
     }
-  }
-
-  processNameInput(){
   }
 }

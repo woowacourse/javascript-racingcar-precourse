@@ -17,7 +17,7 @@ export default class InterfacetoHtml {
     });
     this.addEventToButton({
       stepOfButton: this.currentGameStep,
-      functionOfNextStep: this.drawRacingCount,
+      functionToDrawNextStep: this.drawRacingCount,
     });
   }
   drawRacingCount() {
@@ -27,7 +27,7 @@ export default class InterfacetoHtml {
     });
     this.addEventToButton({
       stepOfButton: this.currentGameStep,
-      functionOfNextStep: this.drawGameResult,
+      functionToDrawNextStep: this.drawGameResult,
     });
   }
   drawGameResult() {
@@ -41,13 +41,13 @@ export default class InterfacetoHtml {
   drawHTML({ containerWhereToDraw, htmlToDraw }) {
     containerWhereToDraw.insertAdjacentHTML("beforeend", htmlToDraw);
   }
-  addEventToButton({ stepOfButton, functionOfNextStep }) {
+  addEventToButton({ stepOfButton, functionToDrawNextStep }) {
     const button = document.getElementById(ID_NAME[stepOfButton].BUTTON);
     button.addEventListener("click", () => {
-      this.buttonCallback(stepOfButton, functionOfNextStep);
+      this.buttonCallback(stepOfButton, functionToDrawNextStep);
     });
   }
-  buttonCallback(stepOfButton, functionOfNextStep) {
+  buttonCallback(stepOfButton, functionToDrawNextStep) {
     const input = document.getElementById(ID_NAME[stepOfButton].INPUT_TEXT);
     const { isValidInput, processedInput } = this.checkInput(
       stepOfButton,
@@ -57,8 +57,8 @@ export default class InterfacetoHtml {
       return;
     }
     this.changeToNextStep();
+    functionToDrawNextStep.bind(this)();
     this.racingCarGame.updateInputFromHtml(stepOfButton, processedInput);
-    functionOfNextStep.bind(this)();
   }
   changeToNextStep() {
     this.currentGameStep++;
