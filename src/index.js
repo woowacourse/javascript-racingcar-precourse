@@ -75,7 +75,47 @@ function showOneResult() {
 
   return;
 }
-function showWinners()
+
+function getWinnerNames(names, positions) {
+  let winnerNames = [];
+
+  for (let car of cars) {
+    names.push(car.name);
+    positions.push(car.position);
+  }
+
+  const winnerPosition = Math.max.apply(null, positions);
+  positions.forEach((p, idx) => {
+    if (p === winnerPosition) {
+      winnerNames.push(names[idx]);
+    }
+  });
+
+  return winnerNames;
+}
+
+function makeNamesToStr(winnerNames) {
+  let winners = ``;
+  for (let idx in winnerNames) {
+    if (winners.length == 0) {
+      winners += `${winnerNames[idx]}`;
+    } else {
+      winners += `, ${winnerNames[idx]}`;
+    }
+  }
+
+  return winners;
+}
+function showFinalWinners() {
+  let names = [];
+  let positions = [];
+  let winnerNames = getWinnerNames(names, positions);
+  let winners = makeNamesToStr(winnerNames);
+
+  const finalWinner = document.createElement("div");
+  finalWinner.innerHTML += `<div>최종 우승자: ${winners}</div>`;
+  document.getElementById("result-box").appendChild(finalWinner);
+}
 
 const btnRacingCount = document.getElementById("racing-count-submit");
 const inputRacingCount = document.getElementById("racing-count-input");
@@ -91,33 +131,5 @@ btnRacingCount.onclick = function () {
     showOneResult();
   }
 
-  let names = [];
-  let positions = [];
-  let winnerNames = [];
-
-  for (let car of cars) {
-    // console.log(key, cars[key]);
-    names.push(car.name);
-    positions.push(car.position);
-  }
-
-  const winnerPosition = Math.max.apply(null, positions);
-  positions.forEach((p, idx) => {
-    if (p === winnerPosition) {
-      winnerNames.push(names[idx]);
-    }
-  });
-
-  let winners = ``;
-  for (let i in winnerNames) {
-    if (winners.length == 0) {
-      winners += `${winnerNames[i]}`;
-    } else {
-      winners += `, ${winnerNames[i]}`;
-    }
-  }
-
-  const finalWinner = document.createElement("div");
-  finalWinner.innerHTML += `<div>최종 우승자: ${winners}</div>`;
-  document.getElementById("result-box").appendChild(finalWinner);
+  showFinalWinners();
 };
