@@ -1,6 +1,10 @@
 import { getCarsNameList } from "../utils/inputUtil.js";
 import { blockContainer, showInputError } from "../utils/domUtil.js";
-import { isEmptyInput, isValidCarNames } from "../utils/validations.js";
+import {
+  isDuplicatedNames,
+  isEmptyInput,
+  isValidCarNames,
+} from "../utils/validations.js";
 import { ID, MESSAGE } from "../utils/constants.js";
 
 class CarNamesInputContainer {
@@ -29,6 +33,11 @@ class CarNamesInputContainer {
 
     if (!isValidCarNames(names)) {
       showInputError(this.$input, MESSAGE.NAME_INPUT_ERROR);
+      return;
+    }
+
+    if (isDuplicatedNames(names)) {
+      showInputError(this.$input, MESSAGE.DUPLICATED_INPUT_ERROR);
       return;
     }
 
