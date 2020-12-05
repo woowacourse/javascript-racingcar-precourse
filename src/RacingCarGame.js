@@ -1,12 +1,30 @@
 import Car from './Car.js';
 import ExceptionHandler from './ExceptionHandler.js';
+import RandomNumber from './RandomNumber.js';
 
 export default class RacingCarGame {
   exceptionHandler = new ExceptionHandler();
 
   constructor() {
-    this.carNamesList = [];
-    this.submitCarNames();
+    this.start();
+  }
+
+  // 처음 확인 버튼을 눌렀을 때
+  start() {
+    const carNamesSubmitButton = document.querySelector('#car-names-submit');
+
+    carNamesSubmitButton.addEventListener('click', () => {
+      this.submitCarNames();
+    });
+  }
+
+  submitCarNames() {
+    const carNamesList = this.getCarName();
+
+    if (carNamesList !== null) {
+      this.showCountRacing();
+      this.submitCountRacing(carNamesList);
+    }
   }
 
   // 차 이름 가져오기
@@ -23,31 +41,13 @@ export default class RacingCarGame {
     return carNamesInput.value;
   }
 
-  // 처음 확인 버튼을 눌렀을 때
-  submitCarNames() {
-    const carNamesSubmitButton = document.querySelector('#car-names-submit');
-
-    carNamesSubmitButton.addEventListener('click', () => {
-      this.initRacingCar();
-    });
-  }
-
-  initRacingCar() {
-    this.carNamesList = this.getCarName();
-
-    if (this.carNamesList !== null) {
-      this.showCountRacing();
-      this.submitRacingCount(this.carNamesList);
-    }
-  }
-
   showCountRacing() {
     const countContainer = document.querySelector('#count-container');
 
     countContainer.style.display = 'block';
   }
 
-  submitRacingCount(_carNames) {
+  submitCountRacing(_carNames) {
     const racingCountSubmit = document.querySelector('#racing-count-submit');
     let countNumber = 0;
 
@@ -72,12 +72,8 @@ export default class RacingCarGame {
 
     if (this.exceptionHandler.isCountNumber(_countNumber)) {
       for (let i = 0; i < _countNumber; i++) {
-        /*
-         * 생성한 Car 객체 여러번 반복하여 실행시키기
-         * or
-         * 숫자를 그대로 넣어서 Car객체 안에서 돌리기(Car(_name, _count))
-         */
-        console.log(carObjArray);
+        this.runRacing(carObjArray);
+        console.log(carObjArray); // TODO: 결과 출력
       }
     } else {
       alert('알맞은 숫자를 입력해 주세요');
@@ -89,5 +85,18 @@ export default class RacingCarGame {
     const carObjArray = _carNames.map((name) => new Car(name));
 
     return carObjArray;
+  }
+
+  runRacing(carObjArray) {
+    carObjArray.forEach((car) => {
+      const randomNumber = new RandomNumber();
+      const goSign = randomNumber.init();
+
+      if (goSign) {
+        car.position++;
+      }
+
+      console.log(car, goSign); // TODO: html 출력 String 넣기
+    });
   }
 }
