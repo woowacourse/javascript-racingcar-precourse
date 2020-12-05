@@ -62,3 +62,15 @@ function callbackToIterateInCarArray(i) {
 export function iterateByCarArrayLength() {
   iterateBy(this.carArray.length, callbackToIterateInCarArray.bind(this));
 }
+
+export function renderCurrentState() {
+  const resultDIV = document.getElementById("result-div");
+  this.carArray.forEach((car) => {
+    const aCarNode = document.createElement("div");
+    const innerText = document.createTextNode(`${car.name}: ${car.location}`);
+    aCarNode.appendChild(innerText);
+    resultDIV.appendChild(aCarNode);
+  });
+  const brTag = document.createElement("br");
+  resultDIV.appendChild(brTag);
+}
