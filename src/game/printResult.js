@@ -14,7 +14,7 @@ function race(car) {
 }
 
 function raceResultTemplate(car) {
-  return `${car.name}: ${car.count}<br>`;
+  return `${car.name}: ${'-'.repeat(car.count)}<br>`;
 }
 
 function printRaceResult(car) {
