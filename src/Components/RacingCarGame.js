@@ -48,6 +48,7 @@ class RacingCarGame {
     this.racingResultContainer = new RacingResultContainer({
       $target: this.$RacingResultContainer,
       getPlayers: this.getPlayers.bind(this),
+      getWinnerNameList: this.getWinnerNameList.bind(this),
     });
   }
 
@@ -83,6 +84,17 @@ class RacingCarGame {
     }
 
     this.racingResultContainer.render();
+  }
+
+  getWinnerNameList() {
+    const steps = this.state.players.map(car => car.step);
+    const maxStep = Math.max(...steps);
+
+    const result = this.state.players
+      .filter(car => car.step === maxStep)
+      .map(car => car.name);
+
+    return result;
   }
 }
 
