@@ -1,8 +1,14 @@
 import {
+  DUPLICATE_NAME_MESSAGE,
   EMPTY_NAME_MESSAGE,
   EMPTY_STRING_MESSAGE,
   EXCEEDING_NAME_LENGTH_MESSAGE,
 } from '../library/constants/alert-message-names.js';
+import {
+  hasDuplicateElement,
+  hasEmptyElement,
+  hasElementMoreThan5Letters,
+} from '../library/utils/validation.js';
 import Component from '../library/core/component.js';
 
 class CarNamesInput extends Component {
@@ -54,37 +60,13 @@ class CarNamesInput extends Component {
 
   isValidInput(input) {
     const carNames = input.split(',').map(carName => carName.trim());
-    if (input === '') {
-      return false;
-    }
-    if (this.hasNameWithMoreThan5Letters(carNames)) {
-      return false;
-    }
-    if (this.hasEmptyName(carNames)) {
-      return false;
-    }
 
-    return true;
-  }
-
-  hasNameWithMoreThan5Letters(carNames) {
-    for (const carName of carNames) {
-      if (carName.length > 5) {
-        return true;
-      }
-    }
-
-    return false;
-  }
-
-  hasEmptyName(carNames) {
-    for (const carName of carNames) {
-      if (carName.length === 0) {
-        return true;
-      }
-    }
-
-    return false;
+    return (
+      input !== '' &&
+      !hasEmptyElement(carNames) &&
+      !hasDuplicateElement(carNames) &&
+      !hasElementMoreThan5Letters(carNames)
+    );
   }
 
   alertByCase(input) {
@@ -93,14 +75,24 @@ class CarNamesInput extends Component {
     if (input === '') {
       errorMessage.push(EMPTY_STRING_MESSAGE);
     } else {
-      if (this.hasNameWithMoreThan5Letters(carNames)) {
-        errorMessage.push(EXCEEDING_NAME_LENGTH_MESSAGE);
-      }
-      if (this.hasEmptyName(carNames)) {
-        errorMessage.push(EMPTY_NAME_MESSAGE);
-      }
+      errorMessage.push(...this.getErrorMessages(carNames));
     }
     alert(`${errorMessage.join(', ')}을 입력하셨습니다. 다시 입력해주세요`);
+  }
+
+  getErrorMessages(carNames) {
+    const result = [];
+    if (hasElementMoreThan5Letters(carNames)) {
+      result.push(EXCEEDING_NAME_LENGTH_MESSAGE);
+    }
+    if (hasEmptyElement(carNames)) {
+      result.push(EMPTY_NAME_MESSAGE);
+    }
+    if (hasDuplicateElement(carNames)) {
+      result.push(DUPLICATE_NAME_MESSAGE);
+    }
+
+    return result;
   }
 }
 
