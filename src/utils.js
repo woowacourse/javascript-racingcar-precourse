@@ -52,6 +52,8 @@ export const getWinners = cars => {
       break;
     }
   }
+
+  printWinners(winners);
 };
 
 export const printProcess = cars => {
@@ -65,4 +67,16 @@ export const printProcess = cars => {
     processArea.appendChild(document.createElement('br'));
   }
   resultArea.appendChild(processArea);
+};
+
+export const printWinners = winners => {
+  const resultArea = document.getElementById('result');
+  const winnerNode = document.createElement('p');
+  winnerNode.appendChild(document.createTextNode('최종 우승자: '));
+  for (let winner of winners) {
+    const winnerText = document.createTextNode(`${winner.getName()}, `);
+    winnerNode.appendChild(winnerText);
+  }
+  winnerNode.innerHTML = winnerNode.innerHTML.replace(/,(?=[^,]*$)/, '');
+  resultArea.appendChild(winnerNode);
 };
