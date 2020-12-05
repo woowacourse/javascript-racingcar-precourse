@@ -1,6 +1,6 @@
 import { addCorrectCarNames } from "./library/car-names.js";
 import { showOneResult, showFinalWinners } from "./library/result-box.js";
-
+import { makeElementBlock } from "./library/make-element-block.js";
 export default function RacingCarGame(racingCount, cars) {
   this.play = function () {
     let randomNums = [];
@@ -23,10 +23,6 @@ let cars = [];
 console.log("east, west, south, north");
 const btnCarNames = document.getElementById("car-names-submit");
 const inputCarNames = document.getElementById("car-names-input");
-
-function makeElementBlock(element) {
-  return (element.style.display = "block");
-}
 
 btnCarNames.onclick = function () {
   const carNames = inputCarNames.value.split(",");
