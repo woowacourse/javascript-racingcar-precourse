@@ -13,3 +13,11 @@ export const iterateBy = ({ iterator, callbacks }) => {
     callbacks.forEach((callback) => callback(i));
   }
 };
+export const splitNamesByComma = (carNames) =>
+  carNames
+    .split("")
+    .filter((value) => value !== " ")
+    .join("")
+    .split(",")
+    .join("")
+    .split("");
