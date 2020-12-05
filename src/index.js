@@ -112,7 +112,7 @@ export default class RacingCarGame {
     }
     this.racingCount = racingCountInputValue;
     this.showResultUI();
-    // this.startRace();
+    this.startRace();
   }
 
   isNotProperRacingCountInputValue(value) {
@@ -132,6 +132,24 @@ export default class RacingCarGame {
 
   showResultUI() {
     resultBoard.style.visibility = 'visible';
+  }
+
+  startRace() {
+    for (let i = 0; i < this.racingCount; i++) {
+      this.printTrialResult(this.cars);
+    }
+  }
+
+  printTrialResult(cars) {
+    const trialResult = document.createElement('p');
+    let resultContent = '';
+    cars.forEach(car => {
+      car.getTrialResult();
+      resultContent += `${car.carName}: ${car.raceResult}`;
+      resultContent += '<br>';
+    });
+    trialResult.innerHTML = resultContent;
+    resultBoard.appendChild(trialResult);
   }
 }
 
