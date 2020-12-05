@@ -26,9 +26,7 @@ export default function RacingCarGame() {
     let result = true;
 
     names.forEach((name) => {
-      if (name.length > 5) {
-        result = false;
-      }
+      result = name.length > 5 ? false : true;
     });
 
     return result;
