@@ -17,6 +17,8 @@ export class RacingCarGame {
     this.$racingCountContainer = document.querySelector(".racing-count-container");
     this.$racingCountInput = document.querySelector("#racing-count-input");
     this.$racingCountSubmit = document.querySelector("#racing-count-submit");
+
+    this.$carGameResultContainer = document.querySelector(".car-game-result-container");
   }
 
   addEventListeners() {
@@ -24,6 +26,11 @@ export class RacingCarGame {
       e => this.onKeydownCarNamesInput(e));
     this.$carNamesSubmit.addEventListener("click",
       () => this.onClickCarNamesSubmit());
+    
+    this.$racingCountInput.addEventListener("keydown",
+      e => this.onKeydownRacingCountInput(e));
+    this.$racingCountSubmit.addEventListener("click",
+      () => this.onClickRacingCountSubmit());
   }
 
   onKeydownCarNamesInput(e) {
@@ -68,5 +75,47 @@ export class RacingCarGame {
   disableCarNamesNodes() {
     this.$carNamesInput.disabled = true;
     this.$carNamesSubmit.disabled = true;
+  }
+
+  onKeydownRacingCountInput(e) {
+    if (e.key === "Enter") {
+      this.onClickRacingCountSubmit();
+    }
+  }
+
+  onClickRacingCountSubmit() {
+    const racingCountNumber = Number(this.$racingCountInput.value);
+    console.log(`시도할 횟수: ${racingCountNumber}`);
+
+    if (this.isValidRacingCount(racingCountNumber)) {
+      this.disableRacingCountNodes();
+      this.showCarGameResultContainer();
+      this.racingCountNumber = racingCountNumber;
+      this.play();
+    } else {
+      alert(`${racingCountNumber}는 유효한 횟수가 아닙니다. 재입력해주세요.`);
+      this.$racingCountInput.value = "";
+      this.$racingCountInput.focus();
+    }
+  }
+
+  isValidRacingCount(racingCountNumber) {
+    const MIN_COUNT = 0;
+    
+    return Number.isInteger(racingCountNumber) &&
+      (racingCountNumber > MIN_COUNT);
+  }
+
+  disableRacingCountNodes() {
+    this.$racingCountInput.disabled = true;
+    this.$racingCountSubmit.disabled = true;
+  }
+
+  showCarGameResultContainer() {
+    this.$carGameResultContainer.style.display = "block";
+  }
+
+  play() {
+    //TODO: 🏎 play: 자동차 경주 게임을 시작
   }
 }
