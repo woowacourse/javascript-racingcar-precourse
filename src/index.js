@@ -20,16 +20,18 @@ new RacingCarGame();
 
 // 횟수 입력창, 실행 결과창 숨겨두기
 function hideCode() {
-  document.getElementById("count-submit-form").style.display = "none";
-  document.getElementById("print-result-form").style.display = "none";
+  document.getElementById("count-submit-form").style.visibility = "hidden";
+  document.getElementById("print-result-form").style.visibility = "hidden";
 }
 
+// 횟수 입력창 보여주기
 function showCountSubmitForm() {
-  document.getElementById("count-submit-form").style.display = "block";
+  document.getElementById("count-submit-form").style.visibility = "visible";
 }
 
+// 실행 결과창 보여주기
 function showResultForm() {
-  document.getElementById("print-result-form").style.display = "block";
+  document.getElementById("print-result-form").style.visibility = "visible";
 }
 
 // 자동차 이름 제출 버튼에 이벤트 리스너 달기
@@ -69,7 +71,6 @@ function makeCarObj(carNames) {
     };
     carsArr.push(carObj);
   }
-  console.log(carsArr);
   makeResultBox(carsArr);
 }
 
@@ -95,6 +96,7 @@ function makeResultBox(carsArr) {
 
 // 실행 결과창에 자동차의 이름, 랜덤숫자 출력해보기
 onRaceCountSubmit();
+
 function printResult(resultBox, carsArr) {
   let raceCars = [];
   let printMove = "";
