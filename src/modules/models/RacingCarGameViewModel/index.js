@@ -5,7 +5,10 @@ export default class RacingCarGameViewModel {
     this.subscribers = [];
     this._carInstances = null;
     this._racingCount = null;
+    return this.setProxy();
+  }
 
+  setProxy() {
     return new Proxy(this, {
       get(target, property) {
         return target[property];
