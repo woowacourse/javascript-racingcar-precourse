@@ -4,9 +4,12 @@ import Toggle from "../utils/toggle.js";
 class Output {
 	constructor() {
 		this.racingCountToggle = new Toggle();
+		this.carGameResultToggle = new Toggle();
+		this.carGameResultContainer = document.getElementsByClassName("car-game-result-container")[0];
 
 		this.hideRacingCountInput();
 		this.hideRacingCountButton();
+		this.hideCarGameResult();
 	}
 
 	hideRacingCountInput = () => {
@@ -17,12 +20,20 @@ class Output {
 		this.racingCountToggle.hideElement(input.racingCountButton);
 	}
 
+	hideCarGameResult = () => {
+		this.carGameResultToggle.hideElement(this.carGameResultContainer);
+	}
+
 	showRacingCountInput = () => {
 		this.racingCountToggle.showElement(input.racingCountInput);
 	}
 
 	showRacingCountButton = () => {
 		this.racingCountToggle.showElement(input.racingCountButton);
+	}
+
+	showCarGameResult = () => {
+		this.carGameResultToggle.showElement(this.carGameResultContainer);
 	}
 
 	showRacingResult = racingCars => {
@@ -33,9 +44,7 @@ class Output {
 			raceResultContainer.appendChild(document.createElement("br"));
 		});
 
-		const gameResultContainer = document.getElementsByClassName("car-game-result-container")[0];
-
-		gameResultContainer.appendChild(raceResultContainer);
+		this.carGameResultContainer.appendChild(raceResultContainer);
 	}
 
 	showWinners = winners => {
@@ -43,7 +52,7 @@ class Output {
 		const winnersNamesContainer = document.createElement("div");
 
 		winnersNamesContainer.appendChild(document.createTextNode(`최종 우승자: ${winnersNames}`));
-		document.getElementById("app").appendChild(winnersNamesContainer);
+		this.carGameResultContainer.appendChild(winnersNamesContainer);
 	}
 
 	getWinnersNames = winners => {
