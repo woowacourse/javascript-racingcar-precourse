@@ -11,7 +11,7 @@ const setPlayButton = () => {
   setVisiblity(countElem, true);
 };
 
-const getCarInput = (game) => {
+export const getCarInput = (game) => {
   const inputElem = document.getElementById("car-names-input");
   const inputArr = inputElem.value.split(",");
 
@@ -24,7 +24,7 @@ const getCarInput = (game) => {
   }
 };
 
-const getCountInput = (game) => {
+export const getCountInput = (game) => {
   const inputElem = document.getElementById("racing-count-input");
   const inputVal = inputElem.value;
 
@@ -36,7 +36,7 @@ const getCountInput = (game) => {
   }
 };
 
-const reSetByName = (game) => {
+export const reSetByName = (game) => {
   const result = document.getElementsByClassName("racing-result-container")[0];
 
   game.resultString = "";
@@ -55,20 +55,4 @@ export const setResult = (game) => {
 
 export const combineResult = (game, string) => {
   game.resultString += string + "<br>";
-};
-
-export const eventHandler = (game) => {
-  document.getElementById("car-names-submit").addEventListener("click", () => {
-    if (game.resultString !== "") {
-      reSetByName(game);
-    }
-    game.carList = [];
-    getCarInput(game);
-  });
-
-  document
-    .getElementById("racing-count-submit")
-    .addEventListener("click", () => {
-      getCountInput(game);
-    });
 };

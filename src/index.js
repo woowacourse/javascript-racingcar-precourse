@@ -1,5 +1,5 @@
 import RacingCarGame from "./game.js";
-import { eventHandler } from "./handle-io.js";
+import { eventHandler } from "./eventHandler.js";
 
 const init = (game) => {
   eventHandler(game);

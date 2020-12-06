@@ -1,6 +1,6 @@
 import Car from "./Car.js";
 import { getMaxPropByVal } from "./utils.js";
-import { combineResult, setResult } from "./handle-io.js";
+import { combineResult, setResult } from "./render.js";
 
 export default function RacingCarGame() {
   this.carList = [];
