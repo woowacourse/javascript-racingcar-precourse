@@ -11,9 +11,8 @@ const racingProgressContainer = children => {
 };
 
 const distance = size => {
-  let i = 0;
   let result = '';
-  while (i < size) {
+  for (let i = 0; i < size; i++) {
     result += '-';
     i += 1;
   }

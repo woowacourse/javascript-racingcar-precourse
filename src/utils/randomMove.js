@@ -4,7 +4,5 @@ export const randomMove = () => {
     return 0;
   }
 
-  if (4 <= random) {
-    return 1;
-  }
+  return 1;
 };

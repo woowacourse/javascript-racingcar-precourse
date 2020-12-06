@@ -58,12 +58,10 @@ export default function RacingCarGame() {
   };
 
   const racing = () => {
-    let i = 0;
     racingResultContainer.classList.remove('hide');
-    while (i < this.racingCount) {
+    for (let i = 0; i < this.racingCount; i++) {
       this.cars.forEach(car => car.move());
       showRacingProgress();
-      i += 1;
     }
     showRacingResult();
   };
