@@ -1,18 +1,20 @@
 import { isValidInputNames, isValidInputCount } from "./util";
 import racing from "./racing";
 
-export default function RacingCarGame() {
-  const carNamesSubmitBtn = document.querySelector("#car-names-submit");
-  const carNamesInput = document.querySelector("#car-names-input");
-  const racingCountInput = document.querySelector("#racing-count-input");
-  const racingCountSubmitBtn = document.querySelector("#racing-count-submit");
+const carNamesSubmitBtn = document.querySelector("#car-names-submit");
+const carNamesInput = document.querySelector("#car-names-input");
+const racingCountContainer = document.querySelector(".racing-count-container");
+const racingCountInput = document.querySelector("#racing-count-input");
+const racingCountSubmitBtn = document.querySelector("#racing-count-submit");
 
+export default function RacingCarGame() {
   let carNames;
   let racingCount;
 
   const gameStart = () => {
     if (isValidInputNames(carNamesInput.value)) {
       carNames = carNamesInput.value;
+      racingCountContainer.style.display = "block";
     } else {
       alert(
         "자동차들의 이름을 쉼표(,)로 구분하여 각 5자 이하로 2대 이상 입력해주세요!\n예) east,west,south",
