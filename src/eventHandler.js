@@ -1,4 +1,9 @@
-import { reSetByName, getCarInput, getCountInput } from "./render.js";
+import {
+  reSetByName,
+  reSetByCount,
+  getCarInput,
+  getCountInput,
+} from "./render.js";
 
 export const eventHandler = (game) => {
   document.getElementById("car-names-submit").addEventListener("click", () => {
@@ -12,9 +17,9 @@ export const eventHandler = (game) => {
   document
     .getElementById("racing-count-submit")
     .addEventListener("click", () => {
-      //   if (game.resultString !== "") {
-      //     reSetByCount(game);
-      //   }
+      if (game.resultString !== "") {
+        reSetByCount(game);
+      }
       getCountInput(game);
     });
 };

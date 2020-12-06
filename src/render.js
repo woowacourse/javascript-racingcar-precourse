@@ -45,9 +45,16 @@ export const reSetByName = (game) => {
   setVisiblity(result, false);
 };
 
+export const reSetByCount = (game) => {
+  const result = document.getElementsByClassName("racing-result-container")[0];
+  result.removeChild(result.lastChild);
+  game.resultString = "";
+};
+
 export const setResult = (game) => {
   const result = document.getElementsByClassName("racing-result-container")[0];
   let div = document.createElement("div");
+
   setVisiblity(result, true);
   div.innerHTML = game.resultString;
   result.appendChild(div);
