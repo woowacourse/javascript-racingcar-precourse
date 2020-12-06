@@ -44,13 +44,14 @@ export default class RacingCarGame {
       return;
     }
 
-    const inputedData = this.el.carNamesInput.value.split(',');
+    const carNames = this.el.carNamesInput.value.split(',');
 
-    if (!validateInput(inputedData)) {
+    if (!validateInput(carNames)) {
+      alert('잘못된 형식으로 입력되었습니다.');
       return;
     }
 
-    inputedData.forEach((item) => {
+    carNames.forEach((item) => {
       this.cars.push(new Car(item));
     });
 
