@@ -100,12 +100,12 @@ export default class RacingCarGameView {
   decideWinners(cars) {
     const winnerDistance = cars[0].moveForwardDistance;
 
-    const winners = cars.reduce((accumulator, car) => {
+    const winners = cars.reduce((acc, cur) => {
       if (car.moveForwardDistance === winnerDistance) {
-        return accumulator.concat([car.name]);
+        return acc.concat([cur.name]);
       }
 
-      return accumulator;
+      return acc;
     }, []);
 
     return winners;
