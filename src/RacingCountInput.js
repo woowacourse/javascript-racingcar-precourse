@@ -1,9 +1,10 @@
 export default class RacingCountInput {
   racingCountContainer = null;
 
-  constructor({ target }) {
+  constructor({ target, onClick }) {
     this.target = target;
     this.createRacingCountContainer(target);
+    this.addSubmitEvent(onClick);
   }
 
   createRacingCountContainer(target) {
@@ -17,6 +18,12 @@ export default class RacingCountInput {
 
     this.racingCountContainer = _racingCountContainer;
     target.appendChild(_racingCountContainer);
+  }
+
+  addSubmitEvent(onClick) {
+    const _submit = document.getElementById('racing-count-submit');
+
+    _submit.addEventListener('click', onClick);
   }
 
   show() {

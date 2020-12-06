@@ -12,4 +12,8 @@ export default class GameResult {
     this.container = _container;
     target.appendChild(_container);
   }
+
+  show() {
+    this.container.classList.toggle('hidden', false);
+  }
 }

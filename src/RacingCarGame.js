@@ -43,11 +43,16 @@ export default class RacingCarGame {
 
     this.racingCountContainer = new RacingCountInput({
       target: _container,
+      onClick: this.handleClickRacingCountSubmit.bind(this),
     });
   }
 
   handleClickCarNamesSubmit() {
     this.racingCountContainer.show();
+  }
+
+  handleClickRacingCountSubmit() {
+    this.gameResult.show();
   }
 
   createResult(target) {
