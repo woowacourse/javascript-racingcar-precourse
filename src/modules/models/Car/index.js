@@ -1,4 +1,4 @@
-import { isHigherThan } from '../../../utils';
+import { randomNumber } from '../../../utils';
 
 export default class Car {
   constructor(name) {
@@ -9,16 +9,8 @@ export default class Car {
     this.STANDARD_NUMBER = 3;
   }
 
-  randomNumber() {
-    const number = Math.floor(
-      Math.random() * (this.MAX_NUMBER - this.MIN_NUMBER + 1) + this.MIN_NUMBER,
-    );
-
-    return number;
-  }
-
   moveForward() {
-    if (this.randomNumber() > this.STANDARD_NUMBER) {
+    if (randomNumber(this.MAX_NUMBER, this.MIN_NUMBER) > this.STANDARD_NUMBER) {
       this.moveForwardDistance++;
     }
   }

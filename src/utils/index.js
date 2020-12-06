@@ -8,10 +8,6 @@ function isLongerThan(names, comparison) {
   return false;
 }
 
-function isHigherThan(number, comparison) {
-  return number > comparison;
-}
-
 function isNumber(count) {
   if (isNaN(count)) {
     return false;
@@ -35,4 +31,12 @@ function isNames(names) {
   return true;
 }
 
-export { isHigherThan, isLongerThan, isNames, isNumber };
+function randomNumber(maxNumber, minNumber) {
+  const number = Math.floor(
+    Math.random() * (maxNumber - minNumber + 1) + minNumber,
+  );
+
+  return number;
+}
+
+export { isLongerThan, isNames, isNumber, randomNumber };
