@@ -9,6 +9,11 @@ export default class RacingCarGame {
     const cars = carNames.map((carName) => new Car(carName));
     return cars;
   }
+
+  generateRandomNumber() {
+    const randomNumber = Math.floor(Math.random() * 10); // 0~9
+    return randomNumber;
+  }
 }
 
 // //test
