@@ -36,7 +36,7 @@ export default class Render {
     this.setWinnerResult(this.lastRoundGameRecord, maxScore);
 
     this.gameRecordInnerHTML = "";
-    // this.gameRecordDisplay(racingCount, racingGameRecord);
+    this.gameRecordDisplay(racingCount, racingGameRecord);
 
     // this.setRender();
   }
@@ -58,7 +58,27 @@ export default class Render {
     return this.FORWARD_MARK.repeat(score);
   }
 
-  gameRecordDisplay(racingCount, racingGameRecord) {}
+  gameRecordDisplay(racingCount, racingGameRecord) {
+    for (let round = 1; round <= racingCount; round++) {
+      const nowRoundRecord = racingGameRecord[round];
+      // console.log(nowRoundRecord);
+      let roundInnerHTML = ``;
+
+      for (let carIndex in nowRoundRecord) {
+        const carRecord = nowRoundRecord[carIndex];
+        //   console.log(carRecord);
+        const carRecordInnerHTMl = `
+        <p>${carRecord.carName}: ${this.getRepeatScoreDisplay(
+          carRecord.score
+        )}</p>`;
+
+        //   console.log(carRecordInnerHTMl);
+        roundInnerHTML += carRecordInnerHTMl;
+      }
+
+      this.gameRecordInnerHTML += `<br><div>${roundInnerHTML}</div>`;
+    }
+  }
 
   setRender() {}
 }
