@@ -2,6 +2,8 @@ import { validateInputsLength, validateInputsUnique } from "./validate.js";
 
 export default class RacingCarGame {
   constructor() {
+    this.carNames = [];
+
     this.carNameInputField = document.getElementById("car-names-input");
     this.carNameSubmitButton = document.getElementById("car-names-submit");
 
@@ -38,6 +40,18 @@ export default class RacingCarGame {
     }
 
     return isValid;
+  }
+
+  submitCarNames() {
+    const carNamesInput = this.getCarNamesInput();
+    const carNames = this.parseCarNames(carNamesInput);
+    const isValidCarNames = this.validateCarNames(carNames);
+
+    if (!isValidCarNames) {
+      return;
+    }
+
+    this.carNames = carNames;
   }
 }
 
