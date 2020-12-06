@@ -13,10 +13,7 @@ function isHigherThan(number, comparison) {
 }
 
 function isNumber(count) {
-  if (count === '') {
-    return false;
-  }
-  return true;
+  return /[0-9]/g.test(count);
 }
 
 function isNames(names) {
