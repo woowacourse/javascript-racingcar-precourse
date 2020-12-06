@@ -22,5 +22,19 @@ export default class App extends EventsHandler {
     );
 
     new Render(racingGameResult);
+
+    this.showGameResetButton();
+  }
+
+  showGameResetButton() {
+    const hiddenResetBtn = document.querySelector(".js-hidden__div");
+    const resetBtn = document.querySelector("#game-reset-button");
+    hiddenResetBtn.classList.remove("js-hidden__div");
+
+    resetBtn.addEventListener("click", this.gameReset.bind(this));
+  }
+
+  gameReset() {
+    location.reload();
   }
 }
