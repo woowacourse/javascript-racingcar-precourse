@@ -1,5 +1,3 @@
-import toggleResultScreen from '../init/toggleResultScreen.js';
-
 function getRandomNumber() {
   const min = 0;
   const max = 10;
@@ -52,7 +50,7 @@ function printFinalResult(carList) {
 export default function printResult(carList, racingCount) {
   const $resultScreen = document.querySelector('#app > div:last-child');
 
-  toggleResultScreen();
+  $resultScreen.removeAttribute('hidden');
   while (racingCount--) {
     carList.forEach((car) => race(car));
     carList.forEach((car) => printRaceResult(car));
@@ -60,6 +58,6 @@ export default function printResult(carList, racingCount) {
   }
   $resultScreen.insertAdjacentHTML(
     'beforeend',
-    `최종우승자 : ${printFinalResult(carList)}`,
+    `최종우승자 : ${printFinalResult(carList)} <br>`,
   );
 }
