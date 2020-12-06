@@ -1,7 +1,11 @@
 import CarFactory from "./domain/carfacotory.js";
+import { ElementControl } from "./view/element.js";
 
 export default class RacingCarGame {
   constructor() {
+    ElementControl.hideCarGameCountContainer();
+    ElementControl.hideCarGameResultContainer();
+
     this.clickCarNameSubmitBtn();
   }
 
@@ -15,7 +19,11 @@ export default class RacingCarGame {
     const _carFactory = new CarFactory();
     const _carArray = _carFactory.getCarArray();
 
-    console.log(_carArray);
+    if (_carArray.length !== 0) {
+      ElementControl.showCarGameCountContainer(); 
+      console.log(_carArray);
+    }
+
   }
 
 }
