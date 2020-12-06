@@ -1,5 +1,5 @@
-import checkCarName from './checkCarNameInput.js';
-import { showCountInput } from './elementControl.js';
+import { checkCarName, checkCount } from './checkInput.js';
+import { showCountInput, showResult } from './elementControl.js';
 
 export default function RacingCarGame() {
   const carNameInput = document.querySelector('#car-names-input');
@@ -35,7 +35,14 @@ export default function RacingCarGame() {
   };
 
   this.afterInputCount = () => {
-    console.log(racingCountInput.value);
+    const countChecked = checkCount(racingCountInput.value);
+    if (countChecked) {
+      showResult();
+      countValue = countChecked;
+    } else {
+      carNameInput.value = '';
+      carNameInput.focus();
+    }
   };
 }
 
