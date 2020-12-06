@@ -1,6 +1,9 @@
-export function createNewElement(tag, id) {
+export function createNewElement(tag, id = null) {
   const el = document.createElement(tag);
-  el.id = id;
+  
+  if (id) {
+    el.id = id;
+  }
 
   return el;
 }

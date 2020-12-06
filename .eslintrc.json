@@ -2,7 +2,9 @@
   "extends": ["airbnb-base", "plugin:prettier/recommended"],
   "rules": {
     "no-new": "off",
-    "import/extensions": "never"
+    "no-plusplus": "off",
+    "import/extensions": [ "off" ]
+
   },
   "env": {
     "browser": true

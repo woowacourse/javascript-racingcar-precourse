@@ -1,6 +1,6 @@
 import Car from './Car.js';
 import { createNewElement, setDisabled } from './utils.js';
-  
+
 export default class RacingCarGame {
   constructor() {
     this.cars = [];
@@ -8,7 +8,7 @@ export default class RacingCarGame {
     this.resetEl();
     this.setEventListener();
   }
-  
+
   resetEl() {
     this.el = {
       carGameContainer: document.querySelector('.car-game-container'),
@@ -73,6 +73,44 @@ export default class RacingCarGame {
     e.preventDefault();
 
     this.racingCount = this.el.racingCountInput.value;
+    this.showFinalResult();
+  }
+
+  showFinalResult() {
+    const getHyphenLineByNumber = (count) => {
+      let lineString = '';
+
+      for (let i = 0; i < count; i++) {
+        lineString += '-';
+      }
+
+      return lineString;
+    };
+
+    const getResultElement = () => {
+      const resultEl = createNewElement('p');
+
+      this.cars.forEach((car) => {
+        car.moveForwardRandomly(this.racingCount);
+
+        const carEl = createNewElement('div', null);
+        carEl.innerHTML = `${car.name}: ${getHyphenLineByNumber(car.forwardCount)}`;
+
+        resultEl.appendChild(carEl);
+      });
+
+      return resultEl;
+    };
+
+    const finalResultEl = createNewElement('div', 'final-result');
+    finalResultEl.innerHTML = `<h4>📄 실행 결과</h4>`;
+
+    for (let i = 0; i < this.racingCount; i++) {
+      const resultEl = getResultElement();
+      finalResultEl.appendChild(resultEl);
+    }
+
+    this.el.carGameContainer.appendChild(finalResultEl);
   }
 }
 
