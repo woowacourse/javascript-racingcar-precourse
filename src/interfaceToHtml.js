@@ -17,7 +17,7 @@ export default class InterfaceToHtml {
       htmlToDraw: HTML_TEMPLATE.NAME_INPUT,
     });
     this.addEventToButton({
-      stepOfButton: this.currentGameStep,
+      stepToActivateButton: STEP.NAME_INPUT,
       functionToDrawNextStep: this.drawRacingCount,
     });
   }
@@ -27,7 +27,7 @@ export default class InterfaceToHtml {
       htmlToDraw: HTML_TEMPLATE.RACING_COUNT,
     });
     this.addEventToButton({
-      stepOfButton: this.currentGameStep,
+      stepToActivateButton: STEP.RACING_COUNT,
       functionToDrawNextStep: null,
     });
   }
@@ -46,19 +46,21 @@ export default class InterfaceToHtml {
   drawHTML({ containerWhereToDraw, htmlToDraw }) {
     containerWhereToDraw.insertAdjacentHTML("beforeend", htmlToDraw);
   }
-  addEventToButton({ stepOfButton, functionToDrawNextStep }) {
-    const button = document.getElementById(ID_NAME[stepOfButton].BUTTON);
+  addEventToButton({ stepToActivateButton, functionToDrawNextStep }) {
+    const button = document.getElementById(
+      ID_NAME[stepToActivateButton].BUTTON
+    );
     button.addEventListener("click", () => {
-      this.buttonCallback(stepOfButton, functionToDrawNextStep);
+      this.buttonCallback(stepToActivateButton, functionToDrawNextStep);
     });
   }
   buttonCallback(stepOfButton, functionToDrawNextStep) {
     const input = document.getElementById(ID_NAME[stepOfButton].INPUT_TEXT);
-    const { isValidInput, processedInput } = this.checkInput(
-      stepOfButton,
-      input.value
-    );
-    if (this.currentGameStep !== stepOfButton || !isValidInput) {
+    const processedInput = this.processInput(stepOfButton, input.value);
+    if (!this.isInputValid(stepOfButton, processedInput)) {
+      return;
+    }
+    if (!this.isStepToActivateButton(this.currentGameStep, stepOfButton)) {
       return;
     }
     this.changeToNextStep();
@@ -70,26 +72,46 @@ export default class InterfaceToHtml {
   changeToNextStep() {
     this.currentGameStep++;
   }
+  isStepToActivateButton(currentGameStep, stepToActivateButton) {
+    let ret_value = false;
+    if (currentGameStep === stepToActivateButton) {
+      ret_value = true;
+    }
+    return ret_value;
+  }
 
-  //입력값 체크 함수들
-  checkInput(gameStep, inputValue) {
-    let isValidInput = false;
+  //입력값 가공 및 유효 체크 함수들
+  processInput(gameStep, inputValue) {
     let processedInput = null;
     switch (gameStep) {
       case STEP.NAME_INPUT:
         processedInput = this.processNameInputValue(inputValue);
-        isValidInput = this.checkNameInputValue(processedInput);
         break;
       case STEP.RACING_COUNT:
-        processedInput = Number(inputValue);
-        isValidInput = this.checkRacingCountValue(processedInput);
+        processedInput = this.processRacingInputValue(inputValue);
         break;
     }
-    return { isValidInput, processedInput };
+    return processedInput;
   }
   processNameInputValue(inputValue) {
     const processedInput = inputValue.split(",");
     return processedInput;
+  }
+  processRacingInputValue(inputValue) {
+    return Number(inputValue);
+  }
+
+  isInputValid(gameStep, processedInput) {
+    let ret_value = false;
+    switch (gameStep) {
+      case STEP.NAME_INPUT:
+        ret_value = this.checkNameInputValue(processedInput);
+        break;
+      case STEP.RACING_COUNT:
+        ret_value = this.checkRacingCountValue(processedInput);
+        break;
+    }
+    return ret_value;
   }
   checkNameInputValue(processedInput) {
     let isValidInput = true;

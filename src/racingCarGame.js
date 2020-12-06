@@ -6,50 +6,53 @@ export default class RacingCarGame {
   initClass(interfaceToHtml) {
     this.carNameOfWinners = [];
     this.carsInRacing = [];
-    this.resultMessage = "";
     this.interfaceToHtml = interfaceToHtml;
   }
 
   updateFromHtmlInput(gameStep, inputValue) {
     switch (gameStep) {
       case STEP.NAME_INPUT:
-        this.processNameInput(inputValue);
+        this.executeNameInputStep(inputValue);
         break;
       case STEP.RACING_COUNT:
-        this.processRacingCount(inputValue);
+        this.executeRacingCountStep(inputValue);
         break;
       default:
         console.log(inputValue, "오류");
     }
   }
 
-  processNameInput(carNameArray) {
+  executeNameInputStep(carNameArray) {
     carNameArray.forEach((carName) => {
       this.carsInRacing.push(new Car(carName));
     });
   }
 
-  processRacingCount(racingCount) {
+  executeRacingCountStep(racingCount) {
+    let resultMessage = "";
     for (let i = 0; i < racingCount; i++) {
       this.progressGameOnce();
-      this.writeMessageAboutCarsPosition();
+      resultMessage += this.makeMessageAboutCarsPosition();
     }
     this.determineWinners();
-    this.writeMessageAboutWinner();
-    this.interfaceToHtml.drawGameResult(this.resultMessage);
+    resultMessage += this.makeMessageAboutWinner();
+
+    this.interfaceToHtml.drawGameResult(resultMessage);
   }
   progressGameOnce() {
     this.carsInRacing.forEach((car) => {
       car.drive();
     });
   }
-  writeMessageAboutCarsPosition() {
+  makeMessageAboutCarsPosition() {
+    let message = "";
     this.carsInRacing.forEach((car) => {
-      this.resultMessage += `
+      message += `
       ${car.name}: ${"-".repeat(car.positionInRace)}<br>
       `;
     });
-    this.resultMessage += "<br>";
+    message += "<br>";
+    return message;
   }
   determineWinners() {
     let maxPositionAmongCars = 0;
@@ -62,12 +65,13 @@ export default class RacingCarGame {
       }
     });
   }
-  writeMessageAboutWinner() {
-    let stringToAdd = "";
+  makeMessageAboutWinner() {
+    let message = "";
     this.carNameOfWinners.forEach((name) => {
-      stringToAdd += `, ${name}`;
+      message += `, ${name}`;
     });
-    stringToAdd = stringToAdd.slice(1);
-    this.resultMessage += `최종우승자:${stringToAdd}`;
+    message = message.slice(1);
+    message = `최종우승자:${message}`;
+    return message;
   }
 }
