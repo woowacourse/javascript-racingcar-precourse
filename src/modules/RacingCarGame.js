@@ -26,12 +26,12 @@ export default class RacingCarGame {
     );
 
     if (randomNumber >= this.ADD_STEP_STANDARD) {
-      car.step++;
+      car.move();
     }
   };
 
   getMaxStep = () => {
-    const allSteps = this.racingCars.map(car => car.step);
+    const allSteps = this.racingCars.map(car => car.getStep());
     const maxStep = Math.max.apply(null, allSteps);
 
     return maxStep;
@@ -39,7 +39,7 @@ export default class RacingCarGame {
 
   getWinners = () => {
     const maxStep = this.getMaxStep();
-    const winners = this.racingCars.filter(car => car.step === maxStep);
+    const winners = this.racingCars.filter(car => car.getStep() === maxStep);
 
     return winners;
   };
@@ -54,7 +54,7 @@ export default class RacingCarGame {
     const winnersName = [];
 
     winners.forEach(winner => {
-      winnersName.push(winner.name);
+      winnersName.push(winner.getName());
     });
 
     this.gameResultContainer.innerHTML += `<p>
