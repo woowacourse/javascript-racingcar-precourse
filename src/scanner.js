@@ -18,7 +18,7 @@ export default class Scanner {
   }
 
   static getCarNamesInputToList(carNamesInput) {
-    const regexp = /[^,\s]+[^,]*[^,\s]+/gi; // ','와 양쪽 공백을 제외한 부분만 가져온다
+    const regexp = /[^,\s]+(?:[^,]*[^,\s]+)*/gi; // ','와 양쪽 공백을 제외한 부분만 가져온다
     const carNamesList = carNamesInput.value.match(regexp);
     if (!carNamesList) {
       throw new ValidationError('자동차 이름을 입력해주세요', carNamesInput);
