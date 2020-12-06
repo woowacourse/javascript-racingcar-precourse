@@ -1,3 +1,5 @@
+import { validateInputsLength, validateInputsUnique } from "./validate.js";
+
 export default class RacingCarGame {
   constructor() {
     this.carNameInputField = document.getElementById("car-names-input");
@@ -20,6 +22,25 @@ export default class RacingCarGame {
     const carNames = carNamesString.split(",");
     return carNames;
   }
+
+  validateCarNames(carNames) {
+    const isValidLength = validateInputsLength(carNames);
+    const isUnique = validateInputsUnique(carNames);
+    const isValid = isValidLength && isUnique;
+
+    if (!isValidLength) {
+      alert("자동차 이름은 한 글자 이상 다섯 글자 이하여야 합니다.");
+      return;
+    }
+
+    if (!isUnique) {
+      alert("자동차 이름은 중복될 수 없습니다.");
+    }
+
+    return isValid;
+  }
 }
 
 new RacingCarGame();
+// test
+//onsole.log(game.getCarNamesInput());
