@@ -65,6 +65,18 @@
 <hr/>
 
 ## 결과 화면
+![자동차 이름 입력](images/carName-input.png)
+![시도 횟수 입력](images/racing-count-input.png)
+
+<br/>
+
+![결과 화면(1)](images/result1.png)
+![결과 화면(1)](images/result2.png)
+
+<br/>
+
+![결과 화면(2) - 전체 화면](images/result-total1.png)
+![결과 화면(3) - 공동 우승](images/result-total2.png)
 
 <br/>
 <hr/>
@@ -155,3 +167,4 @@
 
 ### [Day 5]
 1. racingCarGame에서 랜덤 숫자 생성, 우승한 차 구하는 메소드 Car클래스로 이동
+2. 마무리(!!)

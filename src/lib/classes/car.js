@@ -1,4 +1,4 @@
-import {GO_AHEAD_MAX_VALUE} from "../variables/constantNumbers.js";
+import { GO_AHEAD_MAX_VALUE } from "../variables/constantNumbers.js";
 
 export default class Car {
   constructor(name) {
@@ -21,7 +21,7 @@ export default class Car {
   }
 
   isWin(maxDist, racingCount) {
-    return this.pos[racingCount-1] === maxDist;
+    return this.pos[racingCount - 1] === maxDist;
   }
 
   play() {
