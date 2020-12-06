@@ -24,6 +24,7 @@ export default class GetCarNames extends Component {
       console.log(e);
     }
   }
+  // disabled
 
   _onClickCarNames() {
     const inputCarNames = this.carNamesInput.value.split(",");
@@ -34,8 +35,14 @@ export default class GetCarNames extends Component {
       return;
     }
 
-    this.carNamesBtn.classList.add("js-hidden__btn");
+    // this.carNamesInput.setAttribute("disabled", "");
+    // this.carNamesBtn.classList.add("js-hidden__btn");
+    this.duplicateInputBan(this.carNamesInput, this.carNamesBtn);
     this._visiable();
     this.isHiddenRacingCountDiv = false;
+  }
+
+  duplicateInputBan(targetInput, targetBtn) {
+    super.duplicateInputBan(targetInput, targetBtn);
   }
 }
