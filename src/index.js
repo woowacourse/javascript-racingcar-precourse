@@ -1,7 +1,9 @@
-export default function RacingCarGame() {
-}
-// export default class RacingCarGame {
-// }
+import RacingCarGame from "./game.js";
+import { eventHandler } from "./handle-io.js";
 
+const init = (game) => {
+  eventHandler(game);
+};
 
-new RacingCarGame();
+const racingCarGame = new RacingCarGame();
+init(racingCarGame);
