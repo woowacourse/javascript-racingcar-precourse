@@ -1,5 +1,5 @@
-import Car from './car.js'
-import { racingCountPlay } from './game.js'
+import Car from './car.js';
+import { racingCountPlay } from './game.js';
 
 export function createRandomNumber() {
   const randomNumber = Math.floor(Math.random() * 10);
@@ -13,8 +13,8 @@ export function createCar(carNamesInput, racingCountInput) {
   let i;
 
   for (i = 0; i < length; i++) {
-    carNames[i] = new Car(carNames[i])
+    carNames[i] = new Car(carNames[i]);
     cars.push(carNames[i]);
   }
-  racingCountPlay(cars, racingCountInput)
+  racingCountPlay(cars, racingCountInput);
 }

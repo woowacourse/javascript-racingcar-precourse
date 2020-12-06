@@ -1,5 +1,5 @@
-import { createCar } from './create.js'
-import { isAvailableLength, isSpecialCharacter } from './check.js'
+import { createCar } from './create.js';
+import { isAvailableLength, isSpecialCharacter } from './check.js';
 
 export function getCarNamesInput() {
   const carNamesSubmit = document.querySelector("#car-names-submit");
@@ -7,7 +7,7 @@ export function getCarNamesInput() {
     const carNamesInput = document.querySelector("#car-names-input").value;
 
     if (isSpecialCharacter(carNamesInput) === false && isAvailableLength(carNamesInput) === true) {
-      const racingCountDiv = document.querySelector("#racing-count-div")
+      const racingCountDiv = document.querySelector("#racing-count-div");
       racingCountDiv.style.display = 'block';
 
       return carNamesInput;
@@ -25,7 +25,7 @@ export function getRacingCountInput() {
 
     if (carNamesInput && racingCountInput) {
       const resultDiv = document.querySelector("#result-div");
-      resultDiv.style.display = "block"
+      resultDiv.style.display = "block";
       createCar(carNamesInput, racingCountInput);
     }
   });
