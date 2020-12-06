@@ -14,8 +14,12 @@ export default class RacingCarGame {
     const carNamesInput = this.carNameInputField.value;
     return carNamesInput;
   }
+
+  parseCarNames(carNamesInput) {
+    const carNamesString = carNamesInput.replace(/ /g, ""); // 공백제거
+    const carNames = carNamesString.split(",");
+    return carNames;
+  }
 }
 
 new RacingCarGame();
-// test
-//onsole.log(game.getCarNamesInput());
