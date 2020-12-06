@@ -5,11 +5,11 @@ const carNameSubmit = document.querySelector('#car-names-submit');
 const racingCountInput = document.querySelector('#racing-count-input');
 const racingCountSubmit = document.querySelector('#racing-count-submit');
 
-export const focusInput = target => {
+const focusInput = target => {
   document.querySelector(target).focus();
 };
 
-export const clearValue = target => {
+const clearValue = target => {
   document.querySelector(target).value = '';
 };
 
