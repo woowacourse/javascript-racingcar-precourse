@@ -4,6 +4,11 @@ export default function racing(carNames, racingCount) {
   let racingCars = [];
 
   const race = () => {
+    for (let i = 0; i < racingCount; i++) {
+      racingCars.forEach(car => {
+        car.move();
+      });
+    }
     console.log(racingCars);
   };
 
