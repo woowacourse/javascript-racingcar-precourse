@@ -35,6 +35,7 @@ export default class RacingCarGameView {
 
     this.racingCarGameViewModel['_carInstances'] = splitedNames;
     this.renderRacingCountInputAndSubmitButton();
+    this.addEventListenerToRacingCountSubmitButton();
   }
 
   handleRacingCountSubmit() {
@@ -101,7 +102,7 @@ export default class RacingCarGameView {
     const winnerDistance = cars[0].moveForwardDistance;
 
     const winners = cars.reduce((acc, cur) => {
-      if (car.moveForwardDistance === winnerDistance) {
+      if (cur.moveForwardDistance === winnerDistance) {
         return acc.concat([cur.name]);
       }
 
@@ -126,8 +127,6 @@ export default class RacingCarGameView {
       <input type="number" id="#racing-count-input"/>
       <button id="#racing-count-submit">${message.SUBMIT_COUNT}</button>
     `;
-
-    this.addEventListenerToRacingCountSubmitButton();
   }
 
   renderResultHeading() {
