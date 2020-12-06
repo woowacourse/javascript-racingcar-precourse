@@ -1,6 +1,7 @@
 import EventsHandler from "./js/eventsHandler.js";
 import RacingGame from "./js/racingGame.js";
-import render from "./js/render.js";
+// import render from "./js/render.js";
+import Render from "./js/render.js";
 
 export default class App extends EventsHandler {
   constructor() {
@@ -14,6 +15,6 @@ export default class App extends EventsHandler {
       racingGame.getRacingGameRecord()
     );
 
-    // render(racingGameResult);
+    new Render(racingGameResult);
   }
 }
