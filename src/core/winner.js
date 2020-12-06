@@ -6,6 +6,7 @@ export default class Winner {
 	getWinners = () => {
 		const maxDistance = this.getMaxDistance();
 		const winners = [];
+		
 		for (let car = 0; car < this.racingCars.length; car++) {
 			if (this.racingCars[car].distance !== maxDistance) {
 				break;
@@ -17,6 +18,7 @@ export default class Winner {
 	}
 
 	getMaxDistance = () => {
+		// racingCars를 거리가 큰 순으로 정렬
 		this.racingCars.sort((carA, carB) => carB.distance - carA.distance);
 		const maxDistance = this.racingCars[0].distance;
 		

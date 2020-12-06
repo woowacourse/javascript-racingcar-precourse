@@ -1,13 +1,14 @@
-import Random from "/src/utils/random.js";
+import {INITIAL_CAR_DISTANCE} from "../constants/constants.js";
+import Validation from "../utils/validation.js";
 
 export default class Car {
 	constructor (name) {
 		this.name = name;
-		this.distance = 0;
+		this.distance = INITIAL_CAR_DISTANCE;
 	}
 	
 	setDistance = () => {
-		if (new Random().getRandomNumber() >= 4) {
+		if (new Validation().isAbleToMove()) {
 			this.distance += 1;
 		}	
 	}
