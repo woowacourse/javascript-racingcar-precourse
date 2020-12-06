@@ -1,11 +1,14 @@
 import { validateCar, validateCount } from "./validator.js";
 
-const setVisiblity = (elem) => (elem.style.display = "inline");
+const setVisiblity = (elem, isShow) => {
+  if (isShow) elem.style.display = "inline";
+  else elem.style.display = "none";
+};
 
 const setPlayButton = () => {
   const countElem = document.getElementsByClassName("car-game-container")[0]
     .children[1];
-  setVisiblity(countElem);
+  setVisiblity(countElem, true);
 };
 
 const getCarInput = (game) => {
@@ -33,10 +36,19 @@ const getCountInput = (game) => {
   }
 };
 
+const reSetByName = (game) => {
+  const result = document.getElementsByClassName("racing-result-container")[0];
+
+  game.resultString = "";
+  document.getElementById("racing-count-input").value = "";
+  result.removeChild(result.lastChild);
+  setVisiblity(result, false);
+};
+
 export const setResult = (game) => {
   const result = document.getElementsByClassName("racing-result-container")[0];
   let div = document.createElement("div");
-  setVisiblity(result);
+  setVisiblity(result, true);
   div.innerHTML = game.resultString;
   result.appendChild(div);
 };
@@ -47,6 +59,9 @@ export const combineResult = (game, string) => {
 
 export const eventHandler = (game) => {
   document.getElementById("car-names-submit").addEventListener("click", () => {
+    if (game.resultString !== "") {
+      reSetByName(game);
+    }
     game.carList = [];
     getCarInput(game);
   });
