@@ -1,4 +1,5 @@
 import RacingCarGame from "./modules/RacingCarGame.js";
+import { isUniqueSet } from "./modules/Utils.js";
 
 const carNamesForm = document.querySelector("#car-names-form");
 const racingCountForm = document.querySelector("#racing-count-form");
@@ -25,8 +26,9 @@ function isValidCarNames(carNames) {
     name => name.length > 0 && name.length <= MAX_CAR_NAME_LENGTH
   );
   const isMoreThanTwoCars = carNames.length > 1;
+  const isUniqueCarNames = isUniqueSet(carNames);
 
-  if (isLValidCarNameLength && isMoreThanTwoCars) {
+  if (isLValidCarNameLength && isMoreThanTwoCars && isUniqueCarNames) {
     return true;
   }
 
@@ -45,7 +47,9 @@ function submitCarNames(e) {
     return;
   }
 
-  alert("자동차 이름을 5자 이하로 콤마로 구분하여 입력해주세요.");
+  alert(
+    "자동차 이름을 5자 이하로 콤마로 구분하여 입력해주세요. \n중복된 이름은 사용할 수 없습니다."
+  );
 }
 
 function submitRacingCount(e) {
