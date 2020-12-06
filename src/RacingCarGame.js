@@ -1,9 +1,11 @@
 import Car from './Car.js';
 import ExceptionHandler from './ExceptionHandler.js';
 import RandomNumber from './RandomNumber.js';
+import Winner from './Winner.js';
 
 export default class RacingCarGame {
   exceptionHandler = new ExceptionHandler();
+  randomNumber = new RandomNumber();
 
   constructor() {
     this.start();
@@ -67,7 +69,7 @@ export default class RacingCarGame {
       this.showResult();
     } else {
       alert('알맞은 숫자를 입력해주세요');
-      // [예외] 예외일 경우 재귀로,, 메모리 유출 가능성
+      // [예외] 예외일 경우 재귀로,, 메모리 유출 가능성 => TODO: while문으로 만들기
       this.submitCountRacing(_carNames);
     }
   }
@@ -91,7 +93,8 @@ export default class RacingCarGame {
       this.runRacing(carObjArray);
       this.spaceHTML();
     }
-    console.log(carObjArray); // TODO: 결과 출력
+
+    this.winnerToDom(carObjArray, _carNames);
   }
 
   setCar(_carNames) {
@@ -103,8 +106,7 @@ export default class RacingCarGame {
 
   runRacing(carObjArray) {
     carObjArray.forEach((car) => {
-      const randomNumber = new RandomNumber();
-      const goSign = randomNumber.init();
+      const goSign = this.randomNumber.init();
 
       if (goSign) {
         car.position++;
@@ -138,9 +140,18 @@ export default class RacingCarGame {
 
     p.innerHTML = _htmlString;
     document.querySelector('#result-container').appendChild(p);
-    // TODO: querySelector 위에 상수로 모아버리기.
+  }
+
+  winnerToDom(carObjArray, _carNames) {
+    const winner = new Winner(carObjArray, _carNames);
+    const winnerHTML = winner.winnerHTML(carObjArray);
+
+    this.stringHTMLToDOM(winnerHTML);
   }
 }
 
+// 출력 class 나누기.
+// TODO: 다시 확인 눌렀을 때 초기화 하고 출력 구현.
+// TODO: querySelector 위에 상수로 모아버리기.
 // TODO: 함수 단위 기능별로 쪼개기.
 // TODO: _carNames의 반복... > constructor로 올려버리기.
