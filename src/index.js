@@ -13,6 +13,8 @@ export default function RacingCarGame() {
     if (!isValidCarNames(carNamesList)) {
       return alert('잘못된 자동차 이름입니다.');
     }
+
+    racingCountContainer.style.display = 'block';
   };
 
   const isValidCarNames = carNames => {
