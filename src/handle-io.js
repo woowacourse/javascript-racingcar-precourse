@@ -33,6 +33,14 @@ const getCountInput = (game) => {
   }
 };
 
+export const setResult = (game) => {
+  const result = document.getElementsByClassName("racing-result-container")[0];
+  let div = document.createElement("div");
+  setVisiblity(result);
+  div.innerHTML = game.resultString;
+  result.appendChild(div);
+};
+
 export const combineResult = (game, string) => {
   game.resultString += string + "<br>";
 };
