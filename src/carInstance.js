@@ -1,12 +1,12 @@
 import { getRandomNumber } from "./util";
 
-export function Car(name, progress) {
+export function Car(name) {
   this.name = name;
-  this.progress = progress;
+  this.progress = "";
   this.move = () => {
     const randomNumber = getRandomNumber();
     if (randomNumber >= 4) {
-      this.progress++;
+      this.progress += "-";
     }
   };
 }

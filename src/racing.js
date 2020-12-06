@@ -13,7 +13,7 @@ export default function racing(carNames, racingCount) {
   };
 
   const init = () => {
-    carNames.split(",").forEach(name => racingCars.push(new Car(name, 0)));
+    carNames.split(",").forEach(name => racingCars.push(new Car(name)));
     race();
   };
 
