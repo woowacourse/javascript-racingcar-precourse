@@ -1,3 +1,4 @@
+import RacingCarGame from "./game.js";
 import { validateInputsLength, validateInputsUnique, validateNaturalNumber } from "./validate.js";
 
 export default class App {
@@ -88,6 +89,7 @@ export default class App {
     }
 
     this.racingCount = racingCount;
+    this.handleGame();
   }
 
   createRaceHTML(raceCarPositions) {
@@ -113,6 +115,16 @@ export default class App {
 
   renderResultContainer(templateHTML) {
     this.gameResultContainer.innerHTML = templateHTML;
+  }
+
+  handleGame() {
+    const game = new RacingCarGame(this.carNames, this.racingCount);
+    const races = game.runAllRaces();
+    const winners = game.getWinnerNames();
+
+    const racesHTML = this.createRaceHTML(races);
+    const winnersHTML = this.createWinnerHTML(winners);
+    this.renderResultContainer(racesHTML + winnersHTML);
   }
 
   onClick(event) {
