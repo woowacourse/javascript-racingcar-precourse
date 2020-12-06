@@ -38,12 +38,11 @@ export default class RacingCarGame {
       const trimedStr = str.trim();
       return trimedStr.length > 5;
     });
-    if (unvalidatedStringArr.length > 0) {
-      let errorStr = "";
-      unvalidatedStringArr.forEach(str => (errorStr += `다음 입력값은 올바르지 않습니다. ${str}\n`));
-      this._showErrorAlert(errorStr);
-      this._initValueAndFoucsIn("names");
-    }
+    return unvalidatedStringArr.length > 0 ? false : true;
+  }
+
+  _validateCount(count) {
+    return Number(count) === NaN ? false : true;
   }
 
   _showErrorAlert(str) {
