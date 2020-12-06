@@ -33,7 +33,7 @@ export default class Render {
     this.FORWARD_MARK = "-";
     this.lastRoundGameRecord = racingGameRecord[racingCount];
     this.winnerInnerHTML = "";
-    // this.setWinnerResult(this.lastRoundGameRecord, maxScore);
+    this.setWinnerResult(this.lastRoundGameRecord, maxScore);
 
     this.gameRecordInnerHTML = "";
     // this.gameRecordDisplay(racingCount, racingGameRecord);
@@ -41,7 +41,18 @@ export default class Render {
     // this.setRender();
   }
 
-  setWinnerResult(lastRoundGameRecord, maxScore) {}
+  setWinnerResult(lastRoundGameRecord, maxScore) {
+    const winner = [];
+    for (const lastGameScore in lastRoundGameRecord) {
+      const playerLastRcord = lastRoundGameRecord[lastGameScore];
+      if (playerLastRcord["score"] === maxScore) {
+        winner.push(playerLastRcord["carName"]);
+      }
+    }
+    console.log("우승자", winner);
+    const winnerResult = winner.join(", ");
+    this.winnerInnerHTML = `<br><p>최종 우승자: ${winnerResult}</p>`;
+  }
 
   gameRecordDisplay(racingCount, racingGameRecord) {}
 
