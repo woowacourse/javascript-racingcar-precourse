@@ -26,10 +26,10 @@ export default class RacingCarGameView {
 
   handleCarNamesSubmit() {
     const splitedNames = this.carNamesInput.value.split(',');
-    const exception = this.validNames(splitedNames);
-    if (exception) {
+    const errorMessage = this.validNames(splitedNames);
+    if (errorMessage) {
       this.resetCarNamesInput();
-      alert(exception);
+      alert(errorMessage);
       return;
     }
 
@@ -40,10 +40,10 @@ export default class RacingCarGameView {
   handleRacingCountSubmit() {
     const racingCount = document.getElementById('#racing-count-input').value;
 
-    const exception = this.validCount(racingCount);
-    if (exception) {
+    const errorMessage = this.validCount(racingCount);
+    if (errorMessage) {
       this.resetRacingCountInput();
-      alert(exception);
+      alert(errorMessage);
       return;
     }
 
