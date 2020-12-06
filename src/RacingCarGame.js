@@ -2,7 +2,8 @@ import { Car } from "./Car.js";
 import {
   isMovingForward,
   isValidCarNamesInput,
-  isValidRacingCount
+  isValidRacingCount,
+  getWinners
 } from "./util.js";
 
 export class RacingCarGame {
@@ -14,6 +15,7 @@ export class RacingCarGame {
 
   initializeVariables() {
     this.roundResultHTMLs = [];
+    this.winners = [];
   }
 
   selectDOMNode() {
@@ -110,27 +112,44 @@ export class RacingCarGame {
     for (let i = 0; i < this.racingCountNumber; i++) {
       this.playRound();
     };
+
+    const winners = getWinners(this.cars);
+    this.setState({ winners });
   }
 
   playRound() {
-    const roundResultHTML = this.cars.map(car => {
-      if (isMovingForward()) {
-        car.move();
-      };
+    this.cars.forEach(car => isMovingForward() ? car.move() : "");
 
-      return car.getCurrentStateHTML();
-    }).join("");
+    const roundResultHTML = this.cars.map(car => car.getCurrentStateHTML()).join("");
 
-    this.setState(roundResultHTML);
+    this.setState({ roundResultHTML });
   }
 
-  setState(nextRoundResultHTML) {
-    this.roundResultHTMLs = [...this.roundResultHTMLs, nextRoundResultHTML];
-    
+  setState({ roundResultHTML: nextRoundResultHTML, winners }) {
+    if (nextRoundResultHTML) {
+      this.roundResultHTMLs = [
+        ...this.roundResultHTMLs,
+        nextRoundResultHTML
+      ];
+    }
+
+    if (winners) {
+      this.winners = winners;
+    }
+
     this.render();
   }
 
   render() {  
     this.$carGameResult.innerHTML = this.roundResultHTMLs.map(roundResultHTML => `<div>${roundResultHTML}</div>`).join("<br>");
+
+    if (this.winners.length > 0) {
+      this.$carGameResult.innerHTML += `
+        <br>
+        <div>
+          최종우승자: ${this.winners.map(car => car.getName()).join(", ")}
+        <div>
+      `;
+    }
   }
 }

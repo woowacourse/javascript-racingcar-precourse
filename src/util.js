@@ -34,3 +34,10 @@ export const isValidRacingCount = racingCountNumber => {
   return Number.isInteger(racingCountNumber) &&
     (racingCountNumber > MIN_COUNT);
 };
+
+export const getWinners = cars => {
+  const maxPosition = Math.max(...cars.map(car => car.getPosition()));
+  const winners = cars.filter(car => car.getPosition() === maxPosition);
+
+  return winners;
+};
