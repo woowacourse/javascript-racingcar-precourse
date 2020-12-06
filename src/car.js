@@ -1,15 +1,11 @@
 export class Car {
-    #STOP_LIMIT_NUMBER
-    #NUMBER_BOUNDARY
+
+    #STOP_LIMIT_NUMBER = 3;
+    #NUMBER_BOUNDARY = 9;
+
     constructor(name) {
-        this.#STOP_LIMIT_NUMBER = 3;
-        this.#NUMBER_BOUNDARY = 9;
         this.name = name;
         this.position = "";
-    }
-
-    makeRandomNumber() {
-        return parseInt(Math.random() * this.#NUMBER_BOUNDARY);
     }
 
     makeOneInningGame() {
@@ -18,8 +14,11 @@ export class Car {
         }
     }
 
+    makeRandomNumber() {
+        return parseInt(Math.random() * this.#NUMBER_BOUNDARY);
+    }
+
     getResult() {
         return `${this.name} : ${this.position}`;
     }
-
 }
