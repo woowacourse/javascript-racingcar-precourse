@@ -14,4 +14,8 @@ export default class Car {
       this.distance += 1;
     }
   }
+
+  getCarDistance() {
+    return this.distance;
+  }
 }
