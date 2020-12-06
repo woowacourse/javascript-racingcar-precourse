@@ -1,5 +1,5 @@
 import CarFactory from "./domain/carfacotory.js";
-import { ElementControl } from "./view/element.js";
+import { Element, ElementControl } from "./view/element.js";
 
 export default class RacingCarGame {
   constructor() {
@@ -10,20 +10,35 @@ export default class RacingCarGame {
   }
 
   clickCarNameSubmitBtn() {
-    const _carNamesSubmitElement = document.querySelector("#car-names-submit");
+    const _carNamesSubmitElement = Element.carNamesSubmit;
 
-    _carNamesSubmitElement.addEventListener("click", () => { this.runGame() });
+    _carNamesSubmitElement.addEventListener("click", () => {
+      this.handleCarNameInput()
+    });
   }
 
-  runGame() {
+  clickRacingCountSubmitBtn() {
+    const _racingCountSubmitElement = Element.racingCountSubmit;
+
+    _racingCountSubmitElement.addEventListener("click", () => {
+      this.handleRacingCountInput()
+    });
+
+  }
+
+  handleCarNameInput() {
     const _carFactory = new CarFactory();
-    const _carArray = _carFactory.getCarArray();
+    this.carArray = _carFactory.getCarArray();
 
-    if (_carArray.length !== 0) {
-      ElementControl.showCarGameCountContainer(); 
-      console.log(_carArray);
+    if (this.carArray.length !== 0) {
+      ElementControl.showCarGameCountContainer();
+
+      this.clickRacingCountSubmitBtn();
     }
+  }
 
+  handleRacingCountInput() {
+    
   }
 
 }

@@ -1,6 +1,8 @@
-const Element = {
+export const Element = {
   carGameCountContainer: document.querySelector(".car-game-count-container"),
-  carGameResultContainer : document.querySelector(".car-game-result-container")
+  carGameResultContainer: document.querySelector(".car-game-result-container"),
+  carNamesSubmit: document.querySelector("#car-names-submit"),
+  racingCountSubmit: document.querySelector("#racing-count-submit")
 };
 
 export const ElementControl = {
