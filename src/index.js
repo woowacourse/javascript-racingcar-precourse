@@ -1,7 +1,11 @@
 import { clearInput } from "./utils/input-utils.js";
-import isValidCarName, { isValidRacingCount } from "./input-validator.js";
-import show, { disableBtn } from "./utils/display-utils.js";
-import Car from "./domain/car.js";
+import { isValidCarName, isValidRacingCount } from "./input-validator.js";
+import { show, disableBtn } from "./utils/display-utils.js";
+import { Car } from "./domain/car.js";
+
+const state = {
+  carArray: [],
+};
 
 const carNameBtn = document.getElementById("car-names-submit");
 const carNameInput = document.getElementById("car-names-input");
@@ -18,12 +22,11 @@ export default function RacingCarGame() {
     const carNameArray = carName.split(",");
 
     if (isValidCarName(carName)) {
-      let carArray = [];
       show(racingCarContainer);
       disableBtn(carNameBtn);
 
       for (let i = 0; i < carNameArray.length; i++) {
-        carArray.push(new Car(carNameArray[i]));
+        state.carArray.push(new Car(carNameArray[i]));
       }
     } else {
       clearInput(carNameInput);
@@ -32,10 +35,20 @@ export default function RacingCarGame() {
 
   racingCountBtn.addEventListener("click", () => {
     const racingCount = racingCountInput.value;
+    const carArray = state.carArray;
 
     if (isValidRacingCount(racingCount)) {
       show(resultContainer);
       disableBtn(racingCountBtn);
+
+      for (let i = 0; i < racingCount; i++) {
+        for (let n = 0; n < carArray.length; n++) {
+          if (carArray[n].canMove()) {
+            carArray[n].move();
+          }
+        }
+        console.log(carArray);
+      }
     } else {
       clearInput(racingCountInput);
     }
