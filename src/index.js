@@ -1,14 +1,12 @@
-import {carNamesInput, racingCountInput} from "./view/input.js";
-import {carNamesButton, racingCountButton} from "./view/button.js";
+import {racingCarGameInput as input} from "./view/input.js";
+import {racingCarGameOutput as output} from "./view/output.js";
 import Car from "./core/car.js";
+import Winner from "./core/winner.js";
 import Validation from "./utils/validation.js";
-import Toggle from "./core/toggle.js";
-import Init from "./core/init.js";
 
 export default class RacingCarGame {
 	constructor() {
-		new Init();
-		this.toggle = new Toggle();
+
 		this.carNames;
 		this.racingCount;
 
@@ -17,15 +15,15 @@ export default class RacingCarGame {
 	}
 
 	setCarNamesButtonHandlers = () => {
-		carNamesButton.addEventListener("click", this.continueGameIfValid);
+		input.carNamesButton.addEventListener("click", this.continueGameIfValid);
 	}
 
 	setRacingCountButtonHandlers = () => {
-		racingCountButton.addEventListener("click", this.playGameIfValid);
+		input.racingCountButton.addEventListener("click", this.playGameIfValid);
 	}
 
 	continueGameIfValid = () => {
-		const carNames = carNamesInput.value.split(",");
+		const carNames = input.carNamesInput.value.split(",");
 
 		for (let carName of carNames) {
 			if (!new Validation().isCarNameValid(carName)) {
@@ -35,20 +33,12 @@ export default class RacingCarGame {
 
 		this.carNames = carNames;
 
-		this.showRacingCountInput();
-		this.showRacingCountButton();
-	}
-
-	showRacingCountInput = () => {
-		this.toggle.showElement(racingCountInput);
-	}
-
-	showRacingCountButton = () => {
-		this.toggle.showElement(racingCountButton);
+		output.showRacingCountInput();
+		output.showRacingCountButton();
 	}
 
 	playGameIfValid = () => {
-		const racingCount = Number(racingCountInput.value);
+		const racingCount = Number(input.racingCountInput.value);
 
 		if (!new Validation().isRacingCountValid(racingCount)) {
 			return;
@@ -60,21 +50,22 @@ export default class RacingCarGame {
 	}
 
 	playGame = () => {
-		const cars = this.getCarObjects(this.carNames);
+		const racingCars = this.getRacingCars(this.carNames);
 
 		for (let race = 0; race < this.racingCount; race++) {
-			cars.forEach(car => car.setDistance());
+			racingCars.forEach(car => car.setDistance());
+			output.showRacingResult(racingCars);
 		}
 
-		console.log(cars);
+		output.showWinners(new Winner(racingCars).getWinners());
 	}
 
-	getCarObjects = carNamesList => {
-		const carObjects = [];
+	getRacingCars = carNamesList => {
+		const racingCars = [];
 		
-		carNamesList.forEach(carName => carObjects.push(new Car(carName)));
+		carNamesList.forEach(carName => racingCars.push(new Car(carName)));
 
-		return carObjects;
+		return racingCars;
 	}
 }
 
