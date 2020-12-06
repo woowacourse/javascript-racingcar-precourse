@@ -54,6 +54,10 @@ export default class Render {
     this.winnerInnerHTML = `<br><p>최종 우승자: ${winnerResult}</p>`;
   }
 
+  getRepeatScoreDisplay(score) {
+    return this.FORWARD_MARK.repeat(score);
+  }
+
   gameRecordDisplay(racingCount, racingGameRecord) {}
 
   setRender() {}
