@@ -1,11 +1,21 @@
 import { createRandomNumber } from './create.js'
 
+export function printWinner(winnerName) {
+  let winner = document.querySelector("#winner")
+  
+  if (!winner.innerText) {
+    winner.innerText += `최종우승자: ${winnerName}`
+  } else {
+    winner.innerText += `, ${winnerName}`
+  }
+}
+
 export function findWinner(cars, carsLength, max) {
   let i;
   
   for (i = 0; i < carsLength; i++) {
     if (cars[i].result.length >= max) {
-      console.log(cars[i].name)
+      printWinner(cars[i].name)
     }
   }
 }
