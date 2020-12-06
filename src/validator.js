@@ -1,4 +1,4 @@
-import { isUnderFive, hasEmptyItem } from "./utils.js";
+import { isUnderFive, hasEmptyItem, isEmpty, isNegative } from "./utils.js";
 
 export const validateCar = (input) => {
   let isValidate = true;
@@ -10,5 +10,8 @@ export const validateCar = (input) => {
 
 export const validateCount = (input) => {
   let isValidate = true;
+  if (isEmpty(input)) isValidate = false;
+  if (isNegative(input)) isValidate = false;
+
   return isValidate;
 };

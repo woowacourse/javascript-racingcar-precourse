@@ -1,3 +1,7 @@
+export const isEmpty = (input) => (input.length === 0 ? true : false);
+
+export const isNegative = (input) => (parseInt(input) <= 0 ? true : false);
+
 export const isUnderFive = (arr) => {
   let flag = true;
   for (let i = 0; i < arr.length; i++) {
