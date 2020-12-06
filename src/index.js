@@ -1,4 +1,6 @@
+import { Car } from './car.js';
 import { isInt } from './utils/index.js';
+import { racingProgress } from './template/index.js';
 
 export default function RacingCarGame() {
   const racingCountContainer = document.querySelector(
@@ -13,6 +15,7 @@ export default function RacingCarGame() {
   const racingCountSubmit = document.getElementById('racing-count-submit');
 
   this.racingCount = 0;
+  this.cars = [];
 
   const handleClickCarNamesSubmit = () => {
     const carNamesList = carNamesInput.value.split(',');
@@ -20,6 +23,7 @@ export default function RacingCarGame() {
       return alert('잘못된 자동차 이름입니다.');
     }
 
+    this.cars = carNamesList.map(carName => new Car(carName));
     racingCountContainer.classList.remove('hide');
   };
 
@@ -44,6 +48,21 @@ export default function RacingCarGame() {
     }
 
     this.racingCount = Number(input);
+    racing();
+  };
+
+  const racing = () => {
+    let i = 0;
+    racingResultContainer.classList.remove('hide');
+    while (i < this.racingCount) {
+      this.cars.forEach(car => car.move());
+      showRacingProgress();
+      i += 1;
+    }
+  };
+
+  const showRacingProgress = () => {
+    racingResultContainer.innerHTML += racingProgress(this.cars);
   };
 
   carNamesSubmit.addEventListener('click', handleClickCarNamesSubmit);

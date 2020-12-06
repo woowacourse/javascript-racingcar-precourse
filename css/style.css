@@ -1,3 +1,7 @@
 .hide {
   display: none;
 }
+
+.progress {
+  margin: 20px 0;
+}
