@@ -47,6 +47,7 @@ export const combineResult = (game, string) => {
 
 export const eventHandler = (game) => {
   document.getElementById("car-names-submit").addEventListener("click", () => {
+    game.carList = [];
     getCarInput(game);
   });
 
