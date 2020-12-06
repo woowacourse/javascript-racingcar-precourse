@@ -1,6 +1,8 @@
 // export default function RacingCarGame() {
 // }
 
+import Car from "./Car";
+
 export default class RacingCarGame {
   constructor() {
     this.initContainer();
@@ -12,6 +14,7 @@ export default class RacingCarGame {
     this.racingCountContainer = document.getElementById("racing-count-container");
     this.racingResultContainer = document.getElementById("racing-count-container");
     this.carGameContainer = document.getElementById("car-game-container");
+
     this.carNamesInput = document.getElementById("car-names-input");
     this.racingCountInput = document.getElementById("racing-count-input");
 
@@ -23,8 +26,14 @@ export default class RacingCarGame {
     this.carGameContainer.addEventListener("click", e => {
       switch (e.target.id) {
         case "car-names-submit":
+          this._carSubmitEvent();
           break;
         case "racing-count-submit":
+          if (this._validateCount(this.racingCountInput.value)) {
+          } else {
+            this._showErrorAlert("숫자만 입력 가능합니다.");
+            this._initValueAndFoucsIn("count");
+          }
           break;
         default:
           break;
@@ -32,8 +41,27 @@ export default class RacingCarGame {
     });
   }
 
+  _carSubmitEvent() {
+    const carNames = this.carNamesInput.value;
+    if (this._validateCarNames(carNames)) {
+      this._makeCars(carNames);
+      this.racingCountContainer.style.display = "block";
+    } else {
+      this._showErrorAlert("자동차 이름 입력이 잘못되었습니다.");
+      this._initValueAndFoucsIn("names");
+    }
+  }
+
+  _makeCars(names) {
+    const nameArr = names.split(",");
+    for (let name of nameArr) {
+      const car = new Car(name);
+      this.cars.push(car);
+    }
+  }
+
   _validateCarNames(input) {
-    const stringArr = input.split("");
+    const stringArr = input.split(",");
     const unvalidatedStringArr = stringArr.filter(str => {
       const trimedStr = str.trim();
       return trimedStr.length > 5;
