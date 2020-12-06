@@ -1,11 +1,8 @@
 import RacingCarGame from "./game.js";
-import {
-  validateInputsLength,
-  validateInputsUnique,
-  validateNaturalNumber,
-} from "./common/validate.js";
-import { trimStringSpace, convertStringToArray, convertStringToNumber } from "./common/util.js";
-
+import { validateInputsLength, validateInputsUnique, validateNaturalNumber } from "./validate.js";
+import { trimStringSpace, convertStringToArray, convertStringToNumber } from "./util.js";
+import { alertMessage } from "./message.js";
+const { INVALID_LENGTH_MESSAGE, DUPLICATE_NAME_MESSAGE, INVALID_NUMBER_MESSAGE } = alertMessage;
 export default class App {
   constructor() {
     this.carNames = [];
@@ -38,12 +35,12 @@ export default class App {
     const isValid = isValidLength && isUnique;
 
     if (!isValidLength) {
-      alert("자동차 이름은 한 글자 이상 다섯 글자 이하여야 합니다.");
+      alert(INVALID_LENGTH_MESSAGE);
       return;
     }
 
     if (!isUnique) {
-      alert("자동차 이름은 중복될 수 없습니다.");
+      alert(DUPLICATE_NAME_MESSAGE);
     }
 
     return isValid;
@@ -60,8 +57,9 @@ export default class App {
 
   validateRacingCount(number) {
     const isValidNumber = validateNaturalNumber(number);
+
     if (!isValidNumber) {
-      alert("1이상의 자연수만 입력할 수 있습니다.");
+      alert(INVALID_NUMBER_MESSAGE);
     }
 
     return isValidNumber;

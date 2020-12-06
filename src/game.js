@@ -1,5 +1,5 @@
 import Car from "./car.js";
-import { generateRandomNumber } from "./common/util.js";
+import { generateRandomNumber } from "./util.js";
 export default class RacingCarGame {
   constructor(carNames, racingCount) {
     this.racingCars = this.createCars(carNames);

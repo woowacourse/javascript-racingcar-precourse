@@ -1,3 +1,5 @@
+const MIN_INPUT_LENGTH = 1;
+const MAX_INPUT_LENGTH = 5;
 export const validateInputsUnique = function (inputs) {
   const duplicateInputs = inputs.filter((input, index) => inputs.indexOf(input) !== index);
 
@@ -10,7 +12,7 @@ export const validateInputsUnique = function (inputs) {
 
 export const validateInputsLength = function (inputs) {
   for (let input of inputs) {
-    if (input.length < 1 || input.length > 5) {
+    if (input.length < MIN_INPUT_LENGTH || input.length > MAX_INPUT_LENGTH) {
       return false;
     }
   }
