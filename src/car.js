@@ -1,4 +1,4 @@
-export default class RacingCar {
+export default class Car {
   constructor(name, position = 0) {
     this._name = name;
     this._position = position;

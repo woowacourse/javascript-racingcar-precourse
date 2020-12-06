@@ -5,16 +5,7 @@
 import ValidationError from './validationError.js';
 
 export default class Scanner {
-  static setElemVisible(elem, visible) {
-    if (visible) {
-      elem.classList.replace('hide', 'visible');
-    } else {
-      elem.classList.replace('visible', 'hide');
-    }
-  }
-
-  static getRacingCountFromUser() {
-    const racingCountInput = document.querySelector('#racing-count-input');
+  static getRacingCountFromUser(racingCountInput) {
     const racingCount = Number(racingCountInput.value);
     if (!racingCountInput.value || Number.isNaN(racingCount)) {
       throw new ValidationError('숫자를 입력해주세요', racingCountInput);
@@ -26,11 +17,9 @@ export default class Scanner {
     return racingCount;
   }
 
-  static getCarNamesInputToList() {
-    const carNamesInput = document.querySelector('#car-names-input');
-    const regexp = /[^,\s]+[^,]*[^,\s]+/gi; // ,와 양쪽 공백을 제외한 부분만 가져온다
+  static getCarNamesInputToList(carNamesInput) {
+    const regexp = /[^,\s]+[^,]*[^,\s]+/gi; // ','와 양쪽 공백을 제외한 부분만 가져온다
     const carNamesList = carNamesInput.value.match(regexp);
-
     if (!carNamesList) {
       throw new ValidationError('자동차 이름을 입력해주세요', carNamesInput);
     }
