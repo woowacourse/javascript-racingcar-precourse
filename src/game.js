@@ -12,8 +12,9 @@ export default function RacingCarGame() {
   };
 
   this.setWinner = () => {
-    console.log(this.carList);
-    getMaxPropByVal(this.carList, "name", "locationLength");
+    const winner = getMaxPropByVal(this.carList, "name", "locationLength");
+    const winnerString = `최종 우승자: ${winner.join(",")}`;
+    console.log(this.carList, winnerString);
   };
 
   this.play = (turns) => {
