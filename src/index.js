@@ -17,10 +17,7 @@ function gameStart(play) {
 }
 
 export default function RacingCarGame() {
-  this.maxValue = 0;
-  this.winner = [];
-  this.car = [];
-  this.count;
+  this.carNames, this.car, this.count, this.maxValue, this.winner;
   this.racing = function () {
     while (this.count--) {
       this.maxValue = getRandomNum(this.car);
@@ -28,6 +25,7 @@ export default function RacingCarGame() {
     }
   };
   this.racingEnd = function () {
+    this.winner = [];
     this.car.forEach((v) => {
       if (this.maxValue === v.go) this.winner.push(v.name);
     });
