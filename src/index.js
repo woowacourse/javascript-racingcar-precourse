@@ -7,6 +7,10 @@ export default function RacingCarGame() {
   );
   const carNamesInput = document.getElementById('car-names-input');
   const carNamesSubmit = document.getElementById('car-names-submit');
+  const racingCountInput = document.getElementById('racing-count-input');
+  const racingCountSubmit = document.getElementById('racing-count-submit');
+
+  this.racingCount = 0;
 
   const handleClickCarNamesSubmit = () => {
     const carNamesList = carNamesInput.value.split(',');
@@ -27,9 +31,19 @@ export default function RacingCarGame() {
     return true;
   };
 
+  const handleClickRacingCountSubmit = () => {
+    const input = racingCountInput.value;
+    if (input === '' || input === '0') {
+      alert('1 이상의 숫자만 입력 가능합니다.');
+    }
+
+    this.racingCount = Number(input);
+  };
+
   racingCountContainer.style.display = 'none';
   racingResultContainer.style.display = 'none';
   carNamesSubmit.addEventListener('click', handleClickCarNamesSubmit);
+  racingCountSubmit.addEventListener('click', handleClickRacingCountSubmit);
 }
 
 new RacingCarGame();
