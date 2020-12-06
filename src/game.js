@@ -46,8 +46,6 @@ export function printProgress(car) {
 export function racingCountPlay(cars, racingCountInput) {
   const carsLength = cars.length
   const result = document.querySelector("#result")
-  const resultDiv = document.querySelector("#result-div")
-  resultDiv.style.display = "block"
   let i;
   let j;
 

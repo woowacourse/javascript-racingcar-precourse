@@ -24,6 +24,8 @@ export function getRacingCountInput() {
     const carNamesInput = document.querySelector("#car-names-input").value.split(",");
 
     if (carNamesInput && racingCountInput) {
+      const resultDiv = document.querySelector("#result-div");
+      resultDiv.style.display = "block"
       createCar(carNamesInput, racingCountInput);
     }
   });
