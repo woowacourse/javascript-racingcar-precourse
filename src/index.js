@@ -68,13 +68,14 @@ export default class RacingCarGame {
     const racingCountFormEl = createNewElement('form', 'racing-count-form');
     racingCountFormEl.innerHTML = `
       <h4>시도할 횟수를 입력해주세요.</h4>
-      <input type="number" id="racing-count-input" autofocus />
+      <input type="number" id="racing-count-input" min="0" />
       <button id="racing-count-submit">확인</button>
     `;
 
     this.el.carGameContainer.appendChild(racingCountFormEl);
     this.resetEl();
 
+    this.el.racingCountInput.focus();
     this.el.racingCountForm.addEventListener('submit', handleSubmitRacingCount);
   }
 
