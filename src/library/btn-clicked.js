@@ -19,19 +19,32 @@ export function onBtnCarNamesClicked(cars, inputCarNames) {
   return;
 }
 
-export function onBtnRacingCountClicked(inputRacingCount, cars) {
+function isCorrectRacingCount(inputRacingCount) {
   let racingCount = Number(inputRacingCount.value);
-  const resultBox = document.getElementById("result-box");
-  makeElementBlock(resultBox);
+  if (racingCount < 1) {
+    alert("올바른 시도 횟수를 입력해 주세요");
+    inputRacingCount.value = "";
 
-  const racingGame = new RacingCarGame(cars);
-  console.log(racingGame);
-  for (let i = 0; i < racingCount; i++) {
-    racingGame.play();
-    showOneResult(cars);
+    return false;
   }
 
-  showFinalWinners(cars);
+  return true;
+}
 
-  return;
+export function onBtnRacingCountClicked(inputRacingCount, cars) {
+  if (isCorrectRacingCount(inputRacingCount)) {
+    let racingCount = Number(inputRacingCount.value);
+    const resultBox = document.getElementById("result-box");
+    makeElementBlock(resultBox);
+
+    const racingGame = new RacingCarGame(cars);
+    for (let i = 0; i < racingCount; i++) {
+      racingGame.play();
+      showOneResult(cars);
+    }
+
+    showFinalWinners(cars);
+
+    return;
+  }
 }
