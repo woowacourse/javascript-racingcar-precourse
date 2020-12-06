@@ -1,7 +1,8 @@
-export default function RacingCarGame() {
-}
-// export default class RacingCarGame {
-// }
+import RacingCarGame from "./lib/classes/racingCarGame.js";
 
+const start = () => {
+  let racingCarGame = new RacingCarGame();
+  racingCarGame.startGame();
+};
 
-new RacingCarGame();
+start();
