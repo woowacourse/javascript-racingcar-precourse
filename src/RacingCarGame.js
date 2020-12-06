@@ -8,14 +8,19 @@ export default class RacingCarGame {
   randomNumber = new RandomNumber();
 
   constructor() {
+    this.carNamesSubmitButton = document.querySelector('#car-names-submit');
+    this.carNamesInput = document.querySelector('#car-names-input');
+    this.countContainer = document.querySelector('#count-container');
+    this.racingCountSubmit = document.querySelector('#racing-count-submit');
+    this.racingCountInput = document.querySelector('#racing-count-input');
+    this.resultContainer = document.querySelector('#result-container');
+
     this.start();
   }
 
   // 처음 확인 버튼을 눌렀을 때
   start() {
-    const carNamesSubmitButton = document.querySelector('#car-names-submit');
-
-    carNamesSubmitButton.addEventListener('click', () => {
+    this.carNamesSubmitButton.addEventListener('click', () => {
       this.submitCarNames();
     });
   }
@@ -31,28 +36,18 @@ export default class RacingCarGame {
 
   // 차 이름 가져오기
   getCarName() {
-    const carNamesString = this.carNames();
-    const carNamesArray = this.exceptionHandler.isCarNames(carNamesString);
+    const carNames = this.carNamesInput.value;
+    const carNamesArray = this.exceptionHandler.isCarNames(carNames);
 
     return carNamesArray;
   }
 
-  carNames() {
-    const carNamesInput = document.querySelector('#car-names-input');
-
-    return carNamesInput.value;
-  }
-
   showCountRacing() {
-    const countContainer = document.querySelector('#count-container');
-
-    countContainer.style.display = 'block';
+    this.countContainer.style.display = 'block';
   }
 
   submitCountRacing(_carNames) {
-    const racingCountSubmit = document.querySelector('#racing-count-submit');
-
-    racingCountSubmit.addEventListener(
+    this.racingCountSubmit.addEventListener(
       'click',
       () => {
         this.countRacingClick(_carNames);
@@ -62,7 +57,7 @@ export default class RacingCarGame {
   }
 
   countRacingClick(_carNames) {
-    const countNumber = this.getCountNumber();
+    const countNumber = this.racingCountInput.value;
 
     if (this.exceptionHandler.isCountNumber(countNumber)) {
       this.repeatRunRacing(countNumber, _carNames);
@@ -74,16 +69,8 @@ export default class RacingCarGame {
     }
   }
 
-  getCountNumber() {
-    const racingCountInput = document.querySelector('#racing-count-input');
-
-    return racingCountInput.value;
-  }
-
   showResult() {
-    const resultContainer = document.querySelector('#result-container');
-
-    resultContainer.style.display = 'block';
+    this.resultContainer.style.display = 'block';
   }
 
   repeatRunRacing(_countNumber, _carNames) {
@@ -117,9 +104,9 @@ export default class RacingCarGame {
   }
 
   spaceHTML() {
-    const p = document.createElement('br');
+    const blank = document.createElement('br');
 
-    document.querySelector('#result-container').appendChild(p);
+    this.resultContainer.appendChild(blank);
   }
 
   stringHTML(_car) {
@@ -139,7 +126,7 @@ export default class RacingCarGame {
     const p = document.createElement('p');
 
     p.innerHTML = _htmlString;
-    document.querySelector('#result-container').appendChild(p);
+    this.resultContainer.appendChild(p);
   }
 
   winnerToDom(carObjArray, _carNames) {
@@ -150,8 +137,6 @@ export default class RacingCarGame {
   }
 }
 
-// 출력 class 나누기.
-// TODO: 다시 확인 눌렀을 때 초기화 하고 출력 구현.
-// TODO: querySelector 위에 상수로 모아버리기.
 // TODO: 함수 단위 기능별로 쪼개기.
 // TODO: _carNames의 반복... > constructor로 올려버리기.
+// 출력 class 나누기.
