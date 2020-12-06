@@ -22,6 +22,7 @@ export default class GetRacingCount extends GetCarNames {
       return;
     }
 
+    this.racingCountBtn.classList.add("js-hidden__btn");
     this.gamePlay();
   }
 }

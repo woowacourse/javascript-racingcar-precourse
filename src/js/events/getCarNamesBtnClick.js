@@ -34,6 +34,7 @@ export default class GetCarNames extends Component {
       return;
     }
 
+    this.carNamesBtn.classList.add("js-hidden__btn");
     this._visiable();
     this.isHiddenRacingCountDiv = false;
   }
