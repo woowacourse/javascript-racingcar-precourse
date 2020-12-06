@@ -2,7 +2,7 @@ import { Car } from '../../models';
 
 export default class RacingCarGameViewModel {
   constructor() {
-    this.subscribers = [];
+    this.subscriber = [];
     this._carInstances = null;
     this._racingCount = null;
     return this.setProxy();
@@ -45,14 +45,13 @@ export default class RacingCarGameViewModel {
   }
 
   notifyChange() {
-    this.subscribers.every(subscriber => {
+    this.subscriber.forEach(subscriber => {
       subscriber.updateChange(this);
-      return true;
     });
   }
 
   registerViews(target) {
-    this.subscribers.push(target);
+    this.subscriber.push(target);
   }
 
   gameContinue() {
