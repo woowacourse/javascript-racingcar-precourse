@@ -39,11 +39,27 @@ export default class RacingGame {
       const randomNumber = getRandomNumber();
       let nowScore = previousScore + 1;
 
-      //   this.setForwardCar()
-      //   this.setStayCar();
+      this.setForwardCar(randomNumber, nowScore, car, gameRound, idx);
+      this.setStayCar(randomNumber, previousScore, car, gameRound, idx);
     });
   }
 
-  //   setForwardCar() {}
-  //   setStayCar() {}
+  setForwardCar(randomNumber, nowScore, car, gameRound, idx) {
+    if (randomNumber >= this.forward) {
+      if (nowScore > this.maxScore) this.maxScore = nowScore;
+      this.racingGameRecord[gameRound][idx] = {
+        carName: car,
+        score: nowScore,
+      };
+    }
+  }
+
+  setStayCar(randomNumber, previousScore, car, gameRound, idx) {
+    if (randomNumber <= this.stay) {
+      this.racingGameRecord[gameRound][idx] = {
+        carName: car,
+        score: previousScore,
+      };
+    }
+  }
 }
