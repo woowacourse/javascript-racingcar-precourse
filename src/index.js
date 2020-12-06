@@ -31,8 +31,11 @@ export default class RacingCarGame {
 const carNamesInput = document.getElementById('car-names-input');
 const carNamesSubmit = document.getElementById('car-names-submit');
 const racingCountDiv = document.getElementById('racing-count-div');
+const racingCountInput = document.getElementById('racing-count-input');
+const resultDiv = document.getElementById('result-div');
 
 let carArr;
+let racingCount;
 
 // 자동차 이름 입력 후 확인 버튼 클릭
 function clickCarNamesSubmit() {
@@ -44,6 +47,17 @@ function clickCarNamesSubmit() {
     return;
   }
   racingCountDiv.classList.remove('d-none');
+}
+
+// 시도할 횟수 입력 후 확인 버튼 클릭
+function clickRacingCountSubmit() {
+  "use strict";
+
+  racingCount = parseInt(racingCountInput.value);
+  resultDiv.classList.remove('d-none');
+
+  const racingCarGame = new RacingCarGame(carArr, racingCount);
+  racingCarGame.start();
 }
 
 carNamesSubmit.addEventListener('click', clickCarNamesSubmit);
