@@ -50,7 +50,7 @@ export default class Render {
         winner.push(playerLastRcord["carName"]);
       }
     }
-    console.log("우승자", winner);
+
     const winnerResult = winner.join(", ");
     this.winnerInnerHTML = `<br><p>최종 우승자: ${winnerResult}</p>`;
   }
@@ -62,18 +62,15 @@ export default class Render {
   gameRecordDisplay(racingCount, racingGameRecord) {
     for (let round = 1; round <= racingCount; round++) {
       const nowRoundRecord = racingGameRecord[round];
-      // console.log(nowRoundRecord);
       let roundInnerHTML = ``;
 
       for (let carIndex in nowRoundRecord) {
         const carRecord = nowRoundRecord[carIndex];
-        //   console.log(carRecord);
         const carRecordInnerHTMl = `
         <p>${carRecord.carName}: ${this.getRepeatScoreDisplay(
           carRecord.score
         )}</p>`;
 
-        //   console.log(carRecordInnerHTMl);
         roundInnerHTML += carRecordInnerHTMl;
       }
 
