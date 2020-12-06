@@ -30,8 +30,6 @@ export default class RacingCarGame {
 
     if (target === "car-names-submit") {
       this.setCars();
-      this.displayCountForm();
-      this.submitCounts();
     }
     if (target === "racing-count-submit") {
       this.runRace();
@@ -48,6 +46,8 @@ export default class RacingCarGame {
 
       return;
     }
+    this.displayCountForm();
+    this.submitCounts();
     names = namesInput.value.split(",");
     this.cars = names.map(name => new Car(name));
   };
