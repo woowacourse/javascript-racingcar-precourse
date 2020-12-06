@@ -26,3 +26,7 @@ export const isValidInputNames = names => {
 export const isValidInputCount = count => {
   return count >= 1;
 };
+
+export const getRandomNumber = () => {
+  return Math.floor(Math.random() * 10);
+};
