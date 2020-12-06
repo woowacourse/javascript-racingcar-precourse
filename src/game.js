@@ -15,6 +15,7 @@ export default function RacingCarGame() {
   this.setWinner = () => {
     const winner = getMaxPropByVal(this.carList, "name", "locationLength");
     const winnerString = `최종 우승자: ${winner.join(",")}`;
+
     combineResult(this, winnerString);
     setResult(this);
   };

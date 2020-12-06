@@ -30,6 +30,7 @@ export const getMaxPropByVal = (list, key, val) => {
 
 export const isUnderFive = (arr) => {
   let flag = true;
+
   for (let i = 0; i < arr.length; i++) {
     if (arr[i].length > 5) {
       flag = false;
@@ -42,6 +43,7 @@ export const isUnderFive = (arr) => {
 
 export const hasEmptyItem = (arr) => {
   let flag = false;
+
   for (let i = 0; i < arr.length; i++) {
     if (arr[i].length === 0) {
       flag = true;

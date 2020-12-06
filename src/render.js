@@ -8,6 +8,7 @@ const setVisiblity = (elem, isShow) => {
 const setPlayButton = () => {
   const countElem = document.getElementsByClassName("car-game-container")[0]
     .children[1];
+
   setVisiblity(countElem, true);
 };
 
@@ -47,6 +48,7 @@ export const reSetByName = (game) => {
 
 export const reSetByCount = (game) => {
   const result = document.getElementsByClassName("racing-result-container")[0];
+
   result.removeChild(result.lastChild);
   game.resultString = "";
 };

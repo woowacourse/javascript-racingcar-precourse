@@ -7,6 +7,7 @@ export default function Car(name, location) {
 
   this.move = () => {
     let randomNum = genRandomNumber();
+
     if (this.isForward(randomNum)) {
       this.location += "-";
       this.locationLength = this.location.length;
