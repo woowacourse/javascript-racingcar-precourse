@@ -1,7 +1,4 @@
-/*
-4이상 전진 "-" forward
-3이하 멈춤 "" stay
-*/
+import getRandomNumber from "../utils/getRandomNumber.js";
 
 export default class RacingGame {
   constructor(carNames, racingCount) {
@@ -32,9 +29,21 @@ export default class RacingGame {
       gameRound++;
 
       this.racingGameRecord[gameRound] = {};
-      //this.setCarRecord()
+      this.setCarRecord(this.carNames, gameRound);
     }
   }
 
-  //   setCarRecord() {}
+  setCarRecord(carNames, gameRound) {
+    carNames.forEach((car, idx) => {
+      let previousScore = this.racingGameRecord[gameRound - 1][idx]["score"];
+      const randomNumber = getRandomNumber();
+      let nowScore = previousScore + 1;
+
+      //   this.setForwardCar()
+      //   this.setStayCar();
+    });
+  }
+
+  //   setForwardCar() {}
+  //   setStayCar() {}
 }
