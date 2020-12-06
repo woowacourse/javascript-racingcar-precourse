@@ -13,7 +13,7 @@ const getCarInput = (game) => {
   const inputArr = inputElem.value.split(",");
 
   if (validateCar(inputArr)) {
-    // create car obj
+    game.createCarObj(inputArr);
     setPlayButton();
   } else {
     alert("자동차 이름을 다시 입력하세요.");
