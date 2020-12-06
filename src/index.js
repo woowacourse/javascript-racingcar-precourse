@@ -73,7 +73,7 @@ function printRacing(cars) {
 
   let str = "";
   for (const car of cars) {
-    str += `${car.name}: ${'-'.repeat(car.position)}<br>`;
+    str += `${car}: ${'-'.repeat(car.position)}<br>`;
   }
   result.innerHTML += `<p>${str}</p>`;
 }
@@ -92,6 +92,6 @@ function printResult(cars) {
   };
   let maxArr = cars.reduce(reducer, []);
 
-  maxArr = maxArr.map(car => car.name).join(', ');
+  maxArr = maxArr.map(car => car).join(', ');
   result.innerHTML += `<p>최종 우승자: ${maxArr}</p>`;
 }

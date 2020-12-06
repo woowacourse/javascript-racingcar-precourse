@@ -10,4 +10,8 @@ export default class Car {
       this.position++;
     }
   }
+
+  toString() {
+    return `${this.name}`;
+  }
 }
