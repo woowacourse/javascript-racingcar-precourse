@@ -31,7 +31,10 @@ export default class RacingCarGame {
 		}
 
 		this.carNames = carNames;
+		this.continueGame();
+	}
 
+	continueGame = () => {
 		output.showRacingCountInput();
 		output.showRacingCountButton();
 	}
@@ -44,7 +47,6 @@ export default class RacingCarGame {
 		}
 
 		this.racingCount = racingCount;
-
 		this.playGame();
 	}
 
