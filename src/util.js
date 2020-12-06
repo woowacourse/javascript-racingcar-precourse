@@ -30,3 +30,13 @@ export const isValidInputCount = count => {
 export const getRandomNumber = () => {
   return Math.floor(Math.random() * 10);
 };
+
+export const getMostMovedCount = cars => {
+  let maxCount = 0;
+  cars.forEach(car => {
+    if (car.progress.length > maxCount) {
+      maxCount = car.progress.length;
+    }
+  });
+  return maxCount;
+};
