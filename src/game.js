@@ -1,8 +1,22 @@
 import { createRandomNumber } from './create.js'
 
+export function findMaxResult(cars, carsLength) {
+  let max = 0
+  let i;
+  
+  for (i = 0; i < carsLength; i++) {
+    if (cars[i].result.length >= max) {
+      max = cars[i].result.length
+    }
+  }
+  
+  console.log(max)
+}
+
 export function printProgress(car) {
   const result = document.querySelector("#result")
   car.random = createRandomNumber();
+
   if (car.random >= 4) {
     car.result += '-';
   }
@@ -23,4 +37,5 @@ export function racingCountPlay(cars, racingCountInput) {
     }
   result.innerText += "\n"
   }
+  findMaxResult(cars, carsLength);
 }
