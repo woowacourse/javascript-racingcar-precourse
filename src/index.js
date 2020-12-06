@@ -3,6 +3,7 @@ import { validateInputsLength, validateInputsUnique, validateNaturalNumber } fro
 export default class RacingCarGame {
   constructor() {
     this.carNames = [];
+    this.racingCount = 0;
 
     this.carNameInputField = document.getElementById("car-names-input");
     this.carNameSubmitButton = document.getElementById("car-names-submit");
@@ -75,5 +76,17 @@ export default class RacingCarGame {
 
     this.carNames = carNames;
     this.displayRacingCountContainer();
+  }
+
+  submitRacingCount() {
+    const racingCountInput = this.getRacingCountInput();
+    const racingCount = this.convertInputToNumber(racingCountInput);
+    const isValidRacingCount = this.validateRacingCount(racingCount);
+
+    if (!isValidRacingCount) {
+      return;
+    }
+
+    this.racingCount = racingCount;
   }
 }
