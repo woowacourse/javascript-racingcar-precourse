@@ -1,6 +1,10 @@
 import { Car } from './car.js';
 import { isInt } from './utils/index.js';
-import { racingProgress, racingResult } from './template/index.js';
+import { racingProgress, racingResult } from './templates/index.js';
+import {
+  WRONG_CARNAME_MESSAGE,
+  WRONG_COUNT_MESSAGE,
+} from './constants/index.js';
 
 export default function RacingCarGame() {
   const racingCountContainer = document.querySelector(
@@ -20,9 +24,8 @@ export default function RacingCarGame() {
   const handleClickCarNamesSubmit = () => {
     const carNamesList = carNamesInput.value.split(',');
     if (!isValidCarNames(carNamesList)) {
-      return alert('잘못된 자동차 이름입니다.');
+      return alert(WRONG_CARNAME_MESSAGE);
     }
-
     this.cars = carNamesList.map(carName => new Car(carName));
     racingCountContainer.classList.remove('hide');
   };
@@ -39,16 +42,19 @@ export default function RacingCarGame() {
 
   const handleClickRacingCountSubmit = () => {
     const input = racingCountInput.value;
-    if (input === '' || input === '0') {
-      return alert('1 이상의 숫자만 입력 가능합니다.');
+    if (!isValidRacingCount(input)) {
+      return alert(WRONG_COUNT_MESSAGE);
     }
-
-    if (!isInt(input)) {
-      return alert('정수만 입력 가능 합니다.');
-    }
-
     this.racingCount = Number(input);
     racing();
+  };
+
+  const isValidRacingCount = input => {
+    if (input === '' || input === '0' || !isInt(input) || input < 0) {
+      return false;
+    }
+
+    return true;
   };
 
   const racing = () => {
