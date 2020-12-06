@@ -6,14 +6,15 @@ export default function RacingCarGame() {
   const resultDiv = document.querySelector("#result-div");
   racingCountDiv.style.display = 'none';
   resultDiv.style.display = 'none';
+
+  function init() {
+    createRandomNumber();
+    getCarNamesInput();
+    getRacingCountInput();
+  }  
+  
+  init();
 }
 
-function init() {
-  createRandomNumber();
-  getCarNamesInput();
-  getRacingCountInput();
-}  
-
-init();
 
 new RacingCarGame();
