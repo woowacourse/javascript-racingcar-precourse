@@ -1,27 +1,30 @@
-import {printRacingResult, printWinnersName} from './print.js';
+import {printRacingResult, printWinnersName} from './app-printer.js';
 
 export default class AppContainer {
   constructor(app, racingCarGame) {
-    this.racingCarGame = racingCarGame;
     app.onclick = this.onClick.bind(this);
+    this.racingCarGame = racingCarGame;
+  }
+
+  showContainer(id) {
+    document.getElementById(id).hidden = false;
   }
 
   printResult() {
     if (this.racingCarGame.isEnd) {
+      this.showContainer('result');
+
       printRacingResult(this.racingCarGame);
       printWinnersName(this.racingCarGame.cars);
     }
   }
 
-  showRacingCountContainer() {
-    if (this.racingCarGame.cars.length > 0) {
-      document.getElementById('racing-count').hidden = false;
-    }
-  }
-
   submitCarNames(carNames) {
     this.racingCarGame.setCars(carNames);
-    this.showRacingCountContainer();
+
+    if (this.racingCarGame.cars.length > 0) {
+      this.showContainer('racing-count');
+    }
   }
 
   submitRacingCount(racingCount) {
