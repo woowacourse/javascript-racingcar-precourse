@@ -1,4 +1,9 @@
 export default class ExceptionHandler {
+  constructor() {
+    this.MAXSTRINGLENGTH = 5;
+    this.MINSTRINGLENGTH = 0;
+    this.MINCOUNTNUMBER = 0;
+  }
   // CarName 예외 처리
   isCarNames(carNames) {
     let carNamesArray = null;
@@ -31,7 +36,10 @@ export default class ExceptionHandler {
 
   isOverLength(carNamesArray) {
     for (let i = 0; i < carNamesArray.length; i++) {
-      if (carNamesArray[i].length > 5 || carNamesArray[i].length === 0) {
+      if (
+        carNamesArray[i].length > this.MAXSTRINGLENGTH ||
+        carNamesArray[i].length === this.MINSTRINGLENGTH
+      ) {
         alert('자동차 이름을 알맞게 적어주세요');
 
         return null;
@@ -57,7 +65,7 @@ export default class ExceptionHandler {
   isCountNumber(number) {
     let countValue = false;
 
-    if (number > 0 && !isNaN(number)) {
+    if (number > this.MINCOUNTNUMBER && !isNaN(number)) {
       countValue = true;
     }
 

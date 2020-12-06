@@ -1,6 +1,11 @@
 export default class RandomNumber {
+  constructor() {
+    this.STANDARDNUMBER = 4;
+    this.MAXNUMBER = 9;
+  }
+
   init() {
-    const randomNumber = Math.floor(Math.random() * 9 + 1);
+    const randomNumber = Math.floor(Math.random() * this.MAXNUMBER + 1);
     const goSign = this.goOrStop(randomNumber);
 
     return goSign;
@@ -9,7 +14,7 @@ export default class RandomNumber {
   goOrStop(number) {
     let goSign = false;
 
-    if (number >= 4) {
+    if (number >= this.STANDARDNUMBER) {
       goSign = true;
     }
 
