@@ -1,5 +1,5 @@
 import { isLongerThan, isNames, isNumber } from '../../../utils';
-import { text } from '../../../constants';
+import { message } from '../../../constants';
 
 export default class RacingCarGameView {
   constructor(
@@ -77,10 +77,10 @@ export default class RacingCarGameView {
 
   validNames(names) {
     if (!isNames(names)) {
-      return text.WARNING_FOR_WHITE_SPACE;
+      return message.WARNING_FOR_WHITE_SPACE;
     }
     if (isLongerThan(names, this.NAME_MAX_LENGTH)) {
-      return text.WARNING_FOR_NAME_LONGER_THAN_FIVE;
+      return message.WARNING_FOR_NAME_LONGER_THAN_FIVE;
     }
 
     return '';
@@ -88,10 +88,10 @@ export default class RacingCarGameView {
 
   validCount(count) {
     if (!isNumber(parseInt(count))) {
-      return text.WARNING_FOR_COUNT_NOT_NUMBER;
+      return message.WARNING_FOR_COUNT_NOT_NUMBER;
     }
     if (parseInt(count) < this.COUNT_MIN_VALUE) {
-      return text.WARNING_FOR_COUNT_LOWER_THAN_ONE;
+      return message.WARNING_FOR_COUNT_LOWER_THAN_ONE;
     }
 
     return '';
@@ -122,16 +122,16 @@ export default class RacingCarGameView {
 
   renderRacingCountInputAndSubmitButton() {
     this.carRacingCountDiv.innerHTML = `
-      <h4>${text.ASK_INPUT_COUNT_NUMBER}</h4>
+      <h4>${message.ASK_INPUT_COUNT_NUMBER}</h4>
       <input type="number" id="#racing-count-input"/>
-      <button id="#racing-count-submit">${text.SUBMIT_COUNT}</button>
+      <button id="#racing-count-submit">${message.SUBMIT_COUNT}</button>
     `;
 
     this.addEventListenerToRacingCountSubmitButton();
   }
 
   renderResultHeading() {
-    this.carRacingResultDiv.innerHTML += `<h4>${text.RESULT_HEADING}</h4>`;
+    this.carRacingResultDiv.innerHTML += `<h4>${message.RESULT_HEADING}</h4>`;
   }
 
   renderIntermediateResult(cars) {
@@ -157,7 +157,7 @@ export default class RacingCarGameView {
 
     this.carRacingResultDiv.innerHTML += `
       <div>
-        ${text.LAST_WINNERS}: ${winnersString}
+        ${message.LAST_WINNERS}: ${winnersString}
       </div>
     `;
   }
