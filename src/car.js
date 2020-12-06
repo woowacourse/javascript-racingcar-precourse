@@ -7,4 +7,8 @@ export function Car(name) {
   this.move = () => {
     this.distance += randomMove();
   };
+
+  this.clear = () => {
+    this.distance = 0;
+  };
 }

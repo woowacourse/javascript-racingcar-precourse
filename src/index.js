@@ -1,6 +1,10 @@
 import { Car } from './car.js';
 import { isInt } from './utils/index.js';
-import { racingProgress, racingResult } from './templates/index.js';
+import {
+  racingProgress,
+  racingResult,
+  racingResultHeading,
+} from './templates/index.js';
 import {
   WRONG_CARNAME_MESSAGE,
   WRONG_COUNT_MESSAGE,
@@ -14,14 +18,16 @@ export default function RacingCarGame() {
     '.racing-result-container'
   );
   const carNamesInput = document.getElementById('car-names-input');
-  const carNamesSubmit = document.getElementById('car-names-submit');
+  const carNamesSubmitButton = document.getElementById('car-names-submit');
   const racingCountInput = document.getElementById('racing-count-input');
-  const racingCountSubmit = document.getElementById('racing-count-submit');
+  const racingCountSubmitButton = document.getElementById(
+    'racing-count-submit'
+  );
 
   this.racingCount = 0;
   this.cars = [];
 
-  const handleClickCarNamesSubmit = () => {
+  const handleClickCarNamesSubmitButton = () => {
     const carNamesList = carNamesInput.value.split(',');
     if (!isValidCarNames(carNamesList)) {
       return alert(WRONG_CARNAME_MESSAGE);
@@ -40,7 +46,7 @@ export default function RacingCarGame() {
     return true;
   };
 
-  const handleClickRacingCountSubmit = () => {
+  const handleClickRacingCountSubmitButton = () => {
     const input = racingCountInput.value;
     if (!isValidRacingCount(input)) {
       return alert(WRONG_COUNT_MESSAGE);
@@ -59,11 +65,17 @@ export default function RacingCarGame() {
 
   const racing = () => {
     racingResultContainer.classList.remove('hide');
+    clearCarsDistance();
     for (let i = 0; i < this.racingCount; i++) {
       this.cars.forEach(car => car.move());
       showRacingProgress();
     }
     showRacingResult();
+  };
+
+  const clearCarsDistance = () => {
+    this.cars.forEach(car => car.clear());
+    racingResultContainer.innerHTML = racingResultHeading();
   };
 
   const showRacingProgress = () => {
@@ -76,8 +88,14 @@ export default function RacingCarGame() {
     racingResultContainer.innerHTML += racingResult(winnerCars);
   };
 
-  carNamesSubmit.addEventListener('click', handleClickCarNamesSubmit);
-  racingCountSubmit.addEventListener('click', handleClickRacingCountSubmit);
+  carNamesSubmitButton.addEventListener(
+    'click',
+    handleClickCarNamesSubmitButton
+  );
+  racingCountSubmitButton.addEventListener(
+    'click',
+    handleClickRacingCountSubmitButton
+  );
 }
 
 new RacingCarGame();

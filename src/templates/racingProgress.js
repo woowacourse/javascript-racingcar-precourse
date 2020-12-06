@@ -14,7 +14,6 @@ const distance = size => {
   let result = '';
   for (let i = 0; i < size; i++) {
     result += '-';
-    i += 1;
   }
 
   return result;
