@@ -13,9 +13,13 @@ export default class Car {
     if (randomNumber >= 4) {
       this.distance += 1;
     }
+    return this;
   }
 
-  getCarDistance() {
-    return this.distance;
+  getCarInfo() {
+    return {
+      name: this.name,
+      distance: this.distance,
+    };
   }
 }
