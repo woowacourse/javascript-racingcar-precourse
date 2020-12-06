@@ -5,11 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d8d6e1d9-7c12-4bc6-84e0-9c2963f22680" name="Default Changelist" comment="setting eslint and prettier">
+      <change afterPath="$PROJECT_DIR$/REPORT.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/lib/classes/car.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/lib/classes/car.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,7 +72,7 @@
       <workItem from="1607060936625" duration="17686000" />
       <workItem from="1607131379351" duration="4797000" />
       <workItem from="1607179236584" duration="1982000" />
-      <workItem from="1607218389158" duration="7982000" />
+      <workItem from="1607218389158" duration="11713000" />
     </task>
     <task id="LOCAL-00001" summary="setting eslint and prettier">
       <created>1607060398395</created>
