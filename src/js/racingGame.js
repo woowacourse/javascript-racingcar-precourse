@@ -62,4 +62,8 @@ export default class RacingGame {
       };
     }
   }
+
+  getRacingGameRecord() {
+    return [this.racingGameRecord, this.maxScore];
+  }
 }
