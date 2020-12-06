@@ -7,20 +7,23 @@ export default class Winner {
 		const maxDistance = this.getMaxDistance();
 		const winners = [];
 		
-		for (let car = 0; car < this.racingCars.length; car++) {
-			if (this.racingCars[car].distance !== maxDistance) {
-				break;
+		for (let car of this.racingCars) {
+			if (car.distance === maxDistance) {
+				winners.push(car);
 			}
-			winners.push(this.racingCars[car]);
 		}
 
 		return winners;
 	}
 
 	getMaxDistance = () => {
-		// racingCars를 거리가 큰 순으로 정렬
-		this.racingCars.sort((carA, carB) => carB.distance - carA.distance);
-		const maxDistance = this.racingCars[0].distance;
+		let maxDistance = 0;
+
+		for (let car of this.racingCars) {
+			if (car.distance > maxDistance) {
+				maxDistance = car.distance;
+			}
+		}
 		
 		return maxDistance;
 	}
