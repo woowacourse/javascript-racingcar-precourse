@@ -6,7 +6,6 @@ import Validation from "./utils/validation.js";
 
 export default class RacingCarGame {
 	constructor() {
-
 		this.carNames;
 		this.racingCount;
 
