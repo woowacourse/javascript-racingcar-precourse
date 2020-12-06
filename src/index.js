@@ -1,6 +1,6 @@
 import { validateInputsLength, validateInputsUnique, validateNaturalNumber } from "./validate.js";
 
-export default class RacingCarGame {
+export default class App {
   constructor() {
     this.carNames = [];
     this.racingCount = 0;
