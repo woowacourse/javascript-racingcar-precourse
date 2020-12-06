@@ -27,6 +27,17 @@ export default class RacingCarGame {
 
     return eachRaceCarPositions;
   }
+
+  runAllRaces() {
+    const allRaceCarPositions = [];
+
+    for (let i = 0; i < this.racingCount; i++) {
+      const eachRace = this.runEachRace();
+      allRaceCarPositions.push(eachRace);
+    }
+
+    return allRaceCarPositions;
+  }
 }
 
 // //test
