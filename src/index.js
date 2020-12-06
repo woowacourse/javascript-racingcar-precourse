@@ -1,6 +1,6 @@
 import { Car } from './car.js';
 import { isInt } from './utils/index.js';
-import { racingProgress } from './template/index.js';
+import { racingProgress, racingResult } from './template/index.js';
 
 export default function RacingCarGame() {
   const racingCountContainer = document.querySelector(
@@ -59,10 +59,17 @@ export default function RacingCarGame() {
       showRacingProgress();
       i += 1;
     }
+    showRacingResult();
   };
 
   const showRacingProgress = () => {
     racingResultContainer.innerHTML += racingProgress(this.cars);
+  };
+
+  const showRacingResult = () => {
+    const maxDistance = Math.max(...this.cars.map(car => car.distance));
+    const winnerCars = this.cars.filter(car => car.distance === maxDistance);
+    racingResultContainer.innerHTML += racingResult(winnerCars);
   };
 
   carNamesSubmit.addEventListener('click', handleClickCarNamesSubmit);
