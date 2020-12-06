@@ -49,7 +49,7 @@ export default class RacingCarGame {
   }
 
   showRacingCountForm() {
-    const racingCountFormEl = createNewElement('form', 'car-names-form');
+    const racingCountFormEl = createNewElement('form', 'racing-count-form');
     racingCountFormEl.innerHTML = `
       <h4>시도할 횟수를 입력해주세요.</h4>
       <input type="number" id="racing-count-input" autofocus/>
