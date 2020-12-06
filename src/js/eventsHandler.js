@@ -9,7 +9,5 @@ export default class EventHandler extends GetRacingCount {
 
   _onClickRacingCount() {
     super._onClickRacingCount();
-    this.carNames = this.carNamesInput.value.split(",");
-    this.racingCount = Number(this.racingCountInput.value);
   }
 }

@@ -21,5 +21,7 @@ export default class GetRacingCount extends GetCarNames {
       this.racingCountInput.value = "";
       return;
     }
+
+    this.gamePlay();
   }
 }
