@@ -58,8 +58,12 @@ function clickCarNamesSubmit() {
 function clickRacingCountSubmit() {
   "use strict";
 
-  result.innerHTML = '';
   racingCount = parseInt(racingCountInput.value);
+  if (!racingCount) {
+    alert('양수를 입력해주세요.');
+    return;
+  }
+  result.innerHTML = '';
   resultDiv.classList.remove('d-none');
 
   const racingCarGame = new RacingCarGame(carNames, racingCount);
@@ -71,7 +75,7 @@ function clickRacingCountSubmit() {
 function printRacing(cars) {
   "use strict";
 
-  let str = "";
+  let str = '';
   for (const car of cars) {
     str += `${car}: ${'-'.repeat(car.position)}<br>`;
   }
