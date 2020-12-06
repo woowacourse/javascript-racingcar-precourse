@@ -1,4 +1,10 @@
 export default function RacingCarGame() {
+  const racingCountContainer = document.querySelector(
+    '.racing-count-container'
+  );
+  const racingResultContainer = document.querySelector(
+    '.racing-result-container'
+  );
   const carNamesInput = document.getElementById('car-names-input');
   const carNamesSubmit = document.getElementById('car-names-submit');
 
@@ -18,6 +24,9 @@ export default function RacingCarGame() {
 
     return true;
   };
+
+  racingCountContainer.style.display = 'none';
+  racingResultContainer.style.display = 'none';
   carNamesSubmit.addEventListener('click', handleClickCarNamesSubmit);
 }
 
