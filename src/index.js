@@ -2,11 +2,11 @@ import Car from './car.js';
 
 export default class RacingCarGame {
   constructor(cars, count) {
-    this.cars = cars;
+    this.cars = cars.map(car => new Car(car));
     this.count = count;
   }
 
-  // 입력받은 자동차 이름을 Car 배열로 반환하는 메소드
+  // 입력받은 자동차 이름을 배열로 반환하는 메소드
   static inputCarName(carInputString) {
     let carArr = carInputString.split(',');
     for (const car of carArr) {
@@ -14,7 +14,6 @@ export default class RacingCarGame {
         return null;
       }
     }
-    carArr = carArr.map(car => new Car(car));
     return carArr;
   }
 
@@ -37,7 +36,7 @@ const racingCountSubmit = document.getElementById('racing-count-submit');
 const resultDiv = document.getElementById('result-div');
 const result = document.getElementById('result');
 
-let carArr;
+let carNames;
 let racingCount;
 
 carNamesSubmit.addEventListener('click', clickCarNamesSubmit);
@@ -47,8 +46,8 @@ racingCountSubmit.addEventListener('click', clickRacingCountSubmit);
 function clickCarNamesSubmit() {
   "use strict";
 
-  carArr = RacingCarGame.inputCarName(carNamesInput.value);
-  if (carArr === null) {
+  carNames = RacingCarGame.inputCarName(carNamesInput.value);
+  if (carNames === null) {
     alert('자동차 이름을 5자 이하로 콤마로 구분하여 입력해주세요.');
     return;
   }
@@ -63,7 +62,7 @@ function clickRacingCountSubmit() {
   racingCount = parseInt(racingCountInput.value);
   resultDiv.classList.remove('d-none');
 
-  const racingCarGame = new RacingCarGame(carArr, racingCount);
+  const racingCarGame = new RacingCarGame(carNames, racingCount);
   racingCarGame.start(printRacing);
   printResult(racingCarGame.cars);
 }
