@@ -2,14 +2,17 @@ import { Car } from "./carInstance";
 
 export default function racing(carNames, racingCount) {
   let racingCars = [];
+  let resultMessage = "";
 
   const race = () => {
     for (let i = 0; i < racingCount; i++) {
       racingCars.forEach(car => {
         car.move();
+        resultMessage += car.getProgress();
       });
+      resultMessage += `<br>`;
     }
-    console.log(racingCars);
+    console.log(resultMessage);
   };
 
   const init = () => {

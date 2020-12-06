@@ -9,4 +9,5 @@ export function Car(name) {
       this.progress += "-";
     }
   };
+  this.getProgress = () => `<span>${this.name}: ${this.result}</span><br>`;
 }
