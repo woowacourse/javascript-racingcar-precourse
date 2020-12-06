@@ -1,9 +1,11 @@
 import Car from './Car.js';
-
+import { createNewElement, setDisabled } from './utils.js';
+  
 export default class RacingCarGame {
   constructor() {
     this.cars = [];
     this.el = {
+      carGameContainer: document.querySelector('.car-game-container'),
       carNamesForm: document.querySelector('#car-names-form'),
       carNamesInput: document.querySelector('#car-names-input'),
       carNamesSubmit: document.querySelector('#car-names-submit'),
@@ -21,8 +23,8 @@ export default class RacingCarGame {
     };
 
     const disableForm = () => {
-      this.el.carNamesInput.setAttribute('disabled', 'disabled');
-      this.el.carNamesSubmit.setAttribute('disabled', 'disabled');
+      setDisabled(this.el.carNamesInput);
+      setDisabled(this.el.carNamesSubmit);
       this.el.carNamesForm.removeEventListener('submit', this.getCarNames);
     };
 
@@ -43,6 +45,18 @@ export default class RacingCarGame {
     });
 
     disableForm();
+    this.showRacingCountForm();
+  }
+
+  showRacingCountForm() {
+    const racingCountFormEl = createNewElement('form', 'car-names-form');
+    racingCountFormEl.innerHTML = `
+      <h4>시도할 횟수를 입력해주세요.</h4>
+      <input type="number" id="racing-count-input" autofocus/>
+      <button id="racing-count-submit">확인</button>
+    `;
+
+    this.el.carGameContainer.appendChild(racingCountFormEl);
   }
 }
 
