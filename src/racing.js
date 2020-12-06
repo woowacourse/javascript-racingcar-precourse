@@ -12,7 +12,7 @@ export default function racing(carNames, racingCount) {
       });
       resultMessage += `<br>`;
     }
-    console.log(resultMessage);
+    provideResult(resultMessage);
   };
 
   const init = () => {
