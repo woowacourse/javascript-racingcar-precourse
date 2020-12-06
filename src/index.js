@@ -46,6 +46,15 @@ export default class RacingCarGame {
     this.racingCountContainer.style.display = "block";
   }
 
+  getRacingCountInput() {
+    const racingCountInput = this.racingCountInputField.value;
+    return racingCountInput;
+  }
+
+  convertInputToNumber(racingCountInput) {
+    return Number(racingCountInput);
+  }
+
   submitCarNames() {
     const carNamesInput = this.getCarNamesInput();
     const carNames = this.parseCarNames(carNamesInput);
