@@ -1,4 +1,6 @@
 import { Car } from "./carInstance";
+import { provideResult, provideWinner } from "./provider";
+import { getMostMovedCount } from "./util";
 
 export default function racing(carNames, racingCount) {
   let racingCars = [];
