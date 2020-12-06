@@ -20,6 +20,7 @@ const hasDuplicatedNames = carNames => {
   return result;
 };
 
+// tests whether each of car names has a problem.
 const isNotProperCarName = carName => {
   let result = false;
   if (isLongerThanFive(carName)) {
@@ -33,6 +34,7 @@ const isNotProperCarName = carName => {
   return result;
 };
 
+// tests whether a whole bunch of car names has a problem.
 export const isNotProperCarNames = carNames => {
   if (isEmptyString(carNames[0])) {
     alert('값을 입력해주세요.');
@@ -48,8 +50,6 @@ export const isNotProperCarNames = carNames => {
   }
   return false;
 };
-
-// if car name is empty string or longer than 5, it's not proper.
 
 // if racing count input is an empty string or not a number, it's not proper.
 export const isNotProperRacingCountInputValue = inputValue => {

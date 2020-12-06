@@ -53,10 +53,7 @@ export default class RacingCarGame {
 
   // create Car objects with car names.
   setCarObjects(carNames) {
-    const newCars = [];
-    carNames.forEach(carName => {
-      newCars.push(new Car(carName));
-    });
+    const newCars = carNames.map(carName => new Car(carName));
     this.cars = newCars;
   }
 
@@ -70,7 +67,7 @@ export default class RacingCarGame {
       DOMCtrl.resetRacingCountInput();
       return;
     }
-    this.racingCount = racingCountInputValue;
+    this.racingCount = +racingCountInputValue;
     this.resetPrevRace();
     DOMCtrl.showResultUI();
     this.startRace();
