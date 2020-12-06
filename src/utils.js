@@ -1,6 +1,6 @@
 export function createNewElement(tag, id = null) {
   const el = document.createElement(tag);
-  
+
   if (id) {
     el.id = id;
   }
@@ -10,6 +10,6 @@ export function createNewElement(tag, id = null) {
 
 export function setDisabled(el) {
   el.setAttribute('disabled', 'disabled');
-  
+
   return el;
 }

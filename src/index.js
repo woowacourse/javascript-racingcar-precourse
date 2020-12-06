@@ -111,6 +111,37 @@ export default class RacingCarGame {
     }
 
     this.el.carGameContainer.appendChild(finalResultEl);
+    this.showWinners();
+  }
+
+  showWinners() {
+    const getWinners = () => {
+      let winners = [];
+      let maxForwardCount = 0;
+
+      this.cars.forEach((car) => {
+        if (car.forwardCount > maxForwardCount) {
+          maxForwardCount = car.forwardCount;
+          winners = [car];
+        } else if (car.forwardCount === maxForwardCount) {
+          winners.push(car);
+        }
+      });
+
+      return winners;
+    };
+
+    const winners = getWinners();
+    const winnersEl = createNewElement('p');
+    winnersEl.innerHTML = `최종 우승자: `;
+
+    winners.forEach((winner, index) => {
+      winnersEl.innerHTML += `
+        ${winner.name}${winners.length > index + 1 ? ',' : ''}
+      `;
+    });
+
+    this.el.carGameContainer.appendChild(winnersEl);
   }
 }
 
