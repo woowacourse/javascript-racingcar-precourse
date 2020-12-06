@@ -22,10 +22,15 @@ export default class RacingCarGame {
   }
 
   setEventListener() {
-    this.el.carNamesForm.addEventListener('submit', this.handleSubmitCarNames.bind(this));
+    const handleSubmitCarNames = (e) => {
+      e.preventDefault();
+      this.setCarNames();
+    };
+
+    this.el.carNamesForm.addEventListener('submit', handleSubmitCarNames);
   }
 
-  handleSubmitCarNames(e) {
+  setCarNames() {
     const validateInput = (data) => {
       return !data.some((item) => item.length > 0 && item.length > 5);
     };
@@ -33,10 +38,7 @@ export default class RacingCarGame {
     const disableForm = () => {
       setDisabled(this.el.carNamesInput);
       setDisabled(this.el.carNamesSubmit);
-      this.el.carNamesForm.removeEventListener('submit', this.getCarNames);
     };
-
-    e.preventDefault();
 
     if (this.cars.length > 0) {
       return;
@@ -57,6 +59,12 @@ export default class RacingCarGame {
   }
 
   showRacingCountForm() {
+    const handleSubmitRacingCount = (e) => {
+      e.preventDefault();
+
+      this.setRacingCount();
+    };
+
     const racingCountFormEl = createNewElement('form', 'racing-count-form');
     racingCountFormEl.innerHTML = `
       <h4>시도할 횟수를 입력해주세요.</h4>
@@ -66,12 +74,11 @@ export default class RacingCarGame {
 
     this.el.carGameContainer.appendChild(racingCountFormEl);
     this.resetEl();
-    this.el.racingCountForm.addEventListener('submit', this.handleSubmitRacingCount.bind(this));
+
+    this.el.racingCountForm.addEventListener('submit', handleSubmitRacingCount);
   }
 
-  handleSubmitRacingCount(e) {
-    e.preventDefault();
-
+  setRacingCount() {
     this.racingCount = this.el.racingCountInput.value;
     this.showFinalResult();
   }
