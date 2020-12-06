@@ -87,10 +87,10 @@ export default class RacingCarGameView {
   }
 
   validCount(count) {
-    if (!isNumber(count)) {
+    if (!isNumber(parseInt(count))) {
       return text.WARNING_FOR_COUNT_NOT_NUMBER;
     }
-    if (count < this.COUNT_MIN_VALUE) {
+    if (parseInt(count) < this.COUNT_MIN_VALUE) {
       return text.WARNING_FOR_COUNT_LOWER_THAN_ONE;
     }
 
