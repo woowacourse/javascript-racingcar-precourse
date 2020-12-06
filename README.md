@@ -67,7 +67,9 @@ class Car {
 ## 기능 목록
 
 - 잘못된 입력의 경우 alert을 통해 알림(showAlert)
-- 자동차 입력값 검증 (validateUserInput)
+- 자동차 입력값 검증 (validateCarName)
+- 자동차 이동 (move)
+- 자동차 이동거리 구하기 (getCarDistance)
 - 횟수 입력값 검증 (validateCountInput)
 - 레이싱 결과 생성 (makeRacingResult)
 - 랜덤 값 생성(makeRandomNumber)
