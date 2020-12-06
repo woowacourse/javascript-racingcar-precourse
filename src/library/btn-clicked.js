@@ -24,7 +24,7 @@ export function onBtnRacingCountClicked(inputRacingCount, cars) {
   const resultBox = document.getElementById("result-box");
   makeElementBlock(resultBox);
 
-  const racingGame = new RacingCarGame(racingCount, cars);
+  const racingGame = new RacingCarGame(cars);
   console.log(racingGame);
   for (let i = 0; i < racingCount; i++) {
     racingGame.play();
