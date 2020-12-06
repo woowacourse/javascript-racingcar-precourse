@@ -7,3 +7,8 @@ export const validateCar = (input) => {
 
   return isValidate;
 };
+
+export const validateCount = (input) => {
+  let isValidate = true;
+  return isValidate;
+};

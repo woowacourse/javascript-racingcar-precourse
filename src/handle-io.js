@@ -1,4 +1,4 @@
-import { validateCar } from "./validator.js";
+import { validateCar, validateCount } from "./validator.js";
 
 const setVisiblity = (elem) => (elem.style.display = "inline");
 
@@ -21,7 +21,17 @@ const getCarInput = (game) => {
   }
 };
 
-const getCountInput = (game) => {};
+const getCountInput = (game) => {
+  const inputElem = document.getElementById("racing-count-input");
+  const inputVal = inputElem.value;
+
+  if (validateCount(inputVal)) {
+    game.play(inputVal);
+  } else {
+    alert("시도할 횟수를 다시 입력하세요.");
+    inputElem.value = "";
+  }
+};
 
 export const eventHandler = (game) => {
   document.getElementById("car-names-submit").addEventListener("click", () => {

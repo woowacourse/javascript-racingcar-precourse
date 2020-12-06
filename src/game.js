@@ -8,10 +8,11 @@ export default function RacingCarGame() {
     carNameList.forEach((name) => {
       this.carList.push(new Car(name, ""));
     });
-    console.log(this.carList);
   };
 
   this.setWinner = () => {};
 
-  this.play = (turns) => {};
+  this.play = (turns) => {
+    console.log(turns);
+  };
 }
