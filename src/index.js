@@ -1,4 +1,4 @@
-import { RacingCarGameViewModel } from './modules/models';
+import { RacingCarGameViewModel } from './modules/viewModels';
 import { RacingCarGameView } from './modules/views';
 
 window.addEventListener('DOMContentLoaded', () => {
