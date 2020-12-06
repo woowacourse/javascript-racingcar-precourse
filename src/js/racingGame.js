@@ -63,7 +63,11 @@ export default class RacingGame {
     }
   }
 
+  getGameRecordCopy(record) {
+    return JSON.parse(JSON.stringify(record));
+  }
+
   getRacingGameRecord() {
-    return [this.racingGameRecord, this.maxScore];
+    return [this.getGameRecordCopy(this.racingGameRecord), this.maxScore];
   }
 }
