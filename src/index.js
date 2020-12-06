@@ -1,7 +1,6 @@
 import Car from './car.js';
 import {
-  isEmptyString,
-  isNotProperCarName,
+  isNotProperCarNames,
   isNotProperRacingCountInputValue,
 } from './valid.js';
 import { DOMs, DOMCtrl } from './doms.js';
@@ -34,28 +33,21 @@ export default class RacingCarGame {
   }
 
   /*
-   * tests whether the input value is proper.
+   * tests whether the input value and each of car names are proper.
    * if it is, then create Car objects and show UIs about racing count.
    */
   handleCarNameInput() {
     const carNameInputValue = DOMs.carNameInput.value;
-    if (isEmptyString(carNameInputValue)) {
-      alert('값을 입력해주세요.');
+    const carNames = this.getCarNames(carNameInputValue);
+    if (isNotProperCarNames(carNames)) {
       DOMCtrl.resetCarNameInput();
       return;
-    }
-    const carNames = this.getCarNamesArray(carNameInputValue);
-    for (let i = 0; i < carNames.length; i++) {
-      if (isNotProperCarName(carNames[i])) {
-        DOMCtrl.resetCarNameInput();
-        return;
-      }
     }
     this.setCarObjects(carNames);
     DOMCtrl.showRacingCountUI();
   }
 
-  getCarNamesArray(inputValue) {
+  getCarNames(inputValue) {
     return inputValue.split(',').map(name => name.trim());
   }
 
