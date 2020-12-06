@@ -1,4 +1,5 @@
 import { isValidInputNames, isValidInputCount } from "./util";
+import { makeRacingCars } from "./racing";
 
 export default function RacingCarGame() {
   const carNamesSubmitBtn = document.querySelector("#car-names-submit");
@@ -8,7 +9,7 @@ export default function RacingCarGame() {
 
   const gameStart = () => {
     if (isValidInputNames(carNamesInput.value)) {
-      console.log("ok");
+      makeRacingCars(carNamesInput.value);
     } else {
       alert(
         "자동차들의 이름을 쉼표(,)로 구분하여 각 5자 이하로 2대 이상 입력해주세요!\n예) east,west,south",
