@@ -42,8 +42,12 @@ export default class RacingCarGame {
       let errorStr = "";
       unvalidatedStringArr.forEach(str => (errorStr += `다음 입력값은 올바르지 않습니다. ${str}\n`));
       this._showErrorAlert(errorStr);
-      this.initValueAndFoucsIn("names");
+      this._initValueAndFoucsIn("names");
     }
+  }
+
+  _showErrorAlert(str) {
+    alert(str);
   }
 }
 
