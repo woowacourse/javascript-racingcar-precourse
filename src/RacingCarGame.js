@@ -32,16 +32,20 @@ export default class RacingCarGame {
   createCarGameContainer(target) {
     const _container = document.createElement('div');
     _container.className = 'car-game-container';
+    target.appendChild(_container);
 
     this.carNamesContainer = new CarNamesInput({
       target: _container,
+      onClick: this.handleClickCarNamesSubmit.bind(this),
     });
 
     this.racingCountContainer = new RacingCountInput({
       target: _container,
     });
+  }
 
-    target.appendChild(_container);
+  handleClickCarNamesSubmit() {
+    this.racingCountContainer.show();
   }
 
   createResult(target) {

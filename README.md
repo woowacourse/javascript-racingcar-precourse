@@ -72,6 +72,7 @@ class Car {
 - [X] racing-count-input과 결과 화면이 화면에서 보이지 않도록 한다.
 - [X] car-game-container를 구현한다.
   - [X] car-names-input을 화면에 보여주는 클래스 모듈을 작성한다.
+  - [X] car-names-submit 버튼을 누르면 racing-count-input을 보이게 한다.
   - [X] racing-count-input을 화면에 보여주는 클래스 모듈을 작성한다.
 - [] Car 클래스를 만든다.
   - [] 랜덤한 0 ~ 9 사이의 값 중 4 이상이면 go, 아니면 stop하여 위치를 저장한다.

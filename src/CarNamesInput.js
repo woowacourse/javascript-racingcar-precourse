@@ -1,9 +1,10 @@
 export default class CarNamesInput {
   carNamesContainer = null;
 
-  constructor({ target }) {
+  constructor({ target, onClick }) {
     this.target = target;
     this.createCarNamesContainer(target);
+    this.addSubmitEvent(onClick);
   }
 
   createCarNamesContainer(target) {
@@ -13,7 +14,12 @@ export default class CarNamesInput {
       <button id="car-names-submit">확인</button>
     `;
 
-    this.carNamesContainer = _carNamesContainer;
     target.appendChild(_carNamesContainer);
+  }
+
+  addSubmitEvent(onClick) {
+    const _submit = document.getElementById('car-names-submit');
+
+    _submit.addEventListener('click', onClick);
   }
 }

@@ -18,4 +18,8 @@ export default class RacingCountInput {
     this.racingCountContainer = _racingCountContainer;
     target.appendChild(_racingCountContainer);
   }
+
+  show() {
+    this.racingCountContainer.classList.toggle('hidden', false);
+  }
 }
