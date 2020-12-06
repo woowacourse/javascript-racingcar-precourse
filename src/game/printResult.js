@@ -42,6 +42,11 @@ function getWinner(carList) {
   });
 }
 
+function resetResult($resultScreen, carList) {
+  $resultScreen.innerHTML = '';
+  carList.forEach((car) => (car.count = 0));
+}
+
 function printFinalResult(carList) {
   const winner = getWinner(carList);
   return winner.map((car) => car.name).join(', ');
@@ -50,6 +55,7 @@ function printFinalResult(carList) {
 export default function printResult(carList, racingCount) {
   const $resultScreen = document.querySelector('#app > div:last-child');
 
+  resetResult($resultScreen, carList);
   $resultScreen.removeAttribute('hidden');
   while (racingCount--) {
     carList.forEach((car) => race(car));
