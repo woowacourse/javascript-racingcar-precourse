@@ -8,22 +8,23 @@ export default class RacingCarGame {
 
   // 입력받은 자동차 이름을 Car 배열로 반환하는 메소드
   static inputCarName(carInputString) {
-    const carArr = carInputString.split(',');
+    let carArr = carInputString.split(',');
     for (const car of carArr) {
       if (car.length > 5) {
         return null;
       }
     }
-    carArr.map(car => new Car(car));
+    carArr = carArr.map(car => new Car(car));
     return carArr;
   }
 
   // 경주 진행
-  start() {
+  start(fun) {
     for (let i = 0; i < this.count; i++) {
       for (const car of this.cars) {
         car.go();
       }
+      fun(this.cars);
     }
   }
 }
@@ -34,6 +35,7 @@ const racingCountDiv = document.getElementById('racing-count-div');
 const racingCountInput = document.getElementById('racing-count-input');
 const racingCountSubmit = document.getElementById('racing-count-submit');
 const resultDiv = document.getElementById('result-div');
+const result = document.getElementById('result');
 
 let carArr;
 let racingCount;
@@ -57,9 +59,21 @@ function clickCarNamesSubmit() {
 function clickRacingCountSubmit() {
   "use strict";
 
+  result.innerHTML = '';
   racingCount = parseInt(racingCountInput.value);
   resultDiv.classList.remove('d-none');
 
   const racingCarGame = new RacingCarGame(carArr, racingCount);
-  racingCarGame.start();
+  racingCarGame.start(printRacing);
+}
+
+// 경주 과정 출력
+function printRacing(cars) {
+  "use strict";
+
+  let str = "";
+  for (const car of cars) {
+    str += `${car.name}: ${'-'.repeat(car.position)}<br>`;
+  }
+  result.innerHTML += `<p>${str}</p>`;
 }
