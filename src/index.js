@@ -1,4 +1,4 @@
-import Car from './car';
+import Car from './car.js';
 
 export default class RacingCarGame {
   constructor(cars, count) {
@@ -29,10 +29,12 @@ export default class RacingCarGame {
 }
 
 const carNamesInput = document.getElementById('car-names-input');
+const carNamesSubmit = document.getElementById('car-names-submit');
 const racingCountDiv = document.getElementById('racing-count-div');
 
 let carArr;
 
+// 자동차 이름 입력 후 확인 버튼 클릭
 function clickCarNamesSubmit() {
   "use strict";
 
@@ -43,3 +45,5 @@ function clickCarNamesSubmit() {
   }
   racingCountDiv.classList.remove('d-none');
 }
+
+carNamesSubmit.addEventListener('click', clickCarNamesSubmit);
