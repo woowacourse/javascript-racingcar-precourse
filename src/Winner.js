@@ -6,12 +6,17 @@ export default class Winner {
 
   winnerHTML() {
     const winnerNameArray = this.getWinnerName();
+    let resultString = '';
 
     if (winnerNameArray.length > 1) {
-      return `최종우승자: ${[...winnerNameArray].join(', ')}`;
+      resultString = `최종우승자: ${[...winnerNameArray].join(', ')}`;
+    } else if (winnerNameArray.length === 1) {
+      resultString = `최종우승자: ${winnerNameArray[0]}`;
     } else {
-      return `최종우승자: ${winnerNameArray[0]}`;
+      resultString = `최종우승자: 없음`;
     }
+
+    return resultString;
   }
 
   getWinnerName() {
