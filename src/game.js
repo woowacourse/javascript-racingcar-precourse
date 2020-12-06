@@ -38,6 +38,21 @@ export default class RacingCarGame {
 
     return allRaceCarPositions;
   }
+
+  countMaxDistance() {
+    const carsDistance = this.racingCars.map((car) => car.distance);
+    const maxDistance = Math.max(...carsDistance);
+
+    return maxDistance;
+  }
+
+  getWinnerNames() {
+    const maxDistance = this.countMaxDistance();
+    const winners = this.racingCars.filter((car) => car.distance === maxDistance);
+    const winnerNames = winners.map((car) => car.name);
+
+    return winnerNames;
+  }
 }
 
 // //test
