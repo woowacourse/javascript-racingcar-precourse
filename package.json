@@ -1,0 +1,18 @@
+{
+  "name": "javascript-racingcar-precourse",
+  "version": "0.0.1",
+  "description": "우아한테크코스 3기 프리코스 2주차 과제",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Puterism/javascript-racingcar-precourse.git"
+  },
+  "devDependencies": {
+    "eslint": "^7.15.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^7.0.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-prettier": "^3.2.0",
+    "prettier": "^2.2.1"
+  }
+}
