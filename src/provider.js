@@ -6,3 +6,11 @@ export const provideResult = resultMessage => {
   racingResult.innerHTML = resultMessage;
   resultContainer.appendChild(racingResult);
 };
+
+export const provideWinner = winnerText => {
+  const resultContainer = document.querySelector(".result-container");
+  const winner = document.createElement("span");
+
+  winner.textContent = `최종우승자: ${winnerText}`;
+  resultContainer.appendChild(winner);
+};
