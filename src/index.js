@@ -42,6 +42,10 @@ export default class RacingCarGame {
     return isValid;
   }
 
+  displayRacingCountContainer() {
+    this.racingCountContainer.style.display = "block";
+  }
+
   submitCarNames() {
     const carNamesInput = this.getCarNamesInput();
     const carNames = this.parseCarNames(carNamesInput);
@@ -52,6 +56,7 @@ export default class RacingCarGame {
     }
 
     this.carNames = carNames;
+    this.displayRacingCountContainer();
   }
 }
 
