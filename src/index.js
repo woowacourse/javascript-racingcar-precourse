@@ -10,7 +10,7 @@ export default class RacingCarGame {
   static inputCarName(carInputString) {
     let carArr = carInputString.split(',');
     for (const car of carArr) {
-      if (car.length > 5) {
+      if (car.length > 5 || car.length <= 0) {
         return null;
       }
     }
