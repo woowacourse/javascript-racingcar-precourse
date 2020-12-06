@@ -1,4 +1,4 @@
-import { validateInputsLength, validateInputsUnique } from "./validate.js";
+import { validateInputsLength, validateInputsUnique, validateNaturalNumber } from "./validate.js";
 
 export default class RacingCarGame {
   constructor() {
@@ -55,6 +55,15 @@ export default class RacingCarGame {
     return Number(racingCountInput);
   }
 
+  validateRacingCount(number) {
+    const isValidNumber = validateNaturalNumber(number);
+    if (!isValidNumber) {
+      alert("1이상의 자연수만 입력할 수 있습니다.");
+    }
+
+    return isValidNumber;
+  }
+
   submitCarNames() {
     const carNamesInput = this.getCarNamesInput();
     const carNames = this.parseCarNames(carNamesInput);
@@ -68,7 +77,3 @@ export default class RacingCarGame {
     this.displayRacingCountContainer();
   }
 }
-
-new RacingCarGame();
-// test
-//onsole.log(game.getCarNamesInput());

@@ -17,3 +17,11 @@ export const validateInputsLength = function (inputs) {
 
   return true;
 };
+
+export const validateNaturalNumber = function (number) {
+  if (isNaN(number) || number < 1 || !Number.isInteger(number)) {
+    return false;
+  }
+
+  return true;
+};
