@@ -65,6 +65,7 @@ function clickRacingCountSubmit() {
 
   const racingCarGame = new RacingCarGame(carArr, racingCount);
   racingCarGame.start(printRacing);
+  printResult(racingCarGame.cars);
 }
 
 // 경주 과정 출력
@@ -76,4 +77,22 @@ function printRacing(cars) {
     str += `${car.name}: ${'-'.repeat(car.position)}<br>`;
   }
   result.innerHTML += `<p>${str}</p>`;
+}
+
+// 경주 결과 출력
+function printResult(cars) {
+  "use strict";
+
+  const reducer = (acc, cur) => {
+    if (acc.length === 0 || acc[0].position === cur.position) {
+      acc.push(cur);
+    } else if (acc[0].position < cur.position) {
+      acc = [cur];
+    }
+    return acc;
+  };
+  let maxArr = cars.reduce(reducer, []);
+
+  maxArr = maxArr.map(car => car.name).join(', ');
+  result.innerHTML += `<p>최종 우승자: ${maxArr}</p>`;
 }
