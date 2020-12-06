@@ -23,18 +23,7 @@ export default function racing(carNames, racingCount) {
     const winners = racingCars
       .filter(car => car.progress.length === maxCount)
       .map(car => car.name);
-    winnerToText(winners);
-  };
-
-  const winnerToText = winners => {
-    let winnerText = "";
-    for (let i = 0; i < winners.length; i++) {
-      winnerText += winners[i];
-      if (i !== winners.length - 1) {
-        winnerText += ",";
-      }
-    }
-    provideWinner(winnerText);
+    provideWinner(winners);
   };
 
   const init = () => {
