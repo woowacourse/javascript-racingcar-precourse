@@ -1,6 +1,6 @@
-import {carNamesInput, racingCountInput} from "../view/input/input.js";
-import {carNamesButton, racingCountButton} from "../view/button/button.js";
-import Toggle from "../toggle/toggle.js";
+import {carNamesInput, racingCountInput} from "../view/input.js";
+import {carNamesButton, racingCountButton} from "../view/button.js";
+import Toggle from "./toggle.js";
 
 export default class Init {
 	constructor() {

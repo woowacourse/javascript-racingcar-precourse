@@ -1,9 +1,9 @@
-import {carNamesInput, racingCountInput} from "./view/input/input.js";
-import {carNamesButton, racingCountButton} from "./view/button/button.js";
-import Car from "./car/car.js";
-import Validation from "./validation/validation.js";
-import Toggle from "./toggle/toggle.js";
-import Init from "./init/init.js";
+import {carNamesInput, racingCountInput} from "./view/input.js";
+import {carNamesButton, racingCountButton} from "./view/button.js";
+import Car from "./core/car.js";
+import Validation from "./utils/validation.js";
+import Toggle from "./core/toggle.js";
+import Init from "./core/init.js";
 
 export default class RacingCarGame {
 	constructor() {
@@ -26,10 +26,11 @@ export default class RacingCarGame {
 
 	continueGameIfValid = () => {
 		const carNames = carNamesInput.value.split(",");
-		let carName;
 
-		for (carName of carNames) {
-			if (!new Validation().isCarNameValid(carName)) return;
+		for (let carName of carNames) {
+			if (!new Validation().isCarNameValid(carName)) {
+				return;
+			}
 		}
 
 		this.carNames = carNames;
@@ -49,7 +50,9 @@ export default class RacingCarGame {
 	playGameIfValid = () => {
 		const racingCount = Number(racingCountInput.value);
 
-		if (!new Validation().isRacingCountValid(racingCount)) return;
+		if (!new Validation().isRacingCountValid(racingCount)) {
+			return;
+		}
 
 		this.racingCount = racingCount;
 
