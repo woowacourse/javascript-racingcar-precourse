@@ -1,3 +1,5 @@
+import { isInt } from './utils/index.js';
+
 export default function RacingCarGame() {
   const racingCountContainer = document.querySelector(
     '.racing-count-container'
@@ -34,7 +36,11 @@ export default function RacingCarGame() {
   const handleClickRacingCountSubmit = () => {
     const input = racingCountInput.value;
     if (input === '' || input === '0') {
-      alert('1 이상의 숫자만 입력 가능합니다.');
+      return alert('1 이상의 숫자만 입력 가능합니다.');
+    }
+
+    if (!isInt(input)) {
+      return alert('정수만 입력 가능 합니다.');
     }
 
     this.racingCount = Number(input);
