@@ -1,0 +1,9 @@
+.js-hidden__div,
+.js-hidden__btn {
+  display: none;
+}
+
+#racing-game-result p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
