@@ -29,6 +29,14 @@ function isCorrectRacingCount(inputRacingCount) {
   return true;
 }
 
+function initializePosition(cars) {
+  for (let idx in cars) {
+    cars[idx].position = 0;
+  }
+
+  return;
+}
+
 export function onBtnRacingCountClicked(inputRacingCount, cars) {
   // 시도 횟수 다시 눌렸을 때 결과 새로 쓰기 위해
   document.getElementById("result").innerHTML = "";
@@ -36,13 +44,13 @@ export function onBtnRacingCountClicked(inputRacingCount, cars) {
     let racingCount = Number(inputRacingCount.value);
     const resultBox = document.getElementById("result-box");
     makeElementBlock(resultBox);
-
+    // 시도 횟수 새로 눌렸을 때, 같은 객체일 경우 position 초기화
+    initializePosition(cars);
     const racingGame = new RacingCarGame(cars);
     for (let i = 0; i < racingCount; i++) {
       racingGame.play();
       showOneResult(cars);
     }
-
     showFinalWinners(cars);
 
     return;
