@@ -1,4 +1,3 @@
-import playGame from '../game/playGame.js';
 import printResult from '../game/printResult.js';
 
 function checkValidRacingCount(racingCount) {

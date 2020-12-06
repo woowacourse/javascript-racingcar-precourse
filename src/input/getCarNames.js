@@ -1,4 +1,14 @@
-import makeNewCars from './makeNewCars.js';
+import playGame from '../game/playGame.js';
+
+function Car(name) {
+  this.name = name;
+}
+
+function makeNewCars(carNamesArray) {
+  const carList = carNamesArray.map((name) => new Car(name));
+  carList.forEach((car) => (car.count = 0));
+  return playGame(carList);
+}
 
 function checkLength(carName) {
   if (carName.length === 0) {
