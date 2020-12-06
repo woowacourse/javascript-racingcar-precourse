@@ -20,7 +20,7 @@ export default function RacingCarGame() {
       return alert('잘못된 자동차 이름입니다.');
     }
 
-    racingCountContainer.style.display = 'block';
+    racingCountContainer.classList.remove('hide');
   };
 
   const isValidCarNames = carNames => {
@@ -46,8 +46,6 @@ export default function RacingCarGame() {
     this.racingCount = Number(input);
   };
 
-  racingCountContainer.style.display = 'none';
-  racingResultContainer.style.display = 'none';
   carNamesSubmit.addEventListener('click', handleClickCarNamesSubmit);
   racingCountSubmit.addEventListener('click', handleClickRacingCountSubmit);
 }
