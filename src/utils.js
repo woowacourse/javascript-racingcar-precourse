@@ -7,6 +7,10 @@ const getMaxVal = (list, val) => {
   );
 };
 
+export const clearValue = (list, val) => {
+  list.forEach((item) => (item[val] = ""));
+};
+
 export const genRandomNumber = () => Math.floor(Math.random() * 10);
 
 export const isEmpty = (input) => (input.length === 0 ? true : false);

@@ -3,13 +3,13 @@ import { genRandomNumber } from "./utils.js";
 export default function Car(name, location) {
   this.name = name;
   this.location = location;
-  this.locationLength = location.length;
+  this.locationLength = 0;
 
   this.move = () => {
     let randomNum = genRandomNumber();
     if (this.isForward(randomNum)) {
       this.location += "-";
-      this.locationLength += 1;
+      this.locationLength += this.location.length;
     }
   };
 
