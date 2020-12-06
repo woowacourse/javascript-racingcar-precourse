@@ -25,12 +25,13 @@ racingGameRecord 객체 예시
   3: {0: {…}, 1: {…}, 2: {…}, 3: {…}}
 */
 
+import variables from "../constants/variables.js";
+
 export default class Render {
   constructor(racingGameResult) {
     const [carNames, racingCount, racingGameRecord, maxScore] = [
       ...racingGameResult,
     ];
-    this.FORWARD_MARK = "-";
     this.lastRoundGameRecord = racingGameRecord[racingCount];
     this.winnerInnerHTML = "";
     this.setWinnerResult(this.lastRoundGameRecord, maxScore);
@@ -55,7 +56,7 @@ export default class Render {
   }
 
   getRepeatScoreDisplay(score) {
-    return this.FORWARD_MARK.repeat(score);
+    return variables.FORWARD_MARK.repeat(score);
   }
 
   gameRecordDisplay(racingCount, racingGameRecord) {

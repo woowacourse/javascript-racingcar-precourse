@@ -13,11 +13,14 @@ const carNameLengthMax = 5;
 const randomNumberMin = 0;
 const randomNumberMax = 9;
 
+const forwardMark = "-";
+
 const variablesObj = {
   CAR_NAME_LENGTH_MIN: carNameLengthMin,
   CAR_NAME_LENGTH_MAX: carNameLengthMax,
   RANDOM_NUMBER_MIN: randomNumberMin,
   RANDOM_NUMBER_MAX: randomNumberMax,
+  FORWARD_MARK: forwardMark,
 };
 
 export default variablesObj;
