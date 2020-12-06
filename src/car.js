@@ -1,31 +1,21 @@
 export default class Car {
   #name
-  #randomRacingNumbers
-  #racingResult
+  #moveCount
 
   constructor(name) {
     this.#name = name;
-    this.#randomRacingNumbers = [];
-    this.#racingResult = '';
+    this.#moveCount = [];
   }
 
   get name() {
     return this.#name;
   }
 
-  get randomRacingNumbers() {
-    return this.#randomRacingNumbers;
+  get moveCount() {
+    return this.#moveCount;
   }
 
-  set randomRacingNumbers(randomNumbers) {
-    this.#randomRacingNumbers = randomNumbers;
-  }
-
-  get racingResult() {
-    return this.#racingResult;
-  }
-
-  plusRacingResult() {
-    this.#racingResult += '-';
+  set moveCount(moveCount) {
+    this.#moveCount = moveCount;
   }
 }
