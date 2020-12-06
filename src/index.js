@@ -12,10 +12,7 @@ export default class RacingCarGame {
   }
 
   setEventListener() {
-    this.el.carNamesForm.addEventListener(
-      'submit',
-      this.handleSubmitCarNames.bind(this),
-    );
+    this.el.carNamesForm.addEventListener('submit', this.handleSubmitCarNames.bind(this));
   }
 
   handleSubmitCarNames(e) {
