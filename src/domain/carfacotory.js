@@ -1,24 +1,19 @@
+import Car from "./car.js";
+
 export default class CarFactory {
   constructor() {
     this.makeCarArray();
-
-    // this.carNameArray = this.makeCarNameArray();
   }
 
   makeCarArray() {
-    this.carArray = this.getCarNames();
+    const _carNameArray = this.getCarNames();
+    this.carArray = [];
 
-    console.log(this.carArray);
-    // if (this.isValidTheNumberOfCar(_carNameArray)) {
-    //   for (let i = 0; i < _carNameArray.length; i++) {
-    //     _carArray.push(new Car(_carNameArray[i]))
-    //   }
-    // } else {
-
-    // }
-
-    // console.log(_carArray);
-
+    if (_carNameArray !== undefined) {
+      for (let i = 0; i < _carNameArray.length; i++) {
+        this.carArray.push(new Car(_carNameArray[i]));
+      }
+    }
   }
 
   getCarNames() {
@@ -61,7 +56,7 @@ export default class CarFactory {
     );
   }
 
-  getCarNameArray() {
+  getCarArray() {
     return this.carArray;
   }
 }

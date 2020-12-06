@@ -13,7 +13,9 @@ export default class RacingCarGame {
 
   runGame() {
     const _carFactory = new CarFactory();
-    const _carNameArray = _carFactory.getCarNameArray();
+    const _carArray = _carFactory.getCarArray();
+
+    console.log(_carArray);
   }
 
 }
