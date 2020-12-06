@@ -24,6 +24,11 @@ export default function RacingCarGame() {
     return racingResult;
   };
 
+  const printResult = function (_racingResult) {
+    document.getElementById('game-result').innerText = _racingResult;
+    document.getElementById('game-result-container').hidden = false;
+  };
+
   carNamesSubmitBtn.addEventListener('click', () => {
     this.carNames = setCarNames();
 
@@ -41,9 +46,9 @@ export default function RacingCarGame() {
       return;
     }
 
-    play(this.carNames, this.racingCount);
+    const racingResult = play(this.carNames, this.racingCount);
 
-    document.getElementById('game-result-container').hidden = false;
+    printResult(racingResult);
   });
 }
 
