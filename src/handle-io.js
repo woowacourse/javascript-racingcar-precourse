@@ -1,4 +1,25 @@
-const getCarInput = (game) => {};
+import { validateCar } from "./validator.js";
+
+const setVisiblity = (elem) => (elem.style.display = "inline");
+
+const setPlayButton = () => {
+  const countElem = document.getElementsByClassName("car-game-container")[0]
+    .children[1];
+  setVisiblity(countElem);
+};
+
+const getCarInput = (game) => {
+  const inputElem = document.getElementById("car-names-input");
+  const inputArr = inputElem.value.split(",");
+
+  if (validateCar(inputArr)) {
+    // create car obj
+    setPlayButton();
+  } else {
+    alert("자동차 이름을 다시 입력하세요.");
+    inputElem.value = "";
+  }
+};
 
 const getCountInput = (game) => {};
 
