@@ -37,13 +37,14 @@ function submitCarNames(e) {
   e.preventDefault();
   const carNames = getCarNames();
   const isValidInputValue = isValidCarNames(carNames);
+  carGameResult.classList.remove("active");
+  racingCountForm.classList.remove("active");
 
   if (isValidInputValue) {
     racingCountForm.classList.add("active");
     return;
   }
 
-  racingCountForm.classList.remove("active");
   alert("자동차 이름을 5자 이하로 콤마로 구분하여 입력해주세요.");
 }
 
