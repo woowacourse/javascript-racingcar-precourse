@@ -14,6 +14,7 @@ export default class RacingGame {
     this.stay = 3;
 
     this.initialSetGameRecord(this.carNames, this.initialGameRound);
+    this.setGameRoundRecord(this.initialGameRound, this.racingCount);
   }
 
   initialSetGameRecord(carNames, gameRound) {
@@ -25,4 +26,15 @@ export default class RacingGame {
       };
     });
   }
+
+  setGameRoundRecord(gameRound, racingCount) {
+    while (gameRound < racingCount) {
+      gameRound++;
+
+      this.racingGameRecord[gameRound] = {};
+      //this.setCarRecord()
+    }
+  }
+
+  //   setCarRecord() {}
 }
