@@ -1,5 +1,6 @@
 import { checkCarName, checkCount } from './checkInput.js';
 import { showCountInput, showResult } from './elementControl.js';
+import Car from './car.js';
 
 export default function RacingCarGame() {
   const carNameInput = document.querySelector('#car-names-input');
@@ -8,6 +9,7 @@ export default function RacingCarGame() {
   const racingCountSubmit = document.querySelector('#racing-count-submit');
   let carNames = [];
   let countValue = 0;
+  let carObjectList = [];
 
   carNameSubmit.addEventListener('click', () => this.afterInputCarName());
   carNameInput.addEventListener('keydown', e => {
@@ -39,10 +41,17 @@ export default function RacingCarGame() {
     if (countChecked) {
       showResult();
       countValue = countChecked;
+      this.setCars(carNames, countValue);
     } else {
       carNameInput.value = '';
       carNameInput.focus();
     }
+  };
+
+  this.setCars = names => {
+    names.forEach(el => {
+      carObjectList.push(new Car(el));
+    });
   };
 }
 
