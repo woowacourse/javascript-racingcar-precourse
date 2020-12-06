@@ -1,11 +1,7 @@
 import { getCarsNameList } from "../utils/inputUtil.js";
-import { blockContainer, showInputError } from "../utils/domUtil.js";
-import {
-  isDuplicatedNames,
-  isEmptyInput,
-  isValidCarNames,
-} from "../utils/validations.js";
-import { ID, MESSAGE } from "../utils/constants.js";
+import { blockContainer } from "../utils/domUtil.js";
+import { isVaildNamesInput } from "../utils/validations.js";
+import { ID } from "../utils/constants.js";
 
 class CarNamesInputContainer {
   constructor({ $target, setPlayers }) {
@@ -26,20 +22,7 @@ class CarNamesInputContainer {
 
     const names = getCarsNameList(this.$input.value.trim());
 
-    if (isEmptyInput(names)) {
-      showInputError(this.$input, MESSAGE.EMPTY_INPUT_ERROR);
-      return;
-    }
-
-    if (!isValidCarNames(names)) {
-      showInputError(this.$input, MESSAGE.NAME_INPUT_ERROR);
-      return;
-    }
-
-    if (isDuplicatedNames(names)) {
-      showInputError(this.$input, MESSAGE.DUPLICATED_INPUT_ERROR);
-      return;
-    }
+    if (!isVaildNamesInput(this.$input, names)) return;
 
     this.setPlayers(names);
     blockContainer(this.$input, target);
