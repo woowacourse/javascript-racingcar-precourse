@@ -10,7 +10,10 @@ export default function RacingCarGame() {
     if (isValidInputNames(carNamesInput.value)) {
       console.log("ok");
     } else {
-      console.log("invalid");
+      alert(
+        "자동차들의 이름을 쉼표(,)로 구분하여 각 5자 이하로 2대 이상 입력해주세요!\n예) east,west,south",
+      );
+      carNamesInput.value = "";
     }
   };
 
@@ -18,7 +21,8 @@ export default function RacingCarGame() {
     if (isValidInputCount(racingCountInput.value)) {
       console.log("ok");
     } else {
-      console.log("invalid");
+      alert("경주 횟수를 입력해주세요!");
+      racingCountInput.value = "";
     }
   };
 
