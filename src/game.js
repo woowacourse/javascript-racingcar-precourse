@@ -1,5 +1,6 @@
 import Car from "./Car.js";
 import { getMaxPropByVal } from "./utils.js";
+import { combineResult } from "./handle-io.js";
 
 export default function RacingCarGame() {
   this.carList = [];
@@ -14,14 +15,17 @@ export default function RacingCarGame() {
   this.setWinner = () => {
     const winner = getMaxPropByVal(this.carList, "name", "locationLength");
     const winnerString = `최종 우승자: ${winner.join(",")}`;
-    console.log(this.carList, winnerString);
+    combineResult(this, winnerString);
+    console.log(this.carList, winnerString, this.resultString);
   };
 
   this.play = (turns) => {
     for (let i = 0; i < turns; i++) {
       this.carList.forEach((car) => {
         car.move();
+        combineResult(this, car.toString());
       });
+      this.resultString += "<br>";
     }
     this.setWinner();
   };

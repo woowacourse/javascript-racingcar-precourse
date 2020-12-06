@@ -33,6 +33,10 @@ const getCountInput = (game) => {
   }
 };
 
+export const combineResult = (game, string) => {
+  game.resultString += string + "<br>";
+};
+
 export const eventHandler = (game) => {
   document.getElementById("car-names-submit").addEventListener("click", () => {
     getCarInput(game);

@@ -14,4 +14,6 @@ export default function Car(name, location) {
   };
 
   this.isForward = (num) => (num >= 4 ? true : false);
+
+  this.toString = () => `<span>${this.name}: ${this.location}</span>`;
 }
