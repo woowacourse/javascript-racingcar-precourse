@@ -1,4 +1,8 @@
 .js-hidden__div {
   display: none;
 }
-/* invisible */
+
+#racing-game-result p {
+  margin-top: 0;
+  margin-bottom: 0;
+}
