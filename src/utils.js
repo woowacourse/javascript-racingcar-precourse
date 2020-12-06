@@ -4,6 +4,7 @@ export const validateNameInput = names => {
   const namesArr = names.split(',');
   const areNamesUnderFive = namesArr.every(name => name.length <= 5);
   const areNamesUnique = namesArr.every((name, i) => namesArr.indexOf(name) === i);
+
   if (!areNamesUnderFive) {
     alert('자동차 이름을 5자리 이하로 입력해 주세요.');
     document.getElementById('car-names-input').focus();
@@ -65,6 +66,7 @@ const getWinners = cars => {
 const printProcess = cars => {
   const resultArea = document.getElementById('result');
   const processArea = document.createElement('p');
+
   for (let car of cars) {
     const currCarString = document.createTextNode(
       `${car.getName()}: ${'-'.repeat(car.getCount())}`,
@@ -72,6 +74,7 @@ const printProcess = cars => {
     processArea.appendChild(currCarString);
     processArea.appendChild(document.createElement('br'));
   }
+
   resultArea.appendChild(processArea);
 };
 
@@ -79,10 +82,12 @@ const printWinners = winners => {
   const resultArea = document.getElementById('result');
   const winnerNode = document.createElement('p');
   winnerNode.appendChild(document.createTextNode('최종 우승자: '));
+
   for (let winner of winners) {
     const winnerText = document.createTextNode(`${winner.getName()}, `);
     winnerNode.appendChild(winnerText);
   }
+
   winnerNode.innerHTML = winnerNode.innerHTML.replace(/,(?=[^,]*$)/, '');
   resultArea.appendChild(winnerNode);
 };
