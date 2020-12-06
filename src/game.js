@@ -14,6 +14,19 @@ export default class RacingCarGame {
     const randomNumber = Math.floor(Math.random() * 10); // 0~9
     return randomNumber;
   }
+
+  runEachRace() {
+    const eachRaceCarPositions = {};
+
+    for (let car of this.racingCars) {
+      const randomNumber = this.generateRandomNumber();
+      car.move(randomNumber);
+
+      eachRaceCarPositions[car.name] = car.position;
+    }
+
+    return eachRaceCarPositions;
+  }
 }
 
 // //test
