@@ -38,7 +38,7 @@ export default class Render {
     this.gameRecordInnerHTML = "";
     this.gameRecordDisplay(racingCount, racingGameRecord);
 
-    // this.setRender();
+    this.setRender();
   }
 
   setWinnerResult(lastRoundGameRecord, maxScore) {
@@ -80,5 +80,8 @@ export default class Render {
     }
   }
 
-  setRender() {}
+  setRender() {
+    const result = document.querySelector("#racing-game-result");
+    result.innerHTML = this.gameRecordInnerHTML + this.winnerInnerHTML;
+  }
 }
