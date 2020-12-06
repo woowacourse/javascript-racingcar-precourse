@@ -8,7 +8,7 @@ export default class CarFactory {
   makeCarArray() {
     this.carArray = this.getCarNames();
 
-    
+    console.log(this.carArray);
     // if (this.isValidTheNumberOfCar(_carNameArray)) {
     //   for (let i = 0; i < _carNameArray.length; i++) {
     //     _carArray.push(new Car(_carNameArray[i]))
@@ -28,9 +28,9 @@ export default class CarFactory {
     if (!this.isValidCarName(_tmpCarNamesArray)) {
       alert("1자 이상 5자 이하의 공백을 포함하지 않는 자동차 이름을 입력해주세요.");
     } else if (!this.isValidTheNumberOfCar(_tmpCarNamesArray)) {
-      alert("2대 이상의 자동차 이름을 입력해주세요.");
+      alert("2대 이상의 중복되지 않은 자동차 이름을 입력해주세요.");
     } else {
-      return _tmpCarNamesArray
+      return _tmpCarNamesArray;
     }
   }
 
@@ -53,10 +53,15 @@ export default class CarFactory {
   }
 
   isValidTheNumberOfCar(tmpCarNamesArray) {
-    return (tmpCarNamesArray.length > 1);
+    const _checkingSet = new Set(tmpCarNamesArray);
+
+    return (
+      _checkingSet.size > 1
+      && (_checkingSet.size === tmpCarNamesArray.length)
+    );
   }
 
   getCarNameArray() {
-    return this.carNameArray;
+    return this.carArray;
   }
 }
