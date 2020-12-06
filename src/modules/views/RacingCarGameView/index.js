@@ -1,4 +1,4 @@
-import { isLongerThan, isNames, isLowerThan, isNumber } from '../../../utils';
+import { isLongerThan, isNames, isNumber } from '../../../utils';
 import { text } from '../../../constants';
 
 export default class RacingCarGameView {
@@ -14,6 +14,8 @@ export default class RacingCarGameView {
     this.carNamesSubmitButtton = carNamesSubmitButtton;
     this.carRacingCountDiv = carRacingCountDiv;
     this.carRacingResultDiv = carRacingResultDiv;
+    this.NAME_MAX_LENGTH = 5;
+    this.COUNT_MIN_VALUE = 1;
     this.init();
   }
 
@@ -77,7 +79,7 @@ export default class RacingCarGameView {
     if (!isNames(names)) {
       return text.WARNING_FOR_WHITE_SPACE;
     }
-    if (isLongerThan(names, 5)) {
+    if (isLongerThan(names, this.NAME_MAX_LENGTH)) {
       return text.WARNING_FOR_NAME_LONGER_THAN_FIVE;
     }
 
@@ -88,7 +90,7 @@ export default class RacingCarGameView {
     if (!isNumber(count)) {
       return text.WARNING_FOR_COUNT_NOT_NUMBER;
     }
-    if (isLowerThan(count, 1)) {
+    if (count < this.COUNT_MIN_VALUE) {
       return text.WARNING_FOR_COUNT_LOWER_THAN_ONE;
     }
 

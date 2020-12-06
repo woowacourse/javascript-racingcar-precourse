@@ -12,14 +12,6 @@ function isHigherThan(number, comparison) {
   return number > comparison;
 }
 
-function isLowerThan(number, comparison) {
-  if (number < comparison) {
-    return true;
-  }
-
-  return false;
-}
-
 function isNumber(count) {
   if (count === '') {
     return false;
@@ -42,4 +34,4 @@ function isNames(names) {
   return true;
 }
 
-export { isHigherThan, isLongerThan, isNames, isLowerThan, isNumber };
+export { isHigherThan, isLongerThan, isNames, isNumber };
