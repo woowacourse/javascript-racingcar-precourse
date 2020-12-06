@@ -1,5 +1,5 @@
-import * as RacingUtil from './racing-util.js';
 import AppContainer from './app-container.js';
+import Util from './util.js';
 import Car from './car.js';
 
 export default class RacingCarGame {
@@ -14,7 +14,12 @@ export default class RacingCarGame {
     if (this.racingCount === 0) return;
 
     this.cars.forEach((car) => {
-      car.randomRacingNumbers = RacingUtil.randomNumbers(this.racingCount);
+      car.moveCount = Array
+          .from(
+              {length: this.racingCount},
+              () => this.isForward(Util.getRandomNumbers()),
+          )
+          .reduce(this.moveCountReducer, []);
     });
 
     this.isEnd = true;
@@ -63,6 +68,24 @@ export default class RacingCarGame {
     if (racingCount < 1) {
       return alert('1 이상의 숫자를 입력해주세요.');
     }
+  }
+
+  moveCountReducer(accumulator, currentValue, i) {
+    const previousValue = accumulator[i-1];
+
+    if (previousValue) {
+      accumulator.push(previousValue + currentValue);
+    } else {
+      accumulator.push(currentValue);
+    }
+
+    return accumulator;
+  }
+
+  isForward(randomNumber) {
+    if (randomNumber >= 4) return 1;
+
+    return 0;
   }
 
   isValidCarNames(carNames) {
