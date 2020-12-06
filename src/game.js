@@ -1,4 +1,5 @@
 import Car from "./car.js";
+import { generateRandomNumber } from "./common/util.js";
 export default class RacingCarGame {
   constructor(carNames, racingCount) {
     this.racingCars = this.createCars(carNames);
@@ -10,16 +11,11 @@ export default class RacingCarGame {
     return cars;
   }
 
-  generateRandomNumber() {
-    const randomNumber = Math.floor(Math.random() * 10); // 0~9
-    return randomNumber;
-  }
-
   runEachRace() {
     const eachRaceCarPositions = {};
 
     for (let car of this.racingCars) {
-      const randomNumber = this.generateRandomNumber();
+      const randomNumber = generateRandomNumber();
       car.move(randomNumber);
 
       eachRaceCarPositions[car.name] = car.position;

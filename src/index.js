@@ -1,5 +1,10 @@
 import RacingCarGame from "./game.js";
-import { validateInputsLength, validateInputsUnique, validateNaturalNumber } from "./validate.js";
+import {
+  validateInputsLength,
+  validateInputsUnique,
+  validateNaturalNumber,
+} from "./common/validate.js";
+import { trimStringSpace, convertStringToArray, convertStringToNumber } from "./common/util.js";
 
 export default class App {
   constructor() {
@@ -22,8 +27,8 @@ export default class App {
   }
 
   parseCarNames(carNamesInput) {
-    const carNamesString = carNamesInput.replace(/ /g, ""); // 공백제거
-    const carNames = carNamesString.split(",");
+    const carNamesString = trimStringSpace(carNamesInput); // 공백제거
+    const carNames = convertStringToArray(carNamesString);
     return carNames;
   }
 
@@ -53,10 +58,6 @@ export default class App {
     return racingCountInput;
   }
 
-  convertInputToNumber(racingCountInput) {
-    return Number(racingCountInput);
-  }
-
   validateRacingCount(number) {
     const isValidNumber = validateNaturalNumber(number);
     if (!isValidNumber) {
@@ -81,7 +82,7 @@ export default class App {
 
   submitRacingCount() {
     const racingCountInput = this.getRacingCountInput();
-    const racingCount = this.convertInputToNumber(racingCountInput);
+    const racingCount = convertStringToNumber(racingCountInput);
     const isValidRacingCount = this.validateRacingCount(racingCount);
 
     if (!isValidRacingCount) {
