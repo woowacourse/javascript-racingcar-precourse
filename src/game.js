@@ -13,6 +13,11 @@ export default function RacingCarGame() {
   this.setWinner = () => {};
 
   this.play = (turns) => {
-    console.log(turns);
+    for (let i = 0; i < turns; i++) {
+      this.carList.forEach((car) => {
+        car.move();
+      });
+    }
+    console.log(this.carList);
   };
 }
