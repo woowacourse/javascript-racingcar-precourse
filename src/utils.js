@@ -2,9 +2,15 @@ import Car from './Car.js';
 
 export const validateNameInput = names => {
   const namesArr = names.split(',');
-  const areNamesValid = namesArr.every(name => name.length <= 5);
-  if (!areNamesValid) {
+  const areNamesUnderFive = namesArr.every(name => name.length <= 5);
+  const areNamesUnique = namesArr.every((name, i) => namesArr.indexOf(name) === i);
+  if (!areNamesUnderFive) {
     alert('자동차 이름을 5자리 이하로 입력해 주세요.');
+    document.getElementById('car-names-input').focus();
+    return false;
+  } else if (!areNamesUnique) {
+    alert('자동차 이름을 중복 없이 입력해 주세요.');
+    document.getElementById('car-names-input').focus();
     return false;
   } else {
     return true;
