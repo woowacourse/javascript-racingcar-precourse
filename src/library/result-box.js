@@ -1,6 +1,6 @@
 export function showOneResult(cars) {
   const result = document.createElement("div");
-  document.getElementById("result-box").appendChild(result);
+  document.getElementById("result").appendChild(result);
 
   for (let idx in cars) {
     result.innerHTML += `<div>
@@ -30,7 +30,7 @@ export function getWinnerNames(names, positions, cars) {
   return winnerNames;
 }
 
-export function makeNamesToStr(winnerNames, cars) {
+export function makeNamesToStr(winnerNames) {
   let winners = ``;
   for (let idx in winnerNames) {
     if (winners.length == 0) {
@@ -51,7 +51,7 @@ export function showFinalWinners(cars) {
 
   const finalWinner = document.createElement("div");
   finalWinner.innerHTML += `<div>최종 우승자: ${winners}</div>`;
-  document.getElementById("result-box").appendChild(finalWinner);
+  document.getElementById("result").append(finalWinner);
 
   return;
 }

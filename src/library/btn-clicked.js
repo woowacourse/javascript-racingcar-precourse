@@ -8,14 +8,12 @@ export function onBtnCarNamesClicked(cars, inputCarNames) {
   const carNames = inputCarNames.value.split(",");
   const correctCarNames = addCorrectCarNames(carNames, inputCarNames);
   const racingBox = document.getElementById("racing-count-box");
-
   if (!correctCarNames.includes(undefined)) {
     makeElementBlock(racingBox);
     correctCarNames.forEach((correctCar) => {
       cars.push(new Car(correctCar));
     });
   }
-
   return;
 }
 
@@ -32,6 +30,8 @@ function isCorrectRacingCount(inputRacingCount) {
 }
 
 export function onBtnRacingCountClicked(inputRacingCount, cars) {
+  // 시도 횟수 다시 눌렸을 때 결과 새로 쓰기 위해
+  document.getElementById("result").innerHTML = "";
   if (isCorrectRacingCount(inputRacingCount)) {
     let racingCount = Number(inputRacingCount.value);
     const resultBox = document.getElementById("result-box");

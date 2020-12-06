@@ -17,11 +17,11 @@ export default function RacingCarGame(cars) {
   };
 }
 
-let cars = [];
-
 const btnCarNames = document.getElementById("car-names-submit");
 const inputCarNames = document.getElementById("car-names-input");
+let cars = [];
 btnCarNames.onclick = function () {
+  cars = []; // 자동차 이름 새로 입력받을 때
   onBtnCarNamesClicked(cars, inputCarNames);
 };
 
