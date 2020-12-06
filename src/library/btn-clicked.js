@@ -1,0 +1,58 @@
+import { showOneResult, showFinalWinners } from "./result-box.js";
+import { makeElementBlock } from "./make-element-block.js";
+import { addCorrectCarNames } from "./car-names.js";
+import Car from "./car.js";
+import RacingCarGame from "../index.js";
+
+export function onBtnCarNamesClicked(cars, inputCarNames) {
+  const carNames = inputCarNames.value.split(",");
+  const correctCarNames = addCorrectCarNames(carNames, inputCarNames);
+  const racingBox = document.getElementById("racing-count-box");
+  if (!correctCarNames.includes(undefined)) {
+    makeElementBlock(racingBox);
+    correctCarNames.forEach((correctCar) => {
+      cars.push(new Car(correctCar));
+    });
+  }
+  return;
+}
+
+function isCorrectRacingCount(inputRacingCount) {
+  let racingCount = Number(inputRacingCount.value);
+  if (racingCount < 1) {
+    alert("올바른 시도 횟수를 입력해 주세요");
+    inputRacingCount.value = "";
+
+    return false;
+  }
+
+  return true;
+}
+
+function initializePosition(cars) {
+  for (let idx in cars) {
+    cars[idx].position = 0;
+  }
+
+  return;
+}
+
+export function onBtnRacingCountClicked(inputRacingCount, cars) {
+  // 시도 횟수 다시 눌렸을 때 결과 새로 쓰기 위해
+  document.getElementById("result").innerHTML = "";
+  if (isCorrectRacingCount(inputRacingCount)) {
+    let racingCount = Number(inputRacingCount.value);
+    const resultBox = document.getElementById("result-box");
+    makeElementBlock(resultBox);
+    // 시도 횟수 새로 눌렸을 때, 같은 객체일 경우 position 초기화
+    initializePosition(cars);
+    const racingGame = new RacingCarGame(cars);
+    for (let i = 0; i < racingCount; i++) {
+      racingGame.play();
+      showOneResult(cars);
+    }
+    showFinalWinners(cars);
+
+    return;
+  }
+}
