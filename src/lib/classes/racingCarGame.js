@@ -1,4 +1,3 @@
-import { GO_AHEAD_MAX_VALUE } from "../variables/constantNumbers.js";
 import InputsControl from "../classes/checkUserInputs.js";
 
 import {
@@ -24,19 +23,10 @@ export default class RacingCarGame {
     this.totalDist = 0;
   }
 
-  _createRandomNumber() {
-    return Math.floor(Math.random() * (GO_AHEAD_MAX_VALUE + 1));
-  }
-
-  _getWinCars() {
-    return this.cars.reduce((acc, car) => {
-      if (car.pos[this.racingCount - 1] === this.totalDist) acc.push(car.name);
-      return acc;
-    }, []);
-  }
-
   async _getResult() {
-    const winCars = this._getWinCars();
+    const winCars = this.cars
+      .filter((car) => car.isWin(this.totalDist, this.racingCount))
+      .map((car) => car.name);
     await renderResult(
       this.$resultContainer,
       this.cars,
@@ -48,7 +38,7 @@ export default class RacingCarGame {
 
   async _moveCars(turn) {
     await this.cars.forEach((car) => {
-      car.play(this._createRandomNumber());
+      car.play();
       this.totalDist = Math.max(car.pos[turn - 1], this.totalDist);
     });
   }
