@@ -65,3 +65,23 @@ class Car {
 - **git의 commit 단위는 앞 단계에서 README.md 파일에 정리한 기능 목록 단위로 추가**한다.
 - [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서 절차를 따라 미션을 제출한다.
 
+
+## 🔥 구현해야할 기능 목록
+- 내부에서 구현되야할 기능
+  - [ ] 사용자 입력값 유효성 확인
+  - [ ] 입력값에 따른 n대의 자동차 생성
+  - [ ] 전진 조건과 정지 조건
+  - [ ] 우승자 조건
+- 화면에 표시되어야할 기능
+  - [ ] Input에 입력하도록 설정
+  - [ ] 올바른 값이면 횟수를 정할 수 있도록 설정
+  - [ ] 잘못된 입력 값을 작성한 경우 alert 표시
+  - [ ] 실행 결과별 내역 출력
+  - [ ] 우승자 출력
+
+
+
+## 👨🏻‍💻 개발환경
+
+- **ESLint** : airbnb-base
+- **CodeFormatter** : Prettier
