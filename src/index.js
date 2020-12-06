@@ -114,4 +114,19 @@ export default class App {
   renderResultContainer(templateHTML) {
     this.gameResultContainer.innerHTML = templateHTML;
   }
+
+  onClick(event) {
+    const target = event.target;
+
+    if (target === this.carNameSubmitButton) {
+      this.submitCarNames();
+    }
+
+    if (target === this.racingCountSubmitButton) {
+      this.submitRacingCount();
+    }
+  }
 }
+
+const app = new App();
+document.addEventListener("click", (event) => app.onClick(event));
