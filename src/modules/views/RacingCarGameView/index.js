@@ -134,7 +134,7 @@ export default class RacingCarGameView {
   }
 
   renderIntermediateResult(cars) {
-    let intermediateResult = ``;
+    let intermediateResult = '';
     cars.forEach(car => {
       let hyphens = '-'.repeat(car.moveForwardDistance);
       intermediateResult += `<p">${car.name} : ${hyphens}</p>`;
@@ -146,11 +146,17 @@ export default class RacingCarGameView {
     `;
   }
 
-  renderWinners(cars) {
+  sortedByDistance(cars) {
     const sortedCars = [...cars];
     sortedCars.sort((a, b) => {
       return b.moveForwardDistance - a.moveForwardDistance;
     });
+
+    return sortedCars;
+  }
+
+  renderWinners(cars) {
+    const sortedCars = this.sortedByDistance(cars);
     const winners = this.decideWinners(sortedCars);
     const winnersString = winners.join(', ');
 
