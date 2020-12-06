@@ -9,7 +9,7 @@ export default function Car(name, location) {
     let randomNum = genRandomNumber();
     if (this.isForward(randomNum)) {
       this.location += "-";
-      this.locationLength += this.location.length;
+      this.locationLength = this.location.length;
     }
   };
 
