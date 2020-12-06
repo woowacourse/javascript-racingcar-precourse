@@ -1,5 +1,15 @@
 import { createRandomNumber } from './create.js'
 
+export function findWinner(cars, carsLength, max) {
+  let i;
+  
+  for (i = 0; i < carsLength; i++) {
+    if (cars[i].result.length >= max) {
+      console.log(cars[i].name)
+    }
+  }
+}
+
 export function findMaxResult(cars, carsLength) {
   let max = 0
   let i;
@@ -10,7 +20,7 @@ export function findMaxResult(cars, carsLength) {
     }
   }
   
-  console.log(max)
+  findWinner(cars, carsLength, max)
 }
 
 export function printProgress(car) {
