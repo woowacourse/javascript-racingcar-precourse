@@ -1,9 +1,11 @@
 import CarNamesInput from './CarNamesInput.js';
 import RacingCountInput from './RacingCountInput.js';
+import GameResult from './GameResult.js';
 
 export default class RacingCarGame {
   carNamesContainer = null;
   racingCountContainer = null;
+  gameResult = null;
 
   constructor(target) {
     this.target = target;
@@ -49,10 +51,6 @@ export default class RacingCarGame {
   }
 
   createResult(target) {
-    const _result = document.createElement('div');
-    _result.innerHTML = `<h4>📄 실행 결과</h4>`;
-    _result.className = 'hidden';
-
-    target.appendChild(_result);
+    this.gameResult = new GameResult(target);
   }
 }
