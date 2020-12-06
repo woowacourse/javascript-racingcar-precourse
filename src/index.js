@@ -49,6 +49,16 @@ export default class RacingCarGame {
   _showErrorAlert(str) {
     alert(str);
   }
+
+  _initValueAndFoucsIn(elementName) {
+    if (elementName === "names") {
+      this.carNamesInput.focus();
+      this.carNamesInput.value = "";
+    } else if ((elementName = "count")) {
+      this.racingCountInput.focus();
+      this.racingCountInput.value = "";
+    }
+  }
 }
 
 new RacingCarGame();
