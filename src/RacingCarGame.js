@@ -49,24 +49,27 @@ export default class RacingCarGame {
 
   submitCountRacing(_carNames) {
     const racingCountSubmit = document.querySelector('#racing-count-submit');
-    let countNumber = 0;
 
     racingCountSubmit.addEventListener(
       'click',
       () => {
-        // TODO: ExceptionHandler로 여기서 예외처리 하기
-        countNumber = this.getCountNumber();
-        this.repeatRunRacing(countNumber, _carNames);
-        this.showResult();
+        this.countRacingClick(_carNames);
       },
       { once: true }
     );
   }
 
-  showResult() {
-    const resultContainer = document.querySelector('#result-container');
+  countRacingClick(_carNames) {
+    const countNumber = this.getCountNumber();
 
-    resultContainer.style.display = 'block';
+    if (this.exceptionHandler.isCountNumber(countNumber)) {
+      this.repeatRunRacing(countNumber, _carNames);
+      this.showResult();
+    } else {
+      alert('알맞은 숫자를 입력해주세요');
+      // [예외] 예외일 경우 재귀로,, 메모리 유출 가능성
+      this.submitCountRacing(_carNames);
+    }
   }
 
   getCountNumber() {
@@ -75,17 +78,18 @@ export default class RacingCarGame {
     return racingCountInput.value;
   }
 
+  showResult() {
+    const resultContainer = document.querySelector('#result-container');
+
+    resultContainer.style.display = 'block';
+  }
+
   repeatRunRacing(_countNumber, _carNames) {
     const carObjArray = this.setCar(_carNames);
 
-    if (this.exceptionHandler.isCountNumber(_countNumber)) {
-      for (let i = 0; i < _countNumber; i++) {
-        this.runRacing(carObjArray);
-        this.spaceHTML();
-      }
-    } else {
-      alert('알맞은 숫자를 입력해 주세요');
-      // TODO: 시도횟수가 예외일 때 다시 클릭했을 때 실행되게끔 예외처리
+    for (let i = 0; i < _countNumber; i++) {
+      this.runRacing(carObjArray);
+      this.spaceHTML();
     }
     console.log(carObjArray); // TODO: 결과 출력
   }
@@ -139,3 +143,4 @@ export default class RacingCarGame {
 }
 
 // TODO: 함수 단위 기능별로 쪼개기.
+// TODO: _carNames의 반복... > constructor로 올려버리기.
