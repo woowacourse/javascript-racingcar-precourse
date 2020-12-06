@@ -1,4 +1,5 @@
 import Car from "./Car.js";
+import { getMaxPropByVal } from "./utils.js";
 
 export default function RacingCarGame() {
   this.carList = [];
@@ -10,7 +11,10 @@ export default function RacingCarGame() {
     });
   };
 
-  this.setWinner = () => {};
+  this.setWinner = () => {
+    console.log(this.carList);
+    getMaxPropByVal(this.carList, "name", "locationLength");
+  };
 
   this.play = (turns) => {
     for (let i = 0; i < turns; i++) {
@@ -18,6 +22,6 @@ export default function RacingCarGame() {
         car.move();
       });
     }
-    console.log(this.carList);
+    this.setWinner();
   };
 }
