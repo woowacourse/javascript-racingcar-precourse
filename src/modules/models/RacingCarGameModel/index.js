@@ -47,7 +47,7 @@ export default class RacingCarGameModel {
 
   notifyChange() {
     this.subscriber.forEach(subscriber => {
-      subscriber.updateChange(this); // 후에 vm에 updateChange 추가
+      subscriber.updateChange(this);
     });
   }
 

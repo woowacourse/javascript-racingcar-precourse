@@ -15,10 +15,6 @@ export default class RacingCarGameViewModel {
     this.subscribeModel(this.racingCarGameModel);
   }
 
-  subscribeModel(target) {
-    target.registerViewModels(this);
-  }
-
   setProxy() {
     return new Proxy(this, {
       get(target, property) {
@@ -27,50 +23,33 @@ export default class RacingCarGameViewModel {
 
       set(target, property, value) {
         if (property === '_carInstances') {
-          return target.setInstances(target, property, value);
+          target.racingCarGameModel[property] = value;
         }
         if (property === '_racingCount') {
-          return target.setRacingCountAndGameContinue(target, property, value);
+          target.racingCarGameModel[property] = value;
         }
+
+        return true;
       },
     });
   }
 
-  setInstances(target, property, names) {
-    const instances = names.map(name => {
-      return new Car(name);
-    });
-    target._carInstances = instances;
-
-    return true;
-  }
-
-  setRacingCountAndGameContinue(target, property, count) {
-    target._racingCount = count;
-
-    while (target._racingCount) {
-      target.gameContinue();
-    }
-
-    return true;
-  }
-
-  notifyChange() {
-    this.subscriber.forEach(subscriber => {
-      subscriber.updateChange(this);
-    });
+  subscribeModel(target) {
+    target.registerViewModels(this);
   }
 
   registerViews(target) {
     this.subscriber.push(target);
   }
 
-  gameContinue() {
-    this._carInstances.forEach(car => {
-      car.moveForward();
-    });
-    this._racingCount--;
-
+  updateChange(target) {
+    this._carInstances = target._carInstances;
     this.notifyChange();
+  }
+
+  notifyChange() {
+    this.subscriber.forEach(subscriber => {
+      subscriber.updateChange(this);
+    });
   }
 }
