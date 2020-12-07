@@ -1,101 +1,47 @@
-import { Car } from './car.js';
-import { isInt } from './utils/index.js';
 import {
-  racingProgress,
-  racingResult,
-  racingResultHeading,
-} from './templates/index.js';
-import {
-  WRONG_CARNAME_MESSAGE,
-  WRONG_COUNT_MESSAGE,
-} from './constants/index.js';
+  CarNamesContainer,
+  RacingCountContainer,
+  RacingResultContainer,
+} from './components/index.js';
 
 export default function RacingCarGame() {
-  const racingCountContainer = document.querySelector(
-    '.racing-count-container'
-  );
-  const racingResultContainer = document.querySelector(
-    '.racing-result-container'
-  );
-  const carNamesInput = document.getElementById('car-names-input');
-  const carNamesSubmitButton = document.getElementById('car-names-submit');
-  const racingCountInput = document.getElementById('racing-count-input');
-  const racingCountSubmitButton = document.getElementById(
-    'racing-count-submit'
-  );
+  this.state;
+  this.carNamesContainer;
+  this.racingCountContainer;
+  this.racingResultContainer;
 
-  this.racingCount = 0;
-  this.cars = [];
+  this.setCars = newCars => {
+    this.state.cars = newCars;
+    this.racingCountContainer.show();
+  };
 
-  const handleClickCarNamesSubmitButton = () => {
-    const carNamesList = carNamesInput.value.split(',');
-    if (!isValidCarNames(carNamesList)) {
-      return alert(WRONG_CARNAME_MESSAGE);
+  this.setRacingCount = newRacingCount => {
+    this.state.racingCount = newRacingCount;
+    this.racing();
+  };
+
+  this.racing = () => {
+    this.clearCarsDistance();
+    this.racingResultContainer.show();
+    for (let i = 0; i < this.state.racingCount; i++) {
+      this.state.cars.forEach(car => car.move());
+      this.racingResultContainer.showRacingProgress();
     }
-    this.cars = carNamesList.map(carName => new Car(carName));
-    racingCountContainer.classList.remove('hide');
+    this.racingResultContainer.showRacingResult();
   };
 
-  const isValidCarNames = carNames => {
-    for (const carName of carNames) {
-      if (carName.length > 5 || carName.trim().length === 0) {
-        return false;
-      }
-    }
-
-    return true;
+  this.clearCarsDistance = () => {
+    this.state.cars.forEach(car => car.clear());
+    this.racingResultContainer.clear();
   };
 
-  const handleClickRacingCountSubmitButton = () => {
-    const input = racingCountInput.value;
-    if (!isValidRacingCount(input)) {
-      return alert(WRONG_COUNT_MESSAGE);
-    }
-    this.racingCount = Number(input);
-    racing();
-  };
-
-  const isValidRacingCount = input => {
-    if (input === '' || input === '0' || !isInt(input) || input < 0) {
-      return false;
-    }
-
-    return true;
-  };
-
-  const racing = () => {
-    racingResultContainer.classList.remove('hide');
-    clearCarsDistance();
-    for (let i = 0; i < this.racingCount; i++) {
-      this.cars.forEach(car => car.move());
-      showRacingProgress();
-    }
-    showRacingResult();
-  };
-
-  const clearCarsDistance = () => {
-    this.cars.forEach(car => car.clear());
-    racingResultContainer.innerHTML = racingResultHeading();
-  };
-
-  const showRacingProgress = () => {
-    racingResultContainer.innerHTML += racingProgress(this.cars);
-  };
-
-  const showRacingResult = () => {
-    const maxDistance = Math.max(...this.cars.map(car => car.distance));
-    const winnerCars = this.cars.filter(car => car.distance === maxDistance);
-    racingResultContainer.innerHTML += racingResult(winnerCars);
-  };
-
-  carNamesSubmitButton.addEventListener(
-    'click',
-    handleClickCarNamesSubmitButton
-  );
-  racingCountSubmitButton.addEventListener(
-    'click',
-    handleClickRacingCountSubmitButton
-  );
+  this.state = { cars: [], racingCount: 0 };
+  this.carNamesContainer = new CarNamesContainer({ setCars: this.setCars });
+  this.racingCountContainer = new RacingCountContainer({
+    state: this.state,
+    setRacingCount: this.setRacingCount,
+  });
+  this.racingResultContainer = new RacingResultContainer({ state: this.state });
 }
 
 new RacingCarGame();
