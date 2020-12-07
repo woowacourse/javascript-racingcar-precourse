@@ -26,6 +26,6 @@ const printBar = (count) => {
 export const showWinner = (winners) => {
   const winner = document.createElement('div');
 
-  winner.innerHTML += `최종 우승자 : ${winners.join(',')}`;
+  winner.innerHTML = `최종 우승자 : ${winners.join(',')}`;
   resultContainer.appendChild(winner);
 };
