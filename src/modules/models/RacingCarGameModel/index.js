@@ -3,6 +3,8 @@ import { Car } from '../../models';
 export default class RacingCarGameModel {
   constructor() {
     this._carInstances = null;
+    this._racingCount = null;
+
     return this.setProxy();
   }
 
@@ -30,5 +32,14 @@ export default class RacingCarGameModel {
     target._carInstances = instances;
 
     return true;
+  }
+
+  gameContinue() {
+    this._carInstances.forEach(car => {
+      car.moveForward();
+    });
+    this._racingCount--;
+
+    // this.notifyChange();
   }
 }
