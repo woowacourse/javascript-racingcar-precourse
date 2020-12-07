@@ -1,4 +1,4 @@
-import { PlayRacingGame } from "./compotents/PlayRacingGame.js";
+import { PlayRacingGame } from "./components/PlayRacingGame.js";
 
 export default function RacingCarGame() {
   new PlayRacingGame();
