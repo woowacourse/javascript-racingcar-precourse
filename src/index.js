@@ -1,5 +1,4 @@
 import { getCarsName, getTimes } from './input.js';
-import { isForward } from './utils.js';
 
 export default function RacingCarGame() {
   const namesSubmitButton = document.getElementById('car-names-submit');
