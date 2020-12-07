@@ -35,15 +35,6 @@ export function increaseCount(game) {
 }
 
 // functions for game playing
-export function createCars(carNameList) {
-    let carList = new Array();
-    for (const carName of carNameList) {
-        let car = new Car(carName);
-        carList.push(car);
-    }
-    return carList;
-}
-
 export function getWinner(carList) {
     let winnerList = new Array();
     let maxCount = 0;

@@ -1,4 +1,6 @@
-import {ERROR, ID} from './constants';
+import Car from './car.js';
+import {ERROR, ID} from './constants.js';
+import { setCarList, setTotalCount } from './utils.js';
 
 function carNamesInput(nameString) {
     let nameList = nameString.split(',');
@@ -19,10 +21,23 @@ export function countNumberOfCars(nameList) {
     return nameList.length;
 }
 
-export function carNameListener(e) {
-    return ID.CAR_INPUT.value;
+export function createCars(carNameList) {
+    let carList = new Array();
+    for (const carName of carNameList) {
+        let car = new Car(carName);
+        carList.push(car);
+    }
+    return carList;
 }
 
-export function racingCountListener(e) {
-    return ID.RACING_COUNT_INPUT.value;
+export function carNamesButtonEvents(game) {
+    let carNamesString = ID.CAR_INPUT.value;
+    let carList = carNamesInput(carNamesString);
+    
+    setTotalCount(game, countNumberOfCars(carList));
+    setCarList(game, carList);
+}
+
+export function racingCountButtonEvents(game) {
+    ID.RACING_COUNT_INPUT.value;
 }

@@ -22,7 +22,6 @@
   - [x] `setCarList` - RacingCarGame의 속성으로 추가.
   - [x] `setWinnerList` - RacingCarGame의 속성으로 추가.
   - [x] `increaseCount` - gameBoard의 nowCount 1 증가.
-  - [x] `createCars` - 입력받은 car **이름** 리스트로 car **객체** 리스트 생성.
   - [x] `getWinner` - car들의 move속성을 비교하여 승자를 리스트로 리턴한다. 
 
 
@@ -37,8 +36,9 @@
     - [x] `carNamesInput` - 입력받은 이름을 쉼표(,)로 구분하여 리스트로 리턴   
     - [x] `isCarNameValid` - 이름이 하나라도 5자를 넘어갈 경우 alert 후 false 리턴  
     - [x] `countNumberOfCars` - 게임에 참가하는 자동차 수 리턴
-    - [x] `carNamesListener` - text 상자로 입력받은 값을 리턴하는 이벤트 리스너   
-    - [x] `racingCountListener` - text 상자로 입력받은 값을 리턴하는 이벤트 리스너 
+    - [x] `createCars` - 입력받은 car **이름** 리스트로 car **객체** 리스트 생성.
+    - [x] `carNamesButtonEvents` - car-names-submit 버튼 연결 함수. carList와 관련된 함수를 연달아 호출한다.
+    - [x] `racingCountButtonEvents` - racing-count-submit 버튼 연결 함수.
 
 - output.js
     - [x] `carStatus` - Car객체의 move를 입력받아 자동차별로 결과 메세지 리턴   
