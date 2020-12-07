@@ -4,7 +4,6 @@ export default class RacingCarGameModel {
   constructor() {
     this._carInstances = null;
     this._racingCount = null;
-    this.subscriber = [];
   }
 
   setCarInstances(names) {
@@ -31,18 +30,10 @@ export default class RacingCarGameModel {
     this.subscriber.push(viewModel);
   }
 
-  notifyChange() {
-    this.subscriber.forEach(subscriber => {
-      subscriber.updateChange(this);
-    });
-  }
-
   gameContinue() {
     this._carInstances.forEach(car => {
       car.moveForward();
     });
     this._racingCount--;
-
-    this.notifyChange();
   }
 }
