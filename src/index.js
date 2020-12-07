@@ -1,5 +1,6 @@
 import RacingCarGame from "./game.js";
 import InputHandler from "./handler/inputHandler.js";
+import OutputHandler from "./handler/outputHandler.js";
 import { convertStringToNumber } from "./common/util.js";
 export default class App {
   constructor() {
@@ -7,6 +8,7 @@ export default class App {
     this.racingCount = 0;
 
     this.inputHandler = new InputHandler();
+    this.outputHandler = new OutputHandler();
 
     this.carNameSubmitButton = document.getElementById("car-names-submit");
     this.racingCountSubmitButton = document.getElementById("racing-count-submit");
@@ -44,39 +46,14 @@ export default class App {
     this.handleGame();
   }
 
-  createRaceHTML(raceCarPositions) {
-    let raceHTML = `<p>`;
-
-    for (let carPosition of raceCarPositions) {
-      for (let carName in carPosition) {
-        raceHTML += `${carName}: ${carPosition[carName]}<br>`;
-      }
-
-      raceHTML += `</p>`;
-    }
-
-    return raceHTML;
-  }
-
-  createWinnerHTML(winners) {
-    const winnerString = winners.join(",");
-    const winnerHTML = `<div> 최종 우승자: ${winnerString} </div>`;
-
-    return winnerHTML;
-  }
-
-  renderResultContainer(templateHTML) {
-    this.gameResultContainer.innerHTML = templateHTML;
-  }
-
   handleGame() {
     const game = new RacingCarGame(this.carNames, this.racingCount);
     const races = game.runAllRaces();
     const winners = game.getWinnerNames();
 
-    const racesHTML = this.createRaceHTML(races);
-    const winnersHTML = this.createWinnerHTML(winners);
-    this.renderResultContainer(racesHTML + winnersHTML);
+    const racesHTML = this.outputHandler.createRaceHTML(races);
+    const winnersHTML = this.outputHandler.createWinnerHTML(winners);
+    this.outputHandler.renderResultContainer(racesHTML + winnersHTML);
   }
 
   onClick(event) {
