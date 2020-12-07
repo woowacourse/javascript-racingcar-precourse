@@ -18,14 +18,6 @@ export default class RacingCarGameModel {
     return [...this._carInstances];
   }
 
-  setRacingCountAndGameContinue(count) {
-    this._racingCount = count;
-
-    while (this._racingCount) {
-      this.gameContinue();
-    }
-  }
-
   registerViewModels(viewModel) {
     this.subscriber.push(viewModel);
   }
@@ -34,6 +26,5 @@ export default class RacingCarGameModel {
     this._carInstances.forEach(car => {
       car.moveForward();
     });
-    this._racingCount--;
   }
 }
