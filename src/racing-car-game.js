@@ -35,8 +35,8 @@ export default class RacingCarGame {
         }
         printResult.printWinner(this.cars);
     }
-    // 자동차 이름 배열에 값이 담겨있는지 확인하는 함수
-    checkCount() {
+    // 입력값들을 확인하는 함수 
+    checkInput() {
         const checkValue = new CheckValue(); 
         const racingCount = document.getElementById('racing-count-input').value;
         const racingResult = document.getElementById('racing-result');
@@ -61,7 +61,7 @@ export default class RacingCarGame {
         const carNamesSubmit = document.getElementById('car-names-submit');
         const racingCountSubmit = document.getElementById('racing-count-submit');
         carNamesSubmit.addEventListener('click', this.setCarNames.bind(this));
-        racingCountSubmit.addEventListener('click', this.checkCount.bind(this));
+        racingCountSubmit.addEventListener('click', this.checkInput.bind(this));
     }
 }
 
