@@ -11,7 +11,7 @@ function isMoved(randomNumber) {
     return ((randomNumber > 4) ? true : false );
 }
 
-function moveCar() {
+export function moveCar() {
     if (isMoved(randomNumberCreater()))
         this.move = this.move + 1;
 }
