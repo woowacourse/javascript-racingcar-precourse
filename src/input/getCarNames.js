@@ -20,8 +20,18 @@ function checkLength(carName) {
   return true;
 }
 
+function checkSpace(carName) {
+  if (carName.includes(' ')) {
+    return false;
+  }
+  return true;
+}
+
 function checkValidCarName(carNamesArray) {
   if (!carNamesArray.every(checkLength)) {
+    return false;
+  }
+  if (!carNamesArray.every(checkSpace)) {
     return false;
   }
   return true;
