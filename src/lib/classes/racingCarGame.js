@@ -60,11 +60,20 @@ export default class RacingCarGame {
     if (WHICH_ERROR === ERROR.NONE) {
       this.nTries = this.racingCountInput.value;
       showElements([this.resultPart]);
+      this.race();
       // console.log(this.cars);
     } else {
       alert(WHICH_ERROR);
       this.clearElementsValue([this.racingCountInput]);
       this.racingCountInput.focus();
+    }
+  }
+
+  race() {
+    for (let i = 0; i < this.nTries; i++) {
+      this.cars.forEach((car) => {
+        car.move();
+      });
     }
   }
 }
