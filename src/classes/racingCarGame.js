@@ -14,6 +14,13 @@ export default class RacingCarGame {
     return progressMark;
   }
 
+  getLastProcessRecord() {
+    const lastRecordIndex = this.raceCourseProcessRecords.length - 1;
+    const lastRecord = this.raceCourseProcessRecords[lastRecordIndex];
+
+    return lastRecord;
+  }
+
   addCarToRaceCourse(car) {
     this.raceCourse.push(car);
   }
@@ -33,16 +40,14 @@ export default class RacingCarGame {
   }
 
   getWinnerCarNameList() {
-    const winnerCarNameList = [];
-    let maxProgressLength = 0;
-    const lastRecordIndex = this.raceCourseProcessRecords.length - 1;
-    const lastRecord = this.raceCourseProcessRecords[lastRecordIndex];
+    let winnerCarNameList = [];
+    let maxProgressLength = -1;
+    const lastRecord = this.getLastProcessRecord();
     Object.keys(lastRecord).forEach((carName) => {
       if (maxProgressLength < lastRecord[carName].length) {
+        winnerCarNameList = [];
         maxProgressLength = lastRecord[carName].length;
       }
-    });
-    Object.keys(lastRecord).forEach((carName) => {
       if (maxProgressLength === lastRecord[carName].length) {
         winnerCarNameList.push(carName);
       }
