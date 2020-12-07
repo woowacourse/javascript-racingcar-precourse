@@ -4,20 +4,16 @@ import {
   appendLineBreakAtEnd,
   requestInputAgain,
 } from './util.js';
-import {
-  ALERT_MESSAGES,
-  racingCountInputElement,
-  gameResultHeader,
-  WINNER_SEPARATOR,
-} from './config.js';
+import { ALERT_MESSAGES, WINNER_SEPARATOR } from './config.js';
 
 export const handleRacingCount = (e) => {
-  const racingCount = racingCountInputElement.value;
+  const racingCountInput = document.querySelectorAll('#app input')[1];
+  const racingCount = racingCountInput.value;
   const error = isErrorRacingCount(racingCount);
   let cars = e.currentTarget.cars;
 
   if (error) {
-    return requestInputAgain(ALERT_MESSAGES[error], racingCountInputElement);
+    return requestInputAgain(ALERT_MESSAGES[error], racingCountInput);
   }
   playGame(racingCount, cars);
 };
@@ -36,11 +32,13 @@ const isErrorRacingCount = (count) => {
 };
 
 const playGame = (racingCount, cars) => {
-  displayElement(`#${gameResultHeader.id}`, 'block');
+  displayElement('#game-result-header', 'block');
+  displayElement('#game-result-content', 'block');
 
   for (let i = 0; i < racingCount; i++) {
     cars.forEach((car) => car.playOneTurn());
     cars.forEach((car) => car.displayCurrentScore());
+    console.log(cars);
     appendLineBreakAtEnd('#game-result-content');
   }
   displayFinalWinner(cars);

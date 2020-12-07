@@ -4,20 +4,19 @@ import {
   CAR_NAME_SEPARATOR,
   CAR_NAME_LENGTH_LIMIT,
   ALERT_MESSAGES,
-  carNamesInputElement,
-  racingCountInputElement,
-  racingCountSubmitButton,
-  racingCountHeader,
 } from './config.js';
 
 export const handleCarNames = () => {
-  const carNames = carNamesInputElement.value.split(CAR_NAME_SEPARATOR);
+  const racingCountSubmit = document.querySelectorAll('#app button')[1];
+  const carNamesInput = document.querySelector('#app input');
+  const carNames = carNamesInput.value.split(CAR_NAME_SEPARATOR);
   const error = isErrorCarNames(carNames);
+
   if (error) {
-    return requestInputAgain(ALERT_MESSAGES[error], carNamesInputElement);
+    return requestInputAgain(ALERT_MESSAGES[error], carNamesInput);
   }
-  showRacingCountTags();
-  racingCountSubmitButton.cars = createCars(carNames);
+  displayRacingCountTags();
+  racingCountSubmit.cars = createCars(carNames);
 };
 
 const isErrorCarNames = (carNames) => {
@@ -45,10 +44,11 @@ const createCars = (carNames) => {
   return cars;
 };
 
-const showRacingCountTags = () => {
-  displayElement(`#${racingCountHeader.id}`, 'block');
-  displayElement(`#${racingCountInputElement.id}`, 'inline-block');
-  displayElement(`#${racingCountSubmitButton.id}`, 'inline-block');
+const displayRacingCountTags = () => {
+  const racingCountInput = document.querySelectorAll('#app input')[1];
 
-  racingCountInputElement.focus();
+  displayElement('#racing-count-header', 'block');
+  displayElement('#racing-count-input', 'inline-block');
+  displayElement('#racing-count-submit', 'inline-block');
+  racingCountInput.focus();
 };
