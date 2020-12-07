@@ -28,11 +28,6 @@ export default class RacingCarGameViewModel {
     this.subscriber.push(target);
   }
 
-  updateChange(target) {
-    this._carInstances = target._carInstances;
-    this.notifyChange();
-  }
-
   setRacingCountAndGameProgress(target, value) {
     target._racingCount = value;
     while (target._racingCount) {
