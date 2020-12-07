@@ -3,6 +3,7 @@ export const MESSAGE = {
   ONLY_NUMBER_ERROR: "숫자만 입력",
   DUPLICATE_ERROR: "이름 중복 안됌",
   HAS_EMPTY_NAME_ERROR: "이름 공백 존재/ ,는 이름 사이에만",
+  NEGATIVE_ERROR: "양수인지",
   CHECK_GUIDE: " 를 확인해주세요.",
 };
 

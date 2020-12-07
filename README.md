@@ -64,6 +64,8 @@ class Car {
 - **git의 commit 단위는 앞 단계에서 README.md 파일에 정리한 기능 목록 단위로 추가**한다.
 - [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서 절차를 따라 미션을 제출한다.
 
+## 파일 구조
+
 ## 💜추가 될 기능
 
 - PlayRacingGane.js
@@ -90,13 +92,13 @@ class Car {
   - [X] handleRacingCountInput: 횟수를 받아와 예외체크하고 race 시작하는 함수
   - [X] getRacingCount: 시도할 횟수를 받아올 함수
     - [X] 예외2 isValidCount: 시도할 횟수의 오류를 검출할 함수
-      - [] 예외2-1 음수 체크
+      - [X] 예외2-1 음수 체크
       - [X] 예외2-2 숫자 체크
 
 - GameResult.js
-  -[X] updateResultPerRound: 1라운드마다 차의 거리를 쟤서 result에 저장하는 함수
-  -[X] updateResultHTMLWithWinners: 모든 시합이 끝나고 winner를 result에 저장하는 함수
-  -[X] render: 결과창을 내보내는 함수
+  - [X] updateResultPerRound: 1라운드마다 차의 거리를 쟤서 result에 저장하는 함수
+  - [X] updateResultHTMLWithWinners: 모든 시합이 끝나고 winner를 result에 저장하는 함수
+  - [X] render: 결과창을 내보내는 함수
 
 - Car.js
 

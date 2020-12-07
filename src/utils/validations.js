@@ -69,9 +69,17 @@ const getErrorMessageOfCountInputs = (count) => {
   if (isNumber(count)) {
     errorMessage += `${MESSAGE.ONLY_NUMBER_ERROR}`;
   }
+  if (isNegative(count)) {
+    errorMessage += `${MESSAGE.NEGATIVE_ERROR}`;
+  }
 
   return errorMessage;
 };
-export const isNumber = (element) => {
+
+const isNumber = (element) => {
   return Number.isNaN(parseInt(element));
+};
+
+const isNegative = (element) => {
+  return element < 0;
 };
