@@ -11,6 +11,6 @@ function getRaceResult(car) {
   }
 }
 
-export default function race(carList) {
+export default function playRace(carList) {
   carList.forEach((car) => getRaceResult(car));
 }

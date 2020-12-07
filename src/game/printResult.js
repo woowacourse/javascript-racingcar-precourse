@@ -1,4 +1,4 @@
-import race from './race.js';
+import playRace from './playRace.js';
 import getWinner from './getWinner.js';
 
 function resetResult($resultScreen, carList) {
@@ -26,7 +26,7 @@ export default function printResult(carList, racingCount) {
   resetResult($resultScreen, carList);
   $resultScreen.removeAttribute('hidden');
   while (racingCount--) {
-    race(carList);
+    playRace(carList);
     printRaceResult($resultScreen, carList);
   }
   const winner = getWinner(carList);
