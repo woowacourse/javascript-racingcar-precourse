@@ -1,4 +1,5 @@
 import CarNameInput from "./CarNameInput.js";
+import RacingCountInput from "./RacingCountInput.js";
 
 export default class RacingCarGame {
   constructor({ $target }) {
@@ -12,14 +13,27 @@ export default class RacingCarGame {
         $target: this.$carGameContainer,
         updateCarNames: this.updateCarNames,
       }),
+      racingCountInput: new RacingCountInput({
+        $target: this.$carGameContainer,
+        isShow: false,
+      }),
     };
   }
 
-  updateCarNames = (nextCarNames) => {
-    this.setState({ nextCarNames });
+  updateCarNames = ({ isValidCarNames, nextCarNames }) => {
+    isValidCarNames
+      ? this.setState({
+          nextCarNames,
+          nextIsShowRacingCountInput: true,
+        })
+      : this.setState({ nextIsShowRacingCountInput: false });
   };
 
-  setState = ({ nextCarNames }) => {
-    this.carNames = nextCarNames;
+  setState = ({ nextCarNames, nextIsShowRacingCountInput }) => {
+    if (nextCarNames) {
+      this.carNames = nextCarNames;
+    }
+
+    this.components.racingCountInput.setState(nextIsShowRacingCountInput);
   };
 }

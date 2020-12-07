@@ -29,15 +29,14 @@ export default class CarNameInput {
   onSubmitCarNames = () => {
     const $inputCarNames = document.querySelector(`#${ELEMENT_ID.carNamesInput}`);
     const carNames = $inputCarNames.value.split(this.carNameSeparator);
+    const isValidCarNames = this.isValidCarNameLength(carNames);
 
-    if (!this.isValidCarNameLength(carNames)) {
+    if (!isValidCarNames) {
       alert("1자 이상, 5자 이하의 자동차 이름을 콤마로 구분하여 입력해주세요.");
       $inputCarNames.value = "";
-
-      return;
     }
 
-    this.updateCarNames(carNames);
+    this.updateCarNames({ isValidCarNames, nextCarName: carNames });
   };
 
   bindEventListener = () => {
