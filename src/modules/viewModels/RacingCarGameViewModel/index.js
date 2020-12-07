@@ -32,10 +32,6 @@ export default class RacingCarGameViewModel {
     });
   }
 
-  subscribeModel(target) {
-    target.registerViewModels(this);
-  }
-
   registerViews(target) {
     this.subscriber.push(target);
   }
