@@ -24,4 +24,12 @@ export default class Car {
   go() {
     this.position += 1;
   };
+  /**
+   * play one stage
+   */
+  play() {
+    if (this.getNumber() >= 4) {
+      this.go();
+    }
+  }
 }
