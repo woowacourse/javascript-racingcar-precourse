@@ -36,11 +36,11 @@
 - output.js
     - [x] `carStatus` - Car객체의 move를 입력받아 자동차별로 결과 메세지 리턴   
     - [x] `printStatusMessage` - carStatus의 결과를 합쳐서 전체 게임 상황 메세지 리턴 
-    - [ ] `printResultMessage` - 승자 목록을 리스트로 받아서 출력한다.   
+    - [x] `printResultMessage` - 승자 목록을 리스트로 받아서 출력한다.   
 
 - buttons.js
-    - [ ] `carNamesEventListener` - text 상자로 입력받은 값을 리턴하는 이벤트 리스너   
-    - [ ] `racingCountEventListener` - text 상자로 입력받은 값을 리턴하는 이벤트 리스너   
+    - [x] `carNamesGetter` - 'car-names-input' 상자로 입력받은 값을 리턴  
+    - [x] `racingCountGetter` - 'racing-count-input' 상자로 입력받은 값을 리턴   
 
 ## 🎯 기능 요구사항
 
