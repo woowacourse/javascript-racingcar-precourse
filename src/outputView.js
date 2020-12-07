@@ -50,12 +50,12 @@ const switchCountButton = () => {
 }
 
 const resetResultHTMl = () => {
-    resultHTML.innerHTML = "<h4>📄 실행 결과</h4>"
+    resultHTML.innerHTML = "<h4>📄 실행 결과</h4>";
 }
 
 const resetInput = () => {
-    nameInput.value = ""
-    countInput.value = ""
+    nameInput.value = "";
+    countInput.value = "";
 }
 
 export {

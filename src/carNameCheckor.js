@@ -5,6 +5,7 @@ const NAME_LENGTH_LIMIT = 5;
 
 export function makeCarNameIfPossible(carNameinput) {
     const nameArray = carNameinput.split(",");
+    isSameNameExist(nameArray);
     nameArray.forEach(name => isNameValidate(name));
 
     return new Cars(carNameinput);
@@ -37,4 +38,10 @@ const isNameLongerThanFive = (name) => {
     }
 
     return false;
+};
+
+const isSameNameExist = (nameArray) => {
+    if (nameArray.length !== new Set(nameArray).size) {
+        throw "똑같은 이름이 있습니다. 모두 다른 이름으로 해주세요.";
+    }
 };

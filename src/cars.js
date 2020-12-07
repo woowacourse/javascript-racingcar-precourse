@@ -1,5 +1,6 @@
 import { Car } from "./car.js";
 import { restartButton } from "./inputUtil.js";
+
 export class Cars {
     constructor(carNameArray) {
         this.carNameArray = carNameArray.split(",");
@@ -49,6 +50,7 @@ export class Cars {
         HTMLAboutWinner += `${this.winner.join(", ")}`;
         HTMLAboutWinner += `</span>`;
         HTMLAboutWinner += restartButton;
+
         return HTMLAboutWinner;
     }
 
