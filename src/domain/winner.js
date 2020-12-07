@@ -10,9 +10,9 @@ export default class Winner {
   }
 
   findWinner(carArray) {
-    const _maxValue = Math.max.apply(Math, carArray.map((car) => car.position));
-    const _winnerArray = carArray.filter((car) => (car.position === _maxValue));
+    const maxValue = Math.max.apply(Math, carArray.map((car) => car.position));
+    const winnerArray = carArray.filter((car) => car.position === maxValue);
 
-    this.winnerNameArray = _winnerArray.map((car) => car.name);
+    this.winnerNameArray = winnerArray.map((car) => car.name);
   }
 }

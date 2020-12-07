@@ -1,4 +1,11 @@
 import Car from "./car.js";
+import { Element, ElementControl } from "../view/element.js";
+
+const ERROR_MESSAGE_INVALID_CAR_NAME =
+  "1자 이상 5자 이하의 공백을 포함하지 않는 자동차 이름을 입력해주세요.";
+const ERROR_MESSAGE_INVALID_THE_NUMBER_OF_CAR =
+  "2대 이상의 중복되지 않은 자동차 이름을 입력해주세요.";
+const MAXIMUM_NAME_LENGTH = 5;
 
 export default class CarFactory {
   constructor() {
@@ -6,40 +13,44 @@ export default class CarFactory {
   }
 
   makeCarArray() {
-    const _carNameArray = this.getCarNames();
+    const carNameArray = this.getCarNames();
     this.carArray = [];
 
-    if (_carNameArray !== undefined) {
-      for (let i = 0; i < _carNameArray.length; i++) {
-        this.carArray.push(new Car(_carNameArray[i]));
+    if (carNameArray !== undefined) {
+      for (let i = 0; i < carNameArray.length; i++) {
+        this.carArray.push(new Car(carNameArray[i]));
       }
     }
   }
 
   getCarNames() {
-    let _tmpCarNamesArray
-      = document.querySelector("#car-names-input").value.split(",");
+    let tmpCarNamesArray = Element.carNamesInput.value.split(",");
 
-    if (!this.isValidCarName(_tmpCarNamesArray)) {
-      alert("1자 이상 5자 이하의 공백을 포함하지 않는 자동차 이름을 입력해주세요.");
-    } else if (!this.isValidTheNumberOfCar(_tmpCarNamesArray)) {
-      alert("2대 이상의 중복되지 않은 자동차 이름을 입력해주세요.");
+    if (!this.isValidCarName(tmpCarNamesArray)) {
+      alert(ERROR_MESSAGE_INVALID_CAR_NAME);
+      ElementControl.clearCarNamesInput();
+    } else if (!this.isValidTheNumberOfCar(tmpCarNamesArray)) {
+      alert(ERROR_MESSAGE_INVALID_THE_NUMBER_OF_CAR);
+      ElementControl.clearCarNamesInput();
     } else {
-      return _tmpCarNamesArray;
+      return tmpCarNamesArray;
     }
   }
 
   isValidCarName(tmpCarNamesArray) {
-    let _carNameCandidate = "";
+    let carNameCandidate = "";
 
     for (let i = 0; i < tmpCarNamesArray.length; i++) {
-      _carNameCandidate = tmpCarNamesArray[i];
+      carNameCandidate = tmpCarNamesArray[i];
 
-      if (_carNameCandidate.includes(" ")) {
+      if (carNameCandidate.includes(" ")) {
         return false;
       }
 
-      if (_carNameCandidate.length === 0 || _carNameCandidate.length > 5) {
+      if (
+        carNameCandidate.length === 0 ||
+        carNameCandidate.length > MAXIMUM_NAME_LENGTH
+      ) {
         return false;
       }
     }
@@ -48,11 +59,10 @@ export default class CarFactory {
   }
 
   isValidTheNumberOfCar(tmpCarNamesArray) {
-    const _checkingSet = new Set(tmpCarNamesArray);
+    const checkingSet = new Set(tmpCarNamesArray);
 
     return (
-      _checkingSet.size > 1
-      && (_checkingSet.size === tmpCarNamesArray.length)
+      checkingSet.size > 1 && checkingSet.size === tmpCarNamesArray.length
     );
   }
 

@@ -1,4 +1,4 @@
-import RacingCarGame from "./controller/racing-game-controller.js"
+import RacingCarGame from "./controller/racing-game-controller.js";
 import { Element, ElementControl } from "./view/element.js";
 
 export default class App {
@@ -10,16 +10,16 @@ export default class App {
   }
 
   setEventListener() {
-    const _racingCarGame = new RacingCarGame();
-    const _carNamesSubmitElement = Element.carNamesSubmit;
-    const _racingCountSubmitElement = Element.racingCountSubmit;
+    const racingCarGame = new RacingCarGame();
+    const carNamesSubmitElement = Element.carNamesSubmit;
+    const racingCountSubmitElement = Element.racingCountSubmit;
 
-    _carNamesSubmitElement.addEventListener("click", () => {
-      _racingCarGame.handleCarNameInput()
+    carNamesSubmitElement.addEventListener("click", () => {
+      racingCarGame.handleCarNameInput();
     });
 
-    _racingCountSubmitElement.addEventListener("click", () => {
-      _racingCarGame.handleRacingCountInput()
+    racingCountSubmitElement.addEventListener("click", () => {
+      racingCarGame.handleRacingCountInput();
     });
   }
 }

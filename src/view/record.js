@@ -1,5 +1,5 @@
 import Winner from "../domain/winner.js";
-import { Element, ElementControl } from "./element.js"
+import { Element, ElementControl } from "./element.js";
 
 export default class Record {
   constructor() {
@@ -7,11 +7,11 @@ export default class Record {
   }
 
   saveRecord(car) {
-    this.record += `${car.name}: ${'-'.repeat(car.position)}<br>`;
+    this.record += `${car.name}: ${"-".repeat(car.position)}<br>`;
   }
 
   saveLineBreak() {
-    this.record += '<br>';
+    this.record += "<br>";
   }
 
   showRecord() {
@@ -24,6 +24,7 @@ export default class Record {
     let _winnerNameArray = [];
 
     _winnerNameArray = _winner.getWinner(carArray);
-    Element.carGameResultContainer.innerHTML += `최종 우승자: ${_winnerNameArray.join(", ")}`;
+    Element.carGameResultContainer.innerHTML +=
+      `최종 우승자: ${_winnerNameArray.join(", ")}`;
   }
 }
