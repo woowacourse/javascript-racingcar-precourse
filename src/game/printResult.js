@@ -6,14 +6,14 @@ function resetResult($resultScreen, carList) {
   carList.forEach((car) => (car.count = 0));
 }
 
-function raceResultTemplate(car) {
-  return `${car.name}: ${'-'.repeat(car.count)}<br>`;
-}
-
-function printRaceResult(car) {
-  const $resultScreen = document.querySelector('#app > div:last-child');
-
-  $resultScreen.insertAdjacentHTML('beforeend', raceResultTemplate(car));
+function printRaceResult(carList, $resultScreen) {
+  carList.forEach((car) => {
+    $resultScreen.insertAdjacentHTML(
+      'beforeend',
+      `${car.name}: ${'-'.repeat(car.count)}<br>`,
+    );
+  });
+  $resultScreen.insertAdjacentHTML('beforeend', '<br>');
 }
 
 function printFinalResult(winner, $resultScreen) {
@@ -27,8 +27,7 @@ export default function printResult(carList, racingCount) {
   $resultScreen.removeAttribute('hidden');
   while (racingCount--) {
     carList.forEach((car) => race(car));
-    carList.forEach((car) => printRaceResult(car));
-    $resultScreen.insertAdjacentHTML('beforeend', '<br>');
+    printRaceResult(carList, $resultScreen);
   }
   const winner = getWinner(carList);
   printFinalResult(winner, $resultScreen);
