@@ -6,8 +6,20 @@ export default class RacingCarGame {
     this.$carGameContainer.className = "car-game-container";
     $target.append(this.$carGameContainer);
 
+    this.carNames = [];
     this.components = {
-      carNameInput: new CarNameInput({ $target: this.$carGameContainer }),
+      carNameInput: new CarNameInput({
+        $target: this.$carGameContainer,
+        updateCarNames: this.updateCarNames,
+      }),
     };
   }
+
+  updateCarNames = (nextCarNames) => {
+    this.setState({ nextCarNames });
+  };
+
+  setState = ({ nextCarNames }) => {
+    this.carNames = nextCarNames;
+  };
 }
