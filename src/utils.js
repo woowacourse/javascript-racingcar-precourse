@@ -1,39 +1,35 @@
-import { RacingCarGame } from './index.js';
 import Car from './car.js';
 
-export function startGame() {
-    RacingCarGame().nowCount = 0;
+export function startGame(game) {
+    game.nowCount = 0;
 }
 
-export function setTotalCount(totalCount) {
-    this.totalCount = totalCount;
+export function setTotalCount(game, totalCount) {
+    game.totalCount = totalCount;
 }
 
-export function createCars(carNameList) {
+export function createCars(game, carNameList) {
     let carList = new Array();
     for (const carName of carNameList) {
         let car = new Car(carName);
         carList.push(car);
     }
-    this.carList = carList;
+    game.carList = carList;
 }
 
-export function increaseCount() {
-    this.nowCount = this.nowCount + 1;
+export function increaseCount(game) {
+    game.nowCount = game.nowCount + 1;
 }
 
-export function isGameEnd() {
-    return (this.totalCount == this.nowCount);
+export function isGameEnd(game) {
+    return (game.totalCount == game.nowCount);
 }
 
-export function playGame() {
-    // call car list
-    let carList = this.carList;
-    // play 
+export function playGame(carList) {
     for (const car of carList) {
         car.moveCar();
     }
-    // increase 'nowCount'
+
     increaseCount();
 }
 
@@ -42,8 +38,7 @@ export function endGame() {
     printResult(winnerList);
 }
 
-export function getWinner() {
-    let carList = this.carList;
+export function getWinner(carList) {
     let winnerList = new Array();
     let maxCount = 0;
     for (const car of carList) {
