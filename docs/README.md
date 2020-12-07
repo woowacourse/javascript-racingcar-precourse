@@ -7,15 +7,17 @@
 
 ## 📌함수 목록
 - index.js
-    
-    - [ ] `RacingCarGame` - 1판의 게임 생성   
+    - [ ] `RacingCarGame` - 1판의 게임 생성
+      - [ ] nowCount - 현재 분기를 나타내는 속성
+      - [ ] totalCount - 1판이 끝날 때까지의 분기 갯수 
+      - [ ] carList - 게임 진행 중인 Car 객체 리스트
+      - [ ] winnerList - 우승자 Car 객체 리스트 
 
 
 - utils.js
   - [x] `startGame` - RacingCarGame 생성자. nowCount 설정  
-  - [x] `setNumberOfCars` - RacingCarGame 에 numberOfCars 설정
   - [x] `setTotalCount` - RacingCarGame에 totalCount(분기) 설정
-  - [x] `createCars` - 입력받은 car **이름** 리스트로 car **객체** 리스트 생성. -> gameBoard의 속성으로 추가.
+  - [x] `createCars` - 입력받은 car **이름** 리스트로 car **객체** 리스트 생성. -> RacingCarGame의 속성으로 추가.
   - [x] `isGameEnd` - 1판의 게임이 끝났는지 판별. 입력받은 분기만큼의 실행이 끝났을 때 true 리턴  
   - [x] `increaseCount` - gameBoard의 nowCount 1 증가.
   - [x] `playGame` - 한 분기의 게임. nowCount 증가 & 각 자동차의 move 속성 변경.
