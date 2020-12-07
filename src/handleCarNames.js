@@ -1,5 +1,6 @@
 import Car from './car.js';
-import { displayElement, requestInputAgain } from './util.js';
+import { hideRacingCount, hideGameResult } from './index.js';
+import { displayElement, requestInputAgain, initNode } from './util.js';
 import {
   CAR_NAME_SEPARATOR,
   CAR_NAME_LENGTH_LIMIT,
@@ -12,11 +13,20 @@ export const handleCarNames = () => {
   const carNames = carNamesInput.value.split(CAR_NAME_SEPARATOR);
   const error = isErrorCarNames(carNames);
 
+  hidePreviousGameResult();
   if (error) {
     return requestInputAgain(ALERT_MESSAGES[error], carNamesInput);
   }
   displayRacingCountTags();
   racingCountSubmit.cars = createCars(carNames);
+};
+
+const hidePreviousGameResult = () => {
+  const racingCountInput = document.getElementById('racing-count-input');
+
+  initNode(racingCountInput);
+  hideRacingCount();
+  hideGameResult();
 };
 
 const isErrorCarNames = (carNames) => {

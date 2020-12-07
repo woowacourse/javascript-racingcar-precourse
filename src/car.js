@@ -22,4 +22,8 @@ export default class Car {
   displayCurrentScore = () => {
     appendAtEnd('#game-result-content', 'div', `${this.name}: ${this.score}`);
   };
+
+  initScore = () => {
+    this.score = '';
+  };
 }
