@@ -41,6 +41,10 @@ export default class RacingCarGameModel {
     });
   }
 
+  registerViewModels(target) {
+    this.subscriber.push(target);
+  }
+
   gameContinue() {
     this._carInstances.forEach(car => {
       car.moveForward();
