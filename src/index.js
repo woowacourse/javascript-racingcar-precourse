@@ -1,7 +1,2 @@
-export default function RacingCarGame() {
-}
-// export default class RacingCarGame {
-// }
-
-
-new RacingCarGame();
+let firstButton = document.getElementById('#car-names-submit');
+let secondButton = document.getElementById('#racing-count-submit');
