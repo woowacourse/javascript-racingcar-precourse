@@ -1,5 +1,5 @@
 import { Car } from "./car.js";
-
+import { restartButton } from "./inputUtil.js";
 export class Cars {
     constructor(carNameArray) {
         this.carNameArray = carNameArray.split(",");
@@ -21,6 +21,7 @@ export class Cars {
     findWinner() {
         const scoreSheet = this.getCarsResult().sort((a, b) => b[1] - a[1]);
         const index = 0;
+
         this.winner = [];
         this.isChecking = true;
         this.winner.push(scoreSheet[0][0]);
@@ -44,10 +45,10 @@ export class Cars {
     }
 
     makeWinnerHTML() {
-        let HTMLAboutWinner = `<div> 최종우승자 : `;
+        let HTMLAboutWinner = `<span> 최종우승자 : `;
         HTMLAboutWinner += `${this.winner.join(", ")}`;
-        HTMLAboutWinner += `</div>`;
-
+        HTMLAboutWinner += `</span>`;
+        HTMLAboutWinner += restartButton;
         return HTMLAboutWinner;
     }
 

@@ -1,36 +1,47 @@
 import { creatCars, creatRacingCount } from "./inputView.js";
-import { nameButton, countButton } from "./inputUtil.js";
-import { removeCountHTML, removeResultHTML, addResultHTML, addCountHTML, showResultHTML } from "./outputView.js";
+import { nameButton, countButton, chooseRestartButton } from "./inputUtil.js";
+import {
+    removeCountHTML,
+    removeResultHTML,
+    addResultHTML,
+    addCountHTML,
+    showResultHTML,
+    switchCountButton,
+    switchNameButton,
+    resetResultHTMl,
+    resetInput
+} from "./outputView.js";
 
 export class GameStart {
     constructor() {
-        this.gameReady();
+        this.setGame();
+    }
+
+    setGame() {
+        removeCountHTML();
+        removeResultHTML();
+        nameButton.addEventListener("click", () => this.gameReady());
+        countButton.addEventListener("click", () => this.gameStart());
     }
 
     gameReady() {
-        removeCountHTML();
-        removeResultHTML();
-        nameButton.addEventListener("click", () => {
-            try {
-                this.cars = creatCars();
-                this.readyToStartRacing();
-            } catch (error) {
-                alert(error);
-            }
-        });
-    }
-
-    readyToStartRacing() {
-        addCountHTML();
-        countButton.addEventListener("click", () => this.gameStart());
+        try {
+            this.cars = creatCars();
+            addCountHTML();
+            switchNameButton();
+        } catch (error) {
+            alert(error);
+        }
     }
 
     gameStart() {
         try {
             this.count = creatRacingCount();
             addResultHTML();
+            switchCountButton();
             this.play();
             this.renderResult();
+            this.readyToRestart();
         } catch (error) {
             alert(error);
         }
@@ -47,4 +58,15 @@ export class GameStart {
         this.cars.findWinner();
         showResultHTML(this.cars.makeWinnerHTML());
     }
+
+    readyToRestart() {
+        chooseRestartButton().addEventListener("click", () => {
+            resetResultHTMl();
+            resetInput();
+            switchCountButton();
+            removeCountHTML();
+            switchNameButton();
+        });
+    }
+
 }
