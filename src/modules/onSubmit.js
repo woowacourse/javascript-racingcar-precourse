@@ -1,0 +1,27 @@
+import checkInputValid from './inputvalid.js';
+import {$carNameInput, $countInput} from './utils.js';
+import {
+  showCounterElement,
+  showResultElement,
+} from '../elements/showElement.js';
+import {racingCar} from './game.js';
+
+export const onSubmitCarName = (e) => {
+  if (!checkInputValid(e.target, $carNameInput.value)) {
+    return ($carNameInput.value = '');
+  }
+  racingCar.getPlayingCarList($carNameInput.value);
+  showCounterElement();
+
+  return e.target.removeEventListener('click', onSubmitCarName);
+};
+
+export const onSubmitRacingCount = (e) => {
+  if (!checkInputValid(e.target, $countInput.value)) {
+    return ($countInput.value = '');
+  }
+  racingCar.gamePlay($countInput.value);
+  showResultElement();
+
+  return e.target.removeEventListener('click', onSubmitRacingCount);
+};
