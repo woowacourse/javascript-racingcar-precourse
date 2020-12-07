@@ -4,8 +4,6 @@ export class Cars {
     constructor(carNameArray) {
         this.carNameArray = carNameArray.split(",");
         this.carObjectArray = this.carNameArray.map(item => new Car(item));
-        this.winner = [];
-        this.isChecking = true;
     }
 
     makeCarsOneGame() {
@@ -21,25 +19,28 @@ export class Cars {
     }
 
     findWinner() {
-        let scoreSheet = this.getCarsResult().sort((a, b) => b[1] - a[1]);
-        this.index = 0;
+        const scoreSheet = this.getCarsResult().sort((a, b) => b[1] - a[1]);
+        const index = 0;
+        this.winner = [];
+        this.isChecking = true;
         this.winner.push(scoreSheet[0][0]);
+
         while (this.isChecking) {
-            this.isSame(scoreSheet, this.index);
+            this.isSame(scoreSheet, index);
         }
     }
 
-    isSame(array) {
-        if (this.index === array.length - 1) {
+    isSame(array, index) {
+        if (index === array.length - 1) {
             return this.isChecking = false;
         }
 
-        if (array[this.index][1] !== array[this.index + 1][1]) {
+        if (array[index][1] !== array[index + 1][1]) {
             return this.isChecking = false;
         }
 
-        this.index += 1;
-        this.winner.push(array[this.index + 1][0]);
+        this.winner.push(array[index + 1][0]);
+        return this.isSame(array, index + 1)
     }
 
     makeWinnerHTML() {
