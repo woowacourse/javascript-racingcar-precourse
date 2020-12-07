@@ -9,6 +9,7 @@ class CarNamesInput {
 
   initializeDOM() {
     this.carNamesInput = document.getElementById("car-names-input");
+    this.carNamesSubmit = document.getElementById("car-names-submit");
   }
 
   initializeEvents() {

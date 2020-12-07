@@ -1,5 +1,5 @@
 import { MESSAGE } from "../constants/constants.js";
-import { showErrors } from "../utils/handleDom.js";
+import { showErrorMessages } from "../utils/handleDom.js";
 
 const checkNameLengthOverFive = (elements) => {
   for (const element of elements) {
@@ -52,6 +52,26 @@ const getErrorMessagesOfNameInputs = (elements) => {
   return errorMessage;
 };
 
+export const isValidCount = (count) => {
+  const errorMessage = getErrorMessageOfCountInputs(count);
+
+  if (errorMessage !== "") {
+    showErrorMessages(`${errorMessage}${MESSAGE.CHECK_GUIDE}`);
+    return false;
+  } else {
+    return true;
+  }
+};
+
+const getErrorMessageOfCountInputs = (count) => {
+  let errorMessage = "";
+
+  if (isNumber(element)) {
+    errorMessage += `${MESSAGE.ONLY_NUMBER_ERROR}`;
+  }
+
+  return errorMessage;
+};
 export const isNumber = (element) => {
   return Number.isNaN(parseInt(element));
 };
