@@ -35,6 +35,10 @@ export default class RacingCarGameModel {
   //   return true;
   // }
 
+  getCarInstances() {
+    return this._carInstances;
+  }
+
   setCarInstances(cars) {
     const instances = names.map(name => {
       return new Car(name);
