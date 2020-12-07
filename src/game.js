@@ -15,3 +15,16 @@ export function goForward(numTry) {
     document.getElementById('result').innerHTML = document.getElementById('result').innerHTML + '<br />';
   }
 }
+
+export function findWinner(arr) {
+  const winner = new Array();
+  const eachLength = arr.map(x => x.length);
+  const maxNum = Math.max(...eachLength);
+
+  for (let i = 0; i < eachLength.length; i += 1) {
+    if (eachLength[i] === maxNum) {
+      winner.push(instanceOfCars[i].name);
+    }
+  }
+  document.getElementById('result').innerHTML = document.getElementById('result').innerHTML + '최종 우승자: ' + winner;
+}
