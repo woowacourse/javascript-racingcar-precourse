@@ -5,8 +5,12 @@ function getRandomNumber() {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
-export default function race(car) {
+function getRaceResult(car) {
   if (getRandomNumber() > 3) {
     car.count++;
   }
+}
+
+export default function race(carList) {
+  carList.forEach((car) => getRaceResult(car));
 }

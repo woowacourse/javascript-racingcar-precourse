@@ -26,7 +26,7 @@ export default function printResult(carList, racingCount) {
   resetResult($resultScreen, carList);
   $resultScreen.removeAttribute('hidden');
   while (racingCount--) {
-    carList.forEach((car) => race(car));
+    race(carList);
     printRaceResult(carList, $resultScreen);
   }
   const winner = getWinner(carList);
