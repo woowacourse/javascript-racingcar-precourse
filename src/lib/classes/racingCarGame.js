@@ -1,4 +1,5 @@
 import { addIdToElements } from '../utils/documentHandler.js';
+import { ERROR } from '../utils/constants.js';
 
 export default class RacingCarGame {
   constructor() {
@@ -24,7 +25,22 @@ export default class RacingCarGame {
     await addIdToElements();
   }
 
-  getCarNames() {}
+  clearElementsValue(elements) {
+    elements.forEach((element) => {
+      element.value = '';
+    });
+  }
+
+  getCarNames() {
+    const carNames = this.carNamesInput.value.split(',');
+    const WHICH_ERROR = validateCarNamesInput(carNames);
+    if (WHICH_ERROR === ERROR.NONE) {
+    } else {
+      alert(WHICH_ERROR);
+      this.clearElementsValue([this.carNamesInput]);
+      this.carNamesInput.focus();
+    }
+  }
 
   getNumTries() {}
 }
