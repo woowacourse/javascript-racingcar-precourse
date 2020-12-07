@@ -79,7 +79,7 @@ class Car {
 - [X] makeInstances: 각 instance를 생성할 함수
 - [X] getRandomNumber: 랜덤 값 받아올 함수
   -[] 예외3 만약 start값이랑 end값이랑 바뀌어서 들어오면?
-- [X] startRacingGame: 레이싱 게임을 시작하는 함수
+- [X] playRacingGame: 레이싱 게임을 시작하는 함수
 - [X] racingInRound: 한 round 당 random값을 받아 게임을 진행하는 함수
 - [X] getResultString: 한 round 당 결과를 string으로 리턴하는 함수
 - [] 이긴 자동차를 정하는 함수

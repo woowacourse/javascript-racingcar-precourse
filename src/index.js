@@ -1,6 +1,6 @@
-import { CAR_GAME_GUIDE as GAME_GUIDE } from "./constants.js";
-import { Car } from "./Car.js";
-import { getRandomNumber } from "./utils.js";
+import { MESSAGE } from "./constants/constants.js";
+import { Car } from "./classes/Car.js";
+import { getRandomNumber } from "./utils/random.js";
 
 export default function RacingCarGame() {
   const carNamesSubmit = document.getElementById("car-names-submit");
@@ -18,13 +18,13 @@ export default function RacingCarGame() {
 
   this.checkErrorNames = (names) => {
     if (this.checkNameLength(names)) {
-      alert(GAME_GUIDE.CAR_NAME_ERROR);
+      alert(MESSAGE.CAR_NAME_ERROR);
     } else if (this.hasSpaceInName(names)) {
-      alert(GAME_GUIDE.HAME_SPACE);
+      alert(MESSAGE.HAME_SPACE_ERROR);
     } else if (this.isDuplicate(names)) {
-      alert(GAME_GUIDE.IS_DUPLICATE);
+      alert(MESSAGE.IS_DUPLICATE_ERROR);
     } else if (this.hasEmptyName(names)) {
-      alert(GAME_GUIDE.HAS_EMPTY_NAME);
+      alert(MESSAGE.HAS_EMPTY_NAME_ERROR);
     } else {
       const racingCountContainer = document.getElementById(
         "racing-count-container"
@@ -102,7 +102,7 @@ export default function RacingCarGame() {
     } else {
       console.log(racingCount);
       let cars = this.makeInstances();
-      this.startRacingGame(cars, racingCount);
+      this.playRacingGame(cars, racingCount);
     }
   };
 
@@ -117,11 +117,17 @@ export default function RacingCarGame() {
     return cars;
   };
 
-  this.startRacingGame = (cars, racingCount) => {
+  this.playRacingGame = (cars, racingCount) => {
+    let result = "";
+    const resultContainer = document.getElementById("result-container");
+
     for (let i = 0; i < racingCount; i++) {
       this.racingInRound(cars, racingCount);
-      this.getResultString(cars);
+      result = result + this.getResultString(cars) + "</br>";
+      console.log(result);
     }
+    resultContainer.style.visibility = "visible";
+    resultContainer.append(document.createTextNode(result));
   };
 
   this.racingInRound = (cars) => {
@@ -136,9 +142,12 @@ export default function RacingCarGame() {
     let result = ``;
 
     cars.forEach((car) => {
-      result += `${car.name}: ${"-".repeat(`${car.distance}`)}\n`;
+      result += `${car.name}: ${"-".repeat(`${car.distance}`)}`;
     });
+    return result;
   };
+
+  this.getObject;
   carNamesSubmit.addEventListener("click", this.getNamesFromInput);
   racingCountSubmit.addEventListener("click", this.getRacingCount);
 }
