@@ -11,10 +11,12 @@ function getMaxCount(carList) {
 
 export default function getWinner(carList) {
   const maxCount = getMaxCount(carList);
-  return carList.filter((car) => {
+  const winner = carList.filter((car) => {
     if (car.count === maxCount) {
       return true;
     }
     return false;
   });
+
+  return winner.map((car) => car.name).join(', ');
 }

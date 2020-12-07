@@ -16,14 +16,8 @@ function printRaceResult(car) {
   $resultScreen.insertAdjacentHTML('beforeend', raceResultTemplate(car));
 }
 
-function printFinalResult(carList, $resultScreen) {
-  const winner = getWinner(carList);
-  const winnerList = winner.map((car) => car.name).join(', ');
-
-  $resultScreen.insertAdjacentHTML(
-    'beforeend',
-    `최종우승자 : ${winnerList} <br>`,
-  );
+function printFinalResult(winner, $resultScreen) {
+  $resultScreen.insertAdjacentHTML('beforeend', `최종우승자 : ${winner} <br>`);
 }
 
 export default function printResult(carList, racingCount) {
@@ -36,5 +30,6 @@ export default function printResult(carList, racingCount) {
     carList.forEach((car) => printRaceResult(car));
     $resultScreen.insertAdjacentHTML('beforeend', '<br>');
   }
-  printFinalResult(carList, $resultScreen);
+  const winner = getWinner(carList);
+  printFinalResult(winner, $resultScreen);
 }
