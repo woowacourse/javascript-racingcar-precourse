@@ -1,4 +1,4 @@
-import { setEventListener } from './elementControl.js';
+import { setEventListener, showRacing } from './elementControl.js';
 import { random } from './utils.js';
 import Car from './car.js';
 
@@ -7,11 +7,12 @@ export default function RacingCarGame() {
   this.countValue = 0;
   this.carObjectList = [];
 
-  this.moveCars = (cars, count) => {
-    for (let i = 0; i < count; i++) {
-      for (let car of cars) {
+  this.moveCars = () => {
+    for (let i = 0; i < this.countValue; i++) {
+      for (let car of this.carObjectList) {
         stopOrGo(car);
       }
+      showRacing(this.carObjectList);
     }
   };
 
@@ -19,7 +20,7 @@ export default function RacingCarGame() {
     this.carNames.forEach(el => {
       this.carObjectList.push(new Car(el));
     });
-    this.moveCars(this.carObjectList, this.countValue);
+    this.moveCars();
   };
 
   const stopOrGo = car => {

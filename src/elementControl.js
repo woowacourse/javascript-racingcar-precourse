@@ -4,6 +4,8 @@ const carNameInput = document.querySelector('#car-names-input');
 const carNameSubmit = document.querySelector('#car-names-submit');
 const racingCountInput = document.querySelector('#racing-count-input');
 const racingCountSubmit = document.querySelector('#racing-count-submit');
+const racingCountDiv = document.querySelector('#racing-count-div');
+const resultDiv = document.querySelector('#result');
 
 const focusInput = target => {
   document.querySelector(target).focus();
@@ -16,7 +18,7 @@ const clearValue = target => {
 const afterInputCarName = game => {
   const carNameChecked = checkCarName(carNameInput.value);
   if (carNameChecked) {
-    showCountInput();
+    showCountInputDiv();
     game.carNames = game.carNames.concat(carNameChecked);
     focusInput('#racing-count-input');
   } else {
@@ -28,7 +30,7 @@ const afterInputCarName = game => {
 const afterInputCount = game => {
   const countChecked = checkCount(racingCountInput.value);
   if (countChecked) {
-    showResult();
+    showResultDiv();
     game.countValue = countChecked;
     game.setCars();
   } else {
@@ -52,22 +54,23 @@ export const setEventListener = game => {
   });
 };
 
-export const showCountInput = () => {
-  const racingCountDiv = document.querySelector('#racing-count-div');
-  const carNameInput = document.querySelector('#car-names-input');
-  const carNameSubmit = document.querySelector('#car-names-submit');
-
+const showCountInputDiv = () => {
   racingCountDiv.style.display = 'block';
   carNameInput.disabled = true;
   carNameSubmit.disabled = true;
 };
 
-export const showResult = () => {
-  const resultDiv = document.querySelector('#result');
-  const racingCountInput = document.querySelector('#racing-count-input');
-  const racingCountSubmit = document.querySelector('#racing-count-submit');
-
+const showResultDiv = () => {
   resultDiv.style.display = 'block';
   racingCountInput.disabled = true;
   racingCountSubmit.disabled = true;
+};
+
+export const showRacing = result => {
+  const racingResult = document.createElement('p');
+  for (let res of result) {
+    const distace = '-'.repeat(res.distance);
+    racingResult.innerHTML += `${res.name}: ${distace}<br />`;
+  }
+  resultDiv.appendChild(racingResult);
 };
