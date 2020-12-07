@@ -1,13 +1,12 @@
 import GetCarNames from './get-car-names.js?ver=6';
-import Car from './car.js?ver=10';
-import PrintResult from './print-result.js?ver=15';
+import Car from './car.js?ver=13';
+import PrintResult from './print-result.js?ver=37';
 import CheckValue from './check-value.js?ver=4';
 
 export default class RacingCarGame {
     constructor() {
         this.carNamesArr;
         this.carArr;
-        this.racingResult = document.getElementById('racing-result');
         this.RANDOM_NUM_MAX = 9;
         this.addClickEventListener();
     }
@@ -19,8 +18,6 @@ export default class RacingCarGame {
                 car.advance();
             }
         });
-        const printResult = new PrintResult(this.carArr, this.racingResult);
-        printResult.printGameResult();
     }
     // 게임을 진행할 자동차 인스턴스 배열을 만드는 함수
     setRacingCars() {
@@ -29,26 +26,26 @@ export default class RacingCarGame {
         );
     }
     // 사용자가 입력한 횟수만큼 게임을 반복하는 함수 
-    repeatRacingCarGame() {
+    repeatRacingCarGame(racingResult) {
         const racingCount = document.getElementById('racing-count-input').value;
+        const printResult = new PrintResult(racingResult);
         this.setRacingCars();
         for(let i = 0; i < racingCount; i++) {
             this.playRacingCarGame();
+            printResult.printGameResult(this.carArr);
         }
-    }
-    // 실행 결과 부분을 초기화하는 함수
-    resetResult() {
-        this.racingResult.innerHTML = "";
+        printResult.printWinner(this.carArr);
     }
     // 자동차 이름 배열에 값이 담겨있는지 확인하는 함수
     checkCarNamesArr() {
         const checkValue = new CheckValue(this.carNamesArr); 
+        const racingResult = document.getElementById('racing-result');
         if(checkValue.isEmpty()) {
             alert(`자동차 이름을 먼저 입력해주세요😊`);
         }
         else {
-            this.resetResult();
-            this.repeatRacingCarGame();
+            racingResult.innerHTML = "";
+            this.repeatRacingCarGame(racingResult);
         }
     }
     // 자동차 이름을 받아와 배열에 저장하는 함수
