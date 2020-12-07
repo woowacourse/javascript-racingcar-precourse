@@ -2,6 +2,7 @@ import CarNamesInput from './CarNamesInput.js';
 import RacingCountInput from './RacingCountInput.js';
 import GameResult from './GameResult.js';
 import Car from './Car.js';
+import Validation from './Validation.js';
 
 export default class RacingCarGame {
   carNamesContainer = null;
@@ -12,6 +13,8 @@ export default class RacingCarGame {
 
   constructor(target) {
     this.target = target;
+    this.validation = new Validation();
+
     this.createHeader(target);
     this.createDescription(target);
     this.createCarGameContainer(target);
@@ -50,13 +53,23 @@ export default class RacingCarGame {
     });
   }
 
+  cleanUpInput(element) {
+    element.value = '';
+    element.focus();
+  }
+
   handleClickCarNamesSubmit() {
     const _input = document.getElementById('car-names-input');
     const _carNames = _input.value;
     this.carNamesArray = _carNames.split(',');
 
-    this.cars = this.carNamesArray.map((name) => new Car(name));
-    this.racingCountContainer.show();
+    if (this.validation.isPossibleCarNames(this.carNamesArray)) {
+      this.cars = this.carNamesArray.map((name) => new Car(name));
+      this.racingCountContainer.show();
+      return;
+    }
+    this.validation.renderError();
+    this.cleanUpInput(_input);
   }
 
   handleClickRacingCountSubmit() {
