@@ -1,6 +1,3 @@
-// export default function RacingCarGame() {
-// }
-
 import Car from "./Car.js";
 
 export default class RacingCarGame {
@@ -77,7 +74,7 @@ export default class RacingCarGame {
     const lastRacingInfo = eachRoudRacingInfo[eachRoudRacingInfo.length - 1];
     const winners = this._getWinners(lastRacingInfo);
 
-    resultHtml += `<div>${winners}</div>`;
+    resultHtml += `<div>최종 우승자: ${winners}</div>`;
 
     const template = document.createElement("template");
     template.innerHTML = resultHtml;
@@ -113,21 +110,14 @@ export default class RacingCarGame {
     return unvalidatedStringArr.length > 0 ? false : true;
   }
 
-  _validateCount(count) {
-    return Number(count) === NaN ? false : true;
-  }
-
   _showErrorAlert(str) {
     alert(str);
   }
 
-  _initValueAndFoucsIn(elementName) {
+  _initValueAndFoucsIn(elementName = "names") {
     if (elementName === "names") {
       this.carNamesInput.focus();
       this.carNamesInput.value = "";
-    } else if ((elementName = "count")) {
-      this.racingCountInput.focus();
-      this.racingCountInput.value = "";
     }
   }
 }

@@ -68,11 +68,11 @@ class Car {
 
 - 랜덤 값 생성(makeRandomNumber)
 - 자동차 이동 (move)
-- 자동차 이동거리 구하기 (getCarInfo)
+- 자동차 정보 가져오기 (getCarInfo)
+
 - 잘못된 입력의 경우 alert을 통해 알림(showErrorAlert)
 - 자동차 입력값 검증 (validateCarNames)
 - 자동차 입력 input 값 초기화 및 포커스인 (initValueAndFoucsIn)
-- 횟수 입력값 검증 (validateCount)
 - 자동차 생성(makeCars)
 - #car-names-submit 관련 이벤트(carSubmitEvent)
 - #racing-count-submit 관련 이벤트(countSubmitEvent)
