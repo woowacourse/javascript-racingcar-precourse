@@ -30,6 +30,15 @@ export default class Validation {
       this.isNotDuplicate(carNamesArray);
   }
 
+
+  isPossibleRacingCount(racingCount) {
+    if (/\D/g.test(racingCount)) {
+      this.setErrorMessage('숫자가 아닌 문자가 포함되어 있습니다. 다시 입력해주세요.');
+      return false;
+    }
+    return true;
+  }
+
   renderError() {
     alert(this.errorMessage);
   }

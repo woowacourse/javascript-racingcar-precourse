@@ -5,6 +5,7 @@ export default class RacingCountInput {
     this.target = target;
     this.createRacingCountContainer(target);
     this.addSubmitEvent(onClick);
+    this.addKeyDownEventForPreventInvaildInputs();
   }
 
   createRacingCountContainer(target) {
@@ -24,6 +25,19 @@ export default class RacingCountInput {
     const _submit = document.getElementById('racing-count-submit');
 
     _submit.addEventListener('click', onClick);
+  }
+
+  addKeyDownEventForPreventInvaildInputs() {
+    const _vaildInputs = ['Backspace', 'Delete', 'Tab'];
+    const handleKeyDown = (event) => {
+      if (_vaildInputs.includes(event.key)) {
+        return true;
+      }
+      return !isNaN(Number(event.key));
+    };
+    const _input = document.getElementById('racing-count-input');
+
+    _input.onkeydown = handleKeyDown;
   }
 
   show() {

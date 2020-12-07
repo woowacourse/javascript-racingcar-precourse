@@ -53,6 +53,10 @@ export default class RacingCarGame {
     });
   }
 
+  createResult(target) {
+    this.gameResult = new GameResult(target);
+  }
+
   cleanUpInput(element) {
     element.value = '';
     element.focus();
@@ -73,10 +77,14 @@ export default class RacingCarGame {
   }
 
   handleClickRacingCountSubmit() {
-    this.gameResult.show();
-  }
+    const _input = document.getElementById('racing-count-input');
+    const _racingCount = _input.value;
 
-  createResult(target) {
-    this.gameResult = new GameResult(target);
+    if (this.validation.isPossibleRacingCount(_racingCount)) {
+      this.racingCount = _racingCount;
+      return;
+    }
+    this.validation.renderError();
+    this.cleanUpInput(_input);
   }
 }
