@@ -1,5 +1,6 @@
 import { makeCars } from "./utils.js";
 import { showCountSubmitForm, showResultForm } from "./uiManager.js";
+import RacingCarGame from "../Components/racingCarGame.js";
 
 function onNameSubmit() {
   let alertMsg = verifyNameInput(document.getElementById("car-names-input").value);
@@ -44,20 +45,7 @@ function onRoundSubmit() {
   }
 
   let round = document.getElementById("racing-count-input").value;
-
-  // printRace(cars, round)
-
-  for (let i = 0; i < round; i++) {
-    for (let j = 0; j < cars.length; j++) {
-      cars[j].update();
-      document.getElementById("print-result-form").innerHTML += `${cars[j].name}: ${cars[j].move}<br>`;
-    }
-    document.getElementById("print-result-form").innerHTML += "<br />";
-  }
-
-  let winner = this.play(cars);
-  document.getElementById("print-result-form").innerHTML += `최종 우승자: ${winner}`;
-  showResultForm();
+  printRace(cars, round, this.play);
 }
 
 function verifyRoundInput(input) {
@@ -86,18 +74,19 @@ function countMoves(cars) {
   return winner;
 }
 
-// function printRace(cars, round) {
-//   for (let i = 0; i < round; i++) {
-//     for (let j = 0; j < cars.length; j++) {
-//       cars[j].update();
-//       document.getElementById("print-result-form").innerHTML += `${cars[j].name}: ${cars[j].move}<br>`;
-//     }
-//     document.getElementById("print-result-form").innerHTML += "<br />";
-//   }
+function printRace(cars, round, playFunc) {
+  const game = new RacingCarGame();
+  for (let i = 0; i < round; i++) {
+    for (let j = 0; j < cars.length; j++) {
+      cars[j].update();
+      document.getElementById("print-result-form").innerHTML += `${cars[j].name}: ${cars[j].move}<br>`;
+    }
+    document.getElementById("print-result-form").innerHTML += "<br />";
+  }
 
-//   let winner = this.play(cars);
-//   document.getElementById("print-result-form").innerHTML += `최종 우승자: ${winner}`;
-//   showResultForm();
-// }
+  let winner = playFunc(cars);
+  document.getElementById("print-result-form").innerHTML += `최종 우승자: ${winner}`;
+  showResultForm();
+}
 
 export { verifyNameInput, onNameSubmit, onRoundSubmit, countMoves };
