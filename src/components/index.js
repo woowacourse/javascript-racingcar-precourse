@@ -1,3 +1,3 @@
-export { default as CarNamesContainer } from './carNamesContainer.js';
-export { default as RacingCountContainer } from './racingCountContainer.js';
-export { default as RacingResultContainer } from './racingResultContainer.js';
+export { default as CarNamesContainer } from './CarNamesContainer.js';
+export { default as RacingCountContainer } from './RacingCountContainer.js';
+export { default as RacingResultContainer } from './RacingResultContainer.js';

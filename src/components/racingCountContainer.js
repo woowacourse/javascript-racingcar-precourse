@@ -11,6 +11,7 @@ export default function RacingCountContainer({ setRacingCount }) {
     if (!this.isValidRacingCount(input)) {
       return alert(WRONG_COUNT_MESSAGE);
     }
+
     setRacingCount(Number(input));
   };
 

@@ -1,5 +1,8 @@
-import { racingResultHeading } from '../templates/index.js';
-import { racingProgress, racingResult } from '../templates/index.js';
+import {
+  racingProgress,
+  racingResult,
+  racingResultHeading,
+} from '../templates/index.js';
 
 export default function RacingResultContainer({ state }) {
   this.racingResultContainer = document.querySelector(

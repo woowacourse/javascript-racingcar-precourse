@@ -4,7 +4,6 @@ import { WRONG_CARNAME_MESSAGE } from '../constants/index.js';
 export default function CarNamesContainer({ setCars }) {
   this.carNamesInput = document.getElementById('car-names-input');
   this.carNamesSubmitButton = document.getElementById('car-names-submit');
-  this.racingCountContainer = document.querySelector('.racing-count-container');
 
   this.handleClickCarNamesSubmitButton = () => {
     const carNamesList = this.carNamesInput.value.split(',');
