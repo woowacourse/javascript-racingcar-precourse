@@ -9,36 +9,38 @@
 - index.js
     
     - [ ] `RacingCarGame` - 1판의 게임 생성   
-    - [ ] `setNumberOfCars` - RacingCarGame객체의 number-of-cars값 설정   
-    - [ ] `getNumberOfCars` - RacingCarGame객체의 number-of-cars값 리턴   
-    - [ ] `setQuarter` - RacingCarGame객체의 quarter값 설정   
-    - [ ] `getQuarter` - RacingCarGame객체의 quarter값 리턴   
-    - [ ] `isGameEnd` - 1판의 게임이 끝났는지 판별. 입력받은 분기만큼의 실행이 끝났을 때 true 리턴   
+
 
 - utils.js
+  - [ ] `gameBoard` - 게임 보드 생성자. numberOfCars, totalCount, nowCount 설정  
+  - [ ] `createCars` - 입력받은 car 이름 리스트로 car 객체 생성 
+  - [x] `isGameEnd` - 1판의 게임이 끝났는지 판별. 입력받은 분기만큼의 실행이 끝났을 때 true 리턴   
+  - [ ] `startGame` - 한 분기의 게임. nowCount 증가 & 각 자동차의 move 속성 변경.
+  - [ ] `endGame` - getWinner을 호출하고 printResult을 호출한다. 
+  - [ ] `getWinner` - car들의 move속성을 비교하여 승자를 리스트로 리턴한다. 
+
+
+- car.js
     - [ ] `Car` - Car 객체 생성자. Car의 name값 설정, move는 0, winner은 false를 초기값으로 설정   
     - [ ] `randomNumberCreator` - 0, 9사이의 random값 생성   
     - [ ] `isMoved`  - Car의 전진 여부. 숫자를 입력받아 4이상일 경우 true, 3이하면 false   
     - [ ] `setCarMove` - isMoved의 결과에 따라 Car객체의 move값 변화   
-    - [ ] `getCarMove` - Car객체의 move값 리턴   
-    - [ ] `setCarWinner` - Car객체의 winner값 설정   
-    - [ ] `getCarWinner` - Car객체의 winner값 리턴   
+    - [ ] `getCarMove` - Car객체의 move값 리턴    
 
 - input.js
     - [ ] `carNamesInput` - 입력받은 이름을 쉼표(,)로 구분하여 리스트로 리턴   
-    - [ ] `isCarNameValid` - 이름이 하나라도 5자를 넘어갈 경우 alert   
-    - [ ] `racingCountInput` - 입력받은 값만큼 RacingCarGame의  quarter 속성 변경   
+    - [ ] `isCarNameValid` - 이름이 하나라도 5자를 넘어갈 경우 alert 후 false 리턴  
+    - [ ] `racingCountInput` - 입력받은 값만큼 RacingCarGame의 quarter 속성 변경   
 
 - output.js
     - [ ] `carStatus` - Car객체의 moved를 입력받아 자동차별로 움직인 거리를 리턴   
-    - [ ] `gameStatus` - carStatus의 결과를 합쳐서 전체 게임 상황을 출력   
+    - [ ] `createStatusMessage` - carStatus의 결과를 합쳐서 전체 게임 상황을 출력   
     - [ ] `creatResultMessage` - Car객체의 winner값을 검사하여 true인 객체만으로 결과 메세지 생성   
-    - [ ] `printResult` - 승리자 출력   
+    - [ ] `printResult` - 승자 목록을 리스트로 받아서 출력한다.   
 
 - buttons.js
     - [ ] `carNamesEventListener` - text 상자로 입력받은 값을 리턴하는 이벤트 리스너   
     - [ ] `racingCountEventListener` - text 상자로 입력받은 값을 리턴하는 이벤트 리스너   
-------
 
 ## 🎯 기능 요구사항
 
