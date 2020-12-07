@@ -1,4 +1,4 @@
-import { setEventListener, showRacing } from './elementControl.js';
+import { setEventListener, showRacing, showWinners } from './elementControl.js';
 import { random, findMaxDistance, findSameValue } from './utils.js';
 import Car from './car.js';
 

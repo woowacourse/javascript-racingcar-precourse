@@ -74,3 +74,14 @@ export const showRacing = result => {
   }
   resultDiv.appendChild(racingResult);
 };
+
+export const showWinners = winners => {
+  const winnerResult = document.createElement('p');
+  let winnerHTML = '최종 우승자: ';
+  for (let winner of winners) {
+    winnerHTML += `${winner}, `;
+  }
+  winnerHTML = winnerHTML.slice(0, -2);
+  winnerResult.innerHTML = winnerHTML;
+  resultDiv.appendChild(winnerResult);
+};
