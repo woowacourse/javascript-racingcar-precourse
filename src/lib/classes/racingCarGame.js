@@ -9,6 +9,11 @@ export default class RacingCarGame {
     this.racingCountSubmit = document.querySelector('#racing-count-submit');
     this.countInputPart = document.querySelector('#count-input-part');
     this.resultPart = document.querySelector('#result-part');
+    this.carNamesSubmit.addEventListener('click', this.getCarNames.bind(this));
+    this.racingCountSubmit.addEventListener(
+      'click',
+      this.getNumTries.bind(this)
+    );
     this.cars = [];
     this.winners = [];
     this.maxProgress = 0;
@@ -18,4 +23,8 @@ export default class RacingCarGame {
   async prepareDOM() {
     await addIdToElements();
   }
+
+  getCarNames() {}
+
+  getNumTries() {}
 }
