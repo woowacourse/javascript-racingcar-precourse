@@ -59,6 +59,7 @@ export default class RacingCarGame {
     const WHICH_ERROR = validateRacingCountInput(this.racingCountInput.value);
     if (WHICH_ERROR === ERROR.NONE) {
       this.nTries = this.racingCountInput.value;
+      showElements([this.resultPart]);
       // console.log(this.cars);
     } else {
       alert(WHICH_ERROR);
