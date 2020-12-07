@@ -56,12 +56,14 @@
 ├── .gitignore
 ├── .prettierrc
 ├── .eslintrc.json
-│
+├── index.html
 ├── images
 │   ├── result.gif
 │   └── result.jpg
 │
-├── index.html
+├── docs
+│   └── README.md // 구현할 기능 목록, 디렉토리 구조를 적은 markdown 문서
+│
 └── src
     ├── index.js // 게임을 초기화하는 메인 모듈
     │
