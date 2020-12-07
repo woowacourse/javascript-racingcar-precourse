@@ -1,6 +1,6 @@
 import { isValidCount } from "../utils/validations.js";
 
-class RacingCountInput {
+export class RacingCountInput {
   constructor() {
     this.initializeDOM();
     this.initializeEvents();
@@ -24,9 +24,9 @@ class RacingCountInput {
     //TODOS : play racubg game
   }
 
-  getRacingCount = () => {
+  getRacingCount() {
     let racingCount = this.racingCountInput.value;
 
     this.checkRacingCountError(racingCount);
-  };
+  }
 }

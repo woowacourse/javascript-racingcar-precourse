@@ -1,7 +1,7 @@
 import { isValidNames } from "../utils/validations.js";
 import { Car } from "../classes/Car.js";
 
-class CarNamesInput {
+export class CarNamesInput {
   constructor() {
     this.initializeDOM();
     this.initializeEvents();
@@ -24,6 +24,7 @@ class CarNamesInput {
     }
 
     this.makeCars();
+    //TODOS: 차 객체를 만든다음, 전달?
   }
 
   getNamesFromInput() {
