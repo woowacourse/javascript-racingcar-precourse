@@ -11,10 +11,7 @@ function makeNewCars(carNamesArray) {
 }
 
 function checkLength(carName) {
-  if (carName.length === 0) {
-    return false;
-  }
-  if (carName.length > 5) {
+  if (carName.length === 0 || carName.length > 5) {
     return false;
   }
   return true;
