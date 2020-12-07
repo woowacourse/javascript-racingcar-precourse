@@ -20,7 +20,11 @@ export default class RacingCarGameViewModel {
           target.racingCarGameModel.setCarInstances(value);
         }
         if (property === '_racingCount') {
-          target.racingCarGameModel.setRacingCountAndGameContinue(value);
+          for (let i = 0; i < value; i++) {
+            target.racingCarGameModel.gameContinue();
+            target._carInstances = target.racingCarGameModel.getCarInstances();
+            target.notifyChange();
+          }
         }
 
         return true;

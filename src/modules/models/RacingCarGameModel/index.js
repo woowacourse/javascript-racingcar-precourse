@@ -15,6 +15,10 @@ export default class RacingCarGameModel {
     this._carInstances = instances;
   }
 
+  getCarInstances() {
+    return [...this._carInstances];
+  }
+
   setRacingCountAndGameContinue(count) {
     this._racingCount = count;
 
