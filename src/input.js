@@ -1,4 +1,4 @@
-import {ERROR} from './constants.js';
+import {ERROR, ID} from './constants';
 
 function carNamesInput(nameString) {
     let nameList = nameString.split(',');
@@ -17,4 +17,12 @@ function isCarNameValid(nameList) {
 
 export function countNumberOfCars(nameList) {
     return nameList.length;
+}
+
+export function carNameListener(e) {
+    return ID.CAR_INPUT.value;
+}
+
+export function racingCountListener(e) {
+    return ID.RACING_COUNT_INPUT.value;
 }
