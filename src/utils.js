@@ -1,60 +1,60 @@
+import { RacingCarGame } from './index.js';
 import Car from './car.js';
 
-export default function gameBoard() {
-    function gameBoard(numberOfCars, racingCount) {
-        this.numberOfCars = numberOfCars;
-        this.totalCount = racingCount;
-        this.nowCount = 0;
-    }
+export function startGame() {
+    RacingCarGame().nowCount = 0;
+}
 
-    function createCars(carNameList) {
-        let carList = new Array();
-        for (let i=0; i<this.numberOfCars; i++) {
-            let car = new Car(carNameList[i]);
-            carList.push(car);
+export function setTotalCount(totalCount) {
+    this.totalCount = totalCount;
+}
+
+export function createCars(carNameList) {
+    let carList = new Array();
+    for (const carName of carNameList) {
+        let car = new Car(carName);
+        carList.push(car);
+    }
+    this.carList = carList;
+}
+
+export function increaseCount() {
+    this.nowCount = this.nowCount + 1;
+}
+
+export function isGameEnd() {
+    return (this.totalCount == this.nowCount);
+}
+
+export function playGame() {
+    // call car list
+    let carList = this.carList;
+    // play 
+    for (const car of carList) {
+        car.moveCar();
+    }
+    // increase 'nowCount'
+    increaseCount();
+}
+
+export function endGame() {
+    let winnerList = new Array(getWinner());
+    printResult(winnerList);
+}
+
+export function getWinner() {
+    let carList = this.carList;
+    let winnerList = new Array();
+    let maxCount = 0;
+    for (const car of carList) {
+        if (car.move > maxCount) {
+            winnerList.length = 0;
+            winnerList.push(car.name);
+            maxCount = car.move;
         }
-        this.carList = carList;
-    }
-
-    function increaseCount() {
-        this.nowCount = this.nowCount + 1;
-    }
-
-    function isGameEnd() {
-        return (this.totalQuarter == this.nowCount);
-    }
-
-    function playGame() {
-        // call car list
-        let carList = this.carList;
-        // play 
-        for (let i=0; i<this.numberOfCars; i++) {
-            carList[i].moveCar();
+        if (car.move === maxCount) {
+            winnerList.push(car.name);
         }
-        // increase 'nowCount'
-        increaseCount();
     }
-
-    function endGame() {
-        let winnerList = new Array(getWinner());
-        printResult(winnerList);
-    }
-
-    function getWinner() {
-        let carList = this.carList;
-        let winnerList = new Array();
-        let maxCount = 0;
-        for (let i=0; i<this.numberOfCars; i++) {
-            if (carList[i].move > maxCount) {
-                winnerList.length = 0;
-                winnerList.push(carlist[i].name);
-                maxCount = carlist[i].move;
-            }
-            if (carList[i].move == maxCount) {
-                winnerList.push(carlist[i].name);
-            }
-        }
-        return winnerList;
-    }
-
+    return winnerList;
 }
