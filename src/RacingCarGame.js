@@ -1,7 +1,7 @@
-import Car from './Car.js';
-import ExceptionHandler from './ExceptionHandler.js';
-import RandomNumber from './RandomNumber.js';
-import Winner from './Winner.js';
+import Car from './car.js';
+import ExceptionHandler from './exceptionHandler.js';
+import RandomNumber from './randomNumber.js';
+import Winner from './winner.js';
 
 export default class RacingCarGame {
   exceptionHandler = new ExceptionHandler();

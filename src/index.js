@@ -1,3 +1,3 @@
-import RacingCarGame from './RacingCarGame.js';
+import RacingCarGame from './racingCarGame.js';
 
 new RacingCarGame();
