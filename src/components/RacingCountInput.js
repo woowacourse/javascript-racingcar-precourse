@@ -6,8 +6,32 @@ export default class RacingCountInput {
     this.$container.className = "racing-count-input-container";
     $target.append(this.$container);
 
-    this.isShow = isShow;
+    // this.isShow = isShow;
+
+    this.isShow = true;
+    this.render();
+
+    this.bindEventListener();
   }
+
+  bindEventListener = () => {
+    this.$container.addEventListener("click", (e) => {
+      if (e.target.id === ELEMENT_ID.racingCountButton) {
+        this.onSubmitRacingCount();
+      }
+    });
+  };
+
+  isNaturalNumber = (number) => {
+    return Number.isInteger(number) && number > 0 ? true : false;
+  };
+
+  onSubmitRacingCount = () => {
+    const $racingCountInput = document.querySelector(`#${ELEMENT_ID.racingCountInput}`);
+    const racingCount = Number($racingCountInput.value);
+
+    console.log("결과: ", this.isNaturalNumber(racingCount));
+  };
 
   setState = (nextIsShow) => {
     if (this.isShow !== nextIsShow) {
