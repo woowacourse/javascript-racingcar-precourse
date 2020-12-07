@@ -29,9 +29,9 @@
     - [x] `getCarMove` - Car객체의 move값 리턴    
 
 - input.js
-    - [ ] `carNamesInput` - 입력받은 이름을 쉼표(,)로 구분하여 리스트로 리턴   
-    - [ ] `isCarNameValid` - 이름이 하나라도 5자를 넘어갈 경우 alert 후 false 리턴  
-    - [ ] `racingCountInput` - 입력받은 값만큼 RacingCarGame의 quarter 속성 변경   
+    - [x] `carNamesInput` - 입력받은 이름을 쉼표(,)로 구분하여 리스트로 리턴   
+    - [x] `isCarNameValid` - 이름이 하나라도 5자를 넘어갈 경우 alert 후 false 리턴  
+    - [ ] `racingCountInput` - 입력받은 값만큼 gameBoard의 totalCount(분기) 속성 변경  
 
 - output.js
     - [ ] `carStatus` - Car객체의 moved를 입력받아 자동차별로 움직인 거리를 리턴   
