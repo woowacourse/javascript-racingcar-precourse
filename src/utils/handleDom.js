@@ -7,10 +7,5 @@ export const setDisable = (object, value) => {
 };
 
 export const setVisibility = (object, value) => {
-  console.log(object);
   object.style.visibility = value;
-};
-
-export const makeDomPTag = (text) => {
-  return document.createTextNode(text);
 };

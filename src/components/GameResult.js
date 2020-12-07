@@ -1,3 +1,9 @@
+import {
+  getCarHTML,
+  getWinnerHTML,
+  getHeaderHTML,
+} from "../utils/templates.js";
+
 export class GameResult {
   constructor({ getWinners }) {
     this.resultHTML = ``;
@@ -6,37 +12,25 @@ export class GameResult {
   }
 
   initializeDOM = () => {
-    this.resultHTML = this.getHeaderHTML();
+    this.resultHTML = getHeaderHTML();
     this.resultContainer = document.getElementById("result-container");
   };
 
   updateResultPerRound = (cars) => {
     cars.forEach((car) => {
-      this.resultHTML += this.getCarHTML(car.name, car.distance);
+      this.resultHTML += getCarHTML(car.name, car.distance);
     });
     this.resultHTML += `<br/>`;
   };
 
   updateResultHTMLWithWinners = () => {
     let winners = this.getWinners();
-    this.resultHTML += this.getWinnerHTML(winners);
+    this.resultHTML += getWinnerHTML(winners);
 
     this.render();
   };
 
   render = () => {
     this.resultContainer.innerHTML = this.resultHTML;
-  };
-
-  getCarHTML = (name, distance) => {
-    return `<span>${name}: ${"-".repeat(distance)}</span><br/>`;
-  };
-
-  getWinnerHTML = (names) => {
-    return `<p>최종 우승자: ${names.join(",")}</p>`;
-  };
-
-  getHeaderHTML = () => {
-    return `<h4>📄 실행 결과</h4>`;
   };
 }
