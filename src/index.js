@@ -15,3 +15,7 @@ function separateCarNames() {
     showNumTry();
   }
 }
+
+function showResultText() {
+  document.getElementById('resultText').style.display = 'block';
+}
