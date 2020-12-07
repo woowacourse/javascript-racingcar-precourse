@@ -2,7 +2,7 @@ export default function Car(name) {
     this.name = name;
     this.move = 0;
 
-    function moveCar() {
+    this.moveCar = function() {
         if (isMoved(randomNumberCreater()))
             this.move = this.move + 1;
     }
