@@ -33,29 +33,6 @@
 
 ## ⛓ 문서 구조
 
-📦javascript-racingcar-precourse
-┣ 📂.vscode
-┃ ┗ 📜settings.json
-┣ 📂docs
-┃ ┗ 📜README.md : 기능 목록을 정리해둔 텍스트 파일
-┣ 📂images
-┃ ┣ 📜result.gif
-┃ ┗ 📜result.jpg
-┣ 📂src
-┃ ┣ 📂Core : 게임 실행에 핵심이 되는 파일을 모아놓은 상위 폴더
-┃ ┃ ┣ 📜car.js : car 객체를 생성하는 파일
-┃ ┃ ┗ 📜racingCarGame.js : 생성된 car 객체를 받아 우승자의 이름을 출력하는 게임의 핵심 역할을 하는 파일
-┃ ┣ 📂Manager : 게임 실행을 돕는 파일을 모아놓은 상위 폴더
-┃ ┃ ┣ 📜gameManager.js : 입력, 검증, 실행, 출력 등 게임 진행을 돕는 파일
-┃ ┃ ┣ 📜uiManager.js : elment에 id 부여, 숨김, 표시 및 ui와 관련된 일을 담당하는 파일
-┃ ┃ ┗ 📜utils.js : car 객체 생성을 돕는 파일
-┃ ┣ 📜index.js : 파일 오픈과 동시에 main 함수를 실행하는 파일
-┃ ┗ 📜main.js : RacingCarGame을 생성하는 파일
-┣ 📜LICENSE
-┗ 📜index.html
-
-## ⛓ 문서 구조
-
 ```plaintext
 ├── .vscode
 │   └── setting.json
