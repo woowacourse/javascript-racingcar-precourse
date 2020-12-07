@@ -1,6 +1,6 @@
 export default class PlayUtils {
   constructor() {
-    this.resultArea = document.getElementById('resultArea');
+    this._resultArea = document.getElementById('resultArea');
   }
   
   getRandomNumber() {
@@ -12,7 +12,7 @@ export default class PlayUtils {
     const resultMessage = this.getGameProcess(cars);
 
     result.innerText = `${resultMessage}\n`;
-    this.resultArea.appendChild(result);
+    this._resultArea.appendChild(result);
   }
 
   getGameProcess(cars) {
@@ -30,7 +30,7 @@ export default class PlayUtils {
     const winnerList = this.getWinnerList(cars);
     
     winner.innerText = `최종 우승자: ${winnerList}`;
-    this.resultArea.appendChild(winner);
+    this._resultArea.appendChild(winner);
   }
 
   getWinnerList(cars) {

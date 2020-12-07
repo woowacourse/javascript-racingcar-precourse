@@ -23,24 +23,24 @@ export default class RacingCarGame {
   }
 
   selectDOM() {
-    this.nameInput = document.getElementById('car-names-input');
-    this.nameButton = document.getElementById('car-names-submit');
-    this.countInput = document.getElementById('racing-count-input');
-    this.countButton = document.getElementById('racing-count-submit');
-    this.resultArea = document.getElementById('resultArea');
+    this._nameInput = document.getElementById('car-names-input');
+    this._nameButton = document.getElementById('car-names-submit');
+    this._countInput = document.getElementById('racing-count-input');
+    this._countButton = document.getElementById('racing-count-submit');
+    this._resultArea = document.getElementById('resultArea');
   }
 
   addEventListener() {
-    this.nameInput.focus();
+    this._nameInput.focus();
 
-    this.nameButton.addEventListener("click", () => this.getCarNames());
-    this.nameInput.addEventListener("keypress", (e) => {
+    this._nameButton.addEventListener("click", () => this.getCarNames());
+    this._nameInput.addEventListener("keypress", (e) => {
       if (e.keyCode === 13)
         this.getCarNames();
     });
 
-    this.countButton.addEventListener('click', () => this.getCount());
-    this.countInput.addEventListener('keypress', (e) => {
+    this._countButton.addEventListener('click', () => this.getCount());
+    this._countInput.addEventListener('keypress', (e) => {
       if (e.keyCode === 13)
         this.getCount();
     });
@@ -48,57 +48,57 @@ export default class RacingCarGame {
 
   getCarNames() {
     this.initGame();
-    this.carNameArray = this._privateInputUtils.splitWithComma(this.nameInput.value);
+    this._carNameArray = this._privateInputUtils.splitWithComma(this._nameInput.value);
 
-    if (this._privateInputUtils.checkNameValidity(this.carNameArray) === this.IS_VALID) {
-      this.countInput.focus();
+    if (this._privateInputUtils.checkNameValidity(this._carNameArray) === this.IS_VALID) {
+      this._countInput.focus();
       return 0;
     }
 
-    this.nameInput.focus();
+    this._nameInput.focus();
   }
 
   getCount() {
     this.initResult();
-    this.countInput.focus();
-    if (this._privateInputUtils.checkCountValidity(this.countInput.value) === this.IS_VALID) {
+    this._countInput.focus();
+    if (this._privateInputUtils.checkCountValidity(this._countInput.value) === this.IS_VALID) {
       this.createNewCar();
       return 0;
     }
 
-    this.countInput.value = '';
+    this._countInput.value = '';
   }
 
   createNewCar() {
-    this.cars = [];
-    this.carNameArray.forEach((element) => {
-      this.cars.push(new Car(element, 0));
+    this._cars = [];
+    this._carNameArray.forEach((element) => {
+      this._cars.push(new Car(element, 0));
     });
     this.startRace();
   }
 
   startRace() {
-    for (let i = 0; i < this.countInput.value; i++)
+    for (let i = 0; i < this._countInput.value; i++)
       this.playRound();
 
-      this._privatePlayUtils.displayWinner(this.cars);
+      this._privatePlayUtils.displayWinner(this._cars);
   }
 
   playRound() {
-    this.cars.forEach((car) => {
+    this._cars.forEach((car) => {
       const number = this._privatePlayUtils.getRandomNumber();
       if (number >= 4)
         car.location += 1;
     })
-    this._privatePlayUtils.displayGameProcess(this.cars);
+    this._privatePlayUtils.displayGameProcess(this._cars);
   }
 
   initGame() {
-    this.countInput.value = '';
+    this._countInput.value = '';
     this.initResult();
   }
 
-  initResult = () => { this.resultArea.innerText = '' }
+  initResult = () => { this._resultArea.innerText = '' }
 }
 
 new RacingCarGame();
