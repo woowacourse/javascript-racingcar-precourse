@@ -42,6 +42,7 @@ export class PlayRacingGame {
 
     for (let i = 0; i < count; i++) {
       this.racingInRound(cars);
+      console.log(cars);
       result = result + this.getResultString(cars) + "</br>";
     }
 
