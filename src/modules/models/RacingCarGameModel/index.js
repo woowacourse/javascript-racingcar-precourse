@@ -6,25 +6,25 @@ export default class RacingCarGameModel {
     this._racingCount = null;
     this.subscriber = [];
 
-    return this.setProxy();
+    // return this.setProxy();
   }
 
-  setProxy() {
-    return new Proxy(this, {
-      get(target, property) {
-        return target[property];
-      },
+  // setProxy() {
+  //   return new Proxy(this, {
+  //     get(target, property) {
+  //       return target[property];
+  //     },
 
-      set(target, property, value) {
-        if (property === '_carInstances') {
-          return target.setInstances(target, property, value);
-        }
-        if (property === '_racingCount') {
-          return target.setRacingCountAndGameContinue(target, property, value);
-        }
-      },
-    });
-  }
+  //     set(target, property, value) {
+  //       if (property === '_carInstances') {
+  //         return target.setInstances(target, property, value);
+  //       }
+  //       if (property === '_racingCount') {
+  //         return target.setRacingCountAndGameContinue(target, property, value);
+  //       }
+  //     },
+  //   });
+  // }
 
   setInstances(target, property, names) {
     const instances = names.map(name => {
@@ -33,6 +33,14 @@ export default class RacingCarGameModel {
     target._carInstances = instances;
 
     return true;
+  }
+
+  setCarInstances(cars) {
+    const instances = names.map(name => {
+      return new Car(name);
+    });
+
+    this._carInstances = instances;
   }
 
   setRacingCountAndGameContinue(target, property, count) {
