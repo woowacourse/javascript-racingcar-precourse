@@ -2,20 +2,36 @@ import { getRandomNumber } from "./utils/random.js";
 import { NUMBER as NUM } from "../constants/constants.js";
 import { CarNamesInput } from "./carNamesInput.js";
 import { RacingCountInput } from "./RacingCountInput.js";
+import { setVisibility } from "../utils/handleDom.js";
 
 export class PlayRacingGame {
   constructor() {
     this.cars = [];
     this.count = 0;
 
-    this.playRacingGame();
+    this.initializeDOM();
   }
 
-  playRacingGame() {
-    new CarNamesInput();
-    new RacingCountInput();
+  initializeDOM() {
+    this.racingCountContainer = document.getElementById(
+      "#racing-count-container"
+    );
+    this.resultContainer = document.getElementById("result-container");
+  }
 
-    //how to get cars and count from each class..?
+  setCars(newCars) {
+    this.cars = newCars;
+    setVisibility(this.racingCountContainer, "visible");
+  }
+
+  setCount(count) {
+    this.count = count;
+  }
+
+  render() {
+    new CarNamesInput({ setCars: this.setCars });
+    new RacingCountInput({ setCount: this.setCount });
+
     let result = this.racing(cars, count);
 
     new GameResult(result);
@@ -29,7 +45,7 @@ export class PlayRacingGame {
       result = result + this.getResultString(cars) + "</br>";
     }
 
-    // setVisibility(this.resultContainer, "visible");
+    setVisibility(this.resultContainer, "visible");
     // resultContainer.append(document.createTextNode(result));
   }
 
@@ -41,4 +57,6 @@ export class PlayRacingGame {
         : car.stop();
     });
   }
+
+  render();
 }
