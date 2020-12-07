@@ -1,15 +1,14 @@
 const EMPTY = "";
-const nameButton = document.querySelector("#car-names-submit");
-const countButton = document.querySelector("#racing-count-submit");
-const nameInput = document.querySelector("#car-names-input");
-const countInput = document.querySelector("#racing-count-input");
-const restartButton = `<button id=restart-button>다시하기</button>`;
+export const nameButton = document.querySelector("#car-names-submit");
+export const countButton = document.querySelector("#racing-count-submit");
+export const nameInput = document.querySelector("#car-names-input");
+export const countInput = document.querySelector("#racing-count-input");
 
-const getCarNameInput = () => {
+export const getCarNameInput = () => {
     return checkEmpty(nameInput.value);
 };
 
-const getRacingCountInput = () => {
+export const getRacingCountInput = () => {
     return checkEmpty(countInput.value);
 };
 
@@ -20,9 +19,3 @@ const checkEmpty = (input) => {
 
     return input;
 };
-
-const chooseRestartButton = () => {
-    return document.querySelector("#restart-button");
-};
-
-export { getCarNameInput, getRacingCountInput, chooseRestartButton, nameButton, countButton, nameInput, countInput, restartButton };

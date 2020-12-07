@@ -25,6 +25,7 @@ const isNameValidate = (name) => {
 };
 
 const isNameEmpty = (name) => {
+
     if (name === EMPTY) {
         return true;
     }
@@ -33,6 +34,7 @@ const isNameEmpty = (name) => {
 };
 
 const isNameLongerThanFive = (name) => {
+
     if (name.length > NAME_LENGTH_LIMIT) {
         return true;
     }
@@ -41,7 +43,10 @@ const isNameLongerThanFive = (name) => {
 };
 
 const isSameNameExist = (nameArray) => {
+
     if (nameArray.length !== new Set(nameArray).size) {
         throw "똑같은 이름이 있습니다. 모두 다른 이름으로 해주세요.";
     }
+
+    return false;
 };

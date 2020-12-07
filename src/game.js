@@ -1,15 +1,12 @@
 import { creatCars, creatRacingCount } from "./inputView.js";
-import { nameButton, countButton, chooseRestartButton } from "./inputUtil.js";
+import { nameButton, countButton } from "./inputUtil.js";
 import {
     removeCountHTML,
     removeResultHTML,
     addResultHTML,
     addCountHTML,
     showResultHTML,
-    switchCountButton,
-    switchNameButton,
-    resetResultHTMl,
-    resetInput
+    resetResultHTMl
 } from "./outputView.js";
 
 export class GameStart {
@@ -28,7 +25,7 @@ export class GameStart {
         try {
             this.cars = creatCars();
             addCountHTML();
-            switchNameButton();
+            resetResultHTMl();
         } catch (error) {
             alert(error);
         }
@@ -38,10 +35,8 @@ export class GameStart {
         try {
             this.count = creatRacingCount();
             addResultHTML();
-            switchCountButton();
             this.play();
             this.renderResult();
-            this.readyToRestart();
         } catch (error) {
             alert(error);
         }
@@ -57,16 +52,6 @@ export class GameStart {
     renderResult() {
         this.cars.findWinner();
         showResultHTML(this.cars.makeWinnerHTML());
-    }
-
-    readyToRestart() {
-        chooseRestartButton().addEventListener("click", () => {
-            resetResultHTMl();
-            resetInput();
-            switchCountButton();
-            removeCountHTML();
-            switchNameButton();
-        });
     }
 
 }
