@@ -17,7 +17,7 @@ export default class RacingCarGameModel {
     return [...this._carInstances];
   }
 
-  gameContinue() {
+  letCarsMoveForward() {
     this._carInstances.forEach(car => {
       car.moveForward();
     });
