@@ -26,28 +26,25 @@ export class PlayRacingGame {
     setVisibility(this.racingCountContainer, "visible");
   };
 
-  setCount = (count) => {
+  runRaces = (count) => {
+    let racingResult;
+
     this.count = count;
     this.racing(this.cars, this.count);
+    setVisibility(this.resultContainer, "visible");
   };
 
   render = () => {
     new CarNamesInput({ setCars: this.setCars });
-    new RacingCountInput({ setCount: this.setCount });
-    new GameResult();
+    new RacingCountInput({ runRaces: this.runRaces });
+    this.gameResultContainer = new GameResult();
   };
 
   racing = (cars, count) => {
-    let result = "";
-
     for (let i = 0; i < count; i++) {
       this.racingInRound(cars);
-      console.log(cars);
-      result = result + this.getResultString(cars) + "</br>";
+      this.gameResultContainer.updateResultPerRound(cars);
     }
-
-    setVisibility(this.resultContainer, "visible");
-    // resultContainer.append(document.createTextNode(result));
   };
 
   racingInRound = (cars) => {

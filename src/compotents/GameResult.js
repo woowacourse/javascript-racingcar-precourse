@@ -1,16 +1,28 @@
 export class GameResult {
-  constructor() {}
+  constructor() {
+    this.initializeDOM();
+  }
 
-  initializeDOM() {
+  initializeDOM = () => {
+    this.resultHTML = ``;
     this.resultContainer = document.getElementById("result-container");
-  }
+  };
 
-  getResultString(cars) {
-    let result = ``;
-
+  updateResultPerRound = (cars) => {
     cars.forEach((car) => {
-      result += `${car.name}: ${"-".repeat(`${car.distance}`)}`;
+      this.resultHTML += this.getCarHTML(car.name, car.distance);
     });
-    return result;
-  }
+    this.resultHTML += `<br/>`;
+  };
+
+  updateResultHTML = () => {
+    this.resultContainer.append(this.resultHTML);
+  };
+  getCarHTML = (name, distance) => {
+    return `<p>${name}: ${"-".repeat(distance)}</p></br>`;
+  };
+
+  getWinnerHTML = (names) => {
+    return `<p>최종 우승자 ${names.join(",")}</p>`;
+  };
 }
