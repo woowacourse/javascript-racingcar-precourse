@@ -21,3 +21,15 @@ export const validateCarNamesInput = (carNames) => {
 
   return WHICH_ERROR;
 };
+
+export const validateRacingCountInput = (count) => {
+  if (Number.isNaN(parseInt(count))) {
+    return ERROR.NOT_A_NUMBER;
+  }
+  const MIN_COUNT = 1;
+  if (count < MIN_COUNT) {
+    return ERROR.NUM_OF_TRIES;
+  }
+
+  return ERROR.NONE;
+};

@@ -1,4 +1,8 @@
 import { addIdToElements, showElements } from '../utils/documentHandler.js';
+import {
+  validateCarNamesInput,
+  validateRacingCountInput,
+} from '../utils/validator.js';
 import { ERROR } from '../utils/constants.js';
 import Car from '../classes/car.js';
 
@@ -51,5 +55,15 @@ export default class RacingCarGame {
     });
   }
 
-  getNumTries() {}
+  getNumTries() {
+    const WHICH_ERROR = validateRacingCountInput(this.racingCountInput.value);
+    if (WHICH_ERROR === ERROR.NONE) {
+      this.nTries = this.racingCountInput.value;
+      // console.log(this.cars);
+    } else {
+      alert(WHICH_ERROR);
+      this.clearElementsValue([this.racingCountInput]);
+      this.racingCountInput.focus();
+    }
+  }
 }
