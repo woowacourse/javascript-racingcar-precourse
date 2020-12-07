@@ -3,8 +3,6 @@ import { showCountSubmitForm, showResultForm } from "./uiManager.js";
 
 function verifyInput(input) {
   let names = input.split(",");
-  console.log(names);
-
   let alertMsg = "";
 
   for (let i = 0; i < names.length; i++) {
@@ -19,8 +17,6 @@ function verifyInput(input) {
 }
 
 function onNameSubmit() {
-  // 만약 input.value의 형태가 맞지 않으면 alert받기
-
   let alertMsg = verifyInput(document.getElementById("car-names-input").value);
 
   if (alertMsg !== "") {
@@ -31,35 +27,42 @@ function onNameSubmit() {
   }
 
   let carNames = document.getElementById("car-names-input").value.split(",");
-
   this.cars = makeCars(carNames);
 
-  // 횟수 입력창 보여주기
   showCountSubmitForm();
 }
 
-// 횟수 입력받기
 function onRoundSubmit() {
-  let round = document.getElementById("racing-count-input").value;
-
   const cars = this.cars;
+  let round = document.getElementById("racing-count-input").value;
 
   for (let i = 0; i < round; i++) {
     for (let j = 0; j < cars.length; j++) {
       cars[j].update();
-
-      // 라운드별로 랜덤 숫자 표기
       document.getElementById("print-result-form").innerHTML += `${cars[j].name}: ${cars[j].move}<br>`;
     }
-
-    // 개행
     document.getElementById("print-result-form").innerHTML += "<br />";
   }
-  // 결과창 보여주기
 
   let winner = this.play(cars);
   document.getElementById("print-result-form").innerHTML += `최종 우승자: ${winner}`;
   showResultForm();
 }
 
-export { verifyInput, onNameSubmit, onRoundSubmit };
+function countMoves(cars) {
+  let winner = [];
+  winner.push(cars[0]);
+
+  for (let i = 1; i < cars.length; i++) {
+    if (cars[i].move.length > winner[0].move.length) {
+      winner = [];
+      winner.push(cars[i]);
+    } else if (cars[i].move.length == winner[0].move.length) {
+      winner.push(cars[i]);
+    }
+  }
+
+  return winner;
+}
+
+export { verifyInput, onNameSubmit, onRoundSubmit, countMoves };
