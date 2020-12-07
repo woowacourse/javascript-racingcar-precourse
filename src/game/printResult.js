@@ -1,6 +1,11 @@
 import race from './race.js';
 import getWinner from './getWinner.js';
 
+function resetResult($resultScreen, carList) {
+  $resultScreen.innerHTML = '';
+  carList.forEach((car) => (car.count = 0));
+}
+
 function raceResultTemplate(car) {
   return `${car.name}: ${'-'.repeat(car.count)}<br>`;
 }
@@ -11,15 +16,14 @@ function printRaceResult(car) {
   $resultScreen.insertAdjacentHTML('beforeend', raceResultTemplate(car));
 }
 
-function resetResult($resultScreen, carList) {
-  $resultScreen.innerHTML = '';
-  carList.forEach((car) => (car.count = 0));
-}
-
-function printFinalResult(carList) {
+function printFinalResult(carList, $resultScreen) {
   const winner = getWinner(carList);
   const winnerList = winner.map((car) => car.name).join(', ');
-  return `최종우승자 : ${winnerList} <br>`;
+
+  $resultScreen.insertAdjacentHTML(
+    'beforeend',
+    `최종우승자 : ${winnerList} <br>`,
+  );
 }
 
 export default function printResult(carList, racingCount) {
@@ -32,5 +36,5 @@ export default function printResult(carList, racingCount) {
     carList.forEach((car) => printRaceResult(car));
     $resultScreen.insertAdjacentHTML('beforeend', '<br>');
   }
-  $resultScreen.insertAdjacentHTML('beforeend', printFinalResult(carList));
+  printFinalResult(carList, $resultScreen);
 }
