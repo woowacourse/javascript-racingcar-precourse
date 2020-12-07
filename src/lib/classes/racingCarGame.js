@@ -73,7 +73,14 @@ export default class RacingCarGame {
     for (let i = 0; i < this.nTries; i++) {
       this.cars.forEach((car) => {
         car.move();
+        this.changeMax(car.progress.length);
       });
+    }
+  }
+
+  changeMax(carDistance) {
+    if (carDistance > this.maxProgress) {
+      this.maxProgress = carDistance;
     }
   }
 }
