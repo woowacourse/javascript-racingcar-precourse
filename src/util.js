@@ -9,13 +9,12 @@ export const isValidCarNamesInput = carNamesInput => {
 
   const carNames = carNamesInput.split(",").map(carName => carName.trim());
 
-  const hasMinCarNumbers =
-    (carNames.length >= MIN_CAR_NUMBER);
-  
-  const isEveryCarNameLengthLessThanMaxLength =
-    (carNames.every(carName => carName.length <= MAX_CAR_NAME_LENGTH));
+  const hasEmptyString = carNames.some(carName => carName.length === 0);
+  const hasMinCarNumbers = (carNames.length >= MIN_CAR_NUMBER);
+  const isEveryCarNameLengthLessThanMaxLength = carNames.every(carName => carName.length <= MAX_CAR_NAME_LENGTH);
+  const hasDuplicatedCarName = carNames.some(carName => carNames.filter(name => name === carName).length > 1);  
 
-  return hasMinCarNumbers && isEveryCarNameLengthLessThanMaxLength;
+  return !hasEmptyString && hasMinCarNumbers && isEveryCarNameLengthLessThanMaxLength && !hasDuplicatedCarName;
 };
 
 export const isValidRacingCount = racingCountNumber => {

@@ -2,6 +2,9 @@
 
 ## 🔧 구현할 기능 목록
 - [x] 사용자가 입력한 자동차의 이름을 `#car-names-input`로부터 불러들여 검증한다.
+  - [x] 각 자동차 이름의 앞뒤 공백은 제외한다.
+  - [x] Empty String("")은 유효하지 않은 입력이다.
+  - [x] 중복된 자동차 이름은 유효하지 않은 입력이다.
   * 유효한 입력인 경우
   - [x] 레이싱 횟수를 입력하는 input 태그(`#racing-count-input`) 및 button 태그(`#racing-count-submit`)가 표시되게 한다. 
   - [x] Car Instance를 생성한다.
