@@ -14,7 +14,9 @@ export class CarNamesInput {
   }
 
   initializeEvents() {
-    this.carNamesSubmit.addEventListener("click", this.handleCarNamesInput);
+    this.carNamesSubmit.addEventListener("click", () => {
+      this.handleCarNamesInput();
+    });
   }
 
   handleCarNamesInput() {
@@ -24,14 +26,12 @@ export class CarNamesInput {
       return;
     }
 
-    let cars = this.makeCars();
+    let cars = this.makeCars(names);
     this.setCars(cars);
   }
 
   getNamesFromInput() {
-    names = carNamesInput.value.split(",").map((name) => name.trim());
-
-    return names;
+    return this.carNamesInput.value.split(",").map((name) => name.trim());
   }
 
   makeCars(names) {

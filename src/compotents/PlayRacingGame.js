@@ -1,8 +1,9 @@
-import { getRandomNumber } from "./utils/random.js";
+import { getRandomNumber } from "../utils/random.js";
 import { NUMBER as NUM } from "../constants/constants.js";
 import { CarNamesInput } from "./carNamesInput.js";
 import { RacingCountInput } from "./RacingCountInput.js";
 import { setVisibility } from "../utils/handleDom.js";
+import { GameResult } from "../compotents/GameResult.js";
 
 export class PlayRacingGame {
   constructor() {
@@ -10,6 +11,7 @@ export class PlayRacingGame {
     this.count = 0;
 
     this.initializeDOM();
+    this.render();
   }
 
   initializeDOM() {
@@ -32,7 +34,7 @@ export class PlayRacingGame {
     new CarNamesInput({ setCars: this.setCars });
     new RacingCountInput({ setCount: this.setCount });
 
-    let result = this.racing(cars, count);
+    let result = this.racing(this.cars, this.count);
 
     new GameResult(result);
   }
@@ -57,6 +59,4 @@ export class PlayRacingGame {
         : car.stop();
     });
   }
-
-  render();
 }

@@ -13,7 +13,7 @@ export class RacingCountInput {
   }
 
   initializeEvents() {
-    racingCountSubmit.addEventListener("click", this.getRacingCount);
+    this.racingCountSubmit.addEventListener("click", this.getRacingCount);
   }
 
   handleRacingCountInput() {

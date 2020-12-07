@@ -1,4 +1,4 @@
-class GameResult {
+export class GameResult {
   constructor() {}
 
   initializeDOM() {

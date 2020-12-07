@@ -11,7 +11,7 @@ const checkNameLengthOverFive = (elements) => {
 };
 
 const isDuplicate = (elements) => {
-  const elementsForComparing = Set(elements);
+  const elementsForComparing = new Set(elements);
 
   return elementsForComparing.length === elements.length;
 };
