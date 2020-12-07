@@ -1,39 +1,35 @@
 import { state, resultContainer } from "./index.js";
 import { judgeWinner } from "./utils/game-utils.js";
 
-let PROGRESS = "";
-
 export function printProgress(carNameArray) {
-  for (let i = 0; i < carNameArray.length; i++) {
-    PROGRESS += `${carNameArray[i].name}: `;
+  const progress = [];
+  const enterHTML = "<br />";
 
-    for (let a = 0; a < carNameArray[i].position; a++) {
-      PROGRESS += `-`;
+  for (const car of carNameArray) {
+    progress.push(`${car.name}: `);
+
+    for (let i = 0; i < car.position; i++) {
+      progress.push("-");
     }
-    PROGRESS += `<br />`;
+    progress.push(enterHTML);
   }
-  PROGRESS += `<br />`;
+  progress.push(enterHTML);
 
-  return PROGRESS;
+  return progress;
 }
 
 export function printWinner(winnerArray) {
-  let result = "최종 우승자: ";
-  let winnerString = "";
+  const winnerString = winnerArray.join(", ");
+  const result = `최종우승자: ${winnerString}`;
 
-  if (winnerArray.length > 1) {
-    winnerString = winnerArray.join(", ");
-  } else {
-    winnerString = winnerArray;
-  }
-
-  result += winnerString;
   document.getElementById("result").innerHTML += result;
 }
 
 export function printFinalResult(racingCount) {
   const resultHeader = resultContainer.innerHTML;
   const carArray = state.carArray;
+  const progressHTML = [];
+  let finalHTML = "";
   let gameProgress = "";
 
   for (let i = 0; i < racingCount; i++) {
@@ -42,10 +38,14 @@ export function printFinalResult(racingCount) {
         carArray[n].move();
       }
     }
+
     gameProgress = printProgress(carArray);
+    progressHTML.push(gameProgress.join(" "));
   }
 
-  document.getElementById("result").innerHTML = resultHeader + gameProgress;
+  finalHTML = progressHTML.join(" ");
+  document.getElementById("result").innerHTML = resultHeader + finalHTML;
+
   const winnerArray = judgeWinner();
   printWinner(winnerArray);
 }
