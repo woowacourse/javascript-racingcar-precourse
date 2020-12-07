@@ -14,12 +14,9 @@ export default class RacingCarGameViewModel {
         if (property === '_carInstances') {
           target.racingCarGameModel.setCarInstances(value);
         }
+
         if (property === '_racingCount') {
-          for (let i = 0; i < value; i++) {
-            target.racingCarGameModel.gameContinue();
-            target._carInstances = target.racingCarGameModel.getCarInstances();
-            target.notifyChange();
-          }
+          target.setRacingCountAndGameProgress(target, value);
         }
 
         return true;
@@ -34,6 +31,16 @@ export default class RacingCarGameViewModel {
   updateChange(target) {
     this._carInstances = target._carInstances;
     this.notifyChange();
+  }
+
+  setRacingCountAndGameProgress(target, value) {
+    target._racingCount = value;
+    while (target._racingCount) {
+      target.racingCarGameModel.letCarsMoveForward();
+      target._carInstances = target.racingCarGameModel.getCarInstances();
+      target.notifyChange();
+      target._racingCount--;
+    }
   }
 
   notifyChange() {
