@@ -1,6 +1,5 @@
 import { makeCars } from "./utils.js";
 import { showCountSubmitForm, showResultForm } from "./uiManager.js";
-import RacingCarGame from "../Core/racingCarGame.js";
 
 function onNameSubmit() {
   let alertMsg = verifyNameInput(document.getElementById("car-names-input").value);
@@ -75,7 +74,6 @@ function countMoves(cars) {
 }
 
 function printRace(cars, round, playFunc) {
-  const game = new RacingCarGame();
   for (let i = 0; i < round; i++) {
     for (let j = 0; j < cars.length; j++) {
       cars[j].update();
