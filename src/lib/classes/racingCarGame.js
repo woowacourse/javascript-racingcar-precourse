@@ -66,7 +66,6 @@ export default class RacingCarGame {
       this.nTries = this.racingCountInput.value;
       showElements([this.resultPart]);
       this.race();
-      // console.log(this.cars);
     } else {
       alert(WHICH_ERROR);
       this.clearElementsValue([this.racingCountInput]);
