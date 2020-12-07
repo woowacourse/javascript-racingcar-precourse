@@ -58,7 +58,6 @@ export class RacingCarGame {
     if (isValidCarNamesInput(carNamesInput)) {
       this.showRacingCountContainer();
       this.disableCarNamesNodes();
-      this.$racingCountInput.focus();
       this.cars = carNamesInput.split(",").map(carName => carName.trim()).map(carName => new Car(carName));
       console.log(carNamesInput.split(",").map(carName => carName.trim()));
     } else {
@@ -68,7 +67,8 @@ export class RacingCarGame {
   }
 
   showRacingCountContainer() {
-    this.$racingCountContainer.style.display = "block";
+    this.$racingCountContainer.classList.remove("--hidden");
+    this.$racingCountInput.focus();
   }
 
   disableCarNamesNodes() {
@@ -108,13 +108,13 @@ export class RacingCarGame {
   }
 
   showCarGameResultContainer() {
-    this.$carGameResultContainer.style.display = "block";
+    this.$carGameResultContainer.classList.remove("--hidden");
   }
 
   race() {
     for (let i = 0; i < this.racingCountNumber; i++) {
       this.raceRound();
-    };
+    }
 
     const winners = getWinners(this.cars);
     this.setState({ winners });

@@ -18,13 +18,13 @@
           <input type="text" id="car-names-input" autofocus/>
           <button id="car-names-submit">확인</button>
         </div>
-        <div class="racing-count-container">
+        <div class="racing-count-container --hidden">
           <h4>시도할 횟수를 입력해주세요.</h4>
-          <input type="number" id="racing-count-input"/>
+          <input type="number" id="racing-count-input" min="1" step="1"/>
           <button id="racing-count-submit">확인</button>
         </div>
       </div>
-      <div class="car-game-result-container">
+      <div class="car-game-result-container --hidden">
         <h4>📄 실행 결과</h4>
         <div class="car-game-result"></div>
       </div>
