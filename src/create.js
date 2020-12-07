@@ -8,13 +8,13 @@ export function createRandomNumber() {
 
 export function createCar(carNamesInput, racingCountInput) {
   const carNames = carNamesInput;
-  const length = carNames.length;
+  const carsLength = carNames.length;
   let cars = [];
   let i;
 
-  for (i = 0; i < length; i++) {
+  for (i = 0; i < carsLength; i++) {
     carNames[i] = new Car(carNames[i]);
     cars.push(carNames[i]);
   }
-  racingCountPlay(cars, racingCountInput);
+  racingCountPlay(carsLength, cars, racingCountInput);
 }

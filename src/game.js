@@ -1,4 +1,5 @@
 import { createRandomNumber } from './create.js';
+import { makeResultEmpty } from './check.js'
 
 export function printWinner(winnerName) {
   let winner = document.querySelector("#winner");
@@ -42,9 +43,9 @@ export function printProgress(car) {
   result.innerText += `${car.name}: ${car.result} \n`;
 }
 
-export function racingCountPlay(cars, racingCountInput) {
-  const carsLength = cars.length;
-  const result = document.querySelector("#result");
+export function racingCountPlay(carsLength, cars, racingCountInput) {
+  makeResultEmpty();
+
   let i;
   let j;
 

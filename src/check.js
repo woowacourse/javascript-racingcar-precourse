@@ -25,3 +25,13 @@ export function isDuplicated(carNamesInput) {
     return false
   }
 }
+
+export function makeResultEmpty() {
+  let result = document.querySelector("#result");
+  let winner = document.querySelector("#winner")
+
+  if (result.innerText && winner.innerText) {
+    result.innerText = '';
+    winner.innerText = '';
+  }  
+}
