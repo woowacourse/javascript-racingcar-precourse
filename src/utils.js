@@ -1,4 +1,4 @@
-import { showResult } from './print.js';
+import { showResult, showWinner } from './print.js';
 
 const getRandomNumber = () => {
   let number = Math.floor(Math.random() * 9);
@@ -19,6 +19,7 @@ export const isForward = (cars) => {
 export const startGame = (times, cars) => {
   while (times) {
     isForward(cars);
+    showResult(cars);
     times--;
   }
 
@@ -26,7 +27,7 @@ export const startGame = (times, cars) => {
     console.log(e.name, e.forwardCount);
   });
 
-  whoIsWinner(cars);
+  showWinner(whoIsWinner(cars));
 };
 
 const getMaxValue = (carArray) => {
@@ -48,7 +49,9 @@ const whoIsWinner = (cars) => {
 
   cars.forEach((car) => {
     if (car.forwardCount === maxValue) {
-      winner.push(car);
+      winner.push(car.name);
     }
   });
+
+  return winner;
 };
