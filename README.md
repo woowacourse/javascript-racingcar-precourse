@@ -1,5 +1,7 @@
 # 🏎️ 자동차 경주 게임
 
+[/docs/README.md로 이동](https://github.com/0307kwon/javascript-racingcar-precourse/blob/sejin/docs/README.md)
+
 ## 🎯 기능 요구사항
 
 - 주어진 횟수 동안 n대의 자동차는 전진 또는 멈출 수 있다.
