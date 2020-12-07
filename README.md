@@ -66,7 +66,16 @@ class Car {
 
 ## 💜추가 될 기능
 
-- CarNamesInput.js 
+- PlayRacingGane.js
+  - [X] setCars: 차 객체들을 저장하는 함수
+  - [X] runRaces: count를 저장하고, 레이스를 시작하는 함수
+  - [X] racing: count만큼 레이스를 하는 함수
+  - [X] racingInRound: 1라운드 당 차들이 레이스 하는 함수
+    - [X] getRandomNumber: 랜덤 값 받아올 함수
+  - [X] getWinners: 이긴 자동차를 정하는 함수
+  - [X] render: 필요한 컴포넌트들을 렌더링 하는 함수
+
+- CarNamesInput.js
   - [X] handleCarNamesInput : 자동차 이름 input을 핸들링하는 함수
   - [X] getNamesFromInput: 자동차 이름을 받아올 함수
     - [X] 예외1 isValidNames: 자동차 이름의 오류 확인 하는 함수 
@@ -75,15 +84,35 @@ class Car {
       - [X] 예외1-3 isDuplicate: 중복 이름 유무 체크 함수
       - [X] 예외1-4 hasEmptyName: 공백이 이름으로 들어왔는지 유무 체크 함수
       - [X] 예외1-5 이름을 모두 받으면, 횟수를 받아오는 단계에서는 이름을 또 받을 수 없도록 button disable 처리
-- [X] getRacingCount: 시도할 횟수를 받아올 함수
-  - [X] 예외2 checkRacingCountError: 시도할 횟수의 오류를 검출할 함수
-  - [] 예외2-1 음수 체크
-- [X] makeCars: 각 instance를 생성할 함수
-- [X] getRandomNumber: 랜덤 값 받아올 함수
-  -[] 예외3 만약 start값이랑 end값이랑 바뀌어서 들어오면?
-- [X] playRacingGame: 레이싱 게임을 시작하는 함수
-- [X] racingInRound: 한 round 당 random값을 받아 게임을 진행하는 함수
-- [X] getResultString: 한 round 당 결과를 string으로 리턴하는 함수
-- [X] getWinners: 이긴 자동차를 정하는 함수
-- [] 결과창을 내보내는 함수
-- [X] Car class
+  - [X] makeCars: 각 instance를 생성할 함수
+
+- RacingcountInput.js
+  - [X] handleRacingCountInput: 횟수를 받아와 예외체크하고 race 시작하는 함수
+  - [X] getRacingCount: 시도할 횟수를 받아올 함수
+    - [X] 예외2 isValidCount: 시도할 횟수의 오류를 검출할 함수
+      - [] 예외2-1 음수 체크
+      - [X] 예외2-2 숫자 체크
+
+- GameResult.js
+  -[X] updateResultPerRound: 1라운드마다 차의 거리를 쟤서 result에 저장하는 함수
+  -[X] updateResultHTMLWithWinners: 모든 시합이 끝나고 winner를 result에 저장하는 함수
+  -[X] render: 결과창을 내보내는 함수
+
+- Car.js
+
+- constants.js
+
+- handleDom.js
+  - [X] showErrorMessages: alert 에러 메세지
+  - [X] setDisable: dom이 disable
+  - [X] setVisibility: dom의 visibility hidden, visible
+
+- random.js
+
+- templates.js
+  - [X] getCarHTML : 자동차 거리 템플릿
+  - [X] getWinnerHTML : 최종 우승자 템플릿
+  - [X] getHeaderHTML : 결과창 헤더 템플릿
+
+- validations.js
+  - 위의 컴포넌트 들에서 모두 설명함.
