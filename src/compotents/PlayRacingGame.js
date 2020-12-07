@@ -28,15 +28,13 @@ export class PlayRacingGame {
 
   setCount = (count) => {
     this.count = count;
+    this.racing(this.cars, this.count);
   };
 
   render = () => {
     new CarNamesInput({ setCars: this.setCars });
     new RacingCountInput({ setCount: this.setCount });
-
-    let result = this.racing(this.cars, this.count);
-
-    new GameResult(result);
+    new GameResult();
   };
 
   racing = (cars, count) => {

@@ -13,7 +13,10 @@ export class RacingCountInput {
   };
 
   initializeEvents = () => {
-    this.racingCountSubmit.addEventListener("click", this.getRacingCount);
+    this.racingCountSubmit.addEventListener(
+      "click",
+      this.handleRacingCountInput
+    );
   };
 
   handleRacingCountInput = () => {
@@ -22,12 +25,10 @@ export class RacingCountInput {
     if (!isValidCount(count)) {
       return;
     }
-    setCount(count);
+    this.setCount(count);
   };
 
   getRacingCount = () => {
-    let racingCount = this.racingCountInput.value;
-
-    this.checkRacingCountError(racingCount);
+    return this.racingCountInput.value;
   };
 }

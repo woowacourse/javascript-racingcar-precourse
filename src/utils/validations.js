@@ -66,7 +66,7 @@ export const isValidCount = (count) => {
 const getErrorMessageOfCountInputs = (count) => {
   let errorMessage = "";
 
-  if (isNumber(element)) {
+  if (isNumber(count)) {
     errorMessage += `${MESSAGE.ONLY_NUMBER_ERROR}`;
   }
 
