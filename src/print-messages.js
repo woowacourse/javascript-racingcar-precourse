@@ -13,3 +13,17 @@ export function printProgress(carNameArray) {
 
   return PROGRESS;
 }
+
+export function printWinner(winnerArray) {
+  let result = "최종 우승자: ";
+  let winnerString = "";
+
+  if (winnerArray.length > 1) {
+    winnerString = winnerArray.join(", ");
+  } else {
+    winnerString = winnerArray;
+  }
+
+  result += winnerString;
+  document.getElementById("result").innerHTML += result;
+}
