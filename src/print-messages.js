@@ -1,3 +1,6 @@
+import { state, resultContainer } from "./index.js";
+import { judgeWinner } from "./utils/game-utils.js";
+
 let PROGRESS = "";
 
 export function printProgress(carNameArray) {
@@ -26,4 +29,23 @@ export function printWinner(winnerArray) {
 
   result += winnerString;
   document.getElementById("result").innerHTML += result;
+}
+
+export function printFinalResult(racingCount) {
+  const resultHeader = resultContainer.innerHTML;
+  const carArray = state.carArray;
+  let gameProgress = "";
+
+  for (let i = 0; i < racingCount; i++) {
+    for (let n = 0; n < carArray.length; n++) {
+      if (carArray[n].canMove()) {
+        carArray[n].move();
+      }
+    }
+    gameProgress = printProgress(carArray);
+  }
+
+  document.getElementById("result").innerHTML = resultHeader + gameProgress;
+  const winnerArray = judgeWinner();
+  printWinner(winnerArray);
 }
