@@ -6,9 +6,14 @@ import {
   pickWinner,
 } from './car/actions.js';
 
+const carNamesSubmitBtn = document.getElementById('car-names-submit');
+const racingCountSubmitBtn = document.getElementById('racing-count-submit');
+const gameResultContainer = document.getElementById('game-result-container');
+const racingCountContainer = document.getElementById('racing-count-container');
+
 export default function RacingCarGame() {
-  const carNamesSubmitBtn = document.getElementById('car-names-submit');
-  const racingCountSubmitBtn = document.getElementById('racing-count-submit');
+  let carNames;
+  let racingCount;
 
   const play = function (_carNames, _racingCount) {
     const racingCars = setRacingCars(_carNames);
@@ -26,29 +31,24 @@ export default function RacingCarGame() {
 
   const printResult = function (_racingResult) {
     document.getElementById('game-result').innerText = _racingResult;
-    document.getElementById('game-result-container').hidden = false;
+    gameResultContainer.hidden = false;
   };
 
   carNamesSubmitBtn.addEventListener('click', () => {
-    this.carNames = getCarNames();
+    carNames = getCarNames();
 
-    if (!this.carNames) {
-      return;
+    if (carNames) {
+      racingCountContainer.hidden = false;
     }
-
-    document.getElementById('racing-count-container').hidden = false;
   });
 
   racingCountSubmitBtn.addEventListener('click', () => {
-    this.racingCount = getRacingCount();
+    racingCount = getRacingCount();
 
-    if (!this.racingCount) {
-      return;
+    if (racingCount) {
+      const racingResult = play(carNames, racingCount);
+      printResult(racingResult);
     }
-
-    const racingResult = play(this.carNames, this.racingCount);
-
-    printResult(racingResult);
   });
 }
 
