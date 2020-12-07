@@ -1,47 +1,67 @@
-# 🏎️ 프리코스 2주차 미션 - 자동차 경주 게임
+# 🏎️ 자동차 경주 게임
 
-## 🎯 학습 목표
+## 🎯 기능 요구사항
 
-- 메소드와 모듈 분리에 좀 더 초점을 맞추고, 객체 지향에 대해 공부한다.
-
-## 🎯 모듈 목록
-
-- index.js (프로그램의 흐름을 명시)
-- racing_car_game.js (RacingCarGame class)
-- winner.js (Winner class)
-- render.js (Render class)
-- car.js (Car class)
-- util.js (Util class)
-- constants.js
-
-## 🎯 기능 목록
-
-- 브라우저가 onload 되면, 유저로부터 자동차 이름의 인풋 값을 받는다.
-- 인풋 값의 적절성 확인 후에 올바르지 않은 인풋에 대해서는 경고창을 띄운다.
-  - 전체 문자열의 양 끝 값을 검사한다. (letter 유효성 검사)
-  - 이름이 될 수 있는 문자는 영문과 숫자의 조합으로 제한한다.
-  - 쉼표는 최소 한 개 이상 있어야 한다. (비교 대상 필요)
-  - 쉼표로 나누어진 각 원소의 길이는 1 - 5 글자로 이루어진다.
-  - 각 이름이 서로 중복되지 않도록 한다.
-  - 경고창에 유저가 올바른 값을 유추할 수 있도록 유도하는 설명이 필요하다.
-- 유저로부터 횟수의 인풋 값을 받는다.
-- 횟수 값의 적절성 확인 후에 올바르지 않은 인풋에 대해서는 경고창을 띄운다.
-  - 횟수는 0보다 큰 양의 정수만 해당한다.
-- RacingGame class 에 이름과 횟수를 넣어 생성된 객체를 이용해 프로그램을 실행한다.
-  - Car class 로부터 이름 인풋 값을 받아 생성된 객체들을 배열에 담아 둔다.
-  - randomMoveForward() 를 이용해 배열을 순회하며 각 객체의 위치는 랜덤으로 전진한다.
-  - 위 메소드가 끝나면 횟수를 1회 차감한다.
-  - 중간 집계를 브라우저에 렌더링한다.
-  - 횟수의 값이 0이 될 때까지 위 과정을 반복하고, 0이 되면 결과를 도출한다.
-    - Winner 객체를 이용해 최대 거리를 구하고, 우승자를 가리어 브라우저에 렌더링한다.
-
-## ✔️ 이슈
-
-- 빈 배열 []를 상수 처리 해서 사용하는 경우, 초기화가 정상적으로 진행되지 않고 그 전 함수의 값을 덮어 쓰는 버그가 발생했다. 왜지..?
-- runRound() 에서 car 객체의 배열을 순회하며 각 포지션을 랜덤으로 증가시키는 forEach 문을 작성하고 그 결과값을 렌더링 하려고 했지만 console 에는 최종 결과값만 출력되는 상황이 발생했다. 우회적으로 사본 배열을 만들어 처리하긴 했지만 왜인지는 잘 모르겠다.
-- reload 없이 각 인풋 값을 새로 갱신했을 때, 그에 맞는 새로운 결과 값이 도출되게끔 고민해봐야겠다.
-- 유저가 예외 값을 입력했을 때, 예상할 수 있는 모든 범위의 경고 메시지를 한 번에 보여주는 것이 경험적인 측면에서 더 효율적인 유저 행동을 이끌 수 있지 않을까?
+- 주어진 횟수 동안 n대의 자동차는 전진 또는 멈출 수 있다.
+- 자동차에 이름을 부여할 수 있다. 전진하는 자동차를 출력할 때 자동차 이름을 같이 출력한다.
+- 자동차 이름은 쉼표(,)를 기준으로 구분하며 이름은 5자 이하만 가능하다.
+- 사용자는 몇 번의 이동을 할 것인지를 입력할 수 있어야 한다.
+- 전진하는 조건은 0에서 9 사이에서 random 값을 구한 후 random 값이 4 이상일 경우 전진하고, 3 이하의 값이면 멈춘다.
+- 자동차 경주 게임을 완료한 후 누가 우승했는지를 알려준다. 우승자는 한 명 이상일 수 있다.
+- 우승자가 여러명일 경우 ,를 이용하여 구분한다.
 
 ## 💻 프로그램 실행 결과
 
 ![실행이미지](images/result.gif)
+![실행이미지](images/result.jpg)
+
+
+## ✅ 프로그래밍 요구사항
+- 사용자가 잘못된 입력 값을 작성한 경우 `alert`을 이용해 메시지를 보여주고, 재입력할 수 있게 한다.
+- 외부 라이브러리(jQuery, Lodash 등)를 사용하지 않고, 순수 Vanilla JS로만 구현한다.
+- **자바스크립트 코드 컨벤션을 지키면서 프로그래밍** 한다
+  - [https://google.github.io/styleguide/jsguide.html](https://google.github.io/styleguide/jsguide.html)
+  - [https://ui.toast.com/fe-guide/ko_CODING-CONVENSION/](https://ui.toast.com/fe-guide/ko_CODING-CONVENTION)
+- **indent(인덴트, 들여쓰기) depth를 3이 넘지 않도록 구현한다. 2까지만 허용**한다.
+  - 예를 들어 while문 안에 if문이 있으면 들여쓰기는 2이다.
+  - 힌트: indent(인덴트, 들여쓰기) depth를 줄이는 좋은 방법은 함수(또는 메소드)를 분리하면 된다.
+- **함수(또는 메소드)가 한 가지 일만 하도록 최대한 작게** 만들어라.
+
+### 추가된 요구사항
+
+- **함수(또는 메소드)의 길이가 15라인을 넘어가지 않도록 구현한다.**
+  - 함수(또는 메소드)가 한 가지 일만 잘 하도록 구현한다.
+- 자동차의 이름을 입력하는 input 태그는 `#car-names-input` id값을 가진다.
+- 자동차의 이름을 제출하는 button 태그는 `#car-names-submit` id값을 가진다.
+- 레이싱 횟수를 입력하는 input 태그는 `#racing-count-input` id값을 가진다.
+- 레이싱 횟수을 제출하는 button 태그는 `#racing-count-submit` id값을 가진다.
+- 다음 Car 객체를 만들고, new 를 이용해 인스턴스를 만든다.
+
+```javascript
+function Car(name) {
+  this.name = name;
+}
+
+class Car {
+  constructor(name) {
+    this.name = name;
+  }
+}
+```
+
+- 변수 선언시 `var` 를 사용하지 않는다. `const` 와 `let` 을 사용한다.
+  - [const](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/const)
+  - [let](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/let)
+- `import` 문을 이용해 스크립트를 모듈화하고 불러올 수 있게 만든다.
+  - [https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/import](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Statements/import)
+- `template literal`을 이용해 데이터와 html string을 가독성 좋게 표현한다.
+  - [https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Template_literals](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Template_literals)
+
+
+## 📝 미션 저장소 및 진행 요구사항
+
+- 미션은 [https://github.com/woowacourse/javascript-racingcar-precours](https://github.com/woowacourse/javascript-racingcar-precourse) 저장소를 fork/clone해 시작한다.
+- **기능을 구현하기 전에 javascript-racingcar-precourse/docs/README.md 파일에 구현할 기능 목록**을 정리해 추가한다.
+- **git의 commit 단위는 앞 단계에서 README.md 파일에 정리한 기능 목록 단위로 추가**한다.
+- [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서 절차를 따라 미션을 제출한다.
+
