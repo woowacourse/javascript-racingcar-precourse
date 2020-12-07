@@ -1,6 +1,6 @@
 import RacingCarGame from "./game.js";
-import InputHandler from "./handler/inputHandler.js";
-import OutputHandler from "./handler/outputHandler.js";
+import InputHandler from "./handler/input-handler.js";
+import OutputHandler from "./handler/output-handler.js";
 import { convertStringToNumber } from "./common/util.js";
 export default class App {
   constructor() {
