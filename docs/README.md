@@ -21,11 +21,11 @@
 
 
 - car.js
-    - [ ] `Car` - Car 객체 생성자. Car의 name값 설정, move는 0, winner은 false를 초기값으로 설정   
-    - [ ] `randomNumberCreator` - 0, 9사이의 random값 생성   
-    - [ ] `isMoved`  - Car의 전진 여부. 숫자를 입력받아 4이상일 경우 true, 3이하면 false   
-    - [ ] `setCarMove` - isMoved의 결과에 따라 Car객체의 move값 변화   
-    - [ ] `getCarMove` - Car객체의 move값 리턴    
+    - [x] `Car` - Car 객체 생성자. Car의 name값 설정, move는 0을 초기값으로 설정   
+    - [x] `randomNumberCreator` - 0, 9사이의 random값 생성   
+    - [x] `isMoved`  - Car의 전진 여부. 숫자를 입력받아 4이상일 경우 true, 3이하면 false   
+    - [x] `setCarMove` - isMoved의 결과에 따라 Car객체의 move값 변화   
+    - [x] `getCarMove` - Car객체의 move값 리턴    
 
 - input.js
     - [ ] `carNamesInput` - 입력받은 이름을 쉼표(,)로 구분하여 리스트로 리턴   
