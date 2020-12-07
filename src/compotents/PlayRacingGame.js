@@ -14,32 +14,32 @@ export class PlayRacingGame {
     this.render();
   }
 
-  initializeDOM() {
+  initializeDOM = () => {
     this.racingCountContainer = document.getElementById(
-      "#racing-count-container"
+      "racing-count-container"
     );
     this.resultContainer = document.getElementById("result-container");
-  }
+  };
 
-  setCars(newCars) {
+  setCars = (newCars) => {
     this.cars = newCars;
     setVisibility(this.racingCountContainer, "visible");
-  }
+  };
 
-  setCount(count) {
+  setCount = (count) => {
     this.count = count;
-  }
+  };
 
-  render() {
+  render = () => {
     new CarNamesInput({ setCars: this.setCars });
     new RacingCountInput({ setCount: this.setCount });
 
     let result = this.racing(this.cars, this.count);
 
     new GameResult(result);
-  }
+  };
 
-  racing(cars, count) {
+  racing = (cars, count) => {
     let result = "";
 
     for (let i = 0; i < count; i++) {
@@ -49,14 +49,14 @@ export class PlayRacingGame {
 
     setVisibility(this.resultContainer, "visible");
     // resultContainer.append(document.createTextNode(result));
-  }
+  };
 
-  racingInRound(cars) {
+  racingInRound = (cars) => {
     cars.forEach((car) => {
       getRandomNumber(NUM.RANDOM_START, NUM.RANDOM_END) >=
       NUM.GO_FORWARD_CONDITION
         ? car.go()
         : car.stop();
     });
-  }
+  };
 }

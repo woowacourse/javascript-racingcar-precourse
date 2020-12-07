@@ -8,18 +8,18 @@ export class CarNamesInput {
     this.setCars = setCars;
   }
 
-  initializeDOM() {
+  initializeDOM = () => {
     this.carNamesInput = document.getElementById("car-names-input");
     this.carNamesSubmit = document.getElementById("car-names-submit");
-  }
+  };
 
-  initializeEvents() {
+  initializeEvents = () => {
     this.carNamesSubmit.addEventListener("click", () => {
       this.handleCarNamesInput();
     });
-  }
+  };
 
-  handleCarNamesInput() {
+  handleCarNamesInput = () => {
     let names = this.getNamesFromInput();
 
     if (!isValidNames(names)) {
@@ -28,13 +28,13 @@ export class CarNamesInput {
 
     let cars = this.makeCars(names);
     this.setCars(cars);
-  }
+  };
 
-  getNamesFromInput() {
+  getNamesFromInput = () => {
     return this.carNamesInput.value.split(",").map((name) => name.trim());
-  }
+  };
 
-  makeCars(names) {
+  makeCars = (names) => {
     let cars = [];
 
     names.forEach((name) => {
@@ -42,5 +42,5 @@ export class CarNamesInput {
     });
 
     return cars;
-  }
+  };
 }

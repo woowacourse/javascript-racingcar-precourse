@@ -7,27 +7,27 @@ export class RacingCountInput {
     this.setCount = setCount;
   }
 
-  initializeDOM() {
+  initializeDOM = () => {
     this.racingCountInput = document.getElementById("racing-count-input");
     this.racingCountSubmit = document.getElementById("racing-count-submit");
-  }
+  };
 
-  initializeEvents() {
+  initializeEvents = () => {
     this.racingCountSubmit.addEventListener("click", this.getRacingCount);
-  }
+  };
 
-  handleRacingCountInput() {
+  handleRacingCountInput = () => {
     const count = this.getRacingCount();
 
     if (!isValidCount(count)) {
       return;
     }
     setCount(count);
-  }
+  };
 
-  getRacingCount() {
+  getRacingCount = () => {
     let racingCount = this.racingCountInput.value;
 
     this.checkRacingCountError(racingCount);
-  }
+  };
 }
