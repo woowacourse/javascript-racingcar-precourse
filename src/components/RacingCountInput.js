@@ -10,9 +10,10 @@ export default class RacingCountInput {
   }
 
   setState = (nextIsShow) => {
-    this.isShow = nextIsShow;
-
-    this.render();
+    if (this.isShow !== nextIsShow) {
+      this.isShow = nextIsShow;
+      this.render();
+    }
   };
 
   render = () => {
