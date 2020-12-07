@@ -1,7 +1,11 @@
 import RacingCarGame from "./game.js";
-import { validateInputsLength, validateInputsUnique, validateNaturalNumber } from "./validate.js";
-import { trimStringSpace, convertStringToArray, convertStringToNumber } from "./util.js";
-import { alertMessage } from "./message.js";
+import {
+  validateInputsLength,
+  validateInputsUnique,
+  validateNaturalNumber,
+} from "./common/validate.js";
+import { trimStringSpace, convertStringToArray, convertStringToNumber } from "./common/util.js";
+import { alertMessage } from "./common/message.js";
 const { INVALID_LENGTH_MESSAGE, DUPLICATE_NAME_MESSAGE, INVALID_NUMBER_MESSAGE } = alertMessage;
 export default class App {
   constructor() {
