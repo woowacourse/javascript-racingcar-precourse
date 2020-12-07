@@ -1,12 +1,15 @@
-export const ID = {
-    CAR_INPUT: 'car-names-input',
-    CAR_NAME_BUTTON: 'car-names-submit',
-    RACING_COUNT_INPUT: 'racing-count-input',
-    RACING_COUNT_BUTTON: 'racing-count-submit',
+export const BUTTON = {
+    CAR_NAMES_BUTTON: document.getElementById('car-names-submit'),
+    RACING_COUNT_BUTTON: document.getElementById('racing-count-submit'),
 };
 
+export const TEXT = {
+    CAR_NAMES_INPUT: document.getElementById('car-names-input'),
+    RACING_COUNT_INPUT: document.getElementById('racing-count-input'),
+}
+
 export const CLASS = {
-    GAMEBOARD: 'car-game=container',
+    GAMEBOARD: document.getElementsByClassName('car-game-container'),
 };
 
 export const MESSAGE = {
