@@ -9,7 +9,7 @@ export default function Car(name) {
 }
 
 function randomNumberCreater() {
-    return Math.floor(Math.random());
+    return Math.floor(Math.random() * 10);
 }
 
 function isMoved(randomNumber) {
