@@ -7,22 +7,13 @@ export default class ExceptionHandler {
 
   // CarName 예외 처리
   isCarNames(carNames) {
-    let carNamesArray = null;
+    let nameValue = false;
 
-    if (carNames === '') {
-      alert('하나 이상 입력해주세요.');
-    } else {
-      carNamesArray = this.separateCarNames(carNames);
+    if (carNames !== null) {
+      nameValue = true;
     }
 
-    return carNamesArray;
-  }
-
-  separateCarNames(carNames) {
-    const carNamesArray = carNames.split(',');
-    const appropriateCarNamesArray = this.isAppropriateCarNames(carNamesArray);
-
-    return appropriateCarNamesArray;
+    return nameValue;
   }
 
   isAppropriateCarNames(carNamesArray) {

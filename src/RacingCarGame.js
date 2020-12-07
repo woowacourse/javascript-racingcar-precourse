@@ -28,7 +28,7 @@ export default class RacingCarGame {
     this.carNamesSubmitButton.addEventListener('click', () => {
       this.getCarName();
 
-      if (this.carNames !== null) {
+      if (this.exceptionHandler.isCarNames(this.carNames)) {
         this.showCountRacing();
       } else {
         this.carNamesInput.value = '';
@@ -38,9 +38,18 @@ export default class RacingCarGame {
 
   // 차 이름 가져온 후 carNames 생성자에 넣기
   getCarName() {
-    const carNames = this.carNamesInput.value;
+    const totalCarNames = this.carNamesInput.value;
 
-    this.carNames = this.exceptionHandler.isCarNames(carNames); // TODO: 다시 만들기(함수 기능이 이상)
+    this.carNames = this.separateCarNames(totalCarNames);
+  }
+
+  separateCarNames(totalCarNames) {
+    const carNamesList = totalCarNames.split(',');
+    const appropriateCarNamesArray = this.exceptionHandler.isAppropriateCarNames(
+      carNamesList
+    );
+
+    return appropriateCarNamesArray;
   }
 
   showCountRacing() {
@@ -56,11 +65,14 @@ export default class RacingCarGame {
   }
 
   countRacingClick() {
-    if (this.exceptionHandler.isCountNumber(this.countNumber)) {
+    if (
+      this.exceptionHandler.isCountNumber(this.countNumber) &&
+      this.exceptionHandler.isCarNames(this.carNames) // [예외] namelist에 아무것도 안담겼는데 count 확인 눌렀을 경우
+    ) {
       this.showResult();
       this.repeatRunRacing();
     } else {
-      alert('알맞은 숫자를 입력해주세요');
+      alert('빈칸에 알맞게 입력해주세요');
       this.racingCountInput.value = '';
     }
   }
