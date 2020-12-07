@@ -1,17 +1,18 @@
-import { startGame } from './utils.js';
-import { carNamesButtonEvents } from './input.js';
+import { endGame, playGame, startGame } from './utils.js';
+import { carNamesButtonEvents, racingCountButtonEvents } from './input.js';
 import { BUTTON } from './constants.js';
 
 export default function RacingCarGame() {
     startGame(this);
-    console.log(this);
 
     BUTTON.CAR_NAMES_BUTTON.addEventListener('click', (e) => {
-        carNamesButtonEvents(e);
+        carNamesButtonEvents(this);
         BUTTON.RACING_COUNT_BUTTON.disabled = false;
     });
-    BUTTON.RACING_COUNT_BUTTON.addEventListener('click', );
-
-    console.log(this.numberOfCars, this.totalCount);
+    BUTTON.RACING_COUNT_BUTTON.addEventListener('click', (e) => {
+        racingCountButtonEvents(this);
+        playGame(this, this.carList);
+        endGame(this.carList);
+    });
 }
 new RacingCarGame();
