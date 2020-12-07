@@ -31,7 +31,7 @@
 - input.js
     - [x] `carNamesInput` - 입력받은 이름을 쉼표(,)로 구분하여 리스트로 리턴   
     - [x] `isCarNameValid` - 이름이 하나라도 5자를 넘어갈 경우 alert 후 false 리턴  
-    - [ ] `racingCountInput` - 입력받은 값만큼 gameBoard의 totalCount(분기) 속성 변경  
+    - [ ] `countNumberOfCars` - 게임에 참가하는 자동차 수 리턴
 
 - output.js
     - [ ] `carStatus` - Car객체의 moved를 입력받아 자동차별로 움직인 거리를 리턴   

@@ -15,6 +15,6 @@ function isCarNameValid(nameList) {
     return true;
 }
 
-export function racingCountInput(racingCount) {
-    
+export function countNumberOfCars(nameList) {
+    return nameList.length;
 }
