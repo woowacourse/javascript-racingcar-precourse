@@ -39,9 +39,13 @@ export const showResult = (cars) => {
   });
 };
 
-export const showWinners = (winners) => {
+export const showWinners = (winners, numParticipants, maxProgress) => {
   let resultPart = document.querySelector('#result-part');
   let winnerContainer = document.createElement('div');
   resultPart.appendChild(winnerContainer);
-  winnerContainer.innerHTML = `최종 우승자: ${winners}`;
+  if (winners.length === numParticipants && maxProgress === 0) {
+    winnerContainer.innerHTML = `최종 우승자: ${winners}<br/><br/>모두 출발점에 있네요. 모두가 우승자입니다! 👏`;
+  } else {
+    winnerContainer.innerHTML = `최종 우승자: ${winners}`;
+  }
 };

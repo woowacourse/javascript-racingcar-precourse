@@ -100,6 +100,6 @@ export default class RacingCarGame {
       ),
       []
     );
-    showWinners(this.winners);
+    showWinners(this.winners, this.cars.length, this.maxProgress);
   }
 }
