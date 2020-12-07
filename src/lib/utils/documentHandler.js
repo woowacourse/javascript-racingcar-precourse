@@ -23,3 +23,18 @@ export const showElements = (elements) => {
     element.style.display = 'block';
   });
 };
+
+export const showResult = (cars) => {
+  let resultPart = document.querySelector('#result-part');
+  let idx = 1;
+  cars.forEach((car) => {
+    let progressContainer = document.createElement('div');
+    resultPart.appendChild(progressContainer);
+    if (idx === cars.length) {
+      progressContainer.innerHTML = `${car.name}: ${car.progress}<br/><br/>`;
+    } else {
+      progressContainer.innerHTML = `${car.name}: ${car.progress}`;
+      idx++;
+    }
+  });
+};

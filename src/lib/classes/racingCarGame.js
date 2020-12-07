@@ -1,4 +1,8 @@
-import { addIdToElements, showElements } from '../utils/documentHandler.js';
+import {
+  addIdToElements,
+  showElements,
+  showResult,
+} from '../utils/documentHandler.js';
 import {
   validateCarNamesInput,
   validateRacingCountInput,
@@ -75,6 +79,7 @@ export default class RacingCarGame {
         car.move();
         this.changeMax(car.progress.length);
       });
+      showResult(this.cars);
     }
   }
 
