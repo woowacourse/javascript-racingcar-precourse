@@ -1,7 +1,7 @@
 export default class GetCarNames {
     constructor() {
         this.CAR_NAME_LENGTH = 5;
-        this.returnCarName = this.getCarName.bind(this);
+        this.distCarName = this.distCarName.bind(this);
     }
     // 각 자동차 이름의 길이를 확인하는 함수 
     checkCarName(carNamesArr) {
@@ -24,7 +24,7 @@ export default class GetCarNames {
     distCarName() {
         const carNamesInputValue = document.getElementById('car-names-input').value;
         const carNamesArrTemp = carNamesInputValue.split(',');
-        let result = [];
+        let result;
         if(!this.checkCarName(carNamesArrTemp)) {
             this.setAlert();
         }
