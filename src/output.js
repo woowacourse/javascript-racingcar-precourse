@@ -1,7 +1,7 @@
 import {CLASS, MESSAGE} from './constants';
 
 export function carStatus(car) {
-    return (car.name + ": " + MESSAGE.CAR.repeat(car.move));
+    return (`${car.name}: ${MESSAGE.CAR.repeat(car.move)}`);
 }
 
 export function printStatusMessage(carList) {
