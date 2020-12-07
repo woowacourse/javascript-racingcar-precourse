@@ -1,7 +1,8 @@
 import { Car } from '../../models';
 
 export default class RacingCarGameViewModel {
-  constructor() {
+  constructor(RacingCarGameModel) {
+    this.racingCarGameModel = RacingCarGameModel;
     this.subscriber = [];
     this._carInstances = null;
     this._racingCount = null;

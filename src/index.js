@@ -1,5 +1,6 @@
-import { RacingCarGameViewModel } from './modules/viewModels';
 import { RacingCarGameView } from './modules/views';
+import { RacingCarGameViewModel } from './modules/viewModels';
+import { RacingCarGameModel } from './modules/models';
 
 window.addEventListener('DOMContentLoaded', () => {
   const carNamesInput = document.getElementById('#car-names-inputs');
@@ -10,8 +11,9 @@ window.addEventListener('DOMContentLoaded', () => {
   const carRacingResultDiv = document.getElementById(
     '#car-racing-result-container',
   );
-  const gameViewModel = new RacingCarGameViewModel();
 
+  const gameModel = new RacingCarGameModel();
+  const gameViewModel = new RacingCarGameViewModel(gameModel);
   const gameView = new RacingCarGameView(
     gameViewModel,
     carNamesInput,
