@@ -14,6 +14,7 @@ export default class CarNamesInput {
       <button id="car-names-submit">확인</button>
     `;
 
+    this.carNamesContainer = _carNamesContainer;
     target.appendChild(_carNamesContainer);
   }
 

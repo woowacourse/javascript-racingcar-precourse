@@ -10,6 +10,8 @@ export default class RacingCarGame {
   gameResult = null;
 
   cars = [];
+  carNamesArray = [];
+  racingCount = 0;
 
   constructor(target) {
     this.target = target;
