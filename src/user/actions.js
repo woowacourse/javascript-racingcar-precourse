@@ -4,6 +4,34 @@ const isNull = function (value) {
   }
 };
 
+const isOverFive = function (value) {
+  if (value.length > 5) {
+    return true;
+  }
+};
+
+const isZero = function (value) {
+  if (value === 0) {
+    return true;
+  }
+};
+
+const isVaild = function (_carNames) {
+  for (let i = 0; i < _carNames.length; i++) {
+    const carName = _carNames[i];
+
+    if (isNull(carName)) {
+      alert(`자동차 이름은 공백일 수 없습니다. "${i + 1}번째 자동차"`);
+      return;
+    } else if (isOverFive(carName)) {
+      alert(`자동차 이름을 5자 이하로 지어주세요. "${carName}"`);
+      return;
+    }
+  }
+
+  return true;
+};
+
 const getRawCarNames = function () {
   const rawCarNames = document.getElementById('car-names-input').value;
 
@@ -21,38 +49,17 @@ const formatSrtingToArray = function (_rawCarNames) {
   }
 };
 
-const isOverFive = function (value) {
-  if (value.length > 5) {
-    return true;
-  }
-};
-
-const setCarNames = function () {
+const getCarNames = function () {
   const rawCarNames = getRawCarNames();
-  const carNames = formatSrtingToArray(rawCarNames);
 
-  if (!carNames) {
+  if (!rawCarNames) {
     return;
   }
 
-  for (let i = 0; i < carNames.length; i++) {
-    const carName = carNames[i];
+  const carNames = formatSrtingToArray(rawCarNames);
 
-    if (isNull(carName)) {
-      alert(`자동차 이름은 공백일 수 없습니다. "${i + 1}번째 자동차"`);
-      return;
-    } else if (isOverFive(carName)) {
-      alert(`자동차 이름을 5자 이하로 지어주세요. "${carName}"`);
-      return;
-    }
-  }
-
-  return carNames;
-};
-
-const isZero = function (value) {
-  if (value === 0) {
-    return true;
+  if (isVaild(carNames)) {
+    return carNames;
   }
 };
 
@@ -70,4 +77,4 @@ const getRacingCount = function () {
   return racingCount;
 };
 
-export { setCarNames, getRacingCount };
+export { getCarNames, getRacingCount };

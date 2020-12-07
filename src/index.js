@@ -1,4 +1,4 @@
-import { setCarNames, getRacingCount } from './user/actions.js';
+import { getCarNames, getRacingCount } from './user/actions.js';
 import {
   setRacingCars,
   moveRacingCars,
@@ -30,7 +30,7 @@ export default function RacingCarGame() {
   };
 
   carNamesSubmitBtn.addEventListener('click', () => {
-    this.carNames = setCarNames();
+    this.carNames = getCarNames();
 
     if (!this.carNames) {
       return;
