@@ -15,7 +15,7 @@ export const CLASS = {
 
 export const MESSAGE = {
     CAR: '-',
-    WINNER: '최종 우승자: ',
+    WINNER: '최종 우승자',
 };
 
 export const ERROR = {
