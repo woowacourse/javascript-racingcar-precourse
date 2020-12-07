@@ -1,11 +1,14 @@
 import CarNamesInput from './CarNamesInput.js';
 import RacingCountInput from './RacingCountInput.js';
 import GameResult from './GameResult.js';
+import Car from './Car.js';
 
 export default class RacingCarGame {
   carNamesContainer = null;
   racingCountContainer = null;
   gameResult = null;
+
+  cars = [];
 
   constructor(target) {
     this.target = target;
@@ -48,6 +51,11 @@ export default class RacingCarGame {
   }
 
   handleClickCarNamesSubmit() {
+    const _input = document.getElementById('car-names-input');
+    const _carNames = _input.value;
+    this.carNamesArray = _carNames.split(',');
+
+    this.cars = this.carNamesArray.map((name) => new Car(name));
     this.racingCountContainer.show();
   }
 
