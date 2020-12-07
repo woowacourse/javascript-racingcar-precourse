@@ -39,8 +39,8 @@
     - [x] `printResultMessage` - 승자 목록을 리스트로 받아서 출력한다.   
 
 - buttons.js
-    - [x] `carNamesGetter` - 'car-names-input' 상자로 입력받은 값을 리턴  
-    - [x] `racingCountGetter` - 'racing-count-input' 상자로 입력받은 값을 리턴   
+    - [x] `carNamesEventListener` - text 상자로 입력받은 값을 리턴하는 이벤트 리스너   
+    - [x] `racingCountEventListener` - text 상자로 입력받은 값을 리턴하는 이벤트 리스너   
 
 ## 🎯 기능 요구사항
 
