@@ -11,7 +11,7 @@ export default class PrintResult {
         result += `</p>`;
         this.racingResult.innerHTML += result;
     }
-    // 우승자를 알아내는 함수
+    // 우승자를 찾는 함수
     getWinner(cars) {
         let winners = [];
         let maxDist = 0;

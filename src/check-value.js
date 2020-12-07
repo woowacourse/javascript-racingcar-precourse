@@ -1,15 +1,12 @@
 export default class CheckValue {
-    constructor(carNamesArr) {
-        this.carNamesArr = carNamesArr;
-    }
-    isEmpty() {
+    // 변수의 빈값 여부를 확인하는 함수
+    isEmpty(value) {
         let result = false;
-        if(this.carNamesArr === "" || this.carNamesArr === null || this.carNamesArr === undefined
-            || (this.carNamesArr !== null && typeof this.carNamesArr === "object"
-            && !Object.keys(this.carNamesArr).length)) {
+        if(value === "" || value === null || value === undefined
+            || (value !== null && typeof value === "object"
+            && !Object.keys(value).length)) {
             result = true;
         }
-        console.log(result);
         return result;
-    } 
+    }
 }
