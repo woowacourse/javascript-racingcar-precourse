@@ -9,9 +9,9 @@ export default class RacingCarGame {
     this.IS_NOT_VALID = 0;
     this._privateInputUtils = new inputUtils();
     this._privatePlayUtils = new playUtils();
-    this.addEventListener();
     this.addElementId();
     this.selectDOM();
+    this.addEventListener();
   }
 
   addElementId() {
