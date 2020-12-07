@@ -1,4 +1,4 @@
-import { nameButton, countButton, nameInput, countInput } from "./inputUtil.js"
+import { nameButton, countButton, nameInput, countInput } from "../input/inputUtil.js"
 
 const countHTML = document.querySelector("#racing-count-div");
 const resultHTML = document.querySelector("#result-div");

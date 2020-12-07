@@ -1,5 +1,5 @@
-import { creatCars, creatRacingCount } from "./inputView.js";
-import { nameButton, countButton } from "./inputUtil.js";
+import { creatCars, creatRacingCount } from "../input/inputView.js";
+import { nameButton, countButton } from "../input/inputUtil.js";
 import {
     removeCountHTML,
     removeResultHTML,
@@ -7,7 +7,7 @@ import {
     addCountHTML,
     showResultHTML,
     resetResultHTMl
-} from "./outputView.js";
+} from "../output/outputView.js";
 
 export class GameStart {
     constructor() {
