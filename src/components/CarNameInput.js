@@ -5,6 +5,7 @@ export default class CarNameInput {
     this.$target = $target;
     this.updateCarNames = updateCarNames;
     this.carNameMaxLength = 5;
+    this.carNameSeparator = ",";
 
     this.init();
     this.bindEventListener();
@@ -27,7 +28,7 @@ export default class CarNameInput {
 
   onSubmitCarNames = () => {
     const $inputCarNames = document.querySelector(`#${ELEMENT_ID.carNamesInput}`);
-    const carNames = $inputCarNames.value.split(",");
+    const carNames = $inputCarNames.value.split(this.carNameSeparator);
 
     if (!this.isValidCarNameLength(carNames)) {
       alert("1자 이상, 5자 이하의 자동차 이름을 콤마로 구분하여 입력해주세요.");
