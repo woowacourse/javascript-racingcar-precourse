@@ -1,5 +1,5 @@
 import { setEventListener, showRacing } from './elementControl.js';
-import { random } from './utils.js';
+import { random, findMaxDistance, findSameValue } from './utils.js';
 import Car from './car.js';
 
 export default function RacingCarGame() {
@@ -10,10 +10,11 @@ export default function RacingCarGame() {
   this.moveCars = () => {
     for (let i = 0; i < this.countValue; i++) {
       for (let car of this.carObjectList) {
-        stopOrGo(car);
+        this.stopOrGo(car);
       }
       showRacing(this.carObjectList);
     }
+    this.findWinner();
   };
 
   this.setCars = () => {
@@ -23,11 +24,17 @@ export default function RacingCarGame() {
     this.moveCars();
   };
 
-  const stopOrGo = car => {
+  this.stopOrGo = car => {
     const randomValue = random();
     if (randomValue >= 4) {
       car.move();
     }
+  };
+
+  this.findWinner = () => {
+    const maxDistance = findMaxDistance(this.carObjectList);
+    const winners = findSameValue(this.carObjectList, maxDistance);
+    showWinners(winners);
   };
 }
 
