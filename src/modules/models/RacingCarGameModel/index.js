@@ -26,14 +26,14 @@ export default class RacingCarGameModel {
   //   });
   // }
 
-  setInstances(target, property, names) {
-    const instances = names.map(name => {
-      return new Car(name);
-    });
-    target._carInstances = instances;
+  // setInstances(target, property, names) {
+  //   const instances = names.map(name => {
+  //     return new Car(name);
+  //   });
+  //   target._carInstances = instances;
 
-    return true;
-  }
+  //   return true;
+  // }
 
   setCarInstances(cars) {
     const instances = names.map(name => {
@@ -43,15 +43,24 @@ export default class RacingCarGameModel {
     this._carInstances = instances;
   }
 
-  setRacingCountAndGameContinue(target, property, count) {
-    target._racingCount = count;
+  setRacingCountAndGameContinue(count) {
+    console.log(count, typeof count);
+    this._racingCount = count;
 
-    while (target._racingCount) {
-      target.gameContinue();
+    while (this._racingCount) {
+      this.gameContinue();
     }
-
-    return true;
   }
+
+  // setRacingCountAndGameContinue(target, property, count) {
+  //   target._racingCount = count;
+
+  //   while (target._racingCount) {
+  //     target.gameContinue();
+  //   }
+
+  //   return true;
+  // }
 
   notifyChange() {
     this.subscriber.forEach(subscriber => {
