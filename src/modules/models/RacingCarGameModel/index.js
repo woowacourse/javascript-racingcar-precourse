@@ -4,6 +4,7 @@ export default class RacingCarGameModel {
   constructor() {
     this._carInstances = null;
     this._racingCount = null;
+    this.subscriber = [];
 
     return this.setProxy();
   }
@@ -34,12 +35,18 @@ export default class RacingCarGameModel {
     return true;
   }
 
+  notifyChange() {
+    this.subscriber.forEach(subscriber => {
+      subscriber.updateChange(this); // 후에 vm에 updateChange 추가
+    });
+  }
+
   gameContinue() {
     this._carInstances.forEach(car => {
       car.moveForward();
     });
     this._racingCount--;
 
-    // this.notifyChange();
+    this.notifyChange();
   }
 }
