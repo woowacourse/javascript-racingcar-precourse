@@ -32,8 +32,8 @@ export default class Validation {
 
 
   isPossibleRacingCount(racingCount) {
-    if (/\D/g.test(racingCount)) {
-      this.setErrorMessage('숫자가 아닌 문자가 포함되어 있습니다. 다시 입력해주세요.');
+    if (racingCount === 0 || racingCount.length === 0) {
+      this.setErrorMessage('최소 1 이상의 숫자를 입력해주세요.');
       return false;
     }
     return true;

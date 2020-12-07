@@ -80,7 +80,7 @@ export default class RacingCarGame {
 
   handleClickRacingCountSubmit() {
     const _input = document.getElementById('racing-count-input');
-    const _racingCount = _input.value;
+    const _racingCount = Number(_input.value);
 
     if (this.validation.isPossibleRacingCount(_racingCount)) {
       this.racingCount = _racingCount;
