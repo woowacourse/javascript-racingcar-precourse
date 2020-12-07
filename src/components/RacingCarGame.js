@@ -1,21 +1,22 @@
 import CarNameInput from "./CarNameInput.js";
 import RacingCountInput from "./RacingCountInput.js";
+import RacingResult from "./RacingResult.js";
 
 export default class RacingCarGame {
   constructor({ $target }) {
-    this.$carGameContainer = document.createElement("div");
-    this.$carGameContainer.className = "car-game-container";
-    $target.append(this.$carGameContainer);
+    this.$container = document.createElement("div");
+    this.$container.className = "car-game-container";
+    $target.append(this.$container);
 
     this.carNames = [];
     this.racingCount = 0;
     this.components = {
       carNameInput: new CarNameInput({
-        $target: this.$carGameContainer,
+        $target: this.$container,
         updateCarNames: this.updateCarNames,
       }),
       racingCountInput: new RacingCountInput({
-        $target: this.$carGameContainer,
+        $target: this.$container,
         isShow: false,
         updateRacingCount: this.updateRacingCount,
       }),
@@ -46,6 +47,12 @@ export default class RacingCarGame {
 
     if (nextRacingCount) {
       this.racingCount = nextRacingCount;
+      this.components = {
+        ...this.components,
+        racingResult: new RacingResult({
+          $target: this.$container,
+        }),
+      };
     }
   };
 }
