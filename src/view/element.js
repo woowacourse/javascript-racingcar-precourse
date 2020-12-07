@@ -14,6 +14,7 @@ export const ElementControl = {
 
   showCarGameCountContainer() {
     Element.carGameCountContainer.style.visibility = "visible";
+    Element.racingCountInput.focus();
   },
 
   hideCarGameResultContainer() {

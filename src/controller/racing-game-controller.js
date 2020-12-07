@@ -29,6 +29,7 @@ export default class RacingCarGame {
     } else {
       alert(ERROR_MESSAGE);
       ElementControl.clearRacingCountInput();
+      ElementControl.hideCarGameResultContainer();
     }
   }
 
@@ -38,6 +39,8 @@ export default class RacingCarGame {
 
   startRacing() {
     const record = new Record();
+
+    this.carArray = record.resetRecord(this.carArray);
 
     for (let i = 0; i < this.racingCount; i++) {
       for (let j = 0; j < this.carArray.length; j++) {
