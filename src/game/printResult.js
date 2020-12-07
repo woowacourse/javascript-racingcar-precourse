@@ -6,7 +6,7 @@ function resetResult($resultScreen, carList) {
   carList.forEach((car) => (car.count = 0));
 }
 
-function printRaceResult(carList, $resultScreen) {
+function printRaceResult($resultScreen, carList) {
   carList.forEach((car) => {
     $resultScreen.insertAdjacentHTML(
       'beforeend',
@@ -16,7 +16,7 @@ function printRaceResult(carList, $resultScreen) {
   $resultScreen.insertAdjacentHTML('beforeend', '<br>');
 }
 
-function printFinalResult(winner, $resultScreen) {
+function printFinalResult($resultScreen, winner) {
   $resultScreen.insertAdjacentHTML('beforeend', `최종우승자 : ${winner} <br>`);
 }
 
@@ -27,8 +27,8 @@ export default function printResult(carList, racingCount) {
   $resultScreen.removeAttribute('hidden');
   while (racingCount--) {
     race(carList);
-    printRaceResult(carList, $resultScreen);
+    printRaceResult($resultScreen, carList);
   }
   const winner = getWinner(carList);
-  printFinalResult(winner, $resultScreen);
+  printFinalResult($resultScreen, winner);
 }
