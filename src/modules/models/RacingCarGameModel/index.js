@@ -20,7 +20,7 @@ export default class RacingCarGameModel {
           return target.setInstances(target, property, value);
         }
         if (property === '_racingCount') {
-          // return target.setRacingCountAndGameContinue(target, property, value);
+          return target.setRacingCountAndGameContinue(target, property, value);
         }
       },
     });

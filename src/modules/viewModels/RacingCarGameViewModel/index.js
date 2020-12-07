@@ -9,6 +9,10 @@ export default class RacingCarGameViewModel {
     return this.setProxy();
   }
 
+  subscribeModel(target) {
+    target.registerViewModels(this);
+  }
+
   setProxy() {
     return new Proxy(this, {
       get(target, property) {
