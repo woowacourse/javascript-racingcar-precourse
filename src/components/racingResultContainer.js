@@ -14,6 +14,10 @@ export default function RacingResultContainer({ state }) {
     this.racingResultContainer.classList.remove('hide');
   };
 
+  this.hide = () => {
+    this.racingResultContainer.classList.add('hide');
+  };
+
   this.showRacingProgress = () => {
     this.racingResultContainer.innerHTML += racingProgress(state.cars);
   };

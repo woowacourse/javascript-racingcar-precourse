@@ -1,5 +1,5 @@
-import { WRONG_COUNT_MESSAGE } from '../constants/index.js';
 import { isInt } from '../utils/index.js';
+import { WRONG_COUNT_MESSAGE } from '../constants/index.js';
 
 export default function RacingCountContainer({ setRacingCount }) {
   this.racingCountContainer = document.querySelector('.racing-count-container');
