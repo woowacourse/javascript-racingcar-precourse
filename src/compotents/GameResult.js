@@ -16,7 +16,18 @@ export class GameResult {
       this.resultHTML += this.getCarHTML(car.name, car.distance);
     });
     this.resultHTML += `<br/>`;
+  };
 
+  updateResultHTMLWithWinners = () => {
+    let winners = this.getWinners();
+    this.resultHTML += this.getWinnerHTML(winners);
+
+    this.render();
+  };
+
+  render = () => {
+    this.resultContainer.innerHTML = this.resultHTML;
+  };
 
   getCarHTML = (name, distance) => {
     return `<span>${name}: ${"-".repeat(distance)}</span><br/>`;
