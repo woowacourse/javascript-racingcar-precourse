@@ -1,7 +1,7 @@
 {
   "name": "javascript-racingcar-precourse",
   "version": "1.0.0",
-  "description": "## 🎯 기능 요구사항",
+  "description": "우아한테크코스3기 프리코스 2주차 미션",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
