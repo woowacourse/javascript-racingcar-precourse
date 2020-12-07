@@ -1,3 +1,7 @@
+import {goForward, findWinner, forward, instanceOfCars} from './game.js';
+import {hasBlanks, isUnderFiveCharacters} from './validation.js';
+import {Car} from './car.js';
+
 let firstButton = document.getElementById('#car-names-submit');
 let secondButton = document.getElementById('#racing-count-submit');
 
