@@ -33,7 +33,7 @@ export default class RacingCarGameView {
       return;
     }
 
-    this.racingCarGameViewModel['_carInstances'] = splitedNames;
+    this.submitCarNames(splitedNames);
     this.renderRacingCountInputAndSubmitButton();
     this.addEventListenerToRacingCountSubmitButton();
   }
@@ -66,6 +66,10 @@ export default class RacingCarGameView {
 
   submitRacingCount(count) {
     this.racingCarGameViewModel['_racingCount'] = count;
+  }
+
+  submitCarNames(splitedNames) {
+    this.racingCarGameViewModel['_carInstances'] = splitedNames;
   }
 
   subscribeViewModel(target) {
