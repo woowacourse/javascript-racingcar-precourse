@@ -38,7 +38,7 @@ export default class RacingCarGame {
    */
   getTryCount() {
     this.tryCount =
-        Number(document.getElementById('#racing-count-input').nodeValue);
+        Number(document.getElementById('racing-count-input').nodeValue);
   };
   /**
    * check TryCount Validtion
