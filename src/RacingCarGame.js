@@ -67,7 +67,8 @@ export default class RacingCarGame {
   countRacingClick() {
     if (
       this.exceptionHandler.isCountNumber(this.countNumber) &&
-      this.exceptionHandler.isCarNames(this.carNames) // [예외] namelist에 아무것도 안담겼는데 count 확인 눌렀을 경우
+      // [예외] namelist에 아무것도 안담겼는데 count 확인 눌렀을 경우
+      this.exceptionHandler.isCarNames(this.carNames)
     ) {
       this.showResult();
       this.repeatRunRacing();
