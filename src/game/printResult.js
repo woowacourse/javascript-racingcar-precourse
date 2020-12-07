@@ -2,7 +2,7 @@ import playRace from './playRace.js';
 import getWinner from './getWinner.js';
 
 function resetResult($resultScreen, carList) {
-  $resultScreen.innerHTML = `<h4>📄 실행 결과</h4>`;
+  $resultScreen.innerHTML = '<h4>📄 실행 결과</h4>';
   carList.forEach((car) => (car.count = 0));
 }
 
