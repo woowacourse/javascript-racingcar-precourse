@@ -65,3 +65,24 @@ class Car {
 - **git의 commit 단위는 앞 단계에서 README.md 파일에 정리한 기능 목록 단위로 추가**한다.
 - [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서 절차를 따라 미션을 제출한다.
 
+## 구현 목록
+
+- [X] eslint 설치 및 rule 설정
+- [X] RacingCarGame 클래스 모듈에서 게임 화면을 화면에 보여준다.
+- [X] racing-count-input과 결과 화면이 화면에서 보이지 않도록 한다.
+- [X] car-game-container를 구현한다.
+  - [X] car-names-input을 화면에 보여주는 클래스 모듈을 작성한다.
+  - [X] car-names-submit 버튼을 누르면 racing-count-input을 보이게 한다.
+  - [X] racing-count-input을 화면에 보여주는 클래스 모듈을 작성한다.
+  - [X] 차 이름과 레이싱 횟수를 제출하면 버튼을 비활성화 한다.
+- [X] Car 클래스를 만든다.
+  - [X] 랜덤한 0 ~ 9 사이의 값 중 4 이상이면 go, 아니면 stop하여 위치를 저장한다.
+- [X] 입력한 차 이름이 가능한 값인지 검사한다.
+  - [X] 입력한 차 이름은 공백이 있는가?
+  - [X] 입력한 차 이름은 0 이상 5 이하인가?
+  - [X] 입력한 차 이름에서 중복된 값은 없는가?
+- [X] 입력한 레이싱 횟수 값이 가능한 값인지 검사한다.
+  - [X] 입력된 횟수가 0이거나 아무것도 입력하지 않았는지 검사한다.
+  - [X] number 타입에서 +, -, e, . 이 입력되지 않도록 한다.
+- [X] 이름과 횟수를 입력하고 확인을 누르면 게임을 시작할 수 있다.
+- [X] 게임의 결과를 화면에 보여준다.
