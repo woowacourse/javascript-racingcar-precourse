@@ -14,6 +14,7 @@
     },
     "sourceType": "module"
   },
+  "ignorePatterns": "__test__/*.test.js",
   "rules": {
     "curly": [
       "error",
