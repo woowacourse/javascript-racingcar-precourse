@@ -4,3 +4,14 @@ let secondButton = document.getElementById('#racing-count-submit');
 function showNumTry() {
   document.getElementById('numTry').style.display = 'block';
 }
+
+function separateCarNames() {
+  let carNames = document.getElementById('#car-names-input').value;
+  let arrCarNames = carNames.split(',');
+  for (let i = 0; i < arrCarNames.length; i += 1) {
+    instanceOfCars[i] = new Car(arrCarNames[i]);
+  }
+  if ((isUnderFiveCharacters(instanceOfCars) === true) && (hasBlanks(instanceOfCars) === false)) {
+    showNumTry();
+  }
+}
