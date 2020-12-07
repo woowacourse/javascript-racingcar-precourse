@@ -18,6 +18,9 @@ export default class App {
     if (!this.#validateCars(cars)) {
       return alert('입력값을 확인해주세요.');
     }
+
+    this.#disableCarNames()
+    this.#showRacingCount()
   }
 
   #validateCars(cars) {
@@ -25,5 +28,14 @@ export default class App {
     const noDuplicated = new Set(cars).size === cars.length;
 
     return lessThanFiveChars && noDuplicated;
+  }
+
+  #disableCarNames() {
+    this.#element.querySelector("#car-names-input").disabled = true;
+    this.#element.querySelector("#car-names-submit").disabled = true;
+  }
+
+  #showRacingCount() {
+    this.#element.querySelector('#racing-count').style.display = 'block';
   }
 }
