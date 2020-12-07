@@ -1,6 +1,11 @@
 export default function Car(name) {
     this.name = name;
     this.move = 0;
+
+    function moveCar() {
+        if (isMoved(randomNumberCreater()))
+            this.move = this.move + 1;
+    }
 }
 
 function randomNumberCreater() {
@@ -8,14 +13,5 @@ function randomNumberCreater() {
 }
 
 function isMoved(randomNumber) {
-    return ((randomNumber > 4) ? true : false );
-}
-
-export function moveCar() {
-    if (isMoved(randomNumberCreater()))
-        this.move = this.move + 1;
-}
-
-function getCarMove() {
-    return this.move;
+    return ((randomNumber > 4) ? true : false);
 }
