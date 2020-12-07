@@ -1,5 +1,6 @@
 const MIN_INPUT_LENGTH = 1;
 const MAX_INPUT_LENGTH = 5;
+
 export const validateInputsUnique = function (inputs) {
   const duplicateInputs = inputs.filter((input, index) => inputs.indexOf(input) !== index);
 
