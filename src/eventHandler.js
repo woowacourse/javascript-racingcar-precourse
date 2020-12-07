@@ -1,14 +1,11 @@
 import Car from "./Car.js";
 import { printResult } from "./printResult.js";
+import { validateCarInput, validateRacingCountInput } from "./validateInput.js";
 import {
   showCountTags,
   showResultTags,
   clearResultDiv,
 } from "./controlTags.js";
-import {
-  validateCarInput,
-  validateRacingCountInput,
-} from "./validateCondition.js";
 
 export function carNamesSubmitHandler(play) {
   const carNamesInput = document.querySelector("#car-names-input");
@@ -22,11 +19,12 @@ export function carNamesSubmitHandler(play) {
 }
 
 export function init(play, racingCountInput) {
-  play.car = [];
+  //버튼을 누를때 마다  재 셋팅 함수
+  play.carArr = [];
   play.count = racingCountInput;
-  for (let i = 0; i < play.carNames.length; i++) {
-    play.car.push(new Car(play.carNames[i]));
-  }
+  play.carNames.map((v) => {
+    play.carArr.push(new Car(v));
+  });
 }
 export function racingCountSubmitHandler(play) {
   const racingCountInput = document.querySelector("#racing-count-input");

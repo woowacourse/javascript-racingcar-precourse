@@ -1,6 +1,6 @@
 function nameLengthCheck(nameArr) {
   let check = false;
-  nameArr.forEach((name, index) => {
+  nameArr.forEach((name) => {
     if (name.length > 5 || name.length < 1) {
       check = true;
     }
@@ -13,7 +13,7 @@ export function validateCarInput(carNamesInput) {
   const impossibleName = nameLengthCheck(nameArr);
   let check = true;
   if (nameArr.length < 2 || impossibleName) {
-    alert("올바른 이름을 입력하세요.[올바른 예) east,west,south,north]");
+    alert("올바른 이름을 1개 이상 입력하세요. ex)east,west,south,north");
     check = false;
   }
   return check;

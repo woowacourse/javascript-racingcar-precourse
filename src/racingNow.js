@@ -1,8 +1,8 @@
 export function getRandomNum(carArr) {
   let maxValue = 0;
   carArr.forEach((v) => {
-    const step = Math.floor(Math.random() * 10);
-    if (step >= 4) {
+    const steps = Math.floor(Math.random() * 10);
+    if (steps >= 4) {
       v.go = v.go + 1;
     }
     maxValue = Math.max(v.go, maxValue);
