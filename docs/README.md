@@ -31,13 +31,12 @@
 - input.js
     - [x] `carNamesInput` - 입력받은 이름을 쉼표(,)로 구분하여 리스트로 리턴   
     - [x] `isCarNameValid` - 이름이 하나라도 5자를 넘어갈 경우 alert 후 false 리턴  
-    - [ ] `countNumberOfCars` - 게임에 참가하는 자동차 수 리턴
+    - [x] `countNumberOfCars` - 게임에 참가하는 자동차 수 리턴
 
 - output.js
-    - [ ] `carStatus` - Car객체의 moved를 입력받아 자동차별로 움직인 거리를 리턴   
-    - [ ] `createStatusMessage` - carStatus의 결과를 합쳐서 전체 게임 상황을 출력   
-    - [ ] `creatResultMessage` - Car객체의 winner값을 검사하여 true인 객체만으로 결과 메세지 생성   
-    - [ ] `printResult` - 승자 목록을 리스트로 받아서 출력한다.   
+    - [x] `carStatus` - Car객체의 move를 입력받아 자동차별로 결과 메세지 리턴   
+    - [x] `printStatusMessage` - carStatus의 결과를 합쳐서 전체 게임 상황 메세지 리턴 
+    - [ ] `printResultMessage` - 승자 목록을 리스트로 받아서 출력한다.   
 
 - buttons.js
     - [ ] `carNamesEventListener` - text 상자로 입력받은 값을 리턴하는 이벤트 리스너   
