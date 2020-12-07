@@ -1,5 +1,5 @@
 import Car from './car.js';
-import {ERROR, ID} from './constants.js';
+import { ERROR, TEXT} from './constants.js';
 import { setCarList, setTotalCount } from './utils.js';
 
 function carNamesInput(nameString) {
@@ -31,13 +31,14 @@ export function createCars(carNameList) {
 }
 
 export function carNamesButtonEvents(game) {
-    let carNamesString = ID.CAR_INPUT.value;
-    let carList = carNamesInput(carNamesString);
-    
-    setTotalCount(game, countNumberOfCars(carList));
+    let carNamesString = TEXT.RACING_COUNT_INPUT.value;
+    let carNameList = carNamesInput(carNamesString);
+    let carList = createCars(carNameList);
+
+    setTotalCount(game, countNumberOfCars(carNameList));
     setCarList(game, carList);
 }
 
 export function racingCountButtonEvents(game) {
-    ID.RACING_COUNT_INPUT.value;
+    TEXT.RACING_COUNT_INPUT.value;
 }
