@@ -1,5 +1,3 @@
-import Car from './car.js';
-
 // functions game progress
 export function startGame(game) {
     game.nowCount = 0;
@@ -12,8 +10,8 @@ export function playGame(game, carList) {
     increaseCount(game);
 }
 
-export function endGame() {
-    let winnerList = new Array(getWinner());
+export function endGame(carList) {
+    let winnerList = getWinner(carList);
     printResult(winnerList);
 }
 
