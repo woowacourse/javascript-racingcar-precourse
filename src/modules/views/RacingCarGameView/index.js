@@ -20,7 +20,7 @@ export default class RacingCarGameView {
   }
 
   init() {
-    this.addEventListenerToCarNamesSubmitButtton();
+    this.addEventListenerToCarNamesSubmitButtton(this);
     this.subscribeViewModel(this.racingCarGameViewModel);
   }
 
@@ -35,7 +35,7 @@ export default class RacingCarGameView {
 
     this.submitCarNames(splitedNames);
     this.renderRacingCountInputAndSubmitButton();
-    this.addEventListenerToRacingCountSubmitButton();
+    this.addEventListenerToRacingCountSubmitButton(this);
   }
 
   handleRacingCountSubmit() {
@@ -51,16 +51,16 @@ export default class RacingCarGameView {
     this.renderResult(racingCount);
   }
 
-  addEventListenerToRacingCountSubmitButton() {
+  addEventListenerToRacingCountSubmitButton(self) {
     document
       .getElementById('#racing-count-submit')
-      .addEventListener('click', this.handleRacingCountSubmit.bind(this));
+      .addEventListener('click', this.handleRacingCountSubmit.bind(self));
   }
 
-  addEventListenerToCarNamesSubmitButtton() {
+  addEventListenerToCarNamesSubmitButtton(self) {
     this.carNamesSubmitButtton.addEventListener(
       'click',
-      this.handleCarNamesSubmit.bind(this),
+      this.handleCarNamesSubmit.bind(self),
     );
   }
 
