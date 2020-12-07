@@ -1,4 +1,4 @@
-import { addIdToElements } from '../utils/documentHandler.js';
+import { addIdToElements, showElements } from '../utils/documentHandler.js';
 import { ERROR } from '../utils/constants.js';
 import Car from '../classes/car.js';
 
@@ -37,6 +37,7 @@ export default class RacingCarGame {
     const WHICH_ERROR = validateCarNamesInput(carNames);
     if (WHICH_ERROR === ERROR.NONE) {
       this.createCar(carNames);
+      showElements([this.countInputPart]);
     } else {
       alert(WHICH_ERROR);
       this.clearElementsValue([this.carNamesInput]);

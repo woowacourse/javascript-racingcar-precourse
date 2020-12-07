@@ -17,3 +17,9 @@ export const addIdToElements = () => {
   const childrenOfApp = document.querySelector('#app').children;
   childrenOfApp[3].id = 'result-part';
 };
+
+export const showElements = (elements) => {
+  elements.forEach((element) => {
+    element.style.display = 'block';
+  });
+};
