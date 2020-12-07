@@ -82,9 +82,20 @@ export default class RacingCarGame {
 
     if (this.validation.isPossibleRacingCount(_racingCount)) {
       this.racingCount = _racingCount;
+      this.playRacingCarGame(this.cars, this.racingCount);
       return;
     }
     this.validation.renderError();
     this.cleanUpInput(_input);
+  }
+
+
+  playRacingCarGame(cars, racingCount) {
+    const getRacingHistory = (car) => (car.race(), car.racerPosition);
+    for (let i = 0; i < racingCount; i += 1) {
+      const _racerPositions = cars.map(getRacingHistory);
+      console.log(_racerPositions);
+    }
+    this.gameResult.show();
   }
 }
