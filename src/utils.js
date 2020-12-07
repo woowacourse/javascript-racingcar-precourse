@@ -49,3 +49,11 @@ const whoIsWinner = (cars) => {
 
   return winner;
 };
+
+export const resetGame = () => {
+  const carsInput = document.getElementById('car-names-input');
+  const timesInput = document.getElementById('racing-count-input');
+
+  carsInput.value = '';
+  timesInput.value = '';
+};
