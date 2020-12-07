@@ -4,6 +4,7 @@ export default class ExceptionHandler {
     this.MINSTRINGLENGTH = 0;
     this.MINCOUNTNUMBER = 0;
   }
+
   // CarName 예외 처리
   isCarNames(carNames) {
     let carNamesArray = null;
