@@ -17,6 +17,8 @@ export default class RacingCarGame {
 
     this.carNames = [];
     this.carObjList = [];
+    this.results = [];
+    this.spaces = [];
     this.countNumber = 0;
 
     this.submitCarNames();
@@ -71,6 +73,7 @@ export default class RacingCarGame {
       this.exceptionHandler.isCarNames(this.carNames)
     ) {
       this.showResult();
+      this.deleteResult();
       this.repeatRunRacing();
     } else {
       alert('빈칸에 알맞게 입력해주세요');
@@ -80,6 +83,16 @@ export default class RacingCarGame {
 
   showResult() {
     this.resultContainer.style.display = 'block';
+  }
+
+  deleteResult() {
+    for (let i = 0; i < this.results.length; i++) {
+      this.resultContainer.removeChild(this.results[i]);
+    }
+
+    for (let i = 0; i < this.spaces.length; i++) {
+      this.resultContainer.removeChild(this.spaces[i]);
+    }
   }
 
   repeatRunRacing() {
@@ -92,6 +105,8 @@ export default class RacingCarGame {
     }
 
     this.winnerToDom();
+    this.results = this.resultContainer.querySelectorAll('p');
+    this.spaces = this.resultContainer.querySelectorAll('br');
   }
 
   runRacing() {
@@ -139,7 +154,3 @@ export default class RacingCarGame {
     this.stringHTMLToDOM(winnerHTML);
   }
 }
-
-// TODO: 함수 단위 기능별로 쪼갰는지 확인
-// TODO: 코드 컨벤션 준수 확인
-// TODO: 다시 클릭했을 때 결과 지우고 다시 출력하는 기능
