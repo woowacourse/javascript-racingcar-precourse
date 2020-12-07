@@ -66,17 +66,19 @@ class Car {
 
 ## 💜추가 될 기능
 
-- [X] getNamesFromInput: 자동차 이름을 받아올 함수
-  - [X] 예외1 checkNameLength: 자동차 이름의 오류 확인 하는 함수 
-    - [X] 예외1-1 checkNameLength: 이름이 5글자 이상이면 에러라고 말하는 함수
-    - [X] 예외1-2 hasSpaceInName: 이름 내에 공백이 있다면 에러라고 말하는 함수
-    - [X] 예외1-3 isDuplicate: 중복 이름 유무 체크 함수
-    - [X] 예외1-4 hasEmptyName: 공백이 이름으로 들어왔는지 유무 체크 함수
-    - [X] 예외1-5 이름을 모두 받으면, 횟수를 받아오는 단계에서는 이름을 또 받을 수 없도록 button disable 처리
+- CarNamesInput.js 
+  - [X] handleCarNamesInput : 자동차 이름 input을 핸들링하는 함수
+  - [X] getNamesFromInput: 자동차 이름을 받아올 함수
+    - [X] 예외1 isValidNames: 자동차 이름의 오류 확인 하는 함수 
+      - [X] 예외1-1 checkNameLength: 이름이 5글자 이상이면 에러라고 말하는 함수
+      - [] 예외1-2 이름을 안넣은경우.
+      - [X] 예외1-3 isDuplicate: 중복 이름 유무 체크 함수
+      - [X] 예외1-4 hasEmptyName: 공백이 이름으로 들어왔는지 유무 체크 함수
+      - [X] 예외1-5 이름을 모두 받으면, 횟수를 받아오는 단계에서는 이름을 또 받을 수 없도록 button disable 처리
 - [X] getRacingCount: 시도할 횟수를 받아올 함수
   - [X] 예외2 checkRacingCountError: 시도할 횟수의 오류를 검출할 함수
   - [] 예외2-1 음수 체크
-- [X] makeInstances: 각 instance를 생성할 함수
+- [X] makeCars: 각 instance를 생성할 함수
 - [X] getRandomNumber: 랜덤 값 받아올 함수
   -[] 예외3 만약 start값이랑 end값이랑 바뀌어서 들어오면?
 - [X] playRacingGame: 레이싱 게임을 시작하는 함수
