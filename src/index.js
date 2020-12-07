@@ -22,13 +22,13 @@ function getRacingCount() {
 
 function isValidCarNames(carNames) {
   const MAX_CAR_NAME_LENGTH = 5;
-  const isLValidCarNameLength = carNames.every(
-    name => name.length > 0 && name.length <= MAX_CAR_NAME_LENGTH
-  );
   const isMoreThanTwoCars = carNames.length > 1;
   const isUniqueCarNames = isUniqueSet(carNames);
+  const isValidCarNameLength = carNames.every(
+    name => name.length > 0 && name.length <= MAX_CAR_NAME_LENGTH
+  );
 
-  if (isLValidCarNameLength && isMoreThanTwoCars && isUniqueCarNames) {
+  if (isMoreThanTwoCars && isUniqueCarNames && isValidCarNameLength) {
     return true;
   }
 

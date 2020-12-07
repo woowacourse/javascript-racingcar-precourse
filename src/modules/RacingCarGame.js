@@ -56,7 +56,6 @@ export default class RacingCarGame {
     winners.forEach(winner => {
       winnersName.push(winner.getName());
     });
-
     this.gameResultContainer.innerHTML += `<p>
       최종 우승자: ${winnersName.join(", ")}
     </p>`;
@@ -73,7 +72,6 @@ export default class RacingCarGame {
         this.updateCarStep(car);
         this.printRacingResult(racingResult, car);
       });
-
       this.gameResultContainer.appendChild(racingResult);
       this.racingCount--;
     }

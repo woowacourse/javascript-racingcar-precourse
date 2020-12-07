@@ -4,16 +4,16 @@ export default class Car {
     this._step = 0;
   }
 
+  move = () => {
+    this._step++;
+  };
+
   getName = () => {
     return this._name;
   };
 
   getStep = () => {
     return this._step;
-  };
-
-  move = () => {
-    this._step++;
   };
 
   getCarStatus = () => {
