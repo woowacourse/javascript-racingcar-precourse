@@ -10,6 +10,7 @@ export const TEXT = {
 
 export const CLASS = {
     GAMEBOARD: document.getElementsByClassName('car-game-container'),
+    RESULTBOARD: document.getElementsByClassName('result-container'),
 };
 
 export const MESSAGE = {
