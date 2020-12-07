@@ -10,11 +10,11 @@ export function printStatusMessage(carList) {
         statusMessage.append(carStatus(car));
         statusMessage.append(document.createElement('br'));
     }
-    CLASS.RESULTBOARD[0].appendChild(statusMessage);
+    CLASS.RESULTBOARD.appendChild(statusMessage);
 }
 
 export function printResultMessage(winnerList) {
     let resultMessage = document.createElement('p');
     resultMessage.append(`${MESSAGE.WINNER}: ${winnerList.join(', ')}`);
-    CLASS.RESULTBOARD[0].appendChild(resultMessage);
+    CLASS.RESULTBOARD.appendChild(resultMessage);
 }

@@ -9,8 +9,8 @@ export const TEXT = {
 }
 
 export const CLASS = {
-    GAMEBOARD: document.getElementsByClassName('car-game-container'),
-    RESULTBOARD: document.getElementsByClassName('result-container'),
+    GAMEBOARD: document.getElementsByClassName('car-game-container')[0],
+    RESULTBOARD: document.getElementsByClassName('result-container')[0],
 };
 
 export const MESSAGE = {
