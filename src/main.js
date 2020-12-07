@@ -1,4 +1,4 @@
-import RacingCarGame from "./Components/racingCarGame.js";
+import RacingCarGame from "./Core/racingCarGame.js";
 import { initHTML, hideForms } from "./Manager/uiManager.js";
 import { onNameSubmit, onRoundSubmit } from "./Manager/gameManager.js";
 

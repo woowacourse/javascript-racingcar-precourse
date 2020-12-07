@@ -1,4 +1,4 @@
-import Car from "../Components/car.js";
+import Car from "../Core/car.js";
 
 function makeCars(carNames) {
   let cars = [];

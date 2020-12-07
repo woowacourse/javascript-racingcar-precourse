@@ -1,6 +1,6 @@
 import { makeCars } from "./utils.js";
 import { showCountSubmitForm, showResultForm } from "./uiManager.js";
-import RacingCarGame from "../Components/racingCarGame.js";
+import RacingCarGame from "../Core/racingCarGame.js";
 
 function onNameSubmit() {
   let alertMsg = verifyNameInput(document.getElementById("car-names-input").value);
