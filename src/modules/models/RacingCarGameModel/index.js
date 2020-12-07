@@ -35,6 +35,16 @@ export default class RacingCarGameModel {
     return true;
   }
 
+  setRacingCountAndGameContinue(target, property, count) {
+    target._racingCount = count;
+
+    while (target._racingCount) {
+      target.gameContinue();
+    }
+
+    return true;
+  }
+
   notifyChange() {
     this.subscriber.forEach(subscriber => {
       subscriber.updateChange(this); // 후에 vm에 updateChange 추가
