@@ -1,0 +1,31 @@
+{
+  "name": "javascript-racingcar-precourse",
+  "version": "1.0.0",
+  "description": "## 🎯 기능 요구사항",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/songrammer/javascript-racingcar-precourse.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/songrammer/javascript-racingcar-precourse/issues"
+  },
+  "homepage": "https://github.com/songrammer/javascript-racingcar-precourse#readme",
+  "devDependencies": {
+    "eslint": "7.14.0",
+    "eslint-config-airbnb-base": "14.2.1",
+    "eslint-config-prettier": "6.15.0",
+    "eslint-plugin-import": "2.22.1",
+    "eslint-plugin-prettier": "3.2.0",
+    "prettier": "2.2.1"
+  },
+  "dependencies": {
+    "eslint-plugin-html": "6.1.1"
+  }
+}
