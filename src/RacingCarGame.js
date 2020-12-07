@@ -71,6 +71,7 @@ export default class RacingCarGame {
 
     if (this.validation.isPossibleCarNames(this.carNamesArray)) {
       this.cars = this.carNamesArray.map((name) => new Car(name));
+      this.carNamesContainer.buttonDisable();
       this.racingCountContainer.show();
       return;
     }
@@ -84,6 +85,7 @@ export default class RacingCarGame {
 
     if (this.validation.isPossibleRacingCount(_racingCount)) {
       this.racingCount = _racingCount;
+      this.racingCountContainer.buttonDisable();
       this.playRacingCarGame(this.cars, this.racingCount);
       return;
     }

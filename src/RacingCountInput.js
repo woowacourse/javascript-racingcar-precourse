@@ -40,6 +40,12 @@ export default class RacingCountInput {
     _input.onkeydown = handleKeyDown;
   }
 
+  buttonDisable() {
+    const _submit = document.getElementById('racing-count-submit');
+
+    _submit.disabled = true;
+  }
+
   show() {
     this.racingCountContainer.classList.toggle('hidden', false);
   }

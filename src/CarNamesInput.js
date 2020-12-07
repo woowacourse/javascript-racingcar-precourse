@@ -23,4 +23,10 @@ export default class CarNamesInput {
 
     _submit.addEventListener('click', onClick);
   }
+
+  buttonDisable() {
+    const _submit = document.getElementById('car-names-submit');
+
+    _submit.disabled = true;
+  }
 }

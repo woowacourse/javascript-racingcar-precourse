@@ -74,6 +74,7 @@ class Car {
   - [X] car-names-input을 화면에 보여주는 클래스 모듈을 작성한다.
   - [X] car-names-submit 버튼을 누르면 racing-count-input을 보이게 한다.
   - [X] racing-count-input을 화면에 보여주는 클래스 모듈을 작성한다.
+  - [X] 차 이름과 레이싱 횟수를 제출하면 버튼을 비활성화 한다.
 - [X] Car 클래스를 만든다.
   - [X] 랜덤한 0 ~ 9 사이의 값 중 4 이상이면 go, 아니면 stop하여 위치를 저장한다.
 - [X] 입력한 차 이름이 가능한 값인지 검사한다.
