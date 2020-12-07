@@ -28,8 +28,7 @@ export const validateRacingCountInput = (count) => {
   if (Number.isNaN(parseInt(count))) {
     return ERROR.NOT_A_NUMBER;
   }
-  const MIN_COUNT = 1;
-  if (count < MIN_COUNT) {
+  if (count < 1) {
     return ERROR.NUM_OF_TRIES;
   }
 

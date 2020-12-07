@@ -21,10 +21,7 @@ export default class RacingCarGame {
     this.countInputPart = document.querySelector('#count-input-part');
     this.resultPart = document.querySelector('#result-part');
     this.carNamesSubmit.addEventListener('click', this.getCarNames.bind(this));
-    this.racingCountSubmit.addEventListener(
-      'click',
-      this.getNumTries.bind(this)
-    );
+    this.racingCountSubmit.addEventListener('click', this.getNumTries.bind(this));
     this.cars = [];
     this.winners = [];
     this.maxProgress = 0;
@@ -93,11 +90,7 @@ export default class RacingCarGame {
   determineWinner() {
     this.winners = this.cars.reduce(
       (filteredWinners, car) => (
-        car.progress.length === this.maxProgress &&
-          filteredWinners.push(car.name),
-        filteredWinners
-      ),
-      []
+        car.progress.length === this.maxProgress && filteredWinners.push(car.name), filteredWinners), []
     );
     showWinners(this.winners, this.cars.length, this.maxProgress);
   }
