@@ -31,4 +31,12 @@ export class RacingCountInput {
   getRacingCount = () => {
     return this.racingCountInput.value;
   };
+
+  getCarHTML = (name, distance) => {
+    return `<p>${name}: ${"-".repeat(distance)}</p></br>`;
+  };
+
+  getWinnerHTML = (names) => {
+    return `<p>최종 우승자 ${names.join(",")}</p>`;
+  };
 }
