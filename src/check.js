@@ -4,16 +4,24 @@ export function isSpecialCharacter(carNamesInput) {
 }
   
 export function isAvailableLength(carNamesInput) {
-  const splitCarNamesInput = carNamesInput.split(",");
   const availableLength = 5;
-  const arrayLength = splitCarNamesInput.length;
+  const arrayLength = carNamesInput.length;
   let i = 0;
 
   for (i; i < arrayLength; i++) {
-    if (splitCarNamesInput[i].length > availableLength) {
+    if (carNamesInput[i].length > availableLength) {
       return false;
     }
   }
 
   return true;
+}
+
+export function isDuplicated(carNamesInput) {
+  const arrayLength = carNamesInput.length
+  const setArrayLength = new Set(carNamesInput).size
+
+  if (arrayLength === setArrayLength) {
+    return false
+  }
 }
