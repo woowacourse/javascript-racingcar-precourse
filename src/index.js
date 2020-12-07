@@ -10,10 +10,9 @@ export default class App {
     this.inputHandler = new InputHandler();
     this.outputHandler = new OutputHandler();
 
-    this.carNameSubmitButton = document.getElementById("car-names-submit");
-    this.racingCountSubmitButton = document.getElementById("racing-count-submit");
+    this.CAR_NAME_SUBMIT_BUTTON_ID = "car-names-submit";
+    this.RACING_COUNT_SUBMIT_BUTTON_ID = "racing-count-submit";
     this.racingCountContainer = document.getElementById("racing-count-container");
-    this.gameResultContainer = document.getElementById("game-result-container");
   }
 
   displayRacingCountContainer() {
@@ -57,13 +56,13 @@ export default class App {
   }
 
   onClick(event) {
-    const target = event.target;
+    const targetId = event.target.id;
 
-    if (target === this.carNameSubmitButton) {
+    if (targetId === this.CAR_NAME_SUBMIT_BUTTON_ID) {
       this.submitCarNames();
     }
 
-    if (target === this.racingCountSubmitButton) {
+    if (targetId === this.RACING_COUNT_SUBMIT_BUTTON_ID) {
       this.submitRacingCount();
     }
   }
