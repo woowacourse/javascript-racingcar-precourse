@@ -1,7 +1,7 @@
 export default class InputUtils {
   constructor() {
-    this.is_VALID = 1;
-    this.is_NOT_VALID = 0;
+    this.IS_VALID = 1;
+    this.IS_NOT_VALID = 0;
     this.MAX_LENGTH = '5자 이하로';
     this.OVERLAP = '중복 없이'
     this.MIN_LENGTH = '한 자 이상';
@@ -24,19 +24,18 @@ export default class InputUtils {
     }
 
     carNames.forEach((element) => {
-      if (this.maxLength(element) === this.is_NOT_VALID)
+      if (this.maxLength(element) === this.IS_NOT_VALID)
         errortype.MAX_LENGTH = 1;
 
-      if (this.overlap(element, carNames) === this.is_NOT_VALID)
+      if (this.overlap(element, carNames) === this.IS_NOT_VALID)
         errortype.OVERLAP = 1;
       
-      if (this.minLength(element) === this.is_NOT_VALID)
+      if (this.minLength(element) === this.IS_NOT_VALID)
         errortype.MIN_LENGTH = 1;
-    });
+    })
 
     if (errortype.MAX_LENGTH + errortype.OVERLAP + errortype.MIN_LENGTH > 0) {
       this.createErrorMessage(errortype);
-
       return this.IS_NOT_VALID;
     }
     
@@ -45,9 +44,9 @@ export default class InputUtils {
 
   maxLength(name) {
     if (name.length > 5) 
-      return this.is_NOT_VALID;
+      return this.IS_NOT_VALID;
 
-    return this.is_VALID;
+    return this.IS_VALID;
   }
 
   overlap(name, carNames) {
@@ -61,9 +60,9 @@ export default class InputUtils {
 
   minLength(name) {
     if (name === "") 
-      return this.is_NOT_VALID;
+      return this.IS_NOT_VALID;
 
-    return this.is_VALID;
+    return this.IS_VALID;
   }
 
   checkCountValidity(countInput) {
@@ -76,7 +75,7 @@ export default class InputUtils {
   }
 
   isZero(number) {
-    if (number[0] === '0')
+    if (number[0] === '0' || number === '')
       return this.IS_NOT_VALID;
     
     return this.IS_VALID;
@@ -103,4 +102,3 @@ export default class InputUtils {
     alert(errorMessage);
   }
 }
-

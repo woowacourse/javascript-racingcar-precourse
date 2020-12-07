@@ -5,13 +5,13 @@ import playUtils from './playUtils.js';
 export default class RacingCarGame {
   constructor() {
     document.body.style.fontFamily = 'Arial';
-    this.addElementId();
-    this.selectDOM();
-    this.addEventListener();
     this.IS_VALID = 1;
     this.IS_NOT_VALID = 0;
-    this.$InputUtils = new inputUtils();
-    this.$PlayUtils = new playUtils();
+    this._privateInputUtils = new inputUtils();
+    this._privatePlayUtils = new playUtils();
+    this.addEventListener();
+    this.addElementId();
+    this.selectDOM();
   }
 
   addElementId() {
@@ -23,72 +23,82 @@ export default class RacingCarGame {
   }
 
   selectDOM() {
-    this.$nameInput = document.getElementById('car-names-input');
-    this.$nameButton = document.getElementById('car-names-submit');
-    this.$countInput = document.getElementById('racing-count-input');
-    this.$countButton = document.getElementById('racing-count-submit');
-    this.$resultArea = document.getElementById('resultArea');
+    this.nameInput = document.getElementById('car-names-input');
+    this.nameButton = document.getElementById('car-names-submit');
+    this.countInput = document.getElementById('racing-count-input');
+    this.countButton = document.getElementById('racing-count-submit');
+    this.resultArea = document.getElementById('resultArea');
   }
 
   addEventListener() {
-    this.$nameInput.focus();
-    this.$nameButton.addEventListener("click", () => this.getCarNames());
-    this.$nameInput.addEventListener("keypress", (e) => {
+    this.nameInput.focus();
+
+    this.nameButton.addEventListener("click", () => this.getCarNames());
+    this.nameInput.addEventListener("keypress", (e) => {
       if (e.keyCode === 13)
         this.getCarNames();
     });
-    this.$countButton.addEventListener('click', () => this.getCount());
-    this.$countInput.addEventListener('keypress', (e) => {
+
+    this.countButton.addEventListener('click', () => this.getCount());
+    this.countInput.addEventListener('keypress', (e) => {
       if (e.keyCode === 13)
         this.getCount();
-    })
+    });
   }
 
   getCarNames() {
-    this.$carNameArray = this.$InputUtils.splitWithComma(this.$nameInput.value);
+    this.initGame();
+    this.carNameArray = this._privateInputUtils.splitWithComma(this.nameInput.value);
 
-    if (this.$InputUtils.checkNameValidity(this.$carNameArray) === this.IS_VALID) {
-      this.$countInput.focus();
+    if (this._privateInputUtils.checkNameValidity(this.carNameArray) === this.IS_VALID) {
+      this.countInput.focus();
       return 0;
     }
 
-    this.$nameInput.value = '';
-    this.$nameInput.focus();
+    this.nameInput.focus();
   }
 
   getCount() {
-    if (this.$InputUtils.checkCountValidity(this.$countInput.value) === this.IS_VALID) {
+    this.initResult();
+    this.countInput.focus();
+    if (this._privateInputUtils.checkCountValidity(this.countInput.value) === this.IS_VALID) {
       this.createNewCar();
       return 0;
     }
 
-    this.$countInput.value = '';
-    this.$countInput.focus();
+    this.countInput.value = '';
   }
 
   createNewCar() {
-    this.$cars = [];
-    this.$carNameArray.forEach((element) => {
-      this.$cars.push(new Car(element, 0));
+    this.cars = [];
+    this.carNameArray.forEach((element) => {
+      this.cars.push(new Car(element, 0));
     });
     this.startRace();
   }
 
   startRace() {
-    for (let i = 0; i < this.$countInput.value; i++)
+    for (let i = 0; i < this.countInput.value; i++)
       this.playRound();
 
-      this.$PlayUtils.displayWinner(this.$cars);
+      this._privatePlayUtils.displayWinner(this.cars);
   }
 
   playRound() {
-    this.$cars.forEach((car) => {
-      const number = this.$PlayUtils.getRandomNumber();
+    this.cars.forEach((car) => {
+      const number = this._privatePlayUtils.getRandomNumber();
       if (number >= 4)
         car.location += 1;
     })
-    this.$PlayUtils.displayGameProcess(this.$cars);
+    this._privatePlayUtils.displayGameProcess(this.cars);
   }
+
+  initGame() {
+    this.countInput.value = '';
+    this.initResult();
+  }
+
+  initResult = () => { this.resultArea.innerText = '' }
 }
 
 new RacingCarGame();
