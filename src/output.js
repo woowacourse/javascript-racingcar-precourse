@@ -15,6 +15,6 @@ export function printStatusMessage(carList) {
 
 export function printResultMessage(winnerList) {
     let resultMessage = document.createElement('p');
-    resultMessage.append(winnerList.join(', '));
+    resultMessage.append(`${MESSAGE.WINNER}: ${winnerList.join(', ')}`);
     CLASS.RESULTBOARD[0].appendChild(resultMessage);
 }
