@@ -46,3 +46,38 @@
 - [X] 최종 결과를 보여주는 기능
     - 우승자가 여러명일 때는 쉼표로 구분해서 출력 
       - ex) east, north
+
+## 🗂 디렉토리 구조
+```plaintext
+├── LICENSE
+├── README.md
+├── package.json
+├── package-lock.json
+├── .gitignore
+├── .prettierrc
+├── .eslintrc.json
+│
+├── images
+│   ├── result.gif
+│   └── result.jpg
+│
+├── index.html
+└── src
+    ├── index.js // 게임을 초기화하는 메인 모듈
+    │
+    ├── init // 게임 초기화와 관련된 모듈을 모아놓은 폴더
+    │   ├── initalizeGame.js   // 초기화와 관련된 모듈을 모아서 한번에 export하는 모듈
+    │   ├── addTagID.js        // 게임이 실행됐을 때 버튼과 인풋 태그에 ID를 추가해주는 모듈
+    │   ├── hideScreen.js      // 게임이 실행됐을 때 경주 횟수 입력받는 화면과 결과 화면을 숨겨주는 모듈
+    │   └── addEventListner.js // 게임이 실행됐을 때 인풋 태그에 EventListener를 등록해주는 모듈
+    │
+    ├── input // 입력과 관련된 모듈을 모아놓은 폴더
+    │   ├── getCarNames.js    // 자동차의 이름을 입력받는 모듈
+    │   └── getRacingCount.js // 경주 횟수를 입력받는 모듈
+    │
+    └── game // 게임 실행과 출력에 관한 모듈을 모아놓은 폴더
+        ├── prepareGame.js // 자동차 입력을 정상적으로 받았을 때 해당 자동차 값을 가지고 경주 횟수 입력을 받는 모듈
+        ├── playRace.js    // 자동차 경주를 실행하는 모듈
+        ├── getWinner.js   // 자동차 경주가 모두 끝났을 때 우승자를 구하는 모듈
+        └── printResult.js // 매 경주마다 결과값을 출력하고 모든 경주를 마쳤을 때 최종결과를 출력해주는 모듈
+```
