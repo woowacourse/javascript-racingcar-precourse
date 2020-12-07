@@ -59,11 +59,11 @@ export class RacingCarGame {
       this.showRacingCountContainer();
       this.disableCarNamesNodes();
       this.$racingCountInput.focus();
-      this.cars = carNamesInput.split(",").map(carName => new Car(carName.trim()));
+      this.cars = carNamesInput.split(",").map(carName => carName.trim()).map(carName => new Car(carName));
+      console.log(carNamesInput.split(",").map(carName => carName.trim()));
     } else {
       alert(`${carNamesInput}은 유효하지 않은 입력입니다. 재입력해주세요`);
-      this.$carNamesInput.value = "";
-      this.$carNamesInput.focus();
+      this.clearInput(this.$carNamesInput);
     }
   }
 
@@ -74,6 +74,11 @@ export class RacingCarGame {
   disableCarNamesNodes() {
     this.$carNamesInput.disabled = true;
     this.$carNamesSubmit.disabled = true;
+  }
+
+  clearInput($target) {
+    $target.value = "";
+    $target.focus();
   }
 
   onKeydownRacingCountInput(e) {
@@ -93,8 +98,7 @@ export class RacingCarGame {
       this.race();
     } else {
       alert(`${racingCountNumber}는 유효한 횟수가 아닙니다. 재입력해주세요.`);
-      this.$racingCountInput.value = "";
-      this.$racingCountInput.focus();
+      this.clearInput(this.$racingCountInput);
     }
   }
 
