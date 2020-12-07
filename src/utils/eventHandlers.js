@@ -80,7 +80,7 @@ const showRaceRameResult = (tryCount) => {
     raceCourseProcessRecordsTemplate,
   } = getRaceGameResultInfo({ racingCarGame, tryCount });
   racingProcessRecordsElement.innerHTML = raceCourseProcessRecordsTemplate;
-  racingWinnersElement.innerText = winnerListText;
+  racingWinnersElement.innerText = `최종 우승자: ${winnerListText}`;
 };
 
 const startRaceGame = () => {
