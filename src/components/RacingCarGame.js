@@ -8,6 +8,7 @@ export default class RacingCarGame {
     $target.append(this.$carGameContainer);
 
     this.carNames = [];
+    this.racingCount = 0;
     this.components = {
       carNameInput: new CarNameInput({
         $target: this.$carGameContainer,
@@ -16,6 +17,7 @@ export default class RacingCarGame {
       racingCountInput: new RacingCountInput({
         $target: this.$carGameContainer,
         isShow: false,
+        updateRacingCount: this.updateRacingCount,
       }),
     };
   }
@@ -26,14 +28,24 @@ export default class RacingCarGame {
           nextCarNames,
           nextIsShowRacingCountInput: true,
         })
-      : this.setState({ nextIsShowRacingCountInput: false });
+      : this.setState({
+          nextCarNames: [],
+          nextIsShowRacingCountInput: false,
+        });
   };
 
-  setState = ({ nextCarNames, nextIsShowRacingCountInput }) => {
-    if (nextCarNames) {
+  updateRacingCount = ({ nextRacingCount }) => {
+    this.setState({ nextRacingCount });
+  };
+
+  setState = ({ nextCarNames, nextIsShowRacingCountInput, nextRacingCount }) => {
+    if (nextCarNames !== undefined) {
       this.carNames = nextCarNames;
+      this.components.racingCountInput.setState(nextIsShowRacingCountInput);
     }
 
-    this.components.racingCountInput.setState(nextIsShowRacingCountInput);
+    if (nextRacingCount) {
+      this.racingCount = nextRacingCount;
+    }
   };
 }

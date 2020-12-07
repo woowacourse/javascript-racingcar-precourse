@@ -36,7 +36,7 @@ export default class CarNameInput {
       $inputCarNames.value = "";
     }
 
-    this.updateCarNames({ isValidCarNames, nextCarName: carNames });
+    this.updateCarNames({ isValidCarNames, nextCarNames: carNames });
   };
 
   bindEventListener = () => {

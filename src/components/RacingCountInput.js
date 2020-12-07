@@ -1,15 +1,13 @@
 import { ELEMENT_ID } from "../util/constants.js";
 
 export default class RacingCountInput {
-  constructor({ $target, isShow }) {
+  constructor({ $target, isShow, updateRacingCount }) {
     this.$container = document.createElement("div");
     this.$container.className = "racing-count-input-container";
     $target.append(this.$container);
 
-    // this.isShow = isShow;
-
-    this.isShow = true;
-    this.render();
+    this.isShow = isShow;
+    this.updateRacingCount = updateRacingCount;
 
     this.bindEventListener();
   }
@@ -30,7 +28,14 @@ export default class RacingCountInput {
     const $racingCountInput = document.querySelector(`#${ELEMENT_ID.racingCountInput}`);
     const racingCount = Number($racingCountInput.value);
 
-    console.log("결과: ", this.isNaturalNumber(racingCount));
+    if (!this.isNaturalNumber(racingCount)) {
+      alert("시도할 횟수는 자연수여야 합니다.");
+      $racingCountInput.value = "";
+
+      return;
+    }
+
+    this.updateRacingCount({ nextRacingCount: racingCount });
   };
 
   setState = (nextIsShow) => {
