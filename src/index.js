@@ -19,3 +19,11 @@ function separateCarNames() {
 function showResultText() {
   document.getElementById('resultText').style.display = 'block';
 }
+
+function tryGameNTimes() {
+  showResultText();
+  document.getElementById('result').innerHTML = '';
+  let numTry = document.getElementById('#racing-count-input').value;
+  goForward(numTry);
+  findWinner(forward);
+}
