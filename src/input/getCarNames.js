@@ -1,4 +1,4 @@
-import playGame from '../game/prepareGame.js';
+import prepareGame from '../game/prepareGame.js';
 
 function Car(name) {
   this.name = name;
@@ -7,7 +7,7 @@ function Car(name) {
 function makeNewCars(carNamesArray) {
   const carList = carNamesArray.map((name) => new Car(name));
   carList.forEach((car) => (car.count = 0));
-  return playGame(carList);
+  return prepareGame(carList);
 }
 
 function checkLength(carName) {
