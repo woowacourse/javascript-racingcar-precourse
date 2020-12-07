@@ -1,11 +1,8 @@
-import { Car } from '../../models';
-
 export default class RacingCarGameViewModel {
   constructor(RacingCarGameModel) {
     this.racingCarGameModel = RacingCarGameModel;
-    this.subscriber = [];
     this._carInstances = null;
-    this._racingCount = null;
+    this.subscriber = [];
     this.init();
 
     return this.setProxy();
