@@ -75,7 +75,7 @@ export default class RacingCarGame {
       return;
     }
     this.initPosition();
-    this.displayResult();
+    this.initResult();
     for (let i = 0; i < count; i++) {
       this.runRound();
     }
@@ -86,10 +86,13 @@ export default class RacingCarGame {
     this.cars.forEach(car => (car.position = 0));
   };
 
-  displayResult = () => {
+  initResult = () => {
     const resultContainer = document.querySelector(".result-container");
+    const resultTitle = document.querySelector(".result-title");
 
     resultContainer.style.display = "";
+    resultContainer.innerHTML = "";
+    resultContainer.appendChild(resultTitle);
   };
 
   runRound = () => {
