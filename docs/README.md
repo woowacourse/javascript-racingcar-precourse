@@ -16,9 +16,9 @@
   - [x] `createCars` - 입력받은 car **이름** 리스트로 car **객체** 리스트 생성. -> gameBoard의 속성으로 추가.
   - [x] `isGameEnd` - 1판의 게임이 끝났는지 판별. 입력받은 분기만큼의 실행이 끝났을 때 true 리턴  
   - [x] `increaseCount` - gameBoard의 nowCount 1 증가.
-  - [ ] `playGame` - 한 분기의 게임. nowCount 증가 & 각 자동차의 move 속성 변경.
+  - [x] `playGame` - 한 분기의 게임. nowCount 증가 & 각 자동차의 move 속성 변경.
   - [x] `endGame` - getWinner을 호출하고 printResult을 호출한다. 
-  - [ ] `getWinner` - car들의 move속성을 비교하여 승자를 리스트로 리턴한다. 
+  - [x] `getWinner` - car들의 move속성을 비교하여 승자를 리스트로 리턴한다. 
 
 
 - car.js
