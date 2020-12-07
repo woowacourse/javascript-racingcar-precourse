@@ -13,7 +13,7 @@ export default function gameBoard() {
             let car = new Car(carNameList[i]);
             carList.push(car);
         }
-        return carList;
+        this.carList = carList;
     }
 
     function increaseCount() {
