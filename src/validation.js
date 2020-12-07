@@ -10,3 +10,16 @@ export function isUnderFiveCharacters(instanceOfCars) {
 
   return true;
 }
+
+export function hasBlanks(instanceOfCars) {
+  for (let i = 0; i < instanceOfCars.length; i += 1) {
+    if (instanceOfCars[i].name === null || instanceOfCars[i].name.replace(/ /g, '') === '') {
+      alert('자동차의 이름은 공백이 될 수 없습니다.');
+      document.getElementById('#car-names-input').value = '';
+
+      return true;
+    }
+  }
+
+  return false;
+}
