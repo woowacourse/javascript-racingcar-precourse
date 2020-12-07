@@ -5,6 +5,10 @@ export const ID = {
     RACING_COUNT_BUTTON: 'racing-count-submit',
 };
 
+export const CLASS = {
+    GAMEBOARD: 'car-game=container',
+};
+
 export const MESSAGE = {
     CAR: '-',
     WINNER: '최종 우승자: ',
