@@ -1,0 +1,14 @@
+{
+    "extends": ["airbnb", "prettier"],
+    "env": {
+        "browser": true, 
+        "jest/globals": true,
+        "es2020": true
+    },
+    "parser": "babel-eslint",
+    "plugins": ["prettier", "jest", "babel"],
+    "rules": {
+        "import/extensions": ["off"],
+        "import/prefer-default-export": ["off"]
+    }
+}
