@@ -4,13 +4,8 @@ export default class RacingCarGameViewModel {
     this.subscriber = [];
     this._carInstances = null;
     this._racingCount = null;
-    this.init();
 
     return this.setProxy();
-  }
-
-  init() {
-    this.subscribeModel(this.racingCarGameModel);
   }
 
   setProxy() {
