@@ -1,4 +1,4 @@
-import {CLASS, MESSAGE} from './constants';
+import {CLASS, MESSAGE} from './constants.js';
 
 function carStatus(car) {
     return (`${car.name}: ${MESSAGE.CAR.repeat(car.move)}`);
