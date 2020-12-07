@@ -7,11 +7,12 @@ export default class RacingCarGame {
     document.body.style.fontFamily = 'Arial';
     this.IS_VALID = 1;
     this.IS_NOT_VALID = 0;
-    this._privateInputUtils = new inputUtils();
-    this._privatePlayUtils = new playUtils();
     this.addElementId();
     this.selectDOM();
+    this.createDisplayArea();
     this.addEventListener();
+    this._privateInputUtils = new inputUtils();
+    this._privatePlayUtils = new playUtils();
   }
 
   addElementId() {
@@ -28,6 +29,12 @@ export default class RacingCarGame {
     this._countInput = document.getElementById('racing-count-input');
     this._countButton = document.getElementById('racing-count-submit');
     this._resultArea = document.getElementById('resultArea');
+  }
+
+  createDisplayArea() {
+    this._displayArea = document.createElement('div');
+    this._displayArea.setAttribute('id', 'displayArea');
+    this._resultArea.appendChild(this._displayArea);
   }
 
   addEventListener() {
@@ -98,7 +105,7 @@ export default class RacingCarGame {
     this.initResult();
   }
 
-  initResult = () => { this._resultArea.innerText = '' }
+  initResult = () => { this._displayArea.innerText = '' }
 }
 
 new RacingCarGame();
