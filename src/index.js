@@ -1,6 +1,9 @@
 let firstButton = document.getElementById('#car-names-submit');
 let secondButton = document.getElementById('#racing-count-submit');
 
+firstButton.addEventListener('click', separateCarNames);
+secondButton.addEventListener('click', tryGameNTimes);
+
 function showNumTry() {
   document.getElementById('numTry').style.display = 'block';
 }
