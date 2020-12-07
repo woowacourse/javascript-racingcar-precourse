@@ -1,8 +1,9 @@
 export default class RacingCarGameViewModel {
   constructor(RacingCarGameModel) {
     this.racingCarGameModel = RacingCarGameModel;
-    this._carInstances = null;
     this.subscriber = [];
+    this._carInstances = null;
+    this._racingCount = null;
     this.init();
 
     return this.setProxy();
@@ -14,16 +15,12 @@ export default class RacingCarGameViewModel {
 
   setProxy() {
     return new Proxy(this, {
-      get(target, property) {
-        return target[property];
-      },
-
       set(target, property, value) {
         if (property === '_carInstances') {
-          target.racingCarGameModel[property] = value;
+          target.racingCarGameModel.setCarInstances(value);
         }
         if (property === '_racingCount') {
-          target.racingCarGameModel[property] = value;
+          target.racingCarGameModel.setRacingCountAndGameContinue(value);
         }
 
         return true;
