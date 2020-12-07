@@ -2,6 +2,7 @@ import {
   addIdToElements,
   showElements,
   showResult,
+  showWinners,
 } from '../utils/documentHandler.js';
 import {
   validateCarNamesInput,
@@ -81,11 +82,24 @@ export default class RacingCarGame {
       });
       showResult(this.cars);
     }
+    this.determineWinner();
   }
 
   changeMax(carDistance) {
     if (carDistance > this.maxProgress) {
       this.maxProgress = carDistance;
     }
+  }
+
+  determineWinner() {
+    this.winners = this.cars.reduce(
+      (filteredWinners, car) => (
+        car.progress.length === this.maxProgress &&
+          filteredWinners.push(car.name),
+        filteredWinners
+      ),
+      []
+    );
+    showWinners(this.winners);
   }
 }

@@ -38,3 +38,10 @@ export const showResult = (cars) => {
     }
   });
 };
+
+export const showWinners = (winners) => {
+  let resultPart = document.querySelector('#result-part');
+  let winnerContainer = document.createElement('div');
+  resultPart.appendChild(winnerContainer);
+  winnerContainer.innerHTML = `최종 우승자: ${winners}`;
+};
