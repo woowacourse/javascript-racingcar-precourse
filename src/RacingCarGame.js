@@ -1,6 +1,5 @@
 import { Car } from "./Car.js";
 import {
-  isMovingForward,
   isValidCarNamesInput,
   isValidRacingCount,
   getWinners
@@ -91,7 +90,7 @@ export class RacingCarGame {
       this.disableRacingCountNodes();
       this.showCarGameResultContainer();
       this.racingCountNumber = racingCountNumber;
-      this.play();
+      this.race();
     } else {
       alert(`${racingCountNumber}는 유효한 횟수가 아닙니다. 재입력해주세요.`);
       this.$racingCountInput.value = "";
@@ -108,17 +107,17 @@ export class RacingCarGame {
     this.$carGameResultContainer.style.display = "block";
   }
 
-  play() {
+  race() {
     for (let i = 0; i < this.racingCountNumber; i++) {
-      this.playRound();
+      this.raceRound();
     };
 
     const winners = getWinners(this.cars);
     this.setState({ winners });
   }
 
-  playRound() {
-    this.cars.forEach(car => isMovingForward() ? car.move() : "");
+  raceRound() {
+    this.cars.filter(car => car.canMoveForward()).forEach(car => car.move());
 
     const roundResultHTML = this.cars.map(car => car.getCurrentStateHTML()).join("");
 
