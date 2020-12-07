@@ -31,7 +31,7 @@ export default class RacingCarGame {
       this.getCarName();
 
       if (this.exceptionHandler.isCarNames(this.carNames)) {
-        this.showCountRacing();
+        this.showDiv(this.countContainer);
       } else {
         this.carNamesInput.value = '';
       }
@@ -54,8 +54,8 @@ export default class RacingCarGame {
     return appropriateCarNamesArray;
   }
 
-  showCountRacing() {
-    this.countContainer.style.display = 'block';
+  showDiv(container) {
+    container.style.display = 'block';
   }
 
   // 시도할 횟수를 눌렀을 때
@@ -72,17 +72,13 @@ export default class RacingCarGame {
       // [예외] namelist에 아무것도 안담겼는데 count 확인 눌렀을 경우
       this.exceptionHandler.isCarNames(this.carNames)
     ) {
-      this.showResult();
+      this.showDiv(this.resultContainer);
       this.deleteResult();
       this.repeatRunRacing();
     } else {
       alert('빈칸에 알맞게 입력해주세요');
       this.racingCountInput.value = '';
     }
-  }
-
-  showResult() {
-    this.resultContainer.style.display = 'block';
   }
 
   deleteResult() {
@@ -112,12 +108,14 @@ export default class RacingCarGame {
   runRacing() {
     this.carObjList.forEach((car) => {
       const goSign = this.randomNumber.init();
+      let resultString = '';
 
       if (goSign) {
         car.position++;
       }
 
-      this.stringHTMLToDOM(this.stringHTML(car));
+      resultString = this.stringHTML(car);
+      this.stringHTMLToDOM(resultString);
     });
   }
 
