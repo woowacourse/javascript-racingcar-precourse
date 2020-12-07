@@ -13,11 +13,11 @@
 
 - utils.js
   - [x] `gameBoard` - 게임 보드 생성자. numberOfCars, totalCount, nowCount 설정  
-  - [x] `createCars` - 입력받은 car **이름** 리스트로 car **객체** 리스트 생성.
+  - [x] `createCars` - 입력받은 car **이름** 리스트로 car **객체** 리스트 생성. -> gameBoard의 속성으로 추가.
   - [x] `isGameEnd` - 1판의 게임이 끝났는지 판별. 입력받은 분기만큼의 실행이 끝났을 때 true 리턴  
   - [x] `increaseCount` - gameBoard의 nowCount 1 증가.
   - [ ] `playGame` - 한 분기의 게임. nowCount 증가 & 각 자동차의 move 속성 변경.
-  - [ ] `endGame` - getWinner을 호출하고 printResult을 호출한다. 
+  - [x] `endGame` - getWinner을 호출하고 printResult을 호출한다. 
   - [ ] `getWinner` - car들의 move속성을 비교하여 승자를 리스트로 리턴한다. 
 
 
@@ -25,7 +25,7 @@
     - [x] `Car` - Car 객체 생성자. Car의 name값 설정, move는 0을 초기값으로 설정   
     - [x] `randomNumberCreator` - 0, 9사이의 random값 생성   
     - [x] `isMoved`  - Car의 전진 여부. 숫자를 입력받아 4이상일 경우 true, 3이하면 false   
-    - [x] `setCarMove` - isMoved의 결과에 따라 Car객체의 move값 변화   
+    - [x] `moveCar` - isMoved의 결과에 따라 Car객체의 move값 변화   
     - [x] `getCarMove` - Car객체의 move값 리턴    
 
 - input.js
