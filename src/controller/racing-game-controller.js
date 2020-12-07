@@ -42,6 +42,7 @@ export default class RacingCarGame {
       _record.saveLineBreak();
     }
     _record.showRecord();
+    _record.showWinner(this.carArray);
   }
 
   raceRound(car) {

@@ -1,3 +1,4 @@
+import Winner from "../domain/winner.js";
 import { Element, ElementControl } from "./element.js"
 
 export default class Record {
@@ -15,6 +16,14 @@ export default class Record {
 
   showRecord() {
     ElementControl.showCarGameResultContainer();
-    Element.carGameResultContainer.innerHTML += '<p>' + this.record + '</p>';
+    Element.carGameResultContainer.innerHTML += this.record;
+  }
+
+  showWinner(carArray) {
+    const _winner = new Winner();
+    let _winnerNameArray = [];
+
+    _winnerNameArray = _winner.getWinner(carArray);
+    Element.carGameResultContainer.innerHTML += `최종 우승자: ${_winnerNameArray.join(", ")}`;
   }
 }
