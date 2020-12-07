@@ -7,3 +7,14 @@ export const MESSAGE = {
   HAS_EMPTY_NAME_ERROR:
     ", 사용에 주의해주세요! 중복해서 쓰거나, 마지막에 붙이지 마세요!",
 };
+
+export const NUMBER = {
+  GO: 1,
+  STOP: 0,
+  GO_FORWARD_CONDITION: 4,
+
+  NAME_LENGTH: 5,
+
+  RANDOM_START: 0,
+  RANDOM_END: 9,
+};

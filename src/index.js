@@ -1,4 +1,4 @@
-import { MESSAGE } from "./constants/constants.js";
+import { MESSAGE, NUMBER as NUM } from "./constants/constants.js";
 import { Car } from "./classes/Car.js";
 import { getRandomNumber } from "./utils/random.js";
 
@@ -6,9 +6,6 @@ export default function RacingCarGame() {
   const carNamesSubmit = document.getElementById("car-names-submit");
   const racingCountSubmit = document.getElementById("racing-count-submit");
   let names = [];
-  const RANDOM_START = 0;
-  const RANDOM_END = 9;
-  const GO_FORWARD_CONDITION = 4;
   this.getNamesFromInput = () => {
     const carNamesInput = document.getElementById("car-names-input");
     names = carNamesInput.value.split(",");
@@ -98,7 +95,7 @@ export default function RacingCarGame() {
 
   this.checkRacingCountError = (racingCount) => {
     if (Number.isNaN(parseInt(racingCount))) {
-      alert(GAME_GUIDE.ONLY_NUMBER);
+      alert(MESSAGE.ONLY_NUMBER_ERROR);
     } else {
       console.log(racingCount);
       let cars = this.makeInstances();
@@ -132,7 +129,8 @@ export default function RacingCarGame() {
 
   this.racingInRound = (cars) => {
     cars.forEach((car) => {
-      getRandomNumber(RANDOM_START, RANDOM_END) >= GO_FORWARD_CONDITION
+      getRandomNumber(NUM.RANDOM_START, NUM.RANDOM_END) >=
+      NUM.GO_FORWARD_CONDITION
         ? car.go()
         : car.stop();
     });
