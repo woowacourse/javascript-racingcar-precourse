@@ -13,3 +13,6 @@ export const RANDOM_TRIGGER = 10;
 
 // used in Car class
 export const DEFAULT_POSITION = 0;
+
+// used in Render class
+export const PROGRESS_BAR = "-";
