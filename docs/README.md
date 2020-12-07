@@ -12,7 +12,9 @@
 
 
 - utils.js
-  - [x] `gameBoard` - 게임 보드 생성자. numberOfCars, totalCount, nowCount 설정  
+  - [x] `startGame` - RacingCarGame 생성자. nowCount 설정  
+  - [x] `setNumberOfCars` - RacingCarGame 에 numberOfCars 설정
+  - [x] `setTotalCount` - RacingCarGame에 totalCount(분기) 설정
   - [x] `createCars` - 입력받은 car **이름** 리스트로 car **객체** 리스트 생성. -> gameBoard의 속성으로 추가.
   - [x] `isGameEnd` - 1판의 게임이 끝났는지 판별. 입력받은 분기만큼의 실행이 끝났을 때 true 리턴  
   - [x] `increaseCount` - gameBoard의 nowCount 1 증가.
@@ -32,15 +34,14 @@
     - [x] `carNamesInput` - 입력받은 이름을 쉼표(,)로 구분하여 리스트로 리턴   
     - [x] `isCarNameValid` - 이름이 하나라도 5자를 넘어갈 경우 alert 후 false 리턴  
     - [x] `countNumberOfCars` - 게임에 참가하는 자동차 수 리턴
+    - [x] `carNamesListener` - text 상자로 입력받은 값을 리턴하는 이벤트 리스너   
+    - [x] `racingCountListener` - text 상자로 입력받은 값을 리턴하는 이벤트 리스너 
 
 - output.js
     - [x] `carStatus` - Car객체의 move를 입력받아 자동차별로 결과 메세지 리턴   
     - [x] `printStatusMessage` - carStatus의 결과를 합쳐서 전체 게임 상황 메세지 리턴 
     - [x] `printResultMessage` - 승자 목록을 리스트로 받아서 출력한다.   
 
-- buttons.js
-    - [x] `carNamesEventListener` - text 상자로 입력받은 값을 리턴하는 이벤트 리스너   
-    - [x] `racingCountEventListener` - text 상자로 입력받은 값을 리턴하는 이벤트 리스너   
 
 ## 🎯 기능 요구사항
 
