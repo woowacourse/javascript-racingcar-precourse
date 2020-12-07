@@ -94,8 +94,9 @@ export default class RacingCarGame {
     const getRacingHistory = (car) => (car.race(), car.racerPosition);
     for (let i = 0; i < racingCount; i += 1) {
       const _racerPositions = cars.map(getRacingHistory);
-      console.log(_racerPositions);
+      this.gameResult.renderRacing(this.carNamesArray, _racerPositions);
     }
+    this.gameResult.renderWinners(cars);
     this.gameResult.show();
   }
 }
