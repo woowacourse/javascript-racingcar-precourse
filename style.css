@@ -5,3 +5,7 @@
 #result {
   display: none;
 }
+
+#result div {
+  min-height: 10px;
+}
