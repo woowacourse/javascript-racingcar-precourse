@@ -22,6 +22,7 @@
   - [x] `setCarList` - RacingCarGame의 속성으로 추가.
   - [x] `setWinnerList` - RacingCarGame의 속성으로 추가.
   - [x] `increaseCount` - gameBoard의 nowCount 1 증가.
+  - [x] `isGameEnd` - 1판의 게임이 끝났는지 판별. 입력받은 분기만큼의 실행이 끝났을 때 true 리턴.
   - [x] `getWinner` - car들의 move속성을 비교하여 승자를 리스트로 리턴한다. 
 
 
