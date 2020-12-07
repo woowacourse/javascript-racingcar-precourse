@@ -1,4 +1,5 @@
 import CarFactory from "../domain/carfacotory.js";
+import Record from "../view/record.js";
 import { Element, ElementControl } from "../view/element.js";
 
 export default class RacingCarGame {
@@ -20,11 +21,9 @@ export default class RacingCarGame {
     this.racingCount = Number(Element.racingCountInput.value);
 
     if (this.isValidNumber(this.racingCount)) {
-      // console.log(this.carArray, this.racingCount);
-
       this.startRacing();
     } else {
-      alert("1 이상의 숫자를 입력해주세요.");
+      alert("1 이상의 숫자(정수)를 입력해주세요.");
     }
   }
 
@@ -33,18 +32,21 @@ export default class RacingCarGame {
   }
 
   startRacing() {
-    for (let i = 0; i < this.carArray.length; i++) {
-      this.raceRound(this.carArray[i]);
-    }
+    const _record = new Record();
 
-    console.log(this.carArray);
+    for (let i = 0; i < this.racingCount; i++) {
+      for (let j = 0; j < this.carArray.length; j++) {
+        this.raceRound(this.carArray[j]);
+        _record.saveRecord(this.carArray[j]);
+      }
+      _record.saveLineBreak();
+    }
+    _record.showRecord();
   }
 
   raceRound(car) {
-    for (let i = 0; i < this.racingCount; i++) {
-      if (Math.floor(Math.random() * 10) >= 4) {
-        car.moveForward();
-      }
+    if (Math.floor(Math.random() * 10) >= 4) {
+      car.moveForward();
     }
   }
 }
