@@ -1,8 +1,8 @@
-import inputUtils from './inputUtils.js';
+import InputUtils from './input_utils.js';
 import Car from './car.js';
-import playUtils from './playUtils.js';
+import PlayUtils from './play_utils.js';
 
-export default class RacingCarGame {
+export class RacingCarGame {
   constructor() {
     document.body.style.fontFamily = 'Arial';
     this.IS_VALID = 1;
@@ -11,8 +11,8 @@ export default class RacingCarGame {
     this.selectDOM();
     this.createDisplayArea();
     this.addEventListener();
-    this._privateInputUtils = new inputUtils();
-    this._privatePlayUtils = new playUtils();
+    this._privateInputUtils = new InputUtils();
+    this._privatePlayUtils = new PlayUtils();
   }
 
   addElementId() {
