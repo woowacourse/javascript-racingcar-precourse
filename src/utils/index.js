@@ -25,14 +25,13 @@ function isNames(names) {
 
 function isOverlapedNames(names) {
   const dictObject = {};
-
-  names.every(name => {
+  for (let i = 0; i < names.length; i++) {
     if (name in dictObject) {
       return true;
     }
-
     dictObject[name] = true;
-  });
+  }
+
   return false;
 }
 
