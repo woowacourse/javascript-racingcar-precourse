@@ -1,5 +1,3 @@
-import { getRandomNumber } from "../utils/random.js";
-import { NUMBER as NUM } from "../constants/constants.js";
 import { CarNamesInput } from "./carNamesInput.js";
 import { RacingCountInput } from "./RacingCountInput.js";
 import { setVisibility } from "../utils/handleDom.js";
@@ -49,10 +47,7 @@ export class PlayRacingGame {
 
   racingInRound = (cars) => {
     cars.forEach((car) => {
-      getRandomNumber(NUM.RANDOM_START, NUM.RANDOM_END) >=
-      NUM.GO_FORWARD_CONDITION
-        ? car.go()
-        : car.stop();
+      car.race();
     });
   };
 
