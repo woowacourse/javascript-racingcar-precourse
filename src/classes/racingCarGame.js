@@ -21,10 +21,6 @@ export default class RacingCarGame {
     return lastRecord;
   }
 
-  addCarToRaceCourse(car) {
-    this.raceCourse.push(car);
-  }
-
   #addProgressMarkToRaceCourse() {
     this.raceCourse.forEach((car) => {
       car.tryAdvance();
@@ -37,6 +33,10 @@ export default class RacingCarGame {
   #recordRaceCourseProcess() {
     const raceCourseProcessAtMoment = { ...this.raceCourseProcess };
     this.raceCourseProcessRecords.push(raceCourseProcessAtMoment);
+  }
+
+  addCarToRaceCourse(car) {
+    this.raceCourse.push(car);
   }
 
   getWinnerCarNameList() {
