@@ -33,6 +33,4 @@ export function renderRacingGameWinner(racingResult, racingResultScreen) {
     racingResultScreen.innerHTML += `
     <div>최종우승자: ${winnerList.join(", ")}</div>
     `;
-    console.log(racingResult);
-    console.log(winnerList);
 }
