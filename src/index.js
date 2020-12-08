@@ -12,6 +12,7 @@ document.addEventListener('click', function(event) {
     getUserInput = new GetUserInput();
     const isValid = getUserInput.getCars();
     document.getElementById('game-result-container').hidden = true;
+    document.getElementById('racing-count-input').value = null;
     if (isValid === 1) {
       document.getElementById('try-count-form').hidden = false;
     }
