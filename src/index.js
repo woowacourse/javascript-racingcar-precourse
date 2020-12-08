@@ -1,7 +1,4 @@
-export default function RacingCarGame() {
-}
-// export default class RacingCarGame {
-// }
+import RacingCarGame from './RacingCarGame.js';
 
-
-new RacingCarGame();
+const $racingCarGameApp = document.querySelector('#app');
+new RacingCarGame($racingCarGameApp);
