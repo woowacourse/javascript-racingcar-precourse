@@ -17,4 +17,5 @@ function showResult() {
   const $divResult = document.getElementById("result-div");
   $divResult.style.display = "block";
 }
+
 export { hideRacingCount, hideResult, showRacingCount, showResult };

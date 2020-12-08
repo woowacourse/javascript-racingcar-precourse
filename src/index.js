@@ -1,5 +1,5 @@
 import { hideRacingCount, hideResult, showRacingCount, showResult } from "./htmlChange.js";
-import { carNamesCheck, isNumber } from "./utils.js";
+import { carNamesCheck, isNumber, isCarMoved } from "./utils.js";
 import Car from "./Car.js";
 
 export default class RacingCarGame {
