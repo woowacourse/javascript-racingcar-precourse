@@ -59,9 +59,9 @@ const displayFinalWinner = (cars) => {
   let max;
   let winners = '';
 
-  cars.sort((a, b) => b.scoreLen - a.scoreLen);
-  max = cars[0].scoreLen;
-  winners = cars.filter((car) => car.scoreLen === max).map((car) => car.name);
+  cars.sort((a, b) => b.scoreLen() - a.scoreLen());
+  max = cars[0].scoreLen();
+  winners = cars.filter((car) => car.scoreLen() === max).map((car) => car.name);
 
   appendAtEnd(
     '#game-result-content',

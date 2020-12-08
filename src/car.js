@@ -7,23 +7,23 @@ export default class Car {
     this.score = '';
   }
 
-  get scoreLen() {
-    return this.score.length;
-  }
-
-  playOneTurn = () => {
+  playOneTurn() {
     const randomNumber = generateRandomInteger(0, 9);
 
     if (randomNumber >= 4) {
       this.score += SCORE_MARKER;
     }
-  };
+  }
 
-  displayCurrentScore = () => {
+  displayCurrentScore() {
     appendAtEnd('#game-result-content', 'div', `${this.name}: ${this.score}`);
-  };
+  }
 
-  initScore = () => {
+  scoreLen() {
+    return this.score.length;
+  }
+
+  initScore() {
     this.score = '';
-  };
+  }
 }
