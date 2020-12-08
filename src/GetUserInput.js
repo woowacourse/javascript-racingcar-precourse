@@ -16,6 +16,7 @@ export default class GetUserInput {
     if (validation !== 1) {
       this.cars.length = 0;
       document.getElementById('car-names-input').value = '';
+      document.getElementById('try-count-form').hidden = true;
       alert(new ErrorMsg().setError(validation));
     }
 
