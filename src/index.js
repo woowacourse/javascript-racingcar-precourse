@@ -59,15 +59,36 @@ const isValidNames = (namesArray) => {
   return result;
 };
 
-const isValidCountNum = (input) => {
+const isNumber = (input) => {
   let result = true;
   if (!input.length) {
     alert("숫자를 입력해주세요.");
     result = false;
-  } else if (input === "0") {
-    alert("1 이상의 수를 입력해주세요.");
-    result = false;
   }
+
+  return result;
+};
+
+const isInteger = (input) => {
+  const inputToInt = parseInt(input);
+  input *= 1;
+
+  return input === inputToInt;
+};
+
+const isOneOrGreaterInteger = (input) => {
+  let result = isInteger(input);
+  result = result === true ? input * 1 > 0 : false;
+  if (!result) {
+    alert("1 이상의 자연수를 입력해주세요.");
+  }
+
+  return result;
+};
+
+const isValidCountNum = (input) => {
+  let result = isNumber(input);
+  result = result === true ? isOneOrGreaterInteger(input) : false;
 
   return result;
 };
