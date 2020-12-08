@@ -13,22 +13,31 @@ export default class RacingCarGame {
       domId.racingCountSubmitBtn,
     );
 
-    this.isCarNamesValid = false;
-
-    this.gameInit();
+    this.isValidCarNames = false;
   }
 
   gameInit() {
     this.carNamesForm.setOnClick(this.onCarNamesSubmitBtnClick);
+    this.racingCountForm.setOnClick(this.onRacingCountSubmitBtnClick);
   }
 
   onCarNamesSubmitBtnClick = () => {
     this.carNameSeparator();
     this.carNameValidator();
     this.carNamesForm.clearInput();
-    if (this.isCarNamesValid) {
+    if (this.isValidCarNames) {
       this.createCars();
     }
+  };
+
+  onRacingCountSubmitBtnClick = () => {
+    this.checkValidCount();
+    this.racingCountForm.clearInput();
+  };
+
+  checkValidCount = () => {
+    this.count = Number(this.racingCountForm.value);
+    this.isValidCount = this.count > 0;
   };
 
   carNameSeparator() {
@@ -38,7 +47,7 @@ export default class RacingCarGame {
   }
 
   carNameValidator() {
-    this.isCarNamesValid = this.checkLength() && this.checkOverlap();
+    this.isValidCarNames = this.checkLength() && this.checkOverlap();
   }
 
   checkLength() {
@@ -76,4 +85,5 @@ export default class RacingCarGame {
   }
 }
 
-new RacingCarGame();
+const game = new RacingCarGame();
+game.gameInit();
