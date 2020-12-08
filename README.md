@@ -89,6 +89,10 @@ src
 
 ## 💜 추가 될 기능
 
+#### classes
+- *Car.js*
+
+#### components
 - *PlayRacingGane.js*
   - [X] setCars: 차 객체들을 저장하는 함수
   - [X] runRaces: count를 저장하고, 레이스를 시작하는 함수
@@ -121,16 +125,14 @@ src
   - [X] updateResultHTMLWithWinners: 모든 시합이 끝나고 winner를 result에 저장하는 함수
   - [X] render: 결과창을 내보내는 함수
 
-- *Car.js*
-
+#### constants
 - *constants.js*
 
--* handleDom.js*
+#### utils
+- *handleDom.js*
   - [X] showErrorMessages: alert 에러 메세지
   - [X] setDisable: dom이 disable
   - [X] setVisibility: dom의 visibility hidden, visible
-
-- *random.js*
 
 - *templates.js*
   - [X] getCarHTML : 자동차 거리 템플릿
@@ -139,3 +141,7 @@ src
 
 - *validations.js*
   - 위의 컴포넌트 들에서 모두 설명함.
+
+- *random.js*
+
+
