@@ -1,5 +1,5 @@
 import { hideRacingCount, hideResult, showRacingCount, showResult } from "./htmlChange.js";
-import { carNamesCheck } from "./utils.js";
+import { carNamesCheck, isNumber } from "./utils.js";
 import Car from "./Car.js";
 
 export default class RacingCarGame {
@@ -32,6 +32,16 @@ export default class RacingCarGame {
     const carInstanceList = carNameList.map((carName) => new Car(carName));
     this.carList = carInstanceList;
     showRacingCount();
+  }
+  getInputRacingCount() {
+    const $InputRacingCount = document.getElementById("racing-count-input");
+    const racingCount = $InputRacingCount.value;
+    if (!isNumber(racingCount)) {
+      alert("숫자를 입력해주세요.");
+      $InputRacingCount.value = "";
+      return;
+    }
+    this.racingCount = racingCount;
   }
 }
 

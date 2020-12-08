@@ -9,6 +9,10 @@ function carNamesCheck(names) {
 }
 
 function isNumber(string) {
-  return isNaN(Number(string));
+  if (!string) {
+    return false;
+  }
+  return !isNaN(Number(string));
 }
-export { carNamesCheck };
+
+export { carNamesCheck, isNumber };
