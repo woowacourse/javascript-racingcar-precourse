@@ -9,7 +9,7 @@ export default class InputUtils {
     this.MAX_LENGTH = '5자 이하로';
     this.OVERLAP = '중복 없이';
     this.MIN_LENGTH = '한 자 이상';
-    this.IS_ZERO = '1이상의 수를 입력해주세요';
+    this.INVALID_COUNT = '양의 정수를 입력해주세요';
   }
 
   splitWithComma(NameInput) { 
@@ -19,11 +19,11 @@ export default class InputUtils {
   }
 
   checkNameValidity(carNames) {
-    this.initErrorType();
-    this.checkErrorType(carNames);
+    this.initerrorType();
+    this.checkerrorType(carNames);
 
-    if (this._errortype.MAX_LENGTH + this._errortype.OVERLAP 
-      + this._errortype.MIN_LENGTH > 0) {
+    if (this._errorType.MAX_LENGTH + this._errorType.OVERLAP 
+      + this._errorType.MIN_LENGTH > 0) {
       this.createErrorMessage();
       this.alertError(this._errorMessage);
 
@@ -33,26 +33,26 @@ export default class InputUtils {
     return this.IS_VALID;
   }
 
-  initErrorType() {
-    this._errortype = {
+  initerrorType() {
+    this._errorType = {
       MAX_LENGTH: 0,
       OVERLAP: 0,
       MIN_LENGTH: 0,
     };
   }
 
-  checkErrorType(carNames) {
+  checkerrorType(carNames) {
     carNames.forEach(element => {
       if (this.maxLength(element) === this.IS_NOT_VALID) {
-        this._errortype.MAX_LENGTH = 1;
+        this._errorType.MAX_LENGTH = 1;
       }
 
       if (this.overlap(element, carNames) === this.IS_NOT_VALID) {
-        this._errortype.OVERLAP = 1;
+        this._errorType.OVERLAP = 1;
       }
       
       if (this.minLength(element) === this.IS_NOT_VALID) {
-        this._errortype.MIN_LENGTH = 1;
+        this._errorType.MIN_LENGTH = 1;
       }
     });
   }
@@ -83,9 +83,34 @@ export default class InputUtils {
     return this.IS_VALID;
   }
 
+  createErrorMessage() {
+    this._errorMessage = '자동차 이름을 ';
+
+    this.addErrorTypeMessage();
+
+    this._errorMessage += '입력해주세요';
+  }
+
+  addErrorTypeMessage() {
+    for (const [key, value] of Object.entries(this._errorType)) {
+      this.getErrorTypeMessage(key);
+    }
+  }
+
+  getErrorTypeMessage(errorType) {
+    if (this._errorType[errorType] === 1) {
+      this._errorMessage += `${this[errorType]} `;
+    }
+  }
+
+  alertError(errorMessage) {
+    alert(errorMessage);
+  }
+
   checkCountValidity(countInput) {
-    if (this.isZero(countInput) === this.IS_NOT_VALID) {
-      alert(this.IS_ZERO);
+    if (this.isZero(countInput) * this.isNull(countInput) 
+    * this.isNegative(countInput) === this.IS_NOT_VALID) {
+      alert(this.INVALID_COUNT);
 
       return this.IS_NOT_VALID;
     }
@@ -94,32 +119,26 @@ export default class InputUtils {
   }
 
   isZero(number) {
-    if (number[0] === '0' || number === '') {
+    if (number[0] === '0') {
       return this.IS_NOT_VALID;
     }
     
     return this.IS_VALID;
   }
 
-  createErrorMessage() {
-    this._errorMessage = '자동차 이름을 ';
-
-    if (this._errortype.MIN_LENGTH === 1) {
-      this._errorMessage += `${this.MIN_LENGTH} `;
+  isNull(number) {
+    if (number === '') {
+      return this.IS_NOT_VALID;
     }
 
-    if (this._errortype.MAX_LENGTH === 1) {
-      this._errorMessage += `${this.MAX_LENGTH} `;
-    }
-    
-    if (this._errortype.OVERLAP === 1) {
-      this._errorMessage += `${this.OVERLAP} `;
-    }
-
-    this._errorMessage += '입력해주세요';
+    return this.IS_VALID;
   }
 
-  alertError(errorMessage) {
-    alert(errorMessage);
+  isNegative(number) {
+    if (parseInt(number) < 0) {
+      return this.IS_NOT_VALID;
+    }
+
+    return this.IS_VALID;
   }
 }
