@@ -3,7 +3,7 @@ export default class InputUtils {
     this.IS_VALID = 1;
     this.IS_NOT_VALID = 0;
     this.MAX_LENGTH = '5자 이하로';
-    this.OVERLAP = '중복 없이'
+    this.OVERLAP = '중복 없이';
     this.MIN_LENGTH = '한 자 이상';
     this.IS_ZERO = '1이상의 수를 입력해주세요';
     this.IS_VALID = 1;
@@ -11,31 +11,35 @@ export default class InputUtils {
   }
 
   splitWithComma(NameInput) { 
-    const carNameArray = NameInput.split(",") 
+    const carNameArray = NameInput.split(','); 
 
     return carNameArray;
-  };
+  }
 
   checkNameValidity(carNames) {
-    let errortype = {
+    const errortype = {
       MAX_LENGTH: 0,
       OVERLAP: 0,
       MIN_LENGTH: 0,
-    }
+    };
 
-    carNames.forEach((element) => {
-      if (this.maxLength(element) === this.IS_NOT_VALID)
+    carNames.forEach(element => {
+      if (this.maxLength(element) === this.IS_NOT_VALID) {
         errortype.MAX_LENGTH = 1;
+      }
 
-      if (this.overlap(element, carNames) === this.IS_NOT_VALID)
+      if (this.overlap(element, carNames) === this.IS_NOT_VALID) {
         errortype.OVERLAP = 1;
+      }
       
-      if (this.minLength(element) === this.IS_NOT_VALID)
+      if (this.minLength(element) === this.IS_NOT_VALID) {
         errortype.MIN_LENGTH = 1;
-    })
+      }
+    });
 
     if (errortype.MAX_LENGTH + errortype.OVERLAP + errortype.MIN_LENGTH > 0) {
       this.createErrorMessage(errortype);
+
       return this.IS_NOT_VALID;
     }
     
@@ -43,8 +47,9 @@ export default class InputUtils {
   }
 
   maxLength(name) {
-    if (name.length > 5) 
+    if (name.length > 5) {
       return this.IS_NOT_VALID;
+    }
 
     return this.IS_VALID;
   }
@@ -52,15 +57,17 @@ export default class InputUtils {
   overlap(name, carNames) {
     const carNameSet = new Set(carNames);
 
-    if (carNameSet.size !== carNames.length)
+    if (carNameSet.size !== carNames.length) {
       return this.IS_NOT_VALID;
+    }
     
     return this.IS_VALID;
   }
 
   minLength(name) {
-    if (name === "") 
+    if (name === '') {
       return this.IS_NOT_VALID;
+    }
 
     return this.IS_VALID;
   }
@@ -68,6 +75,7 @@ export default class InputUtils {
   checkCountValidity(countInput) {
     if (this.isZero(countInput) === this.IS_NOT_VALID) {
       alert(this.IS_ZERO);
+
       return this.IS_NOT_VALID;
     }
 
@@ -75,8 +83,9 @@ export default class InputUtils {
   }
 
   isZero(number) {
-    if (number[0] === '0' || number === '')
+    if (number[0] === '0' || number === '') {
       return this.IS_NOT_VALID;
+    }
     
     return this.IS_VALID;
   }
@@ -84,16 +93,19 @@ export default class InputUtils {
   createErrorMessage(errortype) {
     let errorMessage = '자동차 이름을 ';
 
-    if (errortype.MIN_LENGTH === 1)
+    if (errortype.MIN_LENGTH === 1) {
       errorMessage += `${this.MIN_LENGTH} `;
+    }
 
-    if (errortype.MAX_LENGTH === 1)
+    if (errortype.MAX_LENGTH === 1) {
       errorMessage += `${this.MAX_LENGTH} `;
+    }
     
-    if (errortype.OVERLAP === 1)
+    if (errortype.OVERLAP === 1) {
       errorMessage += `${this.OVERLAP} `;
+    }
 
-    errorMessage += '입력해주세요'
+    errorMessage += '입력해주세요';
     
     this.alertError(errorMessage);
   }

@@ -16,11 +16,11 @@ export default class RacingCarGame {
   }
 
   addElementId() {
-    document.querySelector("input[type=text]").setAttribute('id', 'car-names-input');
-    document.querySelectorAll("button")[0].setAttribute('id', 'car-names-submit');
-    document.querySelector("input[type=number]").setAttribute('id', 'racing-count-input');
-    document.querySelectorAll("button")[1].setAttribute('id', 'racing-count-submit');
-    document.querySelector("div:nth-child(4)").setAttribute('id', 'resultArea');
+    document.querySelector('input[type=text]').setAttribute('id', 'car-names-input');
+    document.querySelectorAll('button')[0].setAttribute('id', 'car-names-submit');
+    document.querySelector('input[type=number]').setAttribute('id', 'racing-count-input');
+    document.querySelectorAll('button')[1].setAttribute('id', 'racing-count-submit');
+    document.querySelector('div:nth-child(4)').setAttribute('id', 'resultArea');
   }
 
   selectDOM() {
@@ -40,16 +40,18 @@ export default class RacingCarGame {
   addEventListener() {
     this._nameInput.focus();
 
-    this._nameButton.addEventListener("click", () => this.getCarNames());
-    this._nameInput.addEventListener("keypress", (e) => {
-      if (e.keyCode === 13)
+    this._nameButton.addEventListener('click', () => this.getCarNames());
+    this._nameInput.addEventListener('keypress', e => {
+      if (e.keyCode === 13) {
         this.getCarNames();
+      }
     });
 
     this._countButton.addEventListener('click', () => this.getCount());
-    this._countInput.addEventListener('keypress', (e) => {
-      if (e.keyCode === 13)
+    this._countInput.addEventListener('keypress', e => {
+      if (e.keyCode === 13) {
         this.getCount();
+      }
     });
   }
 
@@ -59,6 +61,7 @@ export default class RacingCarGame {
 
     if (this._privateInputUtils.checkNameValidity(this._carNameArray) === this.IS_VALID) {
       this._countInput.focus();
+
       return 0;
     }
 
@@ -70,6 +73,7 @@ export default class RacingCarGame {
     this._countInput.focus();
     if (this._privateInputUtils.checkCountValidity(this._countInput.value) === this.IS_VALID) {
       this.createNewCar();
+
       return 0;
     }
 
@@ -78,25 +82,27 @@ export default class RacingCarGame {
 
   createNewCar() {
     this._cars = [];
-    this._carNameArray.forEach((element) => {
+    this._carNameArray.forEach(element => {
       this._cars.push(new Car(element, 0));
     });
     this.startRace();
   }
 
   startRace() {
-    for (let i = 0; i < this._countInput.value; i++)
+    for (let i = 0; i < this._countInput.value; i++) {
       this.playRound();
+    }
 
-      this._privatePlayUtils.displayWinner(this._cars);
+    this._privatePlayUtils.displayWinner(this._cars);
   }
 
   playRound() {
-    this._cars.forEach((car) => {
+    this._cars.forEach(car => {
       const number = this._privatePlayUtils.getRandomNumber();
-      if (number >= 4)
+      if (number >= 4) {
         car.location += 1;
-    })
+      }
+    });
     this._privatePlayUtils.displayGameProcess(this._cars);
   }
 
@@ -105,7 +111,9 @@ export default class RacingCarGame {
     this.initResult();
   }
 
-  initResult = () => { this._displayArea.innerText = '' }
+  initResult() { 
+    this._displayArea.innerText = '';
+  }
 }
 
 new RacingCarGame();

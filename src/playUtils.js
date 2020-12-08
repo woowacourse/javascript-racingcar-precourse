@@ -18,9 +18,9 @@ export default class PlayUtils {
   getGameProcess(cars) {
     let gameProcess = '';
 
-    cars.forEach((car) => {
+    cars.forEach(car => {
       gameProcess += `${car.name}: ${'-'.repeat(car.location)}\n`;
-    })
+    });
 
     return gameProcess;
   }
@@ -43,7 +43,7 @@ export default class PlayUtils {
         winnerList = [car.name];
       } 
       else if (car.location === max)
-        winnerList.push(car.name);
+      {winnerList.push(car.name);}
     }
 
     return winnerList.join(', ');
