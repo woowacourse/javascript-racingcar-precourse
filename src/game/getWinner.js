@@ -1,12 +1,10 @@
 function getMaxCount(carList) {
-  let maxCount = 0;
-  carList.forEach((car) => {
-    if (maxCount < car.count) {
-      maxCount = car.count;
+  return carList.reduce((acc, { count }) => {
+    if (count > acc) {
+      return count;
     }
-  });
-
-  return maxCount;
+    return acc;
+  }, 0);
 }
 
 export default function getWinner(carList) {
