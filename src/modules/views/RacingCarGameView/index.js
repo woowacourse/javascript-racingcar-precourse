@@ -39,7 +39,9 @@ export default class RacingCarGameView {
   }
 
   handleRacingCountSubmit() {
-    const racingCount = document.getElementById('#racing-count-input').value;
+    const racingCount = parseInt(
+      document.getElementById('#racing-count-input').value,
+    );
 
     const errorMessage = this.validCount(racingCount);
     if (errorMessage) {
@@ -92,10 +94,10 @@ export default class RacingCarGameView {
   }
 
   validCount(count) {
-    if (isNaN(parseInt(count))) {
+    if (isNaN(count)) {
       return message.WARNING_FOR_COUNT_NOT_NUMBER;
     }
-    if (parseInt(count) < this.COUNT_MIN_VALUE) {
+    if (count < this.COUNT_MIN_VALUE) {
       return message.WARNING_FOR_COUNT_LOWER_THAN_ONE;
     }
 
