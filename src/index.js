@@ -12,7 +12,8 @@ export default class RacingCarGame {
       domId.racingCountInput,
       domId.racingCountSubmitBtn,
     );
-
+    this.racingCountContainer = document.querySelector(domId.racingCountContainer);
+    this.resultSection = document.querySelector(domId.resultSection);
     this.isValidCarNames = false;
   }
 
@@ -32,6 +33,7 @@ export default class RacingCarGame {
     this.carNameValidator();
     if (this.isValidCarNames) {
       this.createCars();
+      this.showElement(this.racingCountContainer);
     } else {
       this.showAlert(MSG.INVALID_NAME_INPUT_MSG);
       this.carNamesForm.clearInput();
@@ -43,6 +45,7 @@ export default class RacingCarGame {
     if (this.isValidCount) {
       this.play();
       const winner = this.getWinner();
+      this.showElement(this.resultSection);
     } else {
       this.showAlert(MSG.INVALID_RACING_COUNT_MSG);
       this.racingCountForm.clearInput();
@@ -112,6 +115,14 @@ export default class RacingCarGame {
       .filter((car) => car.position === maxPosition)
       .map((car) => car.carName);
     return candidates.join(',');
+  }
+
+  showElement(elem) {
+    elem.style.visibility = 'visible';
+  }
+
+  hideElement(elem) {
+    elem.style.visibility = 'hidden';
   }
 }
 

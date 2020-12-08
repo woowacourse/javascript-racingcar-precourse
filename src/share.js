@@ -1,8 +1,10 @@
 export const domId = {
   carNamesInput: '#car-names-input',
   carNamesSubmitBtn: '#car-names-submit',
+  racingCountContainer: '#racing-count-container',
   racingCountInput: '#racing-count-input',
   racingCountSubmitBtn: '#racing-count-submit',
+  resultSection: '#result',
 };
 
 export const MSG = {

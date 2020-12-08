@@ -3,6 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <title>자동차 경주 게임</title>
+    <style>
+      #racing-count-container,
+      #result {
+        visibility: hidden;
+      }
+    </style>
   </head>
   <body>
     <div id="app">
@@ -17,13 +23,13 @@
           <input type="text" id="car-names-input" />
           <button id="car-names-submit">확인</button>
         </div>
-        <div>
+        <div id="racing-count-container">
           <h4>시도할 횟수를 입력해주세요.</h4>
           <input type="number" id="racing-count-input" />
           <button id="racing-count-submit">확인</button>
         </div>
       </div>
-      <div>
+      <div id="result">
         <h4>📄 실행 결과</h4>
       </div>
     </div>
