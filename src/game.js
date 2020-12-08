@@ -1,30 +1,35 @@
-export let forward = new Array();
-export let instanceOfCars = new Array();
-export function goForward(numTry) {
-  for (let i = 0; i < instanceOfCars.length; i += 1) {
-    forward[i] = '';
+export class Game {
+  constructor() {
+    this.forward = new Array();
+    this.instanceOfCars = new Array();
   }
-  for (let i = 0; i < numTry; i += 1) {
-    for (let j = 0; j < instanceOfCars.length; j += 1) {
-      let eachRace = document.getElementById('result');
-      if (instanceOfCars[j].getRandomNumber() > 3) {
-        forward[j] += '-';
+
+  goForward(numTry) {
+    for (let i = 0; i < this.instanceOfCars.length; i += 1) {
+      this.forward[i] = '';
+    }
+    for (let i = 0; i < numTry; i += 1) {
+      for (let j = 0; j < this.instanceOfCars.length; j += 1) {
+        const eachRace = document.getElementById('result');
+        if (this.instanceOfCars[j].getRandomNumber() > 3) {
+          this.forward[j] += '-';
+        }
+        eachRace.innerHTML = `${eachRace.innerHTML} ${this.instanceOfCars[j].name} : ${this.forward[j]} <br />`;
       }
-      eachRace.innerHTML = eachRace.innerHTML + instanceOfCars[j].name + ': ' + forward[j] + '<br />';
-    }
-    document.getElementById('result').innerHTML = document.getElementById('result').innerHTML + '<br />';
-  }
-}
-
-export function findWinner(arr) {
-  const winner = new Array();
-  const eachLength = arr.map(x => x.length);
-  const maxNum = Math.max(...eachLength);
-
-  for (let i = 0; i < eachLength.length; i += 1) {
-    if (eachLength[i] === maxNum) {
-      winner.push(instanceOfCars[i].name);
+      document.getElementById('result').innerHTML = `${document.getElementById('result').innerHTML} <br />`;
     }
   }
-  document.getElementById('result').innerHTML = document.getElementById('result').innerHTML + '최종 우승자: ' + winner;
+
+  findWinner(arr) {
+    const winner = new Array();
+    const eachLength = arr.map(x => x.length);
+    const maxNum = Math.max(...eachLength);
+
+    for (let i = 0; i < eachLength.length; i += 1) {
+      if (eachLength[i] === maxNum) {
+        winner.push(this.instanceOfCars[i].name);
+      }
+    }
+    document.getElementById('result').innerHTML = `${document.getElementById('result').innerHTML} 최종 우승자: ${winner}`;
+  }
 }
