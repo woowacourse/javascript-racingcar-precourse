@@ -13,6 +13,11 @@ function showRacingCount() {
   $divRacingCount.style.display = "block";
 }
 
+function drawResultHeader() {
+  const $divResult = document.getElementById("result-div");
+  $divResult.innerHTML = `<h4>📄 실행 결과</h4>`;
+}
+
 function showResult() {
   const $divResult = document.getElementById("result-div");
   $divResult.style.display = "block";
@@ -36,4 +41,4 @@ function finalResult(winnerList) {
   $divWinnerList.innerHTML = `최종우승자 : ${winnerNames}`;
   $divResult.appendChild($divWinnerList);
 }
-export { hideRacingCount, hideResult, showRacingCount, showResult, drawResult, finalResult };
+export { hideRacingCount, hideResult, showRacingCount, drawResultHeader, showResult, drawResult, finalResult };

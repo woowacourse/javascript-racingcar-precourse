@@ -1,4 +1,4 @@
-import { hideRacingCount, hideResult, showRacingCount, showResult, drawResult, finalResult } from "./htmlChange.js";
+import { hideRacingCount, hideResult, showRacingCount, drawResultHeader, showResult, drawResult, finalResult } from "./htmlChange.js";
 import { carNamesCheck, isNumber, isCarMoved, getWinner } from "./utils.js";
 import Car from "./Car.js";
 
@@ -6,6 +6,7 @@ export default class RacingCarGame {
   constructor() {
     this.carList = [];
     this.racingCount = 0;
+    this.carNameList = [];
     this.init();
   }
   init() {
@@ -29,8 +30,7 @@ export default class RacingCarGame {
       alert("차 이름이 제대로 입력되었는지 확인해주세요.");
       return;
     }
-    const carInstanceList = carNameList.map((carName) => new Car(carName));
-    this.carList = carInstanceList;
+    this.carNameList = carNameList;
     showRacingCount();
   }
   getInputRacingCount() {
@@ -42,10 +42,14 @@ export default class RacingCarGame {
       return;
     }
     this.racingCount = racingCount;
+    const carInstanceList = this.carNameList.map((carName) => new Car(carName));
+    this.carList = carInstanceList;
+
     this.startGame();
   }
   startGame() {
     showResult();
+    drawResultHeader();
     let racingCount = this.racingCount;
     const carList = this.carList;
     while (racingCount--) {
