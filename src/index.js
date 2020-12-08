@@ -1,5 +1,5 @@
 import {Game} from './game.js';
-import {hasBlanks, isUnderFiveCharacters} from './validation.js';
+import {Validation} from './validation.js';
 import {Car} from './car.js';
 
 const firstButton = document.getElementById('#car-names-submit');
@@ -19,7 +19,8 @@ function separateCarNames() {
   for (let i = 0; i < arrCarNames.length; i += 1) {
     game.instanceOfCars[i] = new Car(arrCarNames[i]);
   }
-  if ((isUnderFiveCharacters(game.instanceOfCars) === true) && (hasBlanks(game.instanceOfCars) === false)) {
+  if ((Validation.isUnderFiveCharacters(game.instanceOfCars) === true)
+      && (Validation.hasBlanks(game.instanceOfCars) === false)) {
     showNumTry();
   }
 }
