@@ -1,0 +1,23 @@
+p {
+  margin: 0;
+}
+
+.racing-count-form {
+  display: none;
+}
+
+.racing-count-form.active {
+  display: block;
+}
+
+.car-game-result {
+  display: none;
+}
+
+.car-game-result.active {
+  display: block;
+}
+
+.racing-result {
+  margin: 20px 0;
+}
