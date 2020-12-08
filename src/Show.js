@@ -7,16 +7,18 @@ export default class Show {
    * @param {Array} cars
    */
   showGameStatus(cars) {
+    let statusString = '';
     cars.forEach((car) => {
       const positionBar = '-'.repeat(car.position);
-      console.log(`${car.name} : ${positionBar}`);
+      statusString += (`${car.name} : ${positionBar}<br>`);
     });
+    document.getElementById('game-status').innerHTML += (statusString + `<br>`);
   }
   /**
    * show game result.
    * @param {Array} winners
    */
   showGameResult(winners) {
-    console.log(`winner is ${winners}`);
+    document.getElementById('game-result').innerHTML = `최종 우승자 : ${winners}`;
   }
 };
