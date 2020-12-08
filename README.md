@@ -64,9 +64,29 @@ class Car {
 - **git의 commit 단위는 앞 단계에서 README.md 파일에 정리한 기능 목록 단위로 추가**한다.
 - [프리코스 과제 제출](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 문서 절차를 따라 미션을 제출한다.
 
-## 파일 구조
 
-## 💜추가 될 기능
+## 📂 파일 구조
+
+src
+ ┣ classes
+ ┃ ┗ Car.js
+ ┣ components
+ ┃ ┣ CarNamesInput.js
+ ┃ ┣ GameResult.js
+ ┃ ┣ PlayRacingGame.js
+ ┃ ┗ RacingCountInput.js
+ ┣ constants
+ ┃ ┗ constants.js
+ ┣ utils
+ ┃ ┣ handleDom.js
+ ┃ ┣ random.js
+ ┃ ┣ templates.js
+ ┃ ┗ validations.js
+ ┣ index.css
+ ┗ index.js
+
+
+## 💜 추가 될 기능
 
 - PlayRacingGane.js
   - [X] setCars: 차 객체들을 저장하는 함수
