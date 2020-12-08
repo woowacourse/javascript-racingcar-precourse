@@ -47,8 +47,9 @@ export default class PlayUtils {
         winnerList = [car.name];
       } 
 
-      else if (car.location === max)
-      {winnerList.push(car.name);}
+      else if (car.location === max) {
+        winnerList.push(car.name);
+      }
     }
 
     return winnerList.join(', ');
