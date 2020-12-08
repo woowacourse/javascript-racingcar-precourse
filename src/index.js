@@ -34,8 +34,8 @@ export default class RacingCarGame {
     if (this.isValidCount) {
       this.play();
       this.getWinner();
-      const resultTemplate = this.winnerTemplateMaker();
-      this.appendResult(resultTemplate);
+      const winnerTemplate = this.winnerTemplateMaker();
+      this.appendResult(winnerTemplate);
       this.showElement(this.resultSection);
     } else {
       this.showAlert(MSG.INVALID_RACING_COUNT_MSG);
