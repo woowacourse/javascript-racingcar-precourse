@@ -1,6 +1,5 @@
 import { printResultMessage, printStatusMessage } from "./output.js";
 
-// functions game progress
 export function startGame(game) {
     game.nowCount = 0;
 }
@@ -42,7 +41,6 @@ export function isGameEnd(game) {
     return game.nowCount === game.totalCount;
 }
 
-// functions for game playing
 export function getWinner(carList) {
     let winnerList = new Array();
     let maxCount = 0;
