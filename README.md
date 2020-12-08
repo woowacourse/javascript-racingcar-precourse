@@ -40,4 +40,4 @@
 
 ## :computer: 실행 결과
 
-![실행 이미지](images/my_result.jpg)
+![실행 이미지](./images/my_result.JPG)
