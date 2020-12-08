@@ -9,7 +9,10 @@ export function isAvailableLength(carNamesInput) {
   let i = 0;
 
   for (i; i < arrayLength; i++) {
-    if (carNamesInput[i].length > availableLength) {
+    const minLength = 2;
+    let carNamesLength = carNamesInput[i].length;
+
+    if (carNamesLength > availableLength || arrayLength < minLength) {
       return false;
     }
   }
