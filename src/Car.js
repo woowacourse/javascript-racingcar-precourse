@@ -7,4 +7,16 @@ export default class Car {
   go() {
     this.position += 1;
   }
+
+  randomNumberGenerator() {
+    const randomNumber = Math.floor(Math.random() * 10);
+    return randomNumber;
+  }
+
+  updatePosition() {
+    const number = this.randomNumberGenerator();
+    if (number > 3) {
+      this.go();
+    }
+  }
 }
