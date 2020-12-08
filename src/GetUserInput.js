@@ -26,6 +26,7 @@ export default class GetUserInput {
       document.getElementById('car-names-input').value = '';
       alert(new ErrorMsg(validation).errorMsg);
     }
+    return validation;
   }
   /**
    * get Count
