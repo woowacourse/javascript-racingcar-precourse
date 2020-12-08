@@ -21,11 +21,13 @@ export class PlayRacingGame {
 
   setCars = (newCars) => {
     this.cars = newCars;
+
     setVisibility(this.racingCountContainer, "visible");
   };
 
   runRaces = (count) => {
     this.count = count;
+
     this.racing(this.cars, this.count);
     setVisibility(this.resultContainer, "visible");
   };
@@ -41,6 +43,7 @@ export class PlayRacingGame {
       this.racingInRound(cars);
       this.gameResultContainer.updateResultPerRound(cars);
     }
+
     const winners = this.getWinners(cars);
     this.gameResultContainer.updateResultHTMLWithWinners(winners);
   };

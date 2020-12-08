@@ -1,9 +1,9 @@
-import { MESSAGE } from "../constants/constants.js";
+import { MESSAGE, NUMBER as NUM } from "../constants/constants.js";
 import { showErrorMessages } from "../utils/handleDom.js";
 
 const checkNameLengthOverFive = (elements) => {
   for (const element of elements) {
-    if (element.length > 5) {
+    if (element.length > NUM.NAME_LENGTH) {
       return true;
     }
   }
@@ -18,7 +18,7 @@ const isDuplicate = (elements) => {
 
 const hasEmptyName = (elements) => {
   for (const element of elements) {
-    if (element.length === 0) {
+    if (element.length === NUM.NAME_EMPTY) {
       return true;
     }
   }

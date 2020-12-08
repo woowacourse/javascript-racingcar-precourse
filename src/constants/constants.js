@@ -13,6 +13,7 @@ export const NUMBER = {
   GO_FORWARD_CONDITION: 4,
 
   NAME_LENGTH: 5,
+  NAME_EMPTY: 0,
 
   RANDOM_START: 0,
   RANDOM_END: 9,
