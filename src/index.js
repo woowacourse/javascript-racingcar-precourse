@@ -1,7 +1,3 @@
-export default function RacingCarGame() {
-}
-// export default class RacingCarGame {
-// }
+import routeDocClickEvent from "./click-event-handler.js";
 
-
-new RacingCarGame();
+document.addEventListener("click", routeDocClickEvent);
