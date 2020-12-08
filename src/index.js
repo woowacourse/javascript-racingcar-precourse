@@ -44,7 +44,8 @@ export default class RacingCarGame {
     this.checkValidCount();
     if (this.isValidCount) {
       this.play();
-      const winner = this.getWinner();
+      this.getWinner();
+      this.appendResult(this.winnerTemplateMaker());
       this.showElement(this.resultSection);
     } else {
       this.showAlert(MSG.INVALID_RACING_COUNT_MSG);
@@ -106,7 +107,23 @@ export default class RacingCarGame {
       this.cars.forEach((car) => {
         this.checkGoStop(car);
       });
+      const resultTemplate = this.resultTemplateMaker();
+      this.appendResult(resultTemplate);
     }
+  }
+
+  resultTemplateMaker() {
+    const template = this.cars.map((car) => `<p>${car.carName} : ${'-'.repeat(car.position)}</p>`).join('');
+    return template;
+  }
+
+  winnerTemplateMaker() {
+    const template = `<p>최종우승자 : ${this.winner}</p>`;
+    return template;
+  }
+
+  appendResult(template) {
+    this.resultSection.innerHTML += template;
   }
 
   getWinner() {
@@ -114,7 +131,7 @@ export default class RacingCarGame {
     const candidates = this.cars
       .filter((car) => car.position === maxPosition)
       .map((car) => car.carName);
-    return candidates.join(',');
+    this.winner = candidates.join(',');
   }
 
   showElement(elem) {
