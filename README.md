@@ -69,6 +69,7 @@
 - utils
   - isLongerThan
   - isNames
+  - isOverlapedNames
   - randomNumber
 
   
