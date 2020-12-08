@@ -7,4 +7,8 @@ function carNamesCheck(names) {
   }
   return true;
 }
+
+function isNumber(string) {
+  return isNaN(Number(string));
+}
 export { carNamesCheck };
