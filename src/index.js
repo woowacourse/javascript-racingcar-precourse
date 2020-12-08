@@ -1,4 +1,4 @@
-import { hideRacingCount, hideResult, showRacingCount, showResult } from "./htmlChange.js";
+import { hideRacingCount, hideResult, showRacingCount, showResult, drawResult } from "./htmlChange.js";
 import { carNamesCheck, isNumber, isCarMoved } from "./utils.js";
 import Car from "./Car.js";
 
@@ -42,6 +42,18 @@ export default class RacingCarGame {
       return;
     }
     this.racingCount = racingCount;
+    this.startGame();
+  }
+  startGame() {
+    showResult();
+    let racingCount = this.racingCount;
+    const carList = this.carList;
+    while (racingCount--) {
+      carList.map((car) => {
+        isCarMoved() ? car.count++ : false;
+      });
+      drawResult(carList);
+    }
   }
 }
 
