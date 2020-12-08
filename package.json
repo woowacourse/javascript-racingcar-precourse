@@ -1,0 +1,27 @@
+{
+  "name": "javascript-racingcar-precourse",
+  "version": "1.0.0",
+  "description": "우테코 프리코스 2주차 미션 자동차 경주",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YUJO42/javascript-racingcar-precourse.git"
+  },
+  "author": "yujo42",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YUJO42/javascript-racingcar-precourse/issues"
+  },
+  "homepage": "https://github.com/YUJO42/javascript-racingcar-precourse#readme",
+  "devDependencies": {
+    "eslint": "^7.2.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-prettier": "^3.1.4",
+    "prettier": "^2.2.1"
+  }
+}
