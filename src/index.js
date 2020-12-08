@@ -24,7 +24,6 @@ export default class RacingCarGame {
   onCarNamesSubmitBtnClick = () => {
     this.carNameSeparator();
     this.carNameValidator();
-    this.carNamesForm.clearInput();
     if (this.isValidCarNames) {
       this.createCars();
     }
@@ -32,7 +31,6 @@ export default class RacingCarGame {
 
   onRacingCountSubmitBtnClick = () => {
     this.checkValidCount();
-    this.racingCountForm.clearInput();
   };
 
   checkValidCount = () => {
