@@ -1,4 +1,4 @@
-import eventHandlers from './utils/eventHandlers.js';
+import eventHandlers from './handlers/eventHandlers.js';
 import elements from './store/elements.js';
 
 (() => {

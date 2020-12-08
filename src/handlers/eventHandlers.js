@@ -2,15 +2,15 @@ import Car from '../classes/car.js';
 import RacingCarGame from '../classes/racingCarGame.js';
 
 import { makeRaceCourseProcessRecordsTemplate } from '../templates/templates.js';
-import { checkTryCount, makeCarNamesCheckResult } from './validation.js';
+import { checkTryCount, makeCarNamesCheckResult } from '../utils/validation.js';
 import {
   preProcessCarNamesToCarNameList,
   preProcessTryCount,
-} from './preProcess.js';
+} from '../utils/preProcess.js';
 import {
   makeInvalidCarNamesAlertMessage,
   makeNotEnoughConditionAlertMessage,
-} from './alert.js';
+} from '../utils/alert.js';
 
 import elements from '../store/elements.js';
 
