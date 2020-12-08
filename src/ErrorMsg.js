@@ -16,7 +16,7 @@ export default class ErrorMsg {
    */
   setError(errorNum) {
     const ErrorArray = [this.carNumberError(), this.carLengthError(),
-      this.carDuplicationError(), this.carNoExistError(), this.countError()];
+      this.carDuplicationError(), this.countError()];
     const errorIndex = (errorNum * -1) - 1;
     return ErrorArray[errorIndex];
   }
