@@ -16,6 +16,8 @@ document.addEventListener('click', function(event) {
   }
   if (id === 'racing-count-submit') {
     const isValid = getUserInput.getCount();
+    document.getElementById('game-status').innerHTML = '';
+    document.getElementById('game-result').innerHTML = '';
     if (isValid === 1) {
       const game = new RacingCarGame(getUserInput.cars, getUserInput.count);
       game.play();
