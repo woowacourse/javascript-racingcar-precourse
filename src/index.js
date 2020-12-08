@@ -4,7 +4,7 @@ import elements from './store/elements.js';
 (() => {
   elements.carNamesInputElement.addEventListener(
     'input',
-    eventHandlers.markCarNameSubmitted
+    eventHandlers.markCarNameNotSubmitted
   );
   elements.carNamesSubmitButtonElement.addEventListener(
     'click',

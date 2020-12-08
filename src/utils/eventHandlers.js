@@ -41,7 +41,7 @@ const registerCarNames = () => {
   }
 };
 
-const markCarNameSubmitted = () => {
+const markCarNameNotSubmitted = () => {
   gamePlayCondition.isCarNamesSubmitted = false;
 };
 
@@ -73,7 +73,7 @@ const getRaceGameResultInfo = ({ racingCarGame, tryCount }) => {
   };
 };
 
-const showRaceRameResult = (tryCount) => {
+const showRaceGameResult = (tryCount) => {
   const racingCarGame = new RacingCarGame();
   const {
     winnerListText,
@@ -89,7 +89,7 @@ const startRaceGame = () => {
   gamePlayCondition.isTryCountValid = checkTryCount(tryCount);
   const alertMessage = makeNotEnoughConditionAlertMessage(gamePlayCondition);
   if (alertMessage === '') {
-    showRaceRameResult(tryCount);
+    showRaceGameResult(tryCount);
   } else {
     alert(alertMessage);
   }
@@ -97,6 +97,6 @@ const startRaceGame = () => {
 
 export default {
   registerCarNames,
-  markCarNameSubmitted,
+  markCarNameNotSubmitted,
   startRaceGame,
 };
