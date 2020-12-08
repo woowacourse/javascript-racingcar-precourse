@@ -1,7 +1,7 @@
 import { state, resultContainer } from "./index.js";
 import { judgeWinner } from "./utils/game-utils.js";
 
-export function printProgressPerCar(carNameArray) {
+function printProgressPerCar(carNameArray) {
   const progress = [];
   const enterHTML = "<br />";
 
@@ -18,14 +18,14 @@ export function printProgressPerCar(carNameArray) {
   return progress;
 }
 
-export function printWinner(winnerArray) {
+function printWinner(winnerArray) {
   const winnerString = winnerArray.join(", ");
   const result = `최종우승자: ${winnerString}`;
 
   document.getElementById("result").innerHTML += result;
 }
 
-export function printOneGameResult() {
+function printOneGameResult() {
   const carArray = state.carArray;
   let gameProgressPerGameHTML = "";
 
