@@ -66,11 +66,11 @@ const showResultDiv = () => {
   racingCountSubmit.disabled = true;
 };
 
-export const showRacing = result => {
+export const showRacing = cars => {
   const racingResult = document.createElement('p');
-  for (let res of result) {
-    const distace = '-'.repeat(res.distance);
-    racingResult.innerHTML += `${res.name}: ${distace}<br />`;
+  for (let car of cars) {
+    const distace = '-'.repeat(car.distance);
+    racingResult.innerHTML += `${car.name}: ${distace}<br />`;
   }
   resultDiv.appendChild(racingResult);
 };
