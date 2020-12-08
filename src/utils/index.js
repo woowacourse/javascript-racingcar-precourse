@@ -23,6 +23,19 @@ function isNames(names) {
   return true;
 }
 
+function isOverlapedNames(names) {
+  const dictObject = {};
+
+  names.every(name => {
+    if (name in dictObject) {
+      return true;
+    }
+
+    dictObject[name] = true;
+  });
+  return false;
+}
+
 function randomNumber(maxNumber, minNumber) {
   const number = Math.floor(
     Math.random() * (maxNumber - minNumber + 1) + minNumber,
@@ -31,4 +44,4 @@ function randomNumber(maxNumber, minNumber) {
   return number;
 }
 
-export { isLongerThan, isNames, randomNumber };
+export { isLongerThan, isNames, randomNumber, isOverlapedNames };

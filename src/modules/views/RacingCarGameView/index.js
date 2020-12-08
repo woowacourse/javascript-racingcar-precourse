@@ -1,4 +1,4 @@
-import { isLongerThan, isNames } from '../../../utils';
+import { isLongerThan, isNames, isOverlapedNames } from '../../../utils';
 import { message } from '../../../constants';
 
 export default class RacingCarGameView {
@@ -27,6 +27,7 @@ export default class RacingCarGameView {
   handleCarNamesSubmit() {
     const splitedNames = this.carNamesInput.value.split(',');
     const errorMessage = this.validNames(splitedNames);
+
     if (errorMessage) {
       this.resetCarNamesInput();
       alert(errorMessage);
@@ -44,6 +45,7 @@ export default class RacingCarGameView {
     );
 
     const errorMessage = this.validCount(racingCount);
+
     if (errorMessage) {
       this.resetRacingCountInput();
       alert(errorMessage);
@@ -86,8 +88,13 @@ export default class RacingCarGameView {
     if (!isNames(names)) {
       return message.WARNING_FOR_WHITE_SPACE;
     }
+
     if (isLongerThan(names, this.NAME_MAX_LENGTH)) {
       return message.WARNING_FOR_NAME_LONGER_THAN_FIVE;
+    }
+
+    if (isOverlapedNames(names)) {
+      return message.WARNING_FOR_OVERLAPED_NAMES;
     }
 
     return '';
@@ -97,6 +104,7 @@ export default class RacingCarGameView {
     if (isNaN(count)) {
       return message.WARNING_FOR_COUNT_NOT_NUMBER;
     }
+
     if (count < this.COUNT_MIN_VALUE) {
       return message.WARNING_FOR_COUNT_LOWER_THAN_ONE;
     }
@@ -116,6 +124,15 @@ export default class RacingCarGameView {
     }, []);
 
     return winners;
+  }
+
+  sortedByDistance(cars) {
+    const sortedCars = [...cars];
+    sortedCars.sort((a, b) => {
+      return b.moveForwardDistance - a.moveForwardDistance;
+    });
+
+    return sortedCars;
   }
 
   resetCarNamesInput() {
@@ -150,15 +167,6 @@ export default class RacingCarGameView {
         ${intermediateResult}
       </div>
     `;
-  }
-
-  sortedByDistance(cars) {
-    const sortedCars = [...cars];
-    sortedCars.sort((a, b) => {
-      return b.moveForwardDistance - a.moveForwardDistance;
-    });
-
-    return sortedCars;
   }
 
   renderWinners(cars) {

@@ -24,10 +24,6 @@ export default class RacingCarGameViewModel {
     });
   }
 
-  registerViews(target) {
-    this.subscriber.push(target);
-  }
-
   setRacingCountAndGameProgress(target, value) {
     target._racingCount = value;
     while (target._racingCount) {
@@ -36,6 +32,10 @@ export default class RacingCarGameViewModel {
       target.notifyChange();
       target._racingCount--;
     }
+  }
+
+  registerViews(target) {
+    this.subscriber.push(target);
   }
 
   notifyChange() {
