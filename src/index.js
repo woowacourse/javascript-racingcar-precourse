@@ -10,19 +10,51 @@ const isInputEmpty = (input) => {
   return result;
 };
 
-const isValidNames = (namesArray) => {
+const isFiveOrLessLetter = (name) => {
+  let result = true;
+  if (name.length > 5) {
+    alert("자동차의 이름은 5자 이하만 허용됩니다.");
+    result = false;
+  }
+
+  return result;
+};
+
+const isOneOrMoreLetter = (name) => {
+  let result = true;
+  if (name.length === 0) {
+    alert("입력되지 않은 이름이 존재합니다.");
+    result = false;
+  }
+
+  return result;
+};
+
+const isDuplicated = (namesArray) => {
+  const nameSet = new Set();
   let result = true;
   for (let i = 0; i < namesArray.length; i++) {
-    if (namesArray[i].length > 5) {
-      alert("자동차의 이름은 5자 이하만 허용됩니다.");
-      result = false;
-      break;
-    } else if (namesArray[i].length === 0) {
-      alert("입력되지 않은 이름이 존재합니다.");
+    if (nameSet.has(namesArray[i])) {
+      alert("같은 이름이 사용되었습니다.");
       result = false;
       break;
     }
+    nameSet.add(namesArray[i]);
   }
+
+  return result;
+};
+
+const isValidNames = (namesArray) => {
+  let result = true;
+  for (let i = 0; i < namesArray.length; i++) {
+    result = isFiveOrLessLetter(namesArray[i]);
+    result = result === true ? isOneOrMoreLetter(namesArray[i]) : false;
+    if (!result) {
+      break;
+    }
+  }
+  result = result === true ? isDuplicated(namesArray) : false;
 
   return result;
 };
@@ -60,7 +92,6 @@ const deactivateRacingCountForm = (e) => {
   e.target.parentNode.children[1].setAttribute("readonly", "readonly");
 };
 
-////
 const passNamesInputToGameController = (e) => {
   const nameInputStr = e.target.parentNode.children[0].value;
   const namesArray = nameInputStr.split(",").map((_name) => _name.trim());
