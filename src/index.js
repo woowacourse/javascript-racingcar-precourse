@@ -20,5 +20,27 @@ racingCountSubmit.onclick = () => {
   let text = '';
   for (let i = 0; i < racingCountInput.value; i++) {
     new RacingCarGame(cars);
+    cars.forEach((car) => {
+      text += `<div>${car.name}: ${car.win}</div>`;
+    });
+    text += '<br>';
   }
+  text += `최종 우승자: ${getFinalWinners(cars)}`;
+  result.innerHTML = text;
 };
+
+function getMaxWinCounts(cars) {
+  let maxValue = 0;
+  cars.forEach((car) => {
+    maxValue = maxValue < car.win.length ? car.win.length : maxValue;
+  });
+  return maxValue;
+}
+
+function getFinalWinners(cars) {
+  const maxWinCounts = getMaxWinCounts(cars);
+  return cars
+    .filter((car) => car.win.length === maxWinCounts)
+    .map((car) => car.name)
+    .join(', ');
+}
