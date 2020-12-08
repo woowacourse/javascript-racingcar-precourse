@@ -25,6 +25,31 @@ export default class RacingResult {
     return cars;
   };
 
+  getMaxNumberOfMove = () => {
+    let maxNumberOfMove = 0;
+
+    this.cars.forEach((car) => {
+      if (car.totalMove > maxNumberOfMove) {
+        maxNumberOfMove = car.totalMove;
+      }
+    });
+
+    return maxNumberOfMove;
+  };
+
+  getWinners = () => {
+    const maxNumberOfMove = this.getMaxNumberOfMove();
+    const winners = [];
+
+    this.cars.forEach((car) => {
+      if (car.totalMove === maxNumberOfMove) {
+        winners.push(car.carName);
+      }
+    });
+
+    return winners;
+  };
+
   setState = ({ nextCarNames, nextRacingCount }) => {
     this.carNames = nextCarNames;
     this.racingCount = nextRacingCount;
@@ -45,13 +70,18 @@ export default class RacingResult {
   };
 
   render = () => {
-    const HTMLStringPerRound = [];
+    const titleHTMLString = "<h4>📄 실행 결과</h4>";
+    const winnersHTMLString = `최종 우승자: ${this.getWinners().join(", ")}`;
+    const racingResultHTMLStringPerRound = [];
 
     for (let i = 0; i < this.racingCount; i++) {
-      HTMLStringPerRound.push(this.createHTMLStringPerRound(i + 1));
+      racingResultHTMLStringPerRound.push(this.createHTMLStringPerRound(i + 1));
     }
 
     this.$container.innerHTML = "";
-    this.$container.insertAdjacentHTML("beforeend", `<h4>📄 실행 결과</h4>${HTMLStringPerRound.join("")}`);
+    this.$container.insertAdjacentHTML(
+      "beforeend",
+      `${titleHTMLString}${racingResultHTMLStringPerRound.join("")}${winnersHTMLString}`
+    );
   };
 }

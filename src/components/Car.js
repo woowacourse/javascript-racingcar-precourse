@@ -5,6 +5,7 @@ export default class Car {
     this.maxRandomNumber = 9;
     this.moveMinNumber = 4;
     this.isMovePerRound = this.race();
+    this.totalMove = this.getTotalMove();
   }
 
   getRandomSingleDigitNumber = () => {
@@ -21,5 +22,17 @@ export default class Car {
     }
 
     return isMovePerRound;
+  };
+
+  getTotalMove = () => {
+    let totalMove = 0;
+
+    this.isMovePerRound.forEach((isMove) => {
+      if (isMove) {
+        totalMove++;
+      }
+    });
+
+    return totalMove;
   };
 }
