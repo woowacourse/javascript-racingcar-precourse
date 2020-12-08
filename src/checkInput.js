@@ -1,0 +1,55 @@
+const checkEmptyInput = carNameInput => {
+  if (carNameInput.trim() === '') {
+    return true;
+  }
+  return false;
+};
+
+const checkEmptyName = carNameArray => {
+  for (const name of carNameArray) {
+    if (name === '') return true;
+  }
+  return false;
+};
+
+const checkOverFive = carNameArray => {
+  for (const name of carNameArray) {
+    if (name.length > 5) return true;
+  }
+  return false;
+};
+
+const checkDuplicated = carNameArray => {
+  const nameSet = new Set(carNameArray);
+  if (carNameArray.length !== nameSet.size) {
+    return true;
+  }
+  return false;
+};
+
+export const checkCarName = carNameInput => {
+  const carNameArray = carNameInput.split(',').map(name => name.trim());
+  if (checkEmptyInput(carNameInput)) {
+    alert('입력 값이 없습니다.');
+  } else if (checkEmptyName(carNameArray)) {
+    alert('공백인 이름이 존재합니다.');
+  } else if (checkOverFive(carNameArray)) {
+    alert('5자가 넘는 이름이 존재합니다.');
+  } else if (checkDuplicated(carNameArray)) {
+    alert('중복된 이름이 존재합니다.');
+  } else {
+    return carNameArray;
+  }
+  return false;
+};
+
+export const checkCount = countInput => {
+  if (checkEmptyInput(countInput)) {
+    alert('입력 값이 없습니다.');
+  } else if (countInput < 1) {
+    alert('1 이상의 값을 입력해주세요.');
+  } else {
+    return countInput;
+  }
+  return false;
+};
