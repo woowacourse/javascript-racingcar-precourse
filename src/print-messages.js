@@ -1,7 +1,7 @@
 import { state, resultContainer } from "./index.js";
 import { judgeWinner } from "./utils/game-utils.js";
 
-export function printProgress(carNameArray) {
+export function printProgressPerCar(carNameArray) {
   const progress = [];
   const enterHTML = "<br />";
 
@@ -25,25 +25,33 @@ export function printWinner(winnerArray) {
   document.getElementById("result").innerHTML += result;
 }
 
-export function printFinalResult(racingCount) {
-  const resultHeader = resultContainer.innerHTML;
+export function printOneGameResult() {
   const carArray = state.carArray;
-  const progressHTML = [];
-  let finalHTML = "";
-  let gameProgress = "";
+  let gameProgressPerGameHTML = "";
 
-  for (let i = 0; i < racingCount; i++) {
-    for (let n = 0; n < carArray.length; n++) {
-      if (carArray[n].canMove()) {
-        carArray[n].move();
-      }
+  for (const car of carArray) {
+    if (car.canMove()) {
+      car.move();
     }
-
-    gameProgress = printProgress(carArray);
-    progressHTML.push(gameProgress.join(" "));
   }
 
-  finalHTML = progressHTML.join(" ");
+  gameProgressPerGameHTML = printProgressPerCar(carArray).join(" ");
+
+  return gameProgressPerGameHTML;
+}
+
+export function printFinalResult(racingCount) {
+  const resultHeader = resultContainer.innerHTML;
+  const progressPerGameArr = [];
+  let finalHTML = "";
+
+  for (let i = 0; i < racingCount; i++) {
+    const oneGame = printOneGameResult();
+
+    progressPerGameArr.push(oneGame);
+  }
+
+  finalHTML = progressPerGameArr.join(" ");
   document.getElementById("result").innerHTML = resultHeader + finalHTML;
 
   const winnerArray = judgeWinner();
