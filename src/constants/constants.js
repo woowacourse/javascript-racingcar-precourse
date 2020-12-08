@@ -10,7 +10,7 @@ export const MESSAGE = {
 export const NUMBER = {
   GO: 1,
   STOP: 0,
-  GO_FORWARD_CONDITION: 3,
+  GO_FORWARD_CONDITION: 4,
 
   NAME_LENGTH: 5,
 

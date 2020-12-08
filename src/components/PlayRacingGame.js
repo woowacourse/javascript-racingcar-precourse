@@ -52,13 +52,7 @@ export class PlayRacingGame {
   };
 
   getWinners = (cars) => {
-    let maxDistance = -Infinity;
-
-    cars.forEach((car) => {
-      if (car.distance > maxDistance) {
-        maxDistance = car.distance;
-      }
-    });
+    let maxDistance = Math.max(...cars.map((car) => car.distance));
 
     return cars
       .filter((car) => car.distance === maxDistance)

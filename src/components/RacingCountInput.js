@@ -16,12 +16,6 @@ export class RacingCountInput {
     this.racingCountSubmit.addEventListener("click", () => {
       this.handleRacingCountInput();
     });
-
-    this.racingCountSubmit.addEventListener("keyup", (event) => {
-      if (event.keyCode === 13) {
-        this.handleRacingCountInput();
-      }
-    });
   };
 
   handleRacingCountInput = () => {

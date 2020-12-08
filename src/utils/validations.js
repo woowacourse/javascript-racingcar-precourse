@@ -17,8 +17,10 @@ const isDuplicate = (elements) => {
 };
 
 const hasEmptyName = (elements) => {
+  console.log(elements);
   for (const element of elements) {
     if (element.length === 0) {
+      console.log(element);
       return true;
     }
   }
@@ -41,13 +43,13 @@ const getErrorMessagesOfNameInputs = (elements) => {
   let errorMessage = "";
 
   if (checkNameLengthOverFive(elements)) {
-    errorMessage += `${MESSAGE.CAR_NAME_LENGTH_ERROR}/ `;
+    errorMessage += `${MESSAGE.CAR_NAME_LENGTH_ERROR} `;
   }
   if (isDuplicate(elements)) {
-    errorMessage += `${MESSAGE.DUPLICATE_ERROR}/ `;
+    errorMessage += `${MESSAGE.DUPLICATE_ERROR} `;
   }
   if (hasEmptyName(elements)) {
-    errorMessage += `${MESSAGE.HAS_EMPTY_NAME_ERROR}/ `;
+    errorMessage += `${MESSAGE.HAS_EMPTY_NAME_ERROR} `;
   }
   return errorMessage;
 };

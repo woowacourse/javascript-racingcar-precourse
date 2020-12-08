@@ -17,16 +17,11 @@ export class CarNamesInput {
     this.carNamesSubmit.addEventListener("click", () => {
       this.handleCarNamesInput();
     });
-    this.carNamesInput.addEventListener("keyup", (event) => {
-      if (event.keyCode === 13) {
-        this.handleCarNamesInput();
-      }
-    });
   };
 
   handleCarNamesInput = () => {
     let names = this.getNamesFromInput();
-
+    console.log(names);
     if (!isValidNames(names)) {
       return;
     }
