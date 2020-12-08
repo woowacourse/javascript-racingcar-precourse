@@ -1,6 +1,6 @@
 import Car from './Car.js';
 import FormHandler from './FormHandler.js';
-import domId from './share.js';
+import { domId, MSG } from './share.js';
 
 export default class RacingCarGame {
   constructor() {
@@ -17,8 +17,14 @@ export default class RacingCarGame {
   }
 
   gameInit() {
+    this.cars = [];
+    this.count = 0;
     this.carNamesForm.setOnClick(this.onCarNamesSubmitBtnClick);
     this.racingCountForm.setOnClick(this.onRacingCountSubmitBtnClick);
+  }
+
+  showAlert(msg) {
+    alert(msg);
   }
 
   onCarNamesSubmitBtnClick = () => {
@@ -26,6 +32,9 @@ export default class RacingCarGame {
     this.carNameValidator();
     if (this.isValidCarNames) {
       this.createCars();
+    } else {
+      this.showAlert(MSG.INVALID_NAME_INPUT_MSG);
+      this.carNamesForm.clearInput();
     }
   };
 
@@ -34,6 +43,9 @@ export default class RacingCarGame {
     if (this.isValidCount) {
       this.play();
       const winner = this.getWinner();
+    } else {
+      this.showAlert(MSG.INVALID_RACING_COUNT_MSG);
+      this.racingCountForm.clearInput();
     }
   };
 

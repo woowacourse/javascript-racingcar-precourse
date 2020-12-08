@@ -13,4 +13,8 @@ export default class FormHandler {
   setOnClick = (onClick) => {
     this.button.addEventListener('click', onClick);
   };
+
+  clearInput() {
+    this.input.value = '';
+  }
 }
