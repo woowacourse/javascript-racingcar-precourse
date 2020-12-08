@@ -51,6 +51,8 @@ export default class RacingCarGame {
         ...this.components,
         racingResult: new RacingResult({
           $target: this.$container,
+          carNames: this.carNames,
+          racingCount: this.racingCount,
         }),
       };
     }
