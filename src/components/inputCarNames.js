@@ -1,4 +1,5 @@
 import carNameValidator from '../utils/carNameValidator.js';
+import { showRacingCountInputContainer } from '../utils/showTags.js';
 import Car from '../Car.js';
 
 export default function inputCarNames($element, setCars) {
@@ -8,6 +9,7 @@ export default function inputCarNames($element, setCars) {
   const onHandleCarNameSubmit = () => {
     const carNames = $carNameInput.value !== '' ? $carNameInput.value.split(',') : null;
     if (carNameValidator(carNames)) {
+      showRacingCountInputContainer();
       setCars(carNames.map((value) => new Car(value)));
     }
   };
