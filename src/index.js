@@ -8,11 +8,17 @@ export const racingCountSubmit = document.getElementById('racing-count-submit');
 const cars = [];
 
 carNamesSubmit.onclick = () => {
-  document.getElementById('racing-count').style.display = 'block';
   const inputs = carNamesInput.value.split(',');
+  let find = false;
   inputs.forEach((input) => {
-    cars.push(new Car(input));
+    if (input.length > 5) {
+      alert('입력값에 문제가 있습니다. 다시 입력하세요!');
+      carNamesInput.value = '';
+      find = true;
+      cars = [];
+    } else cars.push(new Car(input));
   });
+  if (!find) document.getElementById('racing-count').style.display = 'block';
 };
 
 racingCountSubmit.onclick = () => {
