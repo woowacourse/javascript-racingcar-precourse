@@ -30,6 +30,7 @@ export default class GetUserInput {
     
     if (validation !== 1) {
       document.getElementById('racing-count-input').value = null;
+      document.getElementById('game-result-container').hidden = true;
       alert(new ErrorMsg().setError(validation));
     }
 
