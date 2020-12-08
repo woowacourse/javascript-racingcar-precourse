@@ -1,7 +1,8 @@
-export default function RacingCarGame() {
+import { handleCarNamesSubmitClick } from "./carNames.js";
+
+function init() {
+    const carNamesSubmitButton = document.querySelector("#car-names-submit");
+    carNamesSubmitButton.addEventListener("click", handleCarNamesSubmitClick);
 }
-// export default class RacingCarGame {
-// }
 
-
-new RacingCarGame();
+init();
