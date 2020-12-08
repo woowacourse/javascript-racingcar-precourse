@@ -6,8 +6,9 @@ export function startGame(game) {
 }
 
 export function playGame(game, carList) {
+    console.log(carList);
     while (!isGameEnd(game)) {
-        for (const car of carList) {
+        for (let car of carList) {
             car.moveCar();
         }        
         printStatusMessage(carList);
@@ -45,7 +46,7 @@ export function isGameEnd(game) {
 export function getWinner(carList) {
     let winnerList = new Array();
     let maxCount = 0;
-    for (const car of carList) {
+    for (let car of carList) {
         console.log(car.name, car.move);
         if (car.move > maxCount) {
             winnerList.length = 0;
