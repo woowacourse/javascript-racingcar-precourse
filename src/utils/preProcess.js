@@ -11,3 +11,8 @@ export const preProcessCarNamesToCarNameList = (carNames) => {
 export const preProcessTryCount = (tryCount) => {
   return Number(tryCount);
 };
+
+export default {
+  preProcessCarNamesToCarNameList,
+  preProcessTryCount,
+};

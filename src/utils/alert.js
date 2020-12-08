@@ -37,3 +37,8 @@ export const makeNotEnoughConditionAlertMessage = (gamePlayCondition) => {
 
   return alertMessage;
 };
+
+export default {
+  makeInvalidCarNamesAlertMessage,
+  makeNotEnoughConditionAlertMessage,
+};

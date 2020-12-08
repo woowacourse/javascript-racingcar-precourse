@@ -38,3 +38,8 @@ export const checkTryCount = (tryCount) => {
 
   return isValid;
 };
+
+export default {
+  makeCarNamesCheckResult,
+  checkTryCount,
+};
