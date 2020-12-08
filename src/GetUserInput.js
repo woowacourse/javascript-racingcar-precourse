@@ -16,7 +16,7 @@ export default class GetUserInput {
     if (validation !== 1) {
       this.cars.length = 0;
       document.getElementById('car-names-input').value = '';
-      alert(new ErrorMsg(validation).errorMsg);
+      alert(new ErrorMsg().setError(validation));
     }
 
     return validation;
@@ -30,7 +30,7 @@ export default class GetUserInput {
     if (validation !== 1) {
       alert(new ErrorMsg().setError(validation));
     }
-    
+
     return validation;
   };
 };
