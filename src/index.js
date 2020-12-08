@@ -1,19 +1,26 @@
-import { hideRacingCount, hideResult } from "./htmlChange.js";
+import { hideRacingCount, hideResult, showRacingCount, showResult } from "./htmlChange.js";
 import { carNamesCheck } from "./utils.js";
 import Car from "./Car.js";
 
 export default class RacingCarGame {
   constructor() {
+    this.carList = [];
+    this.racingCount = 0;
     this.init();
   }
   init() {
     hideRacingCount();
     hideResult();
     this.setBtnCarNamesSubmit();
+    this.setBtnRacingCountSubmit();
   }
   setBtnCarNamesSubmit() {
     const $BtnCarNamesSubmit = document.getElementById("car-names-submit");
     $BtnCarNamesSubmit.addEventListener("click", () => this.getInputCarNames());
+  }
+  setBtnRacingCountSubmit() {
+    const $BtnRacingCountSubmit = document.getElementById("racing-count-submit");
+    $BtnRacingCountSubmit.addEventListener("click", () => this.getInputRacingCount());
   }
   getInputCarNames() {
     const $InputCarNames = document.getElementById("car-names-input");
@@ -23,10 +30,8 @@ export default class RacingCarGame {
       return;
     }
     const carInstanceList = carNameList.map((carName) => new Car(carName));
-    this.startGame(carInstanceList);
-  }
-  startGame(carList) {
-    console.log(carList);
+    this.carList = carInstanceList;
+    showRacingCount();
   }
 }
 
