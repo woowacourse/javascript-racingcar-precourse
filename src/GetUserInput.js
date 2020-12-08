@@ -16,8 +16,6 @@ export default class GetUserInput {
     
     if (validation !== 1) {
       this.cars.length = 0;
-      document.getElementById('car-names-input').value = '';
-      document.getElementById('try-count-form').hidden = true;
       alert(new ErrorMsg().setError(validation));
     }
 
@@ -30,8 +28,6 @@ export default class GetUserInput {
     const validation = new CheckInput().checkCount(this.count);
     
     if (validation !== 1) {
-      document.getElementById('racing-count-input').value = null;
-      document.getElementById('game-result-container').hidden = true;
       alert(new ErrorMsg().setError(validation));
     }
 

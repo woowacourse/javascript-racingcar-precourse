@@ -17,8 +17,12 @@ export default class RacingCarGame {
   carNameButtonClick() {
     this.getUserInput = new GetUserInput();
     const isValid = this.getUserInput.getCars();
-    this.racingCountInput.value = null;
     this.gameResultContainer.hidden = true;
+    this.racingCountInput.value = null;
+    if (isValid !== 1) {
+      this.tryCountForm.hidden = true;
+      document.getElementById('car-names-input').value = '';
+    }
     if (isValid === 1) {
       this.tryCountForm.hidden = false;
     }
@@ -29,6 +33,10 @@ export default class RacingCarGame {
 
     this.gameStatus.innerHTML = '';
     this.gameResult.innerHTML = '';
+    if (isValid !== 1) {
+      document.getElementById('racing-count-input').value = null;
+      this.gameResultContainer.hidden = true;
+    }
     if (isValid === 1) {
       const game = new GamePlay(this.getUserInput.cars, this.getUserInput.count);
       game.play();
