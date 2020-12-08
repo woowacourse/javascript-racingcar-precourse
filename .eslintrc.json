@@ -20,6 +20,8 @@
     "radix": "off",
     "no-restricted-properties": "off",
     "max-depth" : ["error", 2],
-    "no-return-assign" : "off"
+    "no-return-assign" : "off",
+    "import/extensions": "off",
+    "no-new": "off"
   }
 }
