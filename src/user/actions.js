@@ -16,7 +16,28 @@ const isZero = function (value) {
   }
 };
 
+const isAlone = function (value) {
+  if (value.length === 1) {
+    return true;
+  }
+};
+
+const isDuplication = function (_carNames) {
+  for (let i = 0; i < _carNames.length; i++) {
+    const carName = _carNames[i];
+
+    if (_carNames.indexOf(carName) !== i) {
+      return true;
+    }
+  }
+};
+
 const isVaild = function (_carNames) {
+  if (isAlone(_carNames)) {
+    alert('1개 이상의 자동차 이름을 입력해주세요.');
+    return;
+  }
+
   for (let i = 0; i < _carNames.length; i++) {
     const carName = _carNames[i];
 
@@ -27,6 +48,11 @@ const isVaild = function (_carNames) {
       alert(`자동차 이름을 5자 이하로 지어주세요. "${carName}"`);
       return;
     }
+  }
+
+  if (isDuplication(_carNames)) {
+    alert('자동차 이름은 중복일 수 없습니다.');
+    return;
   }
 
   return true;
