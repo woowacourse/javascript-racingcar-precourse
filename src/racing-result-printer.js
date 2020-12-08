@@ -4,6 +4,8 @@ class RacingResultPrinter {
   }
 
   printAll = (racingCarGame) => {
+    this.racingResultContainer.innerHTML = '';
+
     this.printRacingResult(racingCarGame);
     this.printWinnersName(racingCarGame);
   }
