@@ -22,14 +22,14 @@ export default class RacingResult {
   makeCars = () => {
     const nextCars = [];
 
-    for (let i = 0; i < this.racingCount; i++) {
+    this.carNames.forEach((carName) => {
       nextCars.push(
         new Car({
-          carName: this.carNames[i],
+          carName: carName,
           racingCount: this.racingCount,
         })
       );
-    }
+    });
 
     this.setState({ nextCars });
   };
@@ -58,6 +58,7 @@ export default class RacingResult {
       HTMLStringPerRound.push(this.createHTMLStringPerRound(i + 1));
     }
 
+    this.$container.innerHTML = "";
     this.$container.insertAdjacentHTML("beforeend", HTMLStringPerRound.join(""));
   };
 }
