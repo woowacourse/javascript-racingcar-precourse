@@ -25,7 +25,7 @@ export default class GetUserInput {
   getCount() {
     this.count =
         Number(document.getElementById('racing-count-input').value);
-    const validation = new CheckInput().checkCount(this.cars, this.count);
+    const validation = new CheckInput().checkCount(this.count);
     
     if (validation !== 1) {
       alert(new ErrorMsg().setError(validation));
