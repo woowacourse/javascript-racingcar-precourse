@@ -1,7 +1,8 @@
 export default class RacingCarGame {
+  #raceCourseProcess = {};
+
   constructor() {
     this.raceCourse = [];
-    this.raceCourseProcess = {};
     this.raceCourseProcessRecords = [];
   }
 
@@ -24,14 +25,14 @@ export default class RacingCarGame {
   #addProgressMarkToRaceCourse() {
     this.raceCourse.forEach((car) => {
       car.tryAdvance();
-      this.raceCourseProcess[car.name] = RacingCarGame.getProgressMark(
+      this.#raceCourseProcess[car.name] = RacingCarGame.getProgressMark(
         car.progress
       );
     });
   }
 
   #recordRaceCourseProcess() {
-    const raceCourseProcessAtMoment = { ...this.raceCourseProcess };
+    const raceCourseProcessAtMoment = { ...this.#raceCourseProcess };
     this.raceCourseProcessRecords.push(raceCourseProcessAtMoment);
   }
 
