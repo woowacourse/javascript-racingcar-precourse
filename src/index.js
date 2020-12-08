@@ -1,3 +1,13 @@
-export default class RacingCarGame {}
+import { hideRacingCount, hideResult } from "./initialState.js";
 
-new RacingCarGame()
+export default class RacingCarGame {
+  constructor() {
+    this.init();
+  }
+  init() {
+    hideRacingCount();
+    hideResult();
+  }
+}
+
+new RacingCarGame();
