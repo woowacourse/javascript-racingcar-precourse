@@ -1,4 +1,4 @@
-import { hideRacingCount, hideResult } from "./initialState.js";
+import { hideRacingCount, hideResult } from "./htmlChange.js";
 import { carNamesCheck } from "./utils.js";
 import Car from "./Car.js";
 
