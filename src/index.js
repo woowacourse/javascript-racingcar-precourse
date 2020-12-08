@@ -1,4 +1,4 @@
-import RacingCarGame from './RacingCarGame.js';
+import GamePlay from './GamePlay.js';
 import GetUserInput from './GetUserInput.js';
 
 document.getElementById('try-count-form').hidden = true;

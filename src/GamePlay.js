@@ -4,7 +4,7 @@ import Show from './Show.js';
  * @author sunhpark42 <sunhpark42@gmail.com>
  * module for game play
  */
-export default class RacingCarGame {
+export default class GamePlay {
   /**
    * variable for racing car game
    * @param {Array} carNameArray
