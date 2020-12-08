@@ -1,5 +1,5 @@
 import { createCar } from './create.js';
-import { isAvailableNames } from './check.js';
+import { isAvailableNames, isAvailableNumber } from './check.js';
 
 export function getCarNamesInput() {
   const carNamesSubmit = document.querySelector("#car-names-submit");
@@ -15,7 +15,7 @@ export function getCarNamesInput() {
 export function getRacingCountInput() {
   const racingCountSubmit = document.querySelector("#racing-count-submit");
   racingCountSubmit.addEventListener("click", () => {
-    const racingCountInput = document.querySelector("#racing-count-input").value;
+    const racingCountInput = isAvailableNumber();
     const carNamesInput = document.querySelector("#car-names-input").value.split(",");
 
     if (carNamesInput && racingCountInput) {

@@ -35,7 +35,18 @@ export function isAvailableNames(carNamesInput) {
     racingCountDiv.style.display = 'block';
     return true;
   } else {
-    alert("5자 이하의 문자를, 공백 없이, 콤마로 구분하여 입력해 주세요.");
+    alert("5자 이하로 이루어진 이름을, 중복과 공백 없이, 콤마로 구분하여 입력해 주세요.");
+  }
+}
+
+export function isAvailableNumber() {
+  const racingCountInput = document.querySelector("#racing-count-input").value;
+  const minNumber = 0
+  if (racingCountInput > minNumber) {
+    return racingCountInput
+  }
+  else {
+    alert("1 이상의 숫자를 입력해 주세요.")
   }
 }
 
