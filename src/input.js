@@ -8,7 +8,7 @@ function carNamesInput(nameString) {
 }
 
 function isCarNameValid(nameList) {
-    let nameSet = new Set(nameList);
+    const nameSet = new Set(nameList);
 
     for (let name of nameList) {
         if (name.length > 5) {
@@ -17,7 +17,7 @@ function isCarNameValid(nameList) {
         if (name.length === 0) {
             return false;
         }
-        if (nameSet.length === nameList.length) {
+        if (nameSet.size !== nameList.length) {
             return false;
         }
     }
@@ -39,21 +39,15 @@ export function createCars(carNameList) {
 
 export function carNamesButtonEvents(game) {
     let carNameList = carNamesInput(TEXT.CAR_NAMES_INPUT.value);
-
+    
     if (!isCarNameValid(carNameList)) {
         alert(ERROR.REWRITE);
         return;
     }
 
-    let carList = createCars(carNameList);
-
-    setCarList(game, carList);
+    setCarList(game, createCars(carNameList));
 
     CLASS.GAMEBOARD_RACING_COUNT.style.display = 'block';
-
-    console.log(game);
-    console.log(carNameList);
-    console.log(carList);
 }
 
 export function racingCountButtonEvents(game) {
