@@ -103,14 +103,9 @@ const addRacingCountForm = (e) => {
   e.target.closest(".car-game-container").append(racingCountForm);
 };
 
-const deactivateCarNameForm = (e) => {
-  e.target.setAttribute("disabled", "disabled");
-  e.target.parentNode.children[0].setAttribute("readonly", "readonly");
-};
-
-const deactivateRacingCountForm = (e) => {
-  e.target.setAttribute("disabled", "disabled");
-  e.target.parentNode.children[1].setAttribute("readonly", "readonly");
+const deactivateForms = (button, inputForm) => {
+  button.setAttribute("disabled", "disabled");
+  inputForm.setAttribute("readonly", "readonly");
 };
 
 const passNamesInputToGameController = (e) => {
@@ -122,7 +117,7 @@ const passNamesInputToGameController = (e) => {
 
   gameController.setRacingCars(namesArray);
   addRacingCountForm(e);
-  deactivateCarNameForm(e);
+  deactivateForms(e.target, e.target.parentNode.children[0]);
 };
 
 const renderRacingRecord = (e) => {
@@ -136,7 +131,7 @@ const renderRacingRecord = (e) => {
     app.append(gameController.getResultHTML(_record));
   });
   app.append(`최종 우승자: ${gameController.getWinnersString()}`);
-  deactivateRacingCountForm(e);
+  deactivateForms(e.target, e.target.parentNode.children[1]);
 };
 
 const routeDocClickEvent = (e) => {
