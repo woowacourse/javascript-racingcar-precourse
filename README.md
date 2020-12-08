@@ -45,10 +45,10 @@
 
 - 차들과 경주장을 생성하기 (create cars & raceCourse)
 
-  - 예외#6 :exclamation: - 이름은 입력했지만 '확인' 버튼을 누르지 않아 이름들이 등록되지 않은 경우
+  - :exclamation: 예외#6 - 이름은 입력했지만 '확인' 버튼을 누르지 않아 이름들이 등록되지 않은 경우
 
 - 경주 진행하기 (play race game)
-  - 예외#7 :exclamation: - 입력이 올바르지 않은 상태에서 경주를 진행하려고 하는 경우
+  - :exclamation: 예외#7 - 입력이 올바르지 않은 상태에서 경주를 진행하려고 하는 경우
 
 <br/><br/>
 
@@ -58,9 +58,9 @@
 
 - 자동차 이름들 & 시도 횟수 입력값이 유효하지 않을 경우 경고창 띄우기 (alert invalid inputs)
 
-  - 예외#6 해결 :wrench: - 차 이름들이 새로 입력되었는데 '확인' 버튼이 눌러지지 않았다면 경고창 띄우기
-  - 예외#7 해결 :wrench: - 시도 횟수 입력이 잘못된 입력인지를 검사 후 '0보다 큰 자연수'를 입력할 것을 유저에게 알려주기
-  - 예외#7 해결 :wrench: - 자동차 이름 입력의 어디가 유효하지 않은지를 유저에게 알려주어 형식에 맞춰 재입력하기를 유도하기 (alert what are the problems of user's car names input to user)
+  - :wrench: 예외#6 해결 - 차 이름들이 새로 입력되었는데 '확인' 버튼이 눌러지지 않았다면 경고창 띄우기
+  - :wrench: 예외#7 해결 - 시도 횟수 입력이 잘못된 입력인지를 검사 후 '0보다 큰 자연수'를 입력할 것을 유저에게 알려주기
+  - :wrench: 예외#7 해결 - 자동차 이름 입력의 어디가 유효하지 않은지를 유저에게 알려주어 형식에 맞춰 재입력하기를 유도하기 (alert what are the problems of user's car names input to user)
 
 - 경주 진행과정 전체를 보여주기 (show race process records)
 - 최종 우승자 보여주기 (show winners)
