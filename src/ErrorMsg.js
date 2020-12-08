@@ -7,7 +7,7 @@ export default class ErrorMsg {
     const ErrorArray = [this.carNumberError(), this.carLengthError(),
       this.carDuplicationError(), this.countError()];
     const errorIndex = (errorNum * -1) - 1;
-    
+
     return ErrorArray[errorIndex];
   }
 
@@ -16,7 +16,7 @@ export default class ErrorMsg {
   };
 
   carLengthError() {
-    return '각 자동차의 이름의 길이는 5자 이내로 설정해 주세요(공백포함)\n';
+    return '각 자동차의 이름의 길이는 1자이상 5자 이내로 설정해 주세요\n';
   }
 
   carDuplicationError() {
