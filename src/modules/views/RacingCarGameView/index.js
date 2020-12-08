@@ -1,4 +1,4 @@
-import { isLongerThan, isNames, isNumber } from '../../../utils';
+import { isLongerThan, isNames } from '../../../utils';
 import { message } from '../../../constants';
 
 export default class RacingCarGameView {
