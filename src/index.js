@@ -30,7 +30,7 @@ export default class RacingCarGame {
     this.gameStatus.innerHTML = '';
     this.gameResult.innerHTML = '';
     if (isValid === 1) {
-      const game = new RacingCarGame(this.getUserInput.cars, this.getUserInput.count);
+      const game = new GamePlay(this.getUserInput.cars, this.getUserInput.count);
       game.play();
       this.gameResultContainer.hidden = false;
     }
