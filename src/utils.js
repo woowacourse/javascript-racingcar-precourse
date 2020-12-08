@@ -15,4 +15,11 @@ function isNumber(string) {
   return !isNaN(Number(string));
 }
 
-export { carNamesCheck, isNumber };
+function getRandomNumber() {
+  return Math.floor(Math.random() * 9);
+}
+function isCarMoved() {
+  const randomNumber = getRandomNumber();
+  return randomNumber > 3;
+}
+export { carNamesCheck, isNumber, isCarMoved };
