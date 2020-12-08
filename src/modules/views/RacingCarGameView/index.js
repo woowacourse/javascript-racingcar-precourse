@@ -92,7 +92,7 @@ export default class RacingCarGameView {
   }
 
   validCount(count) {
-    if (!isNumber(parseInt(count))) {
+    if (isNaN(parseInt(count))) {
       return message.WARNING_FOR_COUNT_NOT_NUMBER;
     }
     if (parseInt(count) < this.COUNT_MIN_VALUE) {

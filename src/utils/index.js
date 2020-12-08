@@ -8,14 +8,6 @@ function isLongerThan(names, comparison) {
   return false;
 }
 
-function isNumber(count) {
-  if (isNaN(count)) {
-    return false;
-  }
-
-  return true;
-}
-
 function isNames(names) {
   if (names[0] === '') {
     return false;
@@ -39,4 +31,4 @@ function randomNumber(maxNumber, minNumber) {
   return number;
 }
 
-export { isLongerThan, isNames, isNumber, randomNumber };
+export { isLongerThan, isNames, randomNumber };
