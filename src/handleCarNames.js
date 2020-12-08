@@ -15,7 +15,9 @@ export const handleCarNames = () => {
 
   hidePreviousGameResult();
   if (error) {
-    return requestInputAgain(ALERT_MESSAGES[error], carNamesInput);
+    alert(ALERT_MESSAGES[error]);
+    requestInputAgain(carNamesInput);
+    return;
   }
   displayRacingCountTags();
   racingCountSubmit.cars = createCars(carNames);

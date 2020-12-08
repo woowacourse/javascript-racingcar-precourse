@@ -16,8 +16,12 @@ export const handleRacingCount = (e) => {
 
   clearPreviousGameResult(cars);
   if (error) {
-    return requestInputAgain(ALERT_MESSAGES[error], racingCountInput);
+    alert(ALERT_MESSAGES[error]);
+    requestInputAgain(racingCountInput);
+    return;
   }
+  displayElement('#game-result-header', 'block');
+  displayElement('#game-result-content', 'block');
   playGame(racingCount, cars);
 };
 
@@ -43,28 +47,30 @@ const isErrorRacingCount = (count) => {
 };
 
 const playGame = (racingCount, cars) => {
-  displayElement('#game-result-header', 'block');
-  displayElement('#game-result-content', 'block');
   for (let i = 0; i < racingCount; i++) {
     cars.forEach((car) => car.playOneTurn());
     cars.forEach((car) => car.displayCurrentScore());
     appendLineBreakAtEnd('#game-result-content');
   }
   displayFinalWinner(cars);
-
-  return cars;
 };
 
 const displayFinalWinner = (cars) => {
-  let max;
-  let winners = '';
+  let winners = findWinners(cars.slice());
+
+  appendAtEnd('#game-result-content', 'div', getGameResultStr(winners));
+};
+
+const findWinners = (cars) => {
+  let maxScore;
 
   cars.sort((a, b) => b.scoreLen() - a.scoreLen());
-  max = cars[0].scoreLen();
-  winners = cars.filter((car) => car.scoreLen() === max).map((car) => car.name);
-  appendAtEnd(
-    '#game-result-content',
-    'div',
-    `🥇최종 우승자: ${winners.join(WINNER_SEPARATOR)}`
-  );
+  maxScore = cars[0].scoreLen();
+  return cars
+    .filter((car) => car.scoreLen() === maxScore)
+    .map((car) => car.name);
+};
+
+const getGameResultStr = (winners) => {
+  return `🥇최종 우승자: ${winners.join(WINNER_SEPARATOR)}`;
 };

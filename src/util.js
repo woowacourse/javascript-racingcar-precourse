@@ -24,9 +24,8 @@ export const hideElement = (selector) => {
   document.querySelector(selector).style.display = 'none';
 };
 
-export const requestInputAgain = (message, element) => {
-  alert(message);
-  element.value = '';
+export const requestInputAgain = (element) => {
+  initNode(element);
   element.focus();
 };
 
