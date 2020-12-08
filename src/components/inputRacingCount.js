@@ -1,4 +1,4 @@
-import racingCountValidator from '../utils/racingCountValidator.js';
+import racingCountValidator from '../utils/validators/racingCountValidator.js';
 import RacingCarGame from '../RacingCarGame.js';
 
 export default function ($element, racingCars) {

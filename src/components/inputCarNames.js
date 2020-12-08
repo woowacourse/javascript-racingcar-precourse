@@ -1,4 +1,4 @@
-import carNameValidator from '../utils/carNameValidator.js';
+import carNameValidator from '../utils/validators/carNameValidator.js';
 import { showRacingCountInputContainer } from '../utils/showTags.js';
 import inputRacingCount from './inputRacingCount.js';
 import Car from '../Car.js';
