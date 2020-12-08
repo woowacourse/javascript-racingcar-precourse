@@ -1,5 +1,6 @@
 import { isValidNames } from "../utils/validations.js";
 import { Car } from "../classes/Car.js";
+import { setDisable } from "../utils/handleDom.js";
 
 export class CarNamesInput {
   constructor({ setCars }) {
@@ -21,13 +22,15 @@ export class CarNamesInput {
 
   handleCarNamesInput = () => {
     let names = this.getNamesFromInput();
-    console.log(names);
     if (!isValidNames(names)) {
       return;
     }
 
     let cars = this.makeCars(names);
     this.setCars(cars);
+
+    setDisable(this.carNamesInput, "disable");
+    setDisable(this.carNamesSubmit, "disable");
   };
 
   getNamesFromInput = () => {

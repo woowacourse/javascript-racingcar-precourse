@@ -11,8 +11,8 @@ export class Car {
     this.distance +=
       getRandomNumber(NUM.RANDOM_START, NUM.RANDOM_END) >=
       NUM.GO_FORWARD_CONDITION
-        ? go()
-        : stop();
+        ? this.go()
+        : this.stop();
   }
 
   go() {

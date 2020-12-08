@@ -17,10 +17,8 @@ const isDuplicate = (elements) => {
 };
 
 const hasEmptyName = (elements) => {
-  console.log(elements);
   for (const element of elements) {
     if (element.length === 0) {
-      console.log(element);
       return true;
     }
   }

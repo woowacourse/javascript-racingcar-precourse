@@ -1,4 +1,5 @@
 import { isValidCount } from "../utils/validations.js";
+import { setDisable } from "../utils/handleDom.js";
 
 export class RacingCountInput {
   constructor({ runRaces }) {
@@ -24,8 +25,10 @@ export class RacingCountInput {
     if (!isValidCount(count)) {
       return;
     }
-    console.log(count);
     this.runRaces(count);
+
+    setDisable(this.racingCountInput, "disable");
+    setDisable(this.racingCountSubmit, "disable");
   };
 
   getRacingCount = () => {
