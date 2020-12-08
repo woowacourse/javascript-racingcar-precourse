@@ -51,11 +51,8 @@ export default class CheckInput {
    * @return {number}
    */
   checkCount(cars, count) {
-    if (cars.length === 0) {
-      return -4;
-    }
     if (count <= 0) {
-      return -5;
+      return -4;
     }
     return 1;
   }

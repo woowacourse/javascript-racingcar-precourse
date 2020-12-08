@@ -45,13 +45,6 @@ export default class ErrorMsg {
    * error Msg
    * @return {string}
    */
-  carNoExistError() {
-    return '자동차 목록을 먼저 입력해 주세요.\n';
-  }
-  /**
-   * error Msg
-   * @return {string}
-   */
   countError() {
     return '1 이상의 자연수를 입력해 주세요.\n';
   }
