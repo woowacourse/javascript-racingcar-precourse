@@ -45,13 +45,13 @@ const isErrorRacingCount = (count) => {
 const playGame = (racingCount, cars) => {
   displayElement('#game-result-header', 'block');
   displayElement('#game-result-content', 'block');
-
   for (let i = 0; i < racingCount; i++) {
     cars.forEach((car) => car.playOneTurn());
     cars.forEach((car) => car.displayCurrentScore());
     appendLineBreakAtEnd('#game-result-content');
   }
   displayFinalWinner(cars);
+
   return cars;
 };
 
@@ -62,7 +62,6 @@ const displayFinalWinner = (cars) => {
   cars.sort((a, b) => b.scoreLen() - a.scoreLen());
   max = cars[0].scoreLen();
   winners = cars.filter((car) => car.scoreLen() === max).map((car) => car.name);
-
   appendAtEnd(
     '#game-result-content',
     'div',
