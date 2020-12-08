@@ -19,8 +19,8 @@ export default class InputUtils {
   }
 
   checkNameValidity(carNames) {
-    this.initerrorType();
-    this.checkerrorType(carNames);
+    this.initErrorType();
+    this.checkErrorType(carNames);
 
     if (this._errorType.MAX_LENGTH + this._errorType.OVERLAP 
       + this._errorType.MIN_LENGTH > 0) {
@@ -33,7 +33,7 @@ export default class InputUtils {
     return this.IS_VALID;
   }
 
-  initerrorType() {
+  initErrorType() {
     this._errorType = {
       MAX_LENGTH: 0,
       OVERLAP: 0,
@@ -41,7 +41,7 @@ export default class InputUtils {
     };
   }
 
-  checkerrorType(carNames) {
+  checkErrorType(carNames) {
     carNames.forEach(element => {
       if (this.maxLength(element) === this.IS_NOT_VALID) {
         this._errorType.MAX_LENGTH = 1;
@@ -85,14 +85,12 @@ export default class InputUtils {
 
   createErrorMessage() {
     this._errorMessage = '자동차 이름을 ';
-
     this.addErrorTypeMessage();
-
     this._errorMessage += '입력해주세요';
   }
 
   addErrorTypeMessage() {
-    for (const [key, value] of Object.entries(this._errorType)) {
+    for (const key in this._errorType) {
       this.getErrorTypeMessage(key);
     }
   }

@@ -73,6 +73,7 @@ export default class RacingCarGame {
     this._countInput.focus();
     if (this._privateInputUtils.checkCountValidity(this._countInput.value) === this.IS_VALID) {
       this.createNewCar();
+      this.startRace();
 
       return 0;
     }
@@ -85,12 +86,12 @@ export default class RacingCarGame {
     this._carNameArray.forEach(element => {
       this._cars.push(new Car(element, 0));
     });
-    this.startRace();
   }
 
   startRace() {
     for (let i = 0; i < this._countInput.value; i++) {
       this.playRound();
+      this._privatePlayUtils.displayRoundResult(this._cars);
     }
 
     this._privatePlayUtils.displayWinner(this._cars);
@@ -98,12 +99,16 @@ export default class RacingCarGame {
 
   playRound() {
     this._cars.forEach(car => {
-      const number = this._privatePlayUtils.getRandomNumber();
-      if (number >= 4) {
-        car.location += 1;
-      }
+      const randomNumber = this._privatePlayUtils.getRandomNumber();
+      
+      this.forwardCar(car, randomNumber);
     });
-    this._privatePlayUtils.displayGameProcess(this._cars);
+  }
+
+  forwardCar(car, randomNumber) {
+    if (randomNumber >= 4) {
+      car.location += 1;
+    }
   }
 
   initGame() {

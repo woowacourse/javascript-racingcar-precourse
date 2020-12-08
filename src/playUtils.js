@@ -7,15 +7,13 @@ export default class PlayUtils {
     return Math.floor(Math.random() * 10);
   }
 
-  displayGameProcess(cars) {
-    this._result = document.createElement('div');
-    const resultMessage = this.getGameProcess(cars);
-
-    this._result.innerText = `${resultMessage}\n`;
-    this._displayArea.appendChild(this._result);
+  displayRoundResult(cars) {
+    const roundMessage = `${this.getRoundResult(cars)} \n`;
+    
+    this.createAndAppendDOM(roundMessage);
   }
 
-  getGameProcess(cars) {
+  getRoundResult(cars) {
     let gameProcess = '';
 
     cars.forEach(car => {
@@ -26,11 +24,17 @@ export default class PlayUtils {
   }
 
   displayWinner(cars) {
-    const winner = document.createElement('div');
     const winnerList = this.getWinnerList(cars);
+    const winnerMessage = `최종 우승자: ${winnerList}`;
     
-    winner.innerText = `최종 우승자: ${winnerList}`;
-    this._displayArea.appendChild(winner);
+    this.createAndAppendDOM(winnerMessage);
+  }
+
+  createAndAppendDOM(displayMessage) {
+    const div = document.createElement('div');
+
+    div.innerText = displayMessage;
+    this._displayArea.appendChild(div);
   }
 
   getWinnerList(cars) {
@@ -42,10 +46,12 @@ export default class PlayUtils {
         max = car.location;
         winnerList = [car.name];
       } 
+
       else if (car.location === max)
       {winnerList.push(car.name);}
     }
 
     return winnerList.join(', ');
   }
+
 }
