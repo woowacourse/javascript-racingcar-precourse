@@ -1,4 +1,4 @@
-import RacingCarGame from './RacingCarGame.js';
+import initializationGame from './initializationGame.js';
 
 const $racingCarGameApp = document.querySelector('#app');
-new RacingCarGame($racingCarGameApp);
+initializationGame($racingCarGameApp);
