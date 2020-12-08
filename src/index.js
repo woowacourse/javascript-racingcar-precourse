@@ -33,6 +33,7 @@ export default class RacingCarGame {
     this.checkValidCount();
     if (this.isValidCount) {
       this.play();
+      const winner = this.getWinner();
     }
   };
 
@@ -91,6 +92,14 @@ export default class RacingCarGame {
         this.checkGoStop(car);
       });
     }
+  }
+
+  getWinner() {
+    const maxPosition = Math.max(...this.cars.map((car) => car.position));
+    const candidates = this.cars
+      .filter((car) => car.position === maxPosition)
+      .map((car) => car.carName);
+    return candidates.join(',');
   }
 }
 
