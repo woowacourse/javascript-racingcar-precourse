@@ -1,0 +1,14 @@
+.car-current-state {
+  display:flex;
+  column-gap: 10px;
+}
+
+.car-current-state__name-container {
+  display:flex;
+  justify-content: space-between;
+  width: 60px;
+}
+
+.--hidden {
+  display: none;
+}
