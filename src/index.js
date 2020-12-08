@@ -1,7 +1,3 @@
-export default function RacingCarGame() {
-}
-// export default class RacingCarGame {
-// }
+import main from "./main.js";
 
-
-new RacingCarGame();
+main();
