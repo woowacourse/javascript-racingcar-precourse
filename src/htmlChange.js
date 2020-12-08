@@ -29,4 +29,11 @@ function drawResult(carList) {
   $divResult.appendChild(brEnd);
 }
 
-export { hideRacingCount, hideResult, showRacingCount, showResult, drawResult };
+function finalResult(winnerList) {
+  const $divResult = document.getElementById("result-div");
+  const winnerNames = winnerList.map(({ name }) => name).join(", ");
+  const $divWinnerList = document.createElement("div");
+  $divWinnerList.innerHTML = `최종우승자 : ${winnerNames}`;
+  $divResult.appendChild($divWinnerList);
+}
+export { hideRacingCount, hideResult, showRacingCount, showResult, drawResult, finalResult };

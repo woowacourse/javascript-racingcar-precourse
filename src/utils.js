@@ -22,4 +22,20 @@ function isCarMoved() {
   const randomNumber = getRandomNumber();
   return randomNumber > 3;
 }
-export { carNamesCheck, isNumber, isCarMoved };
+
+function findMaxCount(carList) {
+  let maxCount = -1;
+  carList.map(({ count }) => {
+    if (count > maxCount) {
+      maxCount = count;
+    }
+  });
+  return maxCount;
+}
+
+function getWinner(carList) {
+  const maxCount = findMaxCount(carList);
+  const winnerList = carList.filter(({ count }) => count === maxCount);
+  return winnerList;
+}
+export { carNamesCheck, isNumber, isCarMoved, getWinner };

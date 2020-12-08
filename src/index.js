@@ -1,5 +1,5 @@
-import { hideRacingCount, hideResult, showRacingCount, showResult, drawResult } from "./htmlChange.js";
-import { carNamesCheck, isNumber, isCarMoved } from "./utils.js";
+import { hideRacingCount, hideResult, showRacingCount, showResult, drawResult, finalResult } from "./htmlChange.js";
+import { carNamesCheck, isNumber, isCarMoved, getWinner } from "./utils.js";
 import Car from "./Car.js";
 
 export default class RacingCarGame {
@@ -54,6 +54,8 @@ export default class RacingCarGame {
       });
       drawResult(carList);
     }
+    const winnerList = getWinner(carList);
+    finalResult(winnerList);
   }
 }
 
