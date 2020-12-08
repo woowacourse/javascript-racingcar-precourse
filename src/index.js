@@ -10,6 +10,7 @@ const carNamesSubmitBtn = document.getElementById('car-names-submit');
 const racingCountSubmitBtn = document.getElementById('racing-count-submit');
 const gameResultContainer = document.getElementById('game-result-container');
 const racingCountContainer = document.getElementById('racing-count-container');
+const gameResult = document.getElementById('game-result');
 
 export default function RacingCarGame() {
   let carNames;
@@ -29,16 +30,15 @@ export default function RacingCarGame() {
     return racingResult;
   };
 
-  const printResult = function (_racingResult) {
-    document.getElementById('game-result').innerText = _racingResult;
-    gameResultContainer.hidden = false;
+  const showHiddenContainer = function (_container) {
+    _container.hidden = false;
   };
 
   carNamesSubmitBtn.addEventListener('click', () => {
     carNames = getCarNames();
 
     if (carNames) {
-      racingCountContainer.hidden = false;
+      showHiddenContainer(racingCountContainer);
     }
   });
 
@@ -46,8 +46,8 @@ export default function RacingCarGame() {
     racingCount = getRacingCount();
 
     if (racingCount) {
-      const racingResult = play(carNames, racingCount);
-      printResult(racingResult);
+      gameResult.innerText = play(carNames, racingCount);
+      showHiddenContainer(gameResultContainer);
     }
   });
 }
