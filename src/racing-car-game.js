@@ -39,7 +39,7 @@ export default class RacingCarGame {
     });
   }
 
-  getResultHTML(record) {
+  getResultComponent(record) {
     const racingStatusBars = this.getRacingStatusBars(record);
     const resultContainer = document.createElement("div");
     resultContainer.style.marginBottom = "25px";
@@ -93,5 +93,12 @@ export default class RacingCarGame {
     }
 
     return resultString;
+  }
+
+  renderResultHTML(container, countInput) {
+    this.getRacingRecord(countInput).forEach((_record) => {
+      container.append(this.getResultComponent(_record));
+    });
+    container.append(`최종 우승자: ${this.getWinnersString()}`);
   }
 }

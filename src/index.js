@@ -127,10 +127,7 @@ const renderRacingRecord = (e) => {
   }
 
   const app = e.target.closest("#app").children[3];
-  gameController.getRacingRecord(countInput).forEach((_record) => {
-    app.append(gameController.getResultHTML(_record));
-  });
-  app.append(`최종 우승자: ${gameController.getWinnersString()}`);
+  gameController.renderResultHTML(app, countInput);
   deactivateForms(e.target, e.target.parentNode.children[1]);
 };
 
