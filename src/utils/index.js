@@ -26,10 +26,10 @@ function isNames(names) {
 function isOverlapedNames(names) {
   const dictObject = {};
   for (let i = 0; i < names.length; i++) {
-    if (name in dictObject) {
+    if (names[i] in dictObject) {
       return true;
     }
-    dictObject[name] = true;
+    dictObject[names[i]] = true;
   }
 
   return false;
