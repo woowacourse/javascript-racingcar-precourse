@@ -61,7 +61,7 @@ export class RacingCarGame {
       this.showRacingCountContainer();
       this.disableCarNamesNodes();
       this.cars = carNamesInput.split(",").map(carName => carName.trim()).map(carName => new Car(carName));
-      console.log(carNamesInput.split(",").map(carName => carName.trim()));
+      // console.log(carNamesInput.split(",").map(carName => carName.trim()));
     } else {
       alert(`${carNamesInput}은 유효하지 않은 입력입니다. 재입력해주세요`);
       this.clearInput(this.$carNamesInput);
@@ -91,7 +91,7 @@ export class RacingCarGame {
 
   onClickRacingCountSubmit() {
     const racingCountNumber = Number(this.$racingCountInput.value);
-    console.log(`시도할 횟수: ${racingCountNumber}`);
+    // console.log(`시도할 횟수: ${racingCountNumber}`);
 
     if (isValidRacingCount(racingCountNumber)) {
       this.disableRacingCountNodes();
@@ -143,7 +143,7 @@ export class RacingCarGame {
 
   render() {  
     const { roundResult, winners } = this.state;
-    console.log(this.state);
+    // console.log(this.state);
     this.$carGameResult.innerHTML = roundResult.map(cars => this.getResultHTML(cars)).join("<br>");
 
     this.$carGameResult.innerHTML += `
