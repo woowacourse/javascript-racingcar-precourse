@@ -25,7 +25,7 @@ export default class RacingCarGame {
   };
 
   countButtonClick() {
-    const isValid = getUserInput.getCount();
+    const isValid = this.getUserInput.getCount();
 
     this.gameStatus.innerHTML = '';
     this.gameResult.innerHTML = '';
