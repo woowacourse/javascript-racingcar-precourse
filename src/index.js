@@ -4,12 +4,14 @@ import GetUserInput from './GetUserInput.js';
 document.getElementById('try-count-form').hidden = true;
 document.getElementById('game-result-container').hidden = true;
 
-const getUserInput = new GetUserInput();
+let getUserInput;
 
 document.addEventListener('click', function(event) {
   const id = event.target.id;
   if (id === 'car-names-submit') {
+    getUserInput = new GetUserInput();
     const isValid = getUserInput.getCars();
+    document.getElementById('game-result-container').hidden = true;
     if (isValid === 1) {
       document.getElementById('try-count-form').hidden = false;
     }
