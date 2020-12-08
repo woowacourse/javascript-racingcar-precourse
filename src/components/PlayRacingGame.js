@@ -35,7 +35,7 @@ export class PlayRacingGame {
   render = () => {
     new CarNamesInput({ setCars: this.setCars });
     new RacingCountInput({ runRaces: this.runRaces });
-    this.gameResultContainer = new GameResult({ getWinners: this.getWinners });
+    this.gameResultContainer = new GameResult();
   };
 
   racing = (cars, count) => {
@@ -43,7 +43,8 @@ export class PlayRacingGame {
       this.racingInRound(cars);
       this.gameResultContainer.updateResultPerRound(cars);
     }
-    this.gameResultContainer.updateResultHTMLWithWinners();
+    const winners = this.getWinners(cars);
+    this.gameResultContainer.updateResultHTMLWithWinners(winners);
   };
 
   racingInRound = (cars) => {
@@ -55,16 +56,16 @@ export class PlayRacingGame {
     });
   };
 
-  getWinners = () => {
+  getWinners = (cars) => {
     let maxDistance = -Infinity;
 
-    this.cars.forEach((car) => {
+    cars.forEach((car) => {
       if (car.distance > maxDistance) {
         maxDistance = car.distance;
       }
     });
-    console.log(maxDistance);
-    return this.cars
+
+    return cars
       .filter((car) => car.distance === maxDistance)
       .map((car) => car.name);
   };

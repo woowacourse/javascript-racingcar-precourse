@@ -5,9 +5,8 @@ import {
 } from "../utils/templates.js";
 
 export class GameResult {
-  constructor({ getWinners }) {
+  constructor() {
     this.resultHTML = ``;
-    this.getWinners = getWinners;
     this.initializeDOM();
   }
 
@@ -23,8 +22,7 @@ export class GameResult {
     this.resultHTML += `<br/>`;
   };
 
-  updateResultHTMLWithWinners = () => {
-    let winners = this.getWinners();
+  updateResultHTMLWithWinners = (winners) => {
     this.resultHTML += getWinnerHTML(winners);
 
     this.render();
