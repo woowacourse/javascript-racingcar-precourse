@@ -1,17 +1,16 @@
-import eventHandlers from './handlers/eventHandlers.js';
-import elements from './store/elements.js';
+import {
+  markCarNameNotSubmitted,
+  registerCarNames,
+  startRaceGame,
+} from './handlers/eventHandlers.js';
+import {
+  carNamesInputElement,
+  carNamesSubmitButtonElement,
+  racingCountSubmitElement,
+} from './store/elements.js';
 
 (() => {
-  elements.carNamesInputElement.addEventListener(
-    'input',
-    eventHandlers.markCarNameNotSubmitted
-  );
-  elements.carNamesSubmitButtonElement.addEventListener(
-    'click',
-    eventHandlers.registerCarNames
-  );
-  elements.racingCountSubmitElement.addEventListener(
-    'click',
-    eventHandlers.startRaceGame
-  );
+  carNamesInputElement.addEventListener('input', markCarNameNotSubmitted);
+  carNamesSubmitButtonElement.addEventListener('click', registerCarNames);
+  racingCountSubmitElement.addEventListener('click', startRaceGame);
 })();

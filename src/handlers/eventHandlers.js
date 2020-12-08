@@ -11,8 +11,12 @@ import {
   makeInvalidCarNamesAlertMessage,
   makeNotEnoughConditionAlertMessage,
 } from '../utils/alert.js';
-
-import elements from '../store/elements.js';
+import {
+  carNamesInputElement,
+  racingCountInputElement,
+  racingProcessRecordsElement,
+  racingWinnersElement,
+} from '../store/elements.js';
 
 let carNameList = [];
 const gamePlayCondition = {
@@ -20,13 +24,6 @@ const gamePlayCondition = {
   isCarNamesSubmitted: false,
   isTryCountValid: false,
 };
-
-const {
-  carNamesInputElement,
-  racingCountInputElement,
-  racingProcessRecordsElement,
-  racingWinnersElement,
-} = elements;
 
 export const registerCarNames = () => {
   const carNames = carNamesInputElement.value;
