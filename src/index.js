@@ -39,6 +39,7 @@ export default class RacingCarGame {
   play() {
     document.addEventListener('click', function(event) {
       const id = event.target.id;
+      
       if (id === 'car-names-submit') {
         this.getUserInput = new GetUserInput();
         carNameButtonClick();

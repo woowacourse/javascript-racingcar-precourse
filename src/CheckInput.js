@@ -1,37 +1,18 @@
-/**
- * @author sunhpark42 <sunhpark42@gmail.com>
- * module for checking user input's validataion
- */
 export default class CheckInput {
-  /**
-   * init value
-   */
   constructor() {
   };
-  /**
-   * check car name length
-   * @param {object} car
-   * @return {boolean}
-   */
+
   checkCarNameLength(car) {
     return car.length <= 5 && car.length > 0;
   }
-  /**
-   * check duplication
-   * @param {Array} cars
-   * @param {object} car
-   * @return {boolean}
-   */
+
   checkNameDuplication(cars, car) {
     return cars.indexOf(car) === cars.lastIndexOf(car);
   }
-  /**
-   * check Validation of Cars
-   * @param {Array} cars
-   * @return {number}
-   */
+
   checkCarList(cars) {
     let validation = 1;
+
     if (cars.length <= 1) {
       return -1;
     }
@@ -42,15 +23,11 @@ export default class CheckInput {
         validation = -3;
       };
     });
+
     return validation;
   };
-  /**
-   * check Validatation of Count
-   * @param {Array} cars
-   * @param {number} count
-   * @return {number}
-   */
-  checkCount(cars, count) {
+
+  checkCount(count) {
     if (count <= 0) {
       return -4;
     }
