@@ -62,6 +62,18 @@ export default class RacingCarGame {
       this.cars.push(new Car(carName));
     });
   }
+
+  randomNumberGenerator() {
+    const randomNumber = Math.floor(Math.random() * 10);
+    return randomNumber;
+  }
+
+  checkGoStop(targetCar) {
+    const number = this.randomNumberGenerator();
+    if (number > 3) {
+      targetCar.go();
+    }
+  }
 }
 
 new RacingCarGame();
