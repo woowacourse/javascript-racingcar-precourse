@@ -67,6 +67,7 @@ class Car {
 
 ## 📂 파일 구조
 
+```
 src
  ┣ classes
  ┃ ┗ Car.js
@@ -84,7 +85,7 @@ src
  ┃ ┗ validations.js
  ┣ index.css
  ┗ index.js
-
+```
 
 ## 💜 추가 될 기능
 
