@@ -1,7 +1,16 @@
-export default function RacingCarGame() {
-}
-// export default class RacingCarGame {
-// }
+import {
+  markCarNameNotSubmitted,
+  registerCarNames,
+  startRaceGame,
+} from './handlers/eventHandlers.js';
+import {
+  carNamesInputElement,
+  carNamesSubmitButtonElement,
+  racingCountSubmitElement,
+} from './store/elements.js';
 
-
-new RacingCarGame();
+(() => {
+  carNamesInputElement.addEventListener('input', markCarNameNotSubmitted);
+  carNamesSubmitButtonElement.addEventListener('click', registerCarNames);
+  racingCountSubmitElement.addEventListener('click', startRaceGame);
+})();

@@ -1,0 +1,17 @@
+{
+    "extends": ["airbnb", "prettier"],
+    "env": {
+        "browser": true, 
+        "jest/globals": true,
+        "es2020": true
+    },
+    "parser": "@babel/eslint-parser",
+    "parserOptions": {
+        "ecmaVersion": 12,
+        "sourceType": "module"
+    },
+    "plugins": ["prettier", "jest", "@babel"],
+    "rules": {
+        "import/extensions": ["off"]
+    }
+}
