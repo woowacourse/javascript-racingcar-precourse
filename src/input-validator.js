@@ -10,7 +10,7 @@ class InputValidator {
   }
 
   isValidRacingCount(racingCount) {
-    if (racingCount < 1) return false;
+    if (racingCount < 1 || racingCount > 1000) return false;
 
     return true;
   }

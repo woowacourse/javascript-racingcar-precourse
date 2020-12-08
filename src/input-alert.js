@@ -17,6 +17,10 @@ class InputAlert {
     if (racingCount < 1) {
       return alert('1 이상의 숫자를 입력해주세요.');
     }
+
+    if (racingCount > 1000) {
+      return alert('숫자가 너무 크네요 :( 1000보다 작은 숫자를 입력해주세요.');
+    }
   }
 }
 
