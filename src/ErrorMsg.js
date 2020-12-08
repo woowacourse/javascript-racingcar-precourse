@@ -16,7 +16,8 @@ export default class ErrorMsg {
   };
 
   carLengthError() {
-    return '각 자동차의 이름의 길이는 1자이상 5자 이내로 설정해 주세요\n(공백 포함. 단, 공백으로만 이루어진 이름은 허용되지 않습니다.)';
+    return '각 자동차의 이름의 길이는 1자이상 5자 이내로 설정해 주세요\n' +
+            '(공백 포함. 단, 공백으로만 이루어진 이름은 허용되지 않습니다.)';
   }
 
   carDuplicationError() {

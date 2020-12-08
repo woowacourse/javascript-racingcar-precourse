@@ -38,11 +38,12 @@ export default class RacingCarGame {
       this.gameResultContainer.hidden = true;
     }
     if (isValid === 1) {
-      const game = new GamePlay(this.getUserInput.cars, this.getUserInput.count);
+      const game =
+        new GamePlay(this.getUserInput.cars, this.getUserInput.count);
       game.play();
       this.gameResultContainer.hidden = false;
     }
-  }
+  };
 
   play() {
     const racingGame = this;
@@ -55,8 +56,8 @@ export default class RacingCarGame {
       if (id === 'racing-count-submit') {
         racingGame.countButtonClick();
       }
-    });    
-  }
+    });
+  };
 }
 
 new RacingCarGame();
