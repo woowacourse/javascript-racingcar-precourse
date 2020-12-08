@@ -20,6 +20,9 @@ export default class RacingCarGame {
         isShow: false,
         updateRacingCount: this.updateRacingCount,
       }),
+      racingResult: new RacingResult({
+        $target: this.$container,
+      }),
     };
   }
 
@@ -47,14 +50,13 @@ export default class RacingCarGame {
 
     if (nextRacingCount) {
       this.racingCount = nextRacingCount;
-      this.components = {
-        ...this.components,
-        racingResult: new RacingResult({
-          $target: this.$container,
-          carNames: this.carNames,
-          racingCount: this.racingCount,
-        }),
-      };
+    }
+
+    if (this.carNames !== [] && this.racingCount !== 0) {
+      this.components.racingResult.setState({
+        nextCarNames: this.carNames,
+        nextRacingCount: this.racingCount,
+      });
     }
   };
 }

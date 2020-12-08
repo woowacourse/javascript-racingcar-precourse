@@ -8,34 +8,27 @@ export default class RacingResult {
     this.carNames = carNames;
     this.racingCount = racingCount;
     this.cars = [];
-
-    this.init();
-    this.makeCars();
   }
 
-  init = () => {
-    const HTMLString = "<h4>📄 실행 결과</h4>";
+  createCars = () => {
+    const cars = [];
 
-    this.$container.insertAdjacentHTML("afterbegin", HTMLString);
-  };
-
-  makeCars = () => {
-    const nextCars = [];
-
-    this.carNames.forEach((carName) => {
-      nextCars.push(
+    for (let i = 0; i < this.carNames.length; i++) {
+      cars.push(
         new Car({
-          carName: carName,
+          carName: this.carNames[i],
           racingCount: this.racingCount,
         })
       );
-    });
+    }
 
-    this.setState({ nextCars });
+    return cars;
   };
 
-  setState = ({ nextCars }) => {
-    this.cars = nextCars;
+  setState = ({ nextCarNames, nextRacingCount }) => {
+    this.carNames = nextCarNames;
+    this.racingCount = nextRacingCount;
+    this.cars = this.createCars();
 
     this.render();
   };
@@ -59,6 +52,6 @@ export default class RacingResult {
     }
 
     this.$container.innerHTML = "";
-    this.$container.insertAdjacentHTML("beforeend", HTMLStringPerRound.join(""));
+    this.$container.insertAdjacentHTML("beforeend", `<h4>📄 실행 결과</h4>${HTMLStringPerRound.join("")}`);
   };
 }
