@@ -1,7 +1,6 @@
+import { PlayRacingGame } from "./components/PlayRacingGame.js";
+
 export default function RacingCarGame() {
+  new PlayRacingGame();
 }
-// export default class RacingCarGame {
-// }
-
-
 new RacingCarGame();

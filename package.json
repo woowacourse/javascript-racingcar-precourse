@@ -1,0 +1,29 @@
+{
+  "name": "javascript-racingcar-precourse",
+  "version": "1.0.0",
+  "description": "## 🎯 기능 요구사항",
+  "main": "index.js",
+  "dependencies": {
+    "serve": "^11.3.2"
+  },
+  "devDependencies": {
+    "eslint": "^7.14.0",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-prettier": "^3.2.0",
+    "prettier": "2.2.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Huijiny/javascript-racingcar-precourse.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Huijiny/javascript-racingcar-precourse/issues"
+  },
+  "homepage": "https://github.com/Huijiny/javascript-racingcar-precourse#readme"
+}
