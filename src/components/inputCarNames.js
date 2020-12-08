@@ -10,7 +10,7 @@ export default function inputCarNames($element) {
   const onHandleCarNameSubmit = () => {
     const carNames = $carNameInput.value !== '' ? $carNameInput.value.split(',') : null;
     if (carNameValidator(carNames)) {
-      const racingCars = carNames.map((value) => new Car(value));
+      const racingCars = carNames.map((car) => new Car(car));
       showRacingCountInputContainer();
       inputRacingCount($element, racingCars);
     }

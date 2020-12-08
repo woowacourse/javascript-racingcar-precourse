@@ -1,7 +1,7 @@
 import racingCountValidator from '../utils/validators/racingCountValidator.js';
 import RacingCarGame from '../RacingCarGame.js';
 
-export default function ($element, racingCars) {
+export default function inputRacingCount($element, racingCars) {
   const $racingCountInput = $element.querySelector('#racing-count-input');
   const $racingCountSubmitBtn = $element.querySelector('#racing-count-submit');
 
