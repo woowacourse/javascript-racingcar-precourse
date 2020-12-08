@@ -31,6 +31,9 @@ export default class RacingCarGame {
 
   onRacingCountSubmitBtnClick = () => {
     this.checkValidCount();
+    if (this.isValidCount) {
+      this.play();
+    }
   };
 
   checkValidCount = () => {
@@ -79,6 +82,14 @@ export default class RacingCarGame {
     const number = this.randomNumberGenerator();
     if (number > 3) {
       targetCar.go();
+    }
+  }
+
+  play() {
+    for (let i = 0; i < this.count; i += 1) {
+      this.cars.forEach((car) => {
+        this.checkGoStop(car);
+      });
     }
   }
 }
