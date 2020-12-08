@@ -1,6 +1,5 @@
 function hideRacingCount() {
   const $divRacingCount = document.getElementById("racing-count-div");
-  console.log($divRacingCount);
   $divRacingCount.style.display = "none";
 }
 
