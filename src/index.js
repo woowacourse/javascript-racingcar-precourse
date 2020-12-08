@@ -1,4 +1,3 @@
-import { createRandomNumber } from "./create.js";
 import { getCarNamesInput, getRacingCountInput } from "./input.js";
 
 export default function RacingCarGame() {	
@@ -8,7 +7,6 @@ export default function RacingCarGame() {
   resultDiv.style.display = "none";
 
   function init() {
-    createRandomNumber();
     getCarNamesInput();
     getRacingCountInput();
   }  
