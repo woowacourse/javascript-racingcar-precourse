@@ -28,7 +28,7 @@ const {
   racingWinnersElement,
 } = elements;
 
-const registerCarNames = () => {
+export const registerCarNames = () => {
   const carNames = carNamesInputElement.value;
   carNameList = preProcessCarNamesToCarNameList(carNames);
   const carNameCheckResult = makeCarNamesCheckResult(carNameList);
@@ -41,7 +41,7 @@ const registerCarNames = () => {
   }
 };
 
-const markCarNameNotSubmitted = () => {
+export const markCarNameNotSubmitted = () => {
   gamePlayCondition.isCarNamesSubmitted = false;
 };
 
@@ -83,7 +83,7 @@ const showRaceGameResult = (tryCount) => {
   racingWinnersElement.innerText = `최종 우승자: ${winnerListText}`;
 };
 
-const startRaceGame = () => {
+export const startRaceGame = () => {
   const tryCountInput = racingCountInputElement.value;
   const tryCount = preProcessTryCount(tryCountInput);
   gamePlayCondition.isTryCountValid = checkTryCount(tryCount);
