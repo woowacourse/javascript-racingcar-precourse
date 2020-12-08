@@ -26,6 +26,9 @@ export default class RacingCarGame {
     this.carNameSeparator();
     this.carNameValidator();
     this.carNamesForm.clearInput();
+    if (this.isCarNamesValid) {
+      this.createCars();
+    }
   };
 
   carNameSeparator() {
@@ -51,6 +54,13 @@ export default class RacingCarGame {
   checkOverlap() {
     const carNamesSet = new Set(this.carNames);
     return carNamesSet.size === this.carNames.length;
+  }
+
+  createCars() {
+    this.cars = [];
+    this.carNames.forEach((carName) => {
+      this.cars.push(new Car(carName));
+    });
   }
 }
 
