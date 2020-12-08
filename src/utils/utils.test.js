@@ -1,17 +1,35 @@
 import { makeCarNamesCheckResult, checkTryCount } from './validation.js';
-import { preProcessCarNames, preProcessTryCount } from './preProcess.js';
+import {
+  preProcessCarNamesToCarNameList,
+  preProcessTryCount,
+} from './preProcess.js';
 
-it('preProcessCarNames', () => {
-  const preProcessedCarNames = preProcessCarNames('north, east, ');
-  expect(preProcessedCarNames).toBe('north,east');
+it('preProcessCarNamesToCarNameList', () => {
+  const preProcessedCarNameList = preProcessCarNamesToCarNameList(
+    'north, east, '
+  );
+  expect(preProcessedCarNameList).toContain('north');
+  expect(preProcessedCarNameList).toContain('east');
 });
 it('preProcessTryCount', () => {
   const preProcessedTryCount = preProcessTryCount(' 12 ');
   expect(preProcessedTryCount).toBe(12);
 });
 it('getCarNamesCheckResult', () => {
-  expect(makeCarNamesCheckResult('north')).toMatchObject({
-    isCarNumberNotEnough: true,
+  expect(makeCarNamesCheckResult(['north'])).toMatchObject({
+    isCarNumberEnough: false,
+    isCarNameNotLong: true,
+    isAllCarNameDifferent: true,
+  });
+  expect(makeCarNamesCheckResult(['north', 'testtest'])).toMatchObject({
+    isCarNumberEnough: true,
+    isCarNameNotLong: false,
+    isAllCarNameDifferent: true,
+  });
+  expect(makeCarNamesCheckResult(['north', 'north', 'north'])).toMatchObject({
+    isCarNumberEnough: true,
+    isCarNameNotLong: true,
+    isAllCarNameDifferent: false,
   });
 });
 it('checkTryCount', () => {
