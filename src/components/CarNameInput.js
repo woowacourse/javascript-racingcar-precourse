@@ -1,10 +1,9 @@
-import { ELEMENT_ID } from "../util/constants.js";
+import { ELEMENT_ID, GAME_NUMBERS } from "../util/constants.js";
 
 export default class CarNameInput {
   constructor({ $target, updateCarNames }) {
     this.$target = $target;
     this.updateCarNames = updateCarNames;
-    this.carNameMaxLength = 5;
     this.carNameSeparator = ",";
 
     this.init();
@@ -23,7 +22,7 @@ export default class CarNameInput {
   };
 
   isValidCarNameLength = (carNames) => {
-    return !carNames.some((carName) => carName.length === 0 || carName.length > this.carNameMaxLength);
+    return !carNames.some((carName) => carName.length === 0 || carName.length > GAME_NUMBERS.carNameMaxLength);
   };
 
   onSubmitCarNames = () => {
