@@ -9,7 +9,7 @@ export default class GetUserInput {
 
   getCars() {
     const carUserInput =
-      document.getElementById('car-names-input').value.split(',');
+      document.getElementById('car-names-input').value.replace(/(\s*)/g, "").split(',');
     this.cars = this.cars.concat(carUserInput);
     const validation = new CheckInput().checkCarList(this.cars);
     
