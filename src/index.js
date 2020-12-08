@@ -75,7 +75,8 @@ export default class RacingCarGame {
 
   resultTemplateMaker() {
     const template = this.cars.map((car) => `<p>${car.carName} : ${'-'.repeat(car.position)}</p>`).join('');
-    return template;
+    const container = `<div class="${domId.resultContent}">${template}</div>`;
+    return container;
   }
 
   winnerTemplateMaker() {

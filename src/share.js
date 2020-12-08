@@ -5,6 +5,7 @@ export const domId = {
   racingCountInput: '#racing-count-input',
   racingCountSubmitBtn: '#racing-count-submit',
   resultSection: '#result',
+  resultContent: 'result-content',
 };
 
 export const MSG = {
