@@ -1,13 +1,12 @@
-import { createCar } from './create.js';
-import { isAvailableNames, isAvailableNumber } from './check.js';
+import { createCar } from "./create.js";
+import { isAvailableNames, isAvailableNumber } from "./check.js";
 
 export function getCarNamesInput() {
   const carNamesSubmit = document.querySelector("#car-names-submit");
   carNamesSubmit.addEventListener("click", () => {
     const carNamesInput = document.querySelector("#car-names-input").value.split(",");
-
       if (isAvailableNames(carNamesInput) === true) {
-        return carNamesInput
+        return carNamesInput;
       }
   });
 }

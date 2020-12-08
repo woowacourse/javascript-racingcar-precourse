@@ -1,7 +1,7 @@
-import { createRandomNumber } from './create.js';
-import { makeResultEmpty } from './check.js'
+import { createRandomNumber } from "./create.js";
+import { makeResultEmpty } from "./check.js";
 
-export function printWinner(winnerName) {
+function printWinner(winnerName) {
   let winner = document.querySelector("#winner");
   
   if (!winner.innerText) {
@@ -11,7 +11,7 @@ export function printWinner(winnerName) {
   }
 }
 
-export function findWinner(cars, carsLength, max) {
+function findWinner(cars, carsLength, max) {
   let i;
   
   for (i = 0; i < carsLength; i++) {
@@ -21,7 +21,7 @@ export function findWinner(cars, carsLength, max) {
   }
 }
 
-export function findMaxResult(cars, carsLength) {
+function findMaxResult(cars, carsLength) {
   let max = 0;
   let i;
   
@@ -33,7 +33,7 @@ export function findMaxResult(cars, carsLength) {
   findWinner(cars, carsLength, max);
 }
 
-export function printProgress(car) {
+function printProgress(car) {
   const result = document.querySelector("#result");
   car.random = createRandomNumber();
 

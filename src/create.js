@@ -1,5 +1,5 @@
-import Car from './car.js';
-import { racingCountPlay } from './game.js';
+import Car from "./car.js";
+import { racingCountPlay } from "./game.js";
 
 export function createRandomNumber() {
   const randomNumber = Math.floor(Math.random() * 10);
