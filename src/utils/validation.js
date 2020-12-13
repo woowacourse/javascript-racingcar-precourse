@@ -1,7 +1,7 @@
 import {
 	MAXIMUM_CAR_NAME_LENGTH,
 	MINIMUM_CAR_NAME_LENGTH,
-} from "../constants/constants.js";
+} from '../constants/constants.js';
 
 export default class Validation {
 	isCarNameValid = carName => {
@@ -10,7 +10,7 @@ export default class Validation {
 		) ? true : false;
 		
 		if (!validity) {
-			alert("자동차 이름을 5자 이하로 입력해주세요.");
+			alert('자동차 이름을 5자 이하로 입력해주세요.');
 		}
 
 		return validity;
@@ -22,7 +22,7 @@ export default class Validation {
 		) ? true : false;
 
 		if (!validity) {
-			alert("0보다 큰 정수를 입력해주세요.");
+			alert('0보다 큰 정수를 입력해주세요.');
 		}
 
 		return validity;

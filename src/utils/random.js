@@ -1,7 +1,7 @@
 import {
 	MAXIMUM_RANDOM_NUMBER,
 	MINIMUM_RANDOM_NUMBER,
-} from "../constants/constants.js";
+} from '../constants/constants.js';
 
 export default class Random {
 	getRandomNumber = () => {

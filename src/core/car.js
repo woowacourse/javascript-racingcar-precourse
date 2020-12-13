@@ -1,8 +1,8 @@
 import {
 	INITIAL_CAR_DISTANCE,
 	MOVE_INDICATOR_NUMBER,
-} from "../constants/constants.js";
-import Random from "../utils/random.js";
+} from '../constants/constants.js';
+import Random from '../utils/random.js';
 
 export default class Car {
 	constructor (name) {
