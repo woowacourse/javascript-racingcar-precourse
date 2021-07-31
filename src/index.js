@@ -30,13 +30,14 @@ countBtn.addEventListener("click", () => {
       }
     }
   }
-  showResult("sex", "html", "css");
-  console.log(namesArray);
+  showResult(namesArray);
+  // console.log(namesArray);
 });
 
-function showResult() {
+function showResult(arguments) {
   for (let i = 0; i < arguments.length; i++) {
-    result.innerHTML = `${arguments[0]}: ${arguments[1]}`;
-    console.log("sex");
+    const list = document.createElement("li");
+    list.innerHTML = `${arguments[i].value}: ${arguments[i].count}`    
+    result.appendChild(list);
   }
 }
