@@ -6,6 +6,7 @@ import {
   $carNamesInput,
   $carNamesSubmit,
 } from './constants/HTMLconstant.js';
+import validCarName from './validCarName.js';
 
 class Game {
   constructor() {
@@ -24,7 +25,8 @@ class Game {
   getCarNames() {
     $carNamesSubmit.addEventListener('click', e => {
       e.preventDefault();
-      const carNames = $carNamesInput.value.split(',');
+      const carNamesInput = $carNamesInput.value;
+      const carNames = validCarName(carNamesInput);
     });
   }
 }
