@@ -3,4 +3,8 @@ const LENGTH_LIMIT_OF_CAR_NAME = {
   max: 5,
 };
 
-export { LENGTH_LIMIT_OF_CAR_NAME };
+const ALERT_MSG = {
+  invalidCarNames: "이름을 조건에 맞게 다시 입력해주세요.",
+};
+
+export { LENGTH_LIMIT_OF_CAR_NAME, ALERT_MSG };
