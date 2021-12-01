@@ -1,4 +1,4 @@
-export default class RacingController {
+export default class CarController {
   constructor(model, view) {
     this.model = model;
     this.view = view;
@@ -52,7 +52,7 @@ export default class RacingController {
     carArray = carArray.map(car => car.trim());
 
     for (const name of carArray) {
-      if (RacingController.checkIfWrongCarName(name) === false) {
+      if (CarController.checkIfWrongCarName(name) === false) {
         return false;
       }
     }
@@ -99,7 +99,7 @@ export default class RacingController {
     for (let i = 0; i < racingCount; i++) {
       carNames.forEach(car => this.getResultOfEachCarTurn.call(this, car));
       this.view.renderResult(
-        RacingController.createEachTurnResultDom(this.model.eachRacingRecord)
+        CarController.createEachTurnResultDom(this.model.eachRacingRecord)
       );
     }
 
@@ -111,14 +111,20 @@ export default class RacingController {
   getResultOfEachCarTurn(car) {
     if (typeof this.model.eachRacingRecord[car] === 'undefined') {
       if (MissionUtils.Random.pickNumberInRange(0, 9) >= 4) {
-        this.model.eachRacingRecord[car] = 1;
-      } else {
-        this.model.eachRacingRecord[car] = 0;
+        this.model.setEachRacingRecord(car, 1);
+        return;
       }
-    } else if (typeof this.model.eachRacingRecord[car] !== 'undefined') {
-      if (MissionUtils.Random.pickNumberInRange(0, 9) >= 4) {
-        this.model.eachRacingRecord[car]++;
-      }
+      this.model.setEachRacingRecord(car, 0);
+      return;
+    }
+
+    if (
+      typeof this.model.eachRacingRecord[car] !== 'undefined' &&
+      MissionUtils.Random.pickNumberInRange(0, 9) >= 4
+    ) {
+      let eachCarRacingRecord = this.model.getEachRacingRecord(car);
+      eachCarRacingRecord++;
+      this.model.setEachRacingRecord(car, eachCarRacingRecord);
     }
   }
 

@@ -4,22 +4,26 @@
 
 - 목표 : 자동차 경주 게임 구현
 - 프로그래밍 요구사항
-  - [ ] 주어진 index.html에 엘리먼트 추가, 수정, 삭제를 하지 않는다. 아래와 같은 선택자 추가 작업만 허용된다.
+  - [x] 주어진 index.html에 엘리먼트 추가, 수정, 삭제를 하지 않는다. 아래와 같은 선택자 추가 작업만 허용된다.
     - DOM 선택자(아래 선택자만 사용)
-      - [ ] 자동차 이름 입력 input 태그 id : `car-names-input`
-      - [ ] 자동차 이름 제출 button 태그 id : `car-names-submit`
-      - [ ] 레이싱 횟수 입력 input 태그 id : `racing-count-input`
-      - [ ] 레이싱 횟수 제출 button 태그 id : `racing-count-submit`
-      - [ ] 최종 우승자 출력 span 태그 id : `racing-winners`
-  - [ ] Car 객체를 만들고 new를 이용해 인스턴스를 만들어 사용한다
-  - [ ] 전진 조건 판단 위한 랜덤 값은 `MissionUtils` 라이브러리의 `Random.pickNumberInRange`를 사용해 구한다.(이미 index.html 인라인에 라이브러리 스크립트 포함되어 전역 사용 가능)
+      - [x] 자동차 이름 입력 input 태그 id : `car-names-input`
+      - [x] 자동차 이름 제출 button 태그 id : `car-names-submit`
+      - [x] 레이싱 횟수 입력 input 태그 id : `racing-count-input`
+      - [x] 레이싱 횟수 제출 button 태그 id : `racing-count-submit`
+      - [x] 최종 우승자 출력 span 태그 id : `racing-winners`
+  - [x] Car 객체를 만들고 new를 이용해 인스턴스를 만들어 사용한다.
+  - [x] 전진 조건 판단 위한 랜덤 값은 `MissionUtils` 라이브러리의 `Random.pickNumberInRange`를 사용해 구한다.(이미 index.html 인라인에 라이브러리 스크립트 포함되어 전역 사용 가능)
   - [ ] 코드 컨벤션을 준수한다.
   - [ ] indent depth가 3이 넘지 않도록 구현한다.
     - [ ] 3이 넘을 경우 함수나 메소드 분리하여 2 이하로 리팩토링한다.
   - [ ] 함수(메소드) 길이가 15라인을 넘지 않도록 구현한다.
-  - [ ] 과제 제출 전 테스트(npm run test)를 하여 성공 여부를 반드시 확인한다.
+  - [x] 과제 제출 전 테스트(npm run test)를 하여 성공 여부를 반드시 확인한다.
 
 ## 2. 프로그래밍 설계
+
+- [x] 0. MVC 디자인 패턴으로 설계한다.
+
+  - [x] 3개의 클래스(CarController, CarModel, CarView)를 만들어서 MVC 패턴대로 클래스별 기능을 분리하여 프로그래밍한다.
 
 - [x] 1. `[입력]` 사용자로부터 자동차 이름들을 입력받는다.
 

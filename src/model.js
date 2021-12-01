@@ -1,4 +1,4 @@
-export default class GameModel {
+export default class CarModel {
   constructor() {
     this.carNames = [];
     this.racingCount = [];
@@ -20,6 +20,14 @@ export default class GameModel {
 
   getRacingCount() {
     return this.racingCount;
+  }
+
+  setEachRacingRecord(car, number) {
+    this.eachRacingRecord[car] = number;
+  }
+
+  getEachRacingRecord(car) {
+    return this.eachRacingRecord[car];
   }
 
   clearEachRacingRecord() {

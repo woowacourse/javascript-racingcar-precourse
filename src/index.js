@@ -1,10 +1,10 @@
-import RacingController from './controller.js';
-import RacingView from './view.js';
-import RacingModel from './model.js';
+import CarController from './controller.js';
+import CarView from './view.js';
+import CarModel from './model.js';
 
 window.addEventListener('DOMContentLoaded', () => {
-  const model = new RacingModel();
-  const view = new RacingView(model);
-  const controller = new RacingController(model, view);
+  const model = new CarModel();
+  const view = new CarView(model);
+  const controller = new CarController(model, view);
   controller.app();
 });

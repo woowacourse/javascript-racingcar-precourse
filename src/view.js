@@ -1,4 +1,4 @@
-export default class RacingView {
+export default class CarView {
   constructor(model) {
     this.model = model;
     this.app = document.getElementById('app');
