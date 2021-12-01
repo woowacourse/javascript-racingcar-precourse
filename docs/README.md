@@ -26,10 +26,12 @@
   - [x] 1자 이상 5자 이하인지?
   - [x] 중복된 이름이 있는지?
 - [x] 유효성 검증에 실패하면 `alert`를 사용해 에러 메시지 보여주기
-- [x] 유효성 검증에 실패하면 `car-names-input`의 `value`를 빈 문자열로 초기화하기
+- [ ] 유효성 검증에 실패하면 `car-names-input`의 `value`를 현재 자동차 이름들로 초기화하기
 
 ### 4. 자동차 생성하기
 
+- [ ] 초기화
+  - [ ] 레이스 결과 div의 innerHTML을 지우기
 - [x] 자동차 이름 입력 유효성 검증을 통과하면 자동차 이름 배열을 순회하며 `Car` 객체를 생성
   - [x] 이름: 입력받은 자동차 이름
   - [x] 이동 거리: 0
@@ -53,6 +55,9 @@
 
 ### 7. 자동자 레이스 진행하기
 
+- [ ] 초기화
+  - [ ] 레이스 결과 div의 innerHTML을 지우기
+  - [ ] 자동차들의 이동 거리 초기화
 - [x] 레이싱 횟수만큼 다음을 진행
 - [x] 모든 자동차를 순회하며 `레이스`를 진행
   - [x] [`MissionUtils` 라이브러리](https://github.com/woowacourse-projects/javascript-mission-utils#mission-utils)의 `Random.pickNumberInRange`를 사용해 0에서 9 사이의 무작위 값을 생성한다.
