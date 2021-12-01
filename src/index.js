@@ -77,6 +77,15 @@ class App {
     return raceResultParagraph;
   }
 
+  getRaceFinalResult() {
+    const maxDistance = Math.max(...this.carList.map((car) => car.distance));
+    return this.carList.filter((car) => car.distance === maxDistance);
+  }
+
+  getWinnerNameList() {
+    return this.getRaceFinalResult().map((winner) => winner.name);
+  }
+
   play() {
     const resultDivContents = [];
 
@@ -92,6 +101,8 @@ class App {
     const resultDiv = `<div id="result-div">${res}</div>`;
 
     $('#app').insertAdjacentHTML('beforeend', resultDiv);
+
+    console.log(this.getWinnerNameList());
   }
 }
 
