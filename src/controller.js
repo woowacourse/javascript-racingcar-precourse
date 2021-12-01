@@ -2,6 +2,8 @@ export default class GameController {
   constructor(model, view) {
     this.model = model;
     this.view = view;
+    this.isNameSubmitted = false;
+    this.isCountSubmitted = false;
   }
 
   app() {
@@ -21,8 +23,8 @@ export default class GameController {
       );
       return false;
     }
-
-    console.log(this.model.getCarNames());
+    this.isNameSubmitted = true;
+    this.startRacingGame();
   }
 
   submitCountHandler(e) {
@@ -31,6 +33,7 @@ export default class GameController {
       document.getElementById('racing-count-input').value,
       10
     );
+
     if (isNaN(racingCount)) {
       this.view.alertMessage(
         '잘못 입력하셨습니다. 레이싱 횟수에는 숫자만 입력해주세요.'
@@ -38,7 +41,8 @@ export default class GameController {
       return false;
     }
     this.model.setRacingCount(racingCount);
-    console.log(this.model.getRacingCount());
+    this.isCountSubmitted = true;
+    this.startRacingGame();
   }
 
   getCarNamesInArrayType() {
@@ -53,8 +57,23 @@ export default class GameController {
   }
 
   checkIfWrongCarName(name) {
-    if (name.length >= 6) {
+    if (name.length >= 6 || name.length === 0) {
       return false;
     }
+  }
+
+  startRacingGame() {
+    if (this.isNameSubmitted === false || this.isCountSubmitted === false) {
+      return false;
+    }
+    console.log(this.model.getCarNames());
+    console.log(this.model.getRacingCount());
+
+    this.clearGame();
+  }
+
+  clearGame() {
+    this.isNameSubmitted = false;
+    this.isCountSubmitted = false;
   }
 }
