@@ -16,11 +16,15 @@ const App = () => {
   const onSubmitCarNamesForm = (e) => {
     e.preventDefault();
     const carNamesInput = e.target[0];
-
     const { isError, errorMessage, carNames } = validateCarNames(
       carNamesInput.value
     );
     console.log(isError, errorMessage, carNames);
+
+    if (isError) {
+      window.alert(errorMessage);
+      carNamesInput.value = "";
+    }
   };
 
   carNamesForm.addEventListener("submit", onSubmitCarNamesForm);
