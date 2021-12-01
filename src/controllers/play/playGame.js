@@ -1,4 +1,5 @@
 import { LIMIT_OF_RANDOM_NUMBER, MINIMUM_NUMBER_TO_ADVANCE } from "../../utils/constants.js";
+import { showPlaying } from "../../views/racingResult/showPlaying.js";
 import { getRandomNumber } from "./getRandomNumber.js";
 
 export const playGame = (cars, racingCount) => {
@@ -11,6 +12,8 @@ export const playGame = (cars, racingCount) => {
         car.location++;
       }
     });
+
+    showPlaying(cars);
   }
 
   return cars;
