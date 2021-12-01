@@ -1,16 +1,14 @@
-import { playGame } from "../play/playGame.js";
 import { sortByLocation } from "./sortCars.js";
 
 export default class Winners {
-  constructor(cars, racingCount) {
+  constructor(cars) {
     this.cars = cars;
-    this.racingCount = racingCount;
     this.winners = [];
     this.pickWinners();
   }
 
   pickWinners() {
-    const carsSortedLocation = sortByLocation(playGame(this.cars, this.racingCount));
+    const carsSortedLocation = sortByLocation(this.cars);
 
     const maxLocation = carsSortedLocation[0].location;
 

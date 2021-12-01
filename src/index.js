@@ -1,4 +1,5 @@
 import Cars from "./controllers/cars/cars.js";
+import { playGame } from "./controllers/play/playGame.js";
 import { isValidRacingCount } from "./controllers/racingCount/checkRacingCount.js";
 import RacingCount from "./controllers/racingCount/racingCount.js";
 import Winners from "./controllers/racingResult/winners.js";
@@ -28,7 +29,8 @@ export default class CarRacingGame {
   onClickRacingCountSubmitButton() {
     this.$racingCountSubmitButton.addEventListener("click", () => {
       if (isValidRacingCount(this.racingCount.getRacingCount())) {
-        const winners = new Winners(this.cars.getCars(), this.racingCount.getRacingCount()).getWinners();
+        const result = playGame(this.cars.getCars(), this.racingCount.getRacingCount());
+        const winners = new Winners(result).getWinners();
 
         showWinners(winners);
       }
