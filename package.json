@@ -5,10 +5,13 @@
   "devDependencies": {
     "cypress": "8.7.0",
     "eslint": "^7.32.0",
-    "eslint-config-tui": "^4.2.0"
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-config-tui": "^4.2.0",
+    "eslint-plugin-prettier": "^4.0.0"
   },
   "scripts": {
-    "test": "cypress run --browser chrome"
+    "test": "cypress run --browser chrome",
+    "lint": "eslint ."
   },
   "repository": {
     "type": "git",

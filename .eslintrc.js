@@ -2,24 +2,24 @@ module.exports = {
   env: {
     browser: true,
     es6: true,
-    node: true
+    node: true,
   },
-  extends: ['tui'],
-  plugins: [],
+  extends: ["tui", "plugin:prettier/recommended"],
+  plugins: ["prettier"],
   parserOptions: {
     ecmaVersion: 2021,
-    sourceType: 'module'
+    sourceType: "module",
   },
   rules: {
-    'import/extensions': 'off',
-    'import/prefer-default-export': 'off',
-    'linebreak-style': ['error', 'windows'],
-    'max-depth': ['error', 2],
-    'max-lines-per-function': ['error', 15],
-    'spaced-comment': ['error', 'always'],
-    'no-new': 'off',
-    'no-alert': 'off',
-    'no-console': 'off',
-    'no-plusplus': 'off'
-  }
+    "import/extensions": "off",
+    "import/prefer-default-export": "off",
+    "linebreak-style": ["error", "unix"],
+    "max-depth": ["error", 2],
+    "max-lines-per-function": ["error", 15],
+    "spaced-comment": ["error", "always"],
+    "no-new": "off",
+    "no-alert": "off",
+    "no-console": "off",
+    "no-plusplus": "off",
+  },
 };
