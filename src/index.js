@@ -86,6 +86,11 @@ class App {
     return this.getRaceFinalResult().map((winner) => winner.name);
   }
 
+  winnerMessageTemplate(winnerNameList) {
+    const winnerMessage = winnerNameList.join(',');
+    return `<p>최종 우승자: <span id="racing-winners">${winnerMessage}</span></p>`;
+  }
+
   play() {
     const resultDivContents = [];
 
@@ -102,7 +107,11 @@ class App {
 
     $('#app').insertAdjacentHTML('beforeend', resultDiv);
 
-    console.log(this.getWinnerNameList());
+    const winnerNameList = this.getWinnerNameList();
+    $('#app').insertAdjacentHTML(
+      'beforeend',
+      this.winnerMessageTemplate(winnerNameList)
+    );
   }
 }
 
