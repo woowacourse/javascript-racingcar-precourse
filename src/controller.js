@@ -60,24 +60,52 @@ export default class RacingController {
     this.model.setCarNames(carArray);
   }
 
+  findWinner() {
+    const { eachRacingRecord } = this.model;
+    const eachRacingRecordValues = Object.values(eachRacingRecord);
+    const eachRacingRecordKeys = Object.keys(eachRacingRecord);
+    const maxValue = Math.max(...eachRacingRecordValues);
+    const winnerList = [];
+
+    eachRacingRecordKeys.find(car => {
+      if (eachRacingRecord[car] === maxValue) {
+        winnerList.push(car);
+      }
+    });
+
+    const winnerContainer = document.createElement('span');
+    winnerContainer.id = 'racing-winners-container';
+    winnerContainer.innerText = '최종 우승자: ';
+
+    const winnerSpan = document.createElement('span');
+    winnerSpan.id = 'racing-winners';
+    winnerSpan.innerText = `${winnerList.join(', ')}`;
+    winnerContainer.appendChild(winnerSpan);
+
+    return winnerContainer;
+  }
+
   startRacingGame() {
     if (this.isNameSubmitted === false || this.isCountSubmitted === false) {
       return false;
     }
 
     this.view.removeResultContainer();
+    this.view.removeWinnerSpan();
+
     const carNames = this.model.getCarNames();
     const racingCount = this.model.getRacingCount();
 
     for (let i = 0; i < racingCount; i++) {
       carNames.forEach(car => this.getResultOfEachCarTurn.call(this, car));
-      this.view.renderEachTurnResult(
+      this.view.renderResult(
         RacingController.createEachTurnResultDom(this.model.eachRacingRecord)
       );
     }
 
-    this.model.isGameOver = true;
+    this.view.renderWinner(this.findWinner());
     this.model.clearEachRacingRecord();
+    this.model.isGameOver = true;
   }
 
   getResultOfEachCarTurn(car) {

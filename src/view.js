@@ -8,7 +8,7 @@ export default class RacingView {
     alert(message);
   }
 
-  renderEachTurnResult(eachTurnResult) {
+  renderResult(eachTurnResult) {
     this.app.insertAdjacentElement('beforeend', eachTurnResult);
   }
 
@@ -17,6 +17,16 @@ export default class RacingView {
       document
         .querySelectorAll('#resultContainer')
         .forEach(elem => elem.parentNode.removeChild(elem));
+    }
+  }
+
+  renderWinner(winner) {
+    this.app.insertAdjacentElement('afterend', winner);
+  }
+
+  removeWinnerSpan() {
+    if (this.model.isGameOver === true) {
+      document.getElementById('racing-winners-container').remove();
     }
   }
 }
