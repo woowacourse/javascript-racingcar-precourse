@@ -36,9 +36,9 @@
 
 ### 5. 레이싱 횟수 입력 받기
 
-- [ ] 레이싱 횟수 제출 form과 h4 보이게 하기
-- [ ] `racing-count-submit` 버튼의 click 이벤트에 핸들러 추가
-  - [ ] 이벤트가 발생하면 `racing-count-input`의 `valueAsNumber`를 읽어오기
+- [x] 레이싱 횟수 제출 form과 h4 보이게 하기
+- [x] `racing-count-submit` 버튼의 click 이벤트에 핸들러 추가
+  - [x] 이벤트가 발생하면 `racing-count-input`의 `valueAsNumber`를 읽어오기
 
 ### 6. 레이싱 횟수 유효성 검증하기
 

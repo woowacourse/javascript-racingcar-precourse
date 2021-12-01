@@ -18,9 +18,14 @@ function App() {
   document.querySelector('#racing-count-form').style.visibility = 'hidden';
   document.querySelector('#result-heading').style.visibility = 'hidden';
 
-  document.querySelector('form').addEventListener('submit', (e) => {
+  document.querySelector('#car-names-form').addEventListener('submit', (e) => {
     e.preventDefault();
   });
+  document
+    .querySelector('#racing-count-form')
+    .addEventListener('submit', (e) => {
+      e.preventDefault();
+    });
 
   document.querySelector('#car-names-submit').addEventListener('click', () => {
     const inputString = document.querySelector('#car-names-input').value.trim();
@@ -36,7 +41,17 @@ function App() {
     const carList = nameList.map((name) => new Car(name));
 
     console.log(carList);
+
+    document.querySelector('#racing-count-heading').style.visibility =
+      'visible';
+    document.querySelector('#racing-count-form').style.visibility = 'visible';
   });
+
+  document
+    .querySelector('#racing-count-submit')
+    .addEventListener('click', () => {
+      console.log(document.querySelector('#racing-count-input').valueAsNumber);
+    });
 }
 
 App();
