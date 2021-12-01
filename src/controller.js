@@ -68,6 +68,27 @@ export default class GameController {
     }
     console.log(this.model.getCarNames());
     console.log(this.model.getRacingCount());
+    const carNames = this.model.getCarNames();
+    const racingCount = this.model.getRacingCount();
+    const eachRacingRecord = {};
+    const getResultOfEachCarTurn = car => {
+      if (typeof eachRacingRecord[car] === 'undefined') {
+        if (MissionUtils.Random.pickNumberInRange(0, 9) >= 4) {
+          eachRacingRecord[car] = 1;
+        } else {
+          eachRacingRecord[car] = 0;
+        }
+      } else if (typeof eachRacingRecord[car] !== 'undefined') {
+        if (MissionUtils.Random.pickNumberInRange(0, 9) >= 4) {
+          eachRacingRecord[car]++;
+        }
+      }
+    };
+
+    for (let i = 0; i < racingCount; i++) {
+      carNames.forEach(car => getResultOfEachCarTurn(car));
+      console.log(eachRacingRecord);
+    }
 
     this.clearGame();
   }
