@@ -8,14 +8,11 @@ const App = () => {
   const initialState = {
     isCorrectCarNames: false,
     carNames: [],
+    racingCount: 0,
   };
   const app = document.querySelector("#app");
-  //   const carNamesInput = document.querySelector("#car-names-input");
-  //   const carNamesSubmit = document.querySelector("#car-names-submit");
-  //   const racingCountInput = document.querySelector("#racing-count-input");
-  //   const racingCountSubmit = document.querySelector("#racing-count-submit");
-
   const carNamesForm = document.querySelector("#car-names-form");
+  const racingCountForm = document.querySelector("#racing-count-form");
 
   const onSubmitCarNamesForm = (e) => {
     e.preventDefault();
@@ -35,7 +32,14 @@ const App = () => {
     initialState.isCorrectCarNames = isCorrectCarNames;
   };
 
+  const onSubmitRacingCountForm = (e) => {
+    e.preventDefault();
+    const racingCountInput = e.target[0];
+    initialState.racingCount(Number(racingCountInput.value));
+  };
+
   carNamesForm.addEventListener("submit", onSubmitCarNamesForm);
+  racingCountForm.addEventListener("submit", onSubmitRacingCountForm);
 };
 
 App();
