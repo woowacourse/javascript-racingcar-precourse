@@ -8,6 +8,10 @@ export default class RacingCarGame {
       .querySelector("#car-names-input")
       .closest("form");
     $carNameForm.addEventListener("submit", this.setCarNameSubmitEvent);
+    const $racingCountForm = document
+      .querySelector("#racing-count-input")
+      .closest("form");
+    $racingCountForm.addEventListener("submit", this.setRacingCountSubmitEvent);
   };
 
   setCarNameSubmitEvent = (event) => {
@@ -69,6 +73,13 @@ export default class RacingCarGame {
     }
 
     return "";
+  };
+
+  setRacingCountSubmitEvent = (event) => {
+    event.preventDefault();
+    const $racingCountInput = document.querySelector("#racing-count-input");
+    const racingCount = $racingCountInput.value;
+    console.log(racingCount);
   };
 }
 
