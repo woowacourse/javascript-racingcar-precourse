@@ -47,6 +47,10 @@ export default class Cars {
     return nameArrAfter;
   }
 
+  getCars() {
+    return this.cars;
+  }
+
   setCars(cars) {
     this.cars = cars;
   }
