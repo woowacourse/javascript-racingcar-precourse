@@ -110,6 +110,7 @@ export default class RacingCarGame {
       this.cars.forEach((car) => car.move());
       this.printGameProcess();
     }
+    this.printWinner();
   };
 
   printGameProcess = () => {
@@ -125,6 +126,28 @@ export default class RacingCarGame {
 
     const $app = document.querySelector("#app");
     $app.insertAdjacentHTML("beforeend", gameProcess);
+  };
+
+  getWinner = () => {
+    const maxLength = this.cars.sort((a, b) => b.distance - a.distance)[0]
+      .distance;
+
+    return this.cars
+      .filter((car) => car.distance === maxLength)
+      .map((car) => car.name);
+  };
+
+  generateWinnerMessage = (winners) => {
+    return `<span id = "racing-winners">최종우승자: ${winners.join(
+      ", "
+    )}</span>`;
+  };
+
+  printWinner = () => {
+    const winners = this.getWinner();
+    const winnerMessage = this.generateWinnerMessage(winners);
+    const $app = document.querySelector("#app");
+    $app.insertAdjacentHTML("beforeend", winnerMessage);
   };
 }
 
