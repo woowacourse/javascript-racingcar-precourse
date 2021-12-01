@@ -2,6 +2,7 @@ import Car from "./Car/Car.js";
 
 export default class RacingCarGame {
   constructor() {
+    this.cars = [];
     this.setEvent();
     this.blockRacingCountForm();
   }
@@ -27,6 +28,7 @@ export default class RacingCarGame {
       return;
     }
     console.log(carNames);
+    this.cars = carNames.map((carName) => new Car(carName));
     this.permitRacingCountForm();
   };
 
@@ -88,6 +90,7 @@ export default class RacingCarGame {
       return;
     }
     console.log(racingCount);
+    this.play(racingCount);
   };
 
   isUnderZero = (racingCount) => {
@@ -100,6 +103,28 @@ export default class RacingCarGame {
     }
 
     return "";
+  };
+
+  play = (racingCount) => {
+    for (let i = 0; i < racingCount; i++) {
+      this.cars.forEach((car) => car.move());
+      this.printGameProcess();
+    }
+  };
+
+  printGameProcess = () => {
+    const gameProcess =
+      this.cars
+        .map(
+          (car) =>
+            `<div class="game-process">${car.name}: ${"-".repeat(
+              car.distance
+            )}</div>`
+        )
+        .join("") + "<br/>";
+
+    const $app = document.querySelector("#app");
+    $app.insertAdjacentHTML("beforeend", gameProcess);
   };
 }
 
