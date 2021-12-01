@@ -79,7 +79,25 @@ export default class RacingCarGame {
     event.preventDefault();
     const $racingCountInput = document.querySelector("#racing-count-input");
     const racingCount = $racingCountInput.value;
+    const alertMessage = this.createRacingCountAlertMessage(racingCount);
+
+    if (alertMessage) {
+      alert(alertMessage);
+      return;
+    }
     console.log(racingCount);
+  };
+
+  isUnderZero = (racingCount) => {
+    return racingCount <= 0;
+  };
+
+  createRacingCountAlertMessage = (racingCount) => {
+    if (this.isUnderZero(racingCount)) {
+      return "1이상의 숫자를 입력해주세요";
+    }
+
+    return "";
   };
 }
 
