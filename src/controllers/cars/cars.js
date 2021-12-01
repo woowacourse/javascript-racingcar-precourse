@@ -2,6 +2,7 @@ import { alertForCarNames } from "../../views/carNames/alertForCarNames.js";
 import { resetCarNamesInput } from "../../views/carNames/resetCarNamesInput.js";
 import VisiblePartOfRacingCount from "../../views/racingCount/visiblePartOfRacingCount.js";
 import { isValidCarNames } from "./checkCarNames.js";
+import Car from "../../models/car.js";
 
 export default class Cars {
   constructor() {
@@ -23,7 +24,7 @@ export default class Cars {
       const carNamesStr = this.$carNamesInput.value;
 
       if (isValidCarNames(carNamesStr)) {
-        this.setCars(carNamesStr);
+        this.setCars(this.converseNameStrToNameArr(carNamesStr));
         this.partOfRacingCount.show();
       } else {
         alertForCarNames();
@@ -32,9 +33,21 @@ export default class Cars {
     });
   }
 
-  setCars(carNamesStr) {
-    const carName = carNamesStr.split(",");
+  converseNameStrToNameArr(nameStr) {
+    const nameArrBefore = nameStr.split(",");
+    const nameArrAfter = [];
 
-    this.cars = carName;
+    nameArrBefore.forEach(name => {
+      nameArrAfter.push({
+        car: new Car(name),
+        location: 0,
+      });
+    });
+
+    return nameArrAfter;
+  }
+
+  setCars(cars) {
+    this.cars = cars;
   }
 }
