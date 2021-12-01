@@ -1,5 +1,6 @@
 export default class RacingView {
-  constructor() {
+  constructor(model) {
+    this.model = model;
     this.app = document.getElementById('app');
   }
 
@@ -9,5 +10,13 @@ export default class RacingView {
 
   renderEachTurnResult(eachTurnResult) {
     this.app.insertAdjacentElement('beforeend', eachTurnResult);
+  }
+
+  removeResultContainer() {
+    if (this.model.isGameOver === true) {
+      document
+        .querySelectorAll('#resultContainer')
+        .forEach(elem => elem.parentNode.removeChild(elem));
+    }
   }
 }

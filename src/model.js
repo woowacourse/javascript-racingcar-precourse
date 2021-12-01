@@ -3,6 +3,7 @@ export default class GameModel {
     this.carNames = [];
     this.racingCount = [];
     this.eachRacingRecord = {};
+    this.isGameOver = false;
   }
 
   setCarNames(array) {
@@ -19,5 +20,9 @@ export default class GameModel {
 
   getRacingCount() {
     return this.racingCount;
+  }
+
+  clearEachRacingRecord() {
+    this.eachRacingRecord = {};
   }
 }

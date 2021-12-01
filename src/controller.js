@@ -1,4 +1,4 @@
-export default class GameController {
+export default class RacingController {
   constructor(model, view) {
     this.model = model;
     this.view = view;
@@ -23,6 +23,7 @@ export default class GameController {
       );
       return false;
     }
+
     this.isNameSubmitted = true;
     this.startRacingGame();
   }
@@ -40,6 +41,7 @@ export default class GameController {
       );
       return false;
     }
+
     this.model.setRacingCount(racingCount);
     this.isCountSubmitted = true;
     this.startRacingGame();
@@ -48,18 +50,14 @@ export default class GameController {
   getCarNamesInArrayType() {
     let carArray = document.getElementById('car-names-input').value.split(',');
     carArray = carArray.map(car => car.trim());
+
     for (const name of carArray) {
-      if (this.checkIfWrongCarName(name) === false) {
+      if (RacingController.checkIfWrongCarName(name) === false) {
         return false;
       }
     }
-    this.model.setCarNames(carArray);
-  }
 
-  checkIfWrongCarName(name) {
-    if (name.length >= 6 || name.length === 0) {
-      return false;
-    }
+    this.model.setCarNames(carArray);
   }
 
   startRacingGame() {
@@ -67,16 +65,19 @@ export default class GameController {
       return false;
     }
 
+    this.view.removeResultContainer();
     const carNames = this.model.getCarNames();
     const racingCount = this.model.getRacingCount();
+
     for (let i = 0; i < racingCount; i++) {
       carNames.forEach(car => this.getResultOfEachCarTurn.call(this, car));
       this.view.renderEachTurnResult(
-        GameController.createEachTurnResultDom(this.model.eachRacingRecord)
+        RacingController.createEachTurnResultDom(this.model.eachRacingRecord)
       );
     }
 
-    this.clearGame();
+    this.model.isGameOver = true;
+    this.model.clearEachRacingRecord();
   }
 
   getResultOfEachCarTurn(car) {
@@ -93,22 +94,27 @@ export default class GameController {
     }
   }
 
-  clearGame() {
-    this.isNameSubmitted = false;
-    this.isCountSubmitted = false;
+  static checkIfWrongCarName(name) {
+    if (name.length >= 6 || name.length === 0) {
+      return false;
+    }
   }
 
   static createEachTurnResultDom(obj) {
     const resultContainer = document.createElement('div');
+    resultContainer.id = 'resultContainer';
+
     for (const car in obj) {
       if (Object.hasOwnProperty.call(obj, car)) {
         const resultSpan = document.createElement('span');
         resultSpan.innerText = `${car}: ${'-'.repeat(obj[car])}`;
-        resultContainer.append(resultSpan);
-        resultContainer.append(document.createElement('br'));
+        resultContainer.appendChild(resultSpan);
+        resultContainer.appendChild(document.createElement('br'));
       }
     }
-    resultContainer.append(document.createElement('br'));
+
+    resultContainer.appendChild(document.createElement('br'));
+
     return resultContainer;
   }
 }
