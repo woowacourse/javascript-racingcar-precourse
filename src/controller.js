@@ -8,6 +8,9 @@ export default class GameController {
     document
       .getElementById('car-names-submit')
       .addEventListener('click', this.submitNameHandler.bind(this));
+    document
+      .getElementById('racing-count-submit')
+      .addEventListener('click', this.submitCountHandler.bind(this));
   }
 
   submitNameHandler(e) {
@@ -18,8 +21,24 @@ export default class GameController {
       );
       return false;
     }
-    const carNamesArray = this.model.getCarNames();
-    console.log(carNamesArray);
+
+    console.log(this.model.getCarNames());
+  }
+
+  submitCountHandler(e) {
+    e.preventDefault();
+    const racingCount = parseInt(
+      document.getElementById('racing-count-input').value,
+      10
+    );
+    if (isNaN(racingCount)) {
+      this.view.alertMessage(
+        '잘못 입력하셨습니다. 레이싱 횟수에는 숫자만 입력해주세요.'
+      );
+      return false;
+    }
+    this.model.setRacingCount(racingCount);
+    console.log(this.model.getRacingCount());
   }
 
   getCarNamesInArrayType() {
