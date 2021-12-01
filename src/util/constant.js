@@ -14,3 +14,8 @@ export const CAR_MOVE_RANGE = Object.freeze({
   MAX: 9,
   POINT: 4,
 });
+
+export const VALID_NUMBER = Object.freeze({
+  CAR_NAME_LENGTH: 5,
+  RACING_COUNT: 0,
+});

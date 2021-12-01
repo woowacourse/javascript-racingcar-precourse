@@ -1,5 +1,6 @@
 import Car from "./Car/Car.js";
 import { DOMS } from "./util/constant.js";
+import { VALID_NUMBER } from "./util/constant.js";
 
 export default class RacingCarGame {
   constructor() {
@@ -47,7 +48,9 @@ export default class RacingCarGame {
   };
 
   isInvalidCarNameLength = (carNames) => {
-    return carNames.some((carName) => carName.length > 5);
+    return carNames.some(
+      (carName) => carName.length > VALID_NUMBER.CAR_NAME_LENGTH
+    );
   };
 
   hasSpace = (carNames) => {
@@ -84,7 +87,7 @@ export default class RacingCarGame {
   };
 
   isUnderZero = (racingCount) => {
-    return racingCount <= 0;
+    return racingCount <= VALID_NUMBER.RACING_COUNT;
   };
 
   createRacingCountAlertMessage = (racingCount) => {
