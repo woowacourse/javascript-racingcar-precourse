@@ -1,24 +1,13 @@
 import Car from './Car.js';
+import isValidCarNames from './utils/utils.js';
+import { $, hideElement, showElement } from './dom/helpers.js';
 
 function App() {
-  function isValidCarNames(carNameList) {
-    const isUnique = (array) => {
-      const set = new Set(array);
+  hideElement('#racing-count-heading');
+  hideElement('#racing-count-form');
+  hideElement('#result-heading');
 
-      return array.length === set.size;
-    };
-
-    const isLengthValid = (array, min, max) =>
-      array.every((str) => str.length >= min && str.length <= max);
-
-    return isUnique(carNameList) && isLengthValid(carNameList, 1, 5);
-  }
-
-  document.querySelector('#racing-count-heading').style.visibility = 'hidden';
-  document.querySelector('#racing-count-form').style.visibility = 'hidden';
-  document.querySelector('#result-heading').style.visibility = 'hidden';
-
-  document.querySelector('#car-names-form').addEventListener('submit', (e) => {
+  $('#car-names-form').addEventListener('submit', (e) => {
     e.preventDefault();
   });
   document
@@ -27,13 +16,13 @@ function App() {
       e.preventDefault();
     });
 
-  document.querySelector('#car-names-submit').addEventListener('click', () => {
-    const inputString = document.querySelector('#car-names-input').value.trim();
+  $('#car-names-submit').addEventListener('click', () => {
+    const inputString = $('#car-names-input').value.trim();
     const nameList = inputString.split(',').map((name) => name.trim());
 
     if (!isValidCarNames(nameList)) {
       alert('잘못된 입력입니다.');
-      document.querySelector('#car-names-input').value = '';
+      $('#car-names-input').value = '';
 
       return;
     }
@@ -42,16 +31,13 @@ function App() {
 
     console.log(carList);
 
-    document.querySelector('#racing-count-heading').style.visibility =
-      'visible';
-    document.querySelector('#racing-count-form').style.visibility = 'visible';
+    showElement('#racing-count-heading');
+    showElement('#racing-count-form');
   });
 
-  document
-    .querySelector('#racing-count-submit')
-    .addEventListener('click', () => {
-      console.log(document.querySelector('#racing-count-input').valueAsNumber);
-    });
+  $('#racing-count-submit').addEventListener('click', () => {
+    console.log($('#racing-count-input').valueAsNumber);
+  });
 }
 
 App();
