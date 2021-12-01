@@ -125,8 +125,9 @@ export default class RacingCarGame {
 
   generateWinnerMessage = (winners) => {
     return `
-      <span>최종우승자: </span>
-      <span id = "racing-winners">${winners.join(", ")}</span>
+      <div>최종우승자:
+        <span id = "racing-winners">${winners.join(", ")}</span>
+      </div>
     `;
   };
 
@@ -138,8 +139,9 @@ export default class RacingCarGame {
 
   resetResult = () => {
     const $gameProcesses = document.querySelectorAll(".game-process");
-    const $racingWinners = document.querySelector("#racing-winners");
-
+    const $racingWinners = document
+      .querySelector("#racing-winners")
+      ?.closest("div");
     if ($gameProcesses.length === 0) {
       return;
     }
