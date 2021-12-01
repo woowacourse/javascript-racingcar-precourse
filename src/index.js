@@ -138,14 +138,25 @@ export default class RacingCarGame {
   };
 
   resetResult = () => {
+    this.resetProcess();
+    this.resetWinner();
+  };
+
+  resetProcess = () => {
     const $gameProcesses = document.querySelectorAll(".game-process");
-    const $racingWinners = document
-      .querySelector("#racing-winners")
-      ?.closest("div");
     if ($gameProcesses.length === 0) {
       return;
     }
     $gameProcesses.forEach((gameProcess) => gameProcess.remove());
+  };
+
+  resetWinner = () => {
+    const $racingWinners = document
+      .querySelector("#racing-winners")
+      ?.closest("div");
+    if (!$racingWinners) {
+      return;
+    }
     $racingWinners.remove();
     this.cars.forEach((car) => car.reset());
   };
