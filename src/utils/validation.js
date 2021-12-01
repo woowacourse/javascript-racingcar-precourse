@@ -3,6 +3,7 @@ export const validateCarNames = (carNames) => {
     isError: false,
     errorMessage: ``,
     carNames: [],
+    isCorrectCarNames: false,
   };
 
   if (carNames.length === 0) {
@@ -27,5 +28,6 @@ export const validateCarNames = (carNames) => {
   }
 
   validateForm.carNames = carNamesArr;
+  validateForm.isCorrectCarNames = true;
   return validateForm;
 };

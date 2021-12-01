@@ -5,6 +5,10 @@ function Car(name) {
 }
 
 const App = () => {
+  const initialState = {
+    isCorrectCarNames: false,
+    carNames: [],
+  };
   const app = document.querySelector("#app");
   //   const carNamesInput = document.querySelector("#car-names-input");
   //   const carNamesSubmit = document.querySelector("#car-names-submit");
@@ -16,15 +20,19 @@ const App = () => {
   const onSubmitCarNamesForm = (e) => {
     e.preventDefault();
     const carNamesInput = e.target[0];
-    const { isError, errorMessage, carNames } = validateCarNames(
-      carNamesInput.value
-    );
-    console.log(isError, errorMessage, carNames);
+    const { isError, errorMessage, carNames, isCorrectCarNames } =
+      validateCarNames(carNamesInput.value);
 
     if (isError) {
       window.alert(errorMessage);
       carNamesInput.value = "";
+      initialState.carNames = [];
+      initialState.isCorrectCarNames = isCorrectCarNames;
+      return;
     }
+
+    initialState.carNames = carNames.map((name) => new Car(name));
+    initialState.isCorrectCarNames = isCorrectCarNames;
   };
 
   carNamesForm.addEventListener("submit", onSubmitCarNamesForm);
