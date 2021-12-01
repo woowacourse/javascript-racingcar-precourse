@@ -1,4 +1,5 @@
 import Car from "./Car/Car.js";
+import { DOMS } from "./util/constant.js";
 
 export default class RacingCarGame {
   constructor() {
@@ -8,43 +9,33 @@ export default class RacingCarGame {
   }
 
   setEvent = () => {
-    const $carNameForm = document
-      .querySelector("#car-names-input")
-      .closest("form");
-    $carNameForm.addEventListener("submit", this.setCarNameSubmitEvent);
-    const $racingCountForm = document
-      .querySelector("#racing-count-input")
-      .closest("form");
-    $racingCountForm.addEventListener("submit", this.setRacingCountSubmitEvent);
+    DOMS.$carNamesForm.addEventListener("submit", this.setCarNameSubmitEvent);
+    DOMS.$racingCountForm.addEventListener(
+      "submit",
+      this.setRacingCountSubmitEvent
+    );
   };
 
   setCarNameSubmitEvent = (event) => {
     event.preventDefault();
-    const $carNameInput = document.querySelector("#car-names-input");
-    const carNames = $carNameInput.value.split(",");
+    const carNames = DOMS.$carNamesInput.value.split(",");
     const alertMessage = this.createCarNameAlertMessage(carNames);
-
     if (alertMessage) {
       alert(alertMessage);
       return;
     }
-    console.log(carNames);
     this.cars = carNames.map((carName) => new Car(carName));
     this.permitRacingCountForm();
   };
 
   blockRacingCountForm = () => {
-    const $racingCountInput = document.querySelector("#racing-count-input");
-    const $racingCountButton = document.querySelector("#racing-count-submit");
-    $racingCountInput.disabled = true;
-    $racingCountButton.disabled = true;
+    DOMS.$racingCountInput.disabled = true;
+    DOMS.$racingCountButton.disabled = true;
   };
 
   permitRacingCountForm = () => {
-    const $racingCountInput = document.querySelector("#racing-count-input");
-    const $racingCountButton = document.querySelector("#racing-count-submit");
-    $racingCountInput.disabled = false;
-    $racingCountButton.disabled = false;
+    DOMS.$racingCountInput.disabled = false;
+    DOMS.$racingCountButton.disabled = false;
   };
 
   isDuplicatedCarName = (carNames) => {
@@ -82,15 +73,13 @@ export default class RacingCarGame {
 
   setRacingCountSubmitEvent = (event) => {
     event.preventDefault();
-    const $racingCountInput = document.querySelector("#racing-count-input");
-    const racingCount = $racingCountInput.value;
+    const racingCount = DOMS.$racingCountInput.value;
     const alertMessage = this.createRacingCountAlertMessage(racingCount);
 
     if (alertMessage) {
       alert(alertMessage);
       return;
     }
-    console.log(racingCount);
     this.play(racingCount);
   };
 
@@ -120,9 +109,9 @@ export default class RacingCarGame {
       this.cars
         .map((car) => `<div>${car.name}: ${"-".repeat(car.distance)}</div>`)
         .join("") + "<br/>";
+
     const processWrapper = `<div class="game-process">${gameProcess}</div>`;
-    const $app = document.querySelector("#app");
-    $app.insertAdjacentHTML("beforeend", processWrapper);
+    DOMS.$app.insertAdjacentHTML("beforeend", processWrapper);
   };
 
   getWinner = () => {
@@ -135,25 +124,26 @@ export default class RacingCarGame {
   };
 
   generateWinnerMessage = (winners) => {
-    return `<span id = "racing-winners">최종우승자: ${winners.join(
-      ", "
-    )}</span>`;
+    return `
+      <span>최종우승자: </span>
+      <span id = "racing-winners">${winners.join(", ")}</span>
+    `;
   };
 
   printWinner = () => {
     const winners = this.getWinner();
     const winnerMessage = this.generateWinnerMessage(winners);
-    const $app = document.querySelector("#app");
-    $app.insertAdjacentHTML("beforeend", winnerMessage);
+    DOMS.$app.insertAdjacentHTML("beforeend", winnerMessage);
   };
 
   resetResult = () => {
-    const gameProcesses = document.querySelectorAll(".game-process");
-    if (gameProcesses.length === 0) {
+    const $gameProcesses = document.querySelectorAll(".game-process");
+    const $racingWinners = document.querySelector("#racing-winners");
+
+    if ($gameProcesses.length === 0) {
       return;
     }
-    gameProcesses.forEach((gameProcess) => gameProcess.remove());
-    const $racingWinners = document.querySelector("#racing-winners");
+    $gameProcesses.forEach((gameProcess) => gameProcess.remove());
     $racingWinners.remove();
     this.cars.forEach((car) => car.reset());
   };
