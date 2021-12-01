@@ -1,3 +1,5 @@
+import Car from './Car.js';
+
 function App() {
   function isValidCarNames(carNameList) {
     const isUnique = (array) => {
@@ -27,7 +29,9 @@ function App() {
       return;
     }
 
-    console.log(nameList);
+    const carList = nameList.map((name) => new Car(name));
+
+    console.log(carList);
   });
 }
 
