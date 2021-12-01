@@ -1,19 +1,20 @@
+import { $ } from './utils.js';
+import { default as UI } from './DOMUtils.js';
+
 export default function RacingCarGame() {
   const init = () => {
-    document.querySelector('#racing-count-title').style.display = 'none';
-    document.querySelector('#racing-count-form').style.display = 'none';
-    document.querySelector('#racing-result-title').style.display = 'none';
-    eventListeners();
+    activateEventListeners();
+    UI.hideSection();
   };
 
   const handleCarNamesSubmit = e => {
     e.preventDefault();
-    const carNames = document.querySelector('#car-names-input').value;
+    const carNames = $('#car-names-input').value;
     console.log(carNames);
   };
 
-  const eventListeners = () => {
-    document.querySelector('#car-names-submit').onclick = handleCarNamesSubmit;
+  const activateEventListeners = () => {
+    $('#car-names-submit').onclick = handleCarNamesSubmit;
   };
 
   init();
