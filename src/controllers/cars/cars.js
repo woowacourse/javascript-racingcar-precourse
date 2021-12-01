@@ -21,11 +21,17 @@ export default class Cars {
       const carNamesStr = this.$carNamesInput.value;
 
       if (isValidCarNames(carNamesStr)) {
-        // 자동차 생성
+        this.setCars(carNamesStr);
       } else {
         alertForCarNames();
         resetCarNamesInput();
       }
     });
+  }
+
+  setCars(carNamesStr) {
+    const carName = carNamesStr.split(",");
+
+    this.cars = carName;
   }
 }
