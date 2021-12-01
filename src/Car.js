@@ -6,6 +6,10 @@ export default class Car {
     this.distance = 0;
   }
 
+  init() {
+    this.distance = 0;
+  }
+
   race() {
     const randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
     if (randomNumber >= 4) {

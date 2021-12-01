@@ -13,6 +13,7 @@ class App {
   init() {
     this.hideElements();
     this.setEventListner();
+    $('#app').insertAdjacentHTML('beforeend', `<div id="result-div"></div>`);
   }
 
   hideElements() {
@@ -32,13 +33,16 @@ class App {
     $('#car-names-submit').addEventListener('click', () => {
       const inputString = $('#car-names-input').value.trim();
       const nameList = inputString.split(',').map((name) => name.trim());
-
       if (!isValidCarNames(nameList)) {
         alert('잘못된 입력입니다.');
-        $('#car-names-input').value = '';
+        $('#car-names-input').value = this.carList
+          .map((car) => car.name)
+          .join(',');
 
         return;
       }
+
+      $('#result-div').innerHTML = '';
 
       this.carList = nameList.map((name) => new Car(name));
 
@@ -59,6 +63,9 @@ class App {
       this.racingCount = racingCount;
 
       showElement('#result-heading');
+
+      $('#result-div').innerHTML = '';
+      this.carList.forEach((car) => car.init());
 
       this.play();
     });
@@ -102,16 +109,12 @@ class App {
       resultDivContents.push(raceResultParagraph);
     }
 
-    const res = resultDivContents.join('');
-    const resultDiv = `<div id="result-div">${res}</div>`;
-
-    $('#app').insertAdjacentHTML('beforeend', resultDiv);
-
     const winnerNameList = this.getWinnerNameList();
-    $('#app').insertAdjacentHTML(
-      'beforeend',
-      this.winnerMessageTemplate(winnerNameList)
-    );
+    const res = resultDivContents.join('');
+
+    $('#result-div').innerHTML = `${res}${this.winnerMessageTemplate(
+      winnerNameList
+    )}`;
   }
 }
 
