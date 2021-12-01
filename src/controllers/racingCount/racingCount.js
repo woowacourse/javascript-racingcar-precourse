@@ -22,12 +22,15 @@ export default class RacingCount {
 
       if (isValidRacingCount(racingCountStr)) {
         this.setRacingCount(racingCountStr);
-        // 결과 계산
       } else {
         alertForRacingCount();
         resetRacingCountInput();
       }
     });
+  }
+
+  getRacingCount() {
+    return this.racingCount;
   }
 
   setRacingCount(racingCountStr) {
