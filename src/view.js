@@ -4,10 +4,6 @@ export default class CarView {
     this.app = document.getElementById('app');
   }
 
-  alertMessage(message) {
-    alert(message);
-  }
-
   renderResult(eachTurnResult) {
     this.app.insertAdjacentElement('beforeend', eachTurnResult);
   }

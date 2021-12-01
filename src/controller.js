@@ -1,3 +1,5 @@
+/* eslint-disable no-alert */
+/* eslint-disable no-undef */
 export default class CarController {
   constructor(model, view) {
     this.model = model;
@@ -18,7 +20,7 @@ export default class CarController {
   submitNameHandler(e) {
     e.preventDefault();
     if (this.getCarNamesInArrayType() === false) {
-      this.view.alertMessage(
+      alert(
         '잘못 입력하셨습니다. 자동차 이름은 쉼표를 기준으로 구분하며, 이름은 5자 이하만 가능합니다.'
       );
       return false;
@@ -35,10 +37,8 @@ export default class CarController {
       10
     );
 
-    if (isNaN(racingCount)) {
-      this.view.alertMessage(
-        '잘못 입력하셨습니다. 레이싱 횟수에는 숫자만 입력해주세요.'
-      );
+    if (Number.isNaN(racingCount)) {
+      alert('잘못 입력하셨습니다. 레이싱 횟수에는 숫자만 입력해주세요.');
       return false;
     }
 
@@ -67,7 +67,7 @@ export default class CarController {
     const maxValue = Math.max(...eachRacingRecordValues);
     const winnerList = [];
 
-    eachRacingRecordKeys.find(car => {
+    eachRacingRecordKeys.forEach(car => {
       if (eachRacingRecord[car] === maxValue) {
         winnerList.push(car);
       }
