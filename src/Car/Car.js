@@ -9,7 +9,7 @@ export default class Car {
   }
 
   get distance() {
-    return this.distance;
+    return this.forwardCnt;
   }
 
   move = () => {
