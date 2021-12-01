@@ -11,12 +11,6 @@ module.exports = {
     sourceType: "module",
   },
   rules: {
-    "prettier/prettier": [
-      "error",
-      {
-        endOfLine: "auto",
-      },
-    ],
     "import/extensions": "off",
     "import/prefer-default-export": "off",
     "max-depth": ["error", 2],
