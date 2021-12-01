@@ -14,6 +14,10 @@ function App() {
     return isUnique(carNameList) && isLengthValid(carNameList, 1, 5);
   }
 
+  document.querySelector('#racing-count-heading').style.visibility = 'hidden';
+  document.querySelector('#racing-count-form').style.visibility = 'hidden';
+  document.querySelector('#result-heading').style.visibility = 'hidden';
+
   document.querySelector('form').addEventListener('submit', (e) => {
     e.preventDefault();
   });

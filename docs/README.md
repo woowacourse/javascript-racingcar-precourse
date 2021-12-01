@@ -5,13 +5,13 @@
 - [x] 엘리먼트에 id 추가
   - [x] 자동차의 이름 입력 input 태그: `car-names-input`
   - [x] 자동차의 이름 제출 button 태그: `car-names-submit`
-  - [ ] 자동차의 이름 제출 form 태그: `car-names-form`
-  - [ ] 레이싱 횟수 입력 input 태그: `racing-count-input`
-  - [ ] 레이싱 횟수 제출 button 태그: `racing-count-submit`
-  - [ ] 레이싱 횟수 제출 form 태그: `racing-count-form`
-  - [ ] 레이싱 횟수 제출 h4 태그: `racing-count-heading`
-  - [ ] 실행 결과 h4 태그: `result-heading`
-- [ ] 레이싱 횟수 제출 form, h4 숨기기, 실행 결과 h4 숨기기
+  - [x] 자동차의 이름 제출 form 태그: `car-names-form`
+  - [x] 레이싱 횟수 입력 input 태그: `racing-count-input`
+  - [x] 레이싱 횟수 제출 button 태그: `racing-count-submit`
+  - [x] 레이싱 횟수 제출 form 태그: `racing-count-form`
+  - [x] 레이싱 횟수 제출 h4 태그: `racing-count-heading`
+  - [x] 실행 결과 h4 태그: `result-heading`
+- [x] 레이싱 횟수 제출 form, h4 숨기기, 실행 결과 h4 숨기기
 
 ### 2. 자동차 이름 입력 받기
 
