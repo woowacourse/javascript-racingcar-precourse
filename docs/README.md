@@ -53,12 +53,12 @@
 
 ### 7. 자동자 레이스 진행하기
 
-- [ ] 레이싱 횟수만큼 다음을 진행
-- [ ] 모든 자동차를 순회하며 `레이스`를 진행
-  - [ ] [`MissionUtils` 라이브러리](https://github.com/woowacourse-projects/javascript-mission-utils#mission-utils)의 `Random.pickNumberInRange`를 사용해 0에서 9 사이의 무작위 값을 생성한다.
-  - [ ] 0에서 9 사이의 무작위 값을 생성해 4 이상인지 검사
-  - [ ] 4 이상이면 자동차의 `이동 거리`를 1 증가
-  - [ ] `{자동차 이름, 이동 거리}` 반환
+- [x] 레이싱 횟수만큼 다음을 진행
+- [x] 모든 자동차를 순회하며 `레이스`를 진행
+  - [x] [`MissionUtils` 라이브러리](https://github.com/woowacourse-projects/javascript-mission-utils#mission-utils)의 `Random.pickNumberInRange`를 사용해 0에서 9 사이의 무작위 값을 생성한다.
+  - [x] 0에서 9 사이의 무작위 값을 생성해 4 이상인지 검사
+  - [x] 4 이상이면 자동차의 `이동 거리`를 1 증가
+  - [x] `{자동차 이름, 이동 거리}` 반환
 
 ### 8. 회차별 레이스 결과 출력하기
 

@@ -1,11 +1,13 @@
 /* eslint-disable class-methods-use-this */
+
 import Car from './Car.js';
 import { isValidCarNames, isRacingCountValid } from './utils/utils.js';
 import { $, hideElement, showElement } from './dom/helpers.js';
 
 class App {
   constructor() {
-    this.remainingRacingCount = 0;
+    this.carList = [];
+    this.racingCount = 0;
   }
 
   init() {
@@ -38,9 +40,9 @@ class App {
         return;
       }
 
-      const carList = nameList.map((name) => new Car(name));
+      this.carList = nameList.map((name) => new Car(name));
 
-      console.log(carList);
+      console.log(this.carList);
 
       showElement('#racing-count-heading');
       showElement('#racing-count-form');
@@ -56,9 +58,11 @@ class App {
         return;
       }
 
-      this.remainingRacingCount = racingCount;
+      this.racingCount = racingCount;
 
-      console.log(this);
+      for (let idx = 0; idx < racingCount; idx += 1) {
+        console.log(this.carList.map((car) => car.race()));
+      }
     });
   }
 }
