@@ -140,6 +140,7 @@ export default class RacingCarGame {
   resetResult = () => {
     this.resetProcess();
     this.resetWinner();
+    this.resetCarDistance();
   };
 
   resetProcess = () => {
@@ -158,6 +159,9 @@ export default class RacingCarGame {
       return;
     }
     $racingWinners.remove();
+  };
+
+  resetCarDistance = () => {
     this.cars.forEach((car) => car.reset());
   };
 }
