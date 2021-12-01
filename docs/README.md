@@ -2,7 +2,7 @@
 
 ### 1. 자동차 이름 입력 받기
 
-- [x] 태그에 id 추가
+- [x] 엘리먼트에 id 추가
   - [x] 자동차의 이름 입력 input 태그: `car-names-input`
   - [x] 자동차의 이름 제출 button 태그: `car-names-submit`
 - [x] `car-names-submit` 버튼의 click 이벤트에 핸들러 추가
@@ -26,7 +26,7 @@
 
 ### 4. 이동 횟수 입력 받기
 
-- [ ] 태그에 id 추가
+- [ ] 엘리먼트에 id 추가
   - [ ] 레이싱 횟수 입력 input 태그: `racing-count-input`
   - [ ] 레이싱 횟수 제출 button 태그: `racing-count-submit`
 - [ ] `racing-count-submit` 버튼의 click 이벤트에 핸들러 추가
