@@ -42,8 +42,6 @@ class App {
 
       this.carList = nameList.map((name) => new Car(name));
 
-      console.log(this.carList);
-
       showElement('#racing-count-heading');
       showElement('#racing-count-form');
     });
@@ -60,10 +58,40 @@ class App {
 
       this.racingCount = racingCount;
 
-      for (let idx = 0; idx < racingCount; idx += 1) {
-        console.log(this.carList.map((car) => car.race()));
-      }
+      showElement('#result-heading');
+
+      this.play();
     });
+  }
+
+  getRaceResult() {
+    return this.carList.map((car) => car.race());
+  }
+
+  raceResultParagraphTemplate(raceResultList) {
+    const raceResultStringList = raceResultList.map(
+      (result) => `${result.name}: ${'-'.repeat(result.distance)}`
+    );
+    const raceResultParagraph = `<p>${raceResultStringList.join('<br>')}</p>`;
+
+    return raceResultParagraph;
+  }
+
+  play() {
+    const resultDivContents = [];
+
+    for (let idx = 0; idx < this.racingCount; idx += 1) {
+      const raceResultList = this.getRaceResult();
+      const raceResultParagraph =
+        this.raceResultParagraphTemplate(raceResultList);
+
+      resultDivContents.push(raceResultParagraph);
+    }
+
+    const res = resultDivContents.join('');
+    const resultDiv = `<div id="result-div">${res}</div>`;
+
+    $('#app').insertAdjacentHTML('beforeend', resultDiv);
   }
 }
 
