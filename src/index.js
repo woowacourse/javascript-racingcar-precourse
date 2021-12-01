@@ -6,6 +6,7 @@ export default class RacingCarGame {
     this.setEvent();
     this.blockRacingCountForm();
   }
+
   setEvent = () => {
     const $carNameForm = document
       .querySelector("#car-names-input")
@@ -106,6 +107,7 @@ export default class RacingCarGame {
   };
 
   play = (racingCount) => {
+    this.resetResult();
     for (let i = 0; i < racingCount; i++) {
       this.cars.forEach((car) => car.move());
       this.printGameProcess();
@@ -116,16 +118,11 @@ export default class RacingCarGame {
   printGameProcess = () => {
     const gameProcess =
       this.cars
-        .map(
-          (car) =>
-            `<div class="game-process">${car.name}: ${"-".repeat(
-              car.distance
-            )}</div>`
-        )
+        .map((car) => `<div>${car.name}: ${"-".repeat(car.distance)}</div>`)
         .join("") + "<br/>";
-
+    const processWrapper = `<div class="game-process">${gameProcess}</div>`;
     const $app = document.querySelector("#app");
-    $app.insertAdjacentHTML("beforeend", gameProcess);
+    $app.insertAdjacentHTML("beforeend", processWrapper);
   };
 
   getWinner = () => {
@@ -148,6 +145,17 @@ export default class RacingCarGame {
     const winnerMessage = this.generateWinnerMessage(winners);
     const $app = document.querySelector("#app");
     $app.insertAdjacentHTML("beforeend", winnerMessage);
+  };
+
+  resetResult = () => {
+    const gameProcesses = document.querySelectorAll(".game-process");
+    if (gameProcesses.length === 0) {
+      return;
+    }
+    gameProcesses.forEach((gameProcess) => gameProcess.remove());
+    const $racingWinners = document.querySelector("#racing-winners");
+    $racingWinners.remove();
+    this.cars.forEach((car) => car.reset());
   };
 }
 

@@ -12,6 +12,10 @@ export default class Car {
     return this.forwardCnt;
   }
 
+  reset = () => {
+    this.forwardCnt = 0;
+  };
+
   move = () => {
     if (this.isCarMoving()) {
       this.forwardCnt += 1;
