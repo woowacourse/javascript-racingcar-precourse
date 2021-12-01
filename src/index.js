@@ -1,5 +1,5 @@
 import Car from "./Car/Car.js";
-import { DOMS } from "./util/constant.js";
+import { ALERT_MESSAGE, DOMS } from "./util/constant.js";
 import { VALID_NUMBER } from "./util/constant.js";
 
 export default class RacingCarGame {
@@ -59,16 +59,16 @@ export default class RacingCarGame {
 
   createCarNameAlertMessage = (carNames) => {
     if (this.isDuplicatedCarName(carNames)) {
-      return "이름이 중복되었습니다";
+      return ALERT_MESSAGE.DUPLICATED_NAME;
     }
     if (this.hasEmpty(carNames)) {
-      return "이름은 공백이 될수 없습니다";
+      return ALERT_MESSAGE.NO_EMPTY_NAME;
     }
     if (this.isInvalidCarNameLength(carNames)) {
-      return "이름은 5글자이하로 입력해주세요";
+      return ALERT_MESSAGE.NOT_OVER_FIVE_NAME;
     }
     if (this.hasSpace(carNames)) {
-      return "이름에 공백이 포함되서는 안됩니다";
+      return ALERT_MESSAGE.NO_SPACE_IN_NAME;
     }
 
     return "";
@@ -92,7 +92,7 @@ export default class RacingCarGame {
 
   createRacingCountAlertMessage = (racingCount) => {
     if (this.isUnderZero(racingCount)) {
-      return "1이상의 숫자를 입력해주세요";
+      return ALERT_MESSAGE.OVER_ZERO;
     }
 
     return "";
