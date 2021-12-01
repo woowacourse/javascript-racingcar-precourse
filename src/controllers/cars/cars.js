@@ -1,5 +1,6 @@
 import { alertForCarNames } from "../../views/carNames/alertForCarNames.js";
 import { resetCarNamesInput } from "../../views/carNames/resetCarNamesInput.js";
+import VisiblePartOfRacingCount from "../../views/racingCount/visiblePartOfRacingCount.js";
 import { isValidCarNames } from "./checkCarNames.js";
 
 export default class Cars {
@@ -7,6 +8,7 @@ export default class Cars {
     this.cars = [];
     this.$carNamesInput = document.getElementById("car-names-input");
     this.$carNamesSubmitButton = document.getElementById("car-names-submit");
+    this.partOfRacingCount = new VisiblePartOfRacingCount();
     this.addEventHandlers();
   }
 
@@ -22,6 +24,7 @@ export default class Cars {
 
       if (isValidCarNames(carNamesStr)) {
         this.setCars(carNamesStr);
+        this.partOfRacingCount.show();
       } else {
         alertForCarNames();
         resetCarNamesInput();
