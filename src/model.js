@@ -2,6 +2,7 @@ export default class GameModel {
   constructor() {
     this.carNames = [];
     this.racingCount = [];
+    this.eachRacingRecord = {};
   }
 
   setCarNames(array) {

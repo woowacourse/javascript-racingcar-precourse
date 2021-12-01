@@ -67,47 +67,48 @@ export default class GameController {
       return false;
     }
 
-    const eachRacingRecord = {};
-    const getResultOfEachCarTurn = car => {
-      if (typeof eachRacingRecord[car] === 'undefined') {
-        if (MissionUtils.Random.pickNumberInRange(0, 9) >= 4) {
-          eachRacingRecord[car] = 1;
-        } else {
-          eachRacingRecord[car] = 0;
-        }
-      } else if (typeof eachRacingRecord[car] !== 'undefined') {
-        if (MissionUtils.Random.pickNumberInRange(0, 9) >= 4) {
-          eachRacingRecord[car]++;
-        }
-      }
-    };
-
-    function eachTurnResult(obj) {
-      const resultContainer = document.createElement('div');
-      for (const car in obj) {
-        if (Object.hasOwnProperty.call(obj, car)) {
-          const resultSpan = document.createElement('span');
-          resultSpan.innerText = `${car}: ${'-'.repeat(obj[car])}`;
-          resultContainer.append(resultSpan);
-          resultContainer.append(document.createElement('br'));
-        }
-      }
-      resultContainer.append(document.createElement('br'));
-      return resultContainer;
-    }
-
     const carNames = this.model.getCarNames();
     const racingCount = this.model.getRacingCount();
     for (let i = 0; i < racingCount; i++) {
-      carNames.forEach(car => getResultOfEachCarTurn(car));
-      this.view.renderEachTurnResult(eachTurnResult(eachRacingRecord));
+      carNames.forEach(car => this.getResultOfEachCarTurn.call(this, car));
+      this.view.renderEachTurnResult(
+        GameController.createEachTurnResultDom(this.model.eachRacingRecord)
+      );
     }
 
     this.clearGame();
   }
 
+  getResultOfEachCarTurn(car) {
+    if (typeof this.model.eachRacingRecord[car] === 'undefined') {
+      if (MissionUtils.Random.pickNumberInRange(0, 9) >= 4) {
+        this.model.eachRacingRecord[car] = 1;
+      } else {
+        this.model.eachRacingRecord[car] = 0;
+      }
+    } else if (typeof this.model.eachRacingRecord[car] !== 'undefined') {
+      if (MissionUtils.Random.pickNumberInRange(0, 9) >= 4) {
+        this.model.eachRacingRecord[car]++;
+      }
+    }
+  }
+
   clearGame() {
     this.isNameSubmitted = false;
     this.isCountSubmitted = false;
+  }
+
+  static createEachTurnResultDom(obj) {
+    const resultContainer = document.createElement('div');
+    for (const car in obj) {
+      if (Object.hasOwnProperty.call(obj, car)) {
+        const resultSpan = document.createElement('span');
+        resultSpan.innerText = `${car}: ${'-'.repeat(obj[car])}`;
+        resultContainer.append(resultSpan);
+        resultContainer.append(document.createElement('br'));
+      }
+    }
+    resultContainer.append(document.createElement('br'));
+    return resultContainer;
   }
 }
