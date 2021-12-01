@@ -1,3 +1,5 @@
+import Car from "./Car/Car.js";
+
 export default class RacingCarGame {
   constructor() {
     this.setEvent();
