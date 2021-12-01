@@ -13,8 +13,8 @@ module.exports = {
   rules: {
     "import/extensions": "off",
     "import/prefer-default-export": "off",
-    "max-depth": ["error", 2],
-    "max-lines-per-function": ["error", 15],
+    "max-depth": [1, 3],
+    "max-lines-per-function": [1, 15],
     "spaced-comment": ["error", "always"],
     "no-new": "off",
     "no-alert": "off",
