@@ -12,7 +12,7 @@
 
 ### 1. 게임 순서도
 
-![racing-game-flowchart.png](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/7d6ec8b8-beae-4253-857b-f4890289075b/racing-game-flowchart.png)
+<img width="50%" src="https://github.com/moonnew/image-upload/blob/master/racing-game-flowchart.png"/>
 
 ### 2. 필요한 기능
 
