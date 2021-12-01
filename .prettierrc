@@ -1,5 +1,5 @@
 {
-  "endOfLine": "auto",
+  "endOfLine": "off",
   "semi": true,
   "printWidth": 80,
   "tabWidth": 2,
