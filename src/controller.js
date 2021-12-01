@@ -66,10 +66,7 @@ export default class GameController {
     if (this.isNameSubmitted === false || this.isCountSubmitted === false) {
       return false;
     }
-    console.log(this.model.getCarNames());
-    console.log(this.model.getRacingCount());
-    const carNames = this.model.getCarNames();
-    const racingCount = this.model.getRacingCount();
+
     const eachRacingRecord = {};
     const getResultOfEachCarTurn = car => {
       if (typeof eachRacingRecord[car] === 'undefined') {
@@ -85,9 +82,25 @@ export default class GameController {
       }
     };
 
+    function eachTurnResult(obj) {
+      const resultContainer = document.createElement('div');
+      for (const car in obj) {
+        if (Object.hasOwnProperty.call(obj, car)) {
+          const resultSpan = document.createElement('span');
+          resultSpan.innerText = `${car}: ${'-'.repeat(obj[car])}`;
+          resultContainer.append(resultSpan);
+          resultContainer.append(document.createElement('br'));
+        }
+      }
+      resultContainer.append(document.createElement('br'));
+      return resultContainer;
+    }
+
+    const carNames = this.model.getCarNames();
+    const racingCount = this.model.getRacingCount();
     for (let i = 0; i < racingCount; i++) {
       carNames.forEach(car => getResultOfEachCarTurn(car));
-      console.log(eachRacingRecord);
+      this.view.renderEachTurnResult(eachTurnResult(eachRacingRecord));
     }
 
     this.clearGame();
