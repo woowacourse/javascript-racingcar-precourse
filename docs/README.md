@@ -26,7 +26,7 @@
 - 입력 값이 1 이상이어야 한다.
 - 사용자가 잘못된 입력 값을 작성한 경우 `alert`을 이용해 메시지를 보여주고, `재입력`할 수 있게 한다.
 
-## [ ] 각 자동차 전진 횟수 판단
+## [✅] 각 자동차 전진 횟수 판단
 
 - 전진하는 조건을 판단하기 위한 랜덤 값은 `[MissionUtils` 라이브러리](https://github.com/woowacourse-projects/javascript-mission-utils#mission-utils)의 `Random.pickNumberInRange`를 사용해 구한다.
 - 전진하는 조건은 **0에서 9 사이에서 무작위 값을 구한 후 무작위 값이 4 이상일 경우**이다.

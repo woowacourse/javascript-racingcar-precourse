@@ -8,14 +8,13 @@ import {
 } from './constants/HTMLconstant.js';
 import validCarName from './validCarName.js';
 import showRacingInput from './showRacingInput.js';
-import { NOT_VALID_RACING_INPUT } from './constants/errorMessage.js';
 import Car from './car.js';
 import validRacingCount from './validRacingCount.js';
 
 class Game {
   constructor() {
     this.cars = [];
-    this.winner = '';
+    this.winner = [];
   }
 
   initialize() {
