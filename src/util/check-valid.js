@@ -1,4 +1,4 @@
-import { VALID_NUMBER } from "./constant";
+import { VALID_NUMBER } from "./constant.js";
 
 export const isUnderZero = (racingCount) => {
   return racingCount <= VALID_NUMBER.RACING_COUNT;

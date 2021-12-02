@@ -7,12 +7,16 @@ import {
   isDuplicatedCarName,
   isInvalidCarNameLength,
 } from "./util/check-valid.js";
+import {
+  permitRacingCountForm,
+  blockRacingCountForm,
+} from "./util/block-and-permit.js";
 
 export default class RacingCarGame {
   constructor() {
     this.cars = [];
     this.setEvent();
-    this.blockRacingCountForm();
+    blockRacingCountForm();
   }
 
   setEvent = () => {
@@ -32,17 +36,7 @@ export default class RacingCarGame {
       return;
     }
     this.cars = carNames.map((carName) => new Car(carName));
-    this.permitRacingCountForm();
-  };
-
-  blockRacingCountForm = () => {
-    DOMS.$racingCountInput.disabled = true;
-    DOMS.$racingCountButton.disabled = true;
-  };
-
-  permitRacingCountForm = () => {
-    DOMS.$racingCountInput.disabled = false;
-    DOMS.$racingCountButton.disabled = false;
+    permitRacingCountForm();
   };
 
   createCarNameAlertMessage = (carNames) => {
