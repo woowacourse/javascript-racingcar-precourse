@@ -27,7 +27,7 @@
 
 ### 요구사항 체크
 
-- [ ] Car 객체를 만들고, new 인스턴스를 만들어 사용한다.
+- [x] Car 객체를 만들고, new 인스턴스를 만들어 사용한다.
 - [x] 자동차의 이름을 입력하는 input 태그는 `car-names-input` id값을 가진다.
 - [x] 자동차의 이름을 제출하는 button 태그는 `car-names-submit` id값을 가진다.
 - [x] 레이싱 횟수를 입력하는 input 태그는 `racing-count-input` id값을 가진다.
