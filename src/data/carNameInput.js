@@ -1,5 +1,5 @@
 import { $ } from '../utils/dom.js';
-import { MAX_CAR_NAME_LENGTH } from './constatns.js';
+import { MAX_CAR_NAME_LENGTH } from '../utils/constants.js';
 import { Car } from './Car.js';
 
 export const isNonCarNames = () => $('#car-names-input').value == '';
