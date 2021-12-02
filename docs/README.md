@@ -122,6 +122,8 @@ DOM이 가지는 이벤트는 클래스에 종속시키지 않고 별도의 hand
 **추가 사항**
 - *1번의 경우 주어진 index.html에 정의된 input의 타입이 number 형이므로 구현하지 않습니다.*
 
+<br>
+
 > 커밋 목록
 - [**첫 번째 커밋 바로가기**](https://github.com/InSeong-So/javascript-racingcar-precourse/commit/909a1bfd7215306776db356feace35b8972cbb9a)
 
@@ -140,6 +142,8 @@ DOM이 가지는 이벤트는 클래스에 종속시키지 않고 별도의 hand
 - *class 컴포넌트로 Game을 구현하여 호출합니다.*
 - [x] h4 태그에 css 선택자인 id값을 `#racing-result`로 부여합니다.
 
+<br>
+
 > 커밋 목록
 - [**첫 번째 커밋 바로가기**](https://github.com/InSeong-So/javascript-racingcar-precourse/commit/909a1bfd7215306776db356feace35b8972cbb9a)
 - [**두 번째 커밋 바로가기**](https://github.com/InSeong-So/javascript-racingcar-precourse/commit/eeb81b3e8f01312c3fc3d0fd9c26907bd482dd8c)
@@ -152,16 +156,29 @@ DOM이 가지는 이벤트는 클래스에 종속시키지 않고 별도의 hand
 
 **사전 정의**
 - [ ] ~~1. 게임을 class 컴포넌트로 구현하며 게임에 필요한 유효성 검사를 추가합니다.~~
-- [ ] 2. 구조 분해 할당을 활용하여 클래스와 상관 없는 전역 스코프에 선언한 함수로 지정된 횟수만큼 난수를 출력합니다.
-- [ ] 3. 출력된 난수가 전진 조건에 해당되면 해당 자동차의 전진 횟수를 증가합니다. 
-- [ ] 4. 모든 자동차의 전진 여부를 확인하고 레이스마다 결과를 렌더링합니다.
+- [x] 2. 구조 분해 할당을 활용하여 클래스와 상관 없는 전역 스코프에 선언한 함수로 지정된 횟수만큼 난수를 출력합니다.
+- [x] 3. 출력된 난수가 전진 조건에 해당되면 해당 자동차의 전진 횟수를 증가합니다. 
+- [ ] ~~4. 모든 자동차의 전진 여부를 확인하고 레이스마다 결과를 렌더링합니다.~~
   - [ ] ~~특정 엘리먼트를 index.html에 추가할 수 없으므로, 최상위 div인 `id="app"`에 element를 생성하여 appendChild합니다.~~
-- [ ] 5. 횟수가 전부 소진되면 최상위 div인 `id="app"`에 결과를 출력할 영역인 h4 `id="racing-result"`에 appendChild합니다.
-- [ ] 6. 결과는 span `id="racing-winners"` 태그에 표시하고 span 태그를 h4 영역에 appendChild 합니다.
+- [ ] ~~5. 횟수가 전부 소진되면 최상위 div인 `id="app"`에 결과를 출력할 영역인 h4 `id="racing-result"`에 appendChild합니다.~~
+- [ ] ~~6. 결과는 span `id="racing-winners"` 태그에 표시하고 span 태그를 h4 영역에 appendChild 합니다.~~
 
 **추가 사항**
 - *1번의 경우 레이싱 횟수 제출 이벤트에서 구현합니다.*
 - *4번의 옵션은 h4 `id="racing-result"` 하위에 div를 생성하고 각 car의 레이스 정보를 추가하는 방식으로 구현합니다.*
+- *5, 6번은 추후 렌더링을 담당하는 클래스를 생성하여 해당 책임을 분리하도록 구현합니다.*
+
+- [x] 기능별로 메서드를 분리합니다.
+  - [x] 게임 시작/초기화
+  - [x] 게임 진행
+  - [x] 게임 종료
+- [x] 결과는 1회만 렌더링해도, 레이스별로 렌더링해도 문제 없게 렌더링을 담당하는 class를 구현합니다.
+  - [x] 게임이 종료되면 최종 우승자의 텍스트 값을 렌더링 클래스에 파라미터로 넘겨 결과를 렌더링하도록 합니다.
+
+<br>
+
+> 커밋 목록
+- [**첫 번째 커밋 바로가기**](https://github.com/InSeong-So/javascript-racingcar-precourse/commit/44cbca2b9865cee66a3d17249dd8af7411bab6b7)
 
 <hr>
 <br>
