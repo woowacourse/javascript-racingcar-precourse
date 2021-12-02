@@ -10,16 +10,16 @@ export default class InputCarName {
     addNamesSubmitEvent() {
         this.$carNamesSubmit.addEventListener("click", (e) => {
             e.preventDefault();
-            const carnames = this.$carNamesInput.value;
-            this.splitCarNames(carnames);
+            const carNamesString = this.$carNamesInput.value;
+            this.splitCarNames(carNamesString);
         })
 
         return;
     }
 
     // 콤마 기준으로 문자열 분리
-    splitCarNames(carnames) {
-        const carNamesArray = carnames.split(',');
+    splitCarNames(carNamesString) {
+        const carNamesArray = carNamesString.split(',');
         // this.carNames = carNamesArray.slice();
         this.isValidNames(carNamesArray);
 
