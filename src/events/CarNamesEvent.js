@@ -118,8 +118,6 @@ export default class CarNamesEvent {
       this.carNames = this.$carNamesInput.value;
       if (!this.validateNames()) {
         this.alertMessage();
-      } else {
-        console.log('좋아요!');
       }
     });
   };

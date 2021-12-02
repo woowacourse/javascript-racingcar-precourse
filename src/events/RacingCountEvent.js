@@ -1,4 +1,4 @@
-import { DOM } from '../constant/constant.js';
+import { DOM, ERROR_MESSAGE } from '../constant/constant.js';
 
 export default class RacingCountEvent {
   constructor() {
@@ -6,14 +6,24 @@ export default class RacingCountEvent {
     this.$racingCountSubmit = DOM.racingCountSubmit;
     this.stringRacingCount = '';
     this.numberRacingCount = 0;
+    this.errorMessage = '';
   }
+
+  initializeRacingCount = () => {
+    this.stringRacingCount = '';
+    this.numberRacingCount = 0;
+    this.errorMessage = '';
+  };
+
+  alertMessage = () => {
+    alert(this.errorMessage);
+  };
 
   isPositiveInteger = () => {
     if (this.numberRacingCount > 0) {
       return true;
     }
 
-    console.log('양의 정수가 아니야!!');
     return false;
   };
 
@@ -23,13 +33,11 @@ export default class RacingCountEvent {
       return true;
     }
 
-    console.log('정수가 아니야!');
     return false;
   };
 
   isEmpty = () => {
     if (this.stringRacingCount.length === 0) {
-      console.log('공백이야!!');
       return true;
     }
 
@@ -37,14 +45,22 @@ export default class RacingCountEvent {
   };
 
   validateCount = () => {
-    !this.isEmpty() && this.isInteger() && this.isPositiveInteger();
+    const isValidate =
+      !this.isEmpty() && //
+      this.isInteger() &&
+      this.isPositiveInteger();
+
+    return isValidate;
   };
 
   onClickSubmit = () => {
     this.$racingCountSubmit.addEventListener('click', (event) => {
       event.preventDefault();
       this.stringRacingCount = this.$racingCountInput.value;
-      this.validateCount();
+      if (!this.validateCount()) {
+        this.errorMessage = ERROR_MESSAGE.NO_POSITIVE_INTEGER;
+        this.alertMessage();
+      }
     });
   };
 }
