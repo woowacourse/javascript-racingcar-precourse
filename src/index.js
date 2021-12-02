@@ -1,4 +1,4 @@
-import Car from "./Car.js";
+import Car from "./car.js";
 import { isValidCarInputs, isValidCountInput } from "./validation.js";
 
 const $app = document.getElementById("app");
