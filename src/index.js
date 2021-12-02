@@ -1,4 +1,5 @@
 import { validateCarNames } from "./utils/validation.js";
+import newId from "./utils/newId.js";
 
 function Car(name) {
   this.name = name;
@@ -28,7 +29,11 @@ const App = () => {
       return;
     }
 
-    initialState.carNames = carNames.map((name) => new Car(name));
+    initialState.carNames = carNames.map((name) => {
+      const newCar = new Car(name);
+      newCar["id"] = newId();
+      return newCar;
+    });
     initialState.isCorrectCarNames = isCorrectCarNames;
   };
 
