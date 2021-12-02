@@ -1,7 +1,7 @@
 /* eslint-disable class-methods-use-this */
 
-import { isValidCarNames, isRacingCountValid } from '../utils/utils.js';
-import { $ } from '../dom/helpers.js';
+import { isValidCarNames, isRacingCountValid } from '../utils/validations.js';
+import { $ } from '../utils/domHelpers.js';
 import template from '../template/template.js';
 
 export default class View {
