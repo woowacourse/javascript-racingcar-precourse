@@ -12,42 +12,42 @@ export default class Model {
     callback();
   }
 
+  initDistance() {
+    this.carList.forEach((car) => car.init());
+  }
+
   updateRacingCount(racingCount) {
     this.racingCount = racingCount;
   }
 
-  race() {
+  getRaceResult() {
     return this.carList.map((car) => car.race());
   }
 
-  getRaceResult() {
-    const raceResultList = [];
+  getFullRaceResult() {
+    const fullRaceResultList = [];
 
     for (let idx = 0; idx < this.racingCount; idx += 1) {
-      const raceResult = this.race();
-
-      raceResultList.push(raceResult);
+      fullRaceResultList.push(this.getRaceResult());
     }
 
-    return raceResultList;
+    return fullRaceResultList;
   }
 
   getFinalWinnerNameList() {
     const maxDistance = Math.max(...this.carList.map((car) => car.distance));
+
     return this.carList
       .filter((car) => car.distance === maxDistance)
       .map((winner) => winner.name);
   }
 
-  initDistance() {
-    this.carList.forEach((car) => car.init());
-  }
-
   startRace(callback) {
     this.initDistance();
-    const raceResultList = this.getRaceResult();
-    const finalWinnerNameList = this.getFinalWinnerNameList();
 
-    callback({ raceResultList, finalWinnerNameList });
+    callback({
+      raceResultList: this.getFullRaceResult(),
+      finalWinnerNameList: this.getFinalWinnerNameList(),
+    });
   }
 }
