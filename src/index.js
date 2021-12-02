@@ -23,6 +23,13 @@ const init = () => {
   $racing_winners = document.getElementById("racing-winners");
 };
 
+const resetGame = () => {
+  $result.innerHTML = "";
+  $racing_winners.innerHTML = "";
+
+  cars.forEach(car => (car.moveDistance = 0));
+};
+
 const isCarInputsSplitBySpace = carInputs => {
   let isSplitBySpace = false;
   if (carInputs.split(" ").length >= 2) {
@@ -123,6 +130,7 @@ const playGame = racingCount => {
 
 const onClickSubmitCarNames = () => {
   event.preventDefault();
+  resetGame();
 
   cars = [];
   const carInputs = $car_names_input.value;
@@ -133,6 +141,7 @@ const onClickSubmitCarNames = () => {
 
 const onClickSubmitRacingCount = () => {
   event.preventDefault();
+  resetGame();
 
   const racingCountInput = $racing_count_input.value;
   if (checkIsValidCountInput(racingCountInput)) {
