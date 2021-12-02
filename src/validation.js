@@ -1,3 +1,12 @@
+const isCarInputNull = carInputs => {
+  let isNull = false;
+  if (carInputs === "" || carInputs === null) {
+    isNull = true;
+  }
+
+  return isNull;
+};
+
 const isCarInputsSplitBySpace = carInputs => {
   let isSplitBySpace = false;
   if (carInputs.split(" ").length >= 2) {
@@ -40,7 +49,10 @@ const isIntergerInput = racingCountInput => {
 
 export const isValidCarInputs = carInputs => {
   let isValid = true;
-  if (isCarInputsSplitBySpace(carInputs)) {
+  if (isCarInputNull(carInputs)) {
+    alert("자동차 이름을 입력해 주세요.");
+    isValid = false;
+  } else if (isCarInputsSplitBySpace(carInputs)) {
     alert("자동차 이름을 공백이 아닌 콤마로 구분하여 입력해주세요.");
     isValid = false;
   } else if (isCarInputsOverFiveLength(carInputs.split(","))) {
