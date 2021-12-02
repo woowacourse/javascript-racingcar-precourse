@@ -1,3 +1,4 @@
+import Car from './Car.js';
 import { isValidCarNames, isValidRacingCount } from './utils/validations.js';
 
 export default class RacingGame {
@@ -53,11 +54,13 @@ export default class RacingGame {
   start() {
     if (!(this.carsReady && this.racingCountReady)) return;
     this.setGameValue();
-    console.log(this.carNames, this.racingCount);
+    console.log(this.cars, this.racingCount);
   }
 
   setGameValue() {
-    this.carNames = this.carNamesInput.value.split(',');
-    this.racingCount = Number(this.racingCountInput.value);
+    const carNames = this.carNamesInput.value.split(',');
+    const racingCount = Number(this.racingCountInput.value);
+    this.cars = carNames.map((name) => new Car(name));
+    this.racingCount = racingCount;
   }
 }
