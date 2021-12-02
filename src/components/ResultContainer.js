@@ -4,12 +4,21 @@ const ResultContainer = ({ app, carNames, racingCount }) => {
   let resultContainer = document.querySelector("#result-container");
   let maxMoveCount = 0;
 
-  const resetUI = () => {
-    if (resultContainer) app.removeChild(resultContainer);
+  const resetData = () => {
+    for (let car of carNames) car.moveCount = 0;
+  };
+
+  const resetUI = () => app.removeChild(resultContainer);
+
+  const reset = () => {
+    if (resultContainer) {
+      resetData();
+      resetUI();
+    }
   };
 
   const init = () => {
-    resetUI();
+    reset();
 
     resultContainer = document.createElement("div");
     resultContainer.setAttribute("id", "result-container");
