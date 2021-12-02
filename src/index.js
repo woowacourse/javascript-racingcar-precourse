@@ -19,12 +19,12 @@ const onClickSubmitCarNames = e => {
 
 const onClickSubmitRacingCount = e => {
   e.preventDefault();
+
   RacingGame.resetGame();
 
   const racingCountInput = $racing_count_input.value;
   if (isValidCountInput(RacingGame.cars, racingCountInput)) {
-    const racingCount = parseInt(racingCountInput);
-    RacingGame.playGame(racingCount);
+    RacingGame.playGame(parseInt(racingCountInput));
   }
 };
 

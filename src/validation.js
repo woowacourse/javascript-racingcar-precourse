@@ -1,15 +1,15 @@
 import {
-  error_input_null,
-  error_input_split_space,
-  error_over_length,
-  error_null_car_names,
-  error_unvalid_count_input,
+  ERROR_INPUT_NULL,
+  ERROR_INPUT_SPLIT_SPACE,
+  ERROR_OVER_LENGTH,
+  ERROR_NULL_CAR_NAMES,
+  ERROR_UNVALID_COUNT_INPUT,
 } from "./constant.js";
 
 const isCarInputNull = carInputs => {
   let isNull = false;
   if (carInputs === "" || carInputs === null) {
-    alert(error_input_null);
+    alert(ERROR_INPUT_NULL);
     isNull = true;
   }
 
@@ -19,7 +19,7 @@ const isCarInputNull = carInputs => {
 const isCarInputsSplitBySpace = carInputs => {
   let isSplitBySpace = false;
   if (carInputs.split(" ").length >= 2) {
-    alert(error_input_split_space);
+    alert(ERROR_INPUT_SPLIT_SPACE);
     isSplitBySpace = true;
   }
 
@@ -35,7 +35,7 @@ const isCarInputsOverFiveLength = carInputs => {
   });
 
   if (isOverFiveLength) {
-    alert(error_over_length);
+    alert(ERROR_OVER_LENGTH);
   }
 
   return isOverFiveLength;
@@ -44,7 +44,7 @@ const isCarInputsOverFiveLength = carInputs => {
 const isInputCar = cars => {
   let isInput = true;
   if (cars.length === 0) {
-    alert(error_null_car_names);
+    alert(ERROR_NULL_CAR_NAMES);
     isInput = false;
   }
 
@@ -54,7 +54,7 @@ const isInputCar = cars => {
 const isIntergerInput = racingCountInput => {
   let isInterger = true;
   if (!Number.isInteger(parseInt(racingCountInput))) {
-    alert(error_unvalid_count_input);
+    alert(ERROR_UNVALID_COUNT_INPUT);
     isInterger = false;
   }
 
