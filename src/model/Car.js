@@ -1,4 +1,9 @@
 /* global MissionUtils */
+import {
+  RANDOM_NUMBER_RANGE_MIN,
+  RANDOM_NUMBER_RANGE_MAX,
+  PROCEED_THRESHOLD,
+} from '../config/config.js';
 
 export default class Car {
   constructor(name) {
@@ -11,8 +16,12 @@ export default class Car {
   }
 
   race() {
-    const randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
-    if (randomNumber >= 4) {
+    const randomNumber = MissionUtils.Random.pickNumberInRange(
+      RANDOM_NUMBER_RANGE_MIN,
+      RANDOM_NUMBER_RANGE_MAX
+    );
+
+    if (randomNumber >= PROCEED_THRESHOLD) {
       this.distance += 1;
     }
 

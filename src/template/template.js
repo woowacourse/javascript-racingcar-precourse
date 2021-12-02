@@ -15,7 +15,7 @@ function finalWinnerTemplate(winnerNameList) {
 const template = {
   resultTemplate(raceResultList, winnerNameList) {
     const paragraphList = raceResultList.reduce(
-      (a, raceResult) => a + paragraphTemplate(raceResult),
+      (acc, raceResult) => acc + paragraphTemplate(raceResult),
       ''
     );
 

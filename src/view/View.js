@@ -1,8 +1,11 @@
 /* eslint-disable class-methods-use-this */
-
 import { isValidCarNames, isRacingCountValid } from '../utils/validations.js';
 import { $ } from '../utils/domHelpers.js';
 import template from '../template/template.js';
+import {
+  ERROR_WRONG_INPUT_CAR_NAMES,
+  ERROR_WRONG_INPUT_RACING_COUNT,
+} from '../config/config.js';
 
 export default class View {
   initView() {
@@ -36,7 +39,7 @@ export default class View {
       const nameList = inputString.split(',').map((name) => name.trim());
 
       if (!isValidCarNames(nameList)) {
-        alert('잘못된 입력입니다.');
+        alert(ERROR_WRONG_INPUT_CAR_NAMES);
         // $('#car-names-input').value = this.carList
         //   .map((car) => car.name)
         //   .join(',');
@@ -55,7 +58,7 @@ export default class View {
       const racingCount = $('#racing-count-input').valueAsNumber;
 
       if (!isRacingCountValid(racingCount)) {
-        alert('잘못된 입력입니다.');
+        alert(ERROR_WRONG_INPUT_RACING_COUNT);
         $('#racing-count-input').value = '';
 
         return;
