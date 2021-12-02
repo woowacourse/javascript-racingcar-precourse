@@ -1,3 +1,5 @@
+import RacingWinners from "./RacingWinners.js";
+
 const ResultContainer = ({ app, carNames, racingCount }) => {
   const resultContainer = document.createElement("div");
   resultContainer.setAttribute("id", "result-container");
@@ -26,23 +28,10 @@ const ResultContainer = ({ app, carNames, racingCount }) => {
     for (let round = 0; round < racingCount; round++) {
       resultContainer.innerHTML += `<div id="result-round" style="margin: 10px 0;">${roundRender()}</div>`;
     }
+    resultContainer.innerHTML += RacingWinners({ carNames, maxMoveCount });
   };
 
   render();
-
-  console.log(maxMoveCount);
-  console.log(carNames);
-
-  const winners = carNames
-    .filter((car) => car.moveCount === maxMoveCount)
-    .map((car) => car.name)
-    .join(",");
-  console.log(winners);
-
-  resultContainer.innerHTML += `<div>
-        <span>최종 우승자: </span>
-        <span id="racing-winners">${winners}</span>
-    </div>`;
 };
 
 export default ResultContainer;
