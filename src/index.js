@@ -4,8 +4,19 @@ const $car_names_input = document.getElementById("car-names-input");
 const $car_names_submit = document.getElementById("car-names-submit");
 const $racing_count_input = document.getElementById("racing-count-input");
 const $racing_count_submit = document.getElementById("racing-count-submit");
+let $result;
 let cars = [];
 let racingCount = [];
+
+const init = () => {
+  const $app = document.getElementById("app");
+  const resultDiv = document.createElement("div");
+  resultDiv.id = "result";
+
+  $app.appendChild(resultDiv);
+
+  $result = document.getElementById("result");
+};
 
 const isCarInputsSplitBySpace = carInputs => {
   let isSplitBySpace = false;
@@ -78,9 +89,11 @@ const makeCarArray = carInputs => {
 };
 
 const playCarsOneRound = () => {
-  cars.map(car => {
+  cars.forEach(car => {
     car.playOneRound();
+    $result.innerHTML += car.getState();
   });
+  $result.innerHTML += "<br/>";
 };
 
 const playGame = racingCount => {
@@ -112,3 +125,5 @@ const onClickSubmitRacingCount = () => {
 
 $car_names_submit.addEventListener("click", onClickSubmitCarNames);
 $racing_count_submit.addEventListener("click", onClickSubmitRacingCount);
+
+init();
