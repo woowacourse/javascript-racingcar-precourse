@@ -2,8 +2,9 @@ export const GAME = {
   MAX_CAR_NAME_LENGTH: 5,
   MIN_CAR_NAME_LENGTH: 1,
   MIN_INPUT_COUNT: 1,
-  MIN_SCORE: 0,
-  MAX_SCORE: 9,
+  MIN_RANGE: 0,
+  MAX_RANGE: 9,
+  MOVING_RANGE: 4,
 };
 
 export const ERR_MESSAGE = {

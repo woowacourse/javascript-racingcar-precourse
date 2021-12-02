@@ -1,4 +1,5 @@
 import { GAME, ERR_MESSAGE } from '../utils/constant.js';
+import startRacingGame from '../game/startRacingGame.js';
 
 function isValidRacingCount(racingCount) {
   if (racingCount < GAME.MIN_INPUT_COUNT) {
@@ -15,4 +16,5 @@ export default function handleRacingCountSubmit(event, carObjectList) {
   if (!isValidRacingCount(racingCount)) {
     return;
   }
+  startRacingGame(racingCount, carObjectList);
 }
