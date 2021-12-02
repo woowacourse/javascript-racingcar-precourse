@@ -15,6 +15,7 @@ export default class RacingCarGame extends Component {
       cars: [],
       racingCount: 0,
       gameStatus: GAME_STATUS.NAMES_REQUIRED,
+      gameResult: [],
     };
   }
 
@@ -38,6 +39,22 @@ export default class RacingCarGame extends Component {
   }
 
   onSubmitRacingCount(count) {
-    this.setState({ count, gameStatus: GAME_STATUS.END });
+    const gameResult = this.play(count);
+    this.setState({ count, gameStatus: GAME_STATUS.END, gameResult });
+  }
+
+  play(count) {
+    const gameResult = [];
+    const { cars } = this.state;
+    for (let i = 0; i < count; i += 1) {
+      const carNameDistanceMap = new Map();
+      cars.forEach(car => {
+        car.goForward();
+        const { name, distance } = car.getCarInformaiton();
+        carNameDistanceMap.set(name, distance);
+      });
+      gameResult.push(carNameDistanceMap);
+    }
+    return gameResult;
   }
 }
