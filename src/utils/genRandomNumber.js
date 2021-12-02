@@ -1,7 +1,5 @@
 import { MIN_NUMBER, MAX_NUMBER } from './constants.js';
 
-const genRandomNumber = () => {
+export const genRandomNumber = () => {
   return MissionUtils.Random.pickNumberInRange(MIN_NUMBER, MAX_NUMBER);
 };
-
-export default genRandomNumber;
