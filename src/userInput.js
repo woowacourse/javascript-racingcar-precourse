@@ -10,6 +10,14 @@ export default class UserInput {
     this.racingCountSubmitEl = document.querySelector(
       ELEMENT_ID.racingCountSubmitId,
     );
+    this.bindEventListener();
+  }
+
+  bindEventListener() {
+    this.carNameSubmitEl.addEventListener('click', (e) => {
+      e.preventDefault();
+      this.isValidCarNames();
+    });
   }
 
   getCarNameArray() {
