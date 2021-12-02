@@ -10,10 +10,21 @@ export default class Input {
     this.racingCount = number;
   }
 
+  isBlankExist(carNamesArray) {
+    let isBlank = false;
+    carNamesArray.forEach(x => {
+      if (x === '' || x.includes(' ')) {
+        isBlank = true;
+      }
+    });
+
+    return isBlank;
+  }
+
   isLengthInRange(carNamesArray) {
     let isInRange = true;
     carNamesArray.forEach(x => {
-      if (x.length > 5 || x.length === 0) {
+      if (x.length > 5) {
         isInRange = false;
       }
     });
@@ -29,15 +40,15 @@ export default class Input {
 
   isCarNamesValid(carNamesInputValue) {
     const carNamesArray = carNamesInputValue.split(',');
-    let isValid = true;
-
-    if (!this.isLengthInRange(carNamesArray)) {
+    let isValid = false;
+    if (this.isBlankExist(carNamesArray)) {
+      alert(ALERT_MESSAGE.blankExist);
+    } else if (!this.isLengthInRange(carNamesArray)) {
       alert(ALERT_MESSAGE.lengthNotInRange);
-      isValid = false;
     } else if (this.isNameDuplicated(carNamesArray)) {
       alert(ALERT_MESSAGE.nameDuplicated);
-      isValid = false;
-    } else if (isValid) {
+    } else {
+      isValid = true;
       this.carNamesArray = carNamesArray;
     }
 
@@ -56,16 +67,15 @@ export default class Input {
     return isValid;
   }
 
-  isZero(racingCountInputValue) {
-    return parseInt(racingCountInputValue, 10) === 0;
+  isEmptyOrZero(racingCountInputValue) {
+    return parseInt(racingCountInputValue, 10) === 0 || racingCountInputValue === '';
   }
 
   isRacingCountValid(racingCountInputValue) {
     let isValid = false;
-    if (!this.isNumeric(racingCountInputValue)) {
-      alert(ALERT_MESSAGE.notNumeric);
-    } else if (this.isZero(racingCountInputValue)) {
-      alert(ALERT_MESSAGE.isZero);
+
+    if (!this.isNumeric(racingCountInputValue) || this.isEmptyOrZero(racingCountInputValue)) {
+      alert(ALERT_MESSAGE.isNotValidNumber);
     } else {
       isValid = true;
     }
