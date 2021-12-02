@@ -41,9 +41,9 @@ const isCarInputsOverFiveLength = carInputs => {
   return isOverFiveLength;
 };
 
-const isInputCar = racingCountInput => {
+const isInputCar = cars => {
   let isInput = true;
-  if (racingCountInput === []) {
+  if (cars.length === 0) {
     alert(error_null_car_names);
     isInput = false;
   }
@@ -74,9 +74,9 @@ export const isValidCarInputs = carInputs => {
   return isValid;
 };
 
-export const isValidCountInput = racingCountInput => {
+export const isValidCountInput = (cars, racingCountInput) => {
   let isValid = true;
-  if (!isInputCar(racingCountInput)) {
+  if (!isInputCar(cars)) {
     isValid = false;
   } else if (!isIntergerInput(racingCountInput)) {
     isValid = false;

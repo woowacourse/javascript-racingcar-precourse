@@ -22,7 +22,7 @@ const onClickSubmitRacingCount = e => {
   RacingGame.resetGame();
 
   const racingCountInput = $racing_count_input.value;
-  if (isValidCountInput(racingCountInput)) {
+  if (isValidCountInput(RacingGame.cars, racingCountInput)) {
     const racingCount = parseInt(racingCountInput);
     RacingGame.playGame(racingCount);
   }
