@@ -3,6 +3,7 @@ import ResultComponent from './components/ResultComponent';
 import {
     $app,
     $countInputForm,
+    $countSubmitButton,
     $nameinputForm,
     $nameSubmitButton,
 } from './constants/index';
@@ -28,6 +29,7 @@ class RacingGame {
         $countInputForm.addEventListener('change', (ev) => {
             this.tryCount = ev.target.value * 1;
         });
+        $countSubmitButton.addEventListener('click', this.applyTryCount);
     }
 
     applyCarName() {
@@ -38,6 +40,18 @@ class RacingGame {
             );
         } else {
             this.carList = this.carNameList.map((name) => new Car(name));
+        }
+    }
+
+    applyTryCount() {
+        if (!this.isAvailable(this.tryCount)) alert('양의 정수를 입력해주세요');
+        else if (!this.isAvailable(this.carList))
+            alert('이름을 먼저 입력해주세요');
+        else {
+            this.resultComponent.setState({
+                gameHist: this.startGame(this.carList, this.tryCount),
+                winners: this.getWinners(this.carList),
+            });
         }
     }
 
@@ -56,6 +70,35 @@ class RacingGame {
         const resultElement = document.createElement('div');
         resultElement.id = 'result-box';
         return resultElement;
+    }
+
+    startGame(carList, tryCount) {
+        const gameHists = [];
+
+        for (let cnt = 0; cnt < tryCount; cnt++) {
+            carList.forEach((car) => car.tryMove());
+            gameHists.push(
+                carList.map((car) => ({
+                    name: car.name,
+                    move: car.move,
+                }))
+            );
+        }
+        return gameHists;
+    }
+
+    getWinners(carList) {
+        let winners = [];
+        let maxMove = 0;
+
+        carList.forEach((car) => {
+            if (maxMove < car.move) {
+                maxMove = car.move;
+                winners = [maxMove];
+            } else if (maxMove === car.move) {
+                winners.push(car.move);
+            }
+        });
     }
 }
 
