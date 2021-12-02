@@ -16,8 +16,7 @@ export default class CarNamesEvent {
   };
 
   alertMessage = () => {
-    console.log(this.errorMessage);
-    // alert(this.errorMessage);
+    alert(this.errorMessage);
     this.initializeCarNames();
   };
 
