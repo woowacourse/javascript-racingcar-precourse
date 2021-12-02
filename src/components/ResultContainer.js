@@ -2,30 +2,33 @@ const ResultContainer = ({ app, carNames, racingCount }) => {
   const resultContainer = document.createElement("div");
   resultContainer.setAttribute("id", "result-container");
   app.append(resultContainer);
-
   let maxMoveCount = 0;
-
-  //   console.log(MissionUtils.Random.pickNumberInRange(0, 9));
-  console.log(carNames, racingCount);
 
   const isMove = (randomNumber) => randomNumber >= 4;
 
-  for (let i = 0; i < racingCount; i++) {
-    let div1 = `<div style="margin: 10px 0;">`;
+  const roundRender = () => {
+    let items = ``;
 
     for (let car of carNames) {
       const randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
 
       if (isMove(randomNumber)) car.moveCount++;
-
       maxMoveCount = Math.max(maxMoveCount, car.moveCount);
-      div1 += `<p style="margin: 0;">${car.name}: ${"-".repeat(
-        car.moveCount
-      )}</p>`;
+
+      const { name, moveCount } = car;
+      items += `<p style="margin: 0;">${name}: ${"-".repeat(moveCount)}</p>`;
     }
-    div1 += `</div>`;
-    resultContainer.innerHTML += div1;
-  }
+
+    return items;
+  };
+
+  const render = () => {
+    for (let round = 0; round < racingCount; round++) {
+      resultContainer.innerHTML += `<div id="result-round" style="margin: 10px 0;">${roundRender()}</div>`;
+    }
+  };
+
+  render();
 
   console.log(maxMoveCount);
   console.log(carNames);
