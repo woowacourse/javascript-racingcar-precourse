@@ -62,8 +62,10 @@ class Game {
       }
       result += `<br/>`;
     }
+
+    result = `<div id="racing-result">${result}</div>`;
     this.setWinner();
-    result += `<div>최종 우승자: <span id="racing-winners">${this.winner.join(
+    result += `<div id="racing-final-winner">최종 우승자: <span id="racing-winners">${this.winner.join(
       ',',
     )}</span></div>`;
     $resultTitle.insertAdjacentHTML('afterend', result);
