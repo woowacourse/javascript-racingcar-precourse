@@ -18,15 +18,8 @@ export default function RacingCarGame() {
     UI.initSection();
   };
 
-  const isValidCarNames = string => {
-    if (isBlank(string)) return alert(ERROR.BLANK_SUBMIT);
-    if (isIncludeSpace(string)) return alert(ERROR.INCLUDE_SPACE);
-
-    const carNamesArray = splitUsingComma(string);
-    if (isDuplicated(carNamesArray)) return alert(ERROR.DUPLICATED);
-    if (isOverFiveLetters(carNamesArray)) return alert(ERROR.OVER_FIVE_LETTERS);
-
-    return true;
+  const activateEventListeners = () => {
+    $('#car-names-submit').onclick = handleCarNamesSubmit;
   };
 
   const handleCarNamesSubmit = e => {
@@ -40,8 +33,15 @@ export default function RacingCarGame() {
     UI.showRacingCountSection();
   };
 
-  const activateEventListeners = () => {
-    $('#car-names-submit').onclick = handleCarNamesSubmit;
+  const isValidCarNames = string => {
+    if (isBlank(string)) return alert(ERROR.BLANK_SUBMIT);
+    if (isIncludeSpace(string)) return alert(ERROR.INCLUDE_SPACE);
+
+    const carNamesArray = splitUsingComma(string);
+    if (isDuplicated(carNamesArray)) return alert(ERROR.DUPLICATED);
+    if (isOverFiveLetters(carNamesArray)) return alert(ERROR.OVER_FIVE_LETTERS);
+
+    return true;
   };
 
   init();
