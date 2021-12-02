@@ -31,6 +31,10 @@
 - 전진하는 조건을 판단하기 위한 랜덤 값은 `[MissionUtils` 라이브러리](https://github.com/woowacourse-projects/javascript-mission-utils#mission-utils)의 `Random.pickNumberInRange`를 사용해 구한다.
 - 전진하는 조건은 **0에서 9 사이에서 무작위 값을 구한 후 무작위 값이 4 이상일 경우**이다.
 
+## [ ] 전진하는 자동차 출력
+
+- 전진하는 자동차를 출력할 때 자동차 이름을 같이 출력한다.
+
 ## [ ] 우승자 판단
 
 - 가장 많이 이동한 자동차가 우승자이다.
@@ -38,7 +42,6 @@
 
 ## [ ] 결과 출력
 
-- 전진하는 자동차를 출력할 때 자동차 이름을 같이 출력한다.
 - **우승자가 여러 명일 경우 쉼표(,)를 이용하여 구분**한다.
 - 최종 우승자를 출력하는 span 태그는 `racing-winners` id값을 가진다.
 
