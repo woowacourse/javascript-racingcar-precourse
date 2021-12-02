@@ -1,11 +1,12 @@
 import Component from '../core/Component.js';
+import Car from '../core/Car.js';
+import CarNamesForm from './CarNamesForm.js';
 import { $ } from '../utils/dom.js';
 import { GAME_STATUS } from '../utils/constants.js';
 
 export default class RacingCarGame extends Component {
   initDoms() {
-    this.container = $('#car-names-form');
-    this._input = $('#car-names-input', this.container);
+    this.container = $('#app');
   }
 
   initState() {
@@ -14,5 +15,20 @@ export default class RacingCarGame extends Component {
       racingCount: 0,
       gameStatus: GAME_STATUS.NAMES_REQUIRED,
     };
+  }
+
+  initChildrens() {
+    const { gameStatus } = this.state;
+    this.childrens = [
+      new CarNamesForm({
+        gameStatus,
+        onSubmit: names => this.onSubmitCarNames(names),
+      }),
+    ];
+  }
+
+  onSubmitCarNames(names) {
+    const cars = names.map(name => new Car(name));
+    this.setState({ cars, gameStatus: GAME_STATUS.RACING_COUNT_REQUIRED });
   }
 }
