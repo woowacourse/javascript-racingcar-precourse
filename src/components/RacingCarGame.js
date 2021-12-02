@@ -1,6 +1,7 @@
 import Component from '../core/Component.js';
 import Car from '../core/Car.js';
 import CarNamesForm from './CarNamesForm.js';
+import RacingCountForm from './RacingCountForm.js';
 import { $ } from '../utils/dom.js';
 import { GAME_STATUS } from '../utils/constants.js';
 
@@ -23,6 +24,9 @@ export default class RacingCarGame extends Component {
       new CarNamesForm({
         gameStatus,
         onSubmit: names => this.onSubmitCarNames(names),
+      }),
+      new RacingCountForm({
+        gameStatus,
       }),
     ];
   }
