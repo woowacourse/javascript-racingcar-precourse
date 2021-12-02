@@ -2,12 +2,15 @@ import Component from '../core/Component.js';
 import Car from '../core/Car.js';
 import CarNamesForm from './CarNamesForm.js';
 import RacingCountForm from './RacingCountForm.js';
-import { $ } from '../utils/dom.js';
+import GameResult from './GameResult.js';
+import { $, createElement } from '../utils/dom.js';
 import { GAME_STATUS } from '../utils/constants.js';
 
 export default class RacingCarGame extends Component {
   initDoms() {
     this.container = $('#app');
+    const resultElem = createElement('game-result');
+    this.container.appendChild(resultElem);
   }
 
   initState() {
@@ -20,7 +23,7 @@ export default class RacingCarGame extends Component {
   }
 
   initChildrens() {
-    const { gameStatus } = this.state;
+    const { gameStatus, gameResult } = this.state;
     this.childrens = [
       new CarNamesForm({
         gameStatus,
@@ -29,6 +32,10 @@ export default class RacingCarGame extends Component {
       new RacingCountForm({
         gameStatus,
         onSubmit: count => this.onSubmitRacingCount(count),
+      }),
+      new GameResult({
+        gameStatus,
+        gameResult,
       }),
     ];
   }
