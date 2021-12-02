@@ -26,7 +26,7 @@ export const addRacingCountSubmitClickEvent = input => {
     event.preventDefault();
     if (input.isRacingCountValid($racingCountInput.value)) {
       input.setRacingCount(parseInt($racingCountInput.value, 10));
-      playRacing();
+      playRacing(input);
       $racingCountSubmit.disabled = true;
     } else {
       $racingCountInput.value = '';

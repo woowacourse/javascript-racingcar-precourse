@@ -3,3 +3,8 @@ export const ALERT_MESSAGE = {
   nameDuplicated: '중복된 자동차 이름이 있습니다.',
   notNumeric: '숫자가 아닌 문자가 포함되어 있습니다.',
 };
+
+export const GAME_RULE = {
+  randomMin: 0,
+  randomMax: 9,
+};
