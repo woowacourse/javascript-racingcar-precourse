@@ -1,4 +1,5 @@
 import { showElement } from '../utils/setAttribute.js';
+import handleRacingCountSubmit from '../input/handleRacingCount.js';
 
 export default function getRacingCount(carObjectList) {
   const $racingCountTitle = document.querySelector('#racing-count-title');
@@ -8,7 +9,8 @@ export default function getRacingCount(carObjectList) {
   showElement($racingCountTitle);
   showElement($racingCountForm);
 
-  // $racingCountSubmit.addEventListener('click', () =>
-  //   handleRacingCountSubmit(event, carObjectList),
-  // );
+  $racingCountSubmit.addEventListener('click', () =>
+    // eslint-disable-next-line no-restricted-globals
+    handleRacingCountSubmit(event, carObjectList),
+  );
 }
