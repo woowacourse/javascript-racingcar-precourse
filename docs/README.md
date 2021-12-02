@@ -27,7 +27,7 @@
 
 ### 기타
 
-- [ ] DOM Selector 유틸 함수
+- [x] DOM Selector 유틸 함수
 
 <br>
 
