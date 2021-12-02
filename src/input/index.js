@@ -9,7 +9,7 @@ export default class Input {
   isLengthInRange(carNamesArray) {
     let isInRange = true;
     carNamesArray.forEach(x => {
-      if (x.length > 5) {
+      if (x.length > 5 || x.length === 0) {
         isInRange = false;
       }
     });
@@ -28,15 +28,31 @@ export default class Input {
     let isValid = true;
 
     if (!this.isLengthInRange(carNamesArray)) {
-      alert(ALERT_MESSAGE.LengthNotInRange);
+      alert(ALERT_MESSAGE.lengthNotInRange);
       isValid = false;
     } else if (this.isNameDuplicated(carNamesArray)) {
-      alert(ALERT_MESSAGE.NameDuplicated);
+      alert(ALERT_MESSAGE.nameDuplicated);
       isValid = false;
     } else if (isValid) {
       this.carNamesList = carNamesArray;
     }
 
     return isValid;
+  }
+
+  isNumeric(racingCountInputValue) {
+    let isValid = true;
+    let i;
+    for (i = 0; i < racingCountInputValue.length; i += 1) {
+      if (Number.isNaN(parseInt(racingCountInputValue[i], 10))) {
+        isValid = false;
+      }
+    }
+
+    return isValid;
+  }
+
+  isRacingCountValid(racingCountInputValue) {
+    return this.isNumeric(racingCountInputValue);
   }
 }
