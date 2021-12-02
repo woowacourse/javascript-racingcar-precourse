@@ -1,5 +1,6 @@
 import { $ } from './common.js';
 import { ALERT_MESSAGE } from '../constants/index.js';
+import { playRacing } from './play-racing.js';
 
 export const addCarNamesSubmitClickEvent = input => {
   const $carNamesSubmit = $('car-names-submit');
@@ -24,6 +25,8 @@ export const addRacingCountSubmitClickEvent = input => {
   $racingCountSubmit.addEventListener('click', event => {
     event.preventDefault();
     if (input.isRacingCountValid($racingCountInput.value)) {
+      input.setRacingCount(parseInt($racingCountInput.value, 10));
+      playRacing();
       $racingCountSubmit.disabled = true;
     } else {
       $racingCountInput.value = '';

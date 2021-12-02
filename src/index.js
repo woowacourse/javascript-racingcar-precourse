@@ -1,5 +1,5 @@
 import Input from './input/index.js';
-import { $ } from './utils/common.js';
+import { $, createElementWithContents } from './utils/common.js';
 import {
   addCarNamesSubmitClickEvent,
   addRacingCountSubmitClickEvent,
@@ -10,7 +10,14 @@ export default class RacingGame {
   constructor() {
     this.input = new Input();
     this.addEventListeners();
+    this.initGame();
+  }
+
+  initGame() {
+    const resultDiv = createElementWithContents('div');
+    resultDiv.id = 'result';
     $('racing-count-submit').disabled = true;
+    $('app').appendChild(resultDiv);
   }
 
   addEventListeners() {

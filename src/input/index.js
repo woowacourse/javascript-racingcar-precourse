@@ -6,6 +6,10 @@ export default class Input {
     this.racingCount = 0;
   }
 
+  setRacingCount(number) {
+    this.racingCount = number;
+  }
+
   isLengthInRange(carNamesArray) {
     let isInRange = true;
     carNamesArray.forEach(x => {
