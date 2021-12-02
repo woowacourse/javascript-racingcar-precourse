@@ -12,6 +12,6 @@ export const CAR_NAME_RULES = {
 };
 
 export const ERR_MESSAGE = {
-  carNameLength: '1~5 사이의 이름을 사용해주세요.',
+  carNameLength: '1~5글자 사이의 이름을 사용해주세요.',
   carNameSame: '중복되지 않는 이름을 사용해주세요.',
 };
