@@ -21,7 +21,30 @@ export default class InputCarName {
     splitCarNames(carnames) {
         const carNamesArray = carnames.split(',');
         // this.carNames = carNamesArray.slice();
+        this.isValidNames(carNamesArray);
 
         return;
+    }
+
+    isValidNames(carNamesArray) {
+        const arrayLength = carNamesArray.length;
+
+        if(carNamesArray[0] === "") {
+            return alert("자동차 이름을 입력해주세요!");
+        }
+
+        for(let i = 0; i < arrayLength; i++) {
+            if(carNamesArray[i].length > 5) {
+                return alert("5자 이하의 자동차 이름을 입력해주세요!");
+            }
+            if(carNamesArray[i].indexOf(" ") !== -1) {
+                return alert("공백이 없는 이름을 입력해주세요!");
+            }
+            if(carNamesArray[arrayLength - 1] === "") {
+                return alert("마지막 자동차 이름을 입력해주세요!")
+            }
+        }
+
+        return true;
     }
 }
