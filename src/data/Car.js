@@ -5,6 +5,6 @@ export class Car {
   }
 
   move() {
-    this.datance++;
+    this.distance++;
   }
 }
