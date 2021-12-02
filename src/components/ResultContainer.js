@@ -27,6 +27,11 @@ const ResultContainer = ({ app, carNames, racingCount }) => {
 
   const isMove = (randomNumber) => randomNumber >= 4;
 
+  const roundDetailRender = (car) => {
+    const { name, moveCount } = car;
+    return `<p style="margin: 0;">${name}: ${"-".repeat(moveCount)}</p>`;
+  };
+
   const roundRender = () => {
     let items = ``;
 
@@ -34,10 +39,9 @@ const ResultContainer = ({ app, carNames, racingCount }) => {
       const randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
 
       if (isMove(randomNumber)) car.moveCount++;
-      maxMoveCount = Math.max(maxMoveCount, car.moveCount);
 
-      const { name, moveCount } = car;
-      items += `<p style="margin: 0;">${name}: ${"-".repeat(moveCount)}</p>`;
+      maxMoveCount = Math.max(maxMoveCount, car.moveCount);
+      items += roundDetailRender(car);
     }
 
     return items;
