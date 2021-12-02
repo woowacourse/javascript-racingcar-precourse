@@ -49,6 +49,14 @@ DOM이 가지는 이벤트는 클래스에 종속시키지 않고 별도의 hand
 
 <br>
 
+<div align=center>
+
+<img src="./images/flow.jpg" width="800">
+
+</div>
+
+<br>
+
 ### 🛠 환경 설정
 > 일관성 있는 코드를 위해 ESLint, Prettier를 설정하고 Airbnb 스타일을 적용한 뒤 추가적인 규칙을 정의합니다.
 
@@ -102,8 +110,8 @@ DOM이 가지는 이벤트는 클래스에 종속시키지 않고 별도의 hand
 <br>
 
 > 커밋 목록
-- [**첫 번째 커밋 바로가기**](https://github.com/InSeong-So/javascript-racingcar-precourse/commit/67eb03f05f4f408d5349acc2dea534f9e91e6e8a)
-- [**두 번째 커밋 바로가기**](https://github.com/InSeong-So/javascript-racingcar-precourse/commit/f1e6c89d119db5d7eccc1685c881137d3a443b7a)
+- [**✒️Feat: 자동차 이름 제출 이벤트 바로가기**](https://github.com/InSeong-So/javascript-racingcar-precourse/commit/67eb03f05f4f408d5349acc2dea534f9e91e6e8a)
+- [**✒️Feat: 자동차 이름 제출 이벤트 2 바로가기**](https://github.com/InSeong-So/javascript-racingcar-precourse/commit/f1e6c89d119db5d7eccc1685c881137d3a443b7a)
 
 <hr>
 <br>
@@ -125,7 +133,7 @@ DOM이 가지는 이벤트는 클래스에 종속시키지 않고 별도의 hand
 <br>
 
 > 커밋 목록
-- [**첫 번째 커밋 바로가기**](https://github.com/InSeong-So/javascript-racingcar-precourse/commit/909a1bfd7215306776db356feace35b8972cbb9a)
+- [**✒️Feat: 레이싱 횟수 입력 이벤트 바로가기**](https://github.com/InSeong-So/javascript-racingcar-precourse/commit/909a1bfd7215306776db356feace35b8972cbb9a)
 
 <hr>
 <br>
@@ -145,8 +153,8 @@ DOM이 가지는 이벤트는 클래스에 종속시키지 않고 별도의 hand
 <br>
 
 > 커밋 목록
-- [**첫 번째 커밋 바로가기**](https://github.com/InSeong-So/javascript-racingcar-precourse/commit/909a1bfd7215306776db356feace35b8972cbb9a)
-- [**두 번째 커밋 바로가기**](https://github.com/InSeong-So/javascript-racingcar-precourse/commit/eeb81b3e8f01312c3fc3d0fd9c26907bd482dd8c)
+- [**✒️Feat: 레이싱 횟수 입력 이벤트 바로가기**](https://github.com/InSeong-So/javascript-racingcar-precourse/commit/909a1bfd7215306776db356feace35b8972cbb9a)
+- [**📝Docs: 기능 목록 수정 바로가기**](https://github.com/InSeong-So/javascript-racingcar-precourse/commit/eeb81b3e8f01312c3fc3d0fd9c26907bd482dd8c)
 
 <hr>
 <br>
@@ -178,7 +186,7 @@ DOM이 가지는 이벤트는 클래스에 종속시키지 않고 별도의 hand
 <br>
 
 > 커밋 목록
-- [**첫 번째 커밋 바로가기**](https://github.com/InSeong-So/javascript-racingcar-precourse/commit/44cbca2b9865cee66a3d17249dd8af7411bab6b7)
+- [**✒️Feat: 게임 진행 바로가기**](https://github.com/InSeong-So/javascript-racingcar-precourse/commit/44cbca2b9865cee66a3d17249dd8af7411bab6b7)
 
 <hr>
 <br>
@@ -188,20 +196,72 @@ DOM이 가지는 이벤트는 클래스에 종속시키지 않고 별도의 hand
 
 **사전 정의**
 - [ ] ~~1. **div** 태그, 선택자 `id="racing-result"`에 span 영역을 그립니다.~~
-- [ ] 2. 전진 횟수가 가장 높은 자동차가 우승이며, 해당 자동차의 텍스트를 span 영역에 표시합니다.
-  - [ ] 우승은 여럿일 수 있습니다.
-  - [ ] 전부 전진 횟수가 동일하거나 존재하지 않는다면 모두가 우승자입니다.
+- [x] 2. 전진 횟수가 가장 높은 자동차가 우승이며, 해당 자동차의 텍스트를 span 영역에 표시합니다.
+  - [x] 우승은 여럿일 수 있습니다.
+  - [x] 전부 전진 횟수가 동일하거나 존재하지 않는다면 모두가 우승자입니다.
 
 **추가 사항**
 - *1번의 경우 중복되는 기능이므로 삭제합니다.*
 
-- [ ] 렌더링 클래스를 구현하여 아래 책임을 위임합니다.
-  - [ ] 게임이 재시작되면 결과창을 초기화시키는 메서드를 구현합니다.
-  - [ ] 렌더링 클래스는 레이스마다 결과를 저장하는 div와 결과를 출력할 때 사용할 h4의 자식 중 최상위인 div를 멤버 변수로 갖습니다.
-  - [ ] 횟수가 전부 소진되면 h4 자식 중 최상위 div에 레이스별 결과가 저장된 멤버 변수를 appendChild합니다.
-  - [ ] 결과는 span `id="racing-winners"` 태그에 RacingGame 클래스에서 전달받은 winners 텍스트를 표시하고 span 태그를 h4 영역에 appendChild 합니다.
-  - [ ] 결과를 렌더링하기 전 winners 텍스트를 span 태그로 변환하는 기능을 구현합니다.
-- [ ] 렌더링 클래스는 결과를 DOM에 반영해야 하므로 타겟 Element 객체가 필요합니다. RacingGame에서 전달합니다.
+- [x] 렌더링 클래스를 구현하여 아래 책임을 위임합니다.
+  - [x] 게임이 재시작되면 결과창을 초기화시키는 메서드를 구현합니다.
+  - [x] 렌더링 클래스는 레이스마다 결과를 저장하는 div와 결과를 출력할 때 사용할 h4의 자식 중 최상위인 div를 멤버 변수로 갖습니다.
+  - [x] 횟수가 전부 소진되면 h4 자식 중 최상위 div에 레이스별 결과가 저장된 멤버 변수를 appendChild합니다.
+  - [x] 결과는 span `id="racing-winners"` 태그에 RacingGame 클래스에서 전달받은 winners 텍스트를 표시하고 span 태그를 h4 영역에 appendChild 합니다.
+  - [x] 결과를 렌더링하기 전 winners 텍스트를 span 태그로 변환하는 기능을 구현합니다.
+- [x] 렌더링 클래스는 결과를 DOM에 반영해야 하므로 타겟 Element 객체가 필요합니다. RacingGame에서 전달합니다.
+
+<br>
+
+> 커밋 목록
+- [**✒️Feat: Render Class 커밋 바로가기**](https://github.com/InSeong-So/javascript-racingcar-precourse/commit/9af0001421566cb2a27dd37f6bac500d4c10376b)
+- [**✒️Feat: 게임 진행 2 바로가기**](https://github.com/InSeong-So/javascript-racingcar-precourse/commit/e9e97f76e61d9b4f6def862dc22d2a51ef6168ce)
 
 <hr>
+<br>
+
+## 3️⃣ 디렉토리 구조
+```
+│  .eslintrc.js
+│  .gitignore
+│  .npmrc
+│  cypress.json
+│  index.html
+│  LICENSE
+│  package-lock.json
+│  package.json
+│  README.md
+│
+├─docs
+│  │  README.md
+│  │
+│  └─images
+│          flow.jpg
+│
+├─images
+│      racingcar_icon.png
+│      result.gif
+│      result.jpg
+│      test_result.png
+│
+├─src
+│  │  index.js
+│  │
+│  ├─common
+│  │      utils.js
+│  │      validations.js
+│  │
+│  ├─components
+│  │      Car.js
+│  │      index.js
+│  │      RacingGame.js
+│  │      Render.js
+│  │
+│  └─constants
+│          index.js
+│
+└─test
+        app.spec.js
+```
+
 <br>
