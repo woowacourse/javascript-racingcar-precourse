@@ -23,6 +23,7 @@ export function checkCarNames() {
     const $carNameInput = document.querySelector('#car-names-input');
     const $racingCountSubmit = document.querySelector('#racing-count-submit')
     const $carNameSubmit = document.querySelector('#car-names-submit')
+    const $racingCountInput = document.querySelector('#racing-count-input')
 
 
 
@@ -37,7 +38,7 @@ export function checkCarNames() {
     }
     else{
 
-
+    enalbedElement($racingCountInput)
     enalbedElement($racingCountSubmit)
     disabledElement($carNameSubmit)
     disabledElement($carNameInput)
