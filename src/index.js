@@ -7,6 +7,7 @@ import {
   isOverFiveLetters,
 } from './utils.js';
 import { default as UI } from './DOMUtils.js';
+import { ERROR } from './constants.js';
 
 export default function RacingCarGame() {
   const init = () => {
@@ -15,12 +16,12 @@ export default function RacingCarGame() {
   };
 
   const isValidCarNames = string => {
-    if (isBlank(string)) return alert('빈칸으로 제출 하실 수 없습니다.');
-    if (isIncludeSpace(string)) return alert('공백 입력을 하실 수 없습니다.');
+    if (isBlank(string)) return alert(ERROR.BLANK_SUBMIT);
+    if (isIncludeSpace(string)) return alert(ERROR.INCLUDE_SPACE);
 
     const carNamesArray = splitUsingComma(string);
-    if (isDuplicated(carNamesArray)) return alert('중복 입력을 하실 수 없습니다.');
-    if (isOverFiveLetters(carNamesArray)) return alert('이름은 5자 이하만 가능합니다.');
+    if (isDuplicated(carNamesArray)) return alert(ERROR.DUPLICATED);
+    if (isOverFiveLetters(carNamesArray)) return alert(ERROR.OVER_FIVE_LETTERS);
 
     return true;
   };
