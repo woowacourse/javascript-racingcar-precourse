@@ -11,20 +11,20 @@ export default class Controller {
     this.view.initView();
     this.view.hideElement();
     this.view.preventPageRefresh();
-    this.view.bindCreateCarList(this.createCarList.bind(this));
+    this.view.bindCreateCarList(this.addCars.bind(this));
     this.view.bindStartRace(this.startRace.bind(this));
   }
 
-  createCarList(nameList) {
-    this.model.createCarList(nameList, () => {
+  addCars(nameList) {
+    this.model.initCarList(nameList, () => {
       this.view.showRacingCountSection();
     });
   }
 
   startRace(racingCount) {
-    this.model.setRacingCount(racingCount);
-    this.model.startRace((raceResultList, winnerNameList) => {
-      this.view.renderFinalWinnerSection({ raceResultList, winnerNameList });
+    this.model.updateRacingCount(racingCount);
+    this.model.startRace((result) => {
+      this.view.render(result);
     });
   }
 }

@@ -6,20 +6,20 @@ function paragraphTemplate(raceResult) {
   return `<p>${stringList.join('<br>')}</p>`;
 }
 
-function finalWinnerTemplate(winnerNameList) {
-  const winnerMessage = winnerNameList.join(',');
+function finalWinnerTemplate(nameList) {
+  const names = nameList.join(',');
 
-  return `<p>최종 우승자: <span id="racing-winners">${winnerMessage}</span></p>`;
+  return `<p>최종 우승자: <span id="racing-winners">${names}</span></p>`;
 }
 
 const template = {
-  resultTemplate(raceResultList, winnerNameList) {
+  resultTemplate(raceResultList, finalWinnerNameList) {
     const paragraphList = raceResultList.reduce(
       (acc, raceResult) => acc + paragraphTemplate(raceResult),
       ''
     );
 
-    return `${paragraphList}${finalWinnerTemplate(winnerNameList)}`;
+    return `${paragraphList}${finalWinnerTemplate(finalWinnerNameList)}`;
   },
 };
 

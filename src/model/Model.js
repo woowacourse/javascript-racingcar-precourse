@@ -6,32 +6,48 @@ export default class Model {
     this.racingCount = 0;
   }
 
-  createCarList(nameList, callback) {
+  initCarList(nameList, callback) {
     this.carList = nameList.map((name) => new Car(name));
 
     callback();
   }
 
-  setRacingCount(racingCount) {
+  updateRacingCount(racingCount) {
     this.racingCount = racingCount;
   }
 
-  startRace(callback) {
-    this.carList.forEach((car) => car.init());
+  race() {
+    return this.carList.map((car) => car.race());
+  }
 
+  getRaceResult() {
     const raceResultList = [];
 
     for (let idx = 0; idx < this.racingCount; idx += 1) {
-      const raceResult = this.carList.map((car) => car.race());
+      const raceResult = this.race();
 
       raceResultList.push(raceResult);
     }
 
+    return raceResultList;
+  }
+
+  getFinalWinnerNameList() {
     const maxDistance = Math.max(...this.carList.map((car) => car.distance));
-    const winnerNameList = this.carList
+    return this.carList
       .filter((car) => car.distance === maxDistance)
       .map((winner) => winner.name);
+  }
 
-    callback(raceResultList, winnerNameList);
+  initDistance() {
+    this.carList.forEach((car) => car.init());
+  }
+
+  startRace(callback) {
+    this.initDistance();
+    const raceResultList = this.getRaceResult();
+    const finalWinnerNameList = this.getFinalWinnerNameList();
+
+    callback({ raceResultList, finalWinnerNameList });
   }
 }

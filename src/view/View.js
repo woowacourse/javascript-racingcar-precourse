@@ -1,6 +1,6 @@
 /* eslint-disable class-methods-use-this */
 import { isValidCarNames, isRacingCountValid } from '../utils/validations.js';
-import { $ } from '../utils/domHelpers.js';
+import $ from '../utils/domHelpers.js';
 import template from '../template/template.js';
 import {
   ERROR_WRONG_INPUT_CAR_NAMES,
@@ -66,11 +66,11 @@ export default class View {
     });
   }
 
-  renderFinalWinnerSection({ raceResultList, winnerNameList }) {
+  render({ raceResultList, finalWinnerNameList }) {
     $('#result-heading').style.visibility = 'visible';
     $('#result-div').innerHTML = template.resultTemplate(
       raceResultList,
-      winnerNameList
+      finalWinnerNameList
     );
   }
 }
