@@ -1,4 +1,4 @@
-import { ELEMENT_ID, CAR_NAME_RULES, ERR_MESSAGE } from './constant';
+import { ELEMENT_ID, CAR_NAME_RULES, ERR_MESSAGE } from './constant.js';
 
 export default class UserInput {
   constructor() {
@@ -19,18 +19,18 @@ export default class UserInput {
   }
 
   isVaildCarNameLength() {
-    let result = true;
-    this.getCarNameArray().forEach((carName) => {
+    const carNameArray = this.getCarNameArray();
+    for (let i = 0; i < carNameArray.length; i += 1) {
       if (
-        carName.length < CAR_NAME_RULES.minLength ||
-        carName.length > CAR_NAME_RULES.maxLength
+        carNameArray[i].length < CAR_NAME_RULES.minLength ||
+        carNameArray[i].length > CAR_NAME_RULES.maxLength
       ) {
         alert(ERR_MESSAGE.carNameLength);
-        result = false;
+        return false;
       }
-    });
+    }
 
-    return result;
+    return true;
   }
 
   isDifferntCarName() {
@@ -39,7 +39,6 @@ export default class UserInput {
       alert(ERR_MESSAGE.carNameSame);
       return false;
     }
-
     return true;
   }
 
