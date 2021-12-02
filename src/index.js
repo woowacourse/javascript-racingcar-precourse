@@ -21,6 +21,8 @@ export default function RacingCarGame() {
     const carNamesArray = splitUsingComma(string);
     if (isDuplicated(carNamesArray)) return alert('중복 입력을 하실 수 없습니다.');
     if (isOverFiveLetters(carNamesArray)) return alert('이름은 5자 이하만 가능합니다.');
+
+    return true;
   };
 
   const handleCarNamesSubmit = e => {
@@ -28,6 +30,8 @@ export default function RacingCarGame() {
 
     const carNames = $('#car-names-input').value;
     if (!isValidCarNames(carNames)) return;
+
+    console.log('검증을 완료하셨습니다.');
     // 2. 검증이 완료되면 자동차를 생성한다.
   };
 
