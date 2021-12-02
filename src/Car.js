@@ -9,6 +9,9 @@ export default class Car {
   play() {
     const random = MissionUtils.Random.pickNumberInRange(0, 9);
     if (random >= MOVE_CONDITION_NUMBER) this.step += 1;
-    console.log(this.name, random, this.step);
+  }
+
+  state() {
+    return `${this.name}: ${'-'.repeat(this.step)}`;
   }
 }

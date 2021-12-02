@@ -23,10 +23,10 @@ export default class RacingGame {
   }
 
   setResultElements() {
-    const resultDiv = document.createElement('div');
-    resultDiv.setAttribute('id', 'racing-result');
-    document.querySelector('#app').appendChild(resultDiv);
-    this.resultDiv = resultDiv;
+    const resultContainer = document.createElement('div');
+    resultContainer.setAttribute('id', 'game-result');
+    document.querySelector('#app').appendChild(resultContainer);
+    this.resultContainer = resultContainer;
   }
 
   onSubmitCarNames(event) {
@@ -53,10 +53,9 @@ export default class RacingGame {
 
   start() {
     if (!this.isReadyForGame()) return;
-    this.setGameValue();
-    for (let racing = 0; racing < this.racingCount; racing += 1) {
-      console.log(`=-=-=- racing ${racing} =-=-=-`);
-      this.racing();
+    this.initializeGame();
+    for (let order = 0; order < this.racingCount; order += 1) {
+      this.racing(order);
     }
   }
 
@@ -64,14 +63,29 @@ export default class RacingGame {
     return this.carsReady && this.racingCountReady;
   }
 
-  racing() {
-    this.cars.forEach((car) => car.play());
-  }
-
-  setGameValue() {
+  initializeGame() {
     const carNames = this.carNamesInput.value.split(',');
     const racingCount = Number(this.racingCountInput.value);
     this.cars = carNames.map((name) => new Car(name));
     this.racingCount = racingCount;
+    this.resultContainer.innerHTML = '';
+  }
+
+  racing(order) {
+    this.cars.forEach((car) => car.play());
+    this.printRacingResult(order);
+  }
+
+  printRacingResult(order) {
+    const racingResultContainer = document.createElement('p');
+    racingResultContainer.setAttribute('id', `racing-${order}-result`);
+    this.cars.forEach((car) => {
+      const carStateContainer = document.createElement('span');
+      const br = document.createElement('br');
+      carStateContainer.innerText = car.state();
+      racingResultContainer.appendChild(carStateContainer);
+      racingResultContainer.appendChild(br);
+    });
+    this.resultContainer.appendChild(racingResultContainer);
   }
 }
