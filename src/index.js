@@ -1,3 +1,5 @@
+import Car from "./Car.js";
+
 const $car_names_input = document.getElementById("car-names-input");
 const $car_names_submit = document.getElementById("car-names-submit");
 const $racing_count_input = document.getElementById("racing-count-input");
@@ -69,13 +71,19 @@ const checkIsValidCountInput = racingCountInput => {
   return isValid;
 };
 
+const makeCarArray = carInputs => {
+  let carArray = carInputs.split(",").map(carInput => new Car(carInput));
+
+  return carArray;
+};
+
 const onClickSubmitCarNames = () => {
   event.preventDefault();
 
   cars = [];
   const carInputs = $car_names_input.value;
   if (checkIsValidCarInputs(carInputs)) {
-    cars = carInputs.split(",");
+    cars = makeCarArray(carInputs);
   }
 };
 
