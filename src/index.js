@@ -9,10 +9,26 @@ export default function RacingGame() {
     return carNamesList;
   };
 
+  const isValidCarNameLength = (carNames) => {
+    for (const carName of carNames) {
+      if (carName.length > 5) {
+        return false;
+      }
+      if (carName.length < 1) {
+        return false;
+      }
+    }
+
+    return true;
+  };
+
   const onClickCarNamesSubmitButton = (event) => {
     event.preventDefault();
     const carNamesList = getCarNames();
-    console.log(carNamesList);
+
+    if (!isValidCarNameLength(carNamesList)) {
+      return;
+    }
   };
 
   carNamesSubmitButton.addEventListener("click", onClickCarNamesSubmitButton);
