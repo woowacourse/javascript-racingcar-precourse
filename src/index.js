@@ -20,7 +20,6 @@ export default class CarRacingGame {
 
       const carNamesString = $carNamesInput.value;
       if (!isValidCarNames(carNamesString)) {
-        alert('자동차 이름을 5자 이하로 콤마로 구분하여 입력해주세요.');
         return;
       }
       this.carNames = stringToArrayConverter(carNamesString);
@@ -33,12 +32,10 @@ export default class CarRacingGame {
     $racingCountSubmit.addEventListener('click', (event) => {
       event.preventDefault();
 
-      if (!isValidRacingCount($racingCountInput.value)) {
-        return alert('0이 아닌 숫자를 입력해주세요.');
+      if (!isValidRacingCount($racingCountInput.value) || !this.isValidCarNames()) {
+        return;
       }
-      if (!this.isValidCarNames()) {
-        return alert('자동차 이름을 입력해주세요.');
-      }
+
       this.racingCount = Number($racingCountInput.value);
       this.generateCar();
     });
@@ -46,6 +43,7 @@ export default class CarRacingGame {
 
   isValidCarNames() {
     if (this.carNames.length === 0) {
+      alert('자동차 이름을 입력해주세요.');
       return false;
     }
     return true;
