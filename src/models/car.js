@@ -1,4 +1,4 @@
-export default class Car {
+class Car {
   constructor(name) {
     this.name = name;
   }
@@ -7,3 +7,5 @@ export default class Car {
     return this.name;
   }
 }
+
+export default Car;
