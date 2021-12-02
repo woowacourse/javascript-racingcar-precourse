@@ -1,6 +1,7 @@
 import { $ } from './dom/dom.js';
 import getUserCarNamesInput from './modules/getUserCarNamesInput.js';
 import hideRacingCountShow from './modules/hideRacingCountShow.js';
+import showRacingCountInput from './modules/showRacingCountInput.js';
 
 export default function RacingcarGame() {
   this.racingInfoObject = {
@@ -14,8 +15,8 @@ export default function RacingcarGame() {
 
   const playGame = () => {
     this.racingInfoObject.carNames = getUserCarNamesInput();
-    console.log(this.racingInfoObject.carNames);
     if (this.racingInfoObject.carNames !== false) {
+      showRacingCountInput();
     }
     return;
   };
