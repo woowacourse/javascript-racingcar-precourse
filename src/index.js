@@ -5,6 +5,9 @@ const ERROR_MESSAGE = '입력 오류! 공백을 포함하지 않은 5자 이하 
 function onCarNamesSubmit(event, userInput) {
   event.preventDefault();
   userInput.setCarNames(document.querySelector('#car-names-input').value.split(','));
+  if (!userInput.getCarNames()) {
+    alert(ERROR_MESSAGE);
+  }
 }
 
 function onRepeatCountSubmit(event, userInput) {
