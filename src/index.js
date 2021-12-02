@@ -14,27 +14,24 @@ const App = () => {
   const app = document.querySelector("#app");
   const carNamesForm = document.querySelector("#car-names-form");
   const racingCountForm = document.querySelector("#racing-count-form");
-
+  //   console.log(MissionUtils.Random.pickNumberInRange(0, 9));
   const onSubmitCarNamesForm = (e) => {
     e.preventDefault();
     const carNamesInput = e.target[0];
     const { isError, errorMessage, carNames, isCorrectCarNames } =
       validateCarNames(carNamesInput.value);
 
-    if (isError) {
-      window.alert(errorMessage);
-      carNamesInput.value = "";
-      initialState.carNames = [];
-      initialState.isCorrectCarNames = isCorrectCarNames;
-      return;
-    }
-
+    initialState.isCorrectCarNames = isCorrectCarNames;
     initialState.carNames = carNames.map((name) => {
       const newCar = new Car(name);
       newCar["id"] = newId();
       return newCar;
     });
-    initialState.isCorrectCarNames = isCorrectCarNames;
+
+    if (isError) {
+      window.alert(errorMessage);
+      carNamesInput.value = "";
+    }
   };
 
   const onSubmitRacingCountForm = (e) => {
