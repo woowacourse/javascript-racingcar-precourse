@@ -1,4 +1,4 @@
-import { isNonInput, isValidLength, genCarInstances } from './data/input.js';
+import { isNonInput, isValidLength, genCarInstances } from './data/carNameInput.js';
 import { $, $$ } from './utils/dom.js';
 
 $$('form').forEach((selector) =>
