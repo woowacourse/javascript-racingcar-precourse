@@ -1,0 +1,25 @@
+{
+  "plugins": [
+    "prettier"
+  ],
+  "env": {
+    "browser": true,
+    "node": true,
+    "es2021": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "airbnb-base",
+    "plugin:prettier/recommended"
+  ],
+  "rules": {
+    "prettier/prettier": "error",
+    "no-unused-vars": "warn",
+    "arrow-parens": 1,
+    "object-shorthand": 1,
+    "quote-props": 1,
+    "no-array-constructor": 1,
+    "default-param-last": 1,
+    "no-param-reassign": 1
+  }
+}
