@@ -5,12 +5,14 @@ import {
   isDuplicated,
   splitUsingComma,
   isOverFiveLetters,
+  generateCars,
 } from './utils.js';
 import { default as UI } from './DOMUtils.js';
 import { ERROR } from './constants.js';
-import Car from './Car.js';
 
 export default function RacingCarGame() {
+  let cars = [];
+
   const init = () => {
     activateEventListeners();
     UI.hideSection();
@@ -32,6 +34,8 @@ export default function RacingCarGame() {
 
     const carNames = $('#car-names-input').value;
     if (!isValidCarNames(carNames)) return;
+
+    cars = generateCars(carNames);
   };
 
   const activateEventListeners = () => {

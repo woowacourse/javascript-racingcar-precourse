@@ -1,3 +1,5 @@
+import Car from './Car.js';
+
 export const $ = selector => document.querySelector(selector);
 
 export const isBlank = string => {
@@ -19,4 +21,8 @@ export const isDuplicated = array => {
 
 export const isOverFiveLetters = array => {
   return array.some(string => string.length > 5);
+};
+
+export const generateCars = string => {
+  return splitUsingComma(string).map(name => new Car(name));
 };
