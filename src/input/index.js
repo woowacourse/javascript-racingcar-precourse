@@ -56,7 +56,20 @@ export default class Input {
     return isValid;
   }
 
+  isZero(racingCountInputValue) {
+    return parseInt(racingCountInputValue, 10) === 0;
+  }
+
   isRacingCountValid(racingCountInputValue) {
-    return this.isNumeric(racingCountInputValue);
+    let isValid = false;
+    if (!this.isNumeric(racingCountInputValue)) {
+      alert(ALERT_MESSAGE.notNumeric);
+    } else if (this.isZero(racingCountInputValue)) {
+      alert(ALERT_MESSAGE.isZero);
+    } else {
+      isValid = true;
+    }
+
+    return isValid;
   }
 }

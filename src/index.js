@@ -3,7 +3,7 @@ import { $, createElementWithContents } from './utils/common.js';
 import {
   addCarNamesSubmitClickEvent,
   addRacingCountSubmitClickEvent,
-  addRacingCountInputKeydownEvent,
+  addRacingCountInputKeyupEvent,
 } from './utils/add-events.js';
 
 export default class RacingGame {
@@ -23,7 +23,7 @@ export default class RacingGame {
   addEventListeners() {
     addCarNamesSubmitClickEvent(this.input);
     addRacingCountSubmitClickEvent(this.input);
-    addRacingCountInputKeydownEvent();
+    addRacingCountInputKeyupEvent();
   }
 }
 new RacingGame();

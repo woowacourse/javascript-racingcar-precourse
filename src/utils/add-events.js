@@ -1,5 +1,4 @@
 import { $ } from './common.js';
-import { ALERT_MESSAGE } from '../constants/index.js';
 import playRacing from './play-racing.js';
 import showWinners from './show-winners.js';
 
@@ -32,18 +31,14 @@ export const addRacingCountSubmitClickEvent = input => {
       $racingCountSubmit.disabled = true;
     } else {
       $racingCountInput.value = '';
-      alert(ALERT_MESSAGE.notNumeric);
     }
   });
 };
 
-export const addRacingCountInputKeydownEvent = () => {
+export const addRacingCountInputKeyupEvent = () => {
   const $racingCountInput = $('racing-count-input');
-  const invalidChars = ['+', '-', 'e'];
 
-  $racingCountInput.addEventListener('keydown', event => {
-    if (invalidChars.includes(event.key)) {
-      event.preventDefault();
-    }
+  $racingCountInput.addEventListener('keyup', () => {
+    $racingCountInput.value = $racingCountInput.value.replace(/[^0-9]/g, '');
   });
 };
