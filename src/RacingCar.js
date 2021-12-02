@@ -1,5 +1,4 @@
-import Car from "./car.js";
-import { getWinnerString } from "./constant.js";
+import Car from "./Car.js";
 
 export default class RacingCar {
   constructor() {
@@ -34,6 +33,10 @@ export default class RacingCar {
     this.cars = carInputs.split(",").map(carInput => new Car(carInput));
   }
 
+  getWinnerString(winner) {
+    return `최종 우승자: <span id="racing-winners">${winner.join(", ")}</span>`;
+  }
+
   showWinner() {
     let maxDistance = 0;
     this.cars.forEach(
@@ -44,7 +47,7 @@ export default class RacingCar {
       .filter(car => car.moveDistance === maxDistance)
       .map(car => car.name);
 
-    this.$winnerDiv.innerHTML = getWinnerString(winner);
+    this.$winnerDiv.innerHTML = this.getWinnerString(winner);
   }
 
   playCarsOneRound() {

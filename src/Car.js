@@ -12,18 +12,18 @@ export default class Car {
   }
 
   getState() {
-    const dashBar = getDashBar(this.moveDistance);
+    const dashBar = this.getDashBar(this.moveDistance);
 
     return `<b>${this.name}</b>: ${dashBar}<br/>`;
   }
-}
 
-const getDashBar = count => {
-  let string = "";
-  let i = 0;
-  for (; i < count; i++) {
-    string += "-";
+  getDashBar(count) {
+    let string = "";
+    let i = 0;
+    for (; i < count; i++) {
+      string += "-";
+    }
+
+    return string;
   }
-
-  return string;
-};
+}
