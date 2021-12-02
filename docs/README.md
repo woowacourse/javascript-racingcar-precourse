@@ -18,7 +18,7 @@
 
 # 자동차 경주 게임 - DOM 연결
 
-- [ ] **DOM 객체 정의** HTML에서 id로 지정한 DOM elements를 로딩
+- [x] **DOM 객체 정의** HTML에서 id로 지정한 DOM elements를 로딩
 - [ ] **결과 출력용 DOM 출력값 템플릿** index.html에서 'racing-winners' id를 지정할 마땅한 태그가 없으므로, 직접 해당 id를 가진 element를 주입하기 위한 템플릿 정의
 - [ ] **입력 이벤트 핸들러 작성** 클라이언트가 제출 버튼을 누르는 onClick 이벤트 핸들러를 지정할 수 있도록 함
   - car-names-submit
