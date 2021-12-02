@@ -19,22 +19,23 @@ class GameController {
     return this.#racingCount;
   }
 
-  static isValidCars(cars) {
-    const names = cars.map((car) => car.name);
-
-    const isValidLength = names.map(
-      (name) => name.length > 0 && name.length <= CAR_NAME_MAX_LENGTH
+  static isCarNamesValidLength(cars) {
+    return cars.map(
+      (car) => car.name.length > 0 && car.name.length <= CAR_NAME_MAX_LENGTH
     );
-    const hasUniqueNames = names.length === new Set(names).size;
-
-    return isValidLength && hasUniqueNames;
   }
 
-  static isValidRacingCount(racingCount) {
-    const isInValidRange =
+  static isCarNamesUnique(cars) {
+    const names = cars.map((car) => car.name);
+    const hasUniqueNames = names.length === new Set(names).size;
+    return hasUniqueNames;
+  }
+
+  static isRacingCountInValidRange(racingCount) {
+    return (
       racingCount >= RACING_COUNT_RANGE.min &&
-      racingCount <= RACING_COUNT_RANGE.max;
-    return isInValidRange;
+      racingCount <= RACING_COUNT_RANGE.max
+    );
   }
 }
 
