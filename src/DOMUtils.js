@@ -1,12 +1,5 @@
 import { $ } from './utils.js';
 
-const DOMUtils = {
-  hideSection: () => {
-    hideRacingCountSection();
-    hideRacingResultSection();
-  },
-};
-
 const hideRacingCountSection = () => {
   $('#racing-count-title').style.display = 'none';
   $('#racing-count-form').style.display = 'none';
@@ -14,6 +7,18 @@ const hideRacingCountSection = () => {
 
 const hideRacingResultSection = () => {
   $('#racing-result-title').style.display = 'none';
+};
+
+const DOMUtils = {
+  initSection: () => {
+    hideRacingCountSection();
+    hideRacingResultSection();
+  },
+
+  disableCarNamesForm: () => {
+    $('#car-names-input').disabled = true;
+    $('#car-names-submit').disabled = true;
+  },
 };
 
 export default DOMUtils;

@@ -15,7 +15,7 @@ export default function RacingCarGame() {
 
   const init = () => {
     activateEventListeners();
-    UI.hideSection();
+    UI.initSection();
   };
 
   const isValidCarNames = string => {
@@ -36,6 +36,8 @@ export default function RacingCarGame() {
     if (!isValidCarNames(carNames)) return;
 
     cars = generateCars(carNames);
+
+    UI.disableCarNamesForm();
   };
 
   const activateEventListeners = () => {
