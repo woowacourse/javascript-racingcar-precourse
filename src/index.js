@@ -34,10 +34,10 @@ export default function RacingCarGame() {
 
     const carNames = $('#car-names-input').value;
     if (!isValidCarNames(carNames)) return;
-
     cars = generateCars(carNames);
 
     UI.disableCarNamesForm();
+    UI.showRacingCountSection();
   };
 
   const activateEventListeners = () => {

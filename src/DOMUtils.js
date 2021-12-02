@@ -19,6 +19,11 @@ const DOMUtils = {
     $('#car-names-input').disabled = true;
     $('#car-names-submit').disabled = true;
   },
+
+  showRacingCountSection: () => {
+    $('#racing-count-title').style.display = '';
+    $('#racing-count-form').style.display = '';
+  },
 };
 
 export default DOMUtils;
