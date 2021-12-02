@@ -1,6 +1,5 @@
-/* eslint-disable class-methods-use-this */
 import { isValidCarNames, isRacingCountValid } from '../utils/validations.js';
-import $ from '../utils/domHelpers.js';
+import { $, preventPageRefresh } from '../utils/domHelpers.js';
 import template from '../template/template.js';
 import {
   ERROR_WRONG_INPUT_CAR_NAMES,
@@ -8,56 +7,60 @@ import {
 } from '../config/config.js';
 
 export default class View {
-  initView() {
-    $('#app').insertAdjacentHTML('beforeend', `<div id="result-div"></div>`);
+  constructor() {
+    this.$app = $('#app');
+    this.$app.insertAdjacentHTML('beforeend', `<div id="result-div"></div>`);
+    this.$carNamesForm = $('#car-names-form');
+    this.$carNamesSubmit = $('#car-names-submit');
+    this.$carNamesInput = $('#car-names-input');
+    this.$racingCountHeading = $('#racing-count-heading');
+    this.$racingCountForm = $('#racing-count-form');
+    this.$racingCountSubmit = $('#racing-count-submit');
+    this.$racingCountInput = $('#racing-count-input');
+    this.$resultHeading = $('#result-heading');
+    this.$resultDiv = $('#result-div');
+
+    this.hideElement();
+
+    preventPageRefresh();
   }
 
   hideElement() {
-    $('#racing-count-heading').style.visibility = 'hidden';
-    $('#racing-count-form').style.visibility = 'hidden';
-    $('#result-heading').style.visibility = 'hidden';
+    this.$racingCountHeading.style.visibility = 'hidden';
+    this.$racingCountForm.style.visibility = 'hidden';
+    this.$resultHeading.style.visibility = 'hidden';
   }
 
   showRacingCountSection() {
-    $('#racing-count-heading').style.visibility = 'visible';
-    $('#racing-count-form').style.visibility = 'visible';
-  }
-
-  preventPageRefresh() {
-    $('#car-names-form').addEventListener('submit', (e) => {
-      e.preventDefault();
-    });
-
-    $('#racing-count-form').addEventListener('submit', (e) =>
-      e.preventDefault()
-    );
+    this.$racingCountHeading.style.visibility = 'visible';
+    this.$racingCountForm.style.visibility = 'visible';
   }
 
   bindCreateCarList(handler) {
-    $('#car-names-submit').addEventListener('click', () => {
-      const inputString = $('#car-names-input').value.trim();
+    this.$carNamesSubmit.addEventListener('click', () => {
+      const inputString = this.$carNamesInput.value.trim();
       const nameList = inputString.split(',').map((name) => name.trim());
 
       if (!isValidCarNames(nameList)) {
         alert(ERROR_WRONG_INPUT_CAR_NAMES);
-        $('#car-names-input').value = '';
+        this.$carNamesInput.value = '';
 
         return;
       }
 
-      $('#result-div').innerHTML = '';
+      this.$resultDiv.innerHTML = '';
 
       handler(nameList);
     });
   }
 
   bindStartRace(handler) {
-    $('#racing-count-submit').addEventListener('click', () => {
-      const racingCount = $('#racing-count-input').valueAsNumber;
+    this.$racingCountSubmit.addEventListener('click', () => {
+      const racingCount = this.$racingCountInput.valueAsNumber;
 
       if (!isRacingCountValid(racingCount)) {
         alert(ERROR_WRONG_INPUT_RACING_COUNT);
-        $('#racing-count-input').value = '';
+        this.$racingCountInput.value = '';
 
         return;
       }
@@ -67,8 +70,8 @@ export default class View {
   }
 
   render({ raceResultList, finalWinnerNameList }) {
-    $('#result-heading').style.visibility = 'visible';
-    $('#result-div').innerHTML = template.resultTemplate(
+    this.$resultHeading.style.visibility = 'visible';
+    this.$resultDiv.innerHTML = template.resultTemplate(
       raceResultList,
       finalWinnerNameList
     );

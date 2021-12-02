@@ -1,5 +1,3 @@
-/* eslint-disable class-methods-use-this */
-
 import View from '../view/View.js';
 import Model from '../model/Model.js';
 
@@ -8,9 +6,6 @@ export default class Controller {
     this.view = new View();
     this.model = new Model();
 
-    this.view.initView();
-    this.view.hideElement();
-    this.view.preventPageRefresh();
     this.view.bindCreateCarList(this.addCars.bind(this));
     this.view.bindStartRace(this.startRace.bind(this));
   }

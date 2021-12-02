@@ -1,4 +1,5 @@
 /* global MissionUtils */
+
 import {
   RANDOM_NUMBER_RANGE_MIN,
   RANDOM_NUMBER_RANGE_MAX,
