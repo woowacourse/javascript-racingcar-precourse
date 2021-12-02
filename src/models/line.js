@@ -15,6 +15,10 @@ class Line {
   get position() {
     return this.#position;
   }
+
+  forwardCarOneStep() {
+    this.#position += 1;
+  }
 }
 
 export default Line;
