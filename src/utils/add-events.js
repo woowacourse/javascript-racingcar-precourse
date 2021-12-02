@@ -25,6 +25,9 @@ export const addRacingCountSubmitClickEvent = input => {
     event.preventDefault();
     if (input.isRacingCountValid($racingCountInput.value)) {
       $racingCountSubmit.disabled = true;
+    } else {
+      $racingCountInput.value = '';
+      alert(ALERT_MESSAGE.notNumeric);
     }
   });
 };
