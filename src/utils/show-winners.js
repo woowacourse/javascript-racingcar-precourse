@@ -1,16 +1,16 @@
 import { $, createElementWithContents } from './common.js';
 
-const sortCarsByMove = carObjectList => carObjectList.sort((a, b) => b.move - a.move);
+const sortCarsByMove = carObjectArray => carObjectArray.sort((a, b) => b.move - a.move);
 
-const getWinnersObjectList = carObjectList => {
-  const sortedCarObjectList = sortCarsByMove(carObjectList);
-  const winnersMove = sortedCarObjectList[0].move;
+const getWinnersObjectArray = carObjectArray => {
+  const sortedCarObjectArray = sortCarsByMove(carObjectArray);
+  const winnersMove = sortedCarObjectArray[0].move;
 
-  return sortedCarObjectList.filter(x => x.move === winnersMove);
+  return sortedCarObjectArray.filter(x => x.move === winnersMove);
 };
 
-const makeWinnersMessage = winnersObjectList => {
-  const winnersArray = winnersObjectList.map(x => x.name);
+const makeWinnersMessage = winnersObjectArray => {
+  const winnersArray = winnersObjectArray.map(x => x.name);
   const winnersMessage = winnersArray.join(', ');
 
   return winnersMessage;
@@ -23,15 +23,15 @@ const makeWinnersSpan = winnersMessage => {
   return winnersSpan;
 };
 
-const makeWinnersComponent = winnersObjectList => {
-  const winnersMessage = makeWinnersMessage(winnersObjectList);
+const makeWinnersComponent = winnersObjectArray => {
+  const winnersMessage = makeWinnersMessage(winnersObjectArray);
   const resultDiv = $('result');
   const finalWinnersText = createElementWithContents('span', '최종 우승자: ');
   resultDiv.appendChild(finalWinnersText);
   resultDiv.appendChild(makeWinnersSpan(winnersMessage));
 };
 
-export default function showWinners(carObjectList) {
-  const winnersObjectList = getWinnersObjectList(carObjectList);
-  makeWinnersComponent(winnersObjectList);
+export default function showWinners(carObjectArray) {
+  const winnersObjectArray = getWinnersObjectArray(carObjectArray);
+  makeWinnersComponent(winnersObjectArray);
 }

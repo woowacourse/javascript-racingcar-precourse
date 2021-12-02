@@ -2,7 +2,7 @@ import { ALERT_MESSAGE } from '../constants/index.js';
 
 export default class Input {
   constructor() {
-    this.carNamesList = [];
+    this.carNamesArray = [];
     this.racingCount = 0;
   }
 
@@ -38,7 +38,7 @@ export default class Input {
       alert(ALERT_MESSAGE.nameDuplicated);
       isValid = false;
     } else if (isValid) {
-      this.carNamesList = carNamesArray;
+      this.carNamesArray = carNamesArray;
     }
 
     return isValid;

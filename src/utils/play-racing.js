@@ -1,17 +1,17 @@
 import Car from '../car/index.js';
 import { $, createElementWithContents } from './common.js';
 
-const makeCarObjectList = carNamesList => {
-  return carNamesList.map(x => new Car(x));
+const makeCarObjectArray = carNamesArray => {
+  return carNamesArray.map(x => new Car(x));
 };
 
-const moveCars = carObjectList => {
-  carObjectList.forEach(x => x.moveCar());
+const moveCars = carObjectArray => {
+  carObjectArray.forEach(x => x.moveCar());
 };
 
-const showCarStatus = carObjectList => {
+const showCarStatus = carObjectArray => {
   const resultDiv = $('result');
-  carObjectList.forEach(x => {
+  carObjectArray.forEach(x => {
     const carStatus = createElementWithContents('div', x.getCarStatus());
     resultDiv.appendChild(carStatus);
   });
@@ -19,12 +19,12 @@ const showCarStatus = carObjectList => {
 };
 
 export default function playRacing(input) {
-  const carObjectList = makeCarObjectList(input.carNamesList);
+  const carObjectArray = makeCarObjectArray(input.carNamesArray);
   let i;
   for (i = 0; i < input.racingCount; i += 1) {
-    moveCars(carObjectList);
-    showCarStatus(carObjectList);
+    moveCars(carObjectArray);
+    showCarStatus(carObjectArray);
   }
 
-  return carObjectList;
+  return carObjectArray;
 }
