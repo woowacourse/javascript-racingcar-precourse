@@ -3,22 +3,27 @@ import RacingCountEvent from './events/RacingCountEvent.js';
 
 class RacingCar {
   constructor() {
+    this.racingCountEvent = new RacingCountEvent();
+    this.carNamesEvent = new CarNamesEvent();
     this.main();
   }
 
-  racingCarSubmit = () => {
-    const racingCountEvent = new RacingCountEvent();
-    racingCountEvent.onClickSubmit();
+  racingCountInputFocus = () => {
+    this.racingCountEvent.onFocusInput();
+  };
+
+  racingCountSubmit = () => {
+    this.racingCountEvent.onClickSubmit();
   };
 
   carNamesSubmit = () => {
-    const carNamesEvent = new CarNamesEvent();
-    carNamesEvent.onClickSubmit();
+    this.carNamesEvent.onClickSubmit();
   };
 
   main = () => {
     this.carNamesSubmit();
-    this.racingCarSubmit();
+    this.racingCountSubmit();
+    this.racingCountInputFocus();
   };
 }
 

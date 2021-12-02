@@ -30,7 +30,7 @@
   - [✅ ] 예외 2. 시도할 횟수의 값이 정수가 아닌 경우
   - [✅ ] 예외 3. 시도할 횟수의 값이 양의 정수가 아닌 경우
 
-- [ ] 자동차 이름(car-name-input)을 입력하지 않고, 시도할 횟수(racing-count-input)에 focus할 경우 alert 메시지 전달
+- [✅ ] 자동차 이름(car-name-input)을 입력하지 않고, 시도할 횟수(racing-count-input)에 focus할 경우 alert 메시지 전달
 
   - focus를 자동차 이름(car-name-input)에 준다.
 

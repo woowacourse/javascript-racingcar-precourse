@@ -13,3 +13,7 @@ export const ERROR_MESSAGE = {
   TO_LONG: '자동차 이름은 5글자 이하로 작성해주세요.',
   NO_POSITIVE_INTEGER: '양의 정수를 입력해주세요.',
 };
+
+export const CAUTION_MESSAGE = {
+  FIRST_CAR_NAMES: '자동차 이름을 먼저 입력해주세요.',
+};
