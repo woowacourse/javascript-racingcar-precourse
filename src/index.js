@@ -7,7 +7,10 @@ import {
   $carNamesSubmit,
 } from './constants/HTMLconstant.js';
 import validCarName from './validCarName.js';
+import showRacingInput from './showRacingInput.js';
+import { NOT_VALID_RACING_INPUT } from './constants/errorMessage.js';
 import Car from './car.js';
+import validRacingCount from './validRacingCount.js';
 
 class Game {
   constructor() {
@@ -32,6 +35,18 @@ class Game {
         carNames.forEach(carName => {
           this.cars.push(new Car(carName));
         });
+        showRacingInput();
+        this.getRacingInput();
+      }
+    });
+  }
+
+  getRacingInput() {
+    $racingCountSubmit.addEventListener('click', e => {
+      e.preventDefault();
+      const racingCount = $racingCountInput.value;
+      const racingCountNumber = validRacingCount(racingCount);
+      if (racingCountNumber) {
       }
     });
   }

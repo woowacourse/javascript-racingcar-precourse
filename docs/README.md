@@ -18,7 +18,7 @@
 
 ## [✅] 자동차 객체 생성
 
-## [ ] 레이싱 횟수를 받기
+## [✅] 레이싱 횟수를 받기
 
 - 레이싱 횟수를 입력하는 input 태그는 `racing-count-input` id값을 가진다.
 - 레이싱 횟수을 제출하는 button 태그는 `racing-count-submit` id값을 가진다.
