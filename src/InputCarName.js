@@ -26,23 +26,47 @@ export default class InputCarName {
         return;
     }
 
-    isValidNames(carNamesArray) {
-        const arrayLength = carNamesArray.length;
-
-        if(carNamesArray[0] === "") {
+    checkBlank(name) {
+        if(name === "") {
             return alert("자동차 이름을 입력해주세요!");
         }
 
+        return;
+    }
+
+    checkMaxLength(name) {
+        if(name.length > 5) {
+            return alert("5자 이하의 자동차 이름을 입력해주세요!");
+        }
+
+        return;
+    }
+
+    checkMinLength(name) {
+        if(name === "") {
+            return alert("1자 이상의 자동차 이름을 입력해주세요!");
+        }
+
+        return;
+    }
+
+    // 이름에 공백이 포함되는지 확인
+    checkIncludeBlank(name) {
+        if(name.indexOf(" ") !== -1) {
+            return alert("공백이 없는 이름을 입력해주세요!");
+        }
+
+        return;
+    }
+
+    isValidNames(carNamesArray) {
+        const arrayLength = carNamesArray.length;
+
+        this.checkBlank(carNamesArray[0]);
         for(let i = 0; i < arrayLength; i++) {
-            if(carNamesArray[i].length > 5) {
-                return alert("5자 이하의 자동차 이름을 입력해주세요!");
-            }
-            if(carNamesArray[i].indexOf(" ") !== -1) {
-                return alert("공백이 없는 이름을 입력해주세요!");
-            }
-            if(carNamesArray[arrayLength - 1] === "") {
-                return alert("마지막 자동차 이름을 입력해주세요!")
-            }
+            this.checkMaxLength(carNamesArray[i]);
+            this.checkMinLength(carNamesArray[i]);
+            this.checkIncludeBlank(carNamesArray[i]);
         }
 
         return true;
