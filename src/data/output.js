@@ -13,3 +13,21 @@ const calculateMoveState = (carNames) => {
     }
   });
 };
+
+const renderMoveState = (carNames) => {
+  let state = '';
+  const newDiv = document.createElement('div');
+  carNames.forEach((car) => {
+    state += `<span>${car.name}: ${'-'.repeat(car.distance)}</span><br />`;
+  });
+  state += `<br />`;
+  newDiv.innerHTML = state;
+  $('#app').appendChild(newDiv);
+};
+
+export const renderResult = (carNames, attemptCounts) => {
+  for (let i = 0; i < attemptCounts; i++) {
+    calculateMoveState(carNames);
+    renderMoveState(carNames);
+  }
+};

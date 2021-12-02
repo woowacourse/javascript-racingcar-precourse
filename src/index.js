@@ -1,5 +1,6 @@
 import { isNonCarNames, isValidLength, genCarInstances } from './data/carNameInput.js';
 import { isNonRacingCount, isNumber, isNegative } from './data/racingCountInput.js';
+import { renderResult } from './data/output.js';
 import { $, $$ } from './utils/dom.js';
 
 $$('form').forEach((selector) =>
@@ -14,7 +15,6 @@ $('#car-names-submit').addEventListener('click', function (e) {
     $('#car-names-input').focus();
     return;
   }
-  const carNames = genCarInstances();
 });
 
 $('#racing-count-submit').addEventListener('click', function (e) {
@@ -23,5 +23,7 @@ $('#racing-count-submit').addEventListener('click', function (e) {
     $('#racing-count-submit').focus();
     return;
   }
+  const carNames = genCarInstances();
   const attemptCounts = $('#racing-count-input').value;
+  renderResult(carNames, attemptCounts);
 });
