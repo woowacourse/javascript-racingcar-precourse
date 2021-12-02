@@ -10,19 +10,19 @@ export default class RacingCountEvent {
   isNegativeNumber = () => {
     if (this.racingCount[0] === '-') {
       console.log('음수야!!');
-      return false;
+      return true;
     }
 
-    return true;
+    return false;
   };
 
   isEmpty = () => {
     if (this.racingCount.length === 0) {
       console.log('공백이야!!');
-      return false;
+      return true;
     }
 
-    return true;
+    return false;
   };
 
   validateCount = () => {
