@@ -5,6 +5,7 @@ export default class CarNamesEvent {
     this.$carNamesInput = DOM.carNamesInput;
     this.$carNamesSubmit = DOM.carNamesSubmit;
     this.carNames = '';
+    this.carNamesArray = [];
   }
 
   recursiveArray = (text) => {
@@ -19,11 +20,23 @@ export default class CarNamesEvent {
     return false;
   };
 
+  isRightLength = () => {
+    let rightLength = true;
+
+    this.carNamesArray.forEach((carName) => {
+      if (carName.length > 5) {
+        rightLength = false;
+      }
+    });
+
+    return rightLength;
+  };
+
   isDuplicate = () => {
-    const carNamesList = this.carNames.split(',');
+    this.carNamesArray = this.carNames.split(',');
     let noDuplicate = true;
 
-    carNamesList.reduce((prev, curr) => {
+    this.carNamesArray.reduce((prev, curr) => {
       if (prev === curr) {
         noDuplicate = false;
       }
@@ -36,7 +49,7 @@ export default class CarNamesEvent {
 
   isComma = () => this.recursiveArray(',');
 
-  isBlank = () => this.recursiveArray(' ');
+  isBlank = () => !this.recursiveArray(' ');
 
   isEmpty = () => {
     if (this.carNames.length === 0) {
@@ -47,7 +60,14 @@ export default class CarNamesEvent {
   };
 
   validateNames = () => {
-    this.isEmpty() && this.isBlank() && this.isComma() && this.isDuplicate();
+    const isValidate = this.isEmpty() && this.isBlank() && this.isComma() && this.isDuplicate() && this.isRightLength();
+
+    if (isValidate) {
+      console.log('입력값이 좋아용!');
+    } else {
+      console.log('입력값이 별로양');
+    }
+    console.log(this.carNamesArray);
   };
 
   onClickSubmit = () => {
