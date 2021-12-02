@@ -6,4 +6,5 @@ export const GAME_STATUS = {
 
 export const MESSAGE = {
   INVALID_CAR_NAMES: '자동차 이름은 1자 이상 5자 이하여야 합니다!',
+  INVALID_CAR_RACINGS: '이동 횟수를 제대로 입력해주세요!',
 };

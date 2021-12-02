@@ -27,6 +27,7 @@ export default class RacingCarGame extends Component {
       }),
       new RacingCountForm({
         gameStatus,
+        onSubmit: count => this.onSubmitRacingCount(count),
       }),
     ];
   }
@@ -34,5 +35,9 @@ export default class RacingCarGame extends Component {
   onSubmitCarNames(names) {
     const cars = names.map(name => new Car(name));
     this.setState({ cars, gameStatus: GAME_STATUS.RACING_COUNT_REQUIRED });
+  }
+
+  onSubmitRacingCount(count) {
+    this.setState({ count, gameStatus: GAME_STATUS.END });
   }
 }

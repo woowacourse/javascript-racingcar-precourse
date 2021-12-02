@@ -8,3 +8,8 @@ export const isValidCarNames = names => {
   }
   return true;
 };
+
+export const parseRacingCount = count => +count.trim();
+
+export const isValidRacingCount = count =>
+  !Number.isNaN(count) && Number.isInteger(count) && count > 0;
