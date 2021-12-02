@@ -1,5 +1,6 @@
 import { validateCarNames } from "./utils/validation.js";
 import newId from "./utils/newId.js";
+import ResultContainer from "./components/ResultContainer.js";
 
 function Car(name) {
   this.name = name;
@@ -25,6 +26,7 @@ const App = () => {
     initialState.carNames = carNames.map((name) => {
       const newCar = new Car(name);
       newCar["id"] = newId();
+      newCar["moveCount"] = 0;
       return newCar;
     });
 
@@ -38,10 +40,10 @@ const App = () => {
     e.preventDefault();
     const racingCountInput = e.target[0];
     initialState.racingCount = Number(racingCountInput.value);
+    const { isCorrectCarNames, carNames, racingCount } = initialState;
 
-    if (initialState.isCorrectCarNames) {
-      // TODO 실행결과 로직
-      //   console.log(MissionUtils.Random.pickNumberInRange(0, 9));
+    if (isCorrectCarNames) {
+      ResultContainer({ app, carNames, racingCount });
       return;
     }
 
