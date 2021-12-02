@@ -49,6 +49,14 @@ DOM이 가지는 이벤트는 클래스에 종속시키지 않고 별도의 hand
 
 <br>
 
+<div align=center>
+
+<img src="./images/flow.jpg" width="800">
+
+</div>
+
+<br>
+
 ### 🛠 환경 설정
 > 일관성 있는 코드를 위해 ESLint, Prettier를 설정하고 Airbnb 스타일을 적용한 뒤 추가적인 규칙을 정의합니다.
 
@@ -210,4 +218,50 @@ DOM이 가지는 이벤트는 클래스에 종속시키지 않고 별도의 hand
 - [**✒️Feat: 게임 진행 2 바로가기**](https://github.com/InSeong-So/javascript-racingcar-precourse/commit/e9e97f76e61d9b4f6def862dc22d2a51ef6168ce)
 
 <hr>
+<br>
+
+## 3️⃣ 디렉토리 구조
+```
+│  .eslintrc.js
+│  .gitignore
+│  .npmrc
+│  cypress.json
+│  index.html
+│  LICENSE
+│  package-lock.json
+│  package.json
+│  README.md
+│
+├─docs
+│  │  README.md
+│  │
+│  └─images
+│          flow.jpg
+│
+├─images
+│      racingcar_icon.png
+│      result.gif
+│      result.jpg
+│      test_result.png
+│
+├─src
+│  │  index.js
+│  │
+│  ├─common
+│  │      utils.js
+│  │      validations.js
+│  │
+│  ├─components
+│  │      Car.js
+│  │      index.js
+│  │      RacingGame.js
+│  │      Render.js
+│  │
+│  └─constants
+│          index.js
+│
+└─test
+        app.spec.js
+```
+
 <br>
