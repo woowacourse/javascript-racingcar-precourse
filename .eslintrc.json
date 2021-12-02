@@ -16,6 +16,7 @@
     "no-unused-vars": "warn",
     "no-console": "off",
     "no-new": "off",
+    "no-useless-return": "off",
     "class-methods-use-this": "off"
   }
 }
