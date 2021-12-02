@@ -2,6 +2,7 @@
 
 import { isValidCarNames, isRacingCountValid } from '../utils/utils.js';
 import { $ } from '../dom/helpers.js';
+import template from '../template/template.js';
 
 export default class View {
   initView() {
@@ -64,29 +65,11 @@ export default class View {
     });
   }
 
-  winnerMessageTemplate(winnerNameList) {
-    const winnerMessage = winnerNameList.join(',');
-    return `<p>최종 우승자: <span id="racing-winners">${winnerMessage}</span></p>`;
-  }
-
   renderFinalWinnerSection({ raceResultList, winnerNameList }) {
     $('#result-heading').style.visibility = 'visible';
-    $('#result-div').innerHTML = '';
-
-    const paragraphList = raceResultList.map((raceResult) => {
-      const stringList = raceResult.map(
-        (result) => `${result.name}: ${'-'.repeat(result.distance)}`
-      );
-
-      const paragraph = `<p>${stringList.join('<br>')}</p>`;
-
-      return paragraph;
-    });
-
-    const res = paragraphList.join('');
-
-    $('#result-div').innerHTML = `${res}${this.winnerMessageTemplate(
+    $('#result-div').innerHTML = template.resultTemplate(
+      raceResultList,
       winnerNameList
-    )}`;
+    );
   }
 }
