@@ -6,7 +6,6 @@ export const isBlank = string => {
 
 export const isIncludeSpace = string => {
   return /\s/g.test(string);
-  //주어진 문자열 str 중 정규 표현식이 일치하는 부분이 있으면 true, 아니면, false.
 };
 
 export const splitUsingComma = string => {
@@ -16,4 +15,8 @@ export const splitUsingComma = string => {
 export const isDuplicated = array => {
   const set = new Set(array);
   return array.length !== set.size;
+};
+
+export const isOverFiveLetters = array => {
+  return array.some(string => string.length > 5);
 };
