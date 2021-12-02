@@ -15,7 +15,7 @@
 ### 출력
 
 - [x] 입력받은 시도 횟수 만큼 반복하여 자동차의 이동 상태를 출력한다.
-- [ ] 최종 우승자를 출력한다. (우승자는 한 명 이상일 수 있음)
+- [x] 최종 우승자를 출력한다. (우승자는 한 명 이상일 수 있음)
 - [x] [예외] 자동차 이름이나 횟수 중 하나라도 입력되지 않았을 경우 결과를 출력하지 않는다.
 
 <br>
@@ -41,5 +41,5 @@
 - [x] 자동차의 이름을 제출하는 button 태그는 `car-names-submit` id값을 가진다.
 - [x] 레이싱 횟수를 입력하는 input 태그는 `racing-count-input` id값을 가진다.
 - [x] 레이싱 횟수을 제출하는 button 태그는 `racing-count-submit` id값을 가진다.
-- [ ] 최종 우승자를 출력하는 span 태그는 `racing-winners` id값을 가진다.
+- [x] 최종 우승자를 출력하는 span 태그는 `racing-winners` id값을 가진다.
   - 예) `<span id="racing-winners">poco,park,jun</span>`
