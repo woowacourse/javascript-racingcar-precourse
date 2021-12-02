@@ -32,14 +32,6 @@ export default function RacingCarGame() {
 
     const carNames = $('#car-names-input').value;
     if (!isValidCarNames(carNames)) return;
-
-    console.log('검증을 완료하셨습니다.');
-    // 2. 검증이 완료되면 자동차를 생성한다.
-
-    let car = new Car(carNames);
-    console.log(car._location);
-    car.tryMove();
-    console.log(car._location);
   };
 
   const activateEventListeners = () => {
