@@ -1,11 +1,13 @@
 import stringToArrayConverter from './stringToArrayConverter.js';
 import isValidCarNames from './isValidCarNames.js';
 import isValidRacingCount from './isValidRacingCount.js';
+import Car from './Car.js';
 
 export default class CarRacingGame {
   constructor() {
     this.carNames = [];
     this.racingCount = 0;
+    this.cars = [];
     this.addCarNamesSubmitEvent();
     this.addRacingCountSubmitEvent();
   }
@@ -38,6 +40,7 @@ export default class CarRacingGame {
         return alert('자동차 이름을 입력해주세요.');
       }
       this.racingCount = Number($racingCountInput.value);
+      this.generateCar();
     });
   }
 
@@ -46,6 +49,10 @@ export default class CarRacingGame {
       return false;
     }
     return true;
+  }
+
+  generateCar() {
+    this.carNames.forEach((name) => this.cars.push(new Car(name)));
   }
 }
 
