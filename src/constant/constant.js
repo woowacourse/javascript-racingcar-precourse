@@ -1,6 +1,8 @@
 export const DOM = {
   carNamesInput: document.querySelector('#car-names-input'),
   carNamesSubmit: document.querySelector('#car-names-submit'),
+  racingCountInput: document.querySelector('#racing-count-input'),
+  racingCountSubmit: document.querySelector('#racing-count-submit'),
 };
 
 export const ERROR_MESSAGE = {
