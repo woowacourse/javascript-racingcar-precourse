@@ -1,6 +1,12 @@
 import Car from "./Car/Car.js";
 import { ALERT_MESSAGE, DOMS } from "./util/constant.js";
-import { VALID_NUMBER } from "./util/constant.js";
+import {
+  isUnderZero,
+  hasEmpty,
+  hasSpace,
+  isDuplicatedCarName,
+  isInvalidCarNameLength,
+} from "./util/check-valid.js";
 
 export default class RacingCarGame {
   constructor() {
@@ -39,35 +45,17 @@ export default class RacingCarGame {
     DOMS.$racingCountButton.disabled = false;
   };
 
-  isDuplicatedCarName = (carNames) => {
-    return [...new Set(carNames)].length !== carNames.length;
-  };
-
-  hasEmpty = (carNames) => {
-    return carNames.some((carName) => carName === "");
-  };
-
-  isInvalidCarNameLength = (carNames) => {
-    return carNames.some(
-      (carName) => carName.length > VALID_NUMBER.CAR_NAME_LENGTH
-    );
-  };
-
-  hasSpace = (carNames) => {
-    return carNames.some((carName) => carName.match(/[" "]/));
-  };
-
   createCarNameAlertMessage = (carNames) => {
-    if (this.isDuplicatedCarName(carNames)) {
+    if (isDuplicatedCarName(carNames)) {
       return ALERT_MESSAGE.DUPLICATED_NAME;
     }
-    if (this.hasEmpty(carNames)) {
+    if (hasEmpty(carNames)) {
       return ALERT_MESSAGE.NO_EMPTY_NAME;
     }
-    if (this.isInvalidCarNameLength(carNames)) {
+    if (isInvalidCarNameLength(carNames)) {
       return ALERT_MESSAGE.NOT_OVER_FIVE_NAME;
     }
-    if (this.hasSpace(carNames)) {
+    if (hasSpace(carNames)) {
       return ALERT_MESSAGE.NO_SPACE_IN_NAME;
     }
 
@@ -86,12 +74,8 @@ export default class RacingCarGame {
     this.play(racingCount);
   };
 
-  isUnderZero = (racingCount) => {
-    return racingCount <= VALID_NUMBER.RACING_COUNT;
-  };
-
   createRacingCountAlertMessage = (racingCount) => {
-    if (this.isUnderZero(racingCount)) {
+    if (isUnderZero(racingCount)) {
       return ALERT_MESSAGE.OVER_ZERO;
     }
 
