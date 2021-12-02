@@ -63,12 +63,12 @@ class Car {
 }
 ```
 
-[ ] 자동차의 이름을 입력하는 input 태그는 car-names-input id 값을 가진다 
+[x] 자동차의 이름을 입력하는 input 태그는 car-names-input id 값을 가진다 
 
-[ ] 자동차의 이름을 제출하는 button 태그는 car-names-submit id 값을 가진다
+[x] 자동차의 이름을 제출하는 button 태그는 car-names-submit id 값을 가진다
 
-[ ] 레이싱 횟수를 입력하는 input 태그는 racing-count-input id값을 가진다
+[x] 레이싱 횟수를 입력하는 input 태그는 racing-count-input id값을 가진다
 
-[ ] 레이싱 횟수를 제출하는 button 태그는 racing-count-submit id 값을 가진다 
+[x] 레이싱 횟수를 제출하는 button 태그는 racing-count-submit id 값을 가진다 
 
 [ ] 최종 우승자를 출력하는 span태그는 racing-winners id 값을 가진다 
