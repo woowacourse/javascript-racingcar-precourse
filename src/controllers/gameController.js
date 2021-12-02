@@ -54,9 +54,30 @@ class GameController {
     }
   }
 
+  isGameEnded() {
+    return this.#racingTry >= this.#racingCount;
+  }
+
   progressOneRacing() {
+    if (this.isGameEnded()) {
+      return;
+    }
+
     this.#lines.forEach(GameController.#tryForwardLineByRandom);
     this.#racingTry += 1;
+  }
+
+  calculateWinLines() {
+    if (!this.isGameEnded()) {
+      return [];
+    }
+
+    const positions = this.#lines.map((line) => line.position);
+    const maxPosition = Math.max(...positions);
+    const winLines = this.#lines.filter(
+      (line) => line.position === maxPosition
+    );
+    return winLines;
   }
 }
 
