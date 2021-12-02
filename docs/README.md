@@ -112,8 +112,18 @@ DOM이 가지는 이벤트는 클래스에 종속시키지 않고 별도의 hand
 > 레이싱 횟수를 입력하는 태그는 **input** `id="racing-count-input"` 입니다.
 
 **사전 정의**
-- [ ] 1. 숫자만 입력됩니다. keydown 이벤트로 keycode가 0(48)부터 9(57) 사이인지 검증합니다.
-- [ ] 2. `자동차 이름 제출 이벤트`가 발생하면 해당 input을 초기화합니다.
+- [ ] ~~1. 숫자만 입력됩니다. keydown 이벤트로 keycode가 0(48)부터 9(57) 사이인지 검증합니다.~~
+- [x] 2. `자동차 이름 제출 이벤트`가 발생하면 해당 input을 초기화합니다.
+- [x] 3. 음수가 입력되는 경우 alert을 출력하고 값을 비운 뒤 focus 합니다.
+- [x] 4. 소수점이 입력되는 경우 alert을 출력하고 값을 비운 뒤 focus 합니다.
+- [x] 5. 0만 입력되는 경우 alert을 출력하고 값을 비운 뒤 focus 합니다.
+- [x] 6. 0이 선입력되어 01, 0123 등의 값이 표시되면 change 이벤트로 0을 제거합니다.
+
+**추가 사항**
+- *1번의 경우 주어진 index.html에 정의된 input의 타입이 number 형이므로 구현하지 않습니다.*
+
+> 커밋 목록
+- [**첫 번째 커밋 바로가기**](https://github.com/InSeong-So/javascript-racingcar-precourse/commit/909a1bfd7215306776db356feace35b8972cbb9a)
 
 <hr>
 <br>
