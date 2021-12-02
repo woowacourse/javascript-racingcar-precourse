@@ -70,6 +70,8 @@ const checkIsValidCountInput = racingCountInput => {
 };
 
 const onClickSubmitCarNames = () => {
+  event.preventDefault();
+
   cars = [];
   const carInputs = $car_names_input.value;
   if (checkIsValidCarInputs(carInputs)) {
@@ -78,6 +80,8 @@ const onClickSubmitCarNames = () => {
 };
 
 const onClickSubmitRacingCount = () => {
+  event.preventDefault();
+
   const racingCountInput = $racing_count_input.value;
   if (checkIsValidCountInput(racingCountInput)) {
     console.log("validInput");
