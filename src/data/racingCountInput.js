@@ -1,3 +1,4 @@
 import { $ } from '../utils/dom';
 
-const isNonInput = () => $('#racing-count-input').value == '';
+export const isNonInput = () => $('#racing-count-input').value == '';
+export const isNumber = () => !isNaN(Number($('#racing-count-input').value));
