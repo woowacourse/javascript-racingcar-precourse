@@ -77,6 +77,19 @@ const makeCarArray = carInputs => {
   return carArray;
 };
 
+const playCarsOneRound = () => {
+  cars.map(car => {
+    car.playOneRound();
+  });
+};
+
+const playGame = racingCount => {
+  let i = 0;
+  for (; i < racingCount; i++) {
+    playCarsOneRound();
+  }
+};
+
 const onClickSubmitCarNames = () => {
   event.preventDefault();
 
@@ -92,7 +105,8 @@ const onClickSubmitRacingCount = () => {
 
   const racingCountInput = $racing_count_input.value;
   if (checkIsValidCountInput(racingCountInput)) {
-    console.log("validInput");
+    const racingCount = parseInt(racingCountInput);
+    playGame(racingCount);
   }
 };
 
