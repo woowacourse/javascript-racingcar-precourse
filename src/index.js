@@ -7,7 +7,7 @@ const $racing_count_input = document.getElementById("racing-count-input");
 const $racing_count_submit = document.getElementById("racing-count-submit");
 let $result;
 let $racing_winners;
-let cars = [];
+let cars;
 
 const init = () => {
   const $app = document.getElementById("app");
@@ -65,9 +65,7 @@ const playGame = racingCount => {
 
 const onClickSubmitCarNames = () => {
   event.preventDefault();
-  resetGame();
 
-  cars = [];
   const carInputs = $car_names_input.value;
   if (isValidCarInputs(carInputs)) {
     cars = makeCarArray(carInputs);
