@@ -7,6 +7,21 @@ export default class CarNamesEvent {
     this.carNames = '';
   }
 
+  isDuplicate = () => {
+    const carNamesList = this.carNames.split(',');
+    let noDuplicate = true;
+
+    carNamesList.reduce((prev, curr) => {
+      if (prev === curr) {
+        noDuplicate = false;
+      }
+
+      return curr;
+    }, '');
+
+    return noDuplicate;
+  };
+
   isBlank = () => {
     for (let i = 0; i < this.carNames.length; i += 1) {
       const carNamesText = this.carNames[i];
@@ -28,7 +43,7 @@ export default class CarNamesEvent {
   };
 
   validateNames = () => {
-    this.isEmpty() && this.isBlank();
+    this.isEmpty() && this.isBlank() && this.isDuplicate();
   };
 
   onClickSubmit = () => {
