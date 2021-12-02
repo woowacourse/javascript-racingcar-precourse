@@ -43,6 +43,12 @@ class RacingGame {
 
         return true;
     }
+
+    getResultElement() {
+        const resultElement = document.createElement('div');
+        resultElement.id = 'result-box';
+        return resultElement;
+    }
 }
 
 export default new RacingGame();
