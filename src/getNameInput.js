@@ -2,7 +2,9 @@ import { NUM_OF_CARS } from './const.js';
 
 export function getNameInput() {
   const nameEntered = document.getElementById('car-names-input').value;
-  isNameInputValid(nameEntered);
+  if (isNameInputValid(nameEntered)) {
+    const nameList = extractNames(nameEntered);
+  }
 }
 
 export function countCommas(name) {
@@ -20,4 +22,18 @@ export function isNameInputValid(nameInput) {
     return true;
   }
   alert(`Input Name under ${NUM_OF_CARS}`);
+}
+
+export function extractNames(nameInput) {
+  let name = '';
+  let nameList = [];
+  for (let i = 0; i < nameInput.length; i++) {
+    if (nameInput[i] !== ',') {
+      name += nameInput[i];
+    } else {
+      nameList.push(name);
+      name = '';
+    }
+  }
+  return nameList;
 }
