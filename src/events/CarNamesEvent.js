@@ -7,6 +7,18 @@ export default class CarNamesEvent {
     this.carNames = '';
   }
 
+  recursiveArray = (text) => {
+    for (let i = 0; i < this.carNames.length; i += 1) {
+      const carNamesText = this.carNames[i];
+
+      if (carNamesText === text) {
+        return true;
+      }
+    }
+
+    return false;
+  };
+
   isDuplicate = () => {
     const carNamesList = this.carNames.split(',');
     let noDuplicate = true;
@@ -22,29 +34,9 @@ export default class CarNamesEvent {
     return noDuplicate;
   };
 
-  isComma = () => {
-    for (let i = 0; i < this.carNames.length; i += 1) {
-      const carNamesText = this.carNames[i];
+  isComma = () => this.recursiveArray(',');
 
-      if (carNamesText === ',') {
-        return true;
-      }
-    }
-
-    return false;
-  };
-
-  isBlank = () => {
-    for (let i = 0; i < this.carNames.length; i += 1) {
-      const carNamesText = this.carNames[i];
-
-      if (carNamesText === ' ') {
-        return false;
-      }
-    }
-
-    return true;
-  };
+  isBlank = () => this.recursiveArray(' ');
 
   isEmpty = () => {
     if (this.carNames.length === 0) {
