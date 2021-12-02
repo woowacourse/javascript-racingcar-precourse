@@ -1,3 +1,5 @@
+import { isValidCarNames, isValidRacingCount } from './utils/validations.js';
+
 export default class RacingGame {
   constructor() {
     this.setInputElements();
@@ -27,12 +29,20 @@ export default class RacingGame {
   onSubmitCarNames(event) {
     event.preventDefault();
     const carNames = this.carNamesInput.value.split(',');
-    console.log(carNames);
+    if (!isValidCarNames(carNames)) {
+      console.log('In');
+      return;
+    }
+    console.log('Out');
   }
 
   onSubmitRacingCount(event) {
     event.preventDefault();
     const racingCount = Number(this.racingCountInput.value);
-    console.log(racingCount);
+    if (!isValidRacingCount(racingCount)) {
+      console.log('In');
+      return;
+    }
+    console.log('Out');
   }
 }
