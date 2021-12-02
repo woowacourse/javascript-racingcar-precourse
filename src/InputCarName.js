@@ -28,6 +28,7 @@ export default class InputCarName {
 
     checkBlank(name) {
         if(name === "") {
+            this.$carNamesInput.value = "";
             return alert("자동차 이름을 입력해주세요!");
         }
 
@@ -36,6 +37,7 @@ export default class InputCarName {
 
     checkMaxLength(name) {
         if(name.length > 5) {
+            this.$carNamesInput.value = "";
             return alert("5자 이하의 자동차 이름을 입력해주세요!");
         }
 
@@ -44,6 +46,7 @@ export default class InputCarName {
 
     checkMinLength(name) {
         if(name === "") {
+            this.$carNamesInput.value = "";
             return alert("1자 이상의 자동차 이름을 입력해주세요!");
         }
 
@@ -53,6 +56,7 @@ export default class InputCarName {
     // 이름에 공백이 포함되는지 확인
     checkIncludeBlank(name) {
         if(name.indexOf(" ") !== -1) {
+            this.$carNamesInput.value = "";
             return alert("공백이 없는 이름을 입력해주세요!");
         }
 
