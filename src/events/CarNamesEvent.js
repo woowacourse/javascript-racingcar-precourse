@@ -4,12 +4,26 @@ export default class CarNamesEvent {
   constructor() {
     this.$carNamesInput = DOM.carNamesInput;
     this.$carNamesSubmit = DOM.carNamesSubmit;
+    this.carNames = '';
   }
 
-  submitBtn = () => {
+  isEmpty = () => {
+    if (this.carNames.length === 0) {
+      return false;
+    }
+
+    return true;
+  };
+
+  validateNames = () => {
+    this.isEmpty();
+  };
+
+  onClickSubmit = () => {
     this.$carNamesSubmit.addEventListener('click', (event) => {
       event.preventDefault();
-      console.log(this.$carNamesInput.value);
+      this.carNames = this.$carNamesInput.value;
+      this.validateNames();
     });
   };
 }

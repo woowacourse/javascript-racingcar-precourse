@@ -7,7 +7,7 @@ class RacingCar {
 
   carNamesSubmit = () => {
     const carNamesEvent = new CarNamesEvent();
-    carNamesEvent.submitBtn();
+    carNamesEvent.onClickSubmit();
   };
 
   main = () => {
