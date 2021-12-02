@@ -1,4 +1,4 @@
-import { ERROR_MESSAGES } from '../constants/index.js';
+import { EMPTY, ERROR_MESSAGES } from '../constants/index.js';
 
 export const $ = selector => document.querySelector(selector);
 
@@ -8,7 +8,10 @@ export const $ = selector => document.querySelector(selector);
  * @param {String} type
  * @returns {undefined} : Falsy
  */
-export const setErrorMessage = type => alert(ERROR_MESSAGES[type]);
+export const setErrorMessage = type => {
+  alert(ERROR_MESSAGES[type]);
+  return EMPTY;
+};
 
 export const isNull = value => value === null || value === undefined;
 

@@ -78,7 +78,7 @@ export const isPositiveInteger = target => {
   // 음수 판단
   if (parsed < NUMBER.ZERO) return setErrorMessage('negativeError');
   // 소수점 판단
-  if (Number.isInteger(parsed)) return setErrorMessage('decimalError');
+  if (isNotEquals(Number.isInteger(parsed), true)) return setErrorMessage('decimalError');
 
   return parsed;
 };

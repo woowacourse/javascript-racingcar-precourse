@@ -1,6 +1,11 @@
 export const NUMBER = Object.freeze({
   ZERO: 0,
+  START: 0,
+  END: 9,
+  CONDITION: 4,
 });
+
+export const EXCUTE_RESULT_SENTENCE = '📄 실행 결과';
 
 export const EMPTY = '';
 
