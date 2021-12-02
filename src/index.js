@@ -1,16 +1,13 @@
 import Car from "./Car/Car.js";
-import { ALERT_MESSAGE, DOMS } from "./util/constant.js";
-import {
-  isUnderZero,
-  hasEmpty,
-  hasSpace,
-  isDuplicatedCarName,
-  isInvalidCarNameLength,
-} from "./util/check-valid.js";
+import { DOMS } from "./util/constant.js";
 import {
   permitRacingCountForm,
   blockRacingCountForm,
 } from "./util/block-and-permit.js";
+import {
+  createRacingCountAlertMessage,
+  createCarNameAlertMessage,
+} from "./util/create-alert-message.js";
 
 export default class RacingCarGame {
   constructor() {
@@ -30,7 +27,7 @@ export default class RacingCarGame {
   setCarNameSubmitEvent = (event) => {
     event.preventDefault();
     const carNames = DOMS.$carNamesInput.value.split(",");
-    const alertMessage = this.createCarNameAlertMessage(carNames);
+    const alertMessage = createCarNameAlertMessage(carNames);
     if (alertMessage) {
       alert(alertMessage);
       return;
@@ -39,41 +36,16 @@ export default class RacingCarGame {
     permitRacingCountForm();
   };
 
-  createCarNameAlertMessage = (carNames) => {
-    if (isDuplicatedCarName(carNames)) {
-      return ALERT_MESSAGE.DUPLICATED_NAME;
-    }
-    if (hasEmpty(carNames)) {
-      return ALERT_MESSAGE.NO_EMPTY_NAME;
-    }
-    if (isInvalidCarNameLength(carNames)) {
-      return ALERT_MESSAGE.NOT_OVER_FIVE_NAME;
-    }
-    if (hasSpace(carNames)) {
-      return ALERT_MESSAGE.NO_SPACE_IN_NAME;
-    }
-
-    return "";
-  };
-
   setRacingCountSubmitEvent = (event) => {
     event.preventDefault();
     const racingCount = DOMS.$racingCountInput.value;
-    const alertMessage = this.createRacingCountAlertMessage(racingCount);
+    const alertMessage = createRacingCountAlertMessage(racingCount);
 
     if (alertMessage) {
       alert(alertMessage);
       return;
     }
     this.play(racingCount);
-  };
-
-  createRacingCountAlertMessage = (racingCount) => {
-    if (isUnderZero(racingCount)) {
-      return ALERT_MESSAGE.OVER_ZERO;
-    }
-
-    return "";
   };
 
   play = (racingCount) => {
