@@ -2,34 +2,29 @@
 
 import Car from '../model/Car.js';
 import { isValidCarNames, isRacingCountValid } from '../utils/utils.js';
-import { $, hideElement, showElement } from '../dom/helpers.js';
+import { $, showElement } from '../dom/helpers.js';
 
 export default class Controller {
   constructor() {
     this.carList = [];
     this.racingCount = 0;
+
+    this.initView();
+    this.initEventListner();
   }
 
   initView() {
-    this.hideElements();
-    this.setEventListner();
     $('#app').insertAdjacentHTML('beforeend', `<div id="result-div"></div>`);
+
+    $('#racing-count-heading').style.visibility = 'hidden';
+    $('#racing-count-form').style.visibility = 'hidden';
+    $('#result-heading').style.visibility = 'hidden';
   }
 
-  hideElements() {
-    hideElement('#racing-count-heading');
-    hideElement('#racing-count-form');
-    hideElement('#result-heading');
-  }
+  initEventListner() {
+    $('#car-names-form').addEventListener('submit', this.handleSubmitForm);
 
-  setEventListner() {
-    $('#car-names-form').addEventListener('submit', (e) => {
-      e.preventDefault();
-    });
-
-    $('#racing-count-form').addEventListener('submit', (e) => {
-      e.preventDefault();
-    });
+    $('#racing-count-form').addEventListener('submit', this.handleSubmitForm);
 
     $('#car-names-submit').addEventListener(
       'click',
@@ -40,6 +35,10 @@ export default class Controller {
       'click',
       this.handleClickRacingCountSubmit.bind(this)
     );
+  }
+
+  handleSubmitForm(e) {
+    e.preventDefault();
   }
 
   handleClickCarNamesSubmit() {

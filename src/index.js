@@ -1,4 +1,4 @@
+/* eslint-disable no-new */
 import Controller from './controller/Controller.js';
 
-const controller = new Controller();
-controller.initView();
+new Controller();
