@@ -19,11 +19,12 @@ export default class RacingCarGame extends Component {
       racingCount: 0,
       gameStatus: GAME_STATUS.NAMES_REQUIRED,
       gameResult: [],
+      winners: [],
     };
   }
 
   initChildrens() {
-    const { gameStatus, gameResult } = this.state;
+    const { gameStatus, gameResult, winners } = this.state;
     this.childrens = [
       new CarNamesForm({
         gameStatus,
@@ -36,6 +37,7 @@ export default class RacingCarGame extends Component {
       new GameResult({
         gameStatus,
         gameResult,
+        winners,
       }),
     ];
   }
@@ -46,11 +48,12 @@ export default class RacingCarGame extends Component {
   }
 
   onSubmitRacingCount(count) {
-    const gameResult = this.play(count);
-    this.setState({ count, gameStatus: GAME_STATUS.END, gameResult });
+    const gameResult = this._play(count);
+    const winners = this._getWinners(gameResult);
+    this.setState({ count, gameStatus: GAME_STATUS.END, gameResult, winners });
   }
 
-  play(count) {
+  _play(count) {
     const gameResult = [];
     const { cars } = this.state;
     for (let i = 0; i < count; i += 1) {
@@ -63,5 +66,15 @@ export default class RacingCarGame extends Component {
       gameResult.push(carNameDistanceMap);
     }
     return gameResult;
+  }
+
+  _getWinners(gameResult) {
+    const finalResult = [...gameResult[gameResult.length - 1].entries()];
+    const max = finalResult.sort((a, b) => b[1] - a[1])[0][1];
+    const winners = [];
+    finalResult.forEach(([name, distance]) => {
+      if (distance === max) winners.push(name);
+    });
+    return winners;
   }
 }
