@@ -1,4 +1,9 @@
-import { ELEMENT_ID, CAR_NAME_RULES, ERR_MESSAGE } from './constant.js';
+import {
+  ELEMENT_ID,
+  CAR_NAME_RULES,
+  RACING_COUNT_RULES,
+  ERR_MESSAGE,
+} from './constant.js';
 
 export default class UserInput {
   constructor() {
@@ -60,7 +65,7 @@ export default class UserInput {
   }
 
   isValidRacingCountNum() {
-    if (this.racingCountInputEl.value <= 0) {
+    if (this.racingCountInputEl.value < RACING_COUNT_RULES.minCount) {
       alert(ERR_MESSAGE.racingCount);
       return false;
     }
