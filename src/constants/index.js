@@ -1,3 +1,7 @@
+// car
+const MOVE_CONDITION_NUMBER = 4;
+
+// validation
 const MIN_NUMBER_OF_CARS = 2;
 const MIN_LENGTH_OF_CAR_NAME = 1;
 const MAX_LENGTH_OF_CAR_NAME = 5;
@@ -13,6 +17,9 @@ const ERROR_MESSAGE = {
 };
 
 export {
+  // car
+  MOVE_CONDITION_NUMBER,
+  // validation
   MIN_NUMBER_OF_CARS,
   MIN_LENGTH_OF_CAR_NAME,
   MAX_LENGTH_OF_CAR_NAME,

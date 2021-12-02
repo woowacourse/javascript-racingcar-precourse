@@ -52,9 +52,20 @@ export default class RacingGame {
   }
 
   start() {
-    if (!(this.carsReady && this.racingCountReady)) return;
+    if (!this.isReadyForGame()) return;
     this.setGameValue();
-    console.log(this.cars, this.racingCount);
+    for (let racing = 0; racing < this.racingCount; racing += 1) {
+      console.log(`=-=-=- racing ${racing} =-=-=-`);
+      this.racing();
+    }
+  }
+
+  isReadyForGame() {
+    return this.carsReady && this.racingCountReady;
+  }
+
+  racing() {
+    this.cars.forEach((car) => car.play());
   }
 
   setGameValue() {
