@@ -8,6 +8,15 @@ export default class RacingCountEvent {
     this.numberRacingCount = 0;
   }
 
+  isPositiveInteger = () => {
+    if (this.numberRacingCount > 0) {
+      return true;
+    }
+
+    console.log('양의 정수가 아니야!!');
+    return false;
+  };
+
   isInteger = () => {
     this.numberRacingCount = Number(this.stringRacingCount);
     if (Number.isInteger(this.numberRacingCount)) {
@@ -28,7 +37,7 @@ export default class RacingCountEvent {
   };
 
   validateCount = () => {
-    !this.isEmpty() && this.isInteger();
+    !this.isEmpty() && this.isInteger() && this.isPositiveInteger();
   };
 
   onClickSubmit = () => {
