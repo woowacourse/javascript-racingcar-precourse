@@ -1,6 +1,6 @@
 import Component from '../core/Component.js';
-import { $ } from '../utils/dom.js';
-import { MESSAGE } from '../utils/constants.js';
+import { $, disableInput, enableInput, focusInput } from '../utils/dom.js';
+import { GAME_STATUS, MESSAGE } from '../utils/constants.js';
 import { parseCarNames, isValidCarNames } from '../utils/input.js';
 
 export default class CarNamesForm extends Component {
@@ -20,5 +20,16 @@ export default class CarNamesForm extends Component {
     });
   }
 
-  render() {}
+  render() {
+    const { gameStatus } = this.props;
+    if (
+      gameStatus === GAME_STATUS.RACING_COUNT_REQUIRED ||
+      gameStatus === GAME_STATUS.END
+    ) {
+      disableInput(this._input);
+      return;
+    }
+    enableInput(this._input);
+    focusInput(this._input);
+  }
 }
