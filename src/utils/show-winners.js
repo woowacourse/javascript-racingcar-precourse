@@ -7,4 +7,7 @@ const getWinners = carObjectList => {
   return sortedCarObjectList.filter(x => x.move === winnersMove);
 };
 
-export default function showWinners(carObjectList) {}
+export default function showWinners(carObjectList) {
+  const winnersObjectList = getWinners(carObjectList);
+  console.log(winnersObjectList);
+}

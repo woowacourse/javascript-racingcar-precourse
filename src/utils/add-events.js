@@ -1,6 +1,7 @@
 import { $ } from './common.js';
 import { ALERT_MESSAGE } from '../constants/index.js';
 import playRacing from './play-racing.js';
+import showWinners from './show-winners.js';
 
 export const addCarNamesSubmitClickEvent = input => {
   const $carNamesSubmit = $('car-names-submit');
