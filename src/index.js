@@ -46,8 +46,23 @@ class Game {
       const racingCount = $racingCountInput.value;
       const racingCountNumber = validRacingCount(racingCount);
       if (racingCountNumber) {
+        $resultTitle.style.display = '';
+        this.printRacingResult(racingCountNumber);
       }
     });
+  }
+
+  printRacingResult(racingCountNumber) {
+    let result = '';
+    for (let i = 0; i < racingCountNumber; i++) {
+      for (let j = 0; j < this.cars.length; j++) {
+        this.cars[j].doRacing();
+        const raceResult = `<div>${this.cars[j].name}: ${this.cars[j].move}</div>`;
+        result += raceResult;
+      }
+      result += `<br/>`;
+    }
+    $resultTitle.insertAdjacentHTML('afterend', result);
   }
 }
 
