@@ -1,4 +1,5 @@
-import { setErrorMessage } from './utils.js';
+import { EMPTY, NUMBER } from '../constants/index.js';
+import { isEquals, isNotEquals, setErrorMessage } from './utils.js';
 
 /**
  * 좌우 여백을 제거하여 배열로 반환합니다.
@@ -15,8 +16,8 @@ export const filteredSideBlacnk = inputNames => inputNames.split(',').map(name =
  * @returns {[string[], boolean]}
  */
 export const blankCheck = values => {
-  const checkedValues = values.filter(name => name !== '');
-  const isInValid = values.length !== checkedValues.length;
+  const checkedValues = values.filter(name => isNotEquals(name, EMPTY));
+  const isInValid = isNotEquals(values.length, checkedValues.length);
   return [checkedValues, isInValid];
 };
 
@@ -29,10 +30,10 @@ export const blankCheck = values => {
 export const lengthCheck = value => {
   if (value instanceof Array) {
     const checkedValues = value.filter(name => name.length <= 5);
-    const isInValid = value.length !== checkedValues.length;
+    const isInValid = isNotEquals(value.length, checkedValues.length);
     return [checkedValues, isInValid];
   }
-  return [value, value.length > 0];
+  return [value, value.length > NUMBER.ZERO];
 };
 
 /**
@@ -43,7 +44,7 @@ export const lengthCheck = value => {
  */
 export const duplicateCheck = values => {
   const checkedValues = [...new Set(values)];
-  const isInValid = values.length !== checkedValues.length;
+  const isInValid = isNotEquals(values.length, checkedValues.length);
   return [checkedValues, isInValid];
 };
 
@@ -69,4 +70,15 @@ export const inputValidation = inputValue => {
   if (dupError) return setErrorMessage('dupError');
 
   return checkedDuplicate;
+};
+
+export const isPositiveInteger = target => {
+  const parsed = +target;
+  if (isEquals(parsed, NUMBER.ZERO)) return setErrorMessage('zeroError');
+  // 음수 판단
+  if (parsed < NUMBER.ZERO) return setErrorMessage('negativeError');
+  // 소수점 판단
+  if (Number.isInteger(parsed)) return setErrorMessage('decimalError');
+
+  return parsed;
 };

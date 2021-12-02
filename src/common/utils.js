@@ -11,3 +11,7 @@ export const $ = selector => document.querySelector(selector);
 export const setErrorMessage = type => alert(ERROR_MESSAGES[type]);
 
 export const isNull = value => value === null || value === undefined;
+
+export const isEquals = (value, target) => value === target;
+
+export const isNotEquals = (value, target) => value !== target;
