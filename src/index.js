@@ -5,17 +5,22 @@ const $car_names_submit = document.getElementById("car-names-submit");
 const $racing_count_input = document.getElementById("racing-count-input");
 const $racing_count_submit = document.getElementById("racing-count-submit");
 let $result;
+let $racing_winners;
 let cars = [];
 let racingCount = [];
 
 const init = () => {
   const $app = document.getElementById("app");
   const resultDiv = document.createElement("div");
+  const winnerSpan = document.createElement("span");
   resultDiv.id = "result";
+  winnerSpan.id = "racing-winners";
 
   $app.appendChild(resultDiv);
+  $app.appendChild(winnerSpan);
 
   $result = document.getElementById("result");
+  $racing_winners = document.getElementById("racing-winners");
 };
 
 const isCarInputsSplitBySpace = carInputs => {
@@ -96,11 +101,24 @@ const playCarsOneRound = () => {
   $result.innerHTML += "<br/>";
 };
 
+const showWinner = () => {
+  let maxDistance = 0;
+  cars.forEach(car => (maxDistance = Math.max(maxDistance, car.moveDistance)));
+
+  const winner = cars
+    .filter(car => car.moveDistance === maxDistance)
+    .map(car => car.name);
+
+  $racing_winners.innerHTML += `최종 우승자: ${winner.join(", ")}`;
+  console.log(`최종 우승자: ${winner.join(", ")}`);
+};
+
 const playGame = racingCount => {
   let i = 0;
   for (; i < racingCount; i++) {
     playCarsOneRound();
   }
+  showWinner();
 };
 
 const onClickSubmitCarNames = () => {
