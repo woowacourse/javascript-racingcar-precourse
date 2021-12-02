@@ -33,7 +33,7 @@
 
 ## 구현 기능 목록
 
-*커밋을 원활하게 하기 위해 위의 내용을 좀 더 정리하여 적어보았습니다. 기능에 대해 추가 또는 수정사항이 생길 때마다 변경할 예정입니다 :)*
+*커밋을 원활하게 하기 위해 위의 내용을 좀 더 정리하여 적어보았습니다. 기능에 대해 추가 또는 수정사항이 생길 때마다 변경할 예정입니다😊*
 
 <!-- ✔️❌ -->
 
@@ -49,3 +49,48 @@
 | 입력된 레이싱 횟수만큼 모든 자동차를 전진 또는 멈추게 하는 기능 | ✔️ | <ul><li>입력된 레이싱 횟수만큼 모든 자동차에 대해 위의 기능을 사용하여 랜덤 정수를 하나 뽑아냄</li><li>각 자동차의 차례에서 뽑아낸 랜덤 정수가 4 이상이라면 해당 자동차를 한 칸 전진시키고, 그렇지 않으면 제자리에 가만히 놔둠</li></ul> |
 | 각 회차에서 모든 자동차의 이름과 위치를 사용자에게 보여주는 기능 | ✔️ | <ul><li>위의 기능을 통해 각 회차를 진행하며 회차가 종료될 때마다 모든 자동차의 이름과 위치를 화면에 출력</li></ul> |
 | 가장 먼 거리를 이동한 자동차를 뽑아내어 사용자에게 보여주는 기능 | ✔️ | <ul><li>현재 위치의 내림차순으로 자동차들을 정렬</li><li>가장 첫 번째 원소가 곧 우승자이므로 그 우승자의 위치를 max로 두어 같은 위치에 있는 자동차를 모두 뽑아냄</li><li>각 우승자들을 조건에 맞춰 화면에 출력</li></ul> |
+
+<br>
+<hr>
+<br>
+
+## src 폴더 구조
+
+*파일이 어떻게 정리되었는지 시각화해보았습니다. 파일이 추가/수정/삭제될 때마다 변경할 예정입니다😊*
+
+```bash
+src
+├── controllers # element들의 이벤트 관련 처리
+│   ├── cars
+│   │   ├── cars.js
+│   │   ├── checkCarNames.js
+│   │   └── makeRacingCars.js
+│   ├── racingCount
+│   │   ├── racingCount.js
+│   │   └── checkRacingCount.js
+│   ├── racingResult
+│   │   ├── winners.js
+│   │   └── sortCars.js
+│   └── play
+│       ├── playAndResult.js
+│       ├── playGame.js
+│       └── getRandomNumber.js
+├── models  # 자동차 모델 정의
+│   ├── car.js
+│   └── racingCar.js
+├── utils # 다른 곳에서 공통적으로 사용하는 요소
+│   └── constants.js  # 상수 정리
+├── views # 화면 관련 처리
+│   ├── carNames
+│   │   ├── alertForCarNames.js
+│   │   └── carNamesInput.js
+│   ├── racingCount
+│   │   ├── alertForRacingCount.js
+│   │   ├── racingCountInput.js
+│   │   └── visiblePartOfRacingCount.js
+│   └── racingResult
+│       ├── showPlaying.js
+│       ├── showWinners.js
+│       └── visiblePartOfRacingResult.js
+└── index.js
+```
