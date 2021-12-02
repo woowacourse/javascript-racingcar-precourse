@@ -1,12 +1,25 @@
-import { DOM } from '../constant/constant.js';
+import { DOM, ERROR_MESSAGE } from '../constant/constant.js';
 
 export default class CarNamesEvent {
   constructor() {
     this.$carNamesInput = DOM.carNamesInput;
     this.$carNamesSubmit = DOM.carNamesSubmit;
     this.carNames = '';
+    this.errorMessage = '';
     this.carNamesArray = [];
   }
+
+  initializeCarNames = () => {
+    this.errorMessage = '';
+    this.carNames = '';
+    this.carNamesArray = [];
+  };
+
+  alertMessage = () => {
+    console.log(this.errorMessage);
+    // alert(this.errorMessage);
+    this.initializeCarNames();
+  };
 
   recursiveArray = (text) => {
     for (let i = 0; i < this.carNames.length; i += 1) {
@@ -25,6 +38,7 @@ export default class CarNamesEvent {
 
     this.carNamesArray.forEach((carName) => {
       if (carName === '') {
+        this.errorMessage = ERROR_MESSAGE.NO_EMPTY;
         rightName = false;
       }
     });
@@ -37,6 +51,7 @@ export default class CarNamesEvent {
 
     this.carNamesArray.forEach((carName) => {
       if (carName.length > 5) {
+        this.errorMessage = ERROR_MESSAGE.TO_LONG;
         rightLength = false;
       }
     });
@@ -50,6 +65,7 @@ export default class CarNamesEvent {
 
     this.carNamesArray.reduce((prev, curr) => {
       if (prev === curr) {
+        this.errorMessage = ERROR_MESSAGE.NO_DUPLICATE;
         noDuplicate = false;
       }
 
@@ -59,12 +75,26 @@ export default class CarNamesEvent {
     return noDuplicate;
   };
 
-  isComma = () => this.recursiveArray(',');
+  isComma = () => {
+    const noComma = this.recursiveArray(',');
+    if (!noComma) {
+      this.errorMessage = ERROR_MESSAGE.NO_COMMA;
+    }
 
-  isBlank = () => !this.recursiveArray(' ');
+    return noComma;
+  };
+
+  isBlank = () => {
+    const noBlank = this.recursiveArray(' ');
+    if (noBlank) {
+      this.errorMessage = ERROR_MESSAGE.NO_BLANK;
+    }
+    return !noBlank;
+  };
 
   isEmpty = () => {
     if (this.carNames.length === 0) {
+      this.errorMessage = ERROR_MESSAGE.NO_EMPTY;
       return false;
     }
 
@@ -87,7 +117,11 @@ export default class CarNamesEvent {
     this.$carNamesSubmit.addEventListener('click', (event) => {
       event.preventDefault();
       this.carNames = this.$carNamesInput.value;
-      this.validateNames();
+      if (!this.validateNames()) {
+        this.alertMessage();
+      } else {
+        console.log('좋아요!');
+      }
     });
   };
 }
