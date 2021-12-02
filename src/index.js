@@ -1,4 +1,4 @@
-import { $, isEquals, isNotEquals, isNull, setErrorMessage } from './common/utils.js';
+import { $, isEquals, isNotEquals, setErrorMessage } from './common/utils.js';
 import { inputValidation, isPositiveInteger } from './common/validations.js';
 import RacingGame from './components/RacingGame.js';
 import { EMPTY, NUMBER } from './constants/index.js';
@@ -6,8 +6,9 @@ import { EMPTY, NUMBER } from './constants/index.js';
 const $carNamesSubmit = $('#car-names-submit');
 const $racingCountInput = $('#racing-count-input');
 const $racingCountSubmit = $('#racing-count-submit');
+const $racingResult = $('#racing-result');
 
-const racingGame = new RacingGame();
+const racingGame = new RacingGame($racingResult);
 
 $carNamesSubmit.addEventListener('click', event => {
   event.preventDefault();
@@ -17,7 +18,7 @@ $carNamesSubmit.addEventListener('click', event => {
   const $carNamesInput = $('#car-names-input');
   const names = inputValidation($carNamesInput.value);
 
-  if (isNull(names)) return $carNamesInput.focus();
+  if (isEquals(names, EMPTY)) return $carNamesInput.focus();
 
   racingGame.initialCars(names);
 });
