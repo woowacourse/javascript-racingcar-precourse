@@ -4,15 +4,22 @@ import Line from '../models/line.js';
 class GameController {
   #lines;
 
+  #racingTry;
+
   #racingCount;
 
   constructor(cars, racingCount) {
     this.#lines = cars.map((car) => new Line(car));
+    this.#racingTry = 0;
     this.#racingCount = racingCount;
   }
 
   get lines() {
     return this.#lines;
+  }
+
+  get racingTry() {
+    return this.#racingTry;
   }
 
   get racingCount() {
@@ -36,6 +43,20 @@ class GameController {
       racingCount >= RACING_COUNT_RANGE.min &&
       racingCount <= RACING_COUNT_RANGE.max
     );
+  }
+
+  static #tryForwardLineByRandom(line) {
+    // eslint-disable-next-line no-undef
+    const randomNumber = MissionUtils.Random.pickNumberInRange(1, 9);
+    const betResult = randomNumber >= 4;
+    if (betResult) {
+      line.forwardCarOneStep();
+    }
+  }
+
+  progressOneRacing() {
+    this.#lines.forEach(GameController.#tryForwardLineByRandom);
+    this.#racingTry += 1;
   }
 }
 
