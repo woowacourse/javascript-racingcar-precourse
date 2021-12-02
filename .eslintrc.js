@@ -14,7 +14,9 @@ module.exports = {
   },
   rules: {
     'no-console': 'off',
+    'no-new': 'off',
     'import/prefer-default-export': 'off',
+    'class-methods-use-this': 'off',
     'prettier/prettier': [
       'error',
       {
