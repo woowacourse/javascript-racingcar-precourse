@@ -1,4 +1,4 @@
-import { $, isBlank, isIncludeSpace } from './utils.js';
+import { $, isBlank, isIncludeSpace, isDuplicated, splitUsingComma } from './utils.js';
 import { default as UI } from './DOMUtils.js';
 
 export default function RacingCarGame() {
@@ -10,6 +10,9 @@ export default function RacingCarGame() {
   const isValidCarNames = string => {
     if (isBlank(string)) return alert('빈칸으로 제출 하실 수 없습니다.');
     if (isIncludeSpace(string)) return alert('공백 입력을 하실 수 없습니다.');
+
+    const carNamesArr = splitUsingComma(string);
+    if (isDuplicated(carNamesArr)) return alert('중복 입력을 하실 수 없습니다.');
   };
 
   const handleCarNamesSubmit = e => {
