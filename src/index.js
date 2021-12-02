@@ -7,7 +7,6 @@ const $racing_count_submit = document.getElementById("racing-count-submit");
 let $result;
 let $racing_winners;
 let cars = [];
-let racingCount = [];
 
 const init = () => {
   const $app = document.getElementById("app");
@@ -117,7 +116,6 @@ const showWinner = () => {
     .map(car => car.name);
 
   $racing_winners.innerHTML += `최종 우승자: ${winner.join(", ")}`;
-  console.log(`최종 우승자: ${winner.join(", ")}`);
 };
 
 const playGame = racingCount => {
