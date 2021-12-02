@@ -6,12 +6,10 @@ export default class CarNamesEvent {
     this.$carNamesSubmit = DOM.carNamesSubmit;
   }
 
-  onClickSubmit = (event) => {
-    event.preventDefault();
-    console.log(this.$carNamesInput.value);
-  };
-
   submitBtn = () => {
-    this.$carNamesSubmit.addEventListener('click', () => this.onClickSubmit(event));
+    this.$carNamesSubmit.addEventListener('click', (event) => {
+      event.preventDefault();
+      console.log(this.$carNamesInput.value);
+    });
   };
 }

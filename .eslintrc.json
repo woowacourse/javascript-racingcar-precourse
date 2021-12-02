@@ -3,14 +3,19 @@
     "browser": true,
     "es2020": true
   },
-  "extends": [
-    "eslint:recommended",
-    "airbnb-base",
-    "plugin:prettier/recommended"
-  ],
+  "extends": ["eslint:recommended", "airbnb-base", "plugin:prettier/recommended"],
+  "parser": "@babel/eslint-parser",
   "parserOptions": {
     "ecmaVersion": 11,
-    "sourceType": "module"
+    "sourceType": "module",
+    "requireConfigFile": false
   },
-  "rules": {}
+  "rules": {
+    "import/extensions": "off",
+    "no-alert": "off",
+    "no-unused-vars": "warn",
+    "no-console": "off",
+    "no-new": "off",
+    "class-methods-use-this": "off"
+  }
 }
