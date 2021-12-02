@@ -7,7 +7,7 @@ let racingCount = [];
 
 const isCarInputsSplitBySpace = carInputs => {
   let isSplitBySpace = false;
-  if (carInputs.split(" ").length > 2) {
+  if (carInputs.split(" ").length >= 2) {
     isSplitBySpace = true;
   }
 
