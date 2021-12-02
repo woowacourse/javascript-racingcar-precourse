@@ -16,6 +16,15 @@ const App = () => {
   const carNamesForm = document.querySelector("#car-names-form");
   const racingCountForm = document.querySelector("#racing-count-form");
 
+  const formatCarNames = (carNames) => {
+    initialState.carNames = carNames.map((name) => {
+      const newCar = new Car(name);
+      newCar["id"] = newId();
+      newCar["moveCount"] = 0;
+      return newCar;
+    });
+  };
+
   const onSubmitCarNamesForm = (e) => {
     e.preventDefault();
     const carNamesInput = e.target[0];
@@ -23,12 +32,7 @@ const App = () => {
       validateCarNames(carNamesInput.value);
 
     initialState.isCorrectCarNames = isCorrectCarNames;
-    initialState.carNames = carNames.map((name) => {
-      const newCar = new Car(name);
-      newCar["id"] = newId();
-      newCar["moveCount"] = 0;
-      return newCar;
-    });
+    formatCarNames(carNames);
 
     if (isError) {
       window.alert(errorMessage);

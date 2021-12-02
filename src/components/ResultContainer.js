@@ -47,6 +47,7 @@ const ResultContainer = ({ app, carNames, racingCount }) => {
     for (let round = 0; round < racingCount; round++) {
       resultContainer.innerHTML += `<div id="result-round" style="margin: 10px 0;">${roundRender()}</div>`;
     }
+
     resultContainer.innerHTML += RacingWinners({ carNames, maxMoveCount });
   };
 
