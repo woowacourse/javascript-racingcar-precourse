@@ -28,5 +28,8 @@ module.exports = {
             },
         ],
         'no-console': 'off',
+        'no-plusplus': 'off',
+        'max-lines-per-function': ['error', 15],
+        'max-depth': ['error', 2],
     },
 };
