@@ -1,4 +1,4 @@
-import { $, isEmptyCarNames } from './utils.js';
+import { $, isIncludeSpace } from './utils.js';
 import { default as UI } from './DOMUtils.js';
 
 export default function RacingCarGame() {
@@ -8,7 +8,7 @@ export default function RacingCarGame() {
   };
 
   const isValidCarNames = string => {
-    if (isEmptyCarNames(string)) return alert('공백 입력을 하실 수 없습니다.');
+    if (isIncludeSpace(string)) return alert('공백 입력을 하실 수 없습니다.');
   };
 
   const handleCarNamesSubmit = e => {
