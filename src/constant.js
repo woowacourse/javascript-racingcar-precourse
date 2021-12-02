@@ -16,7 +16,7 @@ export const RACING_COUNT_RULES = {
 };
 
 export const ERR_MESSAGE = {
-  carNameLength: '1~5글자 사이의 자동차 이름을 사용해주세요.',
+  carNameLength: '공백을 제외한 1~5글자 사이의 자동차 이름을 사용해주세요.',
   carNameSame: '중복되지 않는 자동차 이름을 사용해주세요.',
   racingCount: '1이상의 시도할 횟수를 입력해주세요.',
 };
