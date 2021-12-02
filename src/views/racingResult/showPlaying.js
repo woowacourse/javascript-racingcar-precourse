@@ -1,8 +1,8 @@
-const makeCarDiv = (car) => {
+const makeCarDiv = car => {
   const $divCar = document.createElement("div");
-  let strCar = `${car.car.getCarName()}: `;
+  let strCar = `${car.getCar().getCarName()}: `;
 
-  for (let i = 0; i < car.location; i++) {
+  for (let i = 0; i < car.getLocation(); i++) {
     strCar += "-";
   }
 
@@ -11,7 +11,7 @@ const makeCarDiv = (car) => {
   return $divCar;
 };
 
-const showPlaying = (cars) => {
+const showPlaying = cars => {
   const $br = document.createElement("br");
 
   document.body.appendChild($br);

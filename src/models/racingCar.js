@@ -1,6 +1,6 @@
 import Car from "./car.js";
 
-class racingCar {
+class RacingCar {
   constructor(name) {
     this.car = new Car(name);
     this.location = 0;
@@ -19,4 +19,4 @@ class racingCar {
   }
 }
 
-export default racingCar;
+export default RacingCar;

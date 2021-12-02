@@ -23,9 +23,8 @@ const isCarNamesOK = carNames => {
 };
 
 const isDuplicateName = carNamesArr => {
-  let check = false;
-
   const carNamesSet = new Set(carNamesArr);
+  let check = false;
 
   if (carNamesArr.length !== carNamesSet.size) {
     check = true;

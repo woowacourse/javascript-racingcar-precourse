@@ -1,4 +1,4 @@
-export const showWinners = (winners) => {
+const showWinners = winners => {
   const $br = document.createElement("br");
   document.body.appendChild($br);
 
@@ -10,3 +10,5 @@ export const showWinners = (winners) => {
   $racingWinners.innerHTML = winners.join(",");
   document.body.appendChild($racingWinners);
 };
+
+export { showWinners };

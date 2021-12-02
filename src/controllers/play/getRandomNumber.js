@@ -1,5 +1,7 @@
-export const getRandomNumber = (min, max) => {
-  const num = MissionUtils.Random.pickNumberInRange(min, max);
+const getRandomNumber = (min, max) => {
+  const num = window.MissionUtils.Random.pickNumberInRange(min, max);
 
   return num;
 };
+
+export { getRandomNumber };

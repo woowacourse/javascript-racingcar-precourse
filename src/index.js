@@ -1,19 +1,20 @@
 import Cars from "./controllers/cars/cars.js";
-import { playGame } from "./controllers/play/playGame.js";
-import { isValidRacingCount } from "./controllers/racingCount/checkRacingCount.js";
 import RacingCount from "./controllers/racingCount/racingCount.js";
 import Winners from "./controllers/racingResult/winners.js";
-import VisiblePartOfRacingCount from "./views/racingCount/visiblePartOfRacingCount.js";
+import { playGame } from "./controllers/play/playGame.js";
+import { isValidRacingCount } from "./controllers/racingCount/checkRacingCount.js";
+
 import { showWinners } from "./views/racingResult/showWinners.js";
+import VisiblePartOfRacingCount from "./views/racingCount/visiblePartOfRacingCount.js";
 import VisiblePartOfRacingResult from "./views/racingResult/visiblePartOfRacingResult.js";
 
-export default class CarRacingGame {
+class CarRacingGame {
   constructor() {
     this.cars = new Cars();
     this.racingCount = new RacingCount();
     this.partOfRacingCount = new VisiblePartOfRacingCount();
     this.partOfRacingResult = new VisiblePartOfRacingResult();
-    this.$racingCountSubmitButton = document.getElementById("racing-count-submit");
+    this.$racingCountSubmit = document.getElementById("racing-count-submit");
   }
 
   init() {
@@ -23,13 +24,16 @@ export default class CarRacingGame {
   }
 
   addEventHandlers() {
-    this.onClickRacingCountSubmitButton();
+    this.onClickRacingCountSubmit();
   }
 
-  onClickRacingCountSubmitButton() {
-    this.$racingCountSubmitButton.addEventListener("click", () => {
-      if (isValidRacingCount(this.racingCount.getRacingCount())) {
-        const result = playGame(this.cars.getCars(), this.racingCount.getRacingCount());
+  onClickRacingCountSubmit() {
+    this.$racingCountSubmit.addEventListener("click", () => {
+      const cars = this.cars.getCars();
+      const racingCount = this.racingCount.getRacingCount();
+
+      if (isValidRacingCount(cars)) {
+        const result = playGame(cars, racingCount);
         const winners = new Winners(result).getWinners();
 
         showWinners(winners);

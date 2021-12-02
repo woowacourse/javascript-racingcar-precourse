@@ -1,5 +1,11 @@
-export const sortByLocation = (cars) => {
-  const carsSortedLocation = cars.sort((a, b) => b.location - a.location);
+const descByLocation = (a, b) => {
+  return b.getLocation() - a.getLocation();
+};
+
+const sortByLocation = cars => {
+  const carsSortedLocation = cars.sort(descByLocation);
 
   return carsSortedLocation;
 };
+
+export { sortByLocation };

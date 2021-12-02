@@ -1,27 +1,31 @@
 import { isValidRacingCount } from "./checkRacingCount.js";
-import { alertForRacingCount } from "../../views/racingCount/alertForRacingCount.js";
-import { resetRacingCountInput } from "../../views/racingCount/resetRacingCountInput.js";
 
-export default class RacingCount {
+import { alertForRacingCount } from "../../views/racingCount/alertForRacingCount.js";
+import {
+  resetRacingCountInput,
+  lockRacingCountInput,
+} from "../../views/racingCount/racingCountInput.js";
+
+class RacingCount {
   constructor() {
     this.racingCount = 0;
     this.$racingCountInput = document.getElementById("racing-count-input");
-    this.$racingCountSubmitButton = document.getElementById("racing-count-submit");
+    this.$racingCountSubmit = document.getElementById("racing-count-submit");
     this.addEventHandlers();
   }
 
   addEventHandlers() {
-    this.onClickRacingCountSubmitButton();
+    this.onClickRacingCountSubmit();
   }
 
-  onClickRacingCountSubmitButton() {
-    this.$racingCountSubmitButton.addEventListener("click", e => {
+  onClickRacingCountSubmit() {
+    this.$racingCountSubmit.addEventListener("click", e => {
       e.preventDefault();
-
       const racingCountStr = this.$racingCountInput.value;
 
       if (isValidRacingCount(racingCountStr)) {
         this.setRacingCount(racingCountStr);
+        lockRacingCountInput();
       } else {
         alertForRacingCount();
         resetRacingCountInput();
@@ -39,3 +43,5 @@ export default class RacingCount {
     this.racingCount = racingCount;
   }
 }
+
+export default RacingCount;

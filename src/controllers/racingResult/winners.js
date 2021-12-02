@@ -10,13 +10,13 @@ export default class Winners {
   pickWinners() {
     const carsSortedLocation = sortByLocation(this.cars);
 
-    const maxLocation = carsSortedLocation[0].location;
+    const maxLocation = carsSortedLocation[0].getLocation();
 
     for (let i = 0; i < carsSortedLocation.length; i++) {
-      if (carsSortedLocation[i].location < maxLocation) {
+      if (carsSortedLocation[i].getLocation() < maxLocation) {
         break;
       }
-      this.winners.push(carsSortedLocation[i].car.getCarName());
+      this.winners.push(carsSortedLocation[i].getCar().getCarName());
     }
   }
 

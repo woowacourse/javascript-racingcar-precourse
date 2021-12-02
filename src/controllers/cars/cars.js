@@ -1,50 +1,39 @@
-import { alertForCarNames } from "../../views/carNames/alertForCarNames.js";
-import { resetCarNamesInput } from "../../views/carNames/resetCarNamesInput.js";
-import VisiblePartOfRacingCount from "../../views/racingCount/visiblePartOfRacingCount.js";
 import { isValidCarNames } from "./checkCarNames.js";
-import Car from "../../models/car.js";
+import { makeRacingCars } from "./makeRacingCars.js";
 
-export default class Cars {
+import { alertForCarNames } from "../../views/carNames/alertForCarNames.js";
+import {
+  resetCarNamesInput,
+  lockCarNamesInput,
+} from "../../views/carNames/carNamesInput.js";
+import VisiblePartOfRacingCount from "../../views/racingCount/visiblePartOfRacingCount.js";
+
+class Cars {
   constructor() {
     this.cars = [];
     this.$carNamesInput = document.getElementById("car-names-input");
-    this.$carNamesSubmitButton = document.getElementById("car-names-submit");
-    this.partOfRacingCount = new VisiblePartOfRacingCount();
+    this.$carNamesSubmit = document.getElementById("car-names-submit");
     this.addEventHandlers();
   }
 
   addEventHandlers() {
-    this.onClickCarNamesSubmitButton();
+    this.onClickCarNamesSubmit();
   }
 
-  onClickCarNamesSubmitButton() {
-    this.$carNamesSubmitButton.addEventListener("click", e => {
+  onClickCarNamesSubmit() {
+    this.$carNamesSubmit.addEventListener("click", e => {
       e.preventDefault();
-
       const carNamesStr = this.$carNamesInput.value;
 
       if (isValidCarNames(carNamesStr)) {
-        this.setCars(this.converseNameStrToNameArr(carNamesStr));
-        this.partOfRacingCount.show();
+        this.setCars(makeRacingCars(carNamesStr));
+        lockCarNamesInput();
+        new VisiblePartOfRacingCount().show();
       } else {
         alertForCarNames();
         resetCarNamesInput();
       }
     });
-  }
-
-  converseNameStrToNameArr(nameStr) {
-    const nameArrBefore = nameStr.split(",");
-    const nameArrAfter = [];
-
-    nameArrBefore.forEach(name => {
-      nameArrAfter.push({
-        car: new Car(name),
-        location: 0,
-      });
-    });
-
-    return nameArrAfter;
   }
 
   getCars() {
@@ -55,3 +44,5 @@ export default class Cars {
     this.cars = cars;
   }
 }
+
+export default Cars;

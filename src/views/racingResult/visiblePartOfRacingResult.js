@@ -1,13 +1,15 @@
-export default class VisiblePartOfRacingResult {
+class VisiblePartOfRacingResult {
   constructor() {
-    this.$racingResultSubtitle = document.getElementById("racing-result-subtitle");
+    this.$racingResultTitle = document.getElementById("racing-result-subtitle");
   }
 
   show() {
-    this.$racingResultSubtitle.style.display = "";
+    this.$racingResultTitle.style.display = "";
   }
 
   hide() {
-    this.$racingResultSubtitle.style.display = "none";
+    this.$racingResultTitle.style.display = "none";
   }
 }
+
+export default VisiblePartOfRacingResult;
