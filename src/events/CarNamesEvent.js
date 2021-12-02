@@ -20,6 +20,18 @@ export default class CarNamesEvent {
     return false;
   };
 
+  isNameEmpty = () => {
+    let rightName = true;
+
+    this.carNamesArray.forEach((carName) => {
+      if (carName === '') {
+        rightName = false;
+      }
+    });
+
+    return rightName;
+  };
+
   isRightLength = () => {
     let rightLength = true;
 
@@ -60,14 +72,15 @@ export default class CarNamesEvent {
   };
 
   validateNames = () => {
-    const isValidate = this.isEmpty() && this.isBlank() && this.isComma() && this.isDuplicate() && this.isRightLength();
+    const isValidate =
+      this.isEmpty() &&
+      this.isBlank() &&
+      this.isComma() &&
+      this.isDuplicate() &&
+      this.isRightLength() &&
+      this.isNameEmpty();
 
-    if (isValidate) {
-      console.log('입력값이 좋아용!');
-    } else {
-      console.log('입력값이 별로양');
-    }
-    console.log(this.carNamesArray);
+    return isValidate;
   };
 
   onClickSubmit = () => {
