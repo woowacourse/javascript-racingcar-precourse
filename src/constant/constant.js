@@ -16,4 +16,5 @@ export const ERROR_MESSAGE = {
 
 export const CAUTION_MESSAGE = {
   FIRST_CAR_NAMES: '자동차 이름을 먼저 입력해주세요.',
+  FIRST_CAR_NAMES_SUBMIT: '자동차 이름을 먼저 등록해주세요.',
 };

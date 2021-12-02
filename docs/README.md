@@ -34,7 +34,7 @@
 
   - focus를 자동차 이름(car-name-input)에 준다.
 
-- [ ] 자동차 이름 확인 버튼(car-names-submit)을 클릭하지 않고, 시도할 횟수 버튼(racing-count-submit)을 클릭 할경우 alert 메시지 전달
+- [✅ ] 자동차 이름 확인 버튼(car-names-submit)을 클릭하지 않고, 시도할 횟수 버튼(racing-count-submit)을 클릭 할경우 alert 메시지 전달
 
   - focus를 자동차 이름(car-name-input)에 준다.
 

@@ -3,8 +3,8 @@ import RacingCountEvent from './events/RacingCountEvent.js';
 
 class RacingCar {
   constructor() {
-    this.racingCountEvent = new RacingCountEvent();
     this.carNamesEvent = new CarNamesEvent();
+    this.racingCountEvent = new RacingCountEvent(this.carNamesEvent);
     this.main();
   }
 

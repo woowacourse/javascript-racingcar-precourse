@@ -1,13 +1,14 @@
 import { DOM, ERROR_MESSAGE, CAUTION_MESSAGE } from '../constant/constant.js';
 
 export default class RacingCountEvent {
-  constructor() {
+  constructor(carNamesEvent) {
     this.$racingCountInput = DOM.racingCountInput;
     this.$racingCountSubmit = DOM.racingCountSubmit;
     this.$carNamesInput = DOM.carNamesInput;
     this.errorMessage = '';
     this.stringRacingCount = '';
     this.numberRacingCount = 0;
+    this.carNamesEvent = carNamesEvent;
   }
 
   initializeRacingCount = () => {
@@ -51,23 +52,41 @@ export default class RacingCountEvent {
       this.isInteger() &&
       this.isPositiveInteger();
 
-    return isValidate;
+    if (!isValidate) {
+      this.errorMessage = ERROR_MESSAGE.NO_POSITIVE_INTEGER;
+      this.alertErrorMessage();
+    }
+  };
+
+  alertCautionMessage = (cautionMessage) => {
+    alert(cautionMessage);
+    this.$carNamesInput.focus();
+  };
+
+  isCarNamesSubmit = () => {
+    if (this.carNamesEvent.carNamesArray.length === 0) {
+      return false;
+    }
+
+    return true;
+  };
+
+  checkCarNames = () => {
+    if (!this.isCarNamesSubmit()) {
+      this.alertCautionMessage(CAUTION_MESSAGE.FIRST_CAR_NAMES_SUBMIT);
+
+      return;
+    }
   };
 
   onClickSubmit = () => {
     this.$racingCountSubmit.addEventListener('click', (event) => {
       event.preventDefault();
       this.stringRacingCount = this.$racingCountInput.value;
-
-      if (!this.validateCount()) {
-        this.errorMessage = ERROR_MESSAGE.NO_POSITIVE_INTEGER;
-        this.alertErrorMessage();
-      }
+      this.carNames = this.$carNamesInput.value;
+      this.checkCarNames();
+      this.validateCount();
     });
-  };
-
-  alertCautionMessage = () => {
-    alert(CAUTION_MESSAGE.FIRST_CAR_NAMES);
   };
 
   isCarNamesBlank = () => {
@@ -81,8 +100,7 @@ export default class RacingCountEvent {
   onFocusInput = () => {
     this.$racingCountInput.addEventListener('focus', () => {
       if (this.isCarNamesBlank()) {
-        this.alertCautionMessage();
-        this.$carNamesInput.focus();
+        this.alertCautionMessage(CAUTION_MESSAGE.FIRST_CAR_NAMES);
       }
     });
   };
