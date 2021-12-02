@@ -1,10 +1,20 @@
 import RacingWinners from "./RacingWinners.js";
 
 const ResultContainer = ({ app, carNames, racingCount }) => {
-  const resultContainer = document.createElement("div");
-  resultContainer.setAttribute("id", "result-container");
-  app.append(resultContainer);
+  let resultContainer = document.querySelector("#result-container");
   let maxMoveCount = 0;
+
+  const resetUI = () => {
+    if (resultContainer) app.removeChild(resultContainer);
+  };
+
+  const init = () => {
+    resetUI();
+
+    resultContainer = document.createElement("div");
+    resultContainer.setAttribute("id", "result-container");
+    app.append(resultContainer);
+  };
 
   const isMove = (randomNumber) => randomNumber >= 4;
 
@@ -31,6 +41,7 @@ const ResultContainer = ({ app, carNames, racingCount }) => {
     resultContainer.innerHTML += RacingWinners({ carNames, maxMoveCount });
   };
 
+  init();
   render();
 };
 
