@@ -1,4 +1,6 @@
-import Car from './car.js';
+import carRacing from './carRacing.js';
+import validateCarName from './validateCarName.js';
+import validateUserCount from './validateUserCount.js';
 
 
 export default function racingGame(){
@@ -8,29 +10,40 @@ export default function racingGame(){
   const racingCountSubmitBtn=document.querySelector('#racing-count-submit');
   const resultBox= document.querySelector('#app');
   
-
-  function makeinstance(){
-    let listValue=carNameInput.value.split(',');
-    let carList=listValue.map(name=>new Car(name));
-    let carResult="";
-    console.log(listValue);
-    carList.forEach(carName => {
-      carName.count+=MissionUtils.Random.pickNumberInRange(1, 9);
-      carResult+=`${carName.name}:${'-'.repeat(carName.count)}<br> `;
-      console.log(carName.name);
-      console.log(carName.count);
-      console.log(carResult);
-      
-    });
-    const racingResult=document.createElement('div');
-    racingResult.innerHTML=`${carResult}`;
-    console.log(carResult);
-    console.log(racingResult.innerHTML);
-    resultBox.appendChild(racingResult);
-     
+  //
+  function printRacing(names,count){
+    if (names!=undefined){
+      const carResult=carRacing(names,count);
+      const racingResult=document.createElement('div');
+      racingResult.innerHTML=`${carResult}`;
+      resultBox.appendChild(racingResult);
+    }
+    
   }
-  carNameSubmitBtn.addEventListener("click",()=>{
-    makeinstance();
+  
+
+  
+  //car이름 배열 주기
+   function submitCarName(){
+    const carInput=carNameInput.value;
+    const listValue=validateCarName(carInput);
+    console.log(listValue);
+    return listValue;
+   }
+   //count횟수 주기
+   function submitCount(){
+    const countInput=validateUserCount();
+    return countInput;
+   }
+   carNameSubmitBtn.addEventListener("click",()=>{
+    validateCarName();
+   })
+   racingCountSubmitBtn.addEventListener("click",()=>{
+    const names=  submitCarName();
+    const count=  submitCount();
+    if (count>0){
+    printRacing(names,count);
+    }
    })
 }
 
