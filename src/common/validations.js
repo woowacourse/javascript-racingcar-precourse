@@ -24,7 +24,7 @@ export const blankCheck = values => {
 /**
  * 배열 원소의 길이를 검사합니다.
  *
- * @param {*} value
+ * @param {string | string[]} value
  * @returns
  */
 export const lengthCheck = value => {
@@ -55,7 +55,7 @@ export const duplicateCheck = values => {
  *  3. 중복된 이름은 허용되지 않습니다.
  *
  * @param {string[]} inputValue
- * @returns
+ * @returns {string[] | ''}
  */
 export const inputValidation = inputValue => {
   const filteredValues = filteredSideBlacnk(inputValue);
@@ -72,6 +72,15 @@ export const inputValidation = inputValue => {
   return checkedDuplicate;
 };
 
+/**
+ * 양의 정수인지 검사합니다.
+ * 1. 값이 0일 수 없습니다.
+ * 2. 값이 음수일 수 없습니다.
+ * 3. 값이 소수일 수 없습니다.
+ *
+ * @param {number|string} target
+ * @returns {number | ''}
+ */
 export const isPositiveInteger = target => {
   const parsed = +target;
   if (isEquals(parsed, NUMBER.ZERO)) return setErrorMessage('zeroError');
