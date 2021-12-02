@@ -1,7 +1,18 @@
+import { NUMBER } from '../constants/index.js';
+
 export default class Car {
-  constructor(name) {
+  constructor(name, condition) {
     this.name = name;
-    this.moves = 0;
+    this.condition = condition;
+    this.moveCount = NUMBER.ZERO;
+  }
+
+  get move() {
+    return 1;
+  }
+
+  get dontMove() {
+    return 0;
   }
 
   /**
@@ -9,8 +20,8 @@ export default class Car {
    *
    * @returns {Car}
    */
-  moveForward() {
-    this.moves += 1;
+  moveForward(number) {
+    this.moveCount += number >= this.condition ? this.move : this.dontMove;
     return this;
   }
 
@@ -21,7 +32,7 @@ export default class Car {
    */
   template() {
     const $p = document.createElement('p');
-    $p.innerHTML = `<strong>${this.name}</strong>: ${'-'.repeat(this.moves)}`;
+    $p.innerHTML = `<strong>${this.name}</strong>: ${'-'.repeat(this.moveCount)}`;
     return $p;
   }
 }
