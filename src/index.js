@@ -7,25 +7,25 @@ const $car_names_submit = document.getElementById("car-names-submit");
 const $racing_count_input = document.getElementById("racing-count-input");
 const $racing_count_submit = document.getElementById("racing-count-submit");
 let $result;
-let $racing_winners;
+let $winnerDiv;
 let cars;
 
 const init = () => {
   const resultDiv = document.createElement("div");
-  const winnerSpan = document.createElement("span");
+  const winnerDiv = document.createElement("div");
   resultDiv.id = "result";
-  winnerSpan.id = "racing-winners";
+  winnerDiv.id = "winners";
 
   $app.appendChild(resultDiv);
-  $app.appendChild(winnerSpan);
+  $app.appendChild(winnerDiv);
 
   $result = document.getElementById("result");
-  $racing_winners = document.getElementById("racing-winners");
+  $winnerDiv = document.getElementById("winners");
 };
 
 const resetGame = () => {
   $result.innerHTML = "";
-  $racing_winners.innerHTML = "";
+  $winnerDiv.innerHTML = "";
 
   cars.forEach(car => (car.moveDistance = 0));
 };
@@ -52,7 +52,12 @@ const showWinner = () => {
     .filter(car => car.moveDistance === maxDistance)
     .map(car => car.name);
 
-  $racing_winners.innerHTML += `최종 우승자: ${winner.join(", ")}`;
+  const winnerString = getWinnerString(winner);
+  $winnerDiv.innerHTML = `최종 우승자: ${winnerString}`;
+};
+
+const getWinnerString = winner => {
+  return `<span id="racing-winners">${winner.join(", ")}</span>`;
 };
 
 const playGame = racingCount => {
