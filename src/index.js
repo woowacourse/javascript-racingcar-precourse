@@ -1,4 +1,5 @@
 import Car from "./Car.js";
+import { isValidCarInputs, isValidCountInput } from "./validation.js";
 
 const $car_names_input = document.getElementById("car-names-input");
 const $car_names_submit = document.getElementById("car-names-submit");
@@ -27,70 +28,6 @@ const resetGame = () => {
   $racing_winners.innerHTML = "";
 
   cars.forEach(car => (car.moveDistance = 0));
-};
-
-const isCarInputsSplitBySpace = carInputs => {
-  let isSplitBySpace = false;
-  if (carInputs.split(" ").length >= 2) {
-    isSplitBySpace = true;
-  }
-
-  return isSplitBySpace;
-};
-
-const isCarInputsOverFiveLength = carInputs => {
-  let isOverFiveLength = false;
-  carInputs.forEach(carInput => {
-    if (carInput.length > 5) {
-      isOverFiveLength = true;
-    }
-  });
-
-  return isOverFiveLength;
-};
-
-const checkIsValidCarInputs = carInputs => {
-  let isValid = true;
-  if (isCarInputsSplitBySpace(carInputs)) {
-    alert("자동차 이름을 공백이 아닌 콤마로 구분하여 입력해주세요.");
-    isValid = false;
-  } else if (isCarInputsOverFiveLength(carInputs.split(","))) {
-    alert("자동차 이름을 5자 이하로 콤마로 구분하여 입력해주세요.");
-    isValid = false;
-  }
-
-  return isValid;
-};
-
-const checkIsInputCar = racingCountInput => {
-  let isInput = true;
-  if (racingCountInput === []) {
-    alert("자동차 이름을 입력 후 시도할 횟수를 입력해 주세요.");
-    isInput = false;
-  }
-
-  return isInput;
-};
-
-const checkIsIntergerInput = racingCountInput => {
-  let isInterger = true;
-  if (!Number.isInteger(parseInt(racingCountInput))) {
-    alert("시도할 횟수를 입력해 주세요.");
-    isInterger = false;
-  }
-
-  return isInterger;
-};
-
-const checkIsValidCountInput = racingCountInput => {
-  let isValid = true;
-  if (!checkIsInputCar(racingCountInput)) {
-    isValid = false;
-  } else if (!checkIsIntergerInput(racingCountInput)) {
-    isValid = false;
-  }
-
-  return isValid;
 };
 
 const makeCarArray = carInputs => {
@@ -132,7 +69,7 @@ const onClickSubmitCarNames = () => {
 
   cars = [];
   const carInputs = $car_names_input.value;
-  if (checkIsValidCarInputs(carInputs)) {
+  if (isValidCarInputs(carInputs)) {
     cars = makeCarArray(carInputs);
   }
 };
@@ -142,7 +79,7 @@ const onClickSubmitRacingCount = () => {
   resetGame();
 
   const racingCountInput = $racing_count_input.value;
-  if (checkIsValidCountInput(racingCountInput)) {
+  if (isValidCountInput(racingCountInput)) {
     const racingCount = parseInt(racingCountInput);
     playGame(racingCount);
   }
