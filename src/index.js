@@ -7,6 +7,7 @@ import {
   $carNamesSubmit,
 } from './constants/HTMLconstant.js';
 import validCarName from './validCarName.js';
+import Car from './car.js';
 
 class Game {
   constructor() {
@@ -27,6 +28,11 @@ class Game {
       e.preventDefault();
       const carNamesInput = $carNamesInput.value;
       const carNames = validCarName(carNamesInput);
+      if (carNames) {
+        carNames.forEach(carName => {
+          this.cars.push(new Car(carName));
+        });
+      }
     });
   }
 }
