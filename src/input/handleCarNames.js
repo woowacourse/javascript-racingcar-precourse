@@ -1,5 +1,15 @@
 import { GAME, ERR_MESSAGE } from '../utils/constant.js';
 
+function Car(name) {
+  this.name = name;
+  this.count = 0;
+}
+
+function makeObjectCars(carNames) {
+  const carObject = carNames.map((name) => new Car(name));
+  return carObject;
+}
+
 function isValidLength(name) {
   return name.length <= GAME.MAX_CAR_NAME_LENGTH;
 }
@@ -28,4 +38,6 @@ export default function handleCarNamesSubmit(event) {
     $carNamesInput.value = '';
     return;
   }
+
+  makeObjectCars(carNames);
 }

@@ -1,10 +1,11 @@
 import hideScreen from './init/hideScreen.js';
-import handleCarNamesSubmit from './input/carNames.js';
+import handleCarNamesSubmit from './input/handleCarNames.js';
 
 export default function racingCarGame() {
   const $carNamesSubmit = document.querySelector('#car-names-submit');
 
   hideScreen();
+
   $carNamesSubmit.addEventListener('click', handleCarNamesSubmit);
 }
 
