@@ -1,3 +1,4 @@
-function Car(name) {
+export function Car(name) {
     this.name = name;
+    this.distance = 0;
 }

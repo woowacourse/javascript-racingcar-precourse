@@ -16,7 +16,7 @@
 
 ## 기능별 목록 정리
 
-    -   횟수 입력 및 조건 확인 함수 생성
+    -   횟수 입력 및 조건 확인 함수 생성 --> input.js
         횟수 checklist
 
         *   숫자인지 isNaN
@@ -28,20 +28,22 @@
         *   글자 범위 (1 ~ 5)
         *   공백 확인
 
-    -   자동차 이름 입력 및 조건 확인 함수 생성
+    -   자동차 이름 입력 및 조건 확인 함수 생성 -->car.js
         function Car(name){
             this.name = name;
             this.distance = 0
             setter()
             getter()
         }
-    -   게임 진행 조건(0~9 사이의 랜덤 숫자 생성 및 4이상일 경우 전진)에 맞춰 진행 함수 생성
 
-    -   진행 완료 후 가장 멀리 간 자동차 출력
+    -   게임 진행 조건(0~9 사이의 랜덤 숫자 생성 및 4이상일 경우 전진)에 맞춰 진행 함수 생성 --> game.js
+
+    -   진행 완료 후 가장 멀리 간 자동차 출력 --> result.js
         <span id = "racing-winners"></span> 형식에 출력.
 
 파일 구조
 ├── src
+│ ├── input.js  
 │ ├── constant.js  
 │ ├── car.js
 │ ├── game.js
