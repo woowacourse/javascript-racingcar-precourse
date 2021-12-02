@@ -1,3 +1,5 @@
+import { FINAL_WINNER_TITLE } from '../config/config.js';
+
 function paragraphTemplate(raceResult) {
   const stringList = raceResult.map(
     (result) => `${result.name}: ${'-'.repeat(result.distance)}`
@@ -9,7 +11,7 @@ function paragraphTemplate(raceResult) {
 function finalWinnerTemplate(nameList) {
   const names = nameList.join(',');
 
-  return `<p>최종 우승자: <span id="racing-winners">${names}</span></p>`;
+  return `<p>${FINAL_WINNER_TITLE}: <span id="racing-winners">${names}</span></p>`;
 }
 
 const template = {
