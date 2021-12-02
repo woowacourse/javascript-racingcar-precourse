@@ -10,14 +10,15 @@
   - 최종 우승자를 출력하는 span 태그는 racing-winners id값을 가진다.
     - 예) `<span id="racing-winners">poco,park,jun</span>`
 
-- [ ] 자동차 이름 확인 버튼(car-names-submit) 클릭시 자동차 이름(car-name-input)을 가져온다.
+- [✅] 자동차 이름 확인 버튼(car-names-submit) 클릭시 자동차 이름(car-name-input)을 가져온다.
 
 - [ ] 자동차 이름(car-name-input)이 잘못된 경우 alert 메시지 전달
 
-  - 예외 1. 중복된 이름이 입력될 경우 다시 입력할 수 있게 한다.
-  - 예외 2. 이름은 ,쉼표를 기준으로 구분한다.
-  - 예외 3. 자동차 이름에 공백이 들어갈 경우
-  - 예외 4. 이름이 비어있을 경우(공백 문자 등)
+  - 예외 1. 이름이 비어있을 경우(공백 문자 등)
+  - 예외 2. 자동차 이름에 공백이 들어갈 경우
+  - 예외 3. car-name-input에 ,쉼표가 없을 경우
+  - 예외 4. 중복된 이름이 입력될 경우 다시 입력할 수 있게 한다.
+  - 예외 5. 자동차 이름이 5자를 초과할 경우
 
 - [ ] 자동차 이름 확인 버튼(car-names-submit)을 클릭하지 않고, 시도할 횟수 버튼(racing-count-submit)을 클릭 할경우 alert 메시지 전달
 
