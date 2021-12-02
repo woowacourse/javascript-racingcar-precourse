@@ -13,6 +13,7 @@
     "sourceType": "module"
   },
   "rules": {
-    "max-depth": ["error", 2] // depth 2까지 허용
+    "max-depth": ["error", 2], // depth 2까지 허용
+    "no-alert": "off"
   }
 }
