@@ -8,9 +8,9 @@ import {
 
 export default class RacingGame {
   constructor() {
+    this.initGame();
     this.input = new Input();
     this.addEventListeners();
-    this.initGame();
   }
 
   initGame() {

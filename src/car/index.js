@@ -20,4 +20,14 @@ export default class Car {
       this.move += 1;
     }
   }
+
+  getCarStatus() {
+    let message = `${this.name}: `;
+    let i;
+    for (i = 0; i < this.move; i += 1) {
+      message += '-';
+    }
+
+    return message;
+  }
 }
