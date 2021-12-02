@@ -1,4 +1,5 @@
 import { GAME, ERR_MESSAGE } from '../utils/constant.js';
+import getRacingCount from '../init/getRacingCount.js';
 
 function Car(name) {
   this.name = name;
@@ -39,5 +40,6 @@ export default function handleCarNamesSubmit(event) {
     return;
   }
 
-  makeObjectCars(carNames);
+  const carObjectList = makeObjectCars(carNames);
+  getRacingCount(carObjectList);
 }
