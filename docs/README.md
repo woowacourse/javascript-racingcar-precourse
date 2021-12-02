@@ -2,7 +2,7 @@
 
 # 기본 세팅
 
-- [ ] ESLint + Prettier 세팅
+- [x] ESLint + Prettier 세팅
 - [ ] 전체 디렉토리 기본 구조 잡기 (skeleton)
 
 # 자동차 경주 게임 - 게임
