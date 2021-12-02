@@ -6,7 +6,6 @@ import validateUserCount from './validateUserCount.js';
 export default function racingGame(){
   const carNameInput=document.querySelector('#car-names-input');
   const carNameSubmitBtn=document.querySelector('#car-names-submit');
-  const racingCountInput=document.querySelector('#racing-count-input');
   const racingCountSubmitBtn=document.querySelector('#racing-count-submit');
   const resultBox= document.querySelector('#app');
   
