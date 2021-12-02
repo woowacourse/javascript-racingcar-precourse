@@ -27,10 +27,9 @@ $racingCountInput.addEventListener('focusout', ({ target }) => {
 $racingCountSubmit.addEventListener('click', event => {
   event.preventDefault();
 
-  // 동일한 내용이지만 입력과 제출 시 각각 검증합니다.
-  const checkedValue = isPositiveInteger(event.target.value) || EMPTY;
-  if (isNotEquals(checkedValue, EMPTY)) return RacingGame.gameStart();
+  const { value: countNumber } = $('#racing-count-input');
 
-  $racingCountInput.value = checkedValue;
-  return $racingCountInput.focus();
+  // 동일한 내용이지만 입력과 제출 시 각각 검증합니다.
+  const checkedValue = isPositiveInteger(countNumber) || EMPTY;
+  if (isNotEquals(checkedValue, EMPTY)) return RacingGame.gameStart();
 });
