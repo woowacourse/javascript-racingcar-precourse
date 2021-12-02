@@ -62,7 +62,10 @@ class Game {
       }
       result += `<br/>`;
     }
-
+    this.setWinner();
+    result += `<div>최종 우승자: <span id="racing-winners">${this.winner.join(
+      ',',
+    )}</span></div>`;
     $resultTitle.insertAdjacentHTML('afterend', result);
   }
 
