@@ -20,13 +20,11 @@ export default class InputCarName {
     // 콤마 기준으로 문자열 분리
     splitCarNames(carNamesString) {
         const carNamesArray = carNamesString.split(',');
-        // this.carNames = carNamesArray.slice();
-        if(this.isValidNames(carNamesArray) === true) {
-            this.carNames = carNamesArray.slice();
-            console.log(this.carNames);
 
+        if(this.isValidNames(carNamesArray)) {
+            this.carNames = carNamesArray.slice();
+            // console.log(this.carNames);
         };
-        // this.carNames = carNamesArray.slice();
 
         return;
     }
