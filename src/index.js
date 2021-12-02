@@ -1,6 +1,7 @@
 import Car from "./Car.js";
 import { isValidCarInputs, isValidCountInput } from "./validation.js";
 
+const $app = document.getElementById("app");
 const $car_names_input = document.getElementById("car-names-input");
 const $car_names_submit = document.getElementById("car-names-submit");
 const $racing_count_input = document.getElementById("racing-count-input");
@@ -10,7 +11,6 @@ let $racing_winners;
 let cars;
 
 const init = () => {
-  const $app = document.getElementById("app");
   const resultDiv = document.createElement("div");
   const winnerSpan = document.createElement("span");
   resultDiv.id = "result";
@@ -63,8 +63,8 @@ const playGame = racingCount => {
   showWinner();
 };
 
-const onClickSubmitCarNames = () => {
-  event.preventDefault();
+const onClickSubmitCarNames = e => {
+  e.preventDefault();
 
   const carInputs = $car_names_input.value;
   if (isValidCarInputs(carInputs)) {
@@ -72,8 +72,8 @@ const onClickSubmitCarNames = () => {
   }
 };
 
-const onClickSubmitRacingCount = () => {
-  event.preventDefault();
+const onClickSubmitRacingCount = e => {
+  e.preventDefault();
   resetGame();
 
   const racingCountInput = $racing_count_input.value;
