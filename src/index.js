@@ -1,6 +1,11 @@
 import Car from './Car';
 import ResultComponent from './components/ResultComponent';
-import { $app, $nameinputForm, $nameSubmitButton } from './constants/index';
+import {
+    $app,
+    $countInputForm,
+    $nameinputForm,
+    $nameSubmitButton,
+} from './constants/index';
 
 class RacingGame {
     constructor() {
@@ -20,6 +25,9 @@ class RacingGame {
             this.input = ev.target.value;
         });
         $nameSubmitButton.addEventListener('click', this.applyCarName);
+        $countInputForm.addEventListener('change', (ev) => {
+            this.tryCount = ev.target.value * 1;
+        });
     }
 
     applyCarName() {
