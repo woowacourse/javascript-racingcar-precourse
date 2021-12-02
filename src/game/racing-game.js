@@ -5,10 +5,14 @@ export default class RacingCarGame {
   play = (cars, racingCount) => {
     this.resetResult(cars);
     for (let i = 0; i < racingCount; i++) {
-      cars.forEach((car) => car.move());
+      this.moveCars(cars);
       this.printGameProcess(cars);
     }
     this.printWinner(cars);
+  };
+
+  moveCars = (cars) => {
+    cars.forEach((car) => car.move());
   };
 
   printGameProcess = (cars) => {
