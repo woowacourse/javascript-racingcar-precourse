@@ -1,4 +1,5 @@
 import { getCarNames } from './getCarNames.js'
+import { enalbedElement,disabledElement } from './setAttribute.js'
 
 
 //자동차 이름 입력값 유효성 검사 함수
@@ -14,14 +15,7 @@ function carNameValid(carNames) {
     return true;
 };
 
-//기능을 사용가능하게
-function enalbedElement(element){
-    element.removeAttribute('disabled');
-}
-//기능을 사용불가능하게
-function disabledElement(element){
-    element.setAttribute('disabled', true);
-}
+
 
 
 //자동차 이름 제출 버튼 클릭시
