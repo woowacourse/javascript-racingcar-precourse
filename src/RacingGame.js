@@ -5,6 +5,8 @@ export default class RacingGame {
     this.setInputElements();
     this.setSubmitButton();
     this.setResultElements();
+    this.carsReady = false;
+    this.racingCountReady = false;
   }
 
   setInputElements() {
@@ -30,19 +32,32 @@ export default class RacingGame {
     event.preventDefault();
     const carNames = this.carNamesInput.value.split(',');
     if (!isValidCarNames(carNames)) {
-      console.log('In');
+      this.carsReady = false;
       return;
     }
-    console.log('Out');
+    this.carsReady = true;
+    this.start();
   }
 
   onSubmitRacingCount(event) {
     event.preventDefault();
     const racingCount = Number(this.racingCountInput.value);
     if (!isValidRacingCount(racingCount)) {
-      console.log('In');
+      this.racingCountReady = false;
       return;
     }
-    console.log('Out');
+    this.racingCountReady = true;
+    this.start();
+  }
+
+  start() {
+    if (!(this.carsReady && this.racingCountReady)) return;
+    this.setGameValue();
+    console.log(this.carNames, this.racingCount);
+  }
+
+  setGameValue() {
+    this.carNames = this.carNamesInput.value.split(',');
+    this.racingCount = Number(this.racingCountInput.value);
   }
 }
