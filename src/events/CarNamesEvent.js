@@ -22,6 +22,18 @@ export default class CarNamesEvent {
     return noDuplicate;
   };
 
+  isComma = () => {
+    for (let i = 0; i < this.carNames.length; i += 1) {
+      const carNamesText = this.carNames[i];
+
+      if (carNamesText === ',') {
+        return true;
+      }
+    }
+
+    return false;
+  };
+
   isBlank = () => {
     for (let i = 0; i < this.carNames.length; i += 1) {
       const carNamesText = this.carNames[i];
@@ -43,7 +55,7 @@ export default class CarNamesEvent {
   };
 
   validateNames = () => {
-    this.isEmpty() && this.isBlank() && this.isDuplicate();
+    this.isEmpty() && this.isBlank() && this.isComma() && this.isDuplicate();
   };
 
   onClickSubmit = () => {
