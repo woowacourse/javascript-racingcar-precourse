@@ -33,6 +33,7 @@ export default class Input {
     event.preventDefault();
     const carNames = DOMS.$carNamesInput.value.split(",");
     const alertMessage = createCarNameAlertMessage(carNames);
+
     if (alertMessage) {
       alert(alertMessage);
       return;
@@ -51,8 +52,8 @@ export default class Input {
       alert(alertMessage);
       return;
     }
-    this.racingCount = racingCount;
 
+    this.racingCount = racingCount;
     this.game.play(this.cars, this.racingCount);
   };
 }

@@ -4,10 +4,12 @@ import { DOMS } from "../util/constant.js";
 export default class RacingCarGame {
   play = (cars, racingCount) => {
     this.resetResult(cars);
+
     for (let i = 0; i < racingCount; i++) {
       this.moveCars(cars);
       this.printGameProcess(cars);
     }
+
     this.printWinner(cars);
   };
 
@@ -38,9 +40,11 @@ export default class RacingCarGame {
 
   resetProcess = () => {
     const $gameProcesses = document.querySelectorAll(".game-process");
+
     if (!$gameProcesses.length) {
       return;
     }
+
     $gameProcesses.forEach((gameProcess) => gameProcess.remove());
   };
 
@@ -48,9 +52,11 @@ export default class RacingCarGame {
     const $racingWinners = document
       .querySelector("#racing-winners")
       ?.closest("div");
+
     if (!$racingWinners) {
       return;
     }
+
     $racingWinners.remove();
   };
 

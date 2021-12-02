@@ -18,6 +18,7 @@ export default class Winner {
 
   generateWinnerMessage = (cars) => {
     const winners = this.getWinner(cars);
+
     this.message = `
       <div>최종우승자:
         <span id = "racing-winners">${winners.join(", ")}</span>
