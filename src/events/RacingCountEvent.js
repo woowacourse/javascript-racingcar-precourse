@@ -7,9 +7,18 @@ export default class RacingCountEvent {
     this.racingCount = '';
   }
 
+  isNegativeNumber = () => {
+    if (this.racingCount[0] === '-') {
+      console.log('음수야!!');
+      return false;
+    }
+
+    return true;
+  };
+
   isEmpty = () => {
     if (this.racingCount.length === 0) {
-      console.log('양의 정수를 입력해 주세요.');
+      console.log('공백이야!!');
       return false;
     }
 
@@ -18,6 +27,7 @@ export default class RacingCountEvent {
 
   validateCount = () => {
     this.isEmpty();
+    this.isNegativeNumber();
   };
 
   onClickSubmit = () => {
