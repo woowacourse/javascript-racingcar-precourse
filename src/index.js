@@ -14,7 +14,7 @@ const App = () => {
   const app = document.querySelector("#app");
   const carNamesForm = document.querySelector("#car-names-form");
   const racingCountForm = document.querySelector("#racing-count-form");
-  //   console.log(MissionUtils.Random.pickNumberInRange(0, 9));
+
   const onSubmitCarNamesForm = (e) => {
     e.preventDefault();
     const carNamesInput = e.target[0];
@@ -38,6 +38,14 @@ const App = () => {
     e.preventDefault();
     const racingCountInput = e.target[0];
     initialState.racingCount = Number(racingCountInput.value);
+
+    if (initialState.isCorrectCarNames) {
+      // TODO 실행결과 로직
+      //   console.log(MissionUtils.Random.pickNumberInRange(0, 9));
+      return;
+    }
+
+    window.alert(`자동차 이름을 입력해 주세요.`);
   };
 
   carNamesForm.addEventListener("submit", onSubmitCarNamesForm);
