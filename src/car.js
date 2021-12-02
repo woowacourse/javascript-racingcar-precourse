@@ -4,6 +4,8 @@ export default class Car {
     constructor(carName, racingCount) {
         this.carName = carName;
         this.racingCount = racingCount;
+        this.moveArray = this.checkCanMove();
+        this.totalDistance = this.totalMove();
     }
 
     makeRandomNum() {
@@ -26,5 +28,18 @@ export default class Car {
         }
 
         return canMove;
+    }
+
+    // 총 이동 거리 구하는 함수 - 최종 우승자 구하는 용
+    totalMove() {
+        let countMove = 0;
+
+        for(let i = 0; i < this.moveArray.length; i++) {
+            if(this.moveArray[i] === true) {
+                countMove += 1;
+            }
+        }
+
+        return countMove;
     }
 }
