@@ -9,8 +9,16 @@ $$('form').forEach((selector) =>
   })
 );
 
+const nonValidateCarNames = () => {
+  return isNonCarNames() || !isValidLength();
+};
+
+const nonValidateRacingCount = () => {
+  return isNonRacingCount() || !isNumber() || isNegative();
+};
+
 $('#car-names-submit').addEventListener('click', function (e) {
-  if (isNonCarNames() || !isValidLength()) {
+  if (nonValidateCarNames()) {
     alert('자동차 이름을 5자 이하로 콤마로 구분하여 입력해주세요.');
     $('#car-names-input').focus();
     return;
@@ -18,11 +26,18 @@ $('#car-names-submit').addEventListener('click', function (e) {
 });
 
 $('#racing-count-submit').addEventListener('click', function (e) {
-  if (isNonRacingCount() || !isNumber() || isNegative()) {
+  if (nonValidateCarNames()) {
+    alert('자동차 이름을 5자 이하로 콤마로 구분하여 입력해주세요.');
+    $('#car-names-input').focus();
+    return;
+  }
+
+  if (nonValidateRacingCount()) {
     alert('1 이상의 정수를 입력해주세요.');
     $('#racing-count-submit').focus();
     return;
   }
+
   const carNames = genCarInstances();
   const attemptCounts = $('#racing-count-input').value;
   renderResult(carNames, attemptCounts);
