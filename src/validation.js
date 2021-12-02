@@ -1,7 +1,15 @@
+import {
+  error_input_null,
+  error_input_split_space,
+  error_over_length,
+  error_null_car_names,
+  error_unvalid_count_input,
+} from "./constant.js";
+
 const isCarInputNull = carInputs => {
   let isNull = false;
   if (carInputs === "" || carInputs === null) {
-    alert("자동차 이름을 입력해 주세요.");
+    alert(error_input_null);
     isNull = true;
   }
 
@@ -11,7 +19,7 @@ const isCarInputNull = carInputs => {
 const isCarInputsSplitBySpace = carInputs => {
   let isSplitBySpace = false;
   if (carInputs.split(" ").length >= 2) {
-    alert("자동차 이름을 공백이 아닌 콤마로 구분하여 입력해주세요.");
+    alert(error_input_split_space);
     isSplitBySpace = true;
   }
 
@@ -27,7 +35,7 @@ const isCarInputsOverFiveLength = carInputs => {
   });
 
   if (isOverFiveLength) {
-    alert("자동차 이름을 5자 이하로 콤마로 구분하여 입력해주세요.");
+    alert(error_over_length);
   }
 
   return isOverFiveLength;
@@ -36,7 +44,7 @@ const isCarInputsOverFiveLength = carInputs => {
 const isInputCar = racingCountInput => {
   let isInput = true;
   if (racingCountInput === []) {
-    alert("자동차 이름을 입력 후 시도할 횟수를 입력해 주세요.");
+    alert(error_null_car_names);
     isInput = false;
   }
 
@@ -46,7 +54,7 @@ const isInputCar = racingCountInput => {
 const isIntergerInput = racingCountInput => {
   let isInterger = true;
   if (!Number.isInteger(parseInt(racingCountInput))) {
-    alert("시도할 횟수를 입력해 주세요.");
+    alert(error_unvalid_count_input);
     isInterger = false;
   }
 
