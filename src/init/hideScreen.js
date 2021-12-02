@@ -1,16 +1,11 @@
-function hideCountInputScreen() {
-  const $racingCountTitle = document.querySelector('#racing-count-title');
-  const $racingCountForm = document.querySelector('#racing-count-form');
-  $racingCountTitle.setAttribute('hidden', true);
-  $racingCountForm.setAttribute('hidden', true);
-}
-
-function hideResultScreen() {
-  const $racingResultTitle = document.querySelector('#racing-result-title');
-  $racingResultTitle.setAttribute('hidden', true);
-}
+import { hideElement } from '../utils/setAttribute.js';
 
 export default function hideScreen() {
-  hideCountInputScreen();
-  hideResultScreen();
+  const $racingCountTitle = document.querySelector('#racing-count-title');
+  const $racingCountForm = document.querySelector('#racing-count-form');
+  const $racingResultTitle = document.querySelector('#racing-result-title');
+
+  hideElement($racingCountTitle);
+  hideElement($racingCountForm);
+  hideElement($racingResultTitle);
 }
