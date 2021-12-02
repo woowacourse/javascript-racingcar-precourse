@@ -96,12 +96,15 @@ export default class RacingCarGame {
   };
 
   getWinner = () => {
-    const maxLength = this.cars.sort((a, b) => b.distance - a.distance)[0]
-      .distance;
+    const maxDistance = this.getMaxDistance();
 
     return this.cars
-      .filter((car) => car.distance === maxLength)
+      .filter((car) => car.distance === maxDistance)
       .map((car) => car.name);
+  };
+
+  getMaxDistance = () => {
+    return this.cars.sort((a, b) => b.distance - a.distance)[0].distance;
   };
 
   generateWinnerMessage = (winners) => {
