@@ -2,6 +2,7 @@ import { $ } from './dom/dom.js';
 import getUserCarNamesInput from './modules/getUserCarNamesInput.js';
 import hideRacingCountShow from './modules/hideRacingCountShow.js';
 import showRacingCountInput from './modules/showRacingCountInput.js';
+import getUserRacingCountInput from './modules/getUserRacingCountInput.js';
 
 export default function RacingcarGame() {
   this.racingInfoObject = {
@@ -13,19 +14,32 @@ export default function RacingcarGame() {
     hideRacingCountShow();
   };
 
-  const playGame = () => {
+  const gameStart = () => {
     this.racingInfoObject.carNames = getUserCarNamesInput();
     if (this.racingInfoObject.carNames !== false) {
       showRacingCountInput();
+      addRacingCountEventListener();
     }
     return;
+  };
+
+  const gameContinue = () => {
+    this.racingInfoObject.gameCount = getUserRacingCountInput();
+    console.log(this.racingInfoObject);
+  };
+
+  const addRacingCountEventListener = () => {
+    $('#racing-count-form').addEventListener('submit', (e) => {
+      e.preventDefalut();
+    });
+    $('#racing-count-submit').addEventListener('click', gameContinue);
   };
 
   const initEventListener = () => {
     $('#car-names-form').addEventListener('submit', (e) => {
       e.preventDefalut();
     });
-    $('#car-names-submit').addEventListener('click', playGame);
+    $('#car-names-submit').addEventListener('click', gameStart);
   };
 }
 
