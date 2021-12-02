@@ -4,20 +4,22 @@ export default class RacingCountEvent {
   constructor() {
     this.$racingCountInput = DOM.racingCountInput;
     this.$racingCountSubmit = DOM.racingCountSubmit;
-    this.racingCount = '';
+    this.stringRacingCount = '';
+    this.numberRacingCount = 0;
   }
 
-  isNegativeNumber = () => {
-    if (this.racingCount[0] === '-') {
-      console.log('음수야!!');
+  isInteger = () => {
+    this.numberRacingCount = Number(this.stringRacingCount);
+    if (Number.isInteger(this.numberRacingCount)) {
       return true;
     }
 
+    console.log('정수가 아니야!');
     return false;
   };
 
   isEmpty = () => {
-    if (this.racingCount.length === 0) {
+    if (this.stringRacingCount.length === 0) {
       console.log('공백이야!!');
       return true;
     }
@@ -26,14 +28,13 @@ export default class RacingCountEvent {
   };
 
   validateCount = () => {
-    this.isEmpty();
-    this.isNegativeNumber();
+    !this.isEmpty() && this.isInteger();
   };
 
   onClickSubmit = () => {
     this.$racingCountSubmit.addEventListener('click', (event) => {
       event.preventDefault();
-      this.racingCount = this.$racingCountInput.value;
+      this.stringRacingCount = this.$racingCountInput.value;
       this.validateCount();
     });
   };
