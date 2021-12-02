@@ -62,7 +62,18 @@ class Game {
       }
       result += `<br/>`;
     }
+
     $resultTitle.insertAdjacentHTML('afterend', result);
+  }
+
+  setWinner() {
+    let maxMove = 0;
+    this.cars.forEach(car => {
+      if (car.moveCount > maxMove) maxMove = car.moveCount;
+    });
+    this.cars.forEach(car => {
+      if (car.moveCount === maxMove) this.winner.push(car.name);
+    });
   }
 }
 
