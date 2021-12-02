@@ -37,7 +37,7 @@ const App = () => {
   const onSubmitRacingCountForm = (e) => {
     e.preventDefault();
     const racingCountInput = e.target[0];
-    initialState.racingCount(Number(racingCountInput.value));
+    initialState.racingCount = Number(racingCountInput.value);
   };
 
   carNamesForm.addEventListener("submit", onSubmitCarNamesForm);
