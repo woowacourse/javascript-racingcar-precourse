@@ -40,9 +40,7 @@ export default class View {
 
       if (!isValidCarNames(nameList)) {
         alert(ERROR_WRONG_INPUT_CAR_NAMES);
-        // $('#car-names-input').value = this.carList
-        //   .map((car) => car.name)
-        //   .join(',');
+        $('#car-names-input').value = '';
 
         return;
       }
