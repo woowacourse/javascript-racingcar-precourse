@@ -6,6 +6,7 @@ export const submitCountOfRacing = e => {
 
   if (play <= 0) {
     alert('입력 횟수를 다시 적어주세요.');
+    $('#racing-count-input').value = '';
     return;
   }
 

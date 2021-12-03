@@ -23,7 +23,7 @@ function racingGame() {
 
     $('#racing-count-submit').addEventListener('click', e => {
       this.count = submitCountOfRacing(e);
-      playAll(this.cars, this.count);
+      if (this.count) playAll(this.cars, this.count);
     });
   };
 }

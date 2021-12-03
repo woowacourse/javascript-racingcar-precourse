@@ -1,3 +1,4 @@
+import $ from '../common/selector.js';
 import { play } from './play.js';
 
 export const playAll = (cars, count) => {
@@ -7,5 +8,10 @@ export const playAll = (cars, count) => {
     result = play(cars);
   }
 
-  return result;
+  let winner = [];
+  const max = Math.max(...result.map(item => item.distance), 0);
+  result.forEach(item => item.distance === max && winner.push(item.name));
+
+  $('#racing-winners').innerHTML = `최종 우승자: ${winner.join(', ')}`;
+  return winner;
 };
