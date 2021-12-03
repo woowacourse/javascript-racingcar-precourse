@@ -4,12 +4,16 @@ import hideRacingCountShow from './modules/hideRacingCountShow.js';
 import showRacingCountInput from './modules/showRacingCountInput.js';
 import getUserRacingCountInput from './modules/getUserRacingCountInput.js';
 import showRacingResultTitle from './modules/showRacingResultTitle.js';
+import createCarInstance from './car/createCarInstance.js';
+import computeGameResult from './modules/computeGameResult.js';
 
 export default function RacingcarGame() {
   this.racingInfoObject = {
     carNames: [],
     gameCount: 0,
+    carInstanceList: [],
   };
+
   this.init = () => {
     initEventListener();
     hideRacingCountShow();
@@ -27,7 +31,11 @@ export default function RacingcarGame() {
   const gameContinue = () => {
     this.racingInfoObject.gameCount = getUserRacingCountInput();
     if (this.racingInfoObject.gameCount !== false) {
+      this.racingInfoObject.carInstanceList = createCarInstance(
+        this.racingInfoObject.carNames
+      );
       showRacingResultTitle();
+      computeGameResult(this.racingInfoObject);
     }
   };
 
