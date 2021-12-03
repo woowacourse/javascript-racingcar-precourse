@@ -1,44 +1,45 @@
-import { isNonCarNames, isValidLength, genCarInstances } from './data/carNameInput.js';
-import { isNonRacingCount, isNumber, isNegative } from './data/racingCountInput.js';
-import { renderResult } from './data/output.js';
 import { $, $$ } from './utils/dom.js';
+import {
+  isCarNamesInputNonValid,
+  isRacingCountInputNonValid,
+  carNamesInputExceptionMessage,
+  racingCountInputExceptionMessage,
+} from './controller/inputValidator.js';
+import { renderGameResult } from './controller/controller.js';
 
-$$('form').forEach((selector) =>
-  selector.addEventListener('submit', function (e) {
+// 입력 값
+export const getCarNamesInput = () => {
+  return $('#car-names-input').value.split(',');
+};
+
+export const getRacingCountInput = () => {
+  return Number($('#racing-count-input').value);
+};
+
+// 이벤트 설정
+$$('form').forEach((form) =>
+  form.addEventListener('submit', function (e) {
     e.preventDefault();
   })
 );
 
-const nonValidateCarNames = () => {
-  return isNonCarNames() || !isValidLength();
-};
-
-const nonValidateRacingCount = () => {
-  return isNonRacingCount() || !isNumber() || isNegative();
-};
-
 $('#car-names-submit').addEventListener('click', function (e) {
-  if (nonValidateCarNames()) {
-    alert('자동차 이름을 5자 이하로 콤마로 구분하여 입력해주세요.');
-    $('#car-names-input').focus();
+  if (isCarNamesInputNonValid()) {
+    carNamesInputExceptionMessage();
     return;
   }
 });
 
 $('#racing-count-submit').addEventListener('click', function (e) {
-  if (nonValidateCarNames()) {
-    alert('자동차 이름을 5자 이하로 콤마로 구분하여 입력해주세요.');
-    $('#car-names-input').focus();
+  if (isCarNamesInputNonValid()) {
+    carNamesInputExceptionMessage();
     return;
   }
 
-  if (nonValidateRacingCount()) {
-    alert('1 이상의 정수를 입력해주세요.');
-    $('#racing-count-submit').focus();
+  if (isRacingCountInputNonValid()) {
+    racingCountInputExceptionMessage();
     return;
   }
 
-  const carNames = genCarInstances();
-  const attemptCounts = $('#racing-count-input').value;
-  renderResult(carNames, attemptCounts);
+  renderGameResult(getCarNamesInput(), getRacingCountInput());
 });

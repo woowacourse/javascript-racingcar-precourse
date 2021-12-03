@@ -7,4 +7,12 @@ export class Car {
   move() {
     this.distance++;
   }
+
+  getName() {
+    return this.name;
+  }
+
+  getDistance() {
+    return this.distance;
+  }
 }
