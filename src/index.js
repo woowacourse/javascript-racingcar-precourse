@@ -1,6 +1,7 @@
 import Input from './input/Input.js';
 import hideNextInput from './view/hideNextInput.js';
 import showNextInput from './view/showNextInput.js';
+import playGame from './game/playGame.js';
 
 const NAME_ERROR_MESSAGE = '입력 오류! 공백을 포함하지 않은 5자 이하 이름만 입력해주세요!';
 const NO_INPUT_ERROR_MESSAGE = '입력 오류! 자동차 이름과 반복할 횟수 모두 입력해주세요!';
@@ -22,7 +23,7 @@ function onRepeatCountSubmit(event, userInput) {
   event.preventDefault();
   userInput.setRepeatCount(document.querySelector('#racing-count-input').value);
   if (userInput.getCarNames() && userInput.getRepeatCount()) {
-    // playGame();
+    playGame(userInput);
     return;
   }
   alert(NO_INPUT_ERROR_MESSAGE);
