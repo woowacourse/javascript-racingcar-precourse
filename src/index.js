@@ -21,7 +21,15 @@ class RacingCar {
     this.$racingCountSubmit.addEventListener('click', (event) => {
       event.preventDefault();
       this.racingCountEvent.checkCarNames();
-      const [racingCount, carNames] = this.racingCountEvent.validateCount();
+      const isValidate = this.racingCountEvent.validateCount();
+
+      if (!isValidate) {
+        this.racingCountEvent.alertErrorMessage();
+        this.$racingCountInput.focus();
+        return;
+      }
+
+      const [racingCount, carNames] = this.racingCountEvent.getInputs();
       const game = new Game(racingCount, carNames);
       game.start();
     });

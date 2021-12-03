@@ -5,7 +5,6 @@ export default class RacingCountEvent {
     this.$racingCountInput = DOM.racingCountInput;
     this.$carNamesInput = DOM.carNamesInput;
     this.carNamesEvent = carNamesEvent;
-    this.errorMessage = '';
     this.stringRacingCount = '';
     this.numberRacingCount = 0;
   }
@@ -17,7 +16,7 @@ export default class RacingCountEvent {
   };
 
   alertErrorMessage = () => {
-    alert(this.errorMessage);
+    alert(ERROR_MESSAGE.NO_POSITIVE_INTEGER);
   };
 
   isPositiveInteger = () => {
@@ -45,19 +44,17 @@ export default class RacingCountEvent {
     return false;
   };
 
+  getInputs = () => {
+    return [this.numberRacingCount, this.carNamesEvent.carNamesArray];
+  };
+
   validateCount = () => {
     this.stringRacingCount = this.$racingCountInput.value;
     const isValidate =
       !this.isEmpty() && //
       this.isInteger() &&
       this.isPositiveInteger();
-
-    if (!isValidate) {
-      this.errorMessage = ERROR_MESSAGE.NO_POSITIVE_INTEGER;
-      this.alertErrorMessage();
-    }
-
-    return [this.numberRacingCount, this.carNamesEvent.carNamesArray];
+    return isValidate;
   };
 
   alertCautionMessage = (cautionMessage) => {
