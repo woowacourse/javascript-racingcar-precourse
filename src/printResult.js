@@ -15,6 +15,6 @@ export function printInHTML(resultStr) {
 }
 
 export function printResult(winners) {
-  const resultStr = '최종 우승자: ' + makeResultToString(winners);
+  const resultStr = makeResultToString(winners);
   printInHTML(resultStr);
 }

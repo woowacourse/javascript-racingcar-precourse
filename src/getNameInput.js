@@ -22,7 +22,7 @@ export function isTooManyCars(nameInput) {
 }
 
 export function isFewCars(nameInput) {
-  if (NUM_OF_CARS_MIN < countNumOfCar(nameInput)) {
+  if (NUM_OF_CARS_MIN <= countNumOfCar(nameInput)) {
     return true;
   }
   alert(`Input at least ${NUM_OF_CARS_MIN} Names`);
