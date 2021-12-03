@@ -198,6 +198,8 @@
 
 ### 무작위 값 검사하기
 
+[완료 커밋](https://github.com/leegwae/javascript-racingcar-precourse/commit/daa4504f2e8fc7134a88f4be6cdb5fb9b7376eb7)
+
 - [ ] `무작위 값`이 `4` 이상인지 검사한다.
 
 
