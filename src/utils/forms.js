@@ -15,10 +15,10 @@ function onSubmitRacingCount(input, racingGame) {
   const racingCount = Number(input.value);
   racingGame.resetResult();
   if (!isValidRacingCount(racingCount)) {
-    racingGame.setRacingCount(0);
+    racingGame.setCount(0);
     return;
   }
-  racingGame.setRacingCount(racingCount);
+  racingGame.setCount(racingCount);
   if (racingGame.isReadyForGame()) racingGame.play();
 }
 

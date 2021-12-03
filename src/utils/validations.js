@@ -1,6 +1,9 @@
 import {
   ERROR_MESSAGE,
-  MAX_LENGTH_OF_CAR_NAME, MIN_LENGTH_OF_CAR_NAME, MIN_NUMBER_OF_CARS, MIN_OF_RACING_COUNT,
+  MAX_LENGTH_OF_CAR_NAME,
+  MIN_LENGTH_OF_CAR_NAME,
+  MIN_NUMBER_OF_CARS,
+  MIN_OF_RACING_COUNT,
 } from '../constants/index.js';
 
 function isValidNumberOfCar(carNames) {

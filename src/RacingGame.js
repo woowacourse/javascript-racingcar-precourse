@@ -4,7 +4,7 @@ import Render from './Render.js';
 export default class RacingGame {
   constructor() {
     this.carNames = [];
-    this.racingCount = 0;
+    this.count = 0;
     this.render = new Render();
   }
 
@@ -12,8 +12,8 @@ export default class RacingGame {
     this.carNames = carNames;
   }
 
-  setRacingCount(count) {
-    this.racingCount = count;
+  setCount(count) {
+    this.count = count;
   }
 
   resetResult() {
@@ -21,14 +21,14 @@ export default class RacingGame {
   }
 
   isReadyForGame() {
-    return this.carNames.length !== 0 && this.racingCount !== 0;
+    return this.carNames.length !== 0 && this.count !== 0;
   }
 
   play() {
     this.cars = this.carNames.map((name) => new Car(name));
 
     this.render.showResultTitle();
-    for (let order = 0; order < this.racingCount; order += 1) {
+    for (let order = 0; order < this.count; order += 1) {
       this.racing(order);
     }
 
