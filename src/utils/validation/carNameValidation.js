@@ -5,12 +5,6 @@ export const carNameValidation = carNames => {
   };
 
   carNames.map(carName => {
-    if (isNaN(Number(carName))) {
-      validation.isError = true;
-      validation.inValidText = '잘못된 자동차 이름이 있습니다.';
-      return validation;
-    }
-
     if (!carName) {
       validation.isError = true;
       validation.inValidText = '자동차 이름에 공백이 있습니다.';
