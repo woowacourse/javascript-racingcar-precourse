@@ -1,6 +1,6 @@
 import { Car } from './class/car.js';
 import { $ } from './util/dom.js';
-import { removeBeforeResult, renderResult } from './render.js';
+import { removeBeforeResult, renderResult, getWinner } from './render.js';
 
 export const startRacingGame = () => {
   let cars = makeCars();
@@ -26,4 +26,5 @@ const goAndStopCars = cars => {
     }
     renderResult(cars);
   }
+  getWinner(cars);
 };

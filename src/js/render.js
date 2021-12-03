@@ -22,3 +22,35 @@ export const renderResult = cars => {
   newBr.innerHTML = '<br>';
   $('#result-div').appendChild(newBr);
 };
+
+export const getWinner = cars => {
+  let maxScore = 0;
+  for (let i = 0; i < cars.length; i++) {
+    if (cars[i].score > maxScore) {
+      maxScore = cars[i].score;
+    }
+  }
+  let winners = [];
+  for (let i = 0; i < cars.length; i++) {
+    if (cars[i].score === maxScore) {
+      winners.push(cars[i].name);
+    }
+  }
+  renderWinner(winners);
+};
+
+const renderWinner = winners => {
+  let winnerSpan = document.createElement('span');
+  let winnerFrontSpan = document.createElement('span');
+  winnerFrontSpan.innerHTML = '<br>최종 우승자: ';
+  winnerSpan.id = 'racing-winners';
+  for (let i = 0; i < winners.length; i++) {
+    if (i + 1 === winners.length) {
+      winnerSpan.innerHTML += `${winners[i]}`;
+    } else {
+      winnerSpan.innerHTML += `${winners[i]}, `;
+    }
+  }
+  $('#result-div').appendChild(winnerFrontSpan);
+  $('#result-div').appendChild(winnerSpan);
+};
