@@ -5,9 +5,13 @@ import {
   carNamesInputExceptionMessage,
   racingCountInputExceptionMessage,
 } from './controller/inputValidator.js';
-import { renderGameResult } from './controller/controller.js';
+import { Controller } from './controller/controller.js';
 
 class View {
+  constructor(controller) {
+    this.controller = controller;
+  }
+
   init() {
     hideRacingCountInput();
     this.setFormEvent();
@@ -54,10 +58,11 @@ class View {
         return;
       }
 
-      renderGameResult(this.getCarNamesInput(), this.getRacingCountInput());
+      this.controller.renderGameResult(this.getCarNamesInput(), this.getRacingCountInput());
     });
   }
 }
 
-const view = new View();
+const controller = new Controller();
+const view = new View(controller);
 view.init();
