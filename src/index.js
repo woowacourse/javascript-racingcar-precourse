@@ -8,3 +8,6 @@ console.log(a.totalDistance);
 
 export const inputCarName = new InputCarName();
 const c = new InputRacingCount();
+
+// console.log(inputCarName.carNames);
+// console.log(c.racingCount);
