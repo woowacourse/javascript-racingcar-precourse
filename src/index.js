@@ -1,11 +1,13 @@
 import { extractNames, isCarEnough, isNameTooLong } from './getNameInput.js';
 import { isTrialEnough } from './getNumberInput.js';
+import { Car } from './car.js';
 
 export default function racingCarGame() {
   const nameSubmitButton = document.getElementById('car-names-submit');
   const players = [];
   let carNames = [];
   let racingCount = 0;
+  let winners = [];
 
   function getNameInput() {
     const nameEntered = document.getElementById('car-names-input').value;
@@ -13,11 +15,11 @@ export default function racingCarGame() {
       carNames = extractNames(nameEntered);
     }
     isNameTooLong(carNames);
+    makePlayers();
   }
 
   nameSubmitButton.addEventListener('click', getNameInput);
 
-  makePlayers();
   function makePlayers() {
     for (let i = 0; i < carNames.length; i++) {
       const player = new Car(carNames[i], 0);
