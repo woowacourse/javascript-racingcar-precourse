@@ -2,9 +2,9 @@ import stringToArrayConverter from './utils/stringToArrayConverter.js';
 import isValidCarNames from './utils/isValidCarNames.js';
 import isValidRacingCount from './utils/isValidRacingCount.js';
 import generateCars from './utils/generateCars.js';
+import race from './utils/race.js';
 import hideRacingCountAndResult from './dom/hideRacingCountAndResult.js';
 import showRacingCount from './dom/showRacingCountForm.js';
-import printRace from './dom/printRace.js';
 import printResult from './dom/printResult.js';
 
 export default class CarRacingGame {
@@ -50,18 +50,11 @@ export default class CarRacingGame {
 
   play() {
     for (let racing = 0; racing < this.racingCount; racing++) {
-      this.moveCars();
-      printRace(this.cars);
+      race(this.cars);
     }
 
     this.findWinner();
     printResult(this.winner);
-  }
-
-  moveCars() {
-    this.cars.forEach((car) => {
-      car.move();
-    });
   }
 
   findWinner() {
