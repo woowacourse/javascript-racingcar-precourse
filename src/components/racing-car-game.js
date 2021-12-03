@@ -1,5 +1,5 @@
 import { CarNameInput } from "./car-names-input.js";
-import { hideNode } from "../utils/dom.js";
+import { hideNode, showNode } from "../utils/dom.js";
 import { SELECTOR } from "../constants/constant.js";
 
 export class RacingCarGame {
@@ -8,6 +8,7 @@ export class RacingCarGame {
         this.$racingCount = document.getElementById(SELECTOR.ID.RACING_COUNT_FROM);
         this.$racingCountCommand = document.getElementById(SELECTOR.ID.RACING_COUNT_COMMAND);
         this.$result = document.getElementById(SELECTOR.ID.RESULT);
+        this.state = { cars: [], count: 0 };
         this.init();
     }
     init() {
@@ -15,12 +16,18 @@ export class RacingCarGame {
         this.unmount();
     }
     bindEventsToCompoents() {
-        this.carNamesInput = new CarNameInput(this.setCars);
+        this.carNamesInput = new CarNameInput(this.setCars.bind(this));
     }
-    setCars(names) {}
+    setCars(names) {
+        this.activateRacingCount();
+    }
     unmount() {
         hideNode(this.$racingCount);
         hideNode(this.$racingCountCommand);
         hideNode(this.$result);
+    }
+    activateRacingCount() {
+        showNode(this.$racingCountCommand);
+        showNode(this.$racingCount);
     }
 }

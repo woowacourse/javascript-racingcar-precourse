@@ -13,5 +13,11 @@ export class CarNameInput {
     }
     submitCarName(event) {
         event.preventDefault();
+        const carNamesArr = this.$input.value.split(",");
+        const errorMessage = validateCarNames(carNamesArr);
+        if (errorMessage) {
+            return alert(errorMessage);
+        }
+        this.setCars(carNamesArr);
     }
 }
