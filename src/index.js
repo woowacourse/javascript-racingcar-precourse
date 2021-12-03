@@ -1,19 +1,27 @@
 import Input from './input/Input.js';
 
-const ERROR_MESSAGE = '입력 오류! 공백을 포함하지 않은 5자 이하 이름만 입력해주세요!';
+const NAME_ERROR_MESSAGE = '입력 오류! 공백을 포함하지 않은 5자 이하 이름만 입력해주세요!';
+const NO_INPUT_ERROR_MESSAGE = '입력 오류! 자동차 이름과 반복할 횟수 모두 입력해주세요!';
 
 function onCarNamesSubmit(event, userInput) {
   event.preventDefault();
-  userInput.setCarNames(document.querySelector('#car-names-input').value.split(','));
+  const $carNamesInput = document.querySelector('#car-names-input');
+  
+  userInput.setCarNames($carNamesInput.value.split(','));
   if (!userInput.getCarNames()) {
-    alert(ERROR_MESSAGE);
+    alert(NAME_ERROR_MESSAGE);
+    $carNamesInput.value = '';
   }
 }
 
 function onRepeatCountSubmit(event, userInput) {
   event.preventDefault();
   userInput.setRepeatCount(document.querySelector('#racing-count-input').value);
-  // TODO: playGame
+  if (userInput.getCarNames() && userInput.getRepeatCount()) {
+    // playGame();
+    return ;
+  }
+  alert(NO_INPUT_ERROR_MESSAGE);
 }
 
 function gameEventHandler() {

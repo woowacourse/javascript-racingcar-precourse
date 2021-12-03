@@ -44,4 +44,8 @@ export default class Input {
   getCarNames() {
     return this.carNames;
   }
+
+  getRepeatCount() {
+    return this.repeatCount;
+  }
 }
