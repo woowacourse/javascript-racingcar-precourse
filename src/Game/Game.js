@@ -10,7 +10,9 @@ export default class Game {
     this.carNames = carNames;
     this.randomNumbers = [];
     this.resultRacings = [];
+    this.carResultInformations = [];
     this.template = '';
+    this.winners = [];
   }
 
   renderTemplate = () => {
@@ -48,6 +50,7 @@ export default class Game {
         currentCarResultRacing.push(this.getResultString(currentCar));
       }
 
+      this.carResultInformations.push(currentCar.information());
       this.resultRacings.push(currentCarResultRacing);
     });
   };
@@ -57,10 +60,33 @@ export default class Game {
     this.randomNumbers = this.randomNumber.get();
   };
 
+  compareDistance = (currentCarName, maxDistance, currentDistance) => {
+    if (maxDistance < currentDistance) {
+      this.winners = [];
+      this.winners.push(currentCarName);
+      return currentDistance;
+    }
+
+    if (maxDistance === currentDistance) {
+      this.winners.push(currentCarName);
+    }
+
+    return maxDistance;
+  };
+
+  getWinners = () => {
+    console.log(this.resultRacings);
+    this.carResultInformations.reduce((maxDistance, currentInformation) => {
+      const [currentCarName, currentDistance] = currentInformation;
+      return this.compareDistance(currentCarName, maxDistance, currentDistance);
+    }, 0);
+  };
+
   start = () => {
     this.getRandomNumbers();
     this.racingGameStart();
     this.getTemplate();
     this.renderTemplate();
+    this.getWinners();
   };
 }

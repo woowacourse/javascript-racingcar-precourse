@@ -4,6 +4,10 @@ export default class Car {
     this.distance = 0;
   }
 
+  information = () => {
+    return [this.name, this.distance];
+  };
+
   resultString = () => {
     return `${this.name}: ${'-'.repeat(this.distance)}`.trim();
   };
