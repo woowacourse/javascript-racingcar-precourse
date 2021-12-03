@@ -5,9 +5,12 @@
     },
     "extends": ["eslint:recommended", "airbnb-base"],
     "parserOptions": {
-        "ecmaVersion": 13,
+        "ecmaVersion": 2021,
         "sourceType": "module"
     },
     "rules": {
+        "consistent-return": "off",
+        "import/extensions": "off",
+        "no-alert": "off"
     }
 }
