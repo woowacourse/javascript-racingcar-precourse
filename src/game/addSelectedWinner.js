@@ -16,11 +16,19 @@ function selectWinner(maxCount) {
     }
     return false;
   });
-  return selectedWinner;
+  return selectedWinner.map((winner) => winner.name).join(', ');
 }
 
-export default function addSelectedWinner() {
+function makeWinnerString($resultScreenDiv, selectedWinner) {
+  const $winnerSpan = document.createElement('span');
+  $winnerSpan.id = 'racing-winners';
+  $winnerSpan.innerHTML = `최종우승자: ${selectedWinner}`;
+  $resultScreenDiv.appendChild($winnerSpan);
+}
+
+export default function addSelectedWinner($resultScreenDiv) {
   const maxCount = getMaxCount();
-  const selectedWinnerArray = selectWinner(maxCount);
-  console.log('우승자', selectedWinnerArray);
+  const selectedWinner = selectWinner(maxCount);
+
+  makeWinnerString($resultScreenDiv, selectedWinner);
 }
