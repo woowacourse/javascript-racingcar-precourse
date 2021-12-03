@@ -5,7 +5,7 @@ import generateCars from './utils/generateCars.js';
 import race from './utils/race.js';
 import completeRace from './utils/completeRace.js';
 import hideRacingCountAndResult from './dom/hideRacingCountAndResult.js';
-import showRacingCount from './dom/showRacingCountForm.js';
+import showRacingCountForm from './dom/showRacingCountForm.js';
 
 export default class CarRacingGame {
   constructor() {
@@ -28,7 +28,7 @@ export default class CarRacingGame {
       }
 
       this.carNames = stringToArrayConverter(carNamesString);
-      showRacingCount();
+      showRacingCountForm();
     });
   }
 
