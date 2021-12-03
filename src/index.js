@@ -1,4 +1,4 @@
-import { $, $$ } from './utils/dom.js';
+import { $, $$, initDOM, showRacingCountInput } from './utils/dom.js';
 import {
   isCarNamesInputNonValid,
   isRacingCountInputNonValid,
@@ -16,6 +16,9 @@ export const getRacingCountInput = () => {
   return Number($('#racing-count-input').value);
 };
 
+// 초기 display 설정
+initDOM();
+
 // 이벤트 설정
 $$('form').forEach((form) =>
   form.addEventListener('submit', function (e) {
@@ -28,6 +31,8 @@ $('#car-names-submit').addEventListener('click', function (e) {
     carNamesInputExceptionMessage();
     return;
   }
+
+  showRacingCountInput();
 });
 
 $('#racing-count-submit').addEventListener('click', function (e) {

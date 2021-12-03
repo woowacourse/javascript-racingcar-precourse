@@ -1,5 +1,5 @@
 import { Car } from '../model/Car.js';
-import { $ } from '../utils/dom.js';
+import { $, $$, show } from '../utils/dom.js';
 import { MOVE_CONDITION_NUMBER } from '../utils/constants.js';
 import { genRandomNumber } from '../utils/genRandomNumber.js';
 
@@ -58,6 +58,7 @@ const renderWinner = (cars) => {
 };
 
 export const renderGameResult = (carNames, racingCount) => {
+  show($$('h4')[1]);
   let domElement = '';
   const cars = genCarInstances(carNames);
 
