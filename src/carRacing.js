@@ -38,7 +38,6 @@ export default function carRacing(Carnames,count){
     const winners=winnerList.join(', ');
     return winners;
   }
-  
   const race=getRaces(carList);
   const winner=getWinner(carList);
   carResult+=race;

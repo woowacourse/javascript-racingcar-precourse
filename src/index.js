@@ -20,8 +20,6 @@ export default function racingGame(){
     
   }
   
-
-  
   //car이름 배열 주기
    function submitCarName(){
     const carInput=carNameInput.value;
