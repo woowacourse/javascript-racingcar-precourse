@@ -2,6 +2,7 @@ import { DISPLAY, SEPARATOR } from './constants.js';
 import stringToArrayConverter from './stringToArrayConverter.js';
 import isValidCarNames from './isValidCarNames.js';
 import isValidRacingCount from './isValidRacingCount.js';
+import hideRacingCountAndResult from './hideRacingCountAndResult.js';
 import Car from './Car.js';
 
 export default class CarRacingGame {
@@ -10,23 +11,9 @@ export default class CarRacingGame {
     this.racingCount = 0;
     this.cars = [];
     this.winner = [];
-    this.hideRacingCountForm();
-    this.hideHeaders();
+    hideRacingCountAndResult();
     this.addCarNamesSubmitEvent();
     this.addRacingCountSubmitEvent();
-  }
-
-  hideRacingCountForm() {
-    const $racingCountInput = document.getElementById('racing-count-input');
-    const $racingCountForm = $racingCountInput.parentElement;
-    $racingCountForm.style.display = DISPLAY.none;
-  }
-
-  hideHeaders() {
-    const $titles = document.getElementsByTagName('h4');
-    for (let i = 0; i < $titles.length; i++) {
-      $titles[i].style.display = DISPLAY.none;
-    }
   }
 
   showRacingCount() {
