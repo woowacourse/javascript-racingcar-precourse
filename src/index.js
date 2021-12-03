@@ -5,7 +5,7 @@ import showRacingCountInput from './modules/showRacingCountInput.js';
 import getUserRacingCountInput from './modules/getUserRacingCountInput.js';
 import showRacingResultTitle from './modules/showRacingResultTitle.js';
 import createCarInstance from './car/createCarInstance.js';
-import computeGameResult from './modules/computeGameResult.js';
+import playRacingCarGame from './modules/playRacingCarGame.js';
 
 export default function RacingcarGame() {
   this.racingInfoObject = {
@@ -35,7 +35,7 @@ export default function RacingcarGame() {
         this.racingInfoObject.carNames
       );
       showRacingResultTitle();
-      computeGameResult(this.racingInfoObject);
+      playRacingCarGame(this.racingInfoObject);
     }
   };
 
