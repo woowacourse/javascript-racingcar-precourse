@@ -38,9 +38,17 @@
 
   - focus를 자동차 이름(car-name-input)에 준다.
 
+- [ ] 시도할 횟수(racing-count-input), 자동차 이름(car-names-input)이 정상적으로 입력되었을 때 자동차 이름을 가져오는 기능
+
+- [ ] 시도할 횟수(racing-count-input), 자동차 이름(car-names-input)이 정상적으로 입력되었을 때 시도할 횟수를 가져오는 기능
+
+- [ ] 자동차 이름(car-names-input)에 맞는 자동차 생성하는 객체 생성
+
+  - random값에 따라 increase하는 메서드 생성
+  - 무작위 값(1 ~ 9)을 생성하는 getRandom 메서드 생성
+
 - [ ] 시도할 횟수(racing-count-input), 자동차 이름(car-names-input)이 정상적으로 입력되었을 때 무작위 값 생성(0 ~ 9)
 
-  - 전진하는 조건을 판단하기 위한 랜덤 값은 MissionUtils 라이브러리의 Random.pickNumberInRange를 사용해 구한다.
   - 예외 1. 랜덤 값이 4이상일 경우 전진한다.
   - 예외 2. 랜덤 값이 0 ~ 3일 경우 전진하지 않는다.
 
