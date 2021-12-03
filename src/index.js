@@ -6,25 +6,25 @@ const $car_names_submit = document.getElementById("car-names-submit");
 const $racing_count_input = document.getElementById("racing-count-input");
 const $racing_count_submit = document.getElementById("racing-count-submit");
 
-const RacingGame = new RacingCar();
+const racingCar = new RacingCar();
 
-const onClickSubmitCarNames = e => {
-  e.preventDefault();
+const onClickSubmitCarNames = event => {
+  event.preventDefault();
 
   const carInputs = $car_names_input.value;
   if (isValidCarInputs(carInputs)) {
-    RacingGame.makeCarArray(carInputs);
+    racingCar.makeCarArray(carInputs);
   }
 };
 
-const onClickSubmitRacingCount = e => {
-  e.preventDefault();
+const onClickSubmitRacingCount = event => {
+  event.preventDefault();
 
-  RacingGame.resetGame();
+  racingCar.resetGame();
 
   const racingCountInput = $racing_count_input.value;
-  if (isValidCountInput(RacingGame.cars, racingCountInput)) {
-    RacingGame.playGame(parseInt(racingCountInput));
+  if (isValidCountInput(racingCar.cars, racingCountInput)) {
+    racingCar.playGame(parseInt(racingCountInput));
   }
 };
 
