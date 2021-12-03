@@ -8,6 +8,7 @@ import {
   setInitialStyle,
   displayCountForm,
   createRacingLog,
+  createWinnersText,
   displayResultText,
 } from './dom.js';
 
@@ -57,6 +58,8 @@ export default class Game {
     for (index = 0; index < this.count; index++) {
       this.race();
     }
+
+    this.determineWinner();
   }
 
   race() {
@@ -65,6 +68,26 @@ export default class Game {
     });
 
     createRacingLog(this.cars);
+  }
+
+  determineWinner() {
+    let maxScore = 0;
+
+    this.cars.forEach((car) => {
+      if (car.location > maxScore) {
+        maxScore = car.location;
+      }
+    });
+
+    this.cars.forEach((car) => {
+      if (car.location === maxScore) {
+        this.winners.push(car.name);
+      }
+    });
+
+    createWinnersText(this.winners);
+
+    console.log(this.winners);
   }
 }
 
