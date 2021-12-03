@@ -1,11 +1,13 @@
 import $ from '../common/selector.js';
 import { play } from './play.js';
+import { showResult } from './showResult.js';
 
 export const playAll = (cars, count) => {
   let result = [];
 
   for (let i = 0; i < count; i++) {
     result = play(cars);
+    showResult(cars);
   }
 
   let winner = [];
