@@ -188,6 +188,8 @@
 
 ### 무작위 값 생성하기
 
+[완료 커밋](https://github.com/leegwae/javascript-racingcar-precourse/commit/d1eaac64c6c9b1d223f3be7f5c766b1b233de05d)
+
 게임기는 각각의 `자동차`마다 `무작위 값`을 생성한다. `무작위 값`은 다음과 같은 형식이다.
 
 - [ ] `0`부터 `9` 사이의 수이다.
