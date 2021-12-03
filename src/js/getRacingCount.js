@@ -1,5 +1,6 @@
 import { $ } from './util/dom.js';
 import { MIN_RACING_COUNT } from './constant/constant.js';
+import { startRacingGame } from './playGame.js';
 
 export const getRacingCountInput = e => {
   e.preventDefault();
@@ -12,6 +13,7 @@ export const getRacingCountInput = e => {
     window.alert('잘못된 값을 입력하셨습니다.');
   } else {
     $('#result-title').style.display = '';
+    startRacingGame();
   }
 };
 
