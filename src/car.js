@@ -15,6 +15,10 @@ class Car {
   move() {
     this.position += 1;
   }
+
+  static generateCars(carNames) {
+    return carNames.map((carName) => new Car(carName));
+  }
 }
 
 export default Car;
