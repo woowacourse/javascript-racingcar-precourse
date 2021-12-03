@@ -1,5 +1,5 @@
 export default class ValidateUtils {
-  static carNamesText(textList) {
+  static checkCarNames(textList) {
     const newList = textList.filter((item) => this.checkTextLength(item));
 
     if (textList.length !== newList.length) {
@@ -16,7 +16,7 @@ export default class ValidateUtils {
     return true;
   }
 
-  static NumberTextAndCarNamesText(number, textList) {
+  static checkNumberAndCarNames(number, textList) {
     if (!textList) {
       alert('자동차 이름들을 입력해주세요.');
       return false;

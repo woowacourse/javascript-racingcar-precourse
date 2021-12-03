@@ -58,7 +58,7 @@ export default class Race {
 
     const $span = document.createElement('span');
     $span.id = 'racing-winners';
-    $span.textContent = `${winners.join(',')}`;
+    $span.textContent = `${winners.join(', ')}`;
 
     $div.appendChild($span);
     this.$result.appendChild($div);

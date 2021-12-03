@@ -27,7 +27,7 @@ class RacingCarGame {
   onClickCarNamesSubmit = (event) => {
     event.preventDefault();
     const carList = this.$carNamesInput.value.split(',');
-    if (ValidateUtils.carNamesText(carList)) {
+    if (ValidateUtils.checkCarNames(carList)) {
       this.carList = carList;
     }
   };
@@ -35,7 +35,7 @@ class RacingCarGame {
   onClickNumberSubmit = (event) => {
     event.preventDefault();
     const raceNumber = Number(this.$racingCountInput.value);
-    if (ValidateUtils.NumberTextAndCarNamesText(raceNumber, this.carList)) {
+    if (ValidateUtils.checkNumberAndCarNames(raceNumber, this.carList)) {
       this.raceNumber = raceNumber;
       this.play();
     }
