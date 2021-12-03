@@ -1,4 +1,4 @@
-import hasDuplicate from './hasDuplicate.js';
+import hasDuplicate from '../../utils/hasDuplicate.js';
 import isValidCarName from './isValidCarName.js';
 
 function isValidCarNames(carNames) {

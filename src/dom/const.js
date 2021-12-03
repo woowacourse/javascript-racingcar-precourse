@@ -32,8 +32,12 @@ export const TYPE_RACING_COUNT = {
 };
 
 export const BUTTON_SUBMIT_TEXT = '확인';
+export const HEADING_RACING_COUNT = '시도할 횟수를 입력해주세요.';
+export const HEADING_RESULT = '📄 실행 결과';
 
 export const ID_RACING_WINNERS = 'racing-winners';
 
 export const ACTION_CHECK_CAR_NAMES = 'checkCarNames';
 export const ACTION_CHECK_RACING_COUNT = 'checkRacingCount';
+
+export const MSG_ERROR = '잘못된 입력입니다';

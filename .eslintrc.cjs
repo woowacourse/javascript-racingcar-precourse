@@ -13,6 +13,7 @@ module.exports = {
   rules: {
     'no-console': 'off',
     'no-new': 'off',
+    'no-alert': 'off',
     'import/extensions': 'off',
     'prettier/prettier': 'error',
   },

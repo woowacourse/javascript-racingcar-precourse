@@ -1,4 +1,4 @@
-import isInRange from './isInRange.js';
+import isInRange from '../../utils/isInRange.js';
 import { VALID_CONDITION_CAR_NAME } from '../const.js';
 
 function isValidLength(len) {

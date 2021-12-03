@@ -16,8 +16,8 @@ class Car {
     this.position += 1;
   }
 
-  static generateCars(carNames) {
-    return carNames.map((carName) => new Car(carName));
+  static generateCarsByNames(names) {
+    return names.map((name) => new Car(name));
   }
 }
 
