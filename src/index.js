@@ -23,18 +23,29 @@ class RacingCarGame {
       alert('자동차 이름이 겹쳤습니다.');
       return;
     }
+
+    if (!this.checkCarNameUnderFiveLetter(splittedCarNames)) {
+      alert('자동차 5자가 넘습니다.');
+      return;
+    }
+
     splittedCarNames.forEach(carName => {
       this.cars.push(new Car(carName));
     });
     console.log(this.cars);
   }
 
-  checkCarNameDuplicated(carNames) {
+  checkCarNameDuplicated(splittedCarNames) {
     const set = new Set();
-    carNames.forEach(carName => {
-      set.add(carName);
-    });
-    return set.size !== carNames.length;
+    splittedCarNames.forEach(carName => set.add(carName));
+    return set.size !== splittedCarNames.length;
+  }
+
+  checkCarNameUnderFiveLetter(splittedCarNames) {
+    for (let i = 0; i < splittedCarNames.length; i += 1) {
+      if (splittedCarNames[i].length > 5) return false;
+    }
+    return true;
   }
 }
 
