@@ -3,7 +3,7 @@ export const $$ = (selector) => document.querySelectorAll(selector);
 export const hide = (selector) => (selector.style.display = 'none');
 export const show = (selector) => (selector.style.display = 'block');
 
-export const initDOM = () => {
+export const hideRacingCountInput = () => {
   hide($$('h4')[0]);
   hide($$('h4')[1]);
   hide($$('form')[1]);

@@ -1,4 +1,4 @@
-import { $, $$, initDOM, showRacingCountInput } from './utils/dom.js';
+import { $, $$, hideRacingCountInput, showRacingCountInput } from './utils/dom.js';
 import {
   isCarNamesInputNonValid,
   isRacingCountInputNonValid,
@@ -7,44 +7,57 @@ import {
 } from './controller/inputValidator.js';
 import { renderGameResult } from './controller/controller.js';
 
-// 입력 값
-export const getCarNamesInput = () => {
-  return $('#car-names-input').value.split(',');
-};
-
-export const getRacingCountInput = () => {
-  return Number($('#racing-count-input').value);
-};
-
-// 초기 display 설정
-initDOM();
-
-// 이벤트 설정
-$$('form').forEach((form) =>
-  form.addEventListener('submit', function (e) {
-    e.preventDefault();
-  })
-);
-
-$('#car-names-submit').addEventListener('click', function (e) {
-  if (isCarNamesInputNonValid()) {
-    carNamesInputExceptionMessage();
-    return;
+class View {
+  init() {
+    hideRacingCountInput();
+    this.setFormEvent();
+    this.setCarNamesSubmitEvent();
+    this.setRacingCountSubmitEvent();
   }
 
-  showRacingCountInput();
-});
-
-$('#racing-count-submit').addEventListener('click', function (e) {
-  if (isCarNamesInputNonValid()) {
-    carNamesInputExceptionMessage();
-    return;
+  getCarNamesInput() {
+    return $('#car-names-input').value.split(',');
   }
 
-  if (isRacingCountInputNonValid()) {
-    racingCountInputExceptionMessage();
-    return;
+  getRacingCountInput() {
+    return Number($('#racing-count-input').value);
   }
 
-  renderGameResult(getCarNamesInput(), getRacingCountInput());
-});
+  setFormEvent() {
+    $$('form').forEach((form) =>
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+      })
+    );
+  }
+
+  setCarNamesSubmitEvent() {
+    $('#car-names-submit').addEventListener('click', () => {
+      if (isCarNamesInputNonValid()) {
+        carNamesInputExceptionMessage();
+        return;
+      }
+
+      showRacingCountInput();
+    });
+  }
+
+  setRacingCountSubmitEvent() {
+    $('#racing-count-submit').addEventListener('click', () => {
+      if (isCarNamesInputNonValid()) {
+        carNamesInputExceptionMessage();
+        return;
+      }
+
+      if (isRacingCountInputNonValid()) {
+        racingCountInputExceptionMessage();
+        return;
+      }
+
+      renderGameResult(this.getCarNamesInput(), this.getRacingCountInput());
+    });
+  }
+}
+
+const view = new View();
+view.init();
