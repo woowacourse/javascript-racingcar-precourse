@@ -56,6 +56,8 @@ export default class RacingCountEvent {
       this.errorMessage = ERROR_MESSAGE.NO_POSITIVE_INTEGER;
       this.alertErrorMessage();
     }
+
+    return [this.numberRacingCount, this.carNamesEvent.carNamesArray];
   };
 
   alertCautionMessage = (cautionMessage) => {

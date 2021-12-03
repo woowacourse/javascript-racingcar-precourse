@@ -9,6 +9,8 @@ class RacingCar {
     this.$racingCountSubmit = DOM.racingCountSubmit;
     this.$racingCountInput = DOM.racingCountInput;
     this.$carNamesSubmit = DOM.carNamesSubmit;
+    this.carNames = [];
+    this.racingCount = 0;
     this.main();
   }
 
@@ -20,7 +22,7 @@ class RacingCar {
     this.$racingCountSubmit.addEventListener('click', (event) => {
       event.preventDefault();
       this.racingCountEvent.checkCarNames();
-      this.racingCountEvent.validateCount();
+      [this.racingCount, this.carNames] = this.racingCountEvent.validateCount();
     });
   };
 
