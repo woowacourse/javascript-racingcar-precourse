@@ -32,3 +32,7 @@ export const getUserInputArray = (userInput) => {
 
   return userInputArray;
 };
+
+export const getUserInputForCount = () => {
+  return Number(document.getElementById('racing-count-input').value);
+};
