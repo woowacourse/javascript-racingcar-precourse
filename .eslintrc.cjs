@@ -12,6 +12,7 @@ module.exports = {
   plugins: ['import'],
   rules: {
     'no-console': 'off',
+    'import/extensions': 'off',
     'prettier/prettier': 'error',
   },
 };
