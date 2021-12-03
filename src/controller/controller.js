@@ -19,14 +19,17 @@ const calculateMovedState = (cars) => {
 
 const getMaxMovedDistance = (cars) => {
   let maxMovedDistance = 0;
+
   cars.forEach((car) => {
     if (car.getDistance() > maxMovedDistance) maxMovedDistance = car.getDistance();
   });
+
   return maxMovedDistance;
 };
 
 const getWinner = (cars) => {
   const maxMovedDistance = getMaxMovedDistance(cars);
+
   return cars
     .filter((car) => car.getDistance() === maxMovedDistance)
     .map((car) => car.getName())
@@ -40,6 +43,16 @@ const renderMovedState = (cars) => {
   cars.forEach((car) => {
     domElement += `<span>${car.getName()}: ${'-'.repeat(car.getDistance())}</span><br />`;
   });
+  domElement += `<br />`;
+
+  return domElement;
+};
+
+const renderWinner = (cars) => {
+  let domElement = '';
+
+  domElement += `<span>최종 우승자: </span>`;
+  domElement += `<span id="racing-winners">${getWinner(cars)}</span><br /><br />`;
 
   return domElement;
 };
@@ -50,9 +63,8 @@ export const renderGameResult = (carNames, racingCount) => {
 
   for (let i = 0; i < racingCount; i++) {
     domElement += renderMovedState(cars);
-    domElement += `<br />`;
   }
-  domElement += `<span>최종 우승자: </span>`;
-  domElement += `<span id="racing-winners">${getWinner(cars)}</span><br><br>`;
+
+  domElement += renderWinner(cars);
   $('#app').insertAdjacentHTML('beforeend', domElement);
 };
