@@ -15,6 +15,7 @@ class RacingCarGame {
     this.$resultHeader = document.querySelector('#result-header');
 
     this.$carNamesSubmit.addEventListener('click', this.onClickCarNamesSubmit);
+    this.$racingCountSubmit.addEventListener('click', this.onClickNumberSubmit);
   }
 
   configureInputProperties() {
@@ -29,6 +30,17 @@ class RacingCarGame {
       this.carList = carList;
     }
   };
+
+  onClickNumberSubmit = (event) => {
+    event.preventDefault();
+    const raceNumber = Number(this.$racingCountInput.value);
+    if (ValidateUtils.NumberTextAndCarNamesText(raceNumber, this.carList)) {
+      this.raceNumber = raceNumber;
+      this.play();
+    }
+  };
+
+  play() {}
 }
 
 new RacingCarGame();
