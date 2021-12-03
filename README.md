@@ -25,9 +25,10 @@
 	* 쉼표로 구분된 이름 text input에서 읽기
 	* 자동차 이름 길이 확인하기 (최소 1, 5 이하)
 	* 이름 반복 있는지 확인한다.
+	* 값 입력 전, racing count, result 관련 element 숨기기.
+	* 값 입력 후, racing count  racing count 관련 element 보여주기.
 
-
-2. 게임 시도 획수 읽고 저장하기
+2. 게임 시도 횟수 읽고 저장하기
 	* 1 이상의 값인지 확인한다.
 
 3. Car 인스턴스를 만든다.
