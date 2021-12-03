@@ -15,4 +15,16 @@ export default class ValidateUtils {
     }
     return true;
   }
+
+  static NumberTextAndCarNamesText(number, textList) {
+    if (!textList) {
+      alert('자동차 이름들을 입력해주세요.');
+      return false;
+    }
+    if (number <= 0) {
+      alert('0이상의 수를 입력해주세요');
+      return false;
+    }
+    return true;
+  }
 }
