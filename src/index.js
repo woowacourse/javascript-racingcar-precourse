@@ -14,6 +14,7 @@ import { ERROR } from './constants.js';
 
 export default function RacingCarGame() {
   let cars = [];
+  let tryCount = 0;
 
   const init = () => {
     activateEventListeners();
@@ -58,6 +59,7 @@ export default function RacingCarGame() {
     const racingCount = $('#racing-count-input').value;
     if (isBlank(racingCount)) return alert(ERROR.BLANK_SUBMIT);
     if (isZero(racingCount)) return alert(ERROR.NOT_POSIVITE_INT);
+    tryCount = Number(racingCount);
   };
 
   init();
