@@ -1,3 +1,6 @@
 import RacingGame from './RacingGame.js';
+import initForms from './utils/forms.js';
 
-new RacingGame();
+const racingGame = new RacingGame();
+
+initForms(racingGame);
