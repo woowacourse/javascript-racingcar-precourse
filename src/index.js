@@ -6,6 +6,7 @@ import {
   splitUsingComma,
   isOverFiveLetters,
   generateCars,
+  isNumber,
 } from './utils.js';
 import { default as UI } from './DOMUtils.js';
 import { ERROR } from './constants.js';
@@ -20,6 +21,8 @@ export default function RacingCarGame() {
 
   const activateEventListeners = () => {
     $('#car-names-submit').onclick = handleCarNamesSubmit;
+    $('#racing-count-input').onkeydown = handleRacingCountInput;
+    $('#racing-count-submit').onclick = handleRacingCountSubmit;
   };
 
   const handleCarNamesSubmit = e => {
@@ -42,6 +45,17 @@ export default function RacingCarGame() {
     if (isOverFiveLetters(carNamesArray)) return alert(ERROR.OVER_FIVE_LETTERS);
 
     return true;
+  };
+
+  const handleRacingCountInput = e => {
+    if (isNumber(e.key)) return alert(ERROR.NOT_NUMBER);
+  };
+
+  const handleRacingCountSubmit = e => {
+    e.preventDefault();
+
+    const racingCount = $('#racing-count-input').value;
+    if (isBlank(racingCount)) return alert(ERROR.BLANK_SUBMIT);
   };
 
   init();

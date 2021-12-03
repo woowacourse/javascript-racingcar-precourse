@@ -26,3 +26,7 @@ export const isOverFiveLetters = array => {
 export const generateCars = string => {
   return splitUsingComma(string).map(name => new Car(name));
 };
+
+export const isNumber = string => {
+  return /^[^0-9]$/g.test(string);
+};
