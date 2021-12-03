@@ -1,5 +1,5 @@
 import { NUMBER_RANGE } from './constants.js';
-import randomNumberInRange from './randomNumberInRange.js';
+import randomNumberInRange from './utils/randomNumberInRange.js';
 
 export default class Car {
   constructor(name) {

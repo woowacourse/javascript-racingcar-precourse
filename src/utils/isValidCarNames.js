@@ -1,4 +1,4 @@
-import { MAX_CAR_NAME_LENGTH, ALERT_MESSAGE } from './constants.js';
+import { MAX_CAR_NAME_LENGTH, ALERT_MESSAGE } from '../constants.js';
 import stringToArrayConverter from './stringToArrayConverter.js';
 
 function isEmpty(carNames) {

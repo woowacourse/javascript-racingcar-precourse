@@ -1,4 +1,4 @@
-import { ALERT_MESSAGE } from './constants.js';
+import { ALERT_MESSAGE } from '../constants.js';
 
 export default function isValidRacingCount(racingCountString) {
   const racingCount = Number(racingCountString);
