@@ -1,4 +1,6 @@
+import Car from '../index.js';
 import { USER_INPUT_ALERT } from '../libs/constant.js';
+import CarNamesInputContainer from './CarNamesInputContainer.js';
 
 const InputCheckMethods = [
   (value) => {
@@ -12,9 +14,11 @@ const InputCheckMethods = [
 
 class CountInputContainer {
   count;
+  result;
   constructor() {
     this.$racingCountSubmitButton = document.querySelector('#racing-count-submit');
     this.$racingCountInput = document.querySelector('#racing-count-input');
+    this.carNamesInputContainer = new CarNamesInputContainer();
     this.init();
   }
   init() {
@@ -26,11 +30,32 @@ class CountInputContainer {
   onCountSubmit(e) {
     e.preventDefault();
     const count = this.$racingCountInput.value;
-    if (this.isInputValid(count)) {
+    console.log('1');
+    if (!this.isInputValid(count)) {
       return;
     }
     this.count = count;
+    this.makeCars();
+    this.moveCars();
+    console.log(`result`, this.result);
+    this.showResult();
   }
+  makeCars() {
+    this.result = {};
+    console.log(`carNamesInputContainer.carNamesArray`, this.carNamesInputContainer.carNamesArray);
+    for (let car of this.carNamesInputContainer.carNamesArray) {
+      this.result[car] = new Car(car);
+    }
+  }
+
+  moveCars() {
+    for (let key in this.result) {
+      for (let i = 0; i < this.count; i++) {
+        this.result[key].move();
+      }
+    }
+  }
+  showResult() {}
 
   isInputValid(value) {
     return InputCheckMethods.every((InputCheckMethod) => InputCheckMethod(value));
