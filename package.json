@@ -2,9 +2,8 @@
   "name": "javascript-racingcar-precourse",
   "version": "1.0.0",
   "description": "우아한테크코스 프리코스 자동차 경주 게임 미션",
-  "dependencies": {},
   "devDependencies": {
-    "cypress": "8.7.0"
+    "@woowacourse/mission-utils": "^1.0.1"
   },
   "scripts": {
     "test": "cypress run --browser chrome"
@@ -24,5 +23,8 @@
   "engines": {
     "npm": ">=6.0.0",
     "node": ">=14.0.0"
+  },
+  "dependencies": {
+    "cypress": "^9.1.0"
   }
 }
