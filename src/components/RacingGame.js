@@ -7,14 +7,15 @@ const { pickNumberInRange } = MissionUtils.Random;
 
 export default class RacingGame {
   constructor($element) {
-    this.racingCars = [];
     this.render = new Render($element);
+
+    this.racingCars = [];
   }
 
   oneTrackRaceMaxMove(race, start, end) {
     return this.racingCars.reduce((maxMoves, car) => {
-      const { moveCount } = car.moveForward(pickNumberInRange(start, end));
-      this.render.appendChildDOM(race, car.template());
+      const [moveCount, raceResult] = car.moveForward(pickNumberInRange(start, end));
+      this.render.appendChildDOM(race, raceResult);
       return maxMoves <= moveCount ? moveCount : maxMoves;
     }, 0);
   }

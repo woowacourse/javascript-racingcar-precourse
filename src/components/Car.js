@@ -22,7 +22,7 @@ export default class Car {
    */
   moveForward(number) {
     this.moveCount += number >= this.condition ? this.move : this.dontMove;
-    return this;
+    return [this.moveCount, this.template()];
   }
 
   /**
