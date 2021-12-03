@@ -12,12 +12,14 @@
     - 5개 초과의 차 입력시 오류 메세지 [x]
 - 유저로부터 차 이름 받으면 시행횟수 받는 란 활성화 [ ]
 
-- 차 생성 [ ]
+- Players 생성 [x]
 
-  - name [ ]
-  - location [ ]
-  - move [ ]
-    - 무작위 숫자가 4이상이면 location 이동, 미만이면 멈춤
+  - Players의 player는 복수의 Car들로 이루어짐[x]
+  - Car
+    - name [x]
+    - location [x]
+    - move [x]
+      - 무작위 숫자가 4이상이면 location 이동, 미만이면 멈춤
 
 - 유저로부터 시행횟수 받기 [ ]
 
