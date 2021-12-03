@@ -20,4 +20,18 @@ export default class Race {
     carObjectList.forEach((item) => item.raceAdvance());
     return carObjectList;
   }
+
+  appendResultElement(carObjectList) {
+    const $p = document.createElement('p');
+
+    carObjectList.forEach((item) => {
+      const $span = document.createElement('span');
+      const $br = document.createElement('br');
+      $span.textContent = `${item.name}: ${item.advance}`;
+      $p.appendChild($span);
+      $p.appendChild($br);
+    });
+
+    this.$result.appendChild($p);
+  }
 }
