@@ -65,13 +65,14 @@ export default function RacingCarGame() {
   };
 
   const playCarRacing = racingCount => {
-    Array.from({ length: racingCount }, () => {
-      cars.forEach(car => {
-        car.tryMove();
-        console.log(`${car._name}: ${car._location}`);
-      });
-      console.log('');
-    });
+    UI.showRacingResultTitle();
+
+    Array.from({ length: racingCount }, () => tryMoveByRound());
+  };
+
+  const tryMoveByRound = () => {
+    cars.forEach(car => car.tryMove());
+    UI.showRacingResult(cars);
   };
 
   init();

@@ -29,6 +29,28 @@ const DOMUtils = {
     $('#racing-count-input').disabled = true;
     $('#racing-count-submit').disabled = true;
   },
+
+  showRacingResultTitle: () => {
+    $('#racing-result-title').style.display = '';
+  },
+
+  showRacingResult: array => {
+    let result = '';
+
+    array.forEach(object => {
+      const hyphenGraph = makeHyphenGraph(object._location);
+      result += `<div>${object._name}: ${hyphenGraph}</div>`;
+    });
+    result += '<br/>';
+
+    $('#app').insertAdjacentHTML('beforeend', result);
+  },
+};
+
+const makeHyphenGraph = number => {
+  let result = '';
+  Array.from({ length: number }, () => (result += '-'));
+  return result;
 };
 
 export default DOMUtils;
