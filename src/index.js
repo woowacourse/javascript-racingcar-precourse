@@ -8,8 +8,23 @@ export default class CarRacingGame {
     this.carNames = [];
     this.racingCount = 0;
     this.cars = [];
+    this.hideRacingCountForm();
+    this.hideHeaders();
     this.addCarNamesSubmitEvent();
     this.addRacingCountSubmitEvent();
+  }
+
+  hideRacingCountForm() {
+    const $racingCountInput = document.getElementById('racing-count-input');
+    const $racingCountForm = $racingCountInput.parentElement;
+    $racingCountForm.style.display = 'none';
+  }
+
+  hideHeaders() {
+    const $titles = document.getElementsByTagName('h4');
+    for (let i = 0; i < $titles.length; i++) {
+      $titles[i].style.display = 'none';
+    }
   }
 
   addCarNamesSubmitEvent() {
