@@ -49,7 +49,9 @@
 
 ## 🗑 초기화하기
 
-- [ ] [자동차 경주 게임의 진행 순서](https://github.com/leegwae/javascript-racingcar-precourse/tree/leegwae/docs#%EC%9E%90%EB%8F%99%EC%B0%A8-%EA%B2%BD%EC%A3%BC-%EA%B2%8C%EC%9E%84%EC%9D%98-%EC%A7%84%ED%96%89-%EC%88%9C%EC%84%9C)의 이미지를 참고하여, `index.html`의 html 태그들을 지우고 필요한 태그를 만든다.
+[완료 커밋](https://github.com/leegwae/javascript-racingcar-precourse/commit/11ea035d3c6bf48facdb3680539642c3826abe96)
+
+- [x] [자동차 경주 게임의 진행 순서](https://github.com/leegwae/javascript-racingcar-precourse/tree/leegwae/docs#%EC%9E%90%EB%8F%99%EC%B0%A8-%EA%B2%BD%EC%A3%BC-%EA%B2%8C%EC%9E%84%EC%9D%98-%EC%A7%84%ED%96%89-%EC%88%9C%EC%84%9C)의 이미지를 참고하여, `index.html`의 html 태그들을 지우고 필요한 태그를 만든다.
 
 
 
