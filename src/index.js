@@ -1,3 +1,4 @@
+import Race from './race.js';
 import ValidateUtils from './validateUtils.js';
 
 class RacingCarGame {
@@ -40,7 +41,11 @@ class RacingCarGame {
     }
   };
 
-  play() {}
+  play() {
+    const race = new Race(this.carList, this.raceNumber);
+    const $result = race.startGame();
+    this.$app.appendChild($result);
+  }
 }
 
 new RacingCarGame();
