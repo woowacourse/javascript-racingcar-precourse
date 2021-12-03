@@ -12,7 +12,10 @@ const isNonCarNames = () => $('#car-names-input').value == '';
 const isCarNamesInputValidLength = () => {
   const carNamesInput = $('#car-names-input').value.split(',');
   return carNamesInput.every(
-    (carName) => carName.length >= MIN_CAR_NAME_LENGTH && carName.length <= MAX_CAR_NAME_LENGTH
+    (carName) =>
+      !carName.includes(' ') &&
+      carName.length >= MIN_CAR_NAME_LENGTH &&
+      carName.length <= MAX_CAR_NAME_LENGTH
   );
 };
 
