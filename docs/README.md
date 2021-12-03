@@ -21,10 +21,12 @@
 
 
 
-## 개발 환경 설정
+## 개발 환경 설정하기
 
-- [ ] linter: `eslint` with airbnb convetion
-- [ ] code formatter: `prettier`
+[완료 커밋](https://github.com/leegwae/javascript-racingcar-precourse/commit/eb8c6ee4d024635e2d4c1fad930ac7c3a63908c9)
+
+- [x] linter: `eslint` with airbnb convetion
+- [x] code formatter: `prettier`
 
 
 
