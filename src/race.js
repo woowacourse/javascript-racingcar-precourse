@@ -8,4 +8,11 @@ export default class Race {
     this.$result = document.createElement('div');
     this.$result.id = 'result';
   }
+
+  makeCarList(carList) {
+    const carObjectList = carList.map((item) => {
+      return new Car(item);
+    });
+    return carObjectList;
+  }
 }
