@@ -1,9 +1,10 @@
-import { DISPLAY, SEPARATOR } from './constants.js';
 import stringToArrayConverter from './stringToArrayConverter.js';
 import isValidCarNames from './isValidCarNames.js';
 import isValidRacingCount from './isValidRacingCount.js';
-import hideRacingCountAndResult from './hideRacingCountAndResult.js';
-import showRacingCount from './showRacingCountForm.js';
+import hideRacingCountAndResult from './dom/hideRacingCountAndResult.js';
+import showRacingCount from './dom/showRacingCountForm.js';
+import printRace from './dom/printRace.js';
+import printResult from './dom/printResult.js';
 import Car from './Car.js';
 
 export default class CarRacingGame {
@@ -15,11 +16,6 @@ export default class CarRacingGame {
     hideRacingCountAndResult();
     this.addCarNamesSubmitEvent();
     this.addRacingCountSubmitEvent();
-  }
-
-  showResultHeader() {
-    const $resultHeader = document.getElementsByTagName('h4')[1];
-    $resultHeader.style.display = DISPLAY.block;
   }
 
   addCarNamesSubmitEvent() {
@@ -46,7 +42,6 @@ export default class CarRacingGame {
         return;
       }
 
-      this.showResultHeader();
       this.racingCount = Number($racingCountInput.value);
       this.generateCar();
       this.play();
@@ -60,34 +55,17 @@ export default class CarRacingGame {
   play() {
     for (let racing = 0; racing < this.racingCount; racing++) {
       this.moveCars();
-      this.printRace();
+      printRace(this.cars);
     }
 
     this.findWinner();
-    this.printResult();
+    printResult(this.winner);
   }
 
   moveCars() {
     this.cars.forEach((car) => {
       car.move();
     });
-  }
-
-  makeRaceElement() {
-    const $raceElement = document.createElement('div');
-    this.cars.forEach((car) => {
-      const div = document.createElement('div');
-      div.appendChild(document.createTextNode(car.raceString()));
-      $raceElement.appendChild(div);
-    });
-    $raceElement.appendChild(document.createElement('br'));
-
-    return $raceElement;
-  }
-
-  printRace() {
-    const $app = document.getElementById('app');
-    $app.appendChild(this.makeRaceElement());
   }
 
   findWinner() {
@@ -102,20 +80,6 @@ export default class CarRacingGame {
         maxDistance = car.distance;
       }
     });
-  }
-
-  makeResultElement() {
-    const $racingWinners = document.createElement('span');
-    $racingWinners.setAttribute('id', 'racing-winners');
-    const winners = this.winner.join(SEPARATOR);
-    $racingWinners.appendChild(document.createTextNode(`${winners}`));
-
-    return $racingWinners;
-  }
-
-  printResult() {
-    const $app = document.getElementById('app');
-    $app.appendChild(this.makeResultElement());
   }
 }
 
