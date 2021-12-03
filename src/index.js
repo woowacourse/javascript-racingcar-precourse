@@ -68,6 +68,8 @@ export default function RacingCarGame() {
     UI.showRacingResultTitle();
 
     Array.from({ length: racingCount }, () => tryMoveByRound());
+
+    UI.showWiners(cars);
   };
 
   const tryMoveByRound = () => {

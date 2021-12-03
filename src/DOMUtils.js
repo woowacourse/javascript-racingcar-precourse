@@ -45,6 +45,16 @@ const DOMUtils = {
 
     $('#app').insertAdjacentHTML('beforeend', result);
   },
+
+  showWiners: array => {
+    const maxValue = Math.max(...array.map(object => object._location));
+    const winners = array
+      .filter(object => object._location === maxValue)
+      .map(object => object._name)
+      .join(',');
+
+    $('#app').insertAdjacentHTML('beforeend', `<span id="racing-winners">${winners}</span>`);
+  },
 };
 
 const makeHyphenGraph = number => {

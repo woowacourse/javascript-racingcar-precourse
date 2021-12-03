@@ -19,8 +19,8 @@
 - [x] 📠 실행 과정 보여주기
   - [x] 🏎 게임 횟수 마다 무작위 값으로 전진을 시도한다
   - [x] 📠 게임 횟수 마다 이름, 진행 상황 보여주기
-- [ ] 📠 최종 우승자 보여주기
-  - [ ] 우승자가 여러 명일 경우 쉼표(,)를 이용하여 구분한다.
+- [x] 📠 최종 우승자 보여주기
+  - [x] 우승자가 여러 명일 경우 쉼표(,)를 이용하여 구분한다.
 
 <br>
 
@@ -59,7 +59,27 @@ const makeHyphenGraph = number => {
 };
 ```
 
+<br>
 
+### 게임의 우승자를 보여주는 방법
+
+```javascript
+// DOMUtils.js
+showWiners: array => {
+  // 1. 자동차 객체들이 담겨있는 배열에서 현재위치만 반환하고 그중 최대 값을 추출한다. 
+  const maxValue = Math.max(...array.map(object => object._location));
+  
+  const winners = array
+  // 2. 자동차 객체들이 담겨있는 배열에서 최대 값을 갖고있는 객체들만 필터링한다.
+  .filter(object => object._location === maxValue)
+  // 3. 최대 값으로 필터링된 객체들을 자동차의 이름으로 반환한다.
+  .map(object => object._name)
+  // 4. 우승자가 여러 명일 경우 쉼표(,)를 이용하여 구분한다.
+  .join(',');
+
+  $('#app').insertAdjacentHTML('beforeend', `<span id="racing-winners">${winners}</span>`);
+},
+```
 
 ## 🐛 버그 발견
 
