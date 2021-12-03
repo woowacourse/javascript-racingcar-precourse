@@ -34,19 +34,6 @@
 
 
 
-## 🎨 DOM 선택자 지정하기
-
-[완료 커밋](https://github.com/leegwae/javascript-racingcar-precourse/commit/8ce609d4db536d4553a317878d6c8d0ab3398df6)
-
-`index.html`의 html 엘리먼트에 요구된 선택자를 추가한다.
-
-- [x] 자동차의 이름을 입력하는 input 태그는 `car-names-input` id값을 가진다.
-- [x] 자동차의 이름을 제출하는 button 태그는 `car-names-submit` id값을 가진다.
-- [x] 레이싱 횟수를 입력하는 input 태그는 `racing-count-input` id값을 가진다.
-- [x] 레이싱 횟수을 제출하는 button 태그는 `racing-count-submit` id값을 가진다.
-
-
-
 # 자동차 경주 게임기 만들기
 
 ## 🔨 자동차 만들기
@@ -57,6 +44,37 @@
 - [x] 자동차는 전진한 칸 수를 가진다.
   - [x] 초기값은 `0`이다.
 - [x] 자동차는 한 칸 전진할 수 있다.
+
+
+
+## 🗑 초기화하기
+
+- [ ] [자동차 경주 게임의 진행 순서](https://github.com/leegwae/javascript-racingcar-precourse/tree/leegwae/docs#%EC%9E%90%EB%8F%99%EC%B0%A8-%EA%B2%BD%EC%A3%BC-%EA%B2%8C%EC%9E%84%EC%9D%98-%EC%A7%84%ED%96%89-%EC%88%9C%EC%84%9C)의 이미지를 참고하여, `index.html`의 html 태그들을 지운다.
+
+
+
+## 🎨 Form 태그 만들기
+
+- [ ] 자동차 이름 form 태그 만들기: 사용자가 `자동차 이름`을 입력하고 제출할 수 있도록 form 태그를 만든다.
+- [ ] 레이싱 횟수 form 태그 만들기: 사용자가 `레이싱 횟수`를 입력하고 제출할 수 있도록 form 태그를 만든다.
+
+
+
+### 자동차 이름 form 태그 만들기
+
+다음 조건을 만족하는 input 태그와 button 태그를 가진다.
+
+- [ ] 자동차의 이름을 입력하는 input 태그는 `car-names-input` id값을 가진다.
+- [ ] 자동차의 이름을 제출하는 button 태그는 `car-names-submit` id값을 가진다.
+
+
+
+### 레이싱 횟수 form 태그 만들기
+
+다음 조건을 만족하는 input 태그와 button 태그를 가진다.
+
+- [ ] 레이싱 횟수를 입력하는 input 태그는 `racing-count-input` id값을 가진다.
+- [ ] 레이싱 횟수을 제출하는 button 태그는 `racing-count-submit` id값을 가진다.
 
 
 
