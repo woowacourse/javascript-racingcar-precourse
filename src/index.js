@@ -57,10 +57,38 @@ class Game {
     const racingCount = this.racingInput.value * 1;
     const racingInputIsValid = validateRacingInput(racingCount);
     if (racingInputIsValid) {
-      // this.playGame(racingCount);
+      this.result = [];
+      this.playGame(racingCount);
       this.hideShowResultSection("");
     } else {
       alert("입력 값이 유효하지 않습니다."); // eslint-disable-line no-alert
+    }
+  }
+
+  playRound() {
+    const roundResultArray = this.cars.map((c) => {
+      const random = MissionUtils.Random.pickNumberInRange(0, 9); // eslint-disable-line
+
+      // get previous results or start empty string
+      const current = this.result[this.result.length - 1]
+        ? this.result[this.result.length - 1][c.name]
+        : "";
+
+      if (random >= 4) return [c.name, `${current}-`];
+
+      return [c.name, current];
+    });
+    // create object for each round from above created array
+    this.result.push(Object.fromEntries(roundResultArray));
+  }
+
+  playGame(racingCount) {
+    let roundsLeft = racingCount;
+
+    // play each round
+    while (roundsLeft > 0) {
+      this.playRound();
+      roundsLeft -= 1;
     }
   }
 }
