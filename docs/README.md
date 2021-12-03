@@ -55,8 +55,8 @@
 
 ## 🎨 Form 태그 만들기
 
-- [ ] 자동차 이름 form 태그 만들기: 사용자가 `자동차 이름`을 입력하고 제출할 수 있도록 form 태그를 만든다.
-- [ ] 레이싱 횟수 form 태그 만들기: 사용자가 `레이싱 횟수`를 입력하고 제출할 수 있도록 form 태그를 만든다.
+- [ ] 자[동차 이름 form 태그 만들기](https://github.com/leegwae/javascript-racingcar-precourse/tree/leegwae/docs#%EC%9E%90%EB%8F%99%EC%B0%A8-%EC%9D%B4%EB%A6%84-form-%ED%83%9C%EA%B7%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0): 사용자가 `자동차 이름`을 입력하고 제출할 수 있도록 form 태그를 만든다.
+- [ ] [레이싱 횟수 form 태그 만들기](https://github.com/leegwae/javascript-racingcar-precourse/tree/leegwae/docs#%EB%A0%88%EC%9D%B4%EC%8B%B1-%ED%9A%9F%EC%88%98-form-%ED%83%9C%EA%B7%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0): 사용자가 `레이싱 횟수`를 입력하고 제출할 수 있도록 form 태그를 만든다.
 
 
 
