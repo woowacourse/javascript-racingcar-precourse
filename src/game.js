@@ -46,14 +46,13 @@ export default class Game {
   }
 
   startGame() {
-    let index = 0;
-
     if (this.count === 0) {
       return;
     }
 
     displayResultText();
 
+    let index = 0;
     for (index = 0; index < this.count; index++) {
       this.race();
     }
