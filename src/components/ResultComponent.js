@@ -1,14 +1,26 @@
 import Component from './index.js';
 
 export default class ResultComponent extends Component {
-    getGameHistoryHTML() {
-        return this.$state.gameHists.map((game) => `
+    getGameResultItemHTML(game) {
+        return game
+            .map(
+                (car) => `
+            <li>${car.name}: ${new Array(car.move).fill('-').join('')}</li>
+        `
+            )
+            .join('');
+    }
+
+    getGameResultLogHTML() {
+        return this.$state.gameHists
+            .map(
+                (game) => `
             <ul class="game-log">
-                ${game.map((car) => `
-                    <li>${car.name}: ${new Array(car.move).fill('-').join('')}</li>
-                `).join('')}
+                ${this.getGameResultItemHTML(game)}
             </ul>
-        `).join('');
+        `
+            )
+            .join('');
     }
 
     getWinnerListString() {
@@ -17,7 +29,7 @@ export default class ResultComponent extends Component {
 
     template() {
         return `
-            <div id="game-history">${this.getGameHistoryHTML()}</div>
+            <div id="game-history">${this.getGameResultLogHTML()}</div>
             ${
                 this.$state.winners &&
                 `최종 우승자: <span id="racing-winners">${this.getWinnerListString()}</span>`
