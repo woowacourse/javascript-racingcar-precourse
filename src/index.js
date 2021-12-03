@@ -30,6 +30,10 @@ class RacingGame {
     appDiv.appendChild(this.$racingWinnersSpan);
   }
 
+  #hideRacingCountInput() {
+
+  }
+
   #addOnClickEventListeners() {
     this.$carNamesSubmitButton.addEventListener('click', this.#onClickCarNamesSubmitHandler.bind(this));
 
@@ -41,9 +45,8 @@ class RacingGame {
     const userInput = this.$carNamesInput.value;
     const created = this.#createNewCars(userInput);
     if (!created) {
-      alert("Invalid Input: Follow the input format");
+      alert(constants.INPUT_ERROR_MESSAGE);
     }
-    console.log(this.carsList);
   }
 
   #createNewCars(carNamesInput){  
