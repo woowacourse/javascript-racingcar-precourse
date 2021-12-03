@@ -27,6 +27,15 @@ export default class CarRacingGame {
     }
   }
 
+  showRacingCount() {
+    const $racingCountInput = document.getElementById('racing-count-input');
+    const $racingCountForm = $racingCountInput.parentElement;
+    $racingCountForm.style.display = 'block';
+
+    const $racingCountHeader = document.getElementsByTagName('h4')[0];
+    $racingCountHeader.style.display = 'block';
+  }
+
   addCarNamesSubmitEvent() {
     const $carNamesInput = document.getElementById('car-names-input');
     const $carNamesSubmit = document.getElementById('car-names-submit');
@@ -38,6 +47,7 @@ export default class CarRacingGame {
         return;
       }
       this.carNames = stringToArrayConverter(carNamesString);
+      this.showRacingCount();
     });
   }
 
