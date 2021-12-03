@@ -31,5 +31,6 @@ module.exports = {
         'no-plusplus': 'off',
         'max-lines-per-function': ['error', 15],
         'max-depth': ['error', 2],
+        'no-alert': 'off',
     },
 };
