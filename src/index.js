@@ -1,6 +1,7 @@
 import { DOM } from './constant/constant.js';
 import CarNamesEvent from './events/CarNamesEvent.js';
 import RacingCountEvent from './events/RacingCountEvent.js';
+import RandomNumber from './getRandomNumber/RandomNumber.js';
 
 class RacingCar {
   constructor() {
@@ -10,9 +11,16 @@ class RacingCar {
     this.$racingCountInput = DOM.racingCountInput;
     this.$carNamesSubmit = DOM.carNamesSubmit;
     this.carNames = [];
+    this.randomNumbers = [];
     this.racingCount = 0;
     this.main();
   }
+
+  getRandomNumbers = () => {
+    this.randomNumber = new RandomNumber(this.carNames, this.racingCount);
+    this.randomNumbers = this.randomNumber.get();
+    console.log(this.randomNumbers);
+  };
 
   racingCountInputFocus = () => {
     this.racingCountEvent.onFocusInput();
@@ -23,6 +31,7 @@ class RacingCar {
       event.preventDefault();
       this.racingCountEvent.checkCarNames();
       [this.racingCount, this.carNames] = this.racingCountEvent.validateCount();
+      this.getRandomNumbers();
     });
   };
 
