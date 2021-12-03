@@ -16,6 +16,7 @@ function generateFormTagById(
   button.innerText = buttonText;
 
   form.appendChild(input);
+  form.appendChild(document.createTextNode(' '));
   form.appendChild(button);
 
   return form;

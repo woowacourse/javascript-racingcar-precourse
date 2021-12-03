@@ -22,7 +22,7 @@ export const ID_CAR_NAMES = getFormId(ID_PREFIX_CAR_NAMES);
 export const ID_RACING_COUNT = getFormId(ID_PREFIX_RACING_COUNT);
 
 export const TYPE_CAR_NAMES = {
-  inputType: 'input',
+  inputType: 'text',
   buttonType: 'submit',
 };
 
