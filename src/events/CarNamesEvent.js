@@ -3,7 +3,6 @@ import { DOM, ERROR_MESSAGE } from '../constant/constant.js';
 export default class CarNamesEvent {
   constructor() {
     this.$carNamesInput = DOM.carNamesInput;
-    this.$carNamesSubmit = DOM.carNamesSubmit;
     this.carNames = '';
     this.errorMessage = '';
     this.carNamesArray = [];
@@ -101,6 +100,7 @@ export default class CarNamesEvent {
   };
 
   validateNames = () => {
+    this.carNames = this.$carNamesInput.value;
     const isValidate =
       this.isEmpty() &&
       this.isBlank() &&
@@ -110,15 +110,5 @@ export default class CarNamesEvent {
       this.isNameEmpty();
 
     return isValidate;
-  };
-
-  onClickSubmit = () => {
-    this.$carNamesSubmit.addEventListener('click', (event) => {
-      event.preventDefault();
-      this.carNames = this.$carNamesInput.value;
-      if (!this.validateNames()) {
-        this.alertMessage();
-      }
-    });
   };
 }

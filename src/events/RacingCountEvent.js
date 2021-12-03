@@ -3,7 +3,6 @@ import { DOM, ERROR_MESSAGE, CAUTION_MESSAGE } from '../constant/constant.js';
 export default class RacingCountEvent {
   constructor(carNamesEvent) {
     this.$racingCountInput = DOM.racingCountInput;
-    this.$racingCountSubmit = DOM.racingCountSubmit;
     this.$carNamesInput = DOM.carNamesInput;
     this.carNamesEvent = carNamesEvent;
     this.errorMessage = '';
@@ -47,6 +46,7 @@ export default class RacingCountEvent {
   };
 
   validateCount = () => {
+    this.stringRacingCount = this.$racingCountInput.value;
     const isValidate =
       !this.isEmpty() && //
       this.isInteger() &&
@@ -77,17 +77,6 @@ export default class RacingCountEvent {
 
       return;
     }
-  };
-
-  onClickSubmit = (car) => {
-    this.$racingCountSubmit.addEventListener('click', (event) => {
-      event.preventDefault();
-      this.stringRacingCount = this.$racingCountInput.value;
-      this.carNames = this.$carNamesInput.value;
-      this.checkCarNames();
-      this.validateCount();
-      car.readyGame();
-    });
   };
 
   isCarNamesBlank = () => {

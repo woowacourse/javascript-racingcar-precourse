@@ -1,4 +1,4 @@
-import Car from './Car/Car.js';
+import { DOM } from './constant/constant.js';
 import CarNamesEvent from './events/CarNamesEvent.js';
 import RacingCountEvent from './events/RacingCountEvent.js';
 
@@ -6,7 +6,9 @@ class RacingCar {
   constructor() {
     this.carNamesEvent = new CarNamesEvent();
     this.racingCountEvent = new RacingCountEvent(this.carNamesEvent);
-    this.car = new Car(this.carNamesEvent, this.racingCountEvent);
+    this.$racingCountSubmit = DOM.racingCountSubmit;
+    this.$racingCountInput = DOM.racingCountInput;
+    this.$carNamesSubmit = DOM.carNamesSubmit;
     this.main();
   }
 
@@ -15,11 +17,20 @@ class RacingCar {
   };
 
   racingCountSubmit = () => {
-    this.racingCountEvent.onClickSubmit(this.car);
+    this.$racingCountSubmit.addEventListener('click', (event) => {
+      event.preventDefault();
+      this.racingCountEvent.checkCarNames();
+      this.racingCountEvent.validateCount();
+    });
   };
 
   carNamesSubmit = () => {
-    this.carNamesEvent.onClickSubmit();
+    this.$carNamesSubmit.addEventListener('click', (event) => {
+      event.preventDefault();
+      if (!this.carNamesEvent.validateNames()) {
+        this.carNamesEvent.alertMessage();
+      }
+    });
   };
 
   main = () => {
