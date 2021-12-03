@@ -6,6 +6,14 @@ export default class Model {
     this.racingCount = 0;
   }
 
+  static getWinnerNameList(raceResult) {
+    const maxDistance = Math.max(...raceResult.map((car) => car.distance));
+
+    return raceResult
+      .filter((car) => car.distance === maxDistance)
+      .map((winner) => winner.name);
+  }
+
   initCarList(nameList, callback) {
     this.carList = nameList.map((name) => new Car(name));
 
@@ -34,20 +42,16 @@ export default class Model {
     return fullRaceResultList;
   }
 
-  getFinalWinnerNameList() {
-    const maxDistance = Math.max(...this.carList.map((car) => car.distance));
-
-    return this.carList
-      .filter((car) => car.distance === maxDistance)
-      .map((winner) => winner.name);
-  }
-
   startRace(callback) {
     this.initDistance();
 
+    const fullRaceResult = this.getFullRaceResult();
+
     callback({
-      raceResultList: this.getFullRaceResult(),
-      finalWinnerNameList: this.getFinalWinnerNameList(),
+      raceResultList: fullRaceResult,
+      finalWinnerNameList: Model.getWinnerNameList(
+        fullRaceResult[fullRaceResult.length - 1]
+      ),
     });
   }
 }

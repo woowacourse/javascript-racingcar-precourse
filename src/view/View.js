@@ -48,6 +48,7 @@ export default class View {
         return;
       }
 
+      this.$resultHeading.style.visibility = 'hidden';
       this.$resultDiv.innerHTML = '';
 
       handler(nameList);
