@@ -3,16 +3,15 @@ import isValidCarNames from './utils/isValidCarNames.js';
 import isValidRacingCount from './utils/isValidRacingCount.js';
 import generateCars from './utils/generateCars.js';
 import race from './utils/race.js';
+import completeRace from './utils/completeRace.js';
 import hideRacingCountAndResult from './dom/hideRacingCountAndResult.js';
 import showRacingCount from './dom/showRacingCountForm.js';
-import printResult from './dom/printResult.js';
 
 export default class CarRacingGame {
   constructor() {
     this.carNames = [];
     this.racingCount = 0;
     this.cars = [];
-    this.winner = [];
     hideRacingCountAndResult();
     this.addCarNamesSubmitEvent();
     this.addRacingCountSubmitEvent();
@@ -53,22 +52,7 @@ export default class CarRacingGame {
       race(this.cars);
     }
 
-    this.findWinner();
-    printResult(this.winner);
-  }
-
-  findWinner() {
-    let maxDistance = 0;
-    this.cars.forEach((car) => {
-      if (car.distance === maxDistance) {
-        this.winner.push(car.name);
-      }
-
-      if (car.distance > maxDistance) {
-        this.winner = [car.name];
-        maxDistance = car.distance;
-      }
-    });
+    completeRace(this.cars);
   }
 }
 
