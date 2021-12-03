@@ -24,6 +24,11 @@ const DOMUtils = {
     $('#racing-count-title').style.display = '';
     $('#racing-count-form').style.display = '';
   },
+
+  disableRacingCountForm: () => {
+    $('#racing-count-input').disabled = true;
+    $('#racing-count-submit').disabled = true;
+  },
 };
 
 export default DOMUtils;

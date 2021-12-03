@@ -60,6 +60,8 @@ export default function RacingCarGame() {
     if (isBlank(racingCount)) return alert(ERROR.BLANK_SUBMIT);
     if (isZero(racingCount)) return alert(ERROR.NOT_POSIVITE_INT);
     tryCount = Number(racingCount);
+
+    UI.disableRacingCountForm();
   };
 
   init();
