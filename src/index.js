@@ -55,7 +55,7 @@ class RacingGame {
   }
 
   #isValidCarNamesList(carNamesList){
-    return parsedCarNames.length > 1 && this.#isValidCarNamesLength(parsedCarNames);
+    return carNamesList.length > 1 && this.#isValidCarNamesLength(carNamesList);
   }
 
   #isValidCarNamesLength(carNamesList){
