@@ -11,11 +11,7 @@ function makeRacingResult($resultScreenDiv) {
   $resultScreenDiv.insertAdjacentHTML('beforeend', '<br>');
 }
 
-export default function printRacingResult() {
-  const $app = document.querySelector('#app');
-  const $resultScreenDiv = document.createElement('div');
-  $app.appendChild($resultScreenDiv);
-
+export default function printRacingResult($resultScreenDiv) {
   makeRacingResult($resultScreenDiv);
   showResultSrceen();
 }

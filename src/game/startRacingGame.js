@@ -1,11 +1,16 @@
 import playCarRacing from './playCarRacing.js';
-import { cars } from '../init/cars.js';
 import printRacingResult from './printRacingResult.js';
+import addSelectedWinner from './addSelectedWinner.js';
 
 export default function startRacingGame(racingCount) {
+  const $app = document.querySelector('#app');
+  const $resultScreenDiv = document.createElement('div');
+  $app.appendChild($resultScreenDiv);
+
   for (let i = 0; i < racingCount; i++) {
     playCarRacing();
-    printRacingResult();
+    printRacingResult($resultScreenDiv);
   }
-  console.log(cars);
+
+  addSelectedWinner();
 }
