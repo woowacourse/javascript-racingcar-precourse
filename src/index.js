@@ -3,6 +3,7 @@ import stringToArrayConverter from './stringToArrayConverter.js';
 import isValidCarNames from './isValidCarNames.js';
 import isValidRacingCount from './isValidRacingCount.js';
 import hideRacingCountAndResult from './hideRacingCountAndResult.js';
+import showRacingCount from './showRacingCountForm.js';
 import Car from './Car.js';
 
 export default class CarRacingGame {
@@ -14,15 +15,6 @@ export default class CarRacingGame {
     hideRacingCountAndResult();
     this.addCarNamesSubmitEvent();
     this.addRacingCountSubmitEvent();
-  }
-
-  showRacingCount() {
-    const $racingCountInput = document.getElementById('racing-count-input');
-    const $racingCountForm = $racingCountInput.parentElement;
-    $racingCountForm.style.display = DISPLAY.block;
-
-    const $racingCountHeader = document.getElementsByTagName('h4')[0];
-    $racingCountHeader.style.display = DISPLAY.block;
   }
 
   showResultHeader() {
@@ -41,7 +33,7 @@ export default class CarRacingGame {
       }
 
       this.carNames = stringToArrayConverter(carNamesString);
-      this.showRacingCount();
+      showRacingCount();
     });
   }
 
