@@ -1,8 +1,8 @@
-import { TRIAL_MIN } from './const.js';
+import { RACING_COUNT_MIN } from './const.js';
 
 export function isTrialEnough(trial) {
-  if (trial >= TRIAL_MIN) {
+  if (trial >= RACING_COUNT_MIN) {
     return true;
   }
-  alert(`please enter at least ${TRIAL_MIN} trial`);
+  alert(`please enter at least ${RACING_COUNT_MIN} trial`);
 }
