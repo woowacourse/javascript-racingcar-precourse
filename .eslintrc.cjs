@@ -14,6 +14,7 @@ module.exports = {
     'no-console': 'off',
     'no-new': 'off',
     'no-alert': 'off',
+    'no-plusplus': 'off',
     'import/extensions': 'off',
     'prettier/prettier': 'error',
   },
