@@ -15,3 +15,20 @@ export const displayCountForm = () => {
   racingCountText.style.display = 'block';
   racingCountForm.style.display = 'block';
 };
+
+export const displayResultText = () => {
+  const racingResultText = document.getElementById('racing-result-text');
+
+  racingResultText.style.display = 'block';
+};
+
+export const createRacingLog = (cars) => {
+  const app = document.getElementById('app');
+  const log = document.createElement('p');
+
+  cars.forEach((car) => {
+    log.innerHTML += `${car.name}: ${'-'.repeat(car.location)} <br>`;
+  });
+
+  app.appendChild(log);
+};
