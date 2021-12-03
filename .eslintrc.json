@@ -10,6 +10,7 @@
     "plugin:prettier/recommended"
   ],
   "rules": {
+    "no-new": "off",
     "class-methods-use-this": "off",
     "no-alert": "off",
     "no-plusplus": "off",
