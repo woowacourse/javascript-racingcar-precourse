@@ -79,6 +79,7 @@ export default class CarRacingGame {
   play() {
     for (let racing = 0; racing < this.racingCount; racing++) {
       this.moveCars();
+      this.printRace();
     }
   }
 
@@ -86,6 +87,23 @@ export default class CarRacingGame {
     this.cars.forEach((car) => {
       car.move();
     });
+  }
+
+  makeRaceElement() {
+    const $raceElement = document.createElement('div');
+    this.cars.forEach((car) => {
+      const div = document.createElement('div');
+      div.appendChild(document.createTextNode(car.raceString()));
+      $raceElement.appendChild(div);
+    });
+    $raceElement.appendChild(document.createElement('br'));
+
+    return $raceElement;
+  }
+
+  printRace() {
+    const $app = document.getElementById('app');
+    $app.appendChild(this.makeRaceElement());
   }
 }
 
