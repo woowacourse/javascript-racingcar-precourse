@@ -1,7 +1,11 @@
-import { NUM_OF_CARS } from './const.js';
+import {
+  NAME_RANGE as NAME_MAX_RANGE,
+  NUM_OF_CARS_MAX,
+  NUM_OF_CARS_MIN,
+} from './const.js';
 
-export function countCommas(name) {
-  let count = 0;
+export function countNumOfCar(name) {
+  let count = 1;
   let pos = name.indexOf(',');
   while (pos !== -1) {
     count++;
@@ -10,11 +14,28 @@ export function countCommas(name) {
   return count;
 }
 
-export function isNameInputValid(nameInput) {
-  if (countCommas(nameInput) < NUM_OF_CARS) {
+export function isTooManyCars(nameInput) {
+  if (countNumOfCar(nameInput) <= NUM_OF_CARS_MAX) {
     return true;
   }
-  alert(`Input Name under ${NUM_OF_CARS}`);
+  alert(`Input Names under ${NUM_OF_CARS_MAX}`);
+}
+
+export function isFewCars(nameInput) {
+  if (NUM_OF_CARS_MIN < countNumOfCar(nameInput)) {
+    return true;
+  }
+  alert(`Input at least ${NUM_OF_CARS_MIN} Names`);
+}
+
+export function isCarEnough(nameInput) {
+  if (!isTooManyCars(nameInput)) {
+    return false;
+  }
+  if (!isFewCars(nameInput)) {
+    return false;
+  }
+  return true;
 }
 
 export function extractNames(nameInput) {
@@ -30,4 +51,12 @@ export function extractNames(nameInput) {
   }
   nameList.push(name);
   return nameList;
+}
+
+export function isNameTooLong(names) {
+  for (let i of names) {
+    if (i.length > NAME_MAX_RANGE) {
+      alert('Input shorter Name');
+    }
+  }
 }
