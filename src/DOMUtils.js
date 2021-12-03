@@ -38,8 +38,8 @@ const DOMUtils = {
     let result = '';
 
     array.forEach(object => {
-      const hyphenGraph = makeHyphenGraph(object._location);
-      result += `<div>${object._name}: ${hyphenGraph}</div>`;
+      const hyphenGraph = makeHyphenGraph(object.location);
+      result += `<div>${object.name}: ${hyphenGraph}</div>`;
     });
     result += '<br/>';
 
@@ -47,10 +47,10 @@ const DOMUtils = {
   },
 
   showWiners: array => {
-    const maxValue = Math.max(...array.map(object => object._location));
+    const maxValue = Math.max(...array.map(object => object.location));
     const winners = array
-      .filter(object => object._location === maxValue)
-      .map(object => object._name)
+      .filter(object => object.location === maxValue)
+      .map(object => object.name)
       .join(',');
 
     $('#app').insertAdjacentHTML('beforeend', `<span id="racing-winners">${winners}</span>`);
