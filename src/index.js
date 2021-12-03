@@ -1,3 +1,4 @@
+import Car from './Car/Car.js';
 import { DOM } from './constant/constant.js';
 import CarNamesEvent from './events/CarNamesEvent.js';
 import RacingCountEvent from './events/RacingCountEvent.js';
@@ -16,10 +17,30 @@ class RacingCar {
     this.main();
   }
 
+  isMoveCar = (randomNumber, car) => {
+    if (randomNumber >= 4) {
+      car.distanceIncrease();
+      return;
+    }
+
+    return;
+  };
+
+  racingGameStart = () => {
+    console.log(this.carNames);
+    console.log(this.randomNumbers);
+    this.carNames.forEach((currentCarName, currentCarIndex) => {
+      const currentCar = new Car(currentCarName);
+      for (let currentCount = 0; currentCount < this.racingCount; currentCount += 1) {
+        this.isMoveCar(this.randomNumbers[currentCount][currentCarIndex], currentCar);
+      }
+      console.log(currentCar.name, currentCar.distance);
+    });
+  };
+
   getRandomNumbers = () => {
     this.randomNumber = new RandomNumber(this.carNames, this.racingCount);
     this.randomNumbers = this.randomNumber.get();
-    console.log(this.randomNumbers);
   };
 
   racingCountInputFocus = () => {
@@ -32,6 +53,7 @@ class RacingCar {
       this.racingCountEvent.checkCarNames();
       [this.racingCount, this.carNames] = this.racingCountEvent.validateCount();
       this.getRandomNumbers();
+      this.racingGameStart();
     });
   };
 

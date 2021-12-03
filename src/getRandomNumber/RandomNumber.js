@@ -10,7 +10,6 @@ export default class RandomNumber {
   };
 
   get = () => {
-    console.log('123');
     for (let i = 0; i < this.racingCount; i += 1) {
       const randomArray = [];
 
