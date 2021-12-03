@@ -37,6 +37,7 @@ export default function racingCarGame() {
       racingCount = racingCountEntered;
     }
     play();
+    chooseWinner();
   }
 
   function play() {
@@ -48,6 +49,20 @@ export default function racingCarGame() {
   function playersMoveByCount() {
     for (let i = 0; i < players.length; i++) {
       players[i].Move();
+    }
+  }
+
+  function chooseWinner() {
+    let max = 0;
+    for (let i = 0; i < players.length; i++) {
+      if (players[i].location >= max) {
+        max = players[i].location;
+      }
+    }
+    for (let i = 0; i < players.length; i++) {
+      if (players[i].location === max) {
+        winners.push(players[i].name);
+      }
     }
   }
 }
