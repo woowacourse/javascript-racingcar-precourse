@@ -36,10 +36,14 @@ $racingCountInput.addEventListener('focusout', ({ target }) => {
 $racingCountSubmit.addEventListener('click', event => {
   event.preventDefault();
 
-  const { value: carNames } = $('#car-names-input');
+  const $carNamesInput = $('#car-names-input');
   const { value: countNumber } = $('#racing-count-input');
 
-  if (isEquals(carNames, EMPTY)) return setErrorMessage('');
+  if (racingGame.isNotRegisteredCars()) {
+    $carNamesInput.focus();
+    $racingCountInput.value = EMPTY;
+    return setErrorMessage('notDefinedCars');
+  }
 
   // 동일한 내용이지만 입력과 제출 시 각각 검증합니다.
   const checkedValue = isPositiveInteger(countNumber) || EMPTY;

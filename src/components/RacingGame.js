@@ -12,6 +12,10 @@ export default class RacingGame {
     this.racingCars = [];
   }
 
+  isNotRegisteredCars() {
+    return !this.racingCars.length;
+  }
+
   oneTrackRaceMaxMove(race, start, end) {
     return this.racingCars.reduce((maxMoves, car) => {
       const [moveCount, raceResult] = car.moveForward(pickNumberInRange(start, end));
