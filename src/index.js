@@ -46,15 +46,13 @@ class RacingGame {
             this.input = ev.target.value;
         });
         $nameSubmitButton.addEventListener(
-            'click',
-            this.applyCarName.bind(this)
+            'click', this.applyCarName.bind(this)
         );
         $countInputForm.addEventListener('change', (ev) => {
             this.tryCount = ev.target.value * 1;
         });
         $countSubmitButton.addEventListener(
-            'click',
-            this.applyTryCount.bind(this)
+            'click', this.applyTryCount.bind(this)
         );
     }
 
