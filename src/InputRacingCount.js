@@ -4,7 +4,6 @@ export default class InputRacingCount {
         this.$racingCountSubmit = document.getElementById("racing-count-submit");
         this.racingCount = 0;
 
-
         this.addCountSubmitEvent();
     }
 
@@ -13,9 +12,9 @@ export default class InputRacingCount {
             e.preventDefault();
             const inputCount = this.$racingCountInput.value;
 
-            this.isValidCount(inputCount);
-            // this.racingCount = this.$racingCountInput.value;
-            // console.log(this.$racingCountInput.value);
+            if(this.isValidCount(inputCount)) {
+                this.racingCount = inputCount;
+            }
         })
     }
 
@@ -36,15 +35,16 @@ export default class InputRacingCount {
     }
 
     invalidCountAction() {
-        alert("유효하지 않은 입력입니다!");
         this.$racingCountInput.value = "";
+        this.racingCount = 0;
 
-        return false;
+        return alert("유효하지 않은 입력입니다!");
     }
 
     isValidCount(inputCount) {
         if(!(this.checkNumberForm(inputCount) && this.checkNumberSize(inputCount))) {
             this.invalidCountAction();
+            return false;
         }
 
         return true;
