@@ -1,3 +1,5 @@
+import { $ } from '../utils/common.js';
+
 export const ALERT_MESSAGE = {
   blankExist: '공백을 제거해주세요.',
   lengthNotInRange: '자동차 이름을 5자 이하로 작성해주세요.',
@@ -8,4 +10,12 @@ export const ALERT_MESSAGE = {
 export const GAME_RULE = {
   randomMin: 0,
   randomMax: 9,
+};
+
+export const DOM = {
+  $carNamesSubmit: $('car-names-submit'),
+  $carNamesInput: $('car-names-input'),
+  $racingCountSubmit: $('racing-count-submit'),
+  $racingCountInput: $('racing-count-input'),
+  $app: $('app'),
 };

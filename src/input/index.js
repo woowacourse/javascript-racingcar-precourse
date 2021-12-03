@@ -17,6 +17,9 @@ export default class Input {
         isBlank = true;
       }
     });
+    if (isBlank) {
+      alert(ALERT_MESSAGE.blankExist);
+    }
 
     return isBlank;
   }
@@ -28,27 +31,32 @@ export default class Input {
         isInRange = false;
       }
     });
+    if (!isInRange) {
+      alert(ALERT_MESSAGE.lengthNotInRange);
+    }
 
     return isInRange;
   }
 
   isNameDuplicated(carNamesArray) {
     const carNameSet = new Set(carNamesArray);
+    const isDuplicated = carNameSet.size !== carNamesArray.length;
 
-    return carNameSet.size !== carNamesArray.length;
+    if (isDuplicated) {
+      alert(ALERT_MESSAGE.nameDuplicated);
+    }
+
+    return isDuplicated;
   }
 
   isCarNamesValid(carNamesInputValue) {
     const carNamesArray = carNamesInputValue.split(',');
-    let isValid = false;
-    if (this.isBlankExist(carNamesArray)) {
-      alert(ALERT_MESSAGE.blankExist);
-    } else if (!this.isLengthInRange(carNamesArray)) {
-      alert(ALERT_MESSAGE.lengthNotInRange);
-    } else if (this.isNameDuplicated(carNamesArray)) {
-      alert(ALERT_MESSAGE.nameDuplicated);
-    } else {
-      isValid = true;
+    const isValid =
+      !this.isBlankExist(carNamesArray) &&
+      this.isLengthInRange(carNamesArray) &&
+      !this.isNameDuplicated(carNamesArray);
+
+    if (isValid) {
       this.carNamesArray = carNamesArray;
     }
 
@@ -72,12 +80,11 @@ export default class Input {
   }
 
   isRacingCountValid(racingCountInputValue) {
-    let isValid = false;
+    let isValid = true;
 
     if (!this.isNumeric(racingCountInputValue) || this.isEmptyOrZero(racingCountInputValue)) {
       alert(ALERT_MESSAGE.isNotValidNumber);
-    } else {
-      isValid = true;
+      isValid = false;
     }
 
     return isValid;

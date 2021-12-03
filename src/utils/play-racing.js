@@ -1,13 +1,9 @@
 import Car from '../car/index.js';
 import { $, createElementWithContents } from './common.js';
 
-const makeCarObjectArray = carNamesArray => {
-  return carNamesArray.map(x => new Car(x));
-};
+const makeCarObjectArray = carNamesArray => carNamesArray.map(x => new Car(x));
 
-const moveCars = carObjectArray => {
-  carObjectArray.forEach(x => x.moveCar());
-};
+const moveCars = carObjectArray => carObjectArray.forEach(x => x.moveCar());
 
 const showCarStatus = carObjectArray => {
   const resultDiv = $('result');

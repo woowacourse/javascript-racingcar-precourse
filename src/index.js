@@ -1,10 +1,11 @@
 import Input from './input/index.js';
-import { $, createElementWithContents } from './utils/common.js';
+import { createElementWithContents } from './utils/common.js';
 import {
   addCarNamesSubmitClickEvent,
   addRacingCountSubmitClickEvent,
   addRacingCountInputKeyupEvent,
 } from './utils/add-events.js';
+import { DOM } from './constants/index.js';
 
 export default class RacingGame {
   constructor() {
@@ -16,8 +17,9 @@ export default class RacingGame {
   initGame() {
     const resultDiv = createElementWithContents('div');
     resultDiv.id = 'result';
-    $('racing-count-submit').disabled = true;
-    $('app').appendChild(resultDiv);
+    DOM.$racingCountSubmit.disabled = true;
+    DOM.$racingCountInput.disabled = true;
+    DOM.$app.appendChild(resultDiv);
   }
 
   addEventListeners() {

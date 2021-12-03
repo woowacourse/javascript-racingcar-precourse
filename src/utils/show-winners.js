@@ -27,6 +27,7 @@ const makeWinnersComponent = winnersObjectArray => {
   const winnersMessage = makeWinnersMessage(winnersObjectArray);
   const resultDiv = $('result');
   const finalWinnersText = createElementWithContents('span', '최종 우승자: ');
+
   resultDiv.appendChild(finalWinnersText);
   resultDiv.appendChild(makeWinnersSpan(winnersMessage));
 };

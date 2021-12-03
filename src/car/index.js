@@ -7,12 +7,7 @@ export default class Car {
   }
 
   makeRandomNumber() {
-    const randomNumber = MissionUtils.Random.pickNumberInRange(
-      GAME_RULE.randomMin,
-      GAME_RULE.randomMax,
-    );
-
-    return randomNumber;
+    return MissionUtils.Random.pickNumberInRange(GAME_RULE.randomMin, GAME_RULE.randomMax);
   }
 
   moveCar() {
