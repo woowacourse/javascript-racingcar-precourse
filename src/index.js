@@ -1,6 +1,6 @@
 import $ from './utils/common/selector.js';
 import { submitCarName } from './utils/input/submitCarName.js';
-import { submitCountOfRacing } from './utils/input/submitNumberOfExecution.js';
+import { submitCountOfRacing } from './utils/input/submitCountOfRacing.js';
 
 function racingGame() {
   this.init = () => {
