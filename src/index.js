@@ -59,9 +59,19 @@ export default function RacingCarGame() {
     const racingCount = $('#racing-count-input').value;
     if (isBlank(racingCount)) return alert(ERROR.BLANK_SUBMIT);
     if (isZero(racingCount)) return alert(ERROR.NOT_POSIVITE_INT);
-    tryCount = Number(racingCount);
+    playCarRacing(Number(racingCount));
 
     UI.disableRacingCountForm();
+  };
+
+  const playCarRacing = racingCount => {
+    Array.from({ length: racingCount }, () => {
+      cars.forEach(car => {
+        car.tryMove();
+        console.log(`${car._name}: ${car._location}`);
+      });
+      console.log('');
+    });
   };
 
   init();
