@@ -57,21 +57,13 @@ export default class CarRacingGame {
     $racingCountSubmit.addEventListener('click', (event) => {
       event.preventDefault();
 
-      if (!isValidRacingCount($racingCountInput.value) || !this.isValidCarNames()) {
+      if (!isValidRacingCount($racingCountInput.value)) {
         return;
       }
 
       this.racingCount = Number($racingCountInput.value);
       this.generateCar();
     });
-  }
-
-  isValidCarNames() {
-    if (this.carNames.length === 0) {
-      alert('자동차 이름을 입력해주세요.');
-      return false;
-    }
-    return true;
   }
 
   generateCar() {
