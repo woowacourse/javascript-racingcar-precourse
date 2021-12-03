@@ -15,4 +15,9 @@ export default class Race {
     });
     return carObjectList;
   }
+
+  raceOneTime(carObjectList) {
+    carObjectList.forEach((item) => item.raceAdvance());
+    return carObjectList;
+  }
 }
