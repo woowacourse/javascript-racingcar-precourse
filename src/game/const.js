@@ -8,3 +8,12 @@ export const DIVIDER = ',';
 export const VALIDE_CONDITION_RACING_COUNT = {
   minCount: 1,
 };
+
+export const RANGE_RANDOM_NUMBER = {
+  min: 0,
+  max: 9,
+};
+
+export const RANGE_MOVABLE = {
+  min: 4,
+};
