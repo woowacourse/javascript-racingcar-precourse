@@ -58,10 +58,20 @@ DOM이 가지는 이벤트는 클래스에 종속시키지 않고 별도의 hand
 <br>
 
 ### ✂️ 리팩토링과 트러블 슈팅
-- [ ] 현재는 Car와 Render 클래스 사이에 객체를 주고 받는 의존성이 존재하므로 이를 RacingGame이 가지도록 수정합니다.
-- [ ] 사용자 입력 이벤트에 대한 유효성 검사를 강화합니다.
-  - 현재 레이싱 횟수가 입력되거나 제출하는 데 있어 자동차 이름의 입력 유무를 체크하지 않습니다
+- [x] 현재는 Car와 Render 클래스 사이에 객체를 주고 받는 의존성이 존재하므로 이를 RacingGame이 가지도록 수정합니다.
+  > [커밋 링크](https://github.com/InSeong-So/javascript-racingcar-precourse/commit/fd6b085cd7648ae36c355f24e2414913cd7066c1)
+
+<br>
+
+- [x] 사용자 입력 이벤트에 대한 유효성 검사를 강화합니다.
+  - 현재 레이싱 횟수가 입력되거나 제출하는 데 있어 자동차 이름의 입력 유무를 체크하지 않습니다.
+  > [커밋 링크](https://github.com/InSeong-So/javascript-racingcar-precourse/commit/d9622bb1d95599725b77e858dbedd465d2956495)
+
+<br>
+
 - [ ] JSDoc을 작성합니다.
+
+<br>
 
 <hr>
 <br>
