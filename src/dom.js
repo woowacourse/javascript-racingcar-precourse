@@ -39,8 +39,6 @@ export const createWinnersText = (winners) => {
   const racingWinners = document.createElement('span');
   racingWinners.setAttribute('id', 'racing-winners');
 
-  console.log(winners.join(', '));
-
   racingWinnersText.innerHTML = '최종 우승자: ';
   racingWinners.innerHTML = `${winners.join(', ')}`;
 

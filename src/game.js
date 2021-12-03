@@ -37,12 +37,10 @@ export default class Game {
     });
 
     displayCountForm();
-    console.log(this.cars);
   }
 
   getCount() {
     this.count = getUserInputForCount();
-    console.log(getUserInputForCount());
   }
 
   startGame() {
@@ -84,7 +82,5 @@ export default class Game {
     });
 
     createWinnersText(this.winners);
-
-    console.log(this.winners);
   }
 }
