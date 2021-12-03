@@ -2,7 +2,7 @@ import { isValidCarNames, isValidRacingCount } from './validations.js';
 
 function onSubmitCarNames(input, racingGame) {
   const carNames = input.value.split(',');
-  racingGame.resetResultContainer();
+  racingGame.resetResult();
   if (!isValidCarNames(carNames)) {
     racingGame.setCarNames([]);
     return;
@@ -13,7 +13,7 @@ function onSubmitCarNames(input, racingGame) {
 
 function onSubmitRacingCount(input, racingGame) {
   const racingCount = Number(input.value);
-  racingGame.resetResultContainer();
+  racingGame.resetResult();
   if (!isValidRacingCount(racingCount)) {
     racingGame.setRacingCount(0);
     return;
