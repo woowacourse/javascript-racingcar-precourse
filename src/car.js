@@ -1,5 +1,4 @@
-export default function Car(name){
-  this.name =name;
-  this.count=0;
-
-};
+export default function Car(name) {
+  this.name = name;
+  this.count = 0;
+}
