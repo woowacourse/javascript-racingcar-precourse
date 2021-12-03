@@ -14,27 +14,31 @@ class RacingCar {
     this.carNames = [];
     this.randomNumbers = [];
     this.racingCount = 0;
+    this.resultRacing = [];
     this.main();
   }
+
+  getResultString = (car) => {
+    return car.resultString();
+  };
 
   isMoveCar = (randomNumber, car) => {
     if (randomNumber >= 4) {
       car.distanceIncrease();
-      return;
     }
-
-    return;
   };
 
   racingGameStart = () => {
-    console.log(this.carNames);
-    console.log(this.randomNumbers);
     this.carNames.forEach((currentCarName, currentCarIndex) => {
       const currentCar = new Car(currentCarName);
+      const currentCarResultRacing = [];
+
       for (let currentCount = 0; currentCount < this.racingCount; currentCount += 1) {
         this.isMoveCar(this.randomNumbers[currentCount][currentCarIndex], currentCar);
+        currentCarResultRacing.push(this.getResultString(currentCar));
       }
-      console.log(currentCar.name, currentCar.distance);
+
+      this.resultRacing.push(currentCarResultRacing);
     });
   };
 

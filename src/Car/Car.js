@@ -4,8 +4,11 @@ export default class Car {
     this.distance = 0;
   }
 
+  resultString = () => {
+    return `${this.name}: ${'-'.repeat(this.distance)}`.trim();
+  };
+
   distanceIncrease = () => {
     this.distance += 1;
-    console.log(this.name, this.distance);
   };
 }
