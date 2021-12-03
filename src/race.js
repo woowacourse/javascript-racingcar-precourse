@@ -64,6 +64,12 @@ export default class Race {
     this.$result.appendChild($div);
   }
 
+  /**
+   * Car인스턴스 리스트 생성
+   * 횟수만큼 각 레이스 진행
+   * $result에 각 레이스 결과, 우승자 결과 추가
+   * $result element반환
+   */
   startGame() {
     let carObjectList = this.makeCarList(this.carList);
 

@@ -41,6 +41,10 @@ class RacingCarGame {
     }
   };
 
+  /**
+   * Race인스턴트의 starGame으로 게임 시작
+   * 반환 받은 Element를 $app태그에 추가
+   */
   play() {
     const race = new Race(this.carList, this.raceNumber);
     const $result = race.startGame();
