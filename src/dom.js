@@ -32,3 +32,18 @@ export const createRacingLog = (cars) => {
 
   app.appendChild(log);
 };
+
+export const createWinnersText = (winners) => {
+  const app = document.getElementById('app');
+  const racingWinnersText = document.createElement('span');
+  const racingWinners = document.createElement('span');
+  racingWinners.setAttribute('id', 'racing-winners');
+
+  console.log(winners.join(', '));
+
+  racingWinnersText.innerHTML = '최종 우승자: ';
+  racingWinners.innerHTML = `${winners.join(', ')}`;
+
+  app.appendChild(racingWinnersText);
+  app.appendChild(racingWinners);
+};
