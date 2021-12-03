@@ -1,6 +1,7 @@
 class RacingCarGame {
   constructor() {
     this.configureElementProperties();
+    this.configureInputProperties();
   }
 
   configureElementProperties() {
@@ -10,5 +11,10 @@ class RacingCarGame {
     this.$racingCountInput = document.querySelector('#racing-count-input');
     this.$racingCountSubmit = document.querySelector('#racing-count-submit');
     this.$resultHeader = document.querySelector('#result-header');
+  }
+
+  configureInputProperties() {
+    this.carList;
+    this.raceNumber;
   }
 }
