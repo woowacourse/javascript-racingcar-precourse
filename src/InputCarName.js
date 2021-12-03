@@ -46,14 +46,19 @@ export default class InputCarName {
         return false;
     }
 
+    invalidCarNames() {
+        this.$carNamesInput.value = "";
+        this.carNames = [];
+
+        return alert("유효하지 않은 입력입니다!");
+    }
+
     isValidNames(carNamesArray) {
         const arrayLength = carNamesArray.length;
 
         for(let i = 0; i < arrayLength; i++) {
             if(!(this.checkLength(carNamesArray[i]) && this.checkIncludeBlank(carNamesArray[i]))) {
-                alert("유효하지 않은 입력입니다!");
-                this.$carNamesInput.value = "";
-                this.carNames = [];
+                this.invalidCarNames();
                 return false;
             }
         }
