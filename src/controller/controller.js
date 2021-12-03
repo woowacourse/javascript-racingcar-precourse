@@ -37,7 +37,7 @@ export const renderGameResult = (carNames, racingCount) => {
   if ($('#app').lastElementChild.id === 'result') {
     $('#app').removeChild($('#result'));
   }
-  let result = `<div id="result">`;
+  let result = '';
   const cars = genCarInstances(carNames);
   for (let i = 0; i < racingCount; i++) {
     calculateMoveState(cars);
@@ -47,6 +47,6 @@ export const renderGameResult = (carNames, racingCount) => {
     result += `<br />`;
   }
 
-  result += `<span id="racing-winners">최종 우승자: ${getWinner(cars)}</span></div>`;
+  result += `<span>최종 우승자: </span><span id="racing-winners">${getWinner(cars)}</span><br><br>`;
   $('#app').insertAdjacentHTML('beforeend', result);
 };
