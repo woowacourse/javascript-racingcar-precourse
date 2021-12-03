@@ -12,4 +12,13 @@ export default class Car {
       this.distance++;
     }
   }
+
+  raceString() {
+    let race = '';
+    for (let i = 0; i < this.distance; i++) {
+      race += '-';
+    }
+
+    return `${this.name}: ${race}`;
+  }
 }
