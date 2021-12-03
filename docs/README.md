@@ -31,19 +31,7 @@
 
 ### 🎯 &nbsp;자동차 경주 게임
 
-- [x] 게임이 시작되면 0~9 사이 랜덤한 수를 생성한다.
-  <details>
-    <summary>✅ &nbsp;랜덤 값 생성</summary>
-    <ul>
-      <li>랜덤 값 생성은 <a href="https://github.com/woowacourse-projects/javascript-mission-utils#mission-utils"><code>MissionUtils</code> 라이브러리</a>의 <code>Random.pickNumberInRange</code>를 사용한다.</li>
-    </ul>
-  </details>
-- [x] 랜덤생성한 수가 4 이상이면 전진한다.
-  - [x] 각 자동차 별로 전진한 횟수를 기록한다.
-- [x] 위 두 과정을 사용자가 입력한 시도할 횟수만큼 반복한다.
-- [x] 자동차들 중 가장 많이 전진한 자동차(들)를 선정한다.
-- [x] 결과를 화면에 보여준다.
-
+- [x] 사용자 입력값에 따라 자동차 객체를 생성한다.
   <details>
     <summary>✅ &nbsp;게임 <code>Car</code> 객체 생성</summary>
     <ul>
@@ -59,3 +47,14 @@
       </li>
     </ul>
   </details>
+- [x] 0 ~ 9 랜덤한 수를 생성해서 4보다 크면 전진한 후 객체의 position을 증가하여 현 위치를 저장한다.
+  <details>
+    <summary>✅ &nbsp;랜덤 값 생성</summary>
+    <ul>
+      <li>랜덤 값 생성은 <a href="https://github.com/woowacourse-projects/javascript-mission-utils#mission-utils"><code>MissionUtils</code> 라이브러리</a>의 <code>Random.pickNumberInRange</code>를 사용한다.</li>
+    </ul>
+  </details>
+- [x] 자동차 객체의 이름과 함께 현재 위치를 포함하여 결과를 출력한다.
+- [x] 위 두 과정을 반복할 횟수만큼 반복한다.
+- [x] 자동차들 중 가장 많이 전진한 자동차(들)를 선정한다.
+- [x] 우승자 결과를 화면에 보여준다.
