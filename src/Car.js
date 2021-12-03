@@ -1,3 +1,4 @@
+import { NUMBER_RANGE } from './constants.js';
 import randomNumberInRange from './randomNumberInRange.js';
 
 export default class Car {
@@ -7,8 +8,8 @@ export default class Car {
   }
 
   move() {
-    const randomNumber = randomNumberInRange(0, 9);
-    if (randomNumber > 4) {
+    const randomNumber = randomNumberInRange(NUMBER_RANGE.min, NUMBER_RANGE.max);
+    if (randomNumber > NUMBER_RANGE.boundary) {
       this.distance++;
     }
   }

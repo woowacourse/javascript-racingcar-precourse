@@ -1,3 +1,5 @@
+import { SEPARATOR } from './constants.js';
+
 export default function (carNamesString) {
-  return carNamesString.split(',').map((carName) => carName.trim());
+  return carNamesString.split(SEPARATOR).map((carName) => carName.trim());
 }

@@ -1,3 +1,4 @@
+import { MAX_CAR_NAME_LENGTH, ALERT_MESSAGE } from './constants.js';
 import stringToArrayConverter from './stringToArrayConverter.js';
 
 function isEmpty(carNames) {
@@ -9,7 +10,7 @@ function isEmpty(carNames) {
 
 function isValidLength(carNames) {
   for (let i = 0; i < carNames.length; i++) {
-    if (carNames[i].length > 5 || carNames[i].length === 0) {
+    if (carNames[i].length > MAX_CAR_NAME_LENGTH || carNames[i].length === 0) {
       return false;
     }
   }
@@ -19,7 +20,7 @@ function isValidLength(carNames) {
 export default function isValidCarNames(carNamesString) {
   const carNames = stringToArrayConverter(carNamesString);
   if (isEmpty(carNames) || !isValidLength(carNames)) {
-    alert('자동차 이름을 5자 이하로 콤마로 구분하여 입력해주세요.');
+    alert(ALERT_MESSAGE.nameAlert);
     return false;
   }
 

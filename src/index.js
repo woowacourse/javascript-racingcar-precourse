@@ -1,3 +1,4 @@
+import { DISPLAY, SEPARATOR } from './constants.js';
 import stringToArrayConverter from './stringToArrayConverter.js';
 import isValidCarNames from './isValidCarNames.js';
 import isValidRacingCount from './isValidRacingCount.js';
@@ -18,28 +19,28 @@ export default class CarRacingGame {
   hideRacingCountForm() {
     const $racingCountInput = document.getElementById('racing-count-input');
     const $racingCountForm = $racingCountInput.parentElement;
-    $racingCountForm.style.display = 'none';
+    $racingCountForm.style.display = DISPLAY.none;
   }
 
   hideHeaders() {
     const $titles = document.getElementsByTagName('h4');
     for (let i = 0; i < $titles.length; i++) {
-      $titles[i].style.display = 'none';
+      $titles[i].style.display = DISPLAY.none;
     }
   }
 
   showRacingCount() {
     const $racingCountInput = document.getElementById('racing-count-input');
     const $racingCountForm = $racingCountInput.parentElement;
-    $racingCountForm.style.display = 'block';
+    $racingCountForm.style.display = DISPLAY.block;
 
     const $racingCountHeader = document.getElementsByTagName('h4')[0];
-    $racingCountHeader.style.display = 'block';
+    $racingCountHeader.style.display = DISPLAY.block;
   }
 
   showResultHeader() {
     const $resultHeader = document.getElementsByTagName('h4')[1];
-    $resultHeader.style.display = 'block';
+    $resultHeader.style.display = DISPLAY.block;
   }
 
   addCarNamesSubmitEvent() {
@@ -127,7 +128,7 @@ export default class CarRacingGame {
   makeResultElement() {
     const $racingWinners = document.createElement('span');
     $racingWinners.setAttribute('id', 'racing-winners');
-    const winners = this.winner.join(',');
+    const winners = this.winner.join(SEPARATOR);
     $racingWinners.appendChild(document.createTextNode(`${winners}`));
 
     return $racingWinners;
