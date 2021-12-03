@@ -1,11 +1,11 @@
 import stringToArrayConverter from './utils/stringToArrayConverter.js';
 import isValidCarNames from './utils/isValidCarNames.js';
 import isValidRacingCount from './utils/isValidRacingCount.js';
+import generateCars from './utils/generateCars.js';
 import hideRacingCountAndResult from './dom/hideRacingCountAndResult.js';
 import showRacingCount from './dom/showRacingCountForm.js';
 import printRace from './dom/printRace.js';
 import printResult from './dom/printResult.js';
-import Car from './Car.js';
 
 export default class CarRacingGame {
   constructor() {
@@ -43,13 +43,9 @@ export default class CarRacingGame {
       }
 
       this.racingCount = Number($racingCountInput.value);
-      this.generateCar();
+      this.cars = generateCars(this.carNames);
       this.play();
     });
-  }
-
-  generateCar() {
-    this.carNames.forEach((name) => this.cars.push(new Car(name)));
   }
 
   play() {
