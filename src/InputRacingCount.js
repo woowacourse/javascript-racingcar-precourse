@@ -1,3 +1,5 @@
+import { inputCarName } from "./index.js";
+
 export default class InputRacingCount {
     constructor() {
         this.$racingCountInput = document.getElementById("racing-count-input");
@@ -7,6 +9,16 @@ export default class InputRacingCount {
         this.addCountSubmitEvent();
     }
 
+    checkHaveCarName() {
+        if(inputCarName.carNames.length === 0) {
+            this.$racingCountInput.value = "";
+            this.racingCount = 0;
+            return alert("자동차 이름을 먼저 입력해주세요!");
+        }
+
+        return;
+    }
+
     addCountSubmitEvent() {
         this.$racingCountSubmit.addEventListener("click", (e) => {
             e.preventDefault();
@@ -14,7 +26,9 @@ export default class InputRacingCount {
 
             if(this.isValidCount(inputCount)) {
                 this.racingCount = inputCount;
+                this.checkHaveCarName();
             }
+
         })
     }
 

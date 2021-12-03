@@ -6,5 +6,5 @@ const a = new Car("a", 3);
 console.log(a.moveArray);
 console.log(a.totalDistance);
 
-const b = new InputCarName();
+export const inputCarName = new InputCarName();
 const c = new InputRacingCount();
