@@ -67,9 +67,9 @@
 - [x] 사용자는 `car-names-input` input 태그에 자동차 이름을 `n`개 입력할 수 있다.
 - [x] 사용자는 `car-names-submit` button 태그로 입력한 자동차 이름 `n`개를 제출할 수 있다.
 - [ ] 게임기는 입력 값이 제출되면 다음을 수행한다.
-  - [x] 입력 값 파싱하기: 입력 값에서 `자동차 이름`을 `n`개 얻는다.
-  - [x] 입력 값 검사하기: 각각의 `자동차 이름`이 유효한지 검사한다.
-  - [ ] 입력 값 처리하기: 입력 값 검사하기 결과에 따라 입력 값을 처리하고 게임을 진행한다.
+  - [x] [입력 값 파싱하기](https://github.com/leegwae/javascript-racingcar-precourse/tree/leegwae/docs#%EC%9E%85%EB%A0%A5-%EA%B0%92-%ED%8C%8C%EC%8B%B1%ED%95%98%EA%B8%B0): 입력 값에서 `자동차 이름`을 `n`개 얻는다.
+  - [x] [입력 값 검사하기](https://github.com/leegwae/javascript-racingcar-precourse/tree/leegwae/docs#%EC%9E%85%EB%A0%A5-%EA%B0%92-%EA%B2%80%EC%82%AC%ED%95%98%EA%B8%B0): 각각의 `자동차 이름`이 유효한지 검사한다.
+  - [ ] [입력 값 처리하기](https://github.com/leegwae/javascript-racingcar-precourse/tree/leegwae/docs#%EC%9E%85%EB%A0%A5-%EA%B0%92-%EC%B2%98%EB%A6%AC%ED%95%98%EA%B8%B0): 입력 값 검사하기 결과에 따라 입력 값을 처리하고 게임을 진행한다.
 
 
 
@@ -119,8 +119,8 @@
 - [x] 사용자는 `racing-count-input` input 태그에 `레이싱 횟수`를 입력할 수 있다.
 - [x] 사용자는 `racing-count-submit` button 태그로 `레이싱 횟수`를 제출할 수 있다.
 - [ ] 게임기는 `레이싱 횟수`가 제출되면 다음을 수행한다.
-  - [x] 입력 값 검사하기: 입력 값이 유효한지 검사한다.
-  - [ ] 입력 값 처리하기: 입력 값 검사하기 결과에 따라 입력 값을 처리하고 게임을 진행한다.
+  - [x] [입력 값 검사하기](https://github.com/leegwae/javascript-racingcar-precourse/tree/leegwae/docs#%EC%9E%85%EB%A0%A5-%EA%B0%92-%EA%B2%80%EC%82%AC%ED%95%98%EA%B8%B0-1): 입력 값이 유효한지 검사한다.
+  - [ ] [입력 값 처리하기](https://github.com/leegwae/javascript-racingcar-precourse/tree/leegwae/docs#%EC%9E%85%EB%A0%A5-%EA%B0%92-%EC%B2%98%EB%A6%AC%ED%95%98%EA%B8%B0-1): 입력 값 검사하기 결과에 따라 입력 값을 처리하고 게임을 진행한다.
 
 
 
@@ -154,10 +154,10 @@
 
 경주는 다음과 같이 진행된다.
 
-1. 무작위 값 생성하기: 각각의 `자동차`마다 `무작위 값`을 생성한다.
-2. 무작위 값 검사하기: 각각의 `자동차`에 생성된 `무작위 값`을 검사한다.
-3. 무작위 값 처리하기: 자신의 `무작위 값`에 따라 `자동차`는 전진하거나 머무른다.
-4. 경주 진행하기: `레이싱 횟수`만큼 1~4를 반복한다.
+1. [무작위 값 생성하기](https://github.com/leegwae/javascript-racingcar-precourse/tree/leegwae/docs#%EB%AC%B4%EC%9E%91%EC%9C%84-%EA%B0%92-%EC%83%9D%EC%84%B1%ED%95%98%EA%B8%B0): 각각의 `자동차`마다 `무작위 값`을 생성한다.
+2. [무작위 값 검사하기](https://github.com/leegwae/javascript-racingcar-precourse/tree/leegwae/docs#%EB%AC%B4%EC%9E%91%EC%9C%84-%EA%B0%92-%EA%B2%80%EC%82%AC%ED%95%98%EA%B8%B0): 각각의 `자동차`에 생성된 `무작위 값`을 검사한다.
+3. [무작위 값 처리하기](https://github.com/leegwae/javascript-racingcar-precourse/tree/leegwae/docs#%EB%AC%B4%EC%9E%91%EC%9C%84-%EA%B0%92-%EC%B2%98%EB%A6%AC%ED%95%98%EA%B8%B0): 자신의 `무작위 값`에 따라 `자동차`는 전진하거나 머무른다.
+4. [경주 진행하기](https://github.com/leegwae/javascript-racingcar-precourse/tree/leegwae/docs#%EA%B2%BD%EC%A3%BC-%EC%A7%84%ED%96%89%ED%95%98%EA%B8%B0): `레이싱 횟수`만큼 1~4를 반복한다.
 
 
 
@@ -185,7 +185,7 @@
 
 ### 경주 진행하기
 
-- [ ] `레이싱 횟수`만큼 무작위 값 생성 ~ 처리의 과정을 반복한다.
+- [ ] `레이싱 횟수`만큼 [무작위 값 생성하기](https://github.com/leegwae/javascript-racingcar-precourse/tree/leegwae/docs#%EB%AC%B4%EC%9E%91%EC%9C%84-%EA%B0%92-%EC%83%9D%EC%84%B1%ED%95%98%EA%B8%B0) ~ [무작위 값 처리하기](https://github.com/leegwae/javascript-racingcar-precourse/tree/leegwae/docs#%EB%AC%B4%EC%9E%91%EC%9C%84-%EA%B0%92-%EC%B2%98%EB%A6%AC%ED%95%98%EA%B8%B0)의 과정을 반복한다.
 
 
 
@@ -203,8 +203,8 @@
 
 ![실행이미지](../images/result.jpg)
 
-- [ ] 경주 과정 표시하기: 사용자는 전진 시도마다 각각의 자동차가 해당 시도까지 전진한 횟수를 확인할 수 있다.
-- [ ] 최종 우승자 표시하기: 사용자는 `racing-winners` span 태그로 `최종 우승자`를 확인할 수 있다.
+- [ ] [경주 과정 표시하기](https://github.com/leegwae/javascript-racingcar-precourse/tree/leegwae/docs#%EA%B2%BD%EC%A3%BC-%EA%B3%BC%EC%A0%95-%ED%91%9C%EC%8B%9C%ED%95%98%EA%B8%B0): 사용자는 전진 시도마다 각각의 자동차가 해당 시도까지 전진한 횟수를 확인할 수 있다.
+- [ ] [최종 우승자 표시하기](https://github.com/leegwae/javascript-racingcar-precourse/tree/leegwae/docs#%EC%B5%9C%EC%A2%85-%EC%9A%B0%EC%8A%B9%EC%9E%90-%ED%91%9C%EC%8B%9C%ED%95%98%EA%B8%B0): 사용자는 `racing-winners` span 태그로 `최종 우승자`를 확인할 수 있다.
 
 
 
