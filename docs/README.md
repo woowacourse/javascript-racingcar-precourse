@@ -45,3 +45,21 @@
 - [x] 레이싱 횟수을 제출하는 button 태그는 `racing-count-submit` id값을 가진다.
 - [x] 최종 우승자를 출력하는 span 태그는 `racing-winners` id값을 가진다.
   - 예) `<span id="racing-winners">poco,park,jun</span>`
+
+<br>
+
+### 폴더 구조
+
+```
+📦src
+┣ 📂controller
+┃ ┣ 📜controller.js
+┃ ┗ 📜inputValidator.js
+┣ 📂model
+┃ ┗ 📜Car.js
+┣ 📂utils
+┃ ┣ 📜constants.js
+┃ ┣ 📜dom.js
+┃ ┗ 📜genRandomNumber.js
+┗ 📜index.js
+```
