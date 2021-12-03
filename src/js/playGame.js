@@ -1,8 +1,10 @@
 import { Car } from './class/car.js';
 import { $ } from './util/dom.js';
+import { removeBeforeResult } from './render.js';
 
 export const startRacingGame = () => {
   let cars = makeCars();
+  removeBeforeResult();
   goAndStopCars(cars);
 };
 
