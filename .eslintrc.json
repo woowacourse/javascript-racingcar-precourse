@@ -1,0 +1,23 @@
+{
+  "parserOptions": {
+    "ecmaVersion": 6
+  },
+  "env": {
+    "browser": true,
+    "node": true,
+    "es2021": true
+  },
+  "globals": { "_": true },
+  "plugins": ["import"],
+  "extends": ["airbnb-base", "prettier"],
+  "rules": {
+    "no-console": "warn",
+    "no-unused-vars": "warn",
+    "import/prefer-default-export": "off",
+    "import/extensions": ["off"],
+    "no-restricted-globals": "off",
+    "class-methods-use-this": "off",
+    "no-alert": "off",
+    "consistent-return": "off"
+  }
+}
