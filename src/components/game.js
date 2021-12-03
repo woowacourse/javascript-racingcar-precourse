@@ -4,14 +4,19 @@ export function gameStart(userInput) {
   console.log(userInput)
   const gameWinCountArray = Array.from({length: userInput[CARS_NAME].split(",").length}, () => NUMBER.ZERO);
   const gameResultObject = {
-    gameResult: "",
+    gameProcess: "",
     gmaeWinner: ""
   }
   for (let i = 0; i < userInput[GMAE_COUNT]; i++) {
     const gameRandonNumberArray = setGameRandonNumber(userInput);
     const winGameCountArray = setWinGameCount(gameRandonNumberArray, gameWinCountArray);
-    console.log(winGameCountArray)
+    if (i === userInput[GMAE_COUNT] - NUMBER.ONE) {
+      gameResultObject.gmaeWinner = setGameWinner(userInput[CARS_NAME], winGameCountArray);
+    }
+    gameResultObject.gameProcess += `${setProcessTemplete(winGameCountArray, userInput[CARS_NAME])}<br/>`;
   }
+
+  return gameResultObject;
 }
 
 function setGameRandonNumber(userInput) {
@@ -31,4 +36,36 @@ function setWinGameCount(gameRandonNumberArray, gameWinCountArray) {
   }
   
   return gameWinCountArray;
+}
+
+function setGameWinner(carsName, winGameCountArray) {
+  const topNumber = Math.max(...winGameCountArray);
+  let topNumberCars = "";
+  winGameCountArray.forEach((v, i) => {
+    if (v === topNumber) {
+      topNumberCars += `${carsName.split(",")[i]},`;
+    }
+  })
+  
+  return topNumberCars.slice(0, -1);
+}
+
+function setProcessTemplete(winGameCountArray, carsName) {
+  let result = "";
+  for (let i = 0; i < carsName.split(",").length; i++) {
+    result += `${carsName.split(",")[i]}: ${gameProcessNumberReplaceText(winGameCountArray[i])}<br/>`;
+  }
+  
+  return result;
+}
+
+function gameProcessNumberReplaceText(winGameCount) {
+  let result = "";
+  if (winGameCount > NUMBER.ZERO) {
+    for (let i = 0; i < winGameCount; i++) {
+      result += "-";
+    }
+  }
+
+  return result;
 }

@@ -3,7 +3,9 @@ import { gameStart } from './components/game.js';
 
 export function Car(userInput) {
   this.userInput = userInput;
-  const gameResult = gameStart(userInput)
+  const gameResult = gameStart(userInput);
+
+  console.log(gameResult)
 }
 
 formEvent()
