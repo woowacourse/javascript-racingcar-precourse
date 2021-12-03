@@ -1,8 +1,7 @@
-import Car from './Car/Car.js';
 import { DOM } from './constant/constant.js';
 import CarNamesEvent from './events/CarNamesEvent.js';
 import RacingCountEvent from './events/RacingCountEvent.js';
-import RandomNumber from './getRandomNumber/RandomNumber.js';
+import Game from './Game/Game.js';
 
 class RacingCar {
   constructor() {
@@ -11,41 +10,8 @@ class RacingCar {
     this.$racingCountSubmit = DOM.racingCountSubmit;
     this.$racingCountInput = DOM.racingCountInput;
     this.$carNamesSubmit = DOM.carNamesSubmit;
-    this.carNames = [];
-    this.randomNumbers = [];
-    this.racingCount = 0;
-    this.resultRacing = [];
     this.main();
   }
-
-  getResultString = (car) => {
-    return car.resultString();
-  };
-
-  isMoveCar = (randomNumber, car) => {
-    if (randomNumber >= 4) {
-      car.distanceIncrease();
-    }
-  };
-
-  racingGameStart = () => {
-    this.carNames.forEach((currentCarName, currentCarIndex) => {
-      const currentCar = new Car(currentCarName);
-      const currentCarResultRacing = [];
-
-      for (let currentCount = 0; currentCount < this.racingCount; currentCount += 1) {
-        this.isMoveCar(this.randomNumbers[currentCount][currentCarIndex], currentCar);
-        currentCarResultRacing.push(this.getResultString(currentCar));
-      }
-
-      this.resultRacing.push(currentCarResultRacing);
-    });
-  };
-
-  getRandomNumbers = () => {
-    this.randomNumber = new RandomNumber(this.carNames, this.racingCount);
-    this.randomNumbers = this.randomNumber.get();
-  };
 
   racingCountInputFocus = () => {
     this.racingCountEvent.onFocusInput();
@@ -55,9 +21,9 @@ class RacingCar {
     this.$racingCountSubmit.addEventListener('click', (event) => {
       event.preventDefault();
       this.racingCountEvent.checkCarNames();
-      [this.racingCount, this.carNames] = this.racingCountEvent.validateCount();
-      this.getRandomNumbers();
-      this.racingGameStart();
+      const [racingCount, carNames] = this.racingCountEvent.validateCount();
+      const game = new Game(racingCount, carNames);
+      game.start();
     });
   };
 
