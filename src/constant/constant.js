@@ -3,6 +3,8 @@ export const DOM = {
   carNamesSubmit: document.querySelector('#car-names-submit'),
   racingCountInput: document.querySelector('#racing-count-input'),
   racingCountSubmit: document.querySelector('#racing-count-submit'),
+  $APP: document.querySelector('#app'),
+  $DIV: document.createElement('div'),
 };
 
 export const ERROR_MESSAGE = {

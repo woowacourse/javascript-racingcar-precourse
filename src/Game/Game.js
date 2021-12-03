@@ -1,13 +1,32 @@
 import Car from '../Car/Car.js';
+import { DOM } from '../constant/constant.js';
 import RandomNumber from '../getRandomNumber/RandomNumber.js';
 
 export default class Game {
   constructor(racingCount, carNames) {
+    this.$app = DOM.$APP;
+    this.$div = DOM.$DIV;
     this.racingCount = racingCount;
     this.carNames = carNames;
     this.randomNumbers = [];
-    this.resultRacing = [];
+    this.resultRacings = [];
+    this.template = '';
   }
+
+  renderTemplate = () => {
+    this.$div.innerHTML = this.template;
+    this.$app.appendChild(this.$div);
+  };
+
+  getTemplate = () => {
+    for (let columnIndex = 0; columnIndex < this.resultRacings[0].length; columnIndex += 1) {
+      for (let rowIndex = 0; rowIndex < this.resultRacings.length; rowIndex += 1) {
+        this.template += `<div>${this.resultRacings[rowIndex][columnIndex]}</div>`;
+      }
+
+      this.template += '<br />';
+    }
+  };
 
   getResultString = (car) => {
     return car.resultString();
@@ -29,7 +48,7 @@ export default class Game {
         currentCarResultRacing.push(this.getResultString(currentCar));
       }
 
-      this.resultRacing.push(currentCarResultRacing);
+      this.resultRacings.push(currentCarResultRacing);
     });
   };
 
@@ -41,5 +60,7 @@ export default class Game {
   start = () => {
     this.getRandomNumbers();
     this.racingGameStart();
+    this.getTemplate();
+    this.renderTemplate();
   };
 }
