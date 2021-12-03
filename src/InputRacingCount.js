@@ -11,8 +11,23 @@ export default class InputRacingCount {
     addCountSubmitEvent() {
         this.$racingCountSubmit.addEventListener("click", (e) => {
             e.preventDefault();
-            this.racingCount = this.$racingCountInput.value;
-            console.log(this.$racingCountInput.value);
+            const inputCount = this.$racingCountInput.value;
+
+            this.isValidCount(inputCount);
+            // this.racingCount = this.$racingCountInput.value;
+            // console.log(this.$racingCountInput.value);
         })
+    }
+
+    isValidCount(inputCount) {
+        if(inputCount === "" || isNaN(inputCount)) {
+            return false;
+        }
+        
+        if(inputCount <= 0 || inputCount.indexOf('.') !== -1) {
+            return false;
+        }
+
+        return true;
     }
 }
