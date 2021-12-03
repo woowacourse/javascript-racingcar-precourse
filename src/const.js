@@ -1,6 +1,8 @@
-const VALID_CONDITION_CAR_NAME = {
+export const VALID_CONDITION_CAR_NAME = {
   minLength: 1,
   maxLength: 5,
 };
 
-export default VALID_CONDITION_CAR_NAME;
+export const VALIDE_CONDITION_RACING_COUNT = {
+  minCount: 1,
+};
