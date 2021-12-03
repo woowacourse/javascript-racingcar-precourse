@@ -6,3 +6,4 @@ $('#racing-count-form').style.display = 'none';
 $('#result-title').style.display = 'none';
 
 $('#car-names-form').addEventListener('submit', getCarNameInput);
+$('#racing-count-form').addEventListener('submit', getCarNameInput);
