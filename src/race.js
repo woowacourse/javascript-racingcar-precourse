@@ -49,4 +49,18 @@ export default class Race {
 
     return winners;
   }
+
+  appendWinnersElement(carObjectList) {
+    const winners = this.checkWinners(carObjectList);
+
+    const $div = document.createElement('div');
+    $div.textContent = '최종 우승자: ';
+
+    const $span = document.createElement('span');
+    $span.id = 'racing-winners';
+    $span.textContent = `${winners.join(',')}`;
+
+    $div.appendChild($span);
+    this.$result.appendChild($div);
+  }
 }
