@@ -1,12 +1,12 @@
 import Car from './car.js';
 
-export default function carRacing(Carnames, count) {
+export default function carRacing(Carnames, userCount) {
   const carList = Carnames.map(name => new Car(name));
   let carResult = '';
   //race출력 함수
   function getRaces(carList) {
     let raceResult = '';
-    for (let i = 0; i < count; i++) {
+    for (let i = 0; i < userCount; i++) {
       carList.forEach(carName => {
         const randomNum = MissionUtils.Random.pickNumberInRange(1, 9);
         if (randomNum >= 4) {

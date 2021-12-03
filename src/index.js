@@ -8,6 +8,7 @@ export default function racingGame() {
   const racingCountSubmitBtn = document.querySelector('#racing-count-submit');
   const resultBox = document.querySelector('#app');
 
+  //Racing 출력 함수
   function printRacing(names, count) {
     if (names != undefined) {
       const carResult = carRacing(names, count);
@@ -17,14 +18,14 @@ export default function racingGame() {
     }
   }
 
-  //car이름 배열 주
+  //car이름 배열로 리턴하는 함수
   function submitCarName() {
     const carInput = carNameInput.value;
     const listValue = validateCarName(carInput);
     console.log(listValue);
     return listValue;
   }
-  //count횟수 주기
+  //User가 입력한 숫자 리턴하는 함수
   function submitCount() {
     const countInput = validateUserCount();
     return countInput;
