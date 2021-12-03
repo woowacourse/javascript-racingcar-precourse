@@ -1,4 +1,4 @@
-import { DISPLAY } from './constants.js';
+import { DISPLAY } from '../constants.js';
 
 export default function showRacingCount() {
   const $racingCountInput = document.getElementById('racing-count-input');

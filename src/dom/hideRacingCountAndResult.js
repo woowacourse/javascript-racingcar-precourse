@@ -1,4 +1,4 @@
-import { DISPLAY } from './constants.js';
+import { DISPLAY } from '../constants.js';
 
 function hideRacingCountForm() {
   const $racingCountInput = document.getElementById('racing-count-input');
