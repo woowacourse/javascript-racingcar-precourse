@@ -9,7 +9,7 @@ const genCarInstances = (carNames) => {
     .map((carName) => new Car(carName));
 };
 
-const calculateMoveState = (cars) => {
+const calculateMovedState = (cars) => {
   cars.forEach((car) => {
     if (genRandomNumber() >= MOVE_CONDITION_NUMBER) {
       car.move();
@@ -33,20 +33,26 @@ const getWinner = (cars) => {
     .join(', ');
 };
 
-export const renderGameResult = (carNames, racingCount) => {
-  if ($('#app').lastElementChild.id === 'result') {
-    $('#app').removeChild($('#result'));
-  }
-  let result = '';
-  const cars = genCarInstances(carNames);
-  for (let i = 0; i < racingCount; i++) {
-    calculateMoveState(cars);
-    cars.forEach((car) => {
-      result += `<span>${car.getName()}: ${'-'.repeat(car.getDistance())}</span><br />`;
-    });
-    result += `<br />`;
-  }
+const renderMovedState = (cars) => {
+  let domElement = '';
+  calculateMovedState(cars);
 
-  result += `<span>최종 우승자: </span><span id="racing-winners">${getWinner(cars)}</span><br><br>`;
-  $('#app').insertAdjacentHTML('beforeend', result);
+  cars.forEach((car) => {
+    domElement += `<span>${car.getName()}: ${'-'.repeat(car.getDistance())}</span><br />`;
+  });
+
+  return domElement;
+};
+
+export const renderGameResult = (carNames, racingCount) => {
+  let domElement = '';
+  const cars = genCarInstances(carNames);
+
+  for (let i = 0; i < racingCount; i++) {
+    domElement += renderMovedState(cars);
+    domElement += `<br />`;
+  }
+  domElement += `<span>최종 우승자: </span>`;
+  domElement += `<span id="racing-winners">${getWinner(cars)}</span><br><br>`;
+  $('#app').insertAdjacentHTML('beforeend', domElement);
 };
