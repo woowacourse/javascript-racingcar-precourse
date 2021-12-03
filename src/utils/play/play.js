@@ -1,7 +1,6 @@
-import { generateRandomNumber } from './generateRandomNumber.js';
+import { isMove } from './isMove.js';
 
-export const play = () => {
-  const randomNum = generateRandomNumber();
-  if (randomNum >= 4) return true;
-  return false;
+export const play = cars => {
+  cars.forEach(car => isMove() && car.distance++);
+  return cars;
 };

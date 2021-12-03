@@ -1,8 +1,10 @@
 import $ from '../common/selector.js';
+import Car from '../../index.js';
 import { carNameValidation } from '../validation/carNameValidation.js';
 
-export const submitCarName = e => {
+export const submitCarName = (e, cars) => {
   e.preventDefault();
+
   const carNames = $('#car-names-input').value.trim().split(',');
   const { isError, inValidText } = carNameValidation(carNames);
 
@@ -12,5 +14,10 @@ export const submitCarName = e => {
     return;
   }
 
-  return carNames;
+  carNames.forEach(carName => {
+    const car = new Car(carName);
+    cars.push(car);
+  });
+
+  return cars;
 };
