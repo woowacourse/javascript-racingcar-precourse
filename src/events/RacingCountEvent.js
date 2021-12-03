@@ -5,10 +5,10 @@ export default class RacingCountEvent {
     this.$racingCountInput = DOM.racingCountInput;
     this.$racingCountSubmit = DOM.racingCountSubmit;
     this.$carNamesInput = DOM.carNamesInput;
+    this.carNamesEvent = carNamesEvent;
     this.errorMessage = '';
     this.stringRacingCount = '';
     this.numberRacingCount = 0;
-    this.carNamesEvent = carNamesEvent;
   }
 
   initializeRacingCount = () => {
@@ -79,13 +79,14 @@ export default class RacingCountEvent {
     }
   };
 
-  onClickSubmit = () => {
+  onClickSubmit = (car) => {
     this.$racingCountSubmit.addEventListener('click', (event) => {
       event.preventDefault();
       this.stringRacingCount = this.$racingCountInput.value;
       this.carNames = this.$carNamesInput.value;
       this.checkCarNames();
       this.validateCount();
+      car.readyGame();
     });
   };
 

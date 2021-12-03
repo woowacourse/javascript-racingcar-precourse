@@ -1,3 +1,4 @@
+import Car from './Car/Car.js';
 import CarNamesEvent from './events/CarNamesEvent.js';
 import RacingCountEvent from './events/RacingCountEvent.js';
 
@@ -5,6 +6,7 @@ class RacingCar {
   constructor() {
     this.carNamesEvent = new CarNamesEvent();
     this.racingCountEvent = new RacingCountEvent(this.carNamesEvent);
+    this.car = new Car(this.carNamesEvent, this.racingCountEvent);
     this.main();
   }
 
@@ -13,7 +15,7 @@ class RacingCar {
   };
 
   racingCountSubmit = () => {
-    this.racingCountEvent.onClickSubmit();
+    this.racingCountEvent.onClickSubmit(this.car);
   };
 
   carNamesSubmit = () => {
