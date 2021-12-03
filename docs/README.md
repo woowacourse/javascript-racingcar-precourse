@@ -142,9 +142,9 @@
 
 - [x] 사용자는 `racing-count-input` input 태그에 `레이싱 횟수`를 입력할 수 있다.
 - [x] 사용자는 `racing-count-submit` button 태그로 `레이싱 횟수`를 제출할 수 있다.
-- [ ] 게임기는 `레이싱 횟수`가 제출되면 다음을 수행한다.
+- [x] 게임기는 `레이싱 횟수`가 제출되면 다음을 수행한다.
   - [x] [입력 값 검사하기](https://github.com/leegwae/javascript-racingcar-precourse/tree/leegwae/docs#%EC%9E%85%EB%A0%A5-%EA%B0%92-%EA%B2%80%EC%82%AC%ED%95%98%EA%B8%B0-1): 입력 값이 유효한지 검사한다.
-  - [ ] [입력 값 처리하기](https://github.com/leegwae/javascript-racingcar-precourse/tree/leegwae/docs#%EC%9E%85%EB%A0%A5-%EA%B0%92-%EC%B2%98%EB%A6%AC%ED%95%98%EA%B8%B0-1): 입력 값 검사하기 결과에 따라 입력 값을 처리하고 게임을 진행한다.
+  - [x] [입력 값 처리하기](https://github.com/leegwae/javascript-racingcar-precourse/tree/leegwae/docs#%EC%9E%85%EB%A0%A5-%EA%B0%92-%EC%B2%98%EB%A6%AC%ED%95%98%EA%B8%B0-1): 입력 값 검사하기 결과에 따라 입력 값을 처리하고 게임을 진행한다.
 
 
 
@@ -163,8 +163,8 @@
 
 `레이싱 횟수`가 조건을 만족한다면, 다음을 수행한다.
 
-- [ ] `레이싱 횟수`를 저장한다.
-- [ ] 경주를 진행한다.
+- [x] `레이싱 횟수`를 저장한다.
+- [x] 경주를 진행한다.
 
 
 
@@ -176,6 +176,8 @@
 
 
 ## :checkered_flag: 경주 진행하기
+
+[완료 커밋](https://github.com/leegwae/javascript-racingcar-precourse/commit/a03edebc0583b1cbbf91998ed37eae00c13fd548)
 
 경주는 다음과 같은 과정을 `레이싱 횟수`만큼 반복하여 진행된다.
 
