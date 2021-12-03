@@ -22,7 +22,9 @@ function selectWinner(maxCount) {
 function makeWinnerString($resultScreenDiv, selectedWinner) {
   const $winnerSpan = document.createElement('span');
   $winnerSpan.id = 'racing-winners';
-  $winnerSpan.innerHTML = `최종우승자: ${selectedWinner}`;
+  $winnerSpan.innerHTML = selectedWinner;
+
+  $resultScreenDiv.insertAdjacentHTML('beforeend', '최종우승자: ');
   $resultScreenDiv.appendChild($winnerSpan);
 }
 
