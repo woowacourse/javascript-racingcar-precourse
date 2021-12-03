@@ -1,15 +1,6 @@
 import { GAME, ERR_MESSAGE } from '../utils/constant.js';
-import getRacingCount from '../init/getRacingCount.js';
-
-function Car(name) {
-  this.name = name;
-  this.count = 0;
-}
-
-function makeObjectCars(carNames) {
-  const carObject = carNames.map((name) => new Car(name));
-  return carObject;
-}
+import { makeObjectCars } from '../init/cars.js';
+import { showCountInput } from '../init/setScreen.js';
 
 function isValidLength(name) {
   return name.length <= GAME.MAX_CAR_NAME_LENGTH;
@@ -40,6 +31,6 @@ export default function handleCarNamesSubmit(event) {
     return;
   }
 
-  const carObjectList = makeObjectCars(carNames);
-  getRacingCount(carObjectList);
+  makeObjectCars(carNames);
+  showCountInput();
 }

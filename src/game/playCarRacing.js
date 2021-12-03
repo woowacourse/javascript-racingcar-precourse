@@ -1,4 +1,5 @@
 import { GAME } from '../utils/constant.js';
+import { cars } from '../init/cars.js';
 
 function getRandomNumber() {
   // eslint-disable-next-line no-undef
@@ -11,6 +12,6 @@ function getRacingResult(car) {
   }
 }
 
-export default function playCarRacing(carObjectList) {
-  carObjectList.forEach((car) => getRacingResult(car));
+export default function playCarRacing() {
+  cars.forEach((car) => getRacingResult(car));
 }

@@ -8,7 +8,7 @@ function isValidRacingCount(racingCount) {
   return true;
 }
 
-export default function handleRacingCountSubmit(event, carObjectList) {
+export default function handleRacingCountSubmit(event) {
   event.preventDefault();
   const $racingCountInput = document.querySelector('#racing-count-input');
   const racingCount = $racingCountInput.value;
@@ -16,5 +16,5 @@ export default function handleRacingCountSubmit(event, carObjectList) {
   if (!isValidRacingCount(racingCount)) {
     return;
   }
-  startRacingGame(racingCount, carObjectList);
+  startRacingGame(racingCount);
 }
