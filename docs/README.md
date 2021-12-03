@@ -75,7 +75,9 @@
 
 #### 사용자의 입력 값 파싱하기
 
-- [ ] 사용자의 입력 값을 파싱하여 `자동차 이름` 목록을 얻는다.
+[완료 커밋](https://github.com/leegwae/javascript-racingcar-precourse/commit/7fb20fbd1d5492fd313b20ce1dd639950993459f)
+
+- [x] 자동차 이름이 `,`로 구분된 사용자의 입력 값을 파싱하여 `자동차 이름` 목록을 얻는다.
 
 
 
