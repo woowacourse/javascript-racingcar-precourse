@@ -7,7 +7,7 @@ export default class Car {
     this.distance = 0;
   }
 
-  move() {
+  race() {
     const randomNumber = randomNumberInRange(NUMBER_RANGE.min, NUMBER_RANGE.max);
     if (randomNumber > NUMBER_RANGE.boundary) {
       this.distance++;
