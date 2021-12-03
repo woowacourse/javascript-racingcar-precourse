@@ -63,4 +63,16 @@ export default class Race {
     $div.appendChild($span);
     this.$result.appendChild($div);
   }
+
+  startGame() {
+    let carObjectList = this.makeCarList(this.carList);
+
+    for (let i = 0; i < this.raceNumber; i++) {
+      carObjectList = this.raceOneTime(carObjectList);
+      this.appendResultElement(carObjectList);
+    }
+    this.appendWinnersElement(carObjectList);
+
+    return this.$result;
+  }
 }
