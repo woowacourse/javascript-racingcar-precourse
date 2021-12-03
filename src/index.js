@@ -7,6 +7,7 @@ import {
   isOverFiveLetters,
   generateCars,
   isNumber,
+  isZero,
 } from './utils.js';
 import { default as UI } from './DOMUtils.js';
 import { ERROR } from './constants.js';
@@ -56,6 +57,7 @@ export default function RacingCarGame() {
 
     const racingCount = $('#racing-count-input').value;
     if (isBlank(racingCount)) return alert(ERROR.BLANK_SUBMIT);
+    if (isZero(racingCount)) return alert(ERROR.NOT_POSIVITE_INT);
   };
 
   init();

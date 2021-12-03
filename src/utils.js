@@ -30,3 +30,7 @@ export const generateCars = string => {
 export const isNumber = string => {
   return /^[^0-9]$/g.test(string);
 };
+
+export const isZero = string => {
+  return Number(string) === 0;
+};
