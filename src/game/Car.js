@@ -9,7 +9,7 @@ export default class Car {
   }
 
   go() {
-    if (window.MissionUtils.Random.pickNumberInRange(0, 9) > 4) {
+    if (window.MissionUtils.Random.pickNumberInRange(0, 9) >= 4) {
       this.position += 1;
     }
   }
