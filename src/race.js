@@ -34,4 +34,19 @@ export default class Race {
 
     this.$result.appendChild($p);
   }
+
+  checkWinners(carObjectList) {
+    let winners = [];
+    let maxAdvance = carObjectList.sort((a, b) => {
+      return b.advance.length - a.advance.length;
+    })[0].advance.length;
+
+    carObjectList.forEach((item) => {
+      if (item.advance.length === maxAdvance) {
+        winners.push(item.name);
+      }
+    });
+
+    return winners;
+  }
 }
