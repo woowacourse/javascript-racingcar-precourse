@@ -4,35 +4,35 @@ export default class Input {
     this.repeatCount = repeatCount;
   }
 
-  isLongerThanFive(names) {
+  static isLongerThanFive(names) {
     return names.find((name) => name.length > 5);
   }
 
-  isEmptyName(names) {
+  static isEmptyName(names) {
     return names.find((name) => name === '');
   }
 
-  isIncludeSpaceInName(names) {
+  static isIncludeSpaceInName(names) {
     return names.find((name) => name.split('').includes(' '));
   }
 
-  isValidCarNames(carNames) {
-    if (this.isEmptyName(carNames) === '') {
+  static isValidCarNames(carNames) {
+    if (Input.isEmptyName(carNames) === '') {
       return false;
     }
-    if (this.isLongerThanFive(carNames)) {
+    if (Input.isLongerThanFive(carNames)) {
       return false;
     }
-    if (this.isIncludeSpaceInName(carNames)) {
+    if (Input.isIncludeSpaceInName(carNames)) {
       return false;
     }
     return true;
   }
 
   setCarNames(carNames) {
-    if (this.isValidCarNames(carNames)) {
+    if (Input.isValidCarNames(carNames)) {
       this.carNames = carNames;
-      return ;
+      return;
     }
     this.carNames = null;
   }
