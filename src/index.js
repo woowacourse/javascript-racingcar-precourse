@@ -97,8 +97,8 @@ class RacingGame {
             carList.forEach((car) => car.tryMove());
             gameHists.push(
                 carList.map((car) => ({
-                    name: car.name,
-                    move: car.move,
+                    name: car.getName(),
+                    move: car.getPosition(),
                 }))
             );
         }
@@ -110,11 +110,11 @@ class RacingGame {
         let maxMove = 0;
 
         carList.forEach((car) => {
-            if (maxMove < car.move) {
-                maxMove = car.move;
-                winners = [car.name];
-            } else if (maxMove === car.move) {
-                winners.push(car.name);
+            if (maxMove < car.getPosition()) {
+                maxMove = car.getPosition();
+                winners = [car.getName()];
+            } else if (maxMove === car.getPosition()) {
+                winners.push(car.getName());
             }
         });
         return winners;
