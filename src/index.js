@@ -36,6 +36,11 @@ export default class CarRacingGame {
     $racingCountHeader.style.display = 'block';
   }
 
+  showResultHeader() {
+    const $resultHeader = document.getElementsByTagName('h4')[1];
+    $resultHeader.style.display = 'block';
+  }
+
   addCarNamesSubmitEvent() {
     const $carNamesInput = document.getElementById('car-names-input');
     const $carNamesSubmit = document.getElementById('car-names-submit');
@@ -60,6 +65,7 @@ export default class CarRacingGame {
         return;
       }
 
+      this.showResultHeader();
       this.racingCount = Number($racingCountInput.value);
       this.generateCar();
       this.play();
