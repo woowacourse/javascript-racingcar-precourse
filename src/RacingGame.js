@@ -57,6 +57,7 @@ export default class RacingGame {
     for (let order = 0; order < this.racingCount; order += 1) {
       this.racing(order);
     }
+    this.printWinner();
   }
 
   isReadyForGame() {
@@ -87,5 +88,22 @@ export default class RacingGame {
       racingResultContainer.appendChild(br);
     });
     this.resultContainer.appendChild(racingResultContainer);
+  }
+
+  printWinner() {
+    const winnerName = this.getWinnerName().join(',');
+    const winnerContainer = document.createElement('p');
+    const winnerNameContainer = document.createElement('span');
+    winnerContainer.innerText = '최종 우승자: ';
+    winnerNameContainer.setAttribute('id', 'racing-winners');
+    winnerNameContainer.innerText = winnerName;
+    winnerContainer.appendChild(winnerNameContainer);
+    this.resultContainer.appendChild(winnerContainer);
+  }
+
+  getWinnerName() {
+    const maxStep = Math.max(...this.cars.map((car) => car.step));
+    const winners = this.cars.filter((car) => car.step === maxStep);
+    return winners.map((winner) => winner.name);
   }
 }
