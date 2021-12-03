@@ -56,14 +56,15 @@
   - 예1) east: -- (두 번 전진할 경우)
   - 예2) east: (전진하지 못한 경우)
 
-- [ ] 최종 string값 template에 적용하기
+- [✅ ] 최종 string값 template에 적용하기
 
   - 자동차별 시도 횟수마다 최종 string값 template에 적용하기
 
 - [ ] 게임 우승자 값 가져오기
 
-- [ ] 게임 우승자(racing-winners)를 알려준다.
+  - 예외 1. 우승자는 한 명 이상일 수 있다.
   - id값은 racing-winners를 갖는 span tag 생성후 우승자 추가
   - '-'가 가장 많은 사람이 게임 우승자이다.
-  - 예외 1. 우승자는 한 명 이상일 수 있다.
   - 우승자가 여러명일 경우 ,쉼표를 이용하여 구분한다.
+
+- [ ] 게임 우승자(racing-winners)를 template에 적용하기.
