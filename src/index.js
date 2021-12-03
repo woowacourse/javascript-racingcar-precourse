@@ -1,7 +1,8 @@
 import { formEvent } from './components/formEvent.js';
 
-function Car(name) {
-  this.name = name;
+export function Car(userInput) {
+  this.userInput = userInput;
+  console.log(userInput)
 }
 
 formEvent()
