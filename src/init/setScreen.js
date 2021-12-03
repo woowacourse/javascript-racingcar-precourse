@@ -1,9 +1,10 @@
 import { hideElement, showElement } from '../utils/setAttribute.js';
 
+const $racingResultTitle = document.querySelector('#racing-result-title');
+
 export function hideCountInputAndResult() {
   const $racingCountTitle = document.querySelector('#racing-count-title');
   const $racingCountForm = document.querySelector('#racing-count-form');
-  const $racingResultTitle = document.querySelector('#racing-result-title');
 
   hideElement($racingCountTitle);
   hideElement($racingCountForm);
@@ -16,4 +17,8 @@ export function showCountInput() {
 
   showElement($racingCountTitle);
   showElement($racingCountForm);
+}
+
+export function showResultSrceen() {
+  showElement($racingResultTitle);
 }
