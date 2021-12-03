@@ -14,6 +14,10 @@ class RacingCarGame {
   onClickCarNameSubmitButton(event) {
     event.preventDefault();
     const carNames = $('#car-names-input').value;
+    if (!carNames) {
+      alert('자동차를 입력해주세요');
+      return;
+    }
     const splittedCarNames = carNames.split(',');
     if (this.checkCarNameDuplicated(splittedCarNames)) {
       alert('자동차 이름이 겹쳤습니다.');
