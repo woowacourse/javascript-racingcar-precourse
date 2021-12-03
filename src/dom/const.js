@@ -41,3 +41,5 @@ export const ACTION_CHECK_CAR_NAMES = 'checkCarNames';
 export const ACTION_CHECK_RACING_COUNT = 'checkRacingCount';
 
 export const MSG_ERROR = '잘못된 입력입니다';
+
+export const CAR_POSITION = '-';
