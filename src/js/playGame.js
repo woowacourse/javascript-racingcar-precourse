@@ -1,6 +1,6 @@
 import { Car } from './class/car.js';
 import { $ } from './util/dom.js';
-import { removeBeforeResult } from './render.js';
+import { removeBeforeResult, renderResult } from './render.js';
 
 export const startRacingGame = () => {
   let cars = makeCars();
@@ -24,5 +24,6 @@ const goAndStopCars = cars => {
     for (let j = 0; j < cars.length; j++) {
       cars[j].startGame();
     }
+    renderResult(cars);
   }
 };
