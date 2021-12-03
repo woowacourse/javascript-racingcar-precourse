@@ -41,11 +41,11 @@ export default class CarRacingGame {
     const $carNamesSubmit = document.getElementById('car-names-submit');
     $carNamesSubmit.addEventListener('click', (event) => {
       event.preventDefault();
-
       const carNamesString = $carNamesInput.value;
       if (!isValidCarNames(carNamesString)) {
         return;
       }
+
       this.carNames = stringToArrayConverter(carNamesString);
       this.showRacingCount();
     });
@@ -56,18 +56,30 @@ export default class CarRacingGame {
     const $racingCountSubmit = document.getElementById('racing-count-submit');
     $racingCountSubmit.addEventListener('click', (event) => {
       event.preventDefault();
-
       if (!isValidRacingCount($racingCountInput.value)) {
         return;
       }
 
       this.racingCount = Number($racingCountInput.value);
       this.generateCar();
+      this.play();
     });
   }
 
   generateCar() {
     this.carNames.forEach((name) => this.cars.push(new Car(name)));
+  }
+
+  play() {
+    for (let racing = 0; racing < this.racingCount; racing++) {
+      this.moveCars();
+    }
+  }
+
+  moveCars() {
+    this.cars.forEach((car) => {
+      car.move();
+    });
   }
 }
 
