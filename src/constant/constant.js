@@ -5,6 +5,7 @@ export const DOM = {
   racingCountSubmit: document.querySelector('#racing-count-submit'),
   $APP: document.querySelector('#app'),
   $DIV: document.createElement('div'),
+  $SPAN: document.createElement('span'),
 };
 
 export const ERROR_MESSAGE = {
