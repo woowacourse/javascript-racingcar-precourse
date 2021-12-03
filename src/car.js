@@ -10,4 +10,12 @@ export default class Car {
     const randomNumber = MissionUtils.Random.pickNumberInRange(start, end);
     return randomNumber;
   }
+
+  raceAdvance() {
+    const randomNumber = this.generateRandomNumber();
+
+    if (randomNumber >= 4) {
+      this.advance += '-';
+    }
+  }
 }
