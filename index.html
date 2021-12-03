@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <title>자동차 경주 게임</title>
     <script src="https://cdn.jsdelivr.net/npm/@woowacourse/mission-utils@1.0.1/dist/mission-utils.min.js"></script>
+    <link rel="stylesheet" href="./src/css/style.css">
   </head>
   <body>
     <div id="app">
@@ -17,8 +18,8 @@
         <input type="text" id="car-names-input" />
         <button id="car-names-submit">확인</button>
       </form>
-      <h4 id="racing-count-title">시도할 횟수를 입력해주세요.</h4>
-      <form id="racing-count-form">
+      <h4 id="racing-count-title" class="hidden">시도할 횟수를 입력해주세요.</h4>
+      <form id="racing-count-form" class="hidden">
         <input type="number" id="racing-count-input" />
         <button id="racing-count-submit">확인</button>
       </form>

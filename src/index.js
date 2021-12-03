@@ -57,11 +57,16 @@ export default function RacingCarGame() {
     $('#racing-count-input').value = '';
   };
 
+  const renderCountForm = () => {
+    $('#racing-count-title').className = 'visible';
+    $('#racing-count-form').className = 'visible';
+  };
+
   $('#car-names-form').addEventListener('submit', e => {
     e.preventDefault();
     const carInput = $('#car-names-input').value;
     if (isValidCarInput(carInput)) {
-      console.log('ok');
+      renderCountForm();
       return;
     }
     printCarError(carInput);
