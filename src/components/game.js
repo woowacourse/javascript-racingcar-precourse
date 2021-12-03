@@ -1,11 +1,10 @@
-import { CARS_NAME, GMAE_COUNT, NUMBER } from "../constants/constant.js";
+import { CARS_NAME, COMMA, DASH, EMPTY, GMAE_COUNT, NUMBER } from "../constants/constant.js";
 
 export function gameStart(userInput) {
-  console.log(userInput)
-  const gameWinCountArray = Array.from({length: userInput[CARS_NAME].split(",").length}, () => NUMBER.ZERO);
+  const gameWinCountArray = Array.from({length: userInput[CARS_NAME].split(COMMA).length}, () => NUMBER.ZERO);
   const gameResultObject = {
-    gameProcess: "",
-    gmaeWinner: ""
+    gameProcess: EMPTY,
+    gmaeWinner: EMPTY
   }
   for (let i = 0; i < userInput[GMAE_COUNT]; i++) {
     const gameRandonNumberArray = setGameRandonNumber(userInput);
@@ -43,7 +42,7 @@ function setGameWinner(carsName, winGameCountArray) {
   let topNumberCars = "";
   winGameCountArray.forEach((v, i) => {
     if (v === topNumber) {
-      topNumberCars += `${carsName.split(",")[i]},`;
+      topNumberCars += `${carsName.split(COMMA)[i]},`;
     }
   })
   
@@ -51,19 +50,19 @@ function setGameWinner(carsName, winGameCountArray) {
 }
 
 function setProcessTemplete(winGameCountArray, carsName) {
-  let result = "";
-  for (let i = 0; i < carsName.split(",").length; i++) {
-    result += `${carsName.split(",")[i]}: ${gameProcessNumberReplaceText(winGameCountArray[i])}<br/>`;
+  let result = EMPTY;
+  for (let i = 0; i < carsName.split(COMMA).length; i++) {
+    result += `${carsName.split(COMMA)[i]}: ${gameProcessNumberReplaceText(winGameCountArray[i])}<br/>`;
   }
   
   return result;
 }
 
 function gameProcessNumberReplaceText(winGameCount) {
-  let result = "";
+  let result = EMPTY;
   if (winGameCount > NUMBER.ZERO) {
     for (let i = 0; i < winGameCount; i++) {
-      result += "-";
+      result += DASH;
     }
   }
 
