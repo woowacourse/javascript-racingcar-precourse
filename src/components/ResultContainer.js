@@ -1,4 +1,8 @@
 import RacingWinners from "./RacingWinners.js";
+import {
+  PICK_NUMBER_IN_RANGE_MIN,
+  PICK_NUMBER_IN_RANGE_MAX,
+} from "../utils/constants.js";
 
 const ResultContainer = ({ app, carNames, racingCount }) => {
   let resultContainer = document.querySelector("#result-container");
@@ -36,7 +40,10 @@ const ResultContainer = ({ app, carNames, racingCount }) => {
     let items = ``;
 
     for (let car of carNames) {
-      const randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
+      const randomNumber = MissionUtils.Random.pickNumberInRange(
+        PICK_NUMBER_IN_RANGE_MIN,
+        PICK_NUMBER_IN_RANGE_MAX
+      );
 
       if (isMove(randomNumber)) car.moveCount++;
 
