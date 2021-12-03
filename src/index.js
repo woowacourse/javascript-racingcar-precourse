@@ -1,8 +1,10 @@
 import { $ } from './utils/dom.js';
+import Car from './Car.js';
 
 class RacingCarGame {
   constructor() {
     this.addEventListeners();
+    this.cars = [];
   }
 
   addEventListeners() {
@@ -11,7 +13,12 @@ class RacingCarGame {
 
   onClickCarNameSubmitButton(event) {
     event.preventDefault();
-    console.log('클릭');
+    const carNames = $('#car-names-input').value;
+    const splittedCarNames = carNames.split(',');
+    splittedCarNames.forEach(carName => {
+      this.cars.push(new Car(carName));
+    });
+    console.log(this.cars);
   }
 }
 
