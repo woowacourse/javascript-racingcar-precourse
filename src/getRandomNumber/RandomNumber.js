@@ -1,3 +1,5 @@
+import { NUMBER } from '../constant/constant.js';
+
 export default class RandomNumber {
   constructor(carNames, racingCount) {
     this.carNames = carNames;
@@ -6,7 +8,7 @@ export default class RandomNumber {
   }
 
   pickRandomNumber = () => {
-    return MissionUtils.Random.pickNumberInRange(0, 9);
+    return MissionUtils.Random.pickNumberInRange(NUMBER.ZERO, NUMBER.NINE);
   };
 
   get = () => {
