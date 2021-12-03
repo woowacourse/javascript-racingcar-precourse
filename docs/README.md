@@ -49,14 +49,16 @@
 
 ## 🗑 초기화하기
 
-- [ ] [자동차 경주 게임의 진행 순서](https://github.com/leegwae/javascript-racingcar-precourse/tree/leegwae/docs#%EC%9E%90%EB%8F%99%EC%B0%A8-%EA%B2%BD%EC%A3%BC-%EA%B2%8C%EC%9E%84%EC%9D%98-%EC%A7%84%ED%96%89-%EC%88%9C%EC%84%9C)의 이미지를 참고하여, `index.html`의 html 태그들을 지운다.
+- [ ] [자동차 경주 게임의 진행 순서](https://github.com/leegwae/javascript-racingcar-precourse/tree/leegwae/docs#%EC%9E%90%EB%8F%99%EC%B0%A8-%EA%B2%BD%EC%A3%BC-%EA%B2%8C%EC%9E%84%EC%9D%98-%EC%A7%84%ED%96%89-%EC%88%9C%EC%84%9C)의 이미지를 참고하여, `index.html`의 html 태그들을 지우고 필요한 태그를 만든다.
 
 
 
 ## 🎨 Form 태그 만들기
 
-- [ ] 자[동차 이름 form 태그 만들기](https://github.com/leegwae/javascript-racingcar-precourse/tree/leegwae/docs#%EC%9E%90%EB%8F%99%EC%B0%A8-%EC%9D%B4%EB%A6%84-form-%ED%83%9C%EA%B7%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0): 사용자가 `자동차 이름`을 입력하고 제출할 수 있도록 form 태그를 만든다.
-- [ ] [레이싱 횟수 form 태그 만들기](https://github.com/leegwae/javascript-racingcar-precourse/tree/leegwae/docs#%EB%A0%88%EC%9D%B4%EC%8B%B1-%ED%9A%9F%EC%88%98-form-%ED%83%9C%EA%B7%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0): 사용자가 `레이싱 횟수`를 입력하고 제출할 수 있도록 form 태그를 만든다.
+[완료 커밋](https://github.com/leegwae/javascript-racingcar-precourse/commit/ff750d2a4eefc9d6e2061181be969b14ddccdf5a)
+
+- [x] 자[동차 이름 form 태그 만들기](https://github.com/leegwae/javascript-racingcar-precourse/tree/leegwae/docs#%EC%9E%90%EB%8F%99%EC%B0%A8-%EC%9D%B4%EB%A6%84-form-%ED%83%9C%EA%B7%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0): 사용자가 `자동차 이름`을 입력하고 제출할 수 있도록 form 태그를 만든다.
+- [x] [레이싱 횟수 form 태그 만들기](https://github.com/leegwae/javascript-racingcar-precourse/tree/leegwae/docs#%EB%A0%88%EC%9D%B4%EC%8B%B1-%ED%9A%9F%EC%88%98-form-%ED%83%9C%EA%B7%B8-%EB%A7%8C%EB%93%A4%EA%B8%B0): 사용자가 `레이싱 횟수`를 입력하고 제출할 수 있도록 form 태그를 만든다.
 
 
 
@@ -64,8 +66,8 @@
 
 다음 조건을 만족하는 input 태그와 button 태그를 가진다.
 
-- [ ] 자동차의 이름을 입력하는 input 태그는 `car-names-input` id값을 가진다.
-- [ ] 자동차의 이름을 제출하는 button 태그는 `car-names-submit` id값을 가진다.
+- [x] 자동차의 이름을 입력하는 input 태그는 `car-names-input` id값을 가진다.
+- [x] 자동차의 이름을 제출하는 button 태그는 `car-names-submit` id값을 가진다.
 
 
 
@@ -73,8 +75,8 @@
 
 다음 조건을 만족하는 input 태그와 button 태그를 가진다.
 
-- [ ] 레이싱 횟수를 입력하는 input 태그는 `racing-count-input` id값을 가진다.
-- [ ] 레이싱 횟수을 제출하는 button 태그는 `racing-count-submit` id값을 가진다.
+- [x] 레이싱 횟수를 입력하는 input 태그는 `racing-count-input` id값을 가진다.
+- [x] 레이싱 횟수을 제출하는 button 태그는 `racing-count-submit` id값을 가진다.
 
 
 
