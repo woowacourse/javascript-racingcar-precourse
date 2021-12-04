@@ -3,14 +3,11 @@ export class CAR {
         this.name = name;
         this.forward = 0;
         this.gameProgress = '';
-    };
-    GET_NAME() {
-        return this.name;
-    };
+    }
 
     PLUS_FORWARD() {
         this.forward++;
-        this.gameProgress += '-'
+        this.gameProgress += '-';
         console.log(this.name + " : " + this.forward);
-    };
+    }
 }
