@@ -25,9 +25,9 @@ export default class Render {
     this.resultTitle.hidden = false;
   }
 
-  racingState(order, states) {
+  racingState(round, states) {
     const racingStateContainer = document.createElement('p');
-    racingStateContainer.setAttribute('id', `racing-state-${order}`);
+    racingStateContainer.setAttribute('id', `racing-state-${round}`);
     states.forEach((state) => {
       racingStateContainer.innerHTML += `${state} <br />`;
     });
