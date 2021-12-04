@@ -42,3 +42,12 @@ function showRacingCountForm() {
   setStyleDisplay(racingCountInput, INLINE_BLOCK);
   setStyleDisplay(racingCountSubmitButton, INLINE_BLOCK);
 }
+
+on(racingCountSubmitButton, 'click', (event) => {
+  event.preventDefault();
+
+  if (racingCountInput.value <= 0) {
+    alert(NO_MORE_THAN_ZERO);
+    return;
+  }
+});
