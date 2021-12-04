@@ -41,7 +41,10 @@ class App {
       $nameInput: this.$nameInput,
       setState: this.setState,
     });
-    new CountInput(this.$countInput);
+    new CountInput({
+      $countInput: this.$countInput,
+      setState: this.setState,
+    });
   }
 }
 
