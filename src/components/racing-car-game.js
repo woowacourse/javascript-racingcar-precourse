@@ -3,6 +3,7 @@ import { hideNode, showNode, createResultNode, disableForm } from "../utils/dom.
 import { SELECTOR } from "../constants/constant.js";
 import { Car } from "../model/car.js";
 import { RacingCount } from "./racing-count.js";
+import { selectWinners } from "../utils/car-utils.js";
 
 export class RacingCarGame {
     constructor($target) {
@@ -11,7 +12,7 @@ export class RacingCarGame {
         this.$racingCount = document.getElementById(SELECTOR.ID.RACING_COUNT_FORM);
         this.$racingCountCommand = document.getElementById(SELECTOR.ID.RACING_COUNT_COMMAND);
         this.$result = document.getElementById(SELECTOR.ID.RESULT);
-        this.state = { cars: [], count: 0 };
+        this.state = { cars: [], count: 0, winners: [] };
         this.init();
     }
     init() {
@@ -47,6 +48,7 @@ export class RacingCarGame {
         }
         showNode(this.$result);
         disableForm(this.$racingCount);
+        this.state.winners = selectWinners(this.state.cars);
     }
     moveCars() {
         this.state.cars.forEach((car) => {
