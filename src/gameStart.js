@@ -16,7 +16,6 @@ function printEachCarProgress(CARS) {
     }
 }
 
-//게임진행 보여주기
 function printGameProgress(CARS, $racingCountInput) {
     for (let i = 0; i < $racingCountInput.value; i++) {
         printEachCarProgress(CARS);
@@ -24,7 +23,6 @@ function printGameProgress(CARS, $racingCountInput) {
     }
 }
 
-//레이싱게임 시작
 export function gameStart() {
     const $carNameInput = document.querySelector('#car-names-input');
     const $racingCountInput = document.querySelector('#racing-count-input');
