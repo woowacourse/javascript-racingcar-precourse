@@ -3,6 +3,8 @@ import DOMElement from './views/domElement.js';
 
 const $carNamesInput = DOMElement.createById(ELEMENT_ID.CAR_NAMES_INPUT);
 const $carNamesSubmit = DOMElement.createById(ELEMENT_ID.CAR_NAMES_SUBMIT);
+const $racingCountLabel = DOMElement.createById(ELEMENT_ID.RACING_COUNT_LABEL);
+const $racingCountForm = DOMElement.createById(ELEMENT_ID.RACING_COUNT_FORM);
 const $racingCountInput = DOMElement.createById(ELEMENT_ID.RACING_COUNT_INPUT);
 const $racingCountSubmit = DOMElement.createById(
   ELEMENT_ID.RACING_COUNT_SUBMIT
