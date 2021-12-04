@@ -1,4 +1,6 @@
 // car
+const MIN_OF_RANDOM = 0;
+const MAX_OF_RANDOM = 9;
 const MOVE_CONDITION_NUMBER = 4;
 
 // validation
@@ -18,6 +20,8 @@ const ERROR_MESSAGE = {
 
 export {
   // car
+  MIN_OF_RANDOM,
+  MAX_OF_RANDOM,
   MOVE_CONDITION_NUMBER,
   // validation
   MIN_NUMBER_OF_CARS,
