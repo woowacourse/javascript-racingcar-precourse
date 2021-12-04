@@ -4,8 +4,12 @@ import CarNamesForm from './CarNamesForm.js';
 import RacingCountForm from './RacingCountForm.js';
 import GameResult from './GameResult.js';
 import { $, createElement } from '../utils/dom.js';
-import { getMovingCarsResult } from '../utils/game.js';
 import { GAME_STATUS } from '../utils/constants.js';
+import {
+  getMovingCarsResult,
+  getFinalResult,
+  getMaximumDistance,
+} from '../utils/game.js';
 
 export default class RacingCarGame extends Component {
   initDoms() {
@@ -63,11 +67,11 @@ export default class RacingCarGame extends Component {
   }
 
   _getWinners(gameResult) {
-    const finalResult = [...gameResult[gameResult.length - 1].entries()];
-    const max = finalResult.sort((a, b) => b[1] - a[1])[0][1];
+    const finalResult = getFinalResult(gameResult);
+    const maximumDistance = getMaximumDistance(finalResult);
     const winners = [];
     finalResult.forEach(([name, distance]) => {
-      if (distance === max) winners.push(name);
+      if (distance === maximumDistance) winners.push(name);
     });
     return winners;
   }

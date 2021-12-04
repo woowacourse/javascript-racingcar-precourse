@@ -26,3 +26,10 @@ export const getMovingCarsResult = cars => {
   });
   return carNameDistanceMap;
 };
+
+export const getFinalResult = gameResult => [
+  ...gameResult[gameResult.length - 1].entries(),
+];
+
+export const getMaximumDistance = finalResult =>
+  finalResult.sort((a, b) => b[1] - a[1])[0][1];
