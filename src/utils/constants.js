@@ -9,3 +9,9 @@ export const MESSAGE = {
     '자동차 이름은 1자 이상 5자 이하로 , 서로 중복되지 않아야 합니다!',
   INVALID_CAR_RACINGS: '이동 횟수를 제대로 입력해주세요!',
 };
+
+export const RULE = {
+  MAX_NAME_LENGTH: 5,
+  MIN_NAME_LENGTH: 1,
+  MOVE_CAR_REQUIREMENT: 4,
+};

@@ -1,4 +1,5 @@
 import { convertHashMapToArray } from './general.js';
+import { RULE } from './constants.js';
 
 const printBars = distance => {
   let bars = '';
@@ -33,4 +34,4 @@ export const getMaximumDistance = finalResult =>
   finalResult.sort((a, b) => b[1] - a[1])[0][1];
 
 export const canMoveCar = () =>
-  MissionUtils.Random.pickNumberInRange(0, 9) >= 4;
+  MissionUtils.Random.pickNumberInRange(0, 9) >= RULE.MOVE_CAR_REQUIREMENT;
