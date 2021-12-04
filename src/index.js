@@ -1,6 +1,11 @@
 import Car from './Car.js';
 import { hideElement, showElement } from './utils/dom.js';
-import { CarNamesInputCheckMethods, CountInputCheckMethods } from './utils/validity.js';
+import {
+  CarNamesInputCheckMethods,
+  CountInputCheckMethods,
+  isCarNamesInputValid,
+  isCountInputValid,
+} from './utils/validity.js';
 
 class RacingCarGame {
   count;
@@ -53,7 +58,7 @@ class RacingCarGame {
   onCountSubmit(e) {
     e.preventDefault();
     const count = this.$racingCountInput.value;
-    if (!this.isCountInputValid(count)) {
+    if (!isCountInputValid(count)) {
       return;
     }
     this.count = count;
@@ -130,10 +135,6 @@ class RacingCarGame {
     return resultText;
   }
 
-  isCountInputValid(value) {
-    return CountInputCheckMethods.every((CountInputCheckMethod) => CountInputCheckMethod(value));
-  }
-
   // CarNamesInputContainer
   triggerCarNamesInputEvent() {
     this.$carNamesSubmitButton.addEventListener('click', (e) => this.onCarNamesSubmit(e));
@@ -143,7 +144,7 @@ class RacingCarGame {
     e.preventDefault();
     const carNames = this.$carNamesInput.value;
     this.carNamesArray = this.strToArr(carNames);
-    if (!this.isCarNamesInputValid(this.carNamesArray)) {
+    if (!isCarNamesInputValid(this.carNamesArray)) {
       return;
     }
     this.showCountDOM();
@@ -152,14 +153,6 @@ class RacingCarGame {
   showCountDOM() {
     showElement(this.$racingCountHeading);
     showElement(this.$racingCountForm);
-  }
-
-  isCarNamesInputValid(carNamesArray) {
-    return carNamesArray.every((carName) =>
-      CarNamesInputCheckMethods.every((CarNamesInputCheckMethod) =>
-        CarNamesInputCheckMethod(carName),
-      ),
-    );
   }
 
   strToArr(str) {

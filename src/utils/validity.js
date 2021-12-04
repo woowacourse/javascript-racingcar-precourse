@@ -10,6 +10,10 @@ export const CountInputCheckMethods = [
   },
 ];
 
+export function isCountInputValid(value) {
+  return CountInputCheckMethods.every((CountInputCheckMethod) => CountInputCheckMethod(value));
+}
+
 export const CarNamesInputCheckMethods = [
   (value) => {
     if (value.length > CAR_NAME_MAX_LENGTH) {
@@ -19,3 +23,11 @@ export const CarNamesInputCheckMethods = [
     return true;
   },
 ];
+
+export function isCarNamesInputValid(carNamesArray) {
+  return carNamesArray.every((carName) =>
+    CarNamesInputCheckMethods.every((CarNamesInputCheckMethod) =>
+      CarNamesInputCheckMethod(carName),
+    ),
+  );
+}
