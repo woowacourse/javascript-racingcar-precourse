@@ -1,11 +1,21 @@
-import playCarRacing from './playCarRacing.js';
-import printRacingResult from './printRacingResult.js';
+import increaseWinnerCount from './playCarRacing.js';
 import addSelectedWinner from './addSelectedWinner.js';
 import { showResultTitle } from '../init/setScreen.js';
+import { cars } from '../init/cars.js';
 
-function makeRacingResult(racingCount, $resultScreenDiv) {
+function printRacingResult($resultScreenDiv) {
+  cars.forEach((car) => {
+    $resultScreenDiv.insertAdjacentHTML(
+      'beforeend',
+      `${car.name}: ${'-'.repeat(car.count)}<br>`,
+    );
+  });
+  $resultScreenDiv.insertAdjacentHTML('beforeend', '<br>');
+}
+
+function playCarRacing(racingCount, $resultScreenDiv) {
   for (let i = 0; i < racingCount; i++) {
-    playCarRacing();
+    increaseWinnerCount();
     printRacingResult($resultScreenDiv);
   }
 }
@@ -20,6 +30,6 @@ export default function startRacingGame(racingCount) {
 
   appendResultElement($resultScreenDiv);
   showResultTitle();
-  makeRacingResult(racingCount, $resultScreenDiv);
+  playCarRacing(racingCount, $resultScreenDiv);
   addSelectedWinner($resultScreenDiv);
 }

@@ -12,6 +12,6 @@ function getRacingResult(car) {
   }
 }
 
-export default function playCarRacing() {
+export default function increaseWinnerCount() {
   cars.forEach((car) => getRacingResult(car));
 }
