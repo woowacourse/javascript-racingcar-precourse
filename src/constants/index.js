@@ -6,3 +6,7 @@ export const ID = {
   RACING_WINNERS: 'racing-winners',
   RESULT_CONTAINER: 'result-container',
 };
+
+export const NUM = {
+  MAX_NAME_LENGTH: 5,
+};
