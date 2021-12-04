@@ -1,7 +1,9 @@
 import {
-  permitRacingCountForm,
-  blockRacingCountForm,
-} from "../util/block-and-permit.js";
+  hideRacingCountContainer,
+  hideResultContainer,
+  showRacingCountContainer,
+  showResultContainer,
+} from "../util/hide-and-show.js";
 import {
   createRacingCountAlertMessage,
   createCarNameAlertMessage,
@@ -18,7 +20,8 @@ export default class Input {
 
   init = () => {
     this.setEvent();
-    blockRacingCountForm();
+    hideRacingCountContainer();
+    hideResultContainer();
   };
 
   setEvent = () => {
@@ -40,7 +43,7 @@ export default class Input {
     }
 
     this.cars = carNames.map((carName) => new Car(carName));
-    permitRacingCountForm();
+    showRacingCountContainer();
   };
 
   setRacingCountSubmitEvent = (event) => {
@@ -54,6 +57,7 @@ export default class Input {
     }
 
     this.racingCount = racingCount;
+    showResultContainer();
     this.game.play(this.cars, this.racingCount);
   };
 }

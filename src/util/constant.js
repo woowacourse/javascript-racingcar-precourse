@@ -7,6 +7,8 @@ export const DOMS = Object.freeze({
   $carNamesForm: document.querySelector("#car-names-input").closest("form"),
   $racingCountButton: document.querySelector("#racing-count-submit"),
   $app: document.querySelector("#app"),
+  $racingCountHead: document.querySelectorAll("h4")[0],
+  $resultHead: document.querySelectorAll("h4")[1],
 });
 
 export const CAR_MOVE_RANGE = Object.freeze({
