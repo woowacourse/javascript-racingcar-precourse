@@ -52,7 +52,7 @@ const progressGame = () => {
   const game = new Game(cars, racingCount);
 
   for (let i = 0; i < game.racingCount; i += 1) {
-    game.progressOneRacing();
+    game.progressOneRound();
     renderCurrentRound(game);
   }
 

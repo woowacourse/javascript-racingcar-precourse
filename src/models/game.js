@@ -38,7 +38,7 @@ class Game {
     return this.#racingTry >= this.#racingCount;
   }
 
-  progressOneRacing() {
+  progressOneRound() {
     if (this.isGameEnded()) {
       return;
     }
