@@ -55,7 +55,16 @@ class CountInputContainer {
       }
     }
   }
-  showResult() {}
+  showResult() {
+    // for 문으로 count만큼 출력
+    let resultText = '<br>';
+    for (let i = 0; i < this.count; i++) {
+      for (let key in this.result) {
+        resultText += `<div>${key}: ${'-'.repeat(this.result[key].stepByRound[i])}</div>\n`;
+      }
+      result += '<br>';
+    }
+  }
 
   isInputValid(value) {
     return InputCheckMethods.every((InputCheckMethod) => InputCheckMethod(value));
