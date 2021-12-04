@@ -10,6 +10,7 @@ import {
   createWinnersText,
   displayResultText,
 } from './dom.js';
+import { noCountException } from './exception.js';
 
 export default class Game {
   constructor() {
@@ -45,6 +46,7 @@ export default class Game {
 
   startGame() {
     if (this.count === 0) {
+      noCountException();
       return;
     }
 

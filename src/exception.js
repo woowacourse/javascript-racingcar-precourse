@@ -1,15 +1,19 @@
 import {
   USER_ALERT_NO_NAME,
+  USER_ALERT_NO_COMPETITOR,
   USER_ALERT_NO_COMMA,
   USER_ALERT_OUT_RANGE,
   USER_ALERT_DUPLICATED,
   USER_ALERT_VACUUM,
+  USER_ALERT_NO_COUNT,
 } from './constants.js';
 
 export const userInputTypeException = (userInput) => {
   if (!userInput) {
     alert(USER_ALERT_NO_NAME);
-  } else if (!userInput.includes(',')) {
+  } else if (userInput.length <= 5 && !userInput.includes(',')) {
+    alert(USER_ALERT_NO_COMPETITOR);
+  } else if (userInput.length > 5 && !userInput.includes(',')) {
     alert(USER_ALERT_NO_COMMA);
   } else {
     return false;
@@ -59,4 +63,8 @@ export const carNameIsVacuumException = (userInputArray) => {
   }
 
   return isException;
+};
+
+export const noCountException = () => {
+  alert(USER_ALERT_NO_COUNT);
 };

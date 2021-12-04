@@ -23,8 +23,8 @@ export const getUserInputArray = (userInput) => {
   if (
     userInputTypeException(userInput) ||
     userInputLengthException(userInputArray) ||
-    userInputDuplicatedException(userInputArray) ||
-    carNameIsVacuumException(userInputArray)
+    carNameIsVacuumException(userInputArray) ||
+    userInputDuplicatedException(userInputArray)
   ) {
     return hasExceptionArray;
   }
