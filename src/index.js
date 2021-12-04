@@ -1,4 +1,5 @@
 import Car from './car.js';
+import CarRacing from './carRacing.js';
 import { ERROR_MESSAGE, STYLE_DISPLAY } from './constants.js';
 import {
   on,
@@ -33,7 +34,7 @@ on(carNamesSubmitButton, 'click', (event) => {
     return;
   }
 
-  carNamesArr.forEach((name) => cars.push(name));
+  carNamesArr.forEach((name) => cars.push(new Car(name)));
   showRacingCountForm();
 });
 
@@ -50,4 +51,7 @@ on(racingCountSubmitButton, 'click', (event) => {
     alert(NO_MORE_THAN_ZERO);
     return;
   }
+
+  const carRacing = new CarRacing(cars);
+  carRacing.play(racingCountInput.value);
 });
