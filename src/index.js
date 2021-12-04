@@ -1,4 +1,5 @@
 import { ELEMENT_ID } from './constants/index.js';
+import { parseCars, parseRacingCount } from './controllers/inputParser.js';
 import {
   carNamesInputValidator,
   racingCountInputValidator,
@@ -6,7 +7,6 @@ import {
 import GameController from './controllers/gameController.js';
 import { handleError } from './utils/errorHandler.js';
 import DOMElement from './views/domElement.js';
-import { parseCars, parseRacingCount } from './controllers/inputParser.js';
 
 const $app = DOMElement.createById(ELEMENT_ID.APP);
 const $carNamesInput = DOMElement.createById(ELEMENT_ID.CAR_NAMES_INPUT);
@@ -42,8 +42,8 @@ const renderWinnerNames = (game) => {
   $winner.setId(ELEMENT_ID.RACING_WINNERS);
   $winner.setText(winnerNames.join(','));
 
-  $winnerWrapper.appendChild($winner);
   $app.appendChild($winnerWrapper);
+  $winnerWrapper.appendChild($winner);
 };
 
 const progressGame = () => {
@@ -85,12 +85,12 @@ const handleRacingCountSubmit = () => {
 
   $racingCountInput.setDisabled(true);
   $racingCountSubmit.setDisabled(true);
+  $resultLabel.show();
 
   progressGame();
-  $resultLabel.show();
 };
 
-const main = () => {
+const initializeHTML = () => {
   $racingCountLabel.hide();
   $racingCountForm.hide();
   $resultLabel.hide();
@@ -99,4 +99,4 @@ const main = () => {
   $racingCountSubmit.addOnClick(handleRacingCountSubmit, true);
 };
 
-main();
+initializeHTML();
