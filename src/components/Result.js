@@ -33,10 +33,12 @@ class GameResult {
       return acc.concat(cur.name);
     }, []);
 
-    const winnerText = document.createElement('span');
-    winnerText.id = ID.RACING_WINNERS;
-    winnerText.innerText = `최종우승자: ${[...winner]}`;
-    this.$resultContainer.append(winnerText);
+    const winnerTitle = document.createElement('span');
+    winnerTitle.innerText = '최종 우승자: ';
+    const winnerName = document.createElement('span');
+    winnerName.innerText = `${[...winner]}`;
+    winnerName.id = ID.RACING_WINNERS;
+    this.$resultContainer.append(winnerTitle, winnerName);
   }
 }
 
