@@ -62,22 +62,6 @@ export default class RacingCountEvent {
     this.$carNamesInput.focus();
   };
 
-  isCarNamesSubmit = () => {
-    if (this.carNamesEvent.carNamesArray.length === 0) {
-      return false;
-    }
-
-    return true;
-  };
-
-  checkCarNames = () => {
-    if (!this.isCarNamesSubmit()) {
-      this.alertCautionMessage(CAUTION_MESSAGE.FIRST_CAR_NAMES_SUBMIT);
-
-      return;
-    }
-  };
-
   isCarNamesBlank = () => {
     if (this.$carNamesInput.value.length === 0) {
       return true;

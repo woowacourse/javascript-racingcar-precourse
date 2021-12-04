@@ -28,7 +28,6 @@ class RacingCar {
   racingCountSubmit = () => {
     this.$racingCountSubmit.addEventListener('click', (event) => {
       event.preventDefault();
-      this.racingCountEvent.checkCarNames();
       const isValidate = this.racingCountEvent.validateCount();
 
       if (!isValidate) {
