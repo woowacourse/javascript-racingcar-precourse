@@ -24,6 +24,17 @@ class RacingCarGame {
     const isValid = this.checkValid.carNames(this.user.getCarNames());
     if (isValid) {
       this.render.showRacingCountForm();
+      this.submitRacingCountForm.addEventListener("submit", e =>
+        this.handleSubmitRacingCount(e)
+      );
+    }
+  }
+
+  handleSubmitRacingCount(event) {
+    event.preventDefault();
+    const isValid = this.checkValid.racingCount(this.user.getRacingCount());
+    if (isValid) {
+      console.log(this.user.getRacingCount());
     }
   }
 }

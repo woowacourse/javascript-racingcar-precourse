@@ -1,5 +1,5 @@
 import { MESSAGE } from "./constant/alertMessage.js";
-import { CAR_NAME } from "./constant/number.js";
+import { CAR_NAME, RACING_COUNT } from "./constant/number.js";
 
 export default class CheckValid {
   carNames(names) {
@@ -8,6 +8,14 @@ export default class CheckValid {
     }
     const namesArray = this.removeSpace(names);
     return this.isValidLength(namesArray) && this.isValidCarNames(namesArray);
+  }
+
+  racingCount(count) {
+    const isValid = count > RACING_COUNT.MININUM;
+    if (!isValid) {
+      return alert(MESSAGE.INVALID_RACING_COUNT);
+    }
+    return isValid;
   }
 
   removeSpace(string) {

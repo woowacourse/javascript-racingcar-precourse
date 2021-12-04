@@ -7,4 +7,8 @@ export default class User {
   getCarNames() {
     return this.carNames.value;
   }
+
+  getRacingCount() {
+    return this.rancingCount.value;
+  }
 }
