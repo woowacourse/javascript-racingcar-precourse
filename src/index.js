@@ -3,10 +3,21 @@ import { ERROR_MESSAGE } from './constants.js';
 
 export default class CarRacingGame {
   constructor() {
-    this.$carNamesInput = $('#car-names-input');
-    this.$carNamesSubmit = $('#car-names-submit');
+    this.initElements();
+    this.hideRacingCountForm();
     this.$carNamesSubmit.addEventListener('click', (e) => this.handleCarNamesSubmit(e));
   }
+  initElements = () => {
+    this.$carNamesInput = $('#car-names-input');
+    this.$carNamesSubmit = $('#car-names-submit');
+    this.$racingCountFormTitle = $('#racing-count-form-title');
+    this.$racingCountForm = $('#racing-count-form');
+  };
+
+  hideRacingCountForm = () => {
+    this.$racingCountFormTitle.style.display = 'none';
+    this.$racingCountForm.style.display = 'none';
+  };
 
   handleCarNamesSubmit = (e) => {
     e.preventDefault();
@@ -14,6 +25,9 @@ export default class CarRacingGame {
     const isValid = this.validateNames(currentInput);
     if (!isValid) {
       this.alertErrorMessage();
+    }
+    if (isValid) {
+      this.showRacingCountForm();
     }
   };
 
@@ -35,5 +49,10 @@ export default class CarRacingGame {
     alert(ERROR_MESSAGE);
     this.$carNamesInput.focus();
   };
+
+  showRacingCountForm() {
+    this.$racingCountFormTitle.style.display = 'block';
+    this.$racingCountForm.style.display = 'block';
+  }
 }
 new CarRacingGame();
