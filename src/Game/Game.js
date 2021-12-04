@@ -1,21 +1,18 @@
 import Car from '../Car/Car.js';
 import { DOM } from '../constant/constant.js';
 import RandomNumber from '../getRandomNumber/RandomNumber.js';
+import Winners from './Winners.js';
 
 export default class Game {
   constructor(racingCount, carNames) {
     this.$app = DOM.$APP;
     this.$div = DOM.$DIV;
-    this.$span = DOM.$SPAN;
     this.racingCount = racingCount;
     this.carNames = carNames;
     this.carResultInformations = [];
     this.randomNumbers = [];
     this.resultRacings = [];
-    this.winners = [];
     this.racingTemplate = '';
-    this.winnerTemplate = '';
-    this.winnersTemplate = '';
   }
 
   renderTemplate = (template) => {
@@ -65,67 +62,13 @@ export default class Game {
     this.randomNumbers = this.randomNumber.get();
   };
 
-  compareDistance = (currentCarName, maxDistance, currentDistance) => {
-    if (maxDistance < currentDistance) {
-      this.winners = [];
-      this.winners.push(currentCarName);
-      return currentDistance;
-    }
-
-    if (maxDistance === currentDistance) {
-      this.winners.push(currentCarName);
-    }
-
-    return maxDistance;
-  };
-
-  getWinners = () => {
-    this.carResultInformations.reduce((maxDistance, currentInformation) => {
-      const [currentCarName, currentDistance] = currentInformation;
-      return this.compareDistance(currentCarName, maxDistance, currentDistance);
-    }, 0);
-  };
-
-  set$SpanAttribute = (winners) => {
-    this.$span.textContent = `최종 우승자: ${winners}`;
-    this.$span.setAttribute('id', 'racing-winners');
-  };
-
-  getWinnerTemplate = (winner) => {
-    this.set$SpanAttribute(winner);
-    this.$app.appendChild(this.$span);
-  };
-
-  getWinnersTemplate = () => {
-    let winnersString = '';
-    this.winners.forEach((winner, index) => {
-      if (index === this.winners.length - 1) {
-        winnersString += `${winner}`;
-      }
-
-      if (index < this.winners.length - 1) {
-        winnersString += `${winner},`;
-      }
-    });
-
-    this.set$SpanAttribute(winnersString);
-    this.$app.appendChild(this.$span);
-  };
-
-  countWinners = () => {
-    if (this.winners.length === 1) {
-      this.getWinnerTemplate(this.winners[0]);
-      return;
-    }
-
-    this.getWinnersTemplate();
-  };
-
   start = () => {
     this.getRandomNumbers();
     this.racingGameStart();
     this.getRacingTemplate();
-    this.getWinners();
-    this.countWinners();
+
+    const winners = new Winners(this.carResultInformations);
+    winners.getWinners();
+    winners.countWinners();
   };
 }
