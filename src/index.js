@@ -5,6 +5,7 @@ import {
   isDuplicated,
   splitUsingComma,
   isOverFiveLetters,
+  hasEmptyElement,
   generateCars,
   isZero,
   hasSpecial,
@@ -39,6 +40,7 @@ export default function RacingCarGame() {
     const carNamesArray = splitUsingComma(string);
     if (isDuplicated(carNamesArray)) return alert(ERROR.DUPLICATED);
     if (isOverFiveLetters(carNamesArray)) return alert(ERROR.OVER_FIVE_LETTERS);
+    if (hasEmptyElement(carNamesArray)) return alert(ERROR.HAS_EMPTY_ELEMENT);
 
     return true;
   };

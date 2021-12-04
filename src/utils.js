@@ -24,6 +24,10 @@ export const isOverFiveLetters = array => {
   return array.some(string => string.length > NUMBER.FIVE_LETTERS);
 };
 
+export const hasEmptyElement = array => {
+  return array.some(string => isBlank(string));
+};
+
 export const generateCars = string => {
   return splitUsingComma(string).map(name => new Car(name));
 };
