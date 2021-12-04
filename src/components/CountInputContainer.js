@@ -19,6 +19,7 @@ class CountInputContainer {
     this.$racingCountSubmitButton = document.querySelector('#racing-count-submit');
     this.$racingCountInput = document.querySelector('#racing-count-input');
     this.carNamesInputContainer = new CarNamesInputContainer();
+    this.$app = document.querySelector('#app');
     this.init();
   }
   init() {
@@ -57,13 +58,16 @@ class CountInputContainer {
   }
   showResult() {
     // for 문으로 count만큼 출력
-    let resultText = '<br>';
+    let resultText = '';
     for (let i = 0; i < this.count; i++) {
       for (let key in this.result) {
         resultText += `<div>${key}: ${'-'.repeat(this.result[key].stepByRound[i])}</div>\n`;
       }
-      result += '<br>';
+      resultText += '<br>';
     }
+    const resultTextDiv = document.createElement('div');
+    resultTextDiv.innerHTML = resultText;
+    this.$app.appendChild(resultTextDiv);
   }
 
   isInputValid(value) {
