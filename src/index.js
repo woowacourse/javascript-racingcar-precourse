@@ -8,7 +8,7 @@ import {
 } from './constants/HTMLconstant.js';
 import validCarName from './validCarName.js';
 import showRacingInput from './showRacingInput.js';
-import Car from './car.js';
+import Car from './Car.js';
 import validRacingCount from './validRacingCount.js';
 
 class Game {
@@ -74,10 +74,10 @@ class Game {
   setWinner() {
     let maxMove = 0;
     this.cars.forEach(car => {
-      if (car.moveCount > maxMove) maxMove = car.moveCount;
+      if (car.getDestination() > maxMove) maxMove = car.getDestination();
     });
     this.cars.forEach(car => {
-      if (car.moveCount === maxMove) this.winner.push(car.name);
+      if (car.getDestination() === maxMove) this.winner.push(car.name);
     });
   }
 }
