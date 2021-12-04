@@ -12,7 +12,7 @@ function initRacingCountForm(racingGame) {
   const racingCountSubmitButton = document.querySelector('#racing-count-submit');
   racingCountSubmitButton.addEventListener('click', (e) => {
     e.preventDefault();
-    racingGame.onSubmitRacingCount(racingCountInput, racingGame);
+    racingGame.onSubmitRacingCount(racingCountInput);
   });
 }
 

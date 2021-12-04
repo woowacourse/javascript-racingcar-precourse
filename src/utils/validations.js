@@ -49,7 +49,7 @@ function isLessThanMinCondition(count) {
 
 function isValidRacingCount(count) {
   if (!isInteger(count)) return alert(ERROR_MESSAGE.RACING_COUNT_MUST_BE_INTEGER);
-  if (isLessThanMinCondition()) return alert(ERROR_MESSAGE.MIN_OF_RACING_COUNT);
+  if (isLessThanMinCondition(count)) return alert(ERROR_MESSAGE.MIN_OF_RACING_COUNT);
   return true;
 }
 
