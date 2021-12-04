@@ -4,4 +4,5 @@ export const ID = {
   RACING_COUNT_INPUT: 'racing-count-input',
   RACING_COUNT_SUBMIT: 'racing-count-submit',
   RACING_WINNERS: 'racing-winners',
+  RESULT_CONTAINER: 'result-container',
 };
