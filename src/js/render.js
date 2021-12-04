@@ -40,11 +40,10 @@ const renderWinner = winners => {
   const resultDiv = $('#result-div');
   let winnerSpan = document.createElement('span');
   let winnerFrontSpan = document.createElement('span');
-  winnerFrontSpan.innerText = '<br>최종 우승자: ';
+  winnerFrontSpan.innerHTML = '<br>최종 우승자: ';
   winnerSpan.id = 'racing-winners';
 
   for (let winner in winners) {
-    console.log(winners[winner].name);
     winnerSpan.innerText += `${winners[winner].name}, `;
   }
   const winnerText = winnerSpan.innerText;
