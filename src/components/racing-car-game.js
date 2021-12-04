@@ -1,5 +1,5 @@
 import { CarNameInput } from "./car-names-input.js";
-import { hideNode, showNode } from "../utils/dom.js";
+import { hideNode, showNode, createResultNode, disableForm } from "../utils/dom.js";
 import { SELECTOR } from "../constants/constant.js";
 import { Car } from "../model/car.js";
 import { RacingCount } from "./racing-count.js";
@@ -7,6 +7,7 @@ import { RacingCount } from "./racing-count.js";
 export class RacingCarGame {
     constructor($target) {
         this.$target = $target;
+        this.$carNamesForm = document.getElementById(SELECTOR.ID.CAR_NAMES_FORM);
         this.$racingCount = document.getElementById(SELECTOR.ID.RACING_COUNT_FORM);
         this.$racingCountCommand = document.getElementById(SELECTOR.ID.RACING_COUNT_COMMAND);
         this.$result = document.getElementById(SELECTOR.ID.RESULT);
@@ -23,10 +24,10 @@ export class RacingCarGame {
     setCars(names) {
         this.activateRacingCount();
         this.state.cars = names.map((name) => new Car(name));
+        disableForm(this.$carNamesForm);
     }
     setCount(count) {
         this.state.count = count;
-        console.log(this.state.count);
         this.startRacing();
     }
     unmount() {
@@ -39,5 +40,23 @@ export class RacingCarGame {
         showNode(this.$racingCount);
         this.racingCountInput = new RacingCount(this.setCount.bind(this));
     }
-    startRacing() {}
+    startRacing() {
+        showNode(this.$result);
+        while (this.state.count--) {
+            this.moveCars();
+        }
+        showNode(this.$result);
+        disableForm(this.$racingCount);
+    }
+    moveCars() {
+        this.state.cars.forEach((car) => {
+            car.rollDice();
+            car.move();
+        });
+        this.printState();
+    }
+    printState() {
+        const $resultNode = createResultNode(this.state.cars);
+        this.$target.appendChild($resultNode);
+    }
 }

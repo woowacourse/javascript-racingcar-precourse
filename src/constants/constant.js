@@ -27,3 +27,9 @@ export const CAR = {
     RANDOM_MAXIMUM_NUMBER: 9,
     MOVE_NUMBER: 4,
 };
+
+export const STYLE = {
+    RESULT_MARGIN_VERTICAL: "16px",
+    RESULT_MARGIN_HORIZONTAL: "0",
+    SPAN_FONT_SIZE: "16px",
+};
