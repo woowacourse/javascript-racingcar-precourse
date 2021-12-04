@@ -1,6 +1,6 @@
 import { createElement, combineElement, $ } from '../utils/element-tools.js';
 
-const createResultWrap = (count) => {
+const createRoundWrap = (count) => {
   const combineList = Array.from({ length: count }, (value, index) => {
     const $wrap = createElement('DIV');
     $wrap.setAttribute('data-round', index);
@@ -30,23 +30,34 @@ const createWinnersText = (winners) => {
   return $winnersLine;
 };
 
+const createResultWrap = ($content) => {
+  const $restartText = createElement('P', '게임을 재시작하시겠습니까? ');
+  const $restartButton = createElement('BUTTON', '재시작');
+  $restartText.append($restartButton);
+
+  const $resultWrap = createElement('DIV');
+  $resultWrap.id = 'game-result-list';
+  $resultWrap.append($content, $restartText);
+
+  return { $resultWrap, $restartButton };
+};
+
 export default class GameResultDisplay {
   static init() {
     const $gameResult = $('#game-result-list');
     if ($gameResult) $gameResult.remove();
   }
 
-  static draw(gameResult) {
-    const $wrapFragment = createResultWrap(gameResult.count);
-    gameResult.logs.forEach((player) => insertPlayLogs($wrapFragment, player));
+  static draw(gameResult, callback) {
+    const $roundWrapList = createRoundWrap(gameResult.count);
+    gameResult.logs.forEach((player) => insertPlayLogs($roundWrapList, player));
 
     const $winnerText = createWinnersText(gameResult.winners);
-    $wrapFragment.append($winnerText);
+    $roundWrapList.append($winnerText);
 
-    const $result = createElement('DIV');
-    $result.id = 'game-result-list';
-    $result.append($wrapFragment);
+    const { $resultWrap, $restartButton } = createResultWrap($roundWrapList);
+    $('#app').append($resultWrap);
 
-    $('#app').append($result);
+    callback($restartButton);
   }
 }
