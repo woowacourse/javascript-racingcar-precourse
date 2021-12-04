@@ -17,7 +17,7 @@ const $racingCountInput = DOMElement.createById(ELEMENT_ID.RACING_COUNT_INPUT);
 const $racingCountSubmit = DOMElement.createById(
   ELEMENT_ID.RACING_COUNT_SUBMIT
 );
-const $racingResult = DOMElement.createById(ELEMENT_ID.RACING_RESULT);
+const $resultLabel = DOMElement.createById(ELEMENT_ID.RESULT_LABEL);
 
 const renderCurrentRound = (game) => {
   const $round = DOMElement.createByTagName('div');
@@ -87,13 +87,13 @@ const handleRacingCountSubmit = () => {
   $racingCountSubmit.setDisabled(true);
 
   progressGame();
-  $racingResult.show();
+  $resultLabel.show();
 };
 
 const main = () => {
   $racingCountLabel.hide();
   $racingCountForm.hide();
-  $racingResult.hide();
+  $resultLabel.hide();
 
   $carNamesSubmit.addOnClick(handleCarNamesSubmit, true);
   $racingCountSubmit.addOnClick(handleRacingCountSubmit, true);

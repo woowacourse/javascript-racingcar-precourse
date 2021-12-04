@@ -13,6 +13,6 @@ export const ELEMENT_ID = {
   RACING_COUNT_FORM: 'racing-count-form',
   RACING_COUNT_INPUT: 'racing-count-input',
   RACING_COUNT_SUBMIT: 'racing-count-submit',
-  RACING_RESULT: 'racing-result',
+  RESULT_LABEL: 'result-label',
   RACING_WINNERS: 'racing-winners',
 };
