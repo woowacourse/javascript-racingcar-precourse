@@ -22,7 +22,6 @@ export default function racingGame() {
   function submitCarName() {
     const carInput = carNameInput.value;
     const listValue = validateCarName(carInput);
-    console.log(listValue);
     return listValue;
   }
   //User가 입력한 숫자 리턴하는 함수
@@ -36,7 +35,7 @@ export default function racingGame() {
   racingCountSubmitBtn.addEventListener('click', () => {
     const names = submitCarName();
     const count = submitCount();
-    if (count > 0) {
+    if (count != undefined) {
       printRacing(names, count);
     }
   });
