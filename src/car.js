@@ -1,9 +1,9 @@
 import { inputRacingCount } from "./index.js";
+
 export default class Car {
 
-    // 차 이름과 횟수 받음
     constructor(name) {
-        this.carName = name;
+        this.name = name;
         this.racingCount = inputRacingCount.racingCount;
         this.moveArray = this.checkCanMove();
         this.totalDistance = this.totalMove();

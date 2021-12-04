@@ -1,16 +1,15 @@
 import Car from "./car.js";
 export default class RacingGame {
     constructor(carNames, racingCount) {
+        this.$racingWinner = document.getElementById("racing-winner");
+        this.$app = document.getElementById("app");
         this.carNames = carNames;
         this.racingCount = racingCount;
         this.cars = [];
 
-        this.$racingWinner = document.getElementById("racing-winner");
-
-        this.makeCars(this.carNames, this.racingCount);
+        this.makeCars(this.carNames);
         this.winner = this.findWinner(this.cars);
         this.printWinner(this.winner);
-
     }
 
     makeCars(carNames) {
@@ -25,17 +24,15 @@ export default class RacingGame {
         let winner = [];
 
         for(let i = 0; i < cars.length; i++) {
-            console.log(cars[i].totalDistance);
-
             if(cars[i].totalDistance === maxDistance) {
-                winner.push(cars[i].carName);
+                winner.push(cars[i].name);
             } else if(cars[i].totalDistance > maxDistance) {
                 winner = [];
-                winner.push(cars[i].carName);
+                winner.push(cars[i].name);
                 maxDistance = cars[i].totalDistance;
             }
         }
-        console.log(winner);
+
         return winner;
     }
 
@@ -43,7 +40,7 @@ export default class RacingGame {
         let element = [];
 
         this.cars.forEach((car, index) => {
-            element.push(car.carName + ": ");
+            element.push(car.name + ": ");
         })
 
         for(let i = 0; i < this.racingCount; i++) {
@@ -51,9 +48,9 @@ export default class RacingGame {
                 if(this.cars[index].moveArray[i] === true) {
                     element[index] += "-";
                 }
-                document.getElementById("app").insertAdjacentHTML('beforeend', `${element[index]}<br>`);
+                this.$app.insertAdjacentHTML('beforeend', `${element[index]}<br>`);
             })
-            document.getElementById("app").insertAdjacentHTML('beforeend', `<br>`);
+            this.$app.insertAdjacentHTML('beforeend', `<br>`);
         }
     }
 
@@ -63,6 +60,6 @@ export default class RacingGame {
 
         element += `<span id="racing-winners">${winnerNames}</span><br>`; 
         this.printRacing();
-        document.getElementById("app").insertAdjacentHTML('beforeend', element);
+        this.$app.insertAdjacentHTML('beforeend', element);
     }
 }

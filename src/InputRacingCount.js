@@ -14,26 +14,13 @@ export default class InputRacingCount {
         if(inputCarName.carNames.length === 0) {
             this.$racingCountInput.value = "";
             this.racingCount = 0;
-            
+
             return alert("자동차 이름을 먼저 입력해주세요!");
         } else {
             new RacingGame(inputCarName.carNames, this.racingCount);
         }
 
         return;
-    }
-
-    addCountSubmitEvent() {
-        this.$racingCountSubmit.addEventListener("click", (e) => {
-            e.preventDefault();
-            const inputCount = this.$racingCountInput.value;
-
-            if(this.isValidCount(inputCount)) {
-                this.racingCount = inputCount;
-                this.checkHaveCarName();
-            }
-
-        })
     }
 
     checkNumberForm(inputCount) {
@@ -66,5 +53,18 @@ export default class InputRacingCount {
         }
 
         return true;
+    }
+
+    addCountSubmitEvent() {
+        this.$racingCountSubmit.addEventListener("click", (e) => {
+            e.preventDefault();
+            const inputCount = this.$racingCountInput.value;
+
+            if(this.isValidCount(inputCount)) {
+                this.racingCount = inputCount;
+                this.checkHaveCarName();
+            }
+
+        })
     }
 }
