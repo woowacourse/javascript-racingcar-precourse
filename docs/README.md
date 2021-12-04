@@ -65,14 +65,20 @@ DOM이 가지는 이벤트는 클래스에 종속시키지 않고 별도의 hand
 
 - [x] 사용자 입력 이벤트에 대한 유효성 검사를 강화합니다.
   - 현재 레이싱 횟수가 입력되거나 제출하는 데 있어 자동차 이름의 입력 유무를 체크하지 않습니다.
-  > [커밋 링크](https://github.com/InSeong-So/javascript-racingcar-precourse/commit/d9622bb1d95599725b77e858dbedd465d2956495)
+
+    > [커밋 링크](https://github.com/InSeong-So/javascript-racingcar-precourse/commit/d9622bb1d95599725b77e858dbedd465d2956495)
 
 <br>
 
-- [ ] JSDoc을 작성하고 함수를 리팩토링합니다.
+- [x] JSDoc을 작성하고 함수를 리팩토링합니다.
   - isEquals 함수의 역할은 `비어있는지` 여부를 체크하는 것이므로 isEmpty 함수로 작성할 수 있어 보입니다.
+  
+    > [커밋 링크](https://github.com/InSeong-So/javascript-racingcar-precourse/commit/5ce9f2bc3df24b5174ddc9b1f48858b266f36709)
+  
   - 이벤트 내용 중 불필요하게 중복되는 내용이 많아 이를 제거합니다.
   - 예외 사항에 대한 케이스를 찾고 이를 수정합니다.
+    
+    > [커밋 링크](https://github.com/InSeong-So/javascript-racingcar-precourse/commit/69193dcdcca77d1556e3bb98777c67a5a40d9877)
 
 <br>
 
