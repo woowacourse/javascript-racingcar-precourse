@@ -1,4 +1,4 @@
-export const printBars = distance => {
+const printBars = distance => {
   let bars = '';
   for (let i = 0; i < distance; i += 1) {
     bars += '-';
@@ -16,3 +16,13 @@ const printOneRound = carNameDistanceMap => {
 
 export const printCarGameResult = gameResult =>
   `${gameResult.map(printOneRound).join('<br/>')} <br/> 최종 우승자:`;
+
+export const getMovingCarsResult = cars => {
+  const carNameDistanceMap = new Map();
+  cars.forEach(car => {
+    car.goForward();
+    const { name, distance } = car.getCarInformaiton();
+    carNameDistanceMap.set(name, distance);
+  });
+  return carNameDistanceMap;
+};
