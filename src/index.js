@@ -17,6 +17,7 @@ import displayRacingCountForm from './dom/displayRacingCountForm.js';
 import displayRaceStatus from './dom/displayRaceStatus.js';
 import race from './game/race.js';
 import displayRacingResultHeading from './dom/displayRacingResultHeading.js';
+import displayWinners from './dom/displayWinners.js';
 
 export default class RacingGame {
   constructor() {
@@ -31,6 +32,7 @@ export default class RacingGame {
 
     this.cars = [];
     this.racingCount = 0;
+    this.winners = [];
   }
 
   init() {
@@ -51,6 +53,13 @@ export default class RacingGame {
   setRacingCountForm() {
     this.racingCountForm = new Form(ID_RACING_COUNT);
     this.racingCountForm.setButtonAction(ACTION_CHECK_RACING_COUNT);
+  }
+
+  getWinners() {
+    const maxPosition = Car.getMaxPosition(this.cars);
+    return Car.getCarsByPosition(this.cars, maxPosition).map((car) =>
+      car.getName()
+    );
   }
 
   [ACTION_CHECK_CAR_NAMES](e) {
@@ -85,6 +94,9 @@ export default class RacingGame {
       race(this.cars);
       displayRaceStatus(this.app, this.cars);
     }
+
+    this.winners = this.getWinners();
+    displayWinners(this.app, this.winners);
   }
 
   onClick(event) {
