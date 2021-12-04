@@ -127,4 +127,4 @@ class RacingCarGame {
   }
 }
 
-export default RacingCarGame;
+new RacingCarGame();

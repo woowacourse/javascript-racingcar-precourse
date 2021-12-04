@@ -1,5 +1,3 @@
-import RacingCarGame from './RacingCarGame.js';
-
 class Car {
   constructor(name) {
     this.name = name;
@@ -20,5 +18,3 @@ class Car {
 }
 
 export default Car;
-
-new RacingCarGame();
