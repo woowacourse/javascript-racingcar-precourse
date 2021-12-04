@@ -31,6 +31,7 @@ class Result {
       this.$resultContainer.append(br);
       count--;
     }
+
     this.printWinner();
   }
 
