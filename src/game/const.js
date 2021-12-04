@@ -6,7 +6,7 @@ export const VALID_CONDITION_CAR_NAME = {
 export const DIVIDER = ',';
 
 export const VALIDE_CONDITION_RACING_COUNT = {
-  minCount: 1,
+  min: 1,
 };
 
 export const RANGE_RANDOM_NUMBER = {
