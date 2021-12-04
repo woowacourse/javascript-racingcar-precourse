@@ -19,6 +19,6 @@ export function showCountInput() {
   showElement($racingCountForm);
 }
 
-export function showResultSrceen() {
+export function showResultTitle() {
   showElement($racingResultTitle);
 }

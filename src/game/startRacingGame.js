@@ -1,6 +1,7 @@
 import playCarRacing from './playCarRacing.js';
 import printRacingResult from './printRacingResult.js';
 import addSelectedWinner from './addSelectedWinner.js';
+import { showResultTitle } from '../init/setScreen.js';
 
 function makeRacingResult(racingCount, $resultScreenDiv) {
   for (let i = 0; i < racingCount; i++) {
@@ -14,6 +15,7 @@ export default function startRacingGame(racingCount) {
   const $resultScreenDiv = document.createElement('div');
   $app.appendChild($resultScreenDiv);
 
+  showResultTitle();
   makeRacingResult(racingCount, $resultScreenDiv);
   addSelectedWinner($resultScreenDiv);
 }

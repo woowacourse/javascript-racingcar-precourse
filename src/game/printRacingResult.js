@@ -1,5 +1,4 @@
 import { cars } from '../init/cars.js';
-import { showResultSrceen } from '../init/setScreen.js';
 
 function makeRacingResult($resultScreenDiv) {
   cars.forEach((car) => {
@@ -13,5 +12,4 @@ function makeRacingResult($resultScreenDiv) {
 
 export default function printRacingResult($resultScreenDiv) {
   makeRacingResult($resultScreenDiv);
-  showResultSrceen();
 }

@@ -19,18 +19,18 @@ function selectWinner(maxCount) {
   return selectedWinner.map((winner) => winner.name).join(', ');
 }
 
-function makeWinnerString($resultScreenDiv, selectedWinner) {
-  const $winnerSpan = document.createElement('span');
-  $winnerSpan.id = 'racing-winners';
-  $winnerSpan.innerHTML = selectedWinner;
-
+function makeWinnerString($resultScreenDiv, $winnerSpan) {
   $resultScreenDiv.insertAdjacentHTML('beforeend', '최종우승자: ');
   $resultScreenDiv.appendChild($winnerSpan);
 }
 
 export default function addSelectedWinner($resultScreenDiv) {
+  const $winnerSpan = document.createElement('span');
+  $winnerSpan.id = 'racing-winners';
+
   const maxCount = getMaxCount();
   const selectedWinner = selectWinner(maxCount);
+  $winnerSpan.innerHTML = selectedWinner;
 
-  makeWinnerString($resultScreenDiv, selectedWinner);
+  makeWinnerString($resultScreenDiv, $winnerSpan);
 }

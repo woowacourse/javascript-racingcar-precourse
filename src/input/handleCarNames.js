@@ -24,7 +24,6 @@ export default function handleCarNamesSubmit(event) {
   event.preventDefault();
   const $carNamesInput = document.querySelector('#car-names-input');
   const carNames = $carNamesInput.value.split(',').map((car) => car.trim());
-  console.log(carNames);
 
   if (!isValidCarNames(carNames)) {
     $carNamesInput.value = '';
