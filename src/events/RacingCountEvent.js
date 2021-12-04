@@ -15,6 +15,7 @@ export default class RacingCountEvent {
 
   alertErrorMessage = () => {
     alert(ERROR_MESSAGE.NO_POSITIVE_INTEGER);
+    this.$racingCountInput.focus();
   };
 
   isPositiveInteger = () => {

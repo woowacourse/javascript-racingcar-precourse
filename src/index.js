@@ -1,4 +1,4 @@
-import { DOM } from './constant/constant.js';
+import { CAUTION_MESSAGE, DOM } from './constant/constant.js';
 import CarNamesEvent from './events/CarNamesEvent.js';
 import RacingCountEvent from './events/RacingCountEvent.js';
 import Game from './Game/Game.js';
@@ -26,15 +26,35 @@ class RacingCar {
     game.start();
   };
 
+  isCarNamesSubmit = () => {
+    if (this.carNames.length === 0) {
+      this.racingCountEvent.alertCautionMessage(CAUTION_MESSAGE.FIRST_CAR_NAMES_SUBMIT);
+
+      return false;
+    }
+
+    return true;
+  };
+
+  isValidateCount = () => {
+    if (!this.racingCountEvent.validateCount()) {
+      this.racingCountEvent.alertErrorMessage();
+
+      return false;
+    }
+
+    return true;
+  };
+
   racingCountSubmit = () => {
     this.$racingCountSubmit.addEventListener('click', (event) => {
       event.preventDefault();
-      const isValidate = this.racingCountEvent.validateCount();
 
-      if (!isValidate) {
-        this.racingCountEvent.alertErrorMessage();
-        this.$racingCountInput.focus();
+      if (!this.isCarNamesSubmit()) {
+        return;
+      }
 
+      if (!this.isValidateCount()) {
         return;
       }
 
