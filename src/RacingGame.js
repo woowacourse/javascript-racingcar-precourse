@@ -36,12 +36,18 @@ export default class RacingGame {
         return winner;
     }
 
-    printRacing() {
+    initElement() {
         let element = [];
 
         this.cars.forEach((car, index) => {
             element.push(car.name + ": ");
         })
+
+        return element;
+    }
+
+    printRacing() {
+        let element = this.initElement();
 
         for(let i = 0; i < this.racingCount; i++) {
             element.forEach((string, index) => {
