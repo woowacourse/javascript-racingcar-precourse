@@ -5,10 +5,11 @@ import {
 } from "./constants.js";
 import Validator from "./validator.js";
 import Car from "./car.js";
+import { htmlToElement } from "./utils.js";
 
 class RacingGame {
   constructor() {
-    const { CAR_NAMES_INPUT, CAR_NAMES_SUBMIT, RACING_COUNT_INPUT, RACING_COUNT_SUBMIT } = ELEMENT_IDS;
+    const { CAR_NAMES_INPUT, CAR_NAMES_SUBMIT, RACING_COUNT_INPUT, RACING_COUNT_SUBMIT, APP } = ELEMENT_IDS;
     this.$carNamesInput = document.querySelector(`#${CAR_NAMES_INPUT}`);
     this.$carNamesSubmit = document.querySelector(`#${CAR_NAMES_SUBMIT}`);
     this.$carNamesSubmit.addEventListener('click', () => this.handleSubmitCarNames());
@@ -16,6 +17,14 @@ class RacingGame {
     this.$racingCountInput = document.querySelector(`#${RACING_COUNT_INPUT}`);
     this.$racingCountSubmit = document.querySelector(`#${RACING_COUNT_SUBMIT}`);
     this.$racingCountSubmit.addEventListener('click', () => this.handleSubmitRacingCount());
+
+    this.$app = document.querySelector(`#${APP}`);
+    this.insertRacingScreen(this.$app);
+  }
+  insertRacingScreen($app) {
+    const screen = htmlToElement(`<div id="${ELEMENT_IDS.RACING_SCREEN}"></div>`);
+    $app.insertAdjacentElement('beforeend', screen);
+    this.$racingScreen = screen;
   }
   createCars(carNameArr) {
     return carNameArr.map((name) => {
@@ -48,10 +57,19 @@ class RacingGame {
       car.shouldGo(randomNum) && car.go();
     });
   }
+  printCurrentPosition() {
+    let ul = `<ul>`;
+    this.cars.forEach((car) => {
+      ul += `<li>${car.name}: ${'-'.repeat(car.position)}</li>`;
+    });
+    ul += `</ul>`;
+    this.$racingScreen.insertAdjacentElement('beforeend', htmlToElement(ul));
+  }
   play() {
     this.cars = this.createCars(this.carNames.split(','));
     for(let i = 0; i < this.racingCount; i++) {
       this.moveCars();
+      this.printCurrentPosition();
     }
   }
 }

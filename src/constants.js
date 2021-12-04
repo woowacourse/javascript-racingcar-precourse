@@ -1,8 +1,10 @@
 export const ELEMENT_IDS = {
+  APP: 'app',
   CAR_NAMES_INPUT: 'car-names-input',
   CAR_NAMES_SUBMIT: 'car-names-submit',
   RACING_COUNT_INPUT: 'racing-count-input',
   RACING_COUNT_SUBMIT: 'racing-count-submit',
+  RACING_SCREEN: 'racing-screen',
 }
 export const ERROR_MESSAGE = {
   CAR_NAMES: '쉼표(,)로 구분된 5글자 이하의 자동차 이름을 입력해주세요',
