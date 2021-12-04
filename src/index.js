@@ -27,14 +27,16 @@ class RacingCarGame {
     this.triggerCountInputEvent();
     this.triggerCarNamesInputEvent();
 
-    this.$app.appendChild(this.$resultTextDiv);
+    this.makeDOM();
+    this.resetDOM();
+  }
 
+  makeDOM() {
+    this.$app.appendChild(this.$resultTextDiv);
     this.$winnerTextSpan.setAttribute('id', 'racing-winners');
     this.$app.appendChild(this.$winnerTextDiv);
     this.$winnerTextDiv.innerText = '최종 우승자: ';
     this.$winnerTextDiv.appendChild(this.$winnerTextSpan);
-
-    this.resetDOM();
   }
 
   resetDOM() {
@@ -59,6 +61,10 @@ class RacingCarGame {
     this.moveCars();
     this.showRoundResult();
     this.showWinner();
+    this.showResultDOM();
+  }
+
+  showResultDOM() {
     showElement(this.$racingResultHeading);
     showElement(this.$winnerTextDiv);
   }
