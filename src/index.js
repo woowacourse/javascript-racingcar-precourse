@@ -33,6 +33,7 @@ class GameController {
     e.preventDefault();
     const racingCount = $racingCountInput.value;
     this.racingCarGame.setRacingCount(racingCount);
+    this.racingCarGame.play()
   }
 }
 

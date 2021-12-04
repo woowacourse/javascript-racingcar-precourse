@@ -10,5 +10,9 @@ export const CONSTRAINTS = {
   MAX_NAME_LENGTH: 5,
   MIN_CAR_NUMBER: 2,
   MIN_OF_RANGE: 0,
-  MAX_OF_RANGH: 9,
+  MAX_OF_RANGE: 9,
+};
+
+export const CONSTANTS = {
+  MOVING_POINT: 4,
 };
