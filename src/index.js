@@ -10,12 +10,10 @@ class RacingGame {
     this.$carNamesInput = document.querySelector(`#${CAR_NAMES_INPUT}`);
     this.$carNamesSubmit = document.querySelector(`#${CAR_NAMES_SUBMIT}`);
     this.$carNamesSubmit.addEventListener('click', () => this.handleSubmitCarNames());
-    this.cars = [];
 
     this.$racingCountInput = document.querySelector(`#${RACING_COUNT_INPUT}`);
     this.$racingCountSubmit = document.querySelector(`#${RACING_COUNT_SUBMIT}`);
     this.$racingCountSubmit.addEventListener('click', () => this.handleSubmitRacingCount());
-    this.racingCount = 0;
   }
   createCars(carNameArr) {
     return carNameArr.map((name) => {
