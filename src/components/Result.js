@@ -22,6 +22,13 @@ class GameResult {
       this.$resultContainer.append(br);
       count--;
     }
+
+    this.printWinner();
+  }
+
+  printWinner() {
+    const winner = this.game.getWinner();
+    console.log(winner);
   }
 }
 

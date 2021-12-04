@@ -10,6 +10,15 @@ class Game {
 
     return this.cars;
   }
+
+  getWinner() {
+    let maxDistance = 0;
+    this.cars.forEach(car => {
+      maxDistance = Math.max(maxDistance, car.distance.length);
+    });
+
+    return this.cars.filter(car => car.distance.length === maxDistance);
+  }
 }
 
 export default Game;
