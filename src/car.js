@@ -13,25 +13,26 @@ export default class Car {
         return MissionUtils.Random.pickNumberInRange(0, 9);
     }
 
+    goOrStop(randomNum) {
+        if(randomNum < 4) {
+            return false;
+        }
+
+        return true;
+    }
+
     // 각 회차마다 갈 수 있는지 없는지 저장
     checkCanMove() {
         const canMove = [];
 
         for(let i = 0; i < this.racingCount; i++) {
             const randomNum = this.makeRandomNum();
-
-            // 나중에 여기 함수로 분리
-            if(randomNum > 3) {
-                canMove.push(true);
-            } else {
-                canMove.push(false);
-            }
+            canMove.push(this.goOrStop(randomNum));
         }
 
         return canMove;
     }
 
-    // 총 이동 거리 구하는 함수 - 최종 우승자 구하는 용
     totalMove() {
         let countMove = 0;
 
