@@ -1,5 +1,7 @@
 import {
   ELEMENT_IDS,
+  RANDOM_NUM_RANGE,
+  MIN_NUM_TO_GO,
 } from "./constants.js";
 import Validator from "./validator.js";
 import Car from "./car.js";
@@ -27,8 +29,7 @@ class RacingGame {
       alert(message);
       return;
     }
-    const validCarArr = carNames.split(',');
-    this.cars = this.createCars(validCarArr);
+    this.carNames = carNames;
   }
   handleSubmitRacingCount() {
     const racingCount = this.$racingCountInput.value;
@@ -38,6 +39,20 @@ class RacingGame {
       return;
     }
     this.racingCount = parseInt(racingCount, 10);
+    this.play();
+  }
+  moveCars() {
+    const [MIN, MAX] = RANDOM_NUM_RANGE;
+    this.cars.forEach((car) => {
+      const randomNum = MissionUtils.Random.pickNumberInRange(MIN, MAX);
+      car.shouldGo(randomNum) && car.go();
+    });
+  }
+  play() {
+    this.cars = this.createCars(this.carNames.split(','));
+    for(let i = 0; i < this.racingCount; i++) {
+      this.moveCars();
+    }
   }
 }
 
