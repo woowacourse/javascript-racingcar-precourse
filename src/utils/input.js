@@ -1,9 +1,7 @@
 export const parseCarNames = names => names.split(',').map(name => name.trim());
 
-export const hasDuplicatedName = names => {
-  const { length } = names;
-  return new Set(names).size < length;
-};
+export const hasDuplicatedName = names => new Set(names).size < names.length;
+
 export const isValidCarNames = names => {
   if (names.length === 0) return false;
   if (hasDuplicatedName(names)) return false;
