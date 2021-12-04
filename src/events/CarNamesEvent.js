@@ -99,6 +99,10 @@ export default class CarNamesEvent {
     return true;
   };
 
+  getInput = () => {
+    return this.carNamesArray;
+  };
+
   validateNames = () => {
     this.carNames = this.$carNamesInput.value;
     const isValidate =

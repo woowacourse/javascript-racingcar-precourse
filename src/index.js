@@ -10,6 +10,7 @@ class RacingCar {
     this.$racingCountSubmit = DOM.racingCountSubmit;
     this.$racingCountInput = DOM.racingCountInput;
     this.$carNamesSubmit = DOM.carNamesSubmit;
+    this.carNames = [];
     this.main();
   }
 
@@ -41,6 +42,8 @@ class RacingCar {
       if (!this.carNamesEvent.validateNames()) {
         this.carNamesEvent.alertMessage();
       }
+
+      this.carNames = this.carNamesEvent.getInput();
     });
   };
 
