@@ -1,3 +1,5 @@
+import { changeDistanceToBar } from './utils.js';
+
 export default class CarRacing {
   constructor(cars) {
     this.cars = cars;
@@ -5,7 +7,10 @@ export default class CarRacing {
   }
 
   play = (count) => {
-    return this.start(count);
+    const racingResults = this.start(count);
+    const eachResultTemplate = this.printRacingResult(racingResults);
+    const finalWinnerTemplate = this.printFinalWinner(racingResults[count - 1]);
+    return eachResultTemplate + finalWinnerTemplate;
   };
 
   start = (count) => {
@@ -23,13 +28,42 @@ export default class CarRacing {
   };
 
   printRacingResult = (racingResults) => {
-    // 각 횟수마다 레이싱 결과 템플릿 리턴
+    const eachResultTemplate = this.template.getEachResult(racingResults);
+    return eachResultTemplate;
   };
 
   printFinalWinner = (arr) => {
-    // TODO : 최종 우승자 템플릿 리턴
+    const max = Math.max(...arr.map((car) => car.distance));
+    const winners = arr
+      .filter((car) => car.distance === max)
+      .map((car) => car.name);
+    const finalWinnerTemplate = this.template.getFinalWinner(winners);
+    return finalWinnerTemplate;
   };
 }
 
 class Template {
+  getEachResult = (data = []) => {
+    return `<div>${data
+      .map((eachResult) => {
+        return `<ul style="list-style: none; padding: 0;">
+        ${eachResult.map(this._getCarDistance).join('')}
+      </ul>`;
+      })
+      .join('')}
+    </div>`;
+  };
+
+  _getCarDistance = ({ name, distance }) => {
+    return `<li>
+      ${name}: ${changeDistanceToBar(distance).join('')}
+    </li>`;
+  };
+
+  getFinalWinner = (data = []) => {
+    return `<div>
+      <span>최종 우승자: </span>
+      <span id="racing-winners">${data.join(', ')}</span>
+    </div>`;
+  };
 }

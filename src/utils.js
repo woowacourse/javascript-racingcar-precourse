@@ -24,3 +24,11 @@ export function checkOverFiveLetters(cars) {
   }
   return true;
 }
+
+export function changeDistanceToBar(distance) {
+  const bar = [];
+  for (let i = 0; i < distance; i++) {
+    bar.push('-');
+  }
+  return bar;
+};

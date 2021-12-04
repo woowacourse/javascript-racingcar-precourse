@@ -12,6 +12,7 @@ import {
 const { BLOCK, INLINE_BLOCK, NONE } = STYLE_DISPLAY;
 const { MORE_THAN_FIVE_LETTERS, NO_MORE_THAN_ZERO } = ERROR_MESSAGE;
 
+const app = qs('#app');
 const carNamesInput = qs('#car-names-input');
 const carNamesSubmitButton = qs('#car-names-submit');
 const racingCountInput = qs('#racing-count-input');
@@ -53,5 +54,13 @@ on(racingCountSubmitButton, 'click', (event) => {
   }
 
   const carRacing = new CarRacing(cars);
-  carRacing.play(racingCountInput.value);
+  const resultTemplate = carRacing.play(racingCountInput.value);
+  showRacingResult(resultTemplate);
 });
+
+function showRacingResult(resultTemplate) {
+  setStyleDisplay(resultMessage, BLOCK);
+  const racingResult = document.createElement('div');
+  racingResult.innerHTML = resultTemplate;
+  app.append(racingResult);
+}
