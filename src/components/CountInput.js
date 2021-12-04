@@ -1,3 +1,4 @@
+import { clearInput } from '../utils/clearInput.js';
 import { isValidCount } from '../utils/valid.js';
 
 class CountInput {
