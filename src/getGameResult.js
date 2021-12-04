@@ -13,10 +13,8 @@ export function getGameResult(CARS) {
     let winner = getWinner(CARS);
     winner = winner.join(',');
 
-    document.querySelector('body').innerHTML += `<span id="racing-winners">
-                                                    <p>최종 우승자 : ${winner}</p>
-                                                    <button id='game-reset-button'>재시작</button>
-                                                </span>`;
+    document.querySelector('body').innerHTML += `최종 우승자 : <span id="racing-winners">${winner}</span><br>`;
+    document.querySelector('body').innerHTML += '<button id="game-reset-button">재시작</button>'
 
     restart();
 }
