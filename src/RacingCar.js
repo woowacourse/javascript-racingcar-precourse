@@ -2,10 +2,11 @@ import Car from "./Car.js";
 
 export default class RacingCar {
   constructor() {
-    this.$result;
-    this.$winnerDiv;
     this.$app = document.getElementById("app");
     this.cars = [];
+    this.$result;
+    this.$winnerDiv;
+
     this.init();
   }
 
@@ -46,7 +47,6 @@ export default class RacingCar {
     const winner = this.cars
       .filter(car => car.moveDistance === maxDistance)
       .map(car => car.name);
-
     this.$winnerDiv.innerHTML = this.getWinnerString(winner);
   }
 

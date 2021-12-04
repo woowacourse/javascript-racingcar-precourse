@@ -19,7 +19,6 @@ const onClickSubmitCarNames = event => {
 
 const onClickSubmitRacingCount = event => {
   event.preventDefault();
-
   racingCar.resetGame();
 
   const racingCountInput = $racing_count_input.value;
