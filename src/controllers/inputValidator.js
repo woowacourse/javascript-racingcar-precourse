@@ -6,6 +6,7 @@ import {
   INPUT_RACING_COUNT_VALID_NUMBER,
 } from '../utils/errorHandler.js';
 import Validator from '../utils/validator.js';
+import { parseCars, parseRacingCount } from './inputParser.js';
 
 /* 공통 */
 const rejectEmptyInput = (input) => {
@@ -18,11 +19,11 @@ const rejectEmptyInput = (input) => {
 
 /* Car Names Validation */
 const successIfEveryCarNameIsValidLength = (input) => {
-  const carNames = input.split(',');
-  const isCarNameValidLength = (carName) =>
-    carName.length > 0 && carName.length <= CAR_NAME_MAX_LENGTH;
+  const cars = parseCars(input);
+  const isCarNameValidLength = (car) =>
+    car.name.length > 0 && car.name.length <= CAR_NAME_MAX_LENGTH;
 
-  if (carNames.every(isCarNameValidLength)) {
+  if (cars.every(isCarNameValidLength)) {
     return Validator.success();
   }
 
@@ -30,7 +31,8 @@ const successIfEveryCarNameIsValidLength = (input) => {
 };
 
 const rejectDuplicateCarName = (input) => {
-  const carNames = input.split(',');
+  const cars = parseCars(input);
+  const carNames = cars.map((car) => car.name);
   const hasDuplicateCarName = carNames.length !== new Set(carNames).size;
 
   if (hasDuplicateCarName) {
@@ -42,7 +44,7 @@ const rejectDuplicateCarName = (input) => {
 
 /* Racing Count Validation */
 const successIfRacingCountInValidRange = (input) => {
-  const racingCount = Number(input);
+  const racingCount = parseRacingCount(input);
   const isValidRacingCount =
     Number.isInteger(racingCount) &&
     racingCount >= RACING_COUNT_RANGE.min &&

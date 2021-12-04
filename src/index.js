@@ -4,9 +4,9 @@ import {
   racingCountInputValidator,
 } from './controllers/inputValidator.js';
 import GameController from './controllers/gameController.js';
-import Car from './models/car.js';
 import { handleError } from './utils/errorHandler.js';
 import DOMElement from './views/domElement.js';
+import { parseCars, parseRacingCount } from './controllers/inputParser.js';
 
 const $carNamesInput = DOMElement.createById(ELEMENT_ID.CAR_NAMES_INPUT);
 const $carNamesSubmit = DOMElement.createById(ELEMENT_ID.CAR_NAMES_SUBMIT);
@@ -47,10 +47,8 @@ const renderWinnerNames = (game) => {
 };
 
 const progressGame = () => {
-  const carNamesText = $carNamesInput.getValue();
-  const cars = carNamesText.split(',').map((name) => new Car(name));
-  const racingCountText = $racingCountInput.getValue();
-  const racingCount = Number(racingCountText);
+  const cars = parseCars($carNamesInput.getValue());
+  const racingCount = parseRacingCount($racingCountInput.getValue());
   const game = new GameController(cars, racingCount);
 
   $racingResult.appendChild(DOMElement.createByTagName('br'));
