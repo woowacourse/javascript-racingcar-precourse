@@ -21,8 +21,7 @@ export default class RacingCountForm extends Component {
   }
 
   render() {
-    const { gameStatus } = this.props;
-    if (gameStatus === GAME_STATUS.RACING_COUNT_REQUIRED) {
+    if (this.props.gameStatus === GAME_STATUS.RACING_COUNT_REQUIRED) {
       return enableForm(this.container);
     }
     disableForm(this.container);
