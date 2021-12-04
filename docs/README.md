@@ -187,7 +187,7 @@
 1. [무작위 값 생성하기](https://github.com/leegwae/javascript-racingcar-precourse/tree/leegwae/docs#%EB%AC%B4%EC%9E%91%EC%9C%84-%EA%B0%92-%EC%83%9D%EC%84%B1%ED%95%98%EA%B8%B0): 각각의 `자동차`마다 `무작위 값`을 생성한다.
 2. [무작위 값 검사하기](https://github.com/leegwae/javascript-racingcar-precourse/tree/leegwae/docs#%EB%AC%B4%EC%9E%91%EC%9C%84-%EA%B0%92-%EA%B2%80%EC%82%AC%ED%95%98%EA%B8%B0): 각각의 `자동차`에 생성된 `무작위 값`을 검사한다.
 3. [무작위 값 처리하기](https://github.com/leegwae/javascript-racingcar-precourse/tree/leegwae/docs#%EB%AC%B4%EC%9E%91%EC%9C%84-%EA%B0%92-%EC%B2%98%EB%A6%AC%ED%95%98%EA%B8%B0): 자신의 `무작위 값`에 따라 `자동차`는 전진하거나 머무른다.
-4. [경주 현황 표시하기](https://github.com/leegwae/javascript-racingcar-precourse/tree/leegwae/docs#%EA%B2%BD%EC%A3%BC-%EC%A7%84%ED%96%89%ED%95%98%EA%B8%B0): 각각의 자동차의 위치를 표시한다.
+4. [경주 현황 표시하기](https://github.com/leegwae/javascript-racingcar-precourse/tree/leegwae/docs#%EA%B2%BD%EC%A3%BC-%ED%98%84%ED%99%A9-%ED%91%9C%EC%8B%9C%ED%95%98%EA%B8%B0): 각각의 자동차의 위치를 표시한다.
 
 
 
@@ -231,7 +231,7 @@
 
 
 
-## 🏆 경주 우승자 판단하기
+## 🏆 최종 우승자 판단하기
 
 [완료 커밋](https://github.com/leegwae/javascript-racingcar-precourse/commit/e73f1b08094d57978e6fa6c92f483bfeb857eb97)
 
@@ -243,7 +243,7 @@
 
 
 
-## :newspaper: 경주 우승자 표시하기
+## :newspaper: 최종 우승자 표시하기
 
 [완료 커밋](https://github.com/leegwae/javascript-racingcar-precourse/commit/f5146e4c2678f3ad8daff5f3fb0d9feab3815685)
 
@@ -253,10 +253,10 @@
 
 
 
-### 경주 우승자 표시하기
+### 최종 우승자 표시하기
 
 [완료 커밋](https://github.com/leegwae/javascript-racingcar-precourse/commit/25b841a9ddf4532237a426dd14fafbf3d236effb)
 
-- [x] 경주 우승자는 `경주 우승자: 자동차이름`으로 표시한다.
-- [x] 경주 우승자가 여러 대이면 `,`(쉼표)로 구분한다.
+- [x] 최종 우승자는 `최종 우승자: 자동차이름`으로 표시한다.
+- [x] 최종 우승자가 여러 대이면 `,`(쉼표)로 구분한다.
 
