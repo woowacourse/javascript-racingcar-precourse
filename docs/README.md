@@ -5,6 +5,8 @@
   - 중복된 이름은 허용하지 않음
 - Racing Count
   - 1 ~ 9 까지만 허용 (페이지가 과도하게 길어지는 것을 방지하기 위해서)
+- HTML input form
+  - Car Names를 정상적으로 입력하면 `car-names-input`과 `car-names-submit`은 잠기도록 설정함 (Car Names 입력 후 Racing Count를 입력하는 것이 의도된 사항인데, Car Names를 다시 잘못 입력하는 등의 inconsitent한 예외 상황을 막는 것의 가치가 더 높다고 생각했기 때문)
 
 ## 구현할 기능 목록
 
