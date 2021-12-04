@@ -242,6 +242,8 @@
 
 ## :newspaper: 경주 우승자 표시하기
 
+[완료 커밋](https://github.com/leegwae/javascript-racingcar-precourse/commit/f5146e4c2678f3ad8daff5f3fb0d9feab3815685)
+
 ![실행이미지](../images/result.jpg)
 
 - [ ] [최종 우승자 표시하기](https://github.com/leegwae/javascript-racingcar-precourse/tree/leegwae/docs#%EC%B5%9C%EC%A2%85-%EC%9A%B0%EC%8A%B9%EC%9E%90-%ED%91%9C%EC%8B%9C%ED%95%98%EA%B8%B0): 사용자는 `racing-winners` span 태그로 `최종 우승자`를 확인할 수 있다.
