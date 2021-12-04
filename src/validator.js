@@ -16,7 +16,7 @@ export default class Validator {
   }
   static isValidRacingCount(racingCount) {
     const { RACING_COUNT } = ERROR_MESSAGE;
-    const isValid = !(new RegExp('[^1-9]+')).test(racingCount);
+    const isValid = !!racingCount && !(new RegExp('[^0-9]+')).test(racingCount);
     return { isValid, message: isValid ? null : RACING_COUNT };
   }
 }
