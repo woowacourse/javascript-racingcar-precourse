@@ -1,5 +1,8 @@
+import Car from './car.js';
 import generateRandomNumber from './game/utils/generateRandomNumber.js';
 import isMovable from './game/utils/isMovable.js';
+import toCarNameList from './game/utils/toCarNameList.js';
+import { TEXT_CAR_POSITION } from './dom/const.js';
 
 export default class RacingGameManager {
   constructor() {
@@ -20,8 +23,8 @@ export default class RacingGameManager {
     return this.winners;
   }
 
-  setCars(cars) {
-    this.cars = cars;
+  setCarsByInput(input) {
+    this.cars = Car.generateCarsByNames(toCarNameList(input));
   }
 
   setRacingCount(racingCount) {
@@ -41,6 +44,18 @@ export default class RacingGameManager {
 
   getCarsByPosition(position) {
     return this.cars.filter((car) => car.getPosition() === position);
+  }
+
+  getCurrentRaceStatus() {
+    const raceStatus = this.cars.map((car) => {
+      const name = car.getName();
+      const position = TEXT_CAR_POSITION.repeat(car.getPosition());
+      const status = `${name}: ${position}`;
+
+      return status;
+    });
+
+    return raceStatus;
   }
 
   judgeWinners() {

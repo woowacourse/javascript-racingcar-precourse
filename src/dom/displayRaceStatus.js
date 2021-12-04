@@ -1,11 +1,10 @@
-import generateRaceStatus from './generateRaceStatus.js';
+import generateTextElement from './utils/generateTextElement.js';
 
-function displayRaceStatus(parent, cars) {
-  const raceStatus = generateRaceStatus(cars);
+function displayRaceStatus(parent, raceStatus) {
   const paragraph = document.createElement('p');
 
-  raceStatus.forEach((status) => {
-    paragraph.appendChild(status);
+  raceStatus.forEach((carStatus) => {
+    paragraph.appendChild(generateTextElement('div', carStatus));
   });
 
   parent.appendChild(paragraph);

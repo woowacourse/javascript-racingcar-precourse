@@ -6,18 +6,16 @@ import {
   KEY_FORM_RACING_COUNT,
   BUTTON_SUBMIT_TEXT,
 } from './dom/const.js';
-import Car from './car.js';
+import RacingGameManager from './racingGameManager.js';
 import removeChildrenByTagName from './dom/utils/removeChildrenByTag.js';
 import createFormManagerByKey from './dom/createFormManagerByKey.js';
+import displayFormByKey from './dom/displayFormByKey.js';
 import isValidCarNamesInput from './game/utils/isValidCarNamesInput.js';
 import isValidRacingCountInput from './game/utils/isValidRacingCountInput.js';
-import toCarNameList from './game/utils/toCarNameList.js';
-import displayFormByKey from './dom/displayFormByKey.js';
 import displayRacingCountHeading from './dom/displayRacingCountHeading.js';
 import displayRacingResultHeading from './dom/displayRacingResultHeading.js';
 import displayRaceStatus from './dom/displayRaceStatus.js';
 import displayWinners from './dom/displayWinners.js';
-import RacingGameManager from './racingGameManager.js';
 
 export default class RacingGame {
   constructor() {
@@ -63,8 +61,7 @@ export default class RacingGame {
       return;
     }
 
-    const cars = Car.generateCarsByNames(toCarNameList(input));
-    this.racingGameManager.setCars(cars);
+    this.racingGameManager.setCarsByInput(input);
     displayRacingCountHeading(this.app);
     this.displayRacingCountForm();
   }
@@ -73,18 +70,21 @@ export default class RacingGame {
     e.preventDefault();
 
     const input = this.racingCountForm.getInputValue();
+
     if (!isValidRacingCountInput(input)) {
       alert(MSG_ERROR);
       this.racingCountForm.initInputValue();
       return;
     }
 
-    const racingCount = Number(input);
-    this.racingGameManager.setRacingCount(racingCount);
+    this.racingGameManager.setRacingCountByInput(input);
     displayRacingResultHeading(this.app);
     for (let i = 0; i < this.racingGameManager.getRacingCount(); i++) {
       this.racingGameManager.race();
-      displayRaceStatus(this.app, this.racingGameManager.getCars());
+      displayRaceStatus(
+        this.app,
+        this.racingGameManager.getCurrentRaceStatus()
+      );
     }
     this.racingGameManager.judgeWinners();
     displayWinners(this.app, this.racingGameManager.getWinners());
