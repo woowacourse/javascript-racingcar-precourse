@@ -14,7 +14,7 @@ export default class Car {
 
   goAndStop() {
     if (Math.floor(Math.random() * 10) >= 4) {
-      this.increase += 1;
+      this.forward += 1;
     }
   }
 }
