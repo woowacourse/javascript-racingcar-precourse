@@ -56,7 +56,10 @@
       <li>랜덤 값 생성은 <a href="https://github.com/woowacourse-projects/javascript-mission-utils#mission-utils"><code>MissionUtils</code> 라이브러리</a>의 <code>Random.pickNumberInRange</code>를 사용한다.</li>
     </ul>
   </details>
-- [x] 자동차 객체의 이름과 함께 현재 위치를 포함하여 결과를 출력한다.
-- [x] 위 두 과정을 반복할 횟수만큼 반복한다.
+- [x] 반복할 횟수만큼 자동차 전진여부를 결정하고 결과를 저장한다.
+- [x] 경주의 과정을 전부 출력한다.
+  - [x] 숨겼던 '실행결과' 제목을 다시 보이게 한다.
+  - [x] 반복할 횟수만큼 경주결과를 차례대로 출력한다.
+  - [x] 게임 재시작을 위해 입력이 다시 들어오면 이전 결과를 지운다.
 - [x] 자동차들 중 가장 많이 전진한 자동차(들)를 선정한다.
 - [x] 우승자 결과를 화면에 보여준다.
