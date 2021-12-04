@@ -14,6 +14,6 @@ export const playAll = (cars, count) => {
   const max = Math.max(...result.map(item => item.distance), 0);
   result.forEach(item => item.distance === max && winner.push(item.name));
 
-  $('#racing-winners').innerHTML = `최종 우승자: ${winner.join(', ')}`;
-  return winner;
+  $('#racing-winners').innerHTML = `${winner.join(', ')}`;
+  return `최종 우승자: ${winner.join(', ')}`
 };
