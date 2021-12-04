@@ -5,8 +5,17 @@ import CountInput from './components/CountInput.js';
 class App {
   constructor($target) {
     this.$target = $target;
+    this.state = {
+      names: [],
+      count: 0,
+    };
     this.render();
   }
+
+  setState = newState => {
+    this.state = { ...this.state, ...newState };
+    console.log('현재상태', this.state);
+  };
 
   render() {
     this.addTemplate();
@@ -28,7 +37,10 @@ class App {
   }
 
   mounted() {
-    new NameInput(this.$nameInput);
+    new NameInput({
+      $nameInput: this.$nameInput,
+      setState: this.setState,
+    });
     new CountInput(this.$countInput);
   }
 }
