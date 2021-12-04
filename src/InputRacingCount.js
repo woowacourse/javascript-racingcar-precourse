@@ -64,7 +64,6 @@ export default class InputRacingCount {
                 this.racingCount = inputCount;
                 this.checkHaveCarName();
             }
-
         })
     }
 }

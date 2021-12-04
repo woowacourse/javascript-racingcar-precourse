@@ -48,7 +48,7 @@ export default class InputCarName {
 
         if(this.isValidNames(carNamesArray)) {
             this.carNames = carNamesArray.slice();
-        };
+        }
 
         return;
     }

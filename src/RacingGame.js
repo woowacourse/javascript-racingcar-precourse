@@ -46,15 +46,19 @@ export default class RacingGame {
         return element;
     }
 
+    addDistance(text, element, index) {
+        if(text === true) {
+            element[index] += "-";
+        }
+        return this.$app.insertAdjacentHTML('beforeend', `${element[index]}<br>`);
+    }
+
     printRacing() {
         let element = this.initElement();
 
         for(let i = 0; i < this.racingCount; i++) {
             element.forEach((string, index) => {
-                if(this.cars[index].moveArray[i] === true) {
-                    element[index] += "-";
-                }
-                this.$app.insertAdjacentHTML('beforeend', `${element[index]}<br>`);
+                this.addDistance(this.cars[index].moveArray[i], element, index);
             })
             this.$app.insertAdjacentHTML('beforeend', `<br>`);
         }
