@@ -19,6 +19,7 @@ export const SELECTOR = {
         RACING_COUNT_INPUT: "racing-count-input",
         RACING_COUNT_SUBMIT: "racing-count-submit",
         RESULT: "result",
+        RACING_WINNERS: "racing-winners",
     },
 };
 
@@ -31,5 +32,8 @@ export const CAR = {
 export const STYLE = {
     RESULT_MARGIN_VERTICAL: "16px",
     RESULT_MARGIN_HORIZONTAL: "0",
-    SPAN_FONT_SIZE: "16px",
+};
+
+export const COMMENT = {
+    FINAL_WINNER: "최종우승자: ",
 };

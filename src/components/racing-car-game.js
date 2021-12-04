@@ -1,5 +1,5 @@
 import { CarNameInput } from "./car-names-input.js";
-import { hideNode, showNode, createResultNode, disableForm } from "../utils/dom.js";
+import { hideNode, showNode, createResultNode, disableForm, createWinnersNode } from "../utils/dom.js";
 import { SELECTOR } from "../constants/constant.js";
 import { Car } from "../model/car.js";
 import { RacingCount } from "./racing-count.js";
@@ -49,6 +49,7 @@ export class RacingCarGame {
         showNode(this.$result);
         disableForm(this.$racingCount);
         this.state.winners = selectWinners(this.state.cars);
+        this.printWinner();
     }
     moveCars() {
         this.state.cars.forEach((car) => {
@@ -60,5 +61,9 @@ export class RacingCarGame {
     printState() {
         const $resultNode = createResultNode(this.state.cars);
         this.$target.appendChild($resultNode);
+    }
+    printWinner() {
+        const $winnerNode = createWinnersNode(this.state.winners);
+        this.$target.appendChild($winnerNode);
     }
 }

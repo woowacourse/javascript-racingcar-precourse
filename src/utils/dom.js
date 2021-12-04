@@ -1,4 +1,4 @@
-import { STYLE } from "../constants/constant.js";
+import { STYLE, COMMENT, SELECTOR } from "../constants/constant.js";
 
 export const hideNode = ($node) => {
     $node.style.display = "none";
@@ -32,4 +32,18 @@ export const createResultNode = (cars) => {
 
 export const disableForm = ($form) => {
     $form.childNodes.forEach((node) => (node.disabled = true));
+};
+
+export const createWinnersNode = (winners) => {
+    const $winnerContainer = document.createElement("div");
+    const $textNode = document.createTextNode(COMMENT.FINAL_WINNER);
+    $winnerContainer.appendChild($textNode);
+    const $winnersSpan = document.createElement("span");
+    const winnersName = winners.map((car) => car.name);
+    const winnersList = winnersName.reduce((acc, cur) => acc + "," + cur);
+    const $winners = document.createTextNode(winnersList);
+    $winnersSpan.appendChild($winners);
+    $winnersSpan.id = SELECTOR.ID.RACING_WINNERS;
+    $winnerContainer.appendChild($winnersSpan);
+    return $winnerContainer;
 };
