@@ -56,11 +56,15 @@ class RacingCarGame {
   }
 
   playRacingCarGame() {
-    if (this.cars.length === 0 || this.tryCount === 0) {
-      return;
-    }
+    if (this.cars.length === 0 || this.tryCount === 0) return;
     for (let i = 0; i < this.tryCount; i += 1) {
-      this.cars.forEach(car => car.advanceCar());
+      let resultStirng = '';
+      this.cars.forEach(car => {
+        car.advanceCar();
+        resultStirng += `<div>${car.printAdvance()}</div>`;
+      });
+      resultStirng += '<br />';
+      this.printGameResult(resultStirng);
     }
   }
 
@@ -79,6 +83,12 @@ class RacingCarGame {
       if (splittedCarNames[i].length > 5) return false;
     }
     return true;
+  }
+
+  printGameResult(result) {
+    const div = document.createElement('div');
+    div.innerHTML = result;
+    $('#app').appendChild(div);
   }
 }
 
