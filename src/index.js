@@ -10,5 +10,5 @@ carNamesSubmit.addEventListener('click', e =>{
     e.preventDefault();
     let userInput = document.getElementById('car-names-input').value;
     
-    console.log(game.isValid(userInput));
+    game.receiveName(userInput);
 });
