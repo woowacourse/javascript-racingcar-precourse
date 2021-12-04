@@ -82,6 +82,8 @@ class RacingCarGame {
       resultStirng += '<br />';
     }
     this.printGameResult(resultStirng);
+    const winners = this.checkWinners(this.cars);
+    this.printWinners(winners);
   }
 
   checkTryCountLessThanZero(tryCount) {
@@ -104,6 +106,21 @@ class RacingCarGame {
   printGameResult(result) {
     $('#racing-car-results').innerHTML = '';
     $('#racing-car-results').innerHTML = result;
+  }
+
+  checkWinners(cars) {
+    let maximumAdvance = 0;
+    cars.forEach(car => {
+      if (car.advance > maximumAdvance) maximumAdvance = car.advance;
+    });
+
+    const winners = cars.filter(car => car.advance === maximumAdvance);
+    return winners;
+  }
+
+  printWinners(winners) {
+    const winnerString = `최종 우승자: ${winners.map(i => i.name).join(',')}`;
+    $('#racing-winners').innerHTML = winnerString;
   }
 }
 
