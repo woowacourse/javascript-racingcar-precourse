@@ -31,22 +31,49 @@ class CountInputContainer {
   onCountSubmit(e) {
     e.preventDefault();
     const count = this.$racingCountInput.value;
-    console.log('1');
     if (!this.isInputValid(count)) {
       return;
     }
     this.count = count;
     this.makeCars();
     this.moveCars();
-    console.log(`result`, this.result);
     this.showRoundResult();
+    this.showWinner();
   }
+  showWinner() {
+    const maxStep = this.getMaxStep();
+    let winner = '';
+    for (let key in this.result) {
+      if (this.result[key].step === maxStep) {
+        winner += `, ${this.result[key].name}`;
+      }
+    }
+    winner = `최종 우승자: ${winner.slice(2)}`;
+    console.log(`winner`, winner);
+    const winnerTextDiv = document.createElement('span');
+    winnerTextDiv.setAttribute('id', 'racing-winners');
+    winnerTextDiv.innerHTML = winner;
+    this.$app.appendChild(winnerTextDiv);
+  }
+  getMaxStep() {
+    const stepArray = this.getStepArray();
+    return Math.max(...stepArray);
+  }
+  getStepArray() {
+    const stepArray = [];
+    for (let key in this.result) {
+      stepArray.push(this.result[key].step);
+    }
+    return stepArray;
+  }
+
   makeCars() {
     this.result = {};
     console.log(`carNamesInputContainer.carNamesArray`, this.carNamesInputContainer.carNamesArray);
     for (let car of this.carNamesInputContainer.carNamesArray) {
       this.result[car] = new Car(car);
     }
+    console.log(`this.result`, this.result);
   }
 
   moveCars() {
