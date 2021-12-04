@@ -11,7 +11,7 @@ import {
   BUTTON_SUBMIT_TEXT,
 } from './dom/const.js';
 import isValidCarNamesInput from './game/utils/isValidCarNamesInput.js';
-import isValidRacingCountInput from './game/isValidRacingCountInput.js';
+import isValidRacingCountInput from './game/utils/isValidRacingCountInput.js';
 import toCarNameList from './game/utils/toCarNameList.js';
 import Car from './car.js';
 import displayRacingCountForm from './dom/displayRacingCountForm.js';
