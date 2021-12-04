@@ -1,4 +1,5 @@
 import Car from './Car.js';
+import showRaceResult from '../view/showRaceResult.js';
 
 function getCars(userInput) {
   const cars = [];
@@ -17,5 +18,6 @@ export default function playGame(userInput) {
 
   for (let index = 0; index < userInput.getRepeatCount(); index += 1) {
     goOnce(cars);
+    showRaceResult(cars);
   }
 }
