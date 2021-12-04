@@ -4,17 +4,21 @@ import { NAME_INPUT_ERROR } from './constants.js';
 
 class RacingGame {
   constructor() {
-    this.nameSubmitButton = document.getElementById('name-form-button');
-    this.userInput = document.getElementById('name-form-input');
+    this.countForm = document.getElementById('count-form');
+    this.countH4 = document.getElementById('count-h4');
+    this.resultH4 = document.getElementById('result-h4');
     this.cars = [];
     this.init();
   }
 
   init() {
+    this.hideForms();
     let names;
-    this.nameSubmitButton.addEventListener('click', (e) => {
+    const nameSubmitButton = document.getElementById('name-form-button');
+    const userInput = document.getElementById('name-form-input');
+    nameSubmitButton.addEventListener('click', (e) => {
       e.preventDefault();
-      names = this.userInput.value.split(',');
+      names = userInput.value.split(',');
       names.forEach((element) => {
         this.cars.push(new Car(element, 0));
       });
@@ -24,11 +28,22 @@ class RacingGame {
 
   checkName(names) {
     if (checkNameValidation(names)) {
-      //
+      this.showCountForm();
     } else {
       this.cars = [];
       alert(NAME_INPUT_ERROR);
     }
+  }
+
+  hideForms() {
+    this.countForm.style.visibility = 'hidden';
+    this.countH4.style.visibility = 'hidden';
+    this.resultH4.style.visibility = 'hidden';
+  }
+
+  showCountForm() {
+    this.countForm.style.visibility = 'visible';
+    this.countH4.style.visibility = 'visible';
   }
 }
 
