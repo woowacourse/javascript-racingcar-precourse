@@ -43,3 +43,4 @@ export const ACTION_CHECK_RACING_COUNT = 'checkRacingCount';
 export const MSG_ERROR = '잘못된 입력입니다';
 
 export const CAR_POSITION = '-';
+export const TEXT_WINNERS = '최종 우승자';
