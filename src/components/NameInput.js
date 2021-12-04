@@ -1,17 +1,19 @@
+import { ID } from '../constants/index.js';
 import { clearInput } from '../utils/clearInput.js';
 import { isValidNames } from '../utils/valid.js';
 
 class NameInput {
-  constructor({ $nameInput, setState }) {
-    this.$nameInput = $nameInput;
+  constructor({ $nameForm, setState, showCountInput }) {
+    this.$nameForm = $nameForm;
     this.setState = setState;
+    this.showCountInput = showCountInput;
 
     this.selectDom();
     this.addEvent();
   }
 
   selectDom() {
-    this.$nameForm = this.$nameInput.parentElement;
+    this.$nameInput = document.querySelector(`#${ID.CAR_NAMES_INPUT}`);
   }
 
   addEvent() {
@@ -28,6 +30,7 @@ class NameInput {
     }
 
     this.setState({ names });
+    this.showCountInput();
   }
 }
 

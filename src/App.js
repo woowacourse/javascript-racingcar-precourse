@@ -34,10 +34,6 @@ class App {
   selectDom() {
     [, , this.$nameForm, this.$countTitle, this.$countForm, this.$resultTitle] =
       this.$target.children;
-
-    this.$nameInput = document.querySelector(`#${ID.CAR_NAMES_INPUT}`);
-    this.$countInput = document.querySelector(`#${ID.RACING_COUNT_INPUT}`);
-    this.$resultContainer = document.querySelector(`#${ID.RESULT_CONTAINER}`);
   }
 
   hideContents() {
@@ -48,22 +44,26 @@ class App {
 
   mounted() {
     new NameInput({
-      $nameInput: this.$nameInput,
+      $nameForm: this.$nameForm,
       setState: this.setState,
-    });
-    new CountInput({
-      $countInput: this.$countInput,
-      setState: this.setState,
-      showResult: this.showResult,
+      showCountInput: this.showCountInput,
     });
   }
 
+  showCountInput = () => {
+    new CountInput({
+      $countForm: this.$countForm,
+      $countTitle: this.$countTitle,
+      setState: this.setState,
+      showResult: this.showResult,
+    });
+  };
+
   showResult = () => {
     new Result({
-      $resultContainer: this.$resultContainer,
+      $resultTitle: this.$resultTitle,
       state: this.state,
     });
   };
 }
-
 export default App;

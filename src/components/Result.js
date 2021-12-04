@@ -2,12 +2,23 @@ import Game from '../classes/Game.js';
 import { ID } from '../constants/index.js';
 import { createMyElement } from '../utils/element.js';
 
-class GameResult {
-  constructor({ $resultContainer, state }) {
-    this.$resultContainer = $resultContainer;
+class Result {
+  constructor({ $resultTitle, state }) {
+    this.$resultTitle = $resultTitle;
     this.state = state;
+
+    this.showContents();
+    this.selectDom();
     this.game = new Game(this.state.names);
     this.printResults(this.state.count);
+  }
+
+  showContents() {
+    this.$resultTitle.removeAttribute('hidden');
+  }
+
+  selectDom() {
+    this.$resultContainer = document.querySelector(`#${ID.RESULT_CONTAINER}`);
   }
 
   printResults(count) {
@@ -20,7 +31,6 @@ class GameResult {
       this.$resultContainer.append(br);
       count--;
     }
-
     this.printWinner();
   }
 
@@ -44,4 +54,4 @@ class GameResult {
   }
 }
 
-export default GameResult;
+export default Result;
