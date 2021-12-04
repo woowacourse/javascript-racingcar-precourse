@@ -37,16 +37,31 @@ export default class RacingGame {
   }
 
   displayCarNamesForm() {
-    if (displayFormByKey(this.app, KEY_FORM_CAR_NAMES)) {
+    const isSucceededToDisplay = displayFormByKey(this.app, KEY_FORM_CAR_NAMES);
+    if (isSucceededToDisplay) {
       this.carNamesForm = createFormManagerByKey(KEY_FORM_CAR_NAMES);
       this.carNamesForm.setButtonText(BUTTON_SUBMIT_TEXT);
     }
   }
 
   displayRacingCountForm() {
-    if (displayFormByKey(this.app, KEY_FORM_RACING_COUNT)) {
+    const isSucceededToDisplay = displayFormByKey(
+      this.app,
+      KEY_FORM_RACING_COUNT
+    );
+    if (isSucceededToDisplay) {
       this.racingCountForm = createFormManagerByKey(KEY_FORM_RACING_COUNT);
       this.racingCountForm.setButtonText(BUTTON_SUBMIT_TEXT);
+    }
+  }
+
+  displayGameStatus(racingCount) {
+    for (let i = 0; i < racingCount; i++) {
+      this.racingGameManager.race();
+      displayRaceStatus(
+        this.app,
+        this.racingGameManager.getCurrentRaceStatus()
+      );
     }
   }
 
@@ -79,13 +94,7 @@ export default class RacingGame {
 
     this.racingGameManager.setRacingCountByInput(input);
     displayRacingResultHeading(this.app);
-    for (let i = 0; i < this.racingGameManager.getRacingCount(); i++) {
-      this.racingGameManager.race();
-      displayRaceStatus(
-        this.app,
-        this.racingGameManager.getCurrentRaceStatus()
-      );
-    }
+    this.displayGameStatus(this.racingGameManager.getRacingCount());
     this.racingGameManager.judgeWinners();
     displayWinners(this.app, this.racingGameManager.getWinners());
   }

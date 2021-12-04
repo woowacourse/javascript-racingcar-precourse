@@ -27,8 +27,8 @@ export default class RacingGameManager {
     this.cars = Car.generateCarsByNames(toCarNameList(input));
   }
 
-  setRacingCount(racingCount) {
-    this.racingCount = racingCount;
+  setRacingCountByInput(input) {
+    this.racingCount = Number(input);
   }
 
   race() {
