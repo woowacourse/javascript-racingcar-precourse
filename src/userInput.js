@@ -23,10 +23,6 @@ export default class UserInput {
       e.preventDefault();
       this.isValidCarNames();
     });
-    this.racingCountSubmitEl.addEventListener('click', (e) => {
-      e.preventDefault();
-      this.isValidRacingCount();
-    });
   }
 
   getCarNameArray() {
@@ -64,8 +60,12 @@ export default class UserInput {
     return this.isVaildCarNameLength() && this.isDifferntCarName();
   }
 
-  isValidRacingCountNum() {
-    if (this.racingCountInputEl.value < RACING_COUNT_RULES.minCount) {
+  getRacingCountNum() {
+    return this.racingCountInputEl.value;
+  }
+
+  isValidRacingCountRange() {
+    if (this.getRacingCountNum() < RACING_COUNT_RULES.minCount) {
       alert(ERR_MESSAGE.racingCount);
       return false;
     }
@@ -74,6 +74,6 @@ export default class UserInput {
   }
 
   isValidRacingCount() {
-    return this.isVaildCarNameLength() && this.isValidRacingCountNum();
+    return this.isVaildCarNameLength() && this.isValidRacingCountRange();
   }
 }
