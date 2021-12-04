@@ -6,9 +6,9 @@ export function formEvent() {
   const allForm = document.getElementsByTagName("form");
   setGameElemetStyle("beforeGameStart")
   for (const eachForm of allForm) {
-    eachForm.addEventListener("submit", (e) => {
-      const inputCheckResult = inputCheck();
-      e.preventDefault()
+    eachForm.addEventListener("submit", (submitEvent) => {
+      const inputCheckResult = inputCheck(submitEvent);
+      submitEvent.preventDefault()
       if (inputCheckResult) {
         new Car(inputCheckResult);
       }
@@ -16,14 +16,17 @@ export function formEvent() {
   }
 }
 
-function inputCheck() {
+function inputCheck(submitEvent) {
   const allInput = document.getElementsByTagName("input");
   const userInputArray = [];
+  let gameCountCheckResult;
   for (const eachInput of allInput) {
     userInputArray.push(eachInput.value)
   }
   const carNameCheckResult = carNameCheck(userInputArray[CARS_NAME]);
-  const gameCountCheckResult = gameCountCheck(userInputArray[GMAE_COUNT]);
+  if (submitEvent.target.id === "racing-count-form") {
+    gameCountCheckResult = gameCountCheck(userInputArray[GMAE_COUNT]);
+  }
   if (carNameCheckResult && gameCountCheckResult) {
     setGameElemetStyle("gameCountInput")
     return userInputArray;
