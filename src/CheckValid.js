@@ -1,5 +1,6 @@
 import { MESSAGE } from "./constant/alertMessage.js";
-import { CAR_NAME, RACING_COUNT } from "./constant/number.js";
+import { CAR_NAME } from "./constant/carName.js";
+import { RACING_COUNT } from "./constant/racing.js";
 
 export default class CheckValid {
   carNames(names) {
