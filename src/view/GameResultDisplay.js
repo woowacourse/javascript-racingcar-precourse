@@ -3,21 +3,26 @@ import { DISPLAY } from '../data/constants.js';
 
 const createRoundWrap = (count) => {
   const combineList = Array.from({ length: count }, (value, index) => {
-    const $wrap = createElement('DIV');
-    $wrap.setAttribute('data-round', index);
-
-    return $wrap;
+    const $round = createElement('DIV');
+    $round.setAttribute('data-round', index);
+    return $round;
   });
 
-  return combineElement(combineList);
+  const $roundWrap = combineElement(combineList);
+  [...$roundWrap.children].forEach(($round) => {
+    $round.after(createElement('BR'));
+  });
+
+  return $roundWrap;
 };
 
 const insertPlayLogs = ($wrap, playerLogs) => {
   playerLogs.forEach((text, round) => {
     const $roundResult = $wrap.querySelector(`div[data-round="${round}"]`);
-    const $progressText = createElement('P', text);
+    const $progressText = createElement('SPAN', text);
+    const $br = createElement('BR');
 
-    $roundResult.append($progressText);
+    $roundResult.append($progressText, $br);
   });
 };
 
