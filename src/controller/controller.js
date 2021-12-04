@@ -31,18 +31,6 @@ export class Controller {
       .join(', ');
   }
 
-  // renderMovedState(cars) {
-  //   let domElement = '';
-  //   this.calculateMovedState(cars);
-
-  //   cars.forEach((car) => {
-  //     domElement += `<span>${car.getName()}: ${'-'.repeat(car.getDistance())}</span><br />`;
-  //   });
-  //   domElement += `<br />`;
-
-  //   return domElement;
-  // }
-
   renderMovedState(cars) {
     this.calculateMovedState(cars);
     return (
