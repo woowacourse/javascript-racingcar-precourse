@@ -77,7 +77,12 @@ showWiners: array => {
   // 4. 우승자가 여러 명일 경우 쉼표(,)를 이용하여 구분한다.
   .join(',');
 
-  $('#app').insertAdjacentHTML('beforeend', `<span id="racing-winners">${winners}</span>`);
+  $('#app').insertAdjacentHTML(
+    'beforeend',
+    `<div>최종 우승자: 
+       <span id="racing-winners">${winners}</span>
+     </div>`,
+  );
 },
 ```
 
