@@ -34,6 +34,12 @@ class RacingGame {
   }
   handleSubmitRacingCount() {
     const racingCount = this.$racingCountInput.value;
+    const { isValid, message } = Validator.isValidRacingCount(racingCount);
+    if (!isValid) {
+      alert(message);
+      return;
+    }
+    this.racingCount = parseInt(racingCount, 10);
   }
 }
 
