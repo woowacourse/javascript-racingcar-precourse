@@ -4,42 +4,46 @@ import { setGameElemetStyle } from '../utils/dom.js';
 
 export function formEvent() {
   const allForm = document.getElementsByTagName("form");
-  setGameElemetStyle(ELEMENT_MESSAGE.BEFORE_GAME)
+  setGameElemetStyle(ELEMENT_MESSAGE.BEFORE_GAME);
   for (const eachForm of allForm) {
     eachForm.addEventListener("submit", (submitEvent) => {
-      const inputCheckResult = inputCheck(submitEvent);
-      submitEvent.preventDefault()
-      if (inputCheckResult) {
-        new Car(inputCheckResult);
+      submitEvent.preventDefault();
+      if (inputEvent(submitEvent)) {
+        new Car(inputEvent(submitEvent));
       }
     })
   }
 }
 
-function inputCheck(submitEvent) {
+function inputEvent(submitEvent) {
   const allInput = document.getElementsByTagName("input");
-  const userInputArray = [];
-  let gameCountCheckResult;
+  const inputValueArray = [];
   for (const eachInput of allInput) {
-    userInputArray.push(eachInput.value)
+    inputValueArray.push(eachInput.value);
   }
-  const carNameCheckResult = carNameCheck(userInputArray[CARS_NAME]);
+  const inputCheckResult = inputCheck(inputValueArray, submitEvent);
+  if (inputCheckResult) {
+    return inputValueArray;
+  }
+}
+
+function inputCheck(inputValueArray, submitEvent) {
+  let gameCountCheckResult;
   if (submitEvent.target.id === ELEMENT_ID.COUNTFORM_ID) {
-    gameCountCheckResult = gameCountCheck(userInputArray[GMAE_COUNT]);
+    gameCountCheckResult = gameCountCheck(inputValueArray[GMAE_COUNT]);
   }
-  if (carNameCheckResult && gameCountCheckResult) {
-    setGameElemetStyle(ELEMENT_MESSAGE.COUNT_INPUT)
-    return userInputArray;
+  if (carNameCheck(inputValueArray[CARS_NAME]) && gameCountCheckResult) {
+    setGameElemetStyle(ELEMENT_MESSAGE.COUNT_INPUT);
+    return gameCountCheckResult;
   }
 }
 
 function carNameCheck(carsName) {
-  const carsNameLengthCheckResult = carsNameLengthCheck(carsName);
   let result = true;
   if (!carsName) {
     alert(MESSAGE.CARNAME_EMPTY);
     result = false;
-  } else if (!carsNameLengthCheckResult) {
+  } else if (!carsNameLengthCheck(carsName)) {
     alert(MESSAGE.CARNMAE_OVERFIVEWORD);
     result = false;
   }
@@ -50,9 +54,8 @@ function carNameCheck(carsName) {
 }
 
 function carsNameLengthCheck(carsName) {
-  const carsNameArray = carsName.split(',');
   let result = true;
-  for (const carName of carsNameArray) {
+  for (const carName of carsName.split(',')) {
     if (carName.length > NUMBER.FIVE) {
       result = false;
     }

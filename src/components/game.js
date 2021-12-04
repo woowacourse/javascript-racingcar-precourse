@@ -1,29 +1,31 @@
 import { CARS_NAME, COMMA, DASH, EMPTY, GMAE_COUNT, NUMBER } from "../utils/constant.js";
 
 export function gameStart(userInput) {
-  const gameWinCountArray = Array.from({length: userInput[CARS_NAME].split(COMMA).length}, () => NUMBER.ZERO);
+  const gameResult = setGameResult(userInput);
+  return gameResult;
+}
+
+function setGameResult(userInput) {
   const gameResultObject = {
     gameProcess: EMPTY,
     gmaeWinner: EMPTY
-  }
+  };
+  const gameWinCountArray = Array.from({length: userInput[CARS_NAME].split(COMMA).length}, () => NUMBER.ZERO);
   for (let i = 0; i < userInput[GMAE_COUNT]; i++) {
-    const gameRandonNumberArray = setGameRandonNumber(userInput);
-    const winGameCountArray = setWinGameCount(gameRandonNumberArray, gameWinCountArray);
-    if (i === userInput[GMAE_COUNT] - NUMBER.ONE) {
-      gameResultObject.gmaeWinner = setGameWinner(userInput[CARS_NAME], winGameCountArray);
-    }
+    const winGameCountArray = setWinGameCount(setGameRandonNumber(gameWinCountArray), gameWinCountArray);
     gameResultObject.gameProcess += `${setProcessTemplete(winGameCountArray, userInput[CARS_NAME])}<br/>`;
   }
+  gameResultObject.gmaeWinner = setGameWinner(userInput[CARS_NAME], gameWinCountArray);
 
   return gameResultObject;
 }
 
-function setGameRandonNumber(userInput) {
+function setGameRandonNumber(gameWinCountArray) {
   const ramdomNumberArray = [];
-  for (let i = 0; i < userInput[CARS_NAME].split(',').length; i++) { 
-    ramdomNumberArray.push(MissionUtils.Random.pickNumberInRange(NUMBER.RANDOM_START, NUMBER.RANDOM_END))
+  for (let i = 0; i < gameWinCountArray.length; i++) { 
+    ramdomNumberArray.push(MissionUtils.Random.pickNumberInRange(NUMBER.RANDOM_START, NUMBER.RANDOM_END));
   }
-  
+
   return ramdomNumberArray;
 }
 
@@ -40,8 +42,8 @@ function setWinGameCount(gameRandonNumberArray, gameWinCountArray) {
 function setGameWinner(carsName, winGameCountArray) {
   const topNumber = Math.max(...winGameCountArray);
   let topNumberCars = "";
-  winGameCountArray.forEach((v, i) => {
-    if (v === topNumber) {
+  winGameCountArray.forEach((winNumber, i) => {
+    if (winNumber === topNumber) {
       topNumberCars += `${carsName.split(COMMA)[i]},`;
     }
   })
