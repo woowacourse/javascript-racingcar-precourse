@@ -19,3 +19,11 @@ export const enableForm = formElement => {
   inputElem.focus();
   $('button', formElement).disabled = false;
 };
+
+export const hideElement = element => {
+  element.hidden = true;
+};
+
+export const showElement = element => {
+  element.hidden = false;
+};
