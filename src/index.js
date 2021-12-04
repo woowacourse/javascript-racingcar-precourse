@@ -5,10 +5,15 @@ class RacingCarGame {
   constructor() {
     this.addEventListeners();
     this.cars = [];
+    this.tryCount = 0;
   }
 
   addEventListeners() {
     $('#car-names-submit').addEventListener('click', this.onClickCarNameSubmitButton.bind(this));
+    $('#racing-count-submit').addEventListener(
+      'click',
+      this.onClickTryCountSubmitButton.bind(this),
+    );
   }
 
   onClickCarNameSubmitButton(event) {
@@ -33,7 +38,12 @@ class RacingCarGame {
     splittedCarNames.forEach(carName => {
       this.cars.push(new Car(carName));
     });
-    console.log(this.cars);
+  }
+
+  onClickTryCountSubmitButton(event) {
+    event.preventDefault();
+    const submitTryCount = $('#racing-count-input').value;
+    this.tryCount = submitTryCount;
   }
 
   checkCarNameDuplicated(splittedCarNames) {
