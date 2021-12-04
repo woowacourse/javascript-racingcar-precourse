@@ -19,5 +19,7 @@ export const submitCarName = (e, cars) => {
     cars.push(car);
   });
 
+  e.target.disabled = true;
+
   return cars;
 };

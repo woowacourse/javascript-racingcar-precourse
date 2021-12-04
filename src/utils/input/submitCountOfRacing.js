@@ -10,5 +10,7 @@ export const submitCountOfRacing = e => {
     return;
   }
 
+  e.target.disabled = true;
+
   return play;
 };
