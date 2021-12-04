@@ -1,5 +1,6 @@
 import Game from '../classes/Game.js';
 import { ID } from '../constants/index.js';
+import { createMyElement } from '../utils/element.js';
 
 class GameResult {
   constructor({ $resultContainer, state }) {
@@ -25,8 +26,7 @@ class GameResult {
 
   printOneBlock(name, distance) {
     const carContainer = document.createElement('div');
-    const carText = document.createElement('span');
-    carText.innerText = `${name}: ${distance}`;
+    const carText = createMyElement('span', `${name}: ${distance}`);
     carContainer.append(carText);
     this.$resultContainer.append(carContainer);
   }
@@ -37,10 +37,8 @@ class GameResult {
       return acc.concat(cur.name);
     }, []);
 
-    const winnerTitle = document.createElement('span');
-    winnerTitle.innerText = '최종 우승자: ';
-    const winnerName = document.createElement('span');
-    winnerName.innerText = `${[...winner]}`;
+    const winnerTitle = createMyElement('span', '최종 우승자: ');
+    const winnerName = createMyElement('span', `${[...winner]}`);
     winnerName.id = ID.RACING_WINNERS;
     this.$resultContainer.append(winnerTitle, winnerName);
   }
