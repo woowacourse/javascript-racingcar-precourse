@@ -1,4 +1,4 @@
-const convertHashMapToArray = hashMap => [...hashMap.entries()];
+import { convertHashMapToArray } from './general.js';
 
 const printBars = distance => {
   let bars = '';

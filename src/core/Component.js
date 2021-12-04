@@ -1,3 +1,5 @@
+import { isObjectEmpty } from '../utils/general.js';
+
 export default class Component {
   constructor(props = {}) {
     this.container = null;
@@ -39,7 +41,7 @@ export default class Component {
       if (nextProps[key] && nextProps[key] !== this.props[key])
         newProps[key] = nextProps[key];
     });
-    if (Object.keys(newProps).length === 0) return;
+    if (isObjectEmpty(newProps)) return;
     this.props = { ...this.props, ...newProps };
     this.render();
   }
