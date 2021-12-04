@@ -1,6 +1,6 @@
 import Car from './Car.js';
 import Render from './Render.js';
-import { isValidCarNames, isValidRacingCount } from './utils/validations.js';
+import { isValidCarNames, isValidRacingCount } from './functions/validations.js';
 
 export default class RacingGame {
   constructor() {
