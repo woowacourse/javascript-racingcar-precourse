@@ -9,8 +9,7 @@ import { GAME_STATUS } from '../utils/constants.js';
 export default class RacingCarGame extends Component {
   initDoms() {
     this.container = $('#app');
-    const resultElem = createElement('game-result');
-    this.container.appendChild(resultElem);
+    this.container.appendChild(createElement('game-result'));
   }
 
   initState() {
