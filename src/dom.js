@@ -1,3 +1,5 @@
+import { RACING_WINNERS_TEXT } from './constants.js';
+
 export const setInitialStyle = () => {
   const racingCountText = document.getElementById('racing-count-text');
   const racingCountForm = document.getElementById('racing-count-form');
@@ -39,7 +41,7 @@ export const createWinnersText = (winners) => {
   const racingWinners = document.createElement('span');
   racingWinners.setAttribute('id', 'racing-winners');
 
-  racingWinnersText.innerHTML = '최종 우승자: ';
+  racingWinnersText.innerHTML = RACING_WINNERS_TEXT;
   racingWinners.innerHTML = `${winners.join(', ')}`;
 
   app.appendChild(racingWinnersText);

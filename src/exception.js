@@ -1,8 +1,16 @@
+import {
+  USER_ALERT_NO_NAME,
+  USER_ALERT_NO_COMMA,
+  USER_ALERT_OUT_RANGE,
+  USER_ALERT_DUPLICATED,
+  USER_ALERT_VACUUM,
+} from './constants.js';
+
 export const userInputTypeException = (userInput) => {
   if (!userInput) {
-    alert('자동차의 이름을 입력하세요.');
+    alert(USER_ALERT_NO_NAME);
   } else if (!userInput.includes(',')) {
-    alert('자동차의 이름은 쉼표로 구분해주세요.');
+    alert(USER_ALERT_NO_COMMA);
   } else {
     return false;
   }
@@ -20,7 +28,7 @@ export const userInputLengthException = (userInputArray) => {
   });
 
   if (isException) {
-    alert('자동차 이름은 5자 이하만 가능합니다.');
+    alert(USER_ALERT_OUT_RANGE);
   }
 
   return isException;
@@ -30,7 +38,7 @@ export const userInputDuplicatedException = (userInputArray) => {
   const unduplicatedUserInputSet = new Set(userInputArray);
 
   if (unduplicatedUserInputSet.size != userInputArray.length) {
-    alert('중복되는 자동차가 존재합니다.');
+    alert(USER_ALERT_DUPLICATED);
     return true;
   }
 
@@ -47,7 +55,7 @@ export const carNameIsVacuumException = (userInputArray) => {
   });
 
   if (isException) {
-    alert('이름이 공백인 자동차가 존재합니다.');
+    alert(USER_ALERT_VACUUM);
   }
 
   return isException;
