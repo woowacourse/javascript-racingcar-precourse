@@ -2,8 +2,8 @@ import template from '../template/template.js';
 import { $, preventPageRefresh } from '../utils/domHelpers.js';
 import { isValidCarNames, isRacingCountValid } from '../utils/validations.js';
 import {
-  ERROR_WRONG_INPUT_CAR_NAMES,
-  ERROR_WRONG_INPUT_RACING_COUNT,
+  ERROR_WRONG_CAR_NAMES,
+  ERROR_WRONG_RACING_COUNT,
 } from '../config/config.js';
 
 export default class View {
@@ -44,7 +44,7 @@ export default class View {
       const nameList = this.getCarNameList();
 
       if (!isValidCarNames(nameList)) {
-        alert(ERROR_WRONG_INPUT_CAR_NAMES);
+        alert(ERROR_WRONG_CAR_NAMES);
         this.$carNamesInput.value = '';
 
         return;
@@ -62,7 +62,7 @@ export default class View {
       const racingCount = this.$racingCountInput.valueAsNumber;
 
       if (!isRacingCountValid(racingCount)) {
-        alert(ERROR_WRONG_INPUT_RACING_COUNT);
+        alert(ERROR_WRONG_RACING_COUNT);
         this.$racingCountInput.value = '';
 
         return;

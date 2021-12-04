@@ -1,6 +1,6 @@
 import {
-  NUMBER_OF_CAR_NAMES_MIN,
-  NUMBER_OF_CAR_NAMES_MAX,
+  CAR_NAMES_LENGTH_MIN,
+  CAR_NAMES_LENGTH_MAX,
   RACING_COUNT_RANGE_MIN,
   RACING_COUNT_RANGE_MAX,
 } from '../config/config.js';
@@ -12,7 +12,7 @@ const isLengthValid = (array, min, max) =>
 
 export const isValidCarNames = (carNameList) =>
   isUnique(carNameList) &&
-  isLengthValid(carNameList, NUMBER_OF_CAR_NAMES_MIN, NUMBER_OF_CAR_NAMES_MAX);
+  isLengthValid(carNameList, CAR_NAMES_LENGTH_MIN, CAR_NAMES_LENGTH_MAX);
 
 const isRangeValid = (number, min, max) => number >= min && number <= max;
 
