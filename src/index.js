@@ -66,6 +66,24 @@ class RacingGame {
   checkCount() {
     if (!checkCountValidation(this.count)) {
       alert(COUNT_INPUT_ERROR);
+    } else {
+      console.log(this.cars);
+      this.doCount();
+    }
+  }
+
+  getScores() {
+    this.cars.forEach((e) => {
+      if (MissionUtils.Random.pickNumberInRange(1, 9) >= 4) {
+        e.score += 1;
+      }
+    });
+  }
+
+  doCount() {
+    for (let i = 0; i < this.count; i++) {
+      console.log(`${i}번째 게임`);
+      this.getScores();
     }
   }
 }
