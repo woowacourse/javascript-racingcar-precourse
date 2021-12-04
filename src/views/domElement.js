@@ -10,17 +10,21 @@ class DOMElement {
     return new DOMElement($element);
   }
 
-  static createBySelectors(selectors) {
-    const $element = document.querySelector(selectors);
+  static createById(id) {
+    const $element = document.getElementById(id);
     return new DOMElement($element);
   }
 
-  getValue() {
-    return this.$element.value;
+  setId(id) {
+    this.$element.id = id;
   }
 
   setText(text) {
     this.$element.innerHTML = text;
+  }
+
+  getValue() {
+    return this.$element.value;
   }
 
   hide() {
