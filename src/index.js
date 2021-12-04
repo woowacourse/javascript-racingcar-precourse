@@ -62,12 +62,29 @@ export default function RacingGame() {
     return true;
   };
 
+  const getErrorMessage = (carNames) => {
+    if (isDuplicate(carNames)) {
+      return "중복된 이름이 있습니다.";
+    }
+    if (isLessThanTwoCars(carNames)) {
+      return "2개 이상의 이름을 입력해주세요.";
+    }
+    for (const carName of carNames) {
+      if (isEmpty(carName)) {
+        return "공백인 이름이 있습니다.";
+      }
+      if (!isValidLength(carName)) {
+        return "이름을 5자 이하로 입력해주세요.";
+      }
+    }
+  };
+
   const onClickCarNamesSubmitButton = (event) => {
     event.preventDefault();
     const carNamesList = getCarNames();
 
     if (!isValidCarName(carNamesList)) {
-      console.log("error");
+      alert(getErrorMessage(carNamesList));
       return;
     }
     console.log(carNamesList);
