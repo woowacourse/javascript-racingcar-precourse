@@ -1,4 +1,4 @@
-import { NUM } from '../constants/index.js';
+import { ERROR, NUM } from '../constants/index.js';
 
 const isExceedNameLength = names => {
   return names.some(name => name.length > NUM.MAX_NAME_LENGTH);
@@ -14,12 +14,15 @@ const isDuplicatedName = names => {
 
 export const isValidNames = names => {
   if (isExceedNameLength(names)) {
+    alert(ERROR.NAME_LENGTH_IS_LONG);
     return false;
   }
   if (isNameEmpty(names)) {
+    alert(ERROR.NAME_IS_EMPTY);
     return false;
   }
   if (isDuplicatedName(names)) {
+    alert(ERROR.NAME_IS_DUPLICATED);
     return false;
   }
 
