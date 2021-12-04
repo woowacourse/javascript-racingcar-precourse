@@ -23,6 +23,9 @@ class GameController {
       showAlert(errorMessage);
       return;
     }
+    
+    const cars = carNames.map(name => new Car(name));
+    this.racingCarGame.setCars(cars);
   }
 }
 
