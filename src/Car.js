@@ -13,6 +13,10 @@ class Car {
     return `${this.name}: ${this.changeNumberToDash(this.advance)}`;
   }
 
+  resetAdvance() {
+    this.advance = 0;
+  }
+
   changeNumberToDash(advance) {
     let dash = '';
     for (let i = 0; i < advance; i += 1) {

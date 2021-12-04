@@ -4,8 +4,20 @@ import Car from './Car.js';
 class RacingCarGame {
   constructor() {
     this.addEventListeners();
+    this.addDOM();
     this.cars = [];
     this.tryCount = 0;
+  }
+
+  addDOM() {
+    const div = document.createElement('div');
+    const span = document.createElement('span');
+
+    div.id = 'racing-car-results';
+    span.id = 'racing-winners';
+
+    $('#app').appendChild(div);
+    $('#app').appendChild(span);
   }
 
   addEventListeners() {
@@ -57,15 +69,19 @@ class RacingCarGame {
 
   playRacingCarGame() {
     if (this.cars.length === 0 || this.tryCount === 0) return;
+
+    let resultStirng = '';
+    this.cars.forEach(car => car.resetAdvance());
+
     for (let i = 0; i < this.tryCount; i += 1) {
-      let resultStirng = '';
+      // eslint-disable-next-line no-loop-func
       this.cars.forEach(car => {
         car.advanceCar();
         resultStirng += `<div>${car.printAdvance()}</div>`;
       });
       resultStirng += '<br />';
-      this.printGameResult(resultStirng);
     }
+    this.printGameResult(resultStirng);
   }
 
   checkTryCountLessThanZero(tryCount) {
@@ -86,9 +102,8 @@ class RacingCarGame {
   }
 
   printGameResult(result) {
-    const div = document.createElement('div');
-    div.innerHTML = result;
-    $('#app').appendChild(div);
+    $('#racing-car-results').innerHTML = '';
+    $('#racing-car-results').innerHTML = result;
   }
 }
 
