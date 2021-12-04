@@ -1,7 +1,6 @@
 function generateFormTagById(
   { formId, inputId, buttonId },
-  { inputType, buttonType },
-  buttonText
+  { inputType, buttonType }
 ) {
   const form = document.createElement('form');
   form.id = formId;
@@ -13,7 +12,6 @@ function generateFormTagById(
   const button = document.createElement('button');
   button.id = buttonId;
   button.type = buttonType;
-  button.innerText = buttonText;
 
   form.appendChild(input);
   form.appendChild(document.createTextNode(' '));

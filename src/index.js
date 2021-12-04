@@ -8,6 +8,7 @@ import {
   ACTION_CHECK_CAR_NAMES,
   ACTION_CHECK_RACING_COUNT,
   MSG_ERROR,
+  BUTTON_SUBMIT_TEXT,
 } from './dom/const.js';
 import isValidCarNamesInput from './game/utils/isValidCarNamesInput.js';
 import isValidRacingCountInput from './game/utils/isValidRacingCountInput.js';
@@ -27,12 +28,12 @@ export default class RacingGame {
 
     this.carNamesForm = new Form(ID_CAR_NAMES);
     this.carNamesForm.setButtonAction(ACTION_CHECK_CAR_NAMES);
+    this.carNamesForm.setButtonText(BUTTON_SUBMIT_TEXT);
 
     this.racingCountForm = undefined;
 
     this.cars = [];
     this.racingCount = 0;
-    this.winners = [];
   }
 
   init() {
@@ -53,6 +54,7 @@ export default class RacingGame {
   setRacingCountForm() {
     this.racingCountForm = new Form(ID_RACING_COUNT);
     this.racingCountForm.setButtonAction(ACTION_CHECK_RACING_COUNT);
+    this.racingCountForm.setButtonText(BUTTON_SUBMIT_TEXT);
   }
 
   getWinners() {
@@ -82,7 +84,6 @@ export default class RacingGame {
     e.preventDefault();
 
     const input = this.racingCountForm.getInputValue();
-
     if (!isValidRacingCountInput(input)) {
       alert(MSG_ERROR);
       this.racingCountForm.initInputValue();
@@ -95,8 +96,7 @@ export default class RacingGame {
       displayRaceStatus(this.app, this.cars);
     }
 
-    this.winners = this.getWinners();
-    displayWinners(this.app, this.winners);
+    displayWinners(this.app, this.getWinners());
   }
 
   onClick(event) {

@@ -17,6 +17,10 @@ class Form {
   setButtonAction(action) {
     this.button.dataset.action = action;
   }
+
+  setButtonText(text) {
+    this.button.innerText = text;
+  }
 }
 
 export default Form;
