@@ -14,3 +14,5 @@ export const DONE = Object.freeze({
   USERINPUT_NAME: Symbol(''),
   USERINPUT_COUNT: Symbol(''),
 });
+
+export const EMPTY_STRING = '';
