@@ -19,9 +19,11 @@ class RacingCarGame {
     this.triggerCountInputEvent();
     this.triggerCarNamesInputEvent();
   }
+
   triggerCountInputEvent() {
     this.$racingCountSubmitButton.addEventListener('click', (e) => this.onCountSubmit(e));
   }
+
   onCountSubmit(e) {
     e.preventDefault();
     const count = this.$racingCountInput.value;
@@ -34,6 +36,7 @@ class RacingCarGame {
     this.showRoundResult();
     this.showWinner();
   }
+
   showWinner() {
     const maxStep = this.getMaxStep();
     let winner = '';
@@ -49,10 +52,12 @@ class RacingCarGame {
     winnerTextDiv.innerHTML = winner;
     this.$app.appendChild(winnerTextDiv);
   }
+
   getMaxStep() {
     const stepArray = this.getStepArray();
     return Math.max(...stepArray);
   }
+
   getStepArray() {
     const stepArray = [];
     for (let key in this.result) {
@@ -77,6 +82,7 @@ class RacingCarGame {
       }
     }
   }
+
   showRoundResult() {
     // for 문으로 count만큼 출력
     let resultText = '';
