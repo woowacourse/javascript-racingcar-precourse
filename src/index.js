@@ -13,12 +13,14 @@ function racingGame() {
   this.count = 0;
 
   this.init = () => {
+    $('#racing-count-form').style.display = 'none';
     this.initEventListeners();
   };
 
   this.initEventListeners = () => {
     $('#car-names-submit').addEventListener('click', e => {
-      submitCarName(e, this.cars);
+      const carNames = submitCarName(e, this.cars);
+      if (carNames) $('#racing-count-form').style.display = 'block';
     });
 
     $('#racing-count-submit').addEventListener('click', e => {
