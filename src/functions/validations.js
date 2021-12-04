@@ -6,6 +6,7 @@ import {
   MIN_OF_RACING_COUNT,
 } from '../constants/index.js';
 
+// Validations for Car Names
 function isValidNumberOfCar(carNames) {
   return carNames.length >= MIN_NUMBER_OF_CARS;
 }
@@ -37,8 +38,18 @@ function isValidCarNames(carNames) {
   return true;
 }
 
+// Validations for Racing Count
+function isInteger(count) {
+  return Number.isInteger(count);
+}
+
+function isLessThanMinCondition(count) {
+  return count < MIN_OF_RACING_COUNT;
+}
+
 function isValidRacingCount(count) {
-  if (count < MIN_OF_RACING_COUNT) return alert(ERROR_MESSAGE.MIN_OF_RACING_COUNT);
+  if (!isInteger(count)) return alert(ERROR_MESSAGE.RACING_COUNT_MUST_BE_INTEGER);
+  if (isLessThanMinCondition()) return alert(ERROR_MESSAGE.MIN_OF_RACING_COUNT);
   return true;
 }
 

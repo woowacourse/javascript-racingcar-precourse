@@ -15,6 +15,7 @@ const ERROR_MESSAGE = {
   LENGTH_OF_CAR_NAME: '자동차 이름은 1자 이상, 5자 이하만 가능합니다.',
   WHITESPACE_IN_CAR_NAME: '자동차 이름에는 공백이 포함될 수 없습니다.',
 
+  RACING_COUNT_MUST_BE_INTEGER: '레이싱 횟수 입력값은 정수여야 합니다.',
   MIN_OF_RACING_COUNT: '레이싱 횟수는 1번 이상이어야 합니다.',
 };
 
