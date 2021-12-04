@@ -1,8 +1,7 @@
 import { Car } from '../model/Car.js';
 import { $, showGameResultHeader } from '../utils/dom.js';
-import { MOVE_CONDITION_NUMBER } from '../utils/constants.js';
+import { MOVE_CONDITION_NUMBER, MIN_NUMBER, MAX_NUMBER } from '../utils/constants.js';
 import { genRandomNumber } from '../utils/genRandomNumber.js';
-import { MIN_NUMBER, MAX_NUMBER } from '../utils/constants.js';
 
 export class Controller {
   genCarInstances(carNames) {
