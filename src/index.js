@@ -87,6 +87,7 @@ export default class RacingGame {
     if (!isValidRacingCountInput(input)) {
       alert(MSG_ERROR);
       this.racingCountForm.initInputValue();
+      return;
     }
 
     this.setRacingCountByinput(input);
@@ -95,7 +96,6 @@ export default class RacingGame {
       race(this.cars);
       displayRaceStatus(this.app, this.cars);
     }
-
     displayWinners(this.app, this.getWinners());
   }
 
