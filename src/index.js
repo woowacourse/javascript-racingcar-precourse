@@ -10,6 +10,7 @@ export default class CarRacingGame {
       this.handleRacingCountSubmit(e)
     );
   }
+
   initElements = () => {
     this.$carNamesInput = $('#car-names-input');
     this.$carNamesSubmit = $('#car-names-submit');
@@ -29,7 +30,7 @@ export default class CarRacingGame {
     const currentInput = this.$carNamesInput.value;
     const isValid = this.validateNames(currentInput);
     if (!isValid) {
-      this.alertErrorMessage();
+      this.alertError(ERROR_MESSAGE.CAR_NAMES_FORM, this.$carNamesInput);
     }
     if (isValid) {
       this.showRacingCountForm();
@@ -49,10 +50,10 @@ export default class CarRacingGame {
     return true;
   };
 
-  alertErrorMessage = () => {
-    this.$carNamesInput.value = '';
-    alert(ERROR_MESSAGE.CAR_NAMES_FORM);
-    this.$carNamesInput.focus();
+  alertError = (message, $element) => {
+    $element.value = '';
+    alert(message);
+    $element.focus();
   };
 
   showRacingCountForm = () => {
@@ -65,9 +66,7 @@ export default class CarRacingGame {
     const parsedInput = parseInt(this.$racingCountInput.value);
     const isValid = this.validateCount(parsedInput);
     if (!isValid) {
-      this.$racingCountInput.value = '';
-      alert(ERROR_MESSAGE.RACING_COUNT_FORM);
-      this.$racingCountInput.focus();
+      this.alertError(ERROR_MESSAGE.RACING_COUNT_FORM, this.$racingCountInput);
     }
   };
 
