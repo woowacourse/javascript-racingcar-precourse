@@ -2,6 +2,7 @@ import { Car } from '../model/Car.js';
 import { $, showGameResultHeader } from '../utils/dom.js';
 import { MOVE_CONDITION_NUMBER } from '../utils/constants.js';
 import { genRandomNumber } from '../utils/genRandomNumber.js';
+import { MIN_NUMBER, MAX_NUMBER } from '../utils/constants.js';
 
 export class Controller {
   genCarInstances(carNames) {
@@ -12,7 +13,7 @@ export class Controller {
 
   calculateMovedState(cars) {
     cars.forEach((car) => {
-      if (genRandomNumber() >= MOVE_CONDITION_NUMBER) {
+      if (genRandomNumber(MIN_NUMBER, MAX_NUMBER) >= MOVE_CONDITION_NUMBER) {
         car.move();
       }
     });
