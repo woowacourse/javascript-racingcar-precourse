@@ -8,6 +8,10 @@ export default class Car {
     return this.name;
   }
 
+  getPosition() {
+    return this.position;
+  }
+
   go() {
     if (window.MissionUtils.Random.pickNumberInRange(0, 9) >= 4) {
       this.position += 1;
