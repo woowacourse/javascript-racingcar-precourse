@@ -5,12 +5,12 @@ export default class RacingGame {
         this.racingCount = racingCount;
         this.cars = [];
 
-        this.makeCars(this.carNames, this.racingCount);
-        this.findWinner(this.cars);
+        this.$racingWinner = document.getElementById("racing-winner");
 
-        // console.log("게임 실행");
-        // console.log(this.carNames);
-        // console.log(this.racingCount);
+        this.makeCars(this.carNames, this.racingCount);
+        this.winner = this.findWinner(this.cars);
+        this.printWinner(this.winner);
+
     }
 
     makeCars(carNames) {
@@ -25,19 +25,25 @@ export default class RacingGame {
         let winner = [];
 
         for(let i = 0; i < cars.length; i++) {
-            let temp = cars[i].totalDistance;
-            // console.log(temp);
+            console.log(cars[i].totalDistance);
 
-            if(temp === maxDistance) {
+            if(cars[i].totalDistance === maxDistance) {
                 winner.push(cars[i].carName);
-            } else if(temp > maxDistance) {
+            } else if(cars[i].totalDistance > maxDistance) {
                 winner = [];
                 winner.push(cars[i].carName);
-                maxDistance = temp;
+                maxDistance = cars[i].totalDistance;
             }
-
         }
-        // console.log(winner);
+        console.log(winner);
         return winner;
+    }
+
+    printWinner(winner) {
+        const winnerNames = winner.join();
+        let element = `<span>최종 우승자: </span>`;
+
+        element += `<span id="racing-winners"> ${winnerNames} </span><br>`; 
+        document.getElementById("app").insertAdjacentHTML('beforeend', element);
     }
 }
