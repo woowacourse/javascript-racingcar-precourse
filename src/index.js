@@ -1,6 +1,6 @@
 import Car from './car.js';
-import { checkNameValidation } from './validation.js';
-import { NAME_INPUT_ERROR } from './constants.js';
+import { checkNameValidation, checkCountValidation } from './validation.js';
+import { NAME_INPUT_ERROR, COUNT_INPUT_ERROR } from './constants.js';
 
 class RacingGame {
   constructor() {
@@ -8,11 +8,17 @@ class RacingGame {
     this.countH4 = document.getElementById('count-h4');
     this.resultH4 = document.getElementById('result-h4');
     this.cars = [];
+    this.count = 0;
     this.hideForms();
     this.init();
   }
 
   init() {
+    this.nameButtonHandler();
+    this.countButtonHandler();
+  }
+
+  nameButtonHandler() {
     const nameSubmitButton = document.getElementById('name-form-button');
     const userInput = document.getElementById('name-form-input');
     let names;
@@ -23,7 +29,6 @@ class RacingGame {
       names.forEach((element) => {
         this.cars.push(new Car(element, 0));
       });
-      console.log(this.cars);
       this.checkName(names);
     });
   }
@@ -47,6 +52,21 @@ class RacingGame {
     this.countForm.style.visibility = 'visible';
     this.countH4.style.visibility = 'visible';
   }
-}
 
+  countButtonHandler() {
+    const countSubmitButton = document.getElementById('count-form-button');
+    const userInput = document.getElementById('count-form-input');
+    countSubmitButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      this.count = userInput.value;
+      this.checkCount();
+    });
+  }
+
+  checkCount() {
+    if (!checkCountValidation(this.count)) {
+      alert(COUNT_INPUT_ERROR);
+    }
+  }
+}
 new RacingGame();
