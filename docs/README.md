@@ -34,8 +34,9 @@
 
 <br>
 
-## src 폴더 구조
+## 🗂 src 폴더 구조
 
+```bash
 📦src
 ┣ 📂game
 ┃ ┣ 📜addSelectedWinner.js
@@ -51,3 +52,4 @@
 ┃ ┣ 📜constant.js
 ┃ ┗ 📜setAttribute.js
 ┗ 📜index.js
+```
