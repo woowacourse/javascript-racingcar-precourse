@@ -13,11 +13,7 @@ class GameResult {
     while (count) {
       const advanceResults = this.game.advanceCar();
       advanceResults.forEach(({ name, distance }) => {
-        const carContainer = document.createElement('div');
-        const carText = document.createElement('span');
-        carText.innerText = `${name}: ${distance}`;
-        carContainer.append(carText);
-        this.$resultContainer.append(carContainer);
+        this.printOneBlock(name, distance);
       });
       const br = document.createElement('br');
       this.$resultContainer.append(br);
@@ -25,6 +21,14 @@ class GameResult {
     }
 
     this.printWinner();
+  }
+
+  printOneBlock(name, distance) {
+    const carContainer = document.createElement('div');
+    const carText = document.createElement('span');
+    carText.innerText = `${name}: ${distance}`;
+    carContainer.append(carText);
+    this.$resultContainer.append(carContainer);
   }
 
   printWinner() {
