@@ -61,11 +61,17 @@ export default class RacingGame {
     this.racingCount = Number(input);
   }
 
+  getMaxPosition() {
+    return Math.max(...this.cars.map((car) => car.getPosition()));
+  }
+
+  getCarsByPosition(position) {
+    return this.cars.filter((car) => car.getPosition() === position);
+  }
+
   getWinners() {
-    const maxPosition = Car.getMaxPosition(this.cars);
-    return Car.getCarsByPosition(this.cars, maxPosition).map((car) =>
-      car.getName()
-    );
+    const maxPosition = this.getMaxPosition();
+    return this.getCarsByPosition(maxPosition).map((car) => car.getName());
   }
 
   [DICT_ACTION_BUTTON_SUBMIT[KEY_FORM_CAR_NAMES]](e) {
