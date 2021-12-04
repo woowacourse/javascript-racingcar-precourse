@@ -38,7 +38,7 @@ export default class RacingGame {
         console.log(winner);
         return winner;
     }
-    
+
     printRacing() {
         let element = [];
 
@@ -61,7 +61,7 @@ export default class RacingGame {
         const winnerNames = winner.join();
         let element = `<span>최종 우승자: </span>`;
 
-        element += `<span id="racing-winners"> ${winnerNames} </span><br>`; 
+        element += `<span id="racing-winners">${winnerNames}</span><br>`; 
         this.printRacing();
         document.getElementById("app").insertAdjacentHTML('beforeend', element);
     }
