@@ -10,11 +10,15 @@ function makeRacingResult(racingCount, $resultScreenDiv) {
   }
 }
 
-export default function startRacingGame(racingCount) {
+function appendResultElement($resultScreenDiv) {
   const $app = document.querySelector('#app');
-  const $resultScreenDiv = document.createElement('div');
   $app.appendChild($resultScreenDiv);
+}
 
+export default function startRacingGame(racingCount) {
+  const $resultScreenDiv = document.createElement('div');
+
+  appendResultElement($resultScreenDiv);
   showResultTitle();
   makeRacingResult(racingCount, $resultScreenDiv);
   addSelectedWinner($resultScreenDiv);

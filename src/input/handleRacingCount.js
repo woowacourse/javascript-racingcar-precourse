@@ -16,5 +16,6 @@ export default function handleRacingCountSubmit(event) {
   if (!isValidRacingCount(racingCount)) {
     return;
   }
+
   startRacingGame(racingCount);
 }
