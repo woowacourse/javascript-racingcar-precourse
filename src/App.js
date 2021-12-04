@@ -20,6 +20,7 @@ class App {
   render() {
     this.addTemplate();
     this.selectDom();
+    this.hideContents();
     this.mounted();
   }
 
@@ -31,9 +32,18 @@ class App {
   }
 
   selectDom() {
+    [, , this.$nameForm, this.$countTitle, this.$countForm, this.$resultTitle] =
+      this.$target.children;
+
     this.$nameInput = document.querySelector(`#${ID.CAR_NAMES_INPUT}`);
     this.$countInput = document.querySelector(`#${ID.RACING_COUNT_INPUT}`);
     this.$resultContainer = document.querySelector(`#${ID.RESULT_CONTAINER}`);
+  }
+
+  hideContents() {
+    [this.$countTitle, this.$countForm, this.$resultTitle].forEach(e =>
+      e.setAttribute('hidden', true)
+    );
   }
 
   mounted() {
