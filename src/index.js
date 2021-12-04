@@ -1,3 +1,7 @@
+import CarGame from './game/index.js';
+
+let game = new CarGame();
+
 document.querySelector('form > input[type="text"]').id = 'car-names-input';
 document.querySelector('form > input[type="text"] + button').id = 'car-names-submit';
 
@@ -6,5 +10,5 @@ carNamesSubmit.addEventListener('click', e =>{
     e.preventDefault();
     let userInput = document.getElementById('car-names-input').value;
     
-    console.log(userInput);
+    console.log(game.isValid(userInput));
 });
