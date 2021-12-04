@@ -31,6 +31,7 @@ export const isValidNames = names => {
 
 export const isValidCount = count => {
   if (count < NUM.MIN_COUNT) {
+    alert(ERROR.COUNT_IS_NOT_CORRECT);
     return false;
   }
 
