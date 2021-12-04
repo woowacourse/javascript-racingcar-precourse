@@ -6,6 +6,7 @@ export const RACING_COUNT_RANGE = {
 };
 
 export const ELEMENT_ID = {
+  APP: 'app',
   CAR_NAMES_INPUT: 'car-names-input',
   CAR_NAMES_SUBMIT: 'car-names-submit',
   RACING_COUNT_LABEL: 'racing-count-label',

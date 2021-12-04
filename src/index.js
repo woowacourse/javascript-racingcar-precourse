@@ -8,6 +8,7 @@ import { handleError } from './utils/errorHandler.js';
 import DOMElement from './views/domElement.js';
 import { parseCars, parseRacingCount } from './controllers/inputParser.js';
 
+const $app = DOMElement.createById(ELEMENT_ID.APP);
 const $carNamesInput = DOMElement.createById(ELEMENT_ID.CAR_NAMES_INPUT);
 const $carNamesSubmit = DOMElement.createById(ELEMENT_ID.CAR_NAMES_SUBMIT);
 const $racingCountLabel = DOMElement.createById(ELEMENT_ID.RACING_COUNT_LABEL);
@@ -27,8 +28,8 @@ const renderCurrentRound = (game) => {
     $round.appendChild($line);
   });
 
-  $racingResult.appendChild(DOMElement.createByTagName('br'));
-  $racingResult.appendChild($round);
+  $app.appendChild($round);
+  $app.appendChild(DOMElement.createByTagName('br'));
 };
 
 const renderWinnerNames = (game) => {
@@ -42,16 +43,13 @@ const renderWinnerNames = (game) => {
   $winner.setText(winnerNames.join(','));
 
   $winnerWrapper.appendChild($winner);
-  $racingResult.appendChild(DOMElement.createByTagName('br'));
-  $racingResult.appendChild($winnerWrapper);
+  $app.appendChild($winnerWrapper);
 };
 
 const progressGame = () => {
   const cars = parseCars($carNamesInput.getValue());
   const racingCount = parseRacingCount($racingCountInput.getValue());
   const game = new GameController(cars, racingCount);
-
-  $racingResult.appendChild(DOMElement.createByTagName('br'));
 
   for (let i = 0; i < game.racingCount; i += 1) {
     game.progressOneRacing();
