@@ -26,7 +26,7 @@ export default class RacingGame {
 
         for(let i = 0; i < cars.length; i++) {
             let temp = cars[i].totalDistance;
-            console.log(temp);
+            // console.log(temp);
 
             if(temp === maxDistance) {
                 winner.push(cars[i].carName);
@@ -37,7 +37,7 @@ export default class RacingGame {
             }
 
         }
-        console.log(winner);
+        // console.log(winner);
         return winner;
     }
 }
