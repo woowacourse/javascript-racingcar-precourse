@@ -8,12 +8,14 @@ export const createElement = (id, innerHTML = '', type = 'div') => {
   return element;
 };
 
-export const disableInput = input => {
-  input.disabled = true;
+export const disableForm = formElement => {
+  $('input', formElement).disabled = true;
+  $('button', formElement).disabled = true;
 };
 
-export const enableInput = input => {
-  input.disabled = false;
+export const enableForm = formElement => {
+  const inputElem = $('input', formElement);
+  inputElem.disabled = false;
+  inputElem.focus();
+  $('button', formElement).disabled = false;
 };
-
-export const focusInput = input => input.focus();

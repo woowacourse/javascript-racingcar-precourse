@@ -1,6 +1,6 @@
 import Component from '../core/Component.js';
 import { parseRacingCount, isValidRacingCount } from '../utils/input.js';
-import { $, disableInput, enableInput, focusInput } from '../utils/dom.js';
+import { $, disableForm, enableForm } from '../utils/dom.js';
 import { MESSAGE, GAME_STATUS } from '../utils/constants.js';
 
 export default class RacingCountForm extends Component {
@@ -23,10 +23,8 @@ export default class RacingCountForm extends Component {
   render() {
     const { gameStatus } = this.props;
     if (gameStatus === GAME_STATUS.RACING_COUNT_REQUIRED) {
-      enableInput(this._input);
-      focusInput(this._input);
-      return;
+      return enableForm(this.container);
     }
-    disableInput(this._input);
+    disableForm(this.container);
   }
 }
