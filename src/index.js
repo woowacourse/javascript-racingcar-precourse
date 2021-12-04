@@ -1,23 +1,22 @@
-import Form from './dom/form.js';
-import removeChildrenByTagName from './dom/utils/removeChildrenByTag.js';
-import generateCarNamesForm from './dom/generateCarNamesForm.js';
 import {
   ID_APP,
-  ID_CAR_NAMES,
-  ID_RACING_COUNT,
-  ACTION_CHECK_CAR_NAMES,
-  ACTION_CHECK_RACING_COUNT,
+  DICT_ACTION_BUTTON_SUBMIT,
   MSG_ERROR,
+  KEY_FORM_CAR_NAMES,
+  KEY_FORM_RACING_COUNT,
   BUTTON_SUBMIT_TEXT,
 } from './dom/const.js';
+import Car from './car.js';
+import removeChildrenByTagName from './dom/utils/removeChildrenByTag.js';
+import createFormManagerByKey from './dom/createFormManagerByKey.js';
 import isValidCarNamesInput from './game/utils/isValidCarNamesInput.js';
 import isValidRacingCountInput from './game/utils/isValidRacingCountInput.js';
-import toCarNameList from './game/utils/toCarNameList.js';
-import Car from './car.js';
-import displayRacingCountForm from './dom/displayRacingCountForm.js';
-import displayRaceStatus from './dom/displayRaceStatus.js';
 import race from './game/race.js';
+import toCarNameList from './game/utils/toCarNameList.js';
+import displayFormByKey from './dom/displayFormByKey.js';
+import displayRacingCountHeading from './dom/displayRacingCountHeading.js';
 import displayRacingResultHeading from './dom/displayRacingResultHeading.js';
+import displayRaceStatus from './dom/displayRaceStatus.js';
 import displayWinners from './dom/displayWinners.js';
 
 export default class RacingGame {
@@ -26,11 +25,10 @@ export default class RacingGame {
     this.app.onclick = this.onClick.bind(this);
     this.init();
 
-    this.carNamesForm = new Form(ID_CAR_NAMES);
-    this.carNamesForm.setButtonAction(ACTION_CHECK_CAR_NAMES);
-    this.carNamesForm.setButtonText(BUTTON_SUBMIT_TEXT);
-
+    this.carNamesForm = undefined;
     this.racingCountForm = undefined;
+
+    this.displayCarNamesForm();
 
     this.cars = [];
     this.racingCount = 0;
@@ -39,8 +37,20 @@ export default class RacingGame {
   init() {
     removeChildrenByTagName(this.app, 'form');
     removeChildrenByTagName(this.app, 'h4');
+  }
 
-    this.app.appendChild(generateCarNamesForm());
+  displayCarNamesForm() {
+    if (displayFormByKey(this.app, KEY_FORM_CAR_NAMES)) {
+      this.carNamesForm = createFormManagerByKey(KEY_FORM_CAR_NAMES);
+      this.carNamesForm.setButtonText(BUTTON_SUBMIT_TEXT);
+    }
+  }
+
+  displayRacingCountForm() {
+    if (displayFormByKey(this.app, KEY_FORM_RACING_COUNT)) {
+      this.racingCountForm = createFormManagerByKey(KEY_FORM_RACING_COUNT);
+      this.racingCountForm.setButtonText(BUTTON_SUBMIT_TEXT);
+    }
   }
 
   setCarsByInput(input) {
@@ -51,12 +61,6 @@ export default class RacingGame {
     this.racingCount = Number(input);
   }
 
-  setRacingCountForm() {
-    this.racingCountForm = new Form(ID_RACING_COUNT);
-    this.racingCountForm.setButtonAction(ACTION_CHECK_RACING_COUNT);
-    this.racingCountForm.setButtonText(BUTTON_SUBMIT_TEXT);
-  }
-
   getWinners() {
     const maxPosition = Car.getMaxPosition(this.cars);
     return Car.getCarsByPosition(this.cars, maxPosition).map((car) =>
@@ -64,7 +68,7 @@ export default class RacingGame {
     );
   }
 
-  [ACTION_CHECK_CAR_NAMES](e) {
+  [DICT_ACTION_BUTTON_SUBMIT[KEY_FORM_CAR_NAMES]](e) {
     e.preventDefault();
 
     const input = this.carNamesForm.getInputValue();
@@ -76,11 +80,11 @@ export default class RacingGame {
     }
 
     this.setCarsByInput(input);
-    displayRacingCountForm(this.app);
-    this.setRacingCountForm();
+    displayRacingCountHeading(this.app);
+    this.displayRacingCountForm();
   }
 
-  [ACTION_CHECK_RACING_COUNT](e) {
+  [DICT_ACTION_BUTTON_SUBMIT[KEY_FORM_RACING_COUNT]](e) {
     e.preventDefault();
 
     const input = this.racingCountForm.getInputValue();

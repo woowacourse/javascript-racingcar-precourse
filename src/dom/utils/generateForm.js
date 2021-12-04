@@ -1,4 +1,4 @@
-function generateFormTagById(
+function generateForm(
   { formId, inputId, buttonId },
   { inputType, buttonType }
 ) {
@@ -20,4 +20,4 @@ function generateFormTagById(
   return form;
 }
 
-export default generateFormTagById;
+export default generateForm;

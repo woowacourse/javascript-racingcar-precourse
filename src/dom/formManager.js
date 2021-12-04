@@ -1,4 +1,4 @@
-class Form {
+class FormManager {
   constructor({ formId, inputId, buttonId }) {
     this.form = document.getElementById(formId);
     this.input = document.getElementById(inputId);
@@ -23,4 +23,4 @@ class Form {
   }
 }
 
-export default Form;
+export default FormManager;
