@@ -10,7 +10,7 @@ import {
   isZero,
 } from './utils.js';
 import { default as UI } from './DOMUtils.js';
-import { ERROR } from './constants.js';
+import { ERROR, SELECTOR } from './constants.js';
 
 export default function RacingCarGame() {
   const init = () => {
@@ -19,9 +19,9 @@ export default function RacingCarGame() {
   };
 
   const activateEventListeners = () => {
-    $('#car-names-submit').onclick = handleCarNamesSubmit;
-    $('#racing-count-input').onkeydown = handleRacingCountInput;
-    $('#racing-count-submit').onclick = handleRacingCountSubmit;
+    $(SELECTOR.CAR_NAMES_SUBMIT_BUTTON).onclick = handleCarNamesSubmit;
+    $(SELECTOR.RACING_COUNT_INPUT).onkeydown = handleRacingCountInput;
+    $(SELECTOR.RACING_COUNT_SUBMIT_BUTTON).onclick = handleRacingCountSubmit;
   };
 
   const handleCarNamesSubmit = e => {

@@ -1,4 +1,5 @@
 import { $ } from './utils.js';
+import { SELECTOR } from './constants.js';
 
 const DOMUtils = {
   initSection: () => {
@@ -7,30 +8,30 @@ const DOMUtils = {
   },
 
   disableCarNamesForm: () => {
-    $('#car-names-input').disabled = true;
-    $('#car-names-submit').disabled = true;
+    $(SELECTOR.CAR_NAMES_INPUT).disabled = true;
+    $(SELECTOR.CAR_NAMES_SUBMIT_BUTTON).disabled = true;
   },
 
   showRacingCountSection: () => {
-    $('#racing-count-title').style.display = '';
-    $('#racing-count-form').style.display = '';
+    $(SELECTOR.RACING_COUNT_TITLE).style.display = '';
+    $(SELECTOR.RACING_COUNT_FORM).style.display = '';
   },
 
   getCarNames: () => {
-    return $('#car-names-input').value;
+    return $(SELECTOR.CAR_NAMES_INPUT).value;
   },
 
   getRacingCount: () => {
-    return $('#racing-count-input').value;
+    return $(SELECTOR.RACING_COUNT_INPUT).value;
   },
 
   disableRacingCountForm: () => {
-    $('#racing-count-input').disabled = true;
-    $('#racing-count-submit').disabled = true;
+    $(SELECTOR.RACING_COUNT_INPUT).disabled = true;
+    $(SELECTOR.RACING_COUNT_SUBMIT_BUTTON).disabled = true;
   },
 
   showRacingResultTitle: () => {
-    $('#racing-result-title').style.display = '';
+    $(SELECTOR.RACING_RESULT_TITLE).style.display = '';
   },
 
   showRacingResult: array => {
@@ -42,7 +43,7 @@ const DOMUtils = {
     });
     result += '<br/>';
 
-    $('#app').insertAdjacentHTML('beforeend', result);
+    $(SELECTOR.APP).insertAdjacentHTML('beforeend', result);
   },
 
   showWiners: array => {
@@ -52,7 +53,7 @@ const DOMUtils = {
       .map(object => object.name)
       .join(', ');
 
-    $('#app').insertAdjacentHTML(
+    $(SELECTOR.APP).insertAdjacentHTML(
       'beforeend',
       `<div>최종 우승자: 
         <span id="racing-winners">${winners}</span>
@@ -62,12 +63,12 @@ const DOMUtils = {
 };
 
 const hideRacingCountSection = () => {
-  $('#racing-count-title').style.display = 'none';
-  $('#racing-count-form').style.display = 'none';
+  $(SELECTOR.RACING_COUNT_TITLE).style.display = 'none';
+  $(SELECTOR.RACING_COUNT_FORM).style.display = 'none';
 };
 
 const hideRacingResultSection = () => {
-  $('#racing-result-title').style.display = 'none';
+  $(SELECTOR.RACING_RESULT_TITLE).style.display = 'none';
 };
 
 const makeHyphenGraph = number => {
