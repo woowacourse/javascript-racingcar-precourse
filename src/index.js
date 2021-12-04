@@ -6,6 +6,7 @@ import race from './utils/race.js';
 import completeRace from './utils/completeRace.js';
 import hideRacingCountAndResult from './dom/hideRacingCountAndResult.js';
 import showRacingCountForm from './dom/showRacingCountForm.js';
+import removeRaceAndResult from './dom/removeRaceAndResult.js';
 
 export default class CarRacingGame {
   constructor() {
@@ -41,6 +42,7 @@ export default class CarRacingGame {
         return;
       }
 
+      removeRaceAndResult();
       this.racingCount = Number($racingCountInput.value);
       this.cars = generateCars(this.carNames);
       this.play();

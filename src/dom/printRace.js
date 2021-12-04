@@ -1,5 +1,6 @@
 function makeRaceElement(carArray) {
   const $raceElement = document.createElement('div');
+  $raceElement.setAttribute('class', 'race-element');
 
   carArray.forEach((car) => {
     const div = document.createElement('div');
