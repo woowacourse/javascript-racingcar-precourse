@@ -4,9 +4,10 @@ import {
   userInputDuplicatedException,
   carNameIsVacuumException,
 } from './exception.js';
+import { carNamesInput, racingCountInput } from './dom_element.js';
 
 export const getUserInputForCarNames = () => {
-  return document.getElementById('car-names-input').value.toString();
+  return carNamesInput.value.toString();
 };
 
 const userInputStringToArrayConverter = (userInput) => {
@@ -33,5 +34,5 @@ export const getUserInputArray = (userInput) => {
 };
 
 export const getUserInputForCount = () => {
-  return Number(document.getElementById('racing-count-input').value);
+  return Number(racingCountInput.value);
 };

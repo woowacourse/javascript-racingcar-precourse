@@ -9,7 +9,7 @@ import {
   createRacingLog,
   createWinnersText,
   displayResultText,
-} from './dom.js';
+} from './dom_control.js';
 import { noCountException } from './exception.js';
 
 export default class Game {
