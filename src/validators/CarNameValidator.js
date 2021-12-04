@@ -1,4 +1,4 @@
-const Validator = {
+export default {
   checkAtLeastOneCar(splittedCarNames) {
     if (!splittedCarNames[0]) {
       alert('자동차를 최소한 하나 이상 입력해주세요');
@@ -24,13 +24,4 @@ const Validator = {
     }
     return true;
   },
-  checkTryCountLessThanZero(submitTryCount) {
-    if (submitTryCount <= 0) {
-      alert('시도 횟수는 0보다 커야합니다.');
-      return false;
-    }
-    return true;
-  },
 };
-
-export default Validator;

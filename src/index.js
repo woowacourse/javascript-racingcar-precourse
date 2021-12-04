@@ -1,8 +1,9 @@
 import { $ } from './utils/dom.js';
-import Validator from './Validator.js';
+import CarNameValidator from './validators/CarNameValidator.js';
+import TryCountValidator from './validators/TryCountValidator.js';
 
-import Car from './Car.js';
-import RacingCountForm from './RacingCountForm.js';
+import Car from './components/Car.js';
+import RacingCountForm from './components/RacingCountForm.js';
 
 class RacingCarGame {
   constructor() {
@@ -46,16 +47,16 @@ class RacingCarGame {
 
   validateCarNames(splittedCarNames) {
     return (
-      Validator.checkAtLeastOneCar(splittedCarNames) &&
-      Validator.checkCarNameDuplicated(splittedCarNames) &&
-      Validator.checkCarNameUnderFiveLetter(splittedCarNames)
+      CarNameValidator.checkAtLeastOneCar(splittedCarNames) &&
+      CarNameValidator.checkCarNameDuplicated(splittedCarNames) &&
+      CarNameValidator.checkCarNameUnderFiveLetter(splittedCarNames)
     );
   }
 
   onClickTryCountSubmitButton(event) {
     event.preventDefault();
     const submitTryCount = $('#racing-count-input').value;
-    if (!Validator.checkTryCountLessThanZero(submitTryCount)) return;
+    if (!TryCountValidator.checkTryCountLessThanZero(submitTryCount)) return;
     this.tryCount = submitTryCount;
     this.playRacingCarGame();
   }
