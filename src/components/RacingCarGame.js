@@ -69,10 +69,8 @@ export default class RacingCarGame extends Component {
   _getWinners(gameResult) {
     const finalResult = getFinalResult(gameResult);
     const maximumDistance = getMaximumDistance(finalResult);
-    const winners = [];
-    finalResult.forEach(([name, distance]) => {
-      if (distance === maximumDistance) winners.push(name);
-    });
-    return winners;
+    return finalResult
+      .filter(([, distance]) => distance === maximumDistance)
+      .map(([name]) => name);
   }
 }
