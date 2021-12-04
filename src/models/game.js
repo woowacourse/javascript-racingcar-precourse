@@ -1,6 +1,6 @@
-import Line from '../models/line.js';
+import Line from './line.js';
 
-class GameController {
+class Game {
   #lines;
 
   #racingTry;
@@ -43,7 +43,7 @@ class GameController {
       return;
     }
 
-    this.#lines.forEach(GameController.#tryForwardLineByRandom);
+    this.#lines.forEach(Game.#tryForwardLineByRandom);
     this.#racingTry += 1;
   }
 
@@ -61,4 +61,4 @@ class GameController {
   }
 }
 
-export default GameController;
+export default Game;

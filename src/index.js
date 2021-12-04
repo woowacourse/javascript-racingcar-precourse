@@ -4,7 +4,7 @@ import {
   carNamesInputValidator,
   racingCountInputValidator,
 } from './controllers/inputValidator.js';
-import GameController from './controllers/gameController.js';
+import Game from './models/game.js';
 import { handleError } from './utils/errorHandler.js';
 import DOMElement from './views/domElement.js';
 
@@ -49,7 +49,7 @@ const renderWinnerNames = (game) => {
 const progressGame = () => {
   const cars = parseCars($carNamesInput.getValue());
   const racingCount = parseRacingCount($racingCountInput.getValue());
-  const game = new GameController(cars, racingCount);
+  const game = new Game(cars, racingCount);
 
   for (let i = 0; i < game.racingCount; i += 1) {
     game.progressOneRacing();
