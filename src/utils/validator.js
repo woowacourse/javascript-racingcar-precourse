@@ -10,7 +10,7 @@ class Validator {
   }
 
   static rejectWith(rejectType) {
-    return { isSuccess: true, rejectType };
+    return { isSuccess: false, rejectType };
   }
 
   run(input) {

@@ -3,6 +3,8 @@ import {
   carNamesInputValidator,
   racingCountInputValidator,
 } from './controllers/inputValidator.js';
+import GameController from './controllers/gameController.js';
+import Car from './models/car.js';
 import { handleError } from './utils/errorHandler.js';
 import DOMElement from './views/domElement.js';
 
@@ -16,7 +18,22 @@ const $racingCountSubmit = DOMElement.createById(
 );
 const $racingResult = DOMElement.createById(ELEMENT_ID.RACING_RESULT);
 
-const renderWinnerNames = (winnerNames) => {
+const renderCurrentRound = (game) => {
+  const $round = DOMElement.createByTagName('div');
+
+  game.lines.forEach((line) => {
+    const $line = DOMElement.createByTagName('div');
+    $line.setText(`${line.car.name}: ${'-'.repeat(line.position)}`);
+    $round.appendChild($line);
+  });
+
+  $racingResult.appendChild(DOMElement.createByTagName('br'));
+  $racingResult.appendChild($round);
+};
+
+const renderWinnerNames = (game) => {
+  const winnerNames = game.calculateWinLines().map((line) => line.car.name);
+
   const $winnerWrapper = DOMElement.createByTagName('div');
   $winnerWrapper.setText('최종 우승자: ');
 
@@ -25,11 +42,25 @@ const renderWinnerNames = (winnerNames) => {
   $winner.setText(winnerNames.join(','));
 
   $winnerWrapper.appendChild($winner);
+  $racingResult.appendChild(DOMElement.createByTagName('br'));
   $racingResult.appendChild($winnerWrapper);
 };
 
 const progressGame = () => {
-  // TO BE IMPLEMENTED
+  const carNamesText = $carNamesInput.getValue();
+  const cars = carNamesText.split(',').map((name) => new Car(name));
+  const racingCountText = $racingCountInput.getValue();
+  const racingCount = Number(racingCountText);
+  const game = new GameController(cars, racingCount);
+
+  $racingResult.appendChild(DOMElement.createByTagName('br'));
+
+  for (let i = 0; i < game.racingCount; i += 1) {
+    game.progressOneRacing();
+    renderCurrentRound(game);
+  }
+
+  renderWinnerNames(game);
 };
 
 const handleCarNamesSubmit = () => {
@@ -56,7 +87,11 @@ const handleRacingCountSubmit = () => {
     return;
   }
 
+  $racingCountInput.setDisabled(true);
+  $racingCountSubmit.setDisabled(true);
+
   progressGame();
+  $racingResult.show();
 };
 
 const main = () => {
