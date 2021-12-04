@@ -27,16 +27,16 @@ export default class CheckValid {
       name => name.length > CAR_NAME.MININUM && name.length <= CAR_NAME.LENGTH
     );
     if (!isValidLength) {
-      alert(MESSAGE.INVALID_CAR_LENGTH);
+      return alert(MESSAGE.INVALID_CAR_LENGTH);
     }
     return isValidLength;
   }
 
   isValidCarNames(array) {
-    const isValidValue = array.every(name => /[A-Za-z가-힇]/g.test(name));
-    if (!isValidValue) {
-      alert(MESSAGE.INVALID_CAR_NAME);
+    const invalidValue = array.some(name => /[^(A-Za-z가-힇)]/g.test(name));
+    if (invalidValue) {
+      return alert(MESSAGE.INVALID_CAR_NAME);
     }
-    return isValidValue;
+    return true;
   }
 }
