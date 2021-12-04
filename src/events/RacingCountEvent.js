@@ -44,8 +44,8 @@ export default class RacingCountEvent {
     return false;
   };
 
-  getInputs = () => {
-    return [this.numberRacingCount, this.carNamesEvent.carNamesArray];
+  getInput = () => {
+    return this.numberRacingCount;
   };
 
   validateCount = () => {

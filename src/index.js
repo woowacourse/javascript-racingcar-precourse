@@ -11,11 +11,18 @@ class RacingCar {
     this.$racingCountInput = DOM.racingCountInput;
     this.$carNamesSubmit = DOM.carNamesSubmit;
     this.carNames = [];
+    this.racingCount = 0;
     this.main();
   }
 
   racingCountInputFocus = () => {
     this.racingCountEvent.onFocusInput();
+  };
+
+  readyGame = () => {
+    this.racingCount = this.racingCountEvent.getInput();
+    const game = new Game(this.racingCount, this.carNames);
+    game.start();
   };
 
   racingCountSubmit = () => {
@@ -30,9 +37,7 @@ class RacingCar {
         return;
       }
 
-      const [racingCount, carNames] = this.racingCountEvent.getInputs();
-      const game = new Game(racingCount, carNames);
-      game.start();
+      this.readyGame();
     });
   };
 
