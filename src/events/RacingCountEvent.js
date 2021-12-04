@@ -48,10 +48,12 @@ export default class RacingCountEvent {
 
   validateCount = () => {
     this.stringRacingCount = this.$racingCountInput.value;
+
     const isValidate =
       !this.isEmpty() && //
       this.isInteger() &&
       this.isPositiveInteger();
+
     return isValidate;
   };
 

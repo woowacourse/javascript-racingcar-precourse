@@ -12,6 +12,7 @@ export default class Winners {
     if (maxDistance < currentDistance) {
       this.winners = [];
       this.winners.push(currentCarName);
+
       return currentDistance;
     }
 
@@ -25,6 +26,7 @@ export default class Winners {
   getWinners = () => {
     this.carResultInformations.reduce((maxDistance, currentInformation) => {
       const [currentCarName, currentDistance] = currentInformation;
+
       return this.compareDistance(currentCarName, maxDistance, currentDistance);
     }, 0);
   };
@@ -58,6 +60,7 @@ export default class Winners {
   countWinners = () => {
     if (this.winners.length === 1) {
       this.getWinnerTemplate(this.winners[0]);
+
       return;
     }
 

@@ -75,6 +75,7 @@ export default class CarNamesEvent {
 
   isComma = () => {
     const noComma = this.recursiveArray(',');
+
     if (!noComma) {
       this.errorMessage = ERROR_MESSAGE.NO_COMMA;
     }
@@ -84,15 +85,18 @@ export default class CarNamesEvent {
 
   isBlank = () => {
     const noBlank = this.recursiveArray(' ');
+
     if (noBlank) {
       this.errorMessage = ERROR_MESSAGE.NO_BLANK;
     }
+
     return !noBlank;
   };
 
   isEmpty = () => {
     if (this.carNames.length === 0) {
       this.errorMessage = ERROR_MESSAGE.NO_EMPTY;
+
       return false;
     }
 

@@ -21,6 +21,7 @@ class RacingCar {
 
   readyGame = () => {
     this.racingCount = this.racingCountEvent.getInput();
+
     const game = new Game(this.racingCount, this.carNames);
     game.start();
   };
@@ -33,6 +34,7 @@ class RacingCar {
       if (!isValidate) {
         this.racingCountEvent.alertErrorMessage();
         this.$racingCountInput.focus();
+
         return;
       }
 
@@ -43,6 +45,7 @@ class RacingCar {
   carNamesSubmit = () => {
     this.$carNamesSubmit.addEventListener('click', (event) => {
       event.preventDefault();
+
       if (!this.carNamesEvent.validateNames()) {
         this.carNamesEvent.alertMessage();
       }
