@@ -1,6 +1,6 @@
 import { formEvent } from './components/formEvent.js';
 import { gameStart } from './components/game.js';
-import { NUMBER, RESULTSPAN_ID, WINNER, RESULTH1_ID } from './constants/constant.js';
+import { NUMBER, RESULTSPAN_ID, WINNER, RESULTH1_ID } from './utils/constant.js';
 
 export function Car(userInput) {
   this.userInput = userInput;

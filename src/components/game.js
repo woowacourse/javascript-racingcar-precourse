@@ -1,4 +1,4 @@
-import { CARS_NAME, COMMA, DASH, EMPTY, GMAE_COUNT, NUMBER } from "../constants/constant.js";
+import { CARS_NAME, COMMA, DASH, EMPTY, GMAE_COUNT, NUMBER } from "../utils/constant.js";
 
 export function gameStart(userInput) {
   const gameWinCountArray = Array.from({length: userInput[CARS_NAME].split(COMMA).length}, () => NUMBER.ZERO);

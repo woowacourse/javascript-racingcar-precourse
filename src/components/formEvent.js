@@ -1,5 +1,5 @@
 import { Car } from '../index.js'; 
-import { CARS_NAME, GMAE_COUNT, NUMBER, MESSAGE } from '../constants/constant.js'
+import { CARS_NAME, GMAE_COUNT, NUMBER, MESSAGE } from '../utils/constant.js'
 
 export function formEvent() {
   const allForm = document.getElementsByTagName("form");
