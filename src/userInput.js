@@ -60,12 +60,12 @@ export default class UserInput {
     return this.isVaildCarNameLength() && this.isDifferntCarName();
   }
 
-  getRacingCountNum() {
+  getRacingCount() {
     return this.racingCountInputEl.value;
   }
 
   isValidRacingCount() {
-    if (this.getRacingCountNum() < RACING_COUNT_RULES.minCount) {
+    if (this.getRacingCount() < RACING_COUNT_RULES.minCount) {
       alert(ERR_MESSAGE.racingCount);
       return false;
     }
