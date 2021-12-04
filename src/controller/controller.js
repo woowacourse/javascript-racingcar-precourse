@@ -31,16 +31,25 @@ export class Controller {
       .join(', ');
   }
 
+  // renderMovedState(cars) {
+  //   let domElement = '';
+  //   this.calculateMovedState(cars);
+
+  //   cars.forEach((car) => {
+  //     domElement += `<span>${car.getName()}: ${'-'.repeat(car.getDistance())}</span><br />`;
+  //   });
+  //   domElement += `<br />`;
+
+  //   return domElement;
+  // }
+
   renderMovedState(cars) {
-    let domElement = '';
     this.calculateMovedState(cars);
-
-    cars.forEach((car) => {
-      domElement += `<span>${car.getName()}: ${'-'.repeat(car.getDistance())}</span><br />`;
-    });
-    domElement += `<br />`;
-
-    return domElement;
+    return (
+      cars
+        .map((car) => `<span>${car.getName()}: ${'-'.repeat(car.getDistance())}</span><br />`)
+        .join('') + '<br />'
+    );
   }
 
   renderWinner(cars) {
