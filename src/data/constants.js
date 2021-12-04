@@ -11,4 +11,10 @@ export const DONE = Object.freeze({
   USERINPUT_COUNT: Symbol(''),
 });
 
+export const DISPLAY = Object.freeze({
+  WINNER_TITLE: '최종 우승자: ',
+  GAME_RESTART_TEXT: '게임을 재시작하시겠습니까?',
+  GAME_RESTART_BUTTON: '재시작',
+});
+
 export const EMPTY_STRING = '';

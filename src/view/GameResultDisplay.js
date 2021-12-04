@@ -1,4 +1,5 @@
 import { createElement, combineElement, $ } from '../utils/element-tools.js';
+import { DISPLAY } from '../data/constants.js';
 
 const createRoundWrap = (count) => {
   const combineList = Array.from({ length: count }, (value, index) => {
@@ -21,7 +22,7 @@ const insertPlayLogs = ($wrap, playerLogs) => {
 };
 
 const createWinnersText = (winners) => {
-  const $winnersLine = createElement('P', '최종 우승자: ');
+  const $winnersLine = createElement('P', DISPLAY.WINNER_TITLE);
   const $winnersResult = createElement('SPAN', winners);
 
   $winnersResult.id = 'racing-winners';
@@ -31,8 +32,8 @@ const createWinnersText = (winners) => {
 };
 
 const createResultWrap = ($content) => {
-  const $restartText = createElement('P', '게임을 재시작하시겠습니까? ');
-  const $restartButton = createElement('BUTTON', '재시작');
+  const $restartText = createElement('P', DISPLAY.GAME_RESTART_TEXT);
+  const $restartButton = createElement('BUTTON', DISPLAY.GAME_RESTART_BUTTON);
   $restartText.append($restartButton);
 
   const $resultWrap = createElement('DIV');
