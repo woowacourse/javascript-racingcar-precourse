@@ -6,9 +6,7 @@ import {
 } from './exception.js';
 import { carNamesInput, racingCountInput } from './dom_element.js';
 
-export const getUserInputForCarNames = () => {
-  return carNamesInput.value.toString();
-};
+export const getUserInputForCarNames = () => carNamesInput.value.toString();
 
 const userInputStringToArrayConverter = (userInput) => {
   const _userInputNoVacuum = userInput.replaceAll(' ', '');
@@ -33,6 +31,4 @@ export const getUserInputArray = (userInput) => {
   return _userInputArray;
 };
 
-export const getUserInputForCount = () => {
-  return Number(racingCountInput.value);
-};
+export const getUserInputForCount = () => Number(racingCountInput.value);
