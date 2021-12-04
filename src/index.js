@@ -43,7 +43,17 @@ class RacingCarGame {
   onClickTryCountSubmitButton(event) {
     event.preventDefault();
     const submitTryCount = $('#racing-count-input').value;
+
+    if (this.checkTryCountLessThanZero(submitTryCount)) {
+      alert('시도 횟수는 0보다 커야합니다.');
+      return;
+    }
+
     this.tryCount = submitTryCount;
+  }
+
+  checkTryCountLessThanZero(tryCount) {
+    return tryCount <= 0;
   }
 
   checkCarNameDuplicated(splittedCarNames) {
