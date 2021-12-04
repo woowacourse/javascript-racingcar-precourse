@@ -16,19 +16,19 @@ export default class Game {
     this.cars = [];
     this.count = 0;
     this.winners = [];
+    this.winnerScore = 0;
   }
 
   getCarNames() {
     const userInput = getUserInputForCarNames();
-    const carNamesArray = getUserInputArray(userInput);
 
-    return carNamesArray;
+    return getUserInputArray(userInput);
   }
 
   createCars() {
     const carNamesArray = this.getCarNames();
 
-    if (carNamesArray.length == 0) {
+    if (carNamesArray.length === 0) {
       return;
     }
 
@@ -67,16 +67,14 @@ export default class Game {
   }
 
   determineWinner() {
-    let maxScore = 0;
-
     this.cars.forEach((car) => {
-      if (car.location > maxScore) {
-        maxScore = car.location;
+      if (car.location > this.winnerScore) {
+        this.winnerScore = car.location;
       }
     });
 
     this.cars.forEach((car) => {
-      if (car.location === maxScore) {
+      if (car.location === this.winnerScore) {
         this.winners.push(car.name);
       }
     });
