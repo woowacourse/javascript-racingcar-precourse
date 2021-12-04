@@ -1,4 +1,4 @@
-import { NUMBER_RANGE } from './constants.js';
+import { NUMBER_RANGE, RACE_CHARACTER } from './constants.js';
 import randomNumberInRange from './utils/randomNumberInRange.js';
 
 export default class Car {
@@ -17,7 +17,7 @@ export default class Car {
   raceString() {
     let race = '';
     for (let i = 0; i < this.distance; i++) {
-      race += '-';
+      race += RACE_CHARACTER;
     }
 
     return `${this.name}: ${race}`;
