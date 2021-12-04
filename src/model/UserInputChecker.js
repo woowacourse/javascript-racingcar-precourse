@@ -6,12 +6,9 @@ const isSplitComma = (value) => value.indexOf(',') > -1;
 
 const isLengthLimit = (value) => {
   const nameList = value.split(',');
-  const checkList = nameList.filter((item) => {
-    const trimItem = item.trim();
-    return trimItem.length >= 1 && trimItem.length <= 5;
-  });
+  const validList = nameList.filter((item) => /^.{1,5}$/g.test(item.trim()));
 
-  return checkList.length === nameList.length;
+  return validList.length === nameList.length;
 };
 
 const isUniqueName = (value) => {
