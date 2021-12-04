@@ -8,20 +8,22 @@ class RacingGame {
     this.countH4 = document.getElementById('count-h4');
     this.resultH4 = document.getElementById('result-h4');
     this.cars = [];
+    this.hideForms();
     this.init();
   }
 
   init() {
-    this.hideForms();
-    let names;
     const nameSubmitButton = document.getElementById('name-form-button');
     const userInput = document.getElementById('name-form-input');
+    let names;
     nameSubmitButton.addEventListener('click', (e) => {
       e.preventDefault();
+      this.cars = [];
       names = userInput.value.split(',');
       names.forEach((element) => {
         this.cars.push(new Car(element, 0));
       });
+      console.log(this.cars);
       this.checkName(names);
     });
   }
