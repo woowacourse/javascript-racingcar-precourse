@@ -44,4 +44,18 @@ export default class UserFormDisplay {
       // no default
     }
   }
+
+  static bindNamesSubmit(handler) {
+    $nameSubmit.addEventListener('click', (event) => {
+      event.preventDefault();
+      handler($nameInput.value);
+    });
+  }
+
+  static bindCountSubmit(handler) {
+    $countSubmit.addEventListener('click', (event) => {
+      event.preventDefault();
+      handler($countInput.value);
+    });
+  }
 }
