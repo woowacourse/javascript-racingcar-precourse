@@ -38,12 +38,31 @@ export default class RacingGame {
         console.log(winner);
         return winner;
     }
+    
+    printRacing() {
+        let element = [];
+
+        this.cars.forEach((car, index) => {
+            element.push(car.carName + ": ");
+        })
+
+        for(let i = 0; i < this.racingCount; i++) {
+            element.forEach((string, index) => {
+                if(this.cars[index].moveArray[i] === true) {
+                    element[index] += "-";
+                }
+                document.getElementById("app").insertAdjacentHTML('beforeend', `${element[index]}<br>`);
+            })
+            document.getElementById("app").insertAdjacentHTML('beforeend', `<br>`);
+        }
+    }
 
     printWinner(winner) {
         const winnerNames = winner.join();
         let element = `<span>최종 우승자: </span>`;
 
         element += `<span id="racing-winners"> ${winnerNames} </span><br>`; 
+        this.printRacing();
         document.getElementById("app").insertAdjacentHTML('beforeend', element);
     }
 }
