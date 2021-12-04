@@ -62,35 +62,35 @@
 src
 ├── controllers # element들의 이벤트 관련 처리
 │   ├── cars
-│   │   ├── cars.js
-│   │   ├── checkCarNames.js
-│   │   └── makeRacingCars.js
+│   │   ├── cars.js # 자동차 이름 입력을 처리하고 자동차를 저장
+│   │   ├── checkCarNames.js  # 자동차 이름이 올바르게 입력되었는지 확인
+│   │   └── makeRacingCars.js # 자동차 만드는 역할
 │   ├── racingCount
-│   │   ├── racingCount.js
-│   │   └── checkRacingCount.js
+│   │   ├── racingCount.js  # 레이싱 횟수 입력을 처리하고 횟수를 저장
+│   │   └── checkRacingCount.js # 레이싱 횟수가 올바르게 입력되었는지 확인
 │   ├── racingResult
-│   │   ├── winners.js
-│   │   └── sortCars.js
+│   │   ├── winners.js  # 게임이 끝나고 우승자를 선별하여 저장
+│   │   └── sortCars.js # 많이 움직인 순서로 자동차들을 정렬
 │   └── play
-│       ├── playAndResult.js
-│       ├── playGame.js
-│       └── getRandomNumber.js
+│       ├── playAndResult.js  # 게임을 진행하고 우승자를 출력하도록 명령
+│       ├── playGame.js # 규칙에 맞게 게임 진행
+│       └── getRandomNumber.js  # 랜덤 넘버를 뽑아내는 역할
 ├── models  # 자동차 모델 정의
-│   ├── car.js
-│   └── racingCar.js
+│   ├── car.js  # 기본적으로 제공해준 이름만 저장하는 자동차 모델
+│   └── racingCar.js  # 위의 자동차 모델과 위치를 저장하는 다른 자동차 모델
 ├── utils # 다른 곳에서 공통적으로 사용하는 요소
 │   └── constants.js  # 상수 정리
 ├── views # 화면 관련 처리
 │   ├── carNames
-│   │   ├── alertForCarNames.js
-│   │   └── carNamesInput.js
+│   │   ├── alertForCarNames.js # 자동차 이름 alert 처리
+│   │   └── carNamesInput.js  # 자동차 이름 입력창 화면 관련 처리
 │   ├── racingCount
-│   │   ├── alertForRacingCount.js
-│   │   ├── racingCountInput.js
-│   │   └── visiblePartOfRacingCount.js
+│   │   ├── alertForRacingCount.js  # 레이싱 횟수 alert 처리
+│   │   ├── racingCountInput.js # 레이싱 횟수 입력창 화면 관련 처리
+│   │   └── visiblePartOfRacingCount.js # 레이싱 횟수 부분을 나타내거나 숨김
 │   └── racingResult
-│       ├── showPlaying.js
-│       ├── showWinners.js
-│       └── visiblePartOfRacingResult.js
-└── index.js
+│       ├── showPlaying.js  # 매 회차 결과를 출력
+│       ├── showWinners.js  # 우승자 출력
+│       └── visiblePartOfRacingResult.js  # 결과 부분을 나타내거나 숨김
+└── index.js  # 초기 객체 선언 및 관리
 ```
