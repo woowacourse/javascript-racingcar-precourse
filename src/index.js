@@ -13,6 +13,7 @@ class RacingCarGame {
 
   onClickCarNameSubmitButton(event) {
     event.preventDefault();
+    this.cars = [];
     const carNames = $('#car-names-input').value;
     if (!carNames) {
       alert('자동차를 입력해주세요');
