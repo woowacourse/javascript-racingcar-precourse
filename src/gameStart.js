@@ -8,7 +8,6 @@ import { getGameResult } from './getGameResult.js';
 function printEachCarProgress(CARS) {
     for (let car of CARS) {
         const randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
-        console.log(randomNumber);
         if (randomNumber >= 4) {
             car.PLUS_FORWARD();
         }

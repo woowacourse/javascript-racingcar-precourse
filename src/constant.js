@@ -8,6 +8,5 @@ export class CAR {
     PLUS_FORWARD() {
         this.forward++;
         this.gameProgress += '-';
-        console.log(this.name + " : " + this.forward);
     }
 }

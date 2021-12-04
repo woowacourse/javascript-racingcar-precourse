@@ -11,7 +11,6 @@ function restart() {
 
 export function getGameResult(CARS) {
     let winner = getWinner(CARS);
-    console.log(winner);
     winner = winner.join(',');
 
     document.querySelector('body').innerHTML += `<span id="racing-winners">
