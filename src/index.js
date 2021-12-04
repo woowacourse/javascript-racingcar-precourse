@@ -11,13 +11,13 @@ import removeChildrenByTagName from './dom/utils/removeChildrenByTag.js';
 import createFormManagerByKey from './dom/createFormManagerByKey.js';
 import isValidCarNamesInput from './game/utils/isValidCarNamesInput.js';
 import isValidRacingCountInput from './game/utils/isValidRacingCountInput.js';
-import race from './game/race.js';
 import toCarNameList from './game/utils/toCarNameList.js';
 import displayFormByKey from './dom/displayFormByKey.js';
 import displayRacingCountHeading from './dom/displayRacingCountHeading.js';
 import displayRacingResultHeading from './dom/displayRacingResultHeading.js';
 import displayRaceStatus from './dom/displayRaceStatus.js';
 import displayWinners from './dom/displayWinners.js';
+import RacingGameManager from './racingGameManager.js';
 
 export default class RacingGame {
   constructor() {
@@ -30,8 +30,7 @@ export default class RacingGame {
 
     this.displayCarNamesForm();
 
-    this.cars = [];
-    this.racingCount = 0;
+    this.racingGameManager = new RacingGameManager();
   }
 
   init() {
@@ -53,27 +52,6 @@ export default class RacingGame {
     }
   }
 
-  setCarsByInput(input) {
-    this.cars = Car.generateCarsByNames(toCarNameList(input));
-  }
-
-  setRacingCountByinput(input) {
-    this.racingCount = Number(input);
-  }
-
-  getMaxPosition() {
-    return Math.max(...this.cars.map((car) => car.getPosition()));
-  }
-
-  getCarsByPosition(position) {
-    return this.cars.filter((car) => car.getPosition() === position);
-  }
-
-  getWinners() {
-    const maxPosition = this.getMaxPosition();
-    return this.getCarsByPosition(maxPosition).map((car) => car.getName());
-  }
-
   [DICT_ACTION_BUTTON_SUBMIT[KEY_FORM_CAR_NAMES]](e) {
     e.preventDefault();
 
@@ -85,7 +63,8 @@ export default class RacingGame {
       return;
     }
 
-    this.setCarsByInput(input);
+    const cars = Car.generateCarsByNames(toCarNameList(input));
+    this.racingGameManager.setCars(cars);
     displayRacingCountHeading(this.app);
     this.displayRacingCountForm();
   }
@@ -100,13 +79,15 @@ export default class RacingGame {
       return;
     }
 
-    this.setRacingCountByinput(input);
+    const racingCount = Number(input);
+    this.racingGameManager.setRacingCount(racingCount);
     displayRacingResultHeading(this.app);
-    for (let i = 0; i < this.racingCount; i++) {
-      race(this.cars);
-      displayRaceStatus(this.app, this.cars);
+    for (let i = 0; i < this.racingGameManager.getRacingCount(); i++) {
+      this.racingGameManager.race();
+      displayRaceStatus(this.app, this.racingGameManager.getCars());
     }
-    displayWinners(this.app, this.getWinners());
+    this.racingGameManager.judgeWinners();
+    displayWinners(this.app, this.racingGameManager.getWinners());
   }
 
   onClick(event) {
