@@ -10,14 +10,14 @@ class RacingCarGame {
   }
 
   addDOM() {
-    const div = document.createElement('div');
-    const span = document.createElement('span');
+    const racingCarResultContainer = document.createElement('div');
+    const racingWinnerContainer = document.createElement('div');
 
-    div.id = 'racing-car-results';
-    span.id = 'racing-winners';
+    racingCarResultContainer.id = 'racing-car-result-container';
+    racingWinnerContainer.id = 'racing-winner-container';
 
-    $('#app').appendChild(div);
-    $('#app').appendChild(span);
+    $('#app').appendChild(racingCarResultContainer);
+    $('#app').appendChild(racingWinnerContainer);
   }
 
   addEventListeners() {
@@ -104,8 +104,8 @@ class RacingCarGame {
   }
 
   printGameResult(result) {
-    $('#racing-car-results').innerHTML = '';
-    $('#racing-car-results').innerHTML = result;
+    $('#racing-car-result-container').innerHTML = '';
+    $('#racing-car-result-container').innerHTML = result;
   }
 
   checkWinners(cars) {
@@ -119,8 +119,14 @@ class RacingCarGame {
   }
 
   printWinners(winners) {
-    const winnerString = `최종 우승자: ${winners.map(i => i.name).join(',')}`;
-    $('#racing-winners').innerHTML = winnerString;
+    $('#racing-winner-container').innerHTML = '';
+    const winnerTemplate = `
+      <div>
+        최종 우승자: 
+        <span id="racing-winners">${winners.map(i => i.name).join(',')}</span>
+      </div>
+    `;
+    $('#racing-winner-container').innerHTML = winnerTemplate;
   }
 }
 
