@@ -14,7 +14,6 @@ class App {
 
   setState = newState => {
     this.state = { ...this.state, ...newState };
-    console.log('현재상태', this.state);
   };
 
   render() {
