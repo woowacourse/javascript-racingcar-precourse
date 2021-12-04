@@ -1,3 +1,5 @@
+import { canMoveCar } from '../utils/game.js';
+
 export default class Car {
   constructor(name) {
     this._name = name;
@@ -5,8 +7,7 @@ export default class Car {
   }
 
   goForward() {
-    const go = MissionUtils.Random.pickNumberInRange(0, 9) >= 4;
-    if (!go) return;
+    if (!canMoveCar()) return;
     this._distance += 1;
   }
 
