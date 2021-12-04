@@ -16,10 +16,10 @@ export class RacingCarGame {
         this.init();
     }
     init() {
-        this.bindEventsToCompoents();
+        this.bindEventsToComponents();
         this.unmount();
     }
-    bindEventsToCompoents() {
+    bindEventsToComponents() {
         this.carNamesInput = new CarNameInput(this.setCars.bind(this));
     }
     setCars(names) {
