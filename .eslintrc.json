@@ -9,10 +9,17 @@
     "sourceType": "module"
   },
   "rules": {
-    "no-console": "off",
+    // project requirement
+    "max-depth": ["error", 2],
+    "max-lines-per-function": [
+      "warn",
+      { "max": 17, "skipBlankLines": false, "skipComments": false }
+    ],
     "no-alert": "off",
-    "import/extensions": [
-      "off"
-    ]
+    // custom rules
+    "import/extensions": ["off"],
+    "no-new": "off",
+    "newline-before-return": 2,
+    "class-methods-use-this": "warn"
   }
 }
