@@ -39,10 +39,10 @@ export default class GameController {
     this.gameInstance.setPlay(count);
     UserFormDisplay.open(resultCode);
 
-    this.draw();
+    this.handelGameResult();
   }
 
-  draw() {
+  handelGameResult() {
     const { gameResult } = this.gameInstance;
     GameResultDisplay.draw(gameResult, ($restartButton) => {
       $restartButton.addEventListener('click', this.init.bind(this));
