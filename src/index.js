@@ -41,6 +41,7 @@ class RacingCarGame {
     hideElement(this.$racingCountHeading);
     hideElement(this.$racingCountForm);
     hideElement(this.$racingResultHeading);
+    hideElement(this.$winnerTextDiv);
   }
 
   triggerCountInputEvent() {
@@ -59,6 +60,7 @@ class RacingCarGame {
     this.showRoundResult();
     this.showWinner();
     showElement(this.$racingResultHeading);
+    showElement(this.$winnerTextDiv);
   }
 
   showWinner() {
