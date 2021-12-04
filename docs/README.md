@@ -234,9 +234,9 @@
 
 경주 우승자를 판단하는 과정은 다음과 같다.
 
-- [ ] 각각의 `자동차`들의 최종 `전진 횟수`를 가져온다.
-- [ ] `전진 횟수`가 가장 많은 `자동차`의 이름을 얻는다.
-  - [ ] 공동 우승이 가능하다.
+- [x] 각각의 `자동차`들의 최종 `전진 횟수`를 가져온다.
+- [x] `전진 횟수`가 가장 많은 `자동차`의 이름을 얻는다.
+  - [x] 공동 우승이 가능하다.
 
 
 
@@ -246,7 +246,7 @@
 
 ![실행이미지](../images/result.jpg)
 
-- [ ] [최종 우승자 표시하기](https://github.com/leegwae/javascript-racingcar-precourse/tree/leegwae/docs#%EC%B5%9C%EC%A2%85-%EC%9A%B0%EC%8A%B9%EC%9E%90-%ED%91%9C%EC%8B%9C%ED%95%98%EA%B8%B0): 사용자는 `racing-winners` span 태그로 `최종 우승자`를 확인할 수 있다.
+- [x] [최종 우승자 표시하기](https://github.com/leegwae/javascript-racingcar-precourse/tree/leegwae/docs#%EC%B5%9C%EC%A2%85-%EC%9A%B0%EC%8A%B9%EC%9E%90-%ED%91%9C%EC%8B%9C%ED%95%98%EA%B8%B0): 사용자는 `racing-winners` span 태그로 `최종 우승자`를 확인할 수 있다.
 
 
 
@@ -254,6 +254,6 @@
 
 [완료 커밋](https://github.com/leegwae/javascript-racingcar-precourse/commit/25b841a9ddf4532237a426dd14fafbf3d236effb)
 
-- [ ] 경주 우승자는 `경주 우승자: 자동차이름`으로 표시한다.
-- [ ] 경주 우승자가 여러 대이면 `,`(쉼표)로 구분한다.
+- [x] 경주 우승자는 `경주 우승자: 자동차이름`으로 표시한다.
+- [x] 경주 우승자가 여러 대이면 `,`(쉼표)로 구분한다.
 
