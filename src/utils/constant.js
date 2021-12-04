@@ -3,9 +3,20 @@ export const GMAE_COUNT = 1;
 export const EMPTY = "";
 export const COMMA = ",";
 export const DASH = "-";
-export const RESULTH1_ID = "racing-result";
-export const RESULTSPAN_ID = "racing-winners";
 export const WINNER = "최종 우승자";
+
+export const ELEMENT_ID = {
+  RESULTH1_ID: "racing-result",
+  RESULTSPAN_ID: "racing-winners",
+  COUNTFORM_ID: "racing-count-form",
+  COUNTTITLE_ID: "racing-count-title",
+};
+
+export const ELEMENT_MESSAGE = {
+  BEFORE_GAME: "beforegameStart",
+  CARS_INPUT: "submitCarsInput",
+  COUNT_INPUT: "submitCountInput",
+}
 
 export const NUMBER = {
   ZERO: 0,

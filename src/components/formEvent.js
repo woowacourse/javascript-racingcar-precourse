@@ -1,10 +1,10 @@
 import { Car } from '../index.js'; 
-import { CARS_NAME, GMAE_COUNT, NUMBER, MESSAGE } from '../utils/constant.js';
+import { CARS_NAME, GMAE_COUNT, NUMBER, MESSAGE, ELEMENT_ID, ELEMENT_MESSAGE } from '../utils/constant.js';
 import { setGameElemetStyle } from '../utils/dom.js';
 
 export function formEvent() {
   const allForm = document.getElementsByTagName("form");
-  setGameElemetStyle("beforeGameStart")
+  setGameElemetStyle(ELEMENT_MESSAGE.BEFORE_GAME)
   for (const eachForm of allForm) {
     eachForm.addEventListener("submit", (submitEvent) => {
       const inputCheckResult = inputCheck(submitEvent);
@@ -24,11 +24,11 @@ function inputCheck(submitEvent) {
     userInputArray.push(eachInput.value)
   }
   const carNameCheckResult = carNameCheck(userInputArray[CARS_NAME]);
-  if (submitEvent.target.id === "racing-count-form") {
+  if (submitEvent.target.id === ELEMENT_ID.COUNTFORM_ID) {
     gameCountCheckResult = gameCountCheck(userInputArray[GMAE_COUNT]);
   }
   if (carNameCheckResult && gameCountCheckResult) {
-    setGameElemetStyle("gameCountInput")
+    setGameElemetStyle(ELEMENT_MESSAGE.COUNT_INPUT)
     return userInputArray;
   }
 }
@@ -44,7 +44,7 @@ function carNameCheck(carsName) {
     result = false;
   }
   if (result) {
-    setGameElemetStyle("carsInput")
+    setGameElemetStyle(ELEMENT_MESSAGE.CARS_INPUT)
     return result;
   }
 }
