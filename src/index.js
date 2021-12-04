@@ -1,8 +1,9 @@
-import { $, isEquals, isNotEquals, setErrorMessage } from './common/utils.js';
+import { $, isEmpty, setErrorMessage } from './common/utils.js';
 import { inputValidation, isPositiveInteger } from './common/validations.js';
 import RacingGame from './components/RacingGame.js';
-import { EMPTY, NUMBER } from './constants/index.js';
+import { EMPTY } from './constants/index.js';
 
+const $carNamesInput = $('#car-names-input');
 const $carNamesSubmit = $('#car-names-submit');
 const $racingCountInput = $('#racing-count-input');
 const $racingCountSubmit = $('#racing-count-submit');
@@ -10,34 +11,28 @@ const $racingResult = $('#racing-result');
 
 const racingGame = new RacingGame($racingResult);
 
-$carNamesSubmit.addEventListener('click', event => {
+const carNamesValidCheck = event => {
   event.preventDefault();
 
-  $racingCountInput.value = EMPTY;
-
-  const $carNamesInput = $('#car-names-input');
   const names = inputValidation($carNamesInput.value);
 
-  if (isEquals(names, EMPTY)) return $carNamesInput.focus();
+  if (isEmpty(names)) return $carNamesInput.focus();
 
   racingGame.initialCars(names);
-});
 
-$racingCountInput.addEventListener('focusout', ({ target }) => {
-  if (isEquals(target.value, EMPTY)) return;
+  $racingCountInput.value = EMPTY;
+};
 
-  const checkedValue = isPositiveInteger(target.value) || EMPTY;
+const racingCountValidCheck = ({ target }) => {
+  if (isEmpty(target.value)) return;
 
-  $racingCountInput.value = checkedValue;
+  $racingCountInput.value = isPositiveInteger(target.value) || EMPTY;
 
-  if (isEquals(checkedValue, EMPTY)) $racingCountInput.focus();
-});
+  if (isEmpty($racingCountInput.value)) $racingCountInput.focus();
+};
 
-$racingCountSubmit.addEventListener('click', event => {
+const racingGameStart = event => {
   event.preventDefault();
-
-  const $carNamesInput = $('#car-names-input');
-  const { value: countNumber } = $('#racing-count-input');
 
   if (racingGame.isNotRegisteredCars()) {
     $carNamesInput.focus();
@@ -45,13 +40,11 @@ $racingCountSubmit.addEventListener('click', event => {
     return setErrorMessage('notDefinedCars');
   }
 
-  // 동일한 내용이지만 입력과 제출 시 각각 검증합니다.
-  const checkedValue = isPositiveInteger(countNumber) || EMPTY;
-  const racingGameParams = {
-    count: checkedValue,
-    start: NUMBER.START,
-    end: NUMBER.END,
-  };
+  racingGame.gameStart($racingCountInput.value);
+};
 
-  if (isNotEquals(checkedValue, EMPTY)) racingGame.gameStart(racingGameParams);
-});
+$carNamesSubmit.addEventListener('click', carNamesValidCheck);
+
+$racingCountInput.addEventListener('focusout', racingCountValidCheck);
+
+$racingCountSubmit.addEventListener('click', racingGameStart);

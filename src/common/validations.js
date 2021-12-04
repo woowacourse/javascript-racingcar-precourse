@@ -39,7 +39,7 @@ export const lengthCheck = value => {
 /**
  * 배열 원소의 중복 여부를 검사합니다.
  *
- * @param {*} values
+ * @param {string[]} values
  * @returns
  */
 export const duplicateCheck = values => {
@@ -83,10 +83,11 @@ export const inputValidation = inputValue => {
  */
 export const isPositiveInteger = target => {
   const parsed = +target;
+
   if (isEquals(parsed, NUMBER.ZERO)) return setErrorMessage('zeroError');
-  // 음수 판단
+
   if (parsed < NUMBER.ZERO) return setErrorMessage('negativeError');
-  // 소수점 판단
+
   if (isNotEquals(Number.isInteger(parsed), true)) return setErrorMessage('decimalError');
 
   return parsed;
