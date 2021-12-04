@@ -27,7 +27,7 @@ export default class CheckValid {
       name => name.length > CAR_NAME.MININUM && name.length <= CAR_NAME.LENGTH
     );
     if (!isValidLength) {
-      alert(MESSAGE.LENGTH);
+      alert(MESSAGE.INVALID_CAR_LENGTH);
     }
     return isValidLength;
   }
@@ -35,7 +35,7 @@ export default class CheckValid {
   isValidCarNames(array) {
     const isValidValue = array.every(name => /[A-Za-z가-힇]/g.test(name));
     if (!isValidValue) {
-      alert(MESSAGE.CAR_NAME);
+      alert(MESSAGE.INVALID_CAR_NAME);
     }
     return isValidValue;
   }
