@@ -16,3 +16,9 @@ export const SELECTOR = {
         RESULT: "result",
     },
 };
+
+export const CAR = {
+    RANDOM_MINIMUM_NUMBER: 0,
+    RANDOM_MAXIMUM_NUMBER: 9,
+    MOVE_NUMBER: 4,
+};

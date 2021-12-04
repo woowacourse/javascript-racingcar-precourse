@@ -1,6 +1,7 @@
 import { CarNameInput } from "./car-names-input.js";
 import { hideNode, showNode } from "../utils/dom.js";
 import { SELECTOR } from "../constants/constant.js";
+import { Car } from "../model/car.js";
 
 export class RacingCarGame {
     constructor($target) {
@@ -20,6 +21,7 @@ export class RacingCarGame {
     }
     setCars(names) {
         this.activateRacingCount();
+        this.state.cars = names.map((name) => new Car(name));
     }
     unmount() {
         hideNode(this.$racingCount);
