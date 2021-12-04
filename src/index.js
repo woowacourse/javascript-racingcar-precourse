@@ -1,11 +1,7 @@
 import Car from './Car.js';
 import { hideElement, showElement } from './utils/dom.js';
-import {
-  CarNamesInputCheckMethods,
-  CountInputCheckMethods,
-  isCarNamesInputValid,
-  isCountInputValid,
-} from './utils/validity.js';
+import { strToArray } from './utils/parse.js';
+import { isCarNamesInputValid, isCountInputValid } from './utils/validity.js';
 
 class RacingCarGame {
   count;
@@ -143,7 +139,7 @@ class RacingCarGame {
   onCarNamesSubmit(e) {
     e.preventDefault();
     const carNames = this.$carNamesInput.value;
-    this.carNamesArray = this.strToArr(carNames);
+    this.carNamesArray = strToArray(carNames, ',');
     if (!isCarNamesInputValid(this.carNamesArray)) {
       return;
     }
@@ -153,15 +149,6 @@ class RacingCarGame {
   showCountDOM() {
     showElement(this.$racingCountHeading);
     showElement(this.$racingCountForm);
-  }
-
-  strToArr(str) {
-    const arr = str.split(',');
-    return this.filterBlankInArr(arr);
-  }
-
-  filterBlankInArr(arr) {
-    return arr.filter((el) => el !== '');
   }
 }
 
