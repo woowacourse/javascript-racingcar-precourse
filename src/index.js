@@ -13,9 +13,6 @@ import { default as UI } from './DOMUtils.js';
 import { ERROR } from './constants.js';
 
 export default function RacingCarGame() {
-  let cars = [];
-  let tryCount = 0;
-
   const init = () => {
     activateEventListeners();
     UI.initSection();
@@ -30,9 +27,7 @@ export default function RacingCarGame() {
   const handleCarNamesSubmit = e => {
     e.preventDefault();
 
-    const carNames = $('#car-names-input').value;
-    if (!isValidCarNames(carNames)) return;
-    cars = generateCars(carNames);
+    if (!isValidCarNames(UI.getCarNames())) return;
 
     UI.disableCarNamesForm();
     UI.showRacingCountSection();
@@ -56,24 +51,27 @@ export default function RacingCarGame() {
   const handleRacingCountSubmit = e => {
     e.preventDefault();
 
-    const racingCount = $('#racing-count-input').value;
-    if (isBlank(racingCount)) return alert(ERROR.BLANK_SUBMIT);
-    if (isZero(racingCount)) return alert(ERROR.NOT_POSIVITE_INT);
-    playCarRacing(Number(racingCount));
+    if (isBlank(UI.getRacingCount())) return alert(ERROR.BLANK_SUBMIT);
+    if (isZero(UI.getRacingCount())) return alert(ERROR.NOT_POSIVITE_INT);
+
+    playCarRacing();
 
     UI.disableRacingCountForm();
   };
 
-  const playCarRacing = racingCount => {
+  const playCarRacing = () => {
     UI.showRacingResultTitle();
 
-    Array.from({ length: racingCount }, () => tryMoveByRound());
+    const cars = generateCars(UI.getCarNames());
+
+    Array.from({ length: Number(UI.getRacingCount()) }, () => tryMoveByRound(cars));
 
     UI.showWiners(cars);
   };
 
-  const tryMoveByRound = () => {
+  const tryMoveByRound = cars => {
     cars.forEach(car => car.tryMove());
+
     UI.showRacingResult(cars);
   };
 

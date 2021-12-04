@@ -1,14 +1,5 @@
 import { $ } from './utils.js';
 
-const hideRacingCountSection = () => {
-  $('#racing-count-title').style.display = 'none';
-  $('#racing-count-form').style.display = 'none';
-};
-
-const hideRacingResultSection = () => {
-  $('#racing-result-title').style.display = 'none';
-};
-
 const DOMUtils = {
   initSection: () => {
     hideRacingCountSection();
@@ -23,6 +14,14 @@ const DOMUtils = {
   showRacingCountSection: () => {
     $('#racing-count-title').style.display = '';
     $('#racing-count-form').style.display = '';
+  },
+
+  getCarNames: () => {
+    return $('#car-names-input').value;
+  },
+
+  getRacingCount: () => {
+    return $('#racing-count-input').value;
   },
 
   disableRacingCountForm: () => {
@@ -57,9 +56,19 @@ const DOMUtils = {
   },
 };
 
+const hideRacingCountSection = () => {
+  $('#racing-count-title').style.display = 'none';
+  $('#racing-count-form').style.display = 'none';
+};
+
+const hideRacingResultSection = () => {
+  $('#racing-result-title').style.display = 'none';
+};
+
 const makeHyphenGraph = number => {
   let result = '';
   Array.from({ length: number }, () => (result += '-'));
+
   return result;
 };
 
