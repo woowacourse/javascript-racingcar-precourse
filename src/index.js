@@ -6,8 +6,8 @@ import {
   splitUsingComma,
   isOverFiveLetters,
   generateCars,
-  isNumber,
   isZero,
+  hasSpecial,
 } from './utils.js';
 import { default as UI } from './DOMUtils.js';
 import { ERROR, SELECTOR } from './constants.js';
@@ -20,7 +20,6 @@ export default function RacingCarGame() {
 
   const activateEventListeners = () => {
     $(SELECTOR.CAR_NAMES_SUBMIT_BUTTON).onclick = handleCarNamesSubmit;
-    $(SELECTOR.RACING_COUNT_INPUT).onkeydown = handleRacingCountInput;
     $(SELECTOR.RACING_COUNT_SUBMIT_BUTTON).onclick = handleRacingCountSubmit;
   };
 
@@ -44,15 +43,12 @@ export default function RacingCarGame() {
     return true;
   };
 
-  const handleRacingCountInput = e => {
-    if (isNumber(e.key)) return alert(ERROR.NOT_NUMBER);
-  };
-
   const handleRacingCountSubmit = e => {
     e.preventDefault();
 
     if (isBlank(UI.getRacingCount())) return alert(ERROR.BLANK_SUBMIT);
     if (isZero(UI.getRacingCount())) return alert(ERROR.NOT_POSIVITE_INT);
+    if (hasSpecial(UI.getRacingCount())) return alert(ERROR.INCLUDE_SPECIAL);
 
     playCarRacing();
 

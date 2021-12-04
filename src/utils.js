@@ -28,10 +28,10 @@ export const generateCars = string => {
   return splitUsingComma(string).map(name => new Car(name));
 };
 
-export const isNumber = string => {
-  return REGEX.IS_NUMBER.test(string);
-};
-
 export const isZero = string => {
   return Number(string) === NUMBER.ZERO;
+};
+
+export const hasSpecial = string => {
+  return string.split('').some(char => REGEX.HAS_SPECIAL.test(char));
 };
