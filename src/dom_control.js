@@ -22,23 +22,23 @@ export const displayResultText = () => {
 };
 
 export const createRacingLog = (cars) => {
-  const log = document.createElement('p');
+  const _log = document.createElement('p');
 
   cars.forEach((car) => {
-    log.innerHTML += `${car.name}: ${'-'.repeat(car.location)} <br>`;
+    _log.innerHTML += `${car.name}: ${'-'.repeat(car.location)} <br>`;
   });
 
-  app.appendChild(log);
+  app.appendChild(_log);
 };
 
 export const createWinnersText = (winners) => {
-  const racingWinnersText = document.createElement('span');
-  const racingWinners = document.createElement('span');
-  racingWinners.setAttribute('id', 'racing-winners');
+  const _racingWinnersText = document.createElement('span');
+  const _racingWinners = document.createElement('span');
+  _racingWinners.setAttribute('id', 'racing-winners');
 
-  racingWinnersText.innerHTML = RACING_WINNERS_TEXT;
-  racingWinners.innerHTML = winners.join(', ');
+  _racingWinnersText.innerHTML = RACING_WINNERS_TEXT;
+  _racingWinners.innerHTML = winners.join(', ');
 
-  app.appendChild(racingWinnersText);
-  app.appendChild(racingWinners);
+  app.appendChild(_racingWinnersText);
+  app.appendChild(_racingWinners);
 };

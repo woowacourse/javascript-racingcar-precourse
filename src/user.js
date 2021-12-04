@@ -11,26 +11,26 @@ export const getUserInputForCarNames = () => {
 };
 
 const userInputStringToArrayConverter = (userInput) => {
-  const userInputNoVacuum = userInput.replaceAll(' ', '');
-  const userInputArray = userInputNoVacuum.split(',');
+  const _userInputNoVacuum = userInput.replaceAll(' ', '');
+  const _userInputArray = _userInputNoVacuum.split(',');
 
-  return userInputArray;
+  return _userInputArray;
 };
 
 export const getUserInputArray = (userInput) => {
-  const userInputArray = userInputStringToArrayConverter(userInput);
-  const hasExceptionArray = [];
+  const _userInputArray = userInputStringToArrayConverter(userInput);
+  const _hasExceptionArray = [];
 
   if (
     userInputTypeException(userInput) ||
-    userInputLengthException(userInputArray) ||
-    carNameIsVacuumException(userInputArray) ||
-    userInputDuplicatedException(userInputArray)
+    userInputLengthException(_userInputArray) ||
+    carNameIsVacuumException(_userInputArray) ||
+    userInputDuplicatedException(_userInputArray)
   ) {
-    return hasExceptionArray;
+    return _hasExceptionArray;
   }
 
-  return userInputArray;
+  return _userInputArray;
 };
 
 export const getUserInputForCount = () => {

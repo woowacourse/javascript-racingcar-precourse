@@ -14,38 +14,38 @@ import { noCountException } from './exception.js';
 
 export default class Game {
   constructor() {
-    this.cars = [];
-    this.count = 0;
-    this.winners = [];
-    this.winnerScore = 0;
+    this._cars = [];
+    this._count = 0;
+    this._winners = [];
+    this._winnerScore = 0;
   }
 
-  getCarNames() {
+  _getCarNames() {
     const userInput = getUserInputForCarNames();
 
     return getUserInputArray(userInput);
   }
 
   createCars() {
-    const carNamesArray = this.getCarNames();
+    const carNamesArray = this._getCarNames();
 
     if (carNamesArray.length === 0) {
       return;
     }
 
     carNamesArray.forEach((carName) => {
-      this.cars.push(new Car(carName));
+      this._cars.push(new Car(carName));
     });
 
     displayCountForm();
   }
 
   getCount() {
-    this.count = getUserInputForCount();
+    this._count = getUserInputForCount();
   }
 
   startGame() {
-    if (this.count === 0) {
+    if (this._count === 0) {
       noCountException();
       return;
     }
@@ -53,34 +53,34 @@ export default class Game {
     displayResultText();
 
     let index = 0;
-    for (index = 0; index < this.count; index++) {
-      this.race();
+    for (index = 0; index < this._count; index++) {
+      this._race();
     }
 
-    this.determineWinner();
+    this._determineWinner();
   }
 
-  race() {
-    this.cars.forEach((car) => {
+  _race() {
+    this._cars.forEach((car) => {
       car.goOrStop();
     });
 
-    createRacingLog(this.cars);
+    createRacingLog(this._cars);
   }
 
-  determineWinner() {
-    this.cars.forEach((car) => {
-      if (car.location > this.winnerScore) {
-        this.winnerScore = car.location;
+  _determineWinner() {
+    this._cars.forEach((car) => {
+      if (car.location > this._winnerScore) {
+        this._winnerScore = car.location;
       }
     });
 
-    this.cars.forEach((car) => {
-      if (car.location === this.winnerScore) {
-        this.winners.push(car.name);
+    this._cars.forEach((car) => {
+      if (car.location === this._winnerScore) {
+        this._winners.push(car.name);
       }
     });
 
-    createWinnersText(this.winners);
+    createWinnersText(this._winners);
   }
 }

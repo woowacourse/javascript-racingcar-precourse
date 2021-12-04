@@ -23,25 +23,25 @@ export const userInputTypeException = (userInput) => {
 };
 
 export const userInputLengthException = (userInputArray) => {
-  let isException = false;
+  let _isException = false;
 
   userInputArray.forEach((element) => {
     if (element.length > 5) {
-      isException = true;
+      _isException = true;
     }
   });
 
-  if (isException) {
+  if (_isException) {
     alert(USER_ALERT_OUT_RANGE);
   }
 
-  return isException;
+  return _isException;
 };
 
 export const userInputDuplicatedException = (userInputArray) => {
-  const unduplicatedUserInputSet = new Set(userInputArray);
+  const _unduplicatedUserInputSet = new Set(userInputArray);
 
-  if (unduplicatedUserInputSet.size != userInputArray.length) {
+  if (_unduplicatedUserInputSet.size != userInputArray.length) {
     alert(USER_ALERT_DUPLICATED);
     return true;
   }
@@ -50,19 +50,19 @@ export const userInputDuplicatedException = (userInputArray) => {
 };
 
 export const carNameIsVacuumException = (userInputArray) => {
-  let isException = false;
+  let _isException = false;
 
   userInputArray.forEach((element) => {
     if (!element) {
-      isException = true;
+      _isException = true;
     }
   });
 
-  if (isException) {
+  if (_isException) {
     alert(USER_ALERT_VACUUM);
   }
 
-  return isException;
+  return _isException;
 };
 
 export const noCountException = () => {
