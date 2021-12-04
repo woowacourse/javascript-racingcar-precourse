@@ -1,5 +1,6 @@
 import { ID } from './constants/index.js';
 import NameInput from './components/NameInput.js';
+import CountInput from './components/CountInput.js';
 
 class App {
   constructor($target) {
@@ -28,6 +29,7 @@ class App {
 
   mounted() {
     new NameInput(this.$nameInput);
+    new CountInput(this.$countInput);
   }
 }
 

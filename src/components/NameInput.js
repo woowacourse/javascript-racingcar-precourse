@@ -11,9 +11,11 @@ class NameInput {
   selectDom() {
     this.$nameForm = this.$nameInput.parentElement;
   }
+
   addEvent() {
     this.$nameForm.addEventListener('submit', this.submitName.bind(this));
   }
+
   submitName(e) {
     e.preventDefault();
 
