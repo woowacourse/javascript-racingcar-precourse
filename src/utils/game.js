@@ -6,10 +6,13 @@ export const printBars = distance => {
   return bars;
 };
 
-export const printCarResult = carNameDistanceMap => {
+const printOneRound = carNameDistanceMap => {
   let result = '';
   for (const [name, distance] of carNameDistanceMap.entries()) {
     result += `${name}: ${printBars(distance)} <br/>`;
   }
   return result;
 };
+
+export const printCarGameResult = gameResult =>
+  `${gameResult.map(printOneRound).join('<br/>')} <br/> 최종 우승자:`;
