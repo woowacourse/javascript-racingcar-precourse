@@ -4,7 +4,7 @@ export default function RacingGame() {
   const getCarNames = () => {
     const carNamesInput = document.getElementById("car-names-input");
     const carNames = carNamesInput.value;
-    const carNamesList = carNames.split(",");
+    const carNamesList = carNames.split(",").map((carName) => carName.trim());
 
     return carNamesList;
   };
