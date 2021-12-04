@@ -9,15 +9,6 @@ export default class RacingGame {
     this.winnerScore = Number.MIN_SAFE_INTEGER;
   }
 
-  isWinner(playerScore) {
-    const nowMaxScore = this.winnerScore;
-    if (playerScore < nowMaxScore) return false;
-
-    if (playerScore > nowMaxScore) this.winnerList = [];
-    this.winnerScore = playerScore;
-    return true;
-  }
-
   setRacer(names) {
     const playerList = names.split(',');
 
@@ -35,6 +26,15 @@ export default class RacingGame {
 
       this.winnerList.push(car.name);
     });
+  }
+
+  isWinner(playerScore) {
+    const nowMaxScore = this.winnerScore;
+    if (playerScore < nowMaxScore) return false;
+
+    if (playerScore > nowMaxScore) this.winnerList = [];
+    this.winnerScore = playerScore;
+    return true;
   }
 
   get gameResult() {
