@@ -38,6 +38,8 @@ class RacingCarGame {
     splittedCarNames.forEach(carName => {
       this.cars.push(new Car(carName));
     });
+
+    this.playRacingCarGame();
   }
 
   onClickTryCountSubmitButton(event) {
@@ -50,6 +52,16 @@ class RacingCarGame {
     }
 
     this.tryCount = submitTryCount;
+    this.playRacingCarGame();
+  }
+
+  playRacingCarGame() {
+    if (this.cars.length === 0 || this.tryCount === 0) {
+      return;
+    }
+    for (let i = 0; i < this.tryCount; i += 1) {
+      this.cars.forEach(car => car.advanceCar());
+    }
   }
 
   checkTryCountLessThanZero(tryCount) {
