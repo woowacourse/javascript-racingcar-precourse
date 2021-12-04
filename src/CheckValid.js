@@ -33,7 +33,7 @@ export default class CheckValid {
   }
 
   isValidCarNames(array) {
-    const invalidValue = array.some(name => /[^(A-Za-z가-힇)]/g.test(name));
+    const invalidValue = array.some(name => /[^A-Za-z가-힇]/g.test(name));
     if (invalidValue) {
       return alert(MESSAGE.INVALID_CAR_NAME);
     }
