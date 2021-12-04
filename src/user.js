@@ -20,14 +20,13 @@ export const getUserInputArray = (userInput) => {
   const userInputArray = userInputStringToArrayConverter(userInput);
   const hasExceptionArray = [];
 
-  if (userInputTypeException(userInput)) {
-    return [];
-  } else if (userInputLengthException(userInputArray)) {
-    return [];
-  } else if (userInputDuplicatedException(userInputArray)) {
-    return [];
-  } else if (carNameIsVacuumException(userInputArray)) {
-    return [];
+  if (
+    userInputTypeException(userInput) ||
+    userInputLengthException(userInputArray) ||
+    userInputDuplicatedException(userInputArray) ||
+    carNameIsVacuumException(userInputArray)
+  ) {
+    return hasExceptionArray;
   }
 
   return userInputArray;
