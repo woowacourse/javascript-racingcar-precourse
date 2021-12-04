@@ -1,4 +1,4 @@
-import { CAR_NAME_MAX_LENGTH } from '../libs/constant.js';
+import { CarNamesInputCheckMethods } from '../utils/validity.js';
 
 class CarNamesInputContainer {
   carNamesArray;
@@ -20,6 +20,17 @@ class CarNamesInputContainer {
     e.preventDefault();
     const carNames = this.$carNamesInput.value;
     this.carNamesArray = this.strToArr(carNames);
+    if (!this.isCarNamesInputValid(this.carNamesArray)) {
+      return;
+    }
+  }
+
+  isCarNamesInputValid(carNamesArray) {
+    return carNamesArray.every((carName) =>
+      CarNamesInputCheckMethods.every((CarNamesInputCheckMethod) =>
+        CarNamesInputCheckMethod(carName),
+      ),
+    );
   }
 
   strToArr(str) {

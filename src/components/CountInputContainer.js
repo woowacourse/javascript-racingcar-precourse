@@ -21,7 +21,7 @@ class CountInputContainer {
   onCountSubmit(e) {
     e.preventDefault();
     const count = this.$racingCountInput.value;
-    if (!this.isInputValid(count)) {
+    if (!this.isCountInputValid(count)) {
       return;
     }
     this.count = count;
@@ -87,8 +87,8 @@ class CountInputContainer {
     this.$app.appendChild(resultTextDiv);
   }
 
-  isInputValid(value) {
-    return CountInputCheckMethods.every((CountInputCheckMethod) => InputCheckMethod(value));
+  isCountInputValid(value) {
+    return CountInputCheckMethods.every((CountInputCheckMethod) => CountInputCheckMethod(value));
   }
 }
 
