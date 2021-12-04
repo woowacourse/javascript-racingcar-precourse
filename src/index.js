@@ -42,7 +42,9 @@ export default class RacingCarGame {
       document.getElementById('racing-count-input').value;
     this.inputCount = Number(inputCountString);
     if (inputCountString.length === 0 || this.inputCount < 1) {
-      alert('시도할 횟수 입력이 올바르지 않습니다. 숫자로 입력해주세요.');
+      alert(
+        '시도할 횟수 입력이 올바르지 않습니다. 1 이상의 숫자로 입력해주세요.'
+      );
     } else {
       this.startRacingCarGame();
     }
@@ -51,15 +53,37 @@ export default class RacingCarGame {
   startRacingCarGame() {
     const car = this.carName.map((name) => new Car(name));
     let i;
+    let racingCarGameResult = '';
     for (i = 0; i < this.inputCount; i += 1) {
-      this.moveCar(car);
+      racingCarGameResult += this.moveCar(car);
     }
+    let winner = this.findWinner(car);
   }
 
-  moveCar(car) {
+  static moveCar(car) {
+    let currentGameResult = '';
     car.forEach((eachCar) => {
       eachCar.isMove();
+      currentGameResult += `${eachCar.printCurrentMovement()}\n`;
     });
+    currentGameResult += '\n';
+    return currentGameResult;
+  }
+
+  static findWinner(car) {
+    let winner = '';
+    let winnerMove = 0;
+    car.forEach((eachCar) => {
+      const eachCarName = eachCar.name;
+      const eachCarMove = eachCar.move;
+      if (winner.length === 0 || winnerMove < eachCarMove) {
+        winner = `${eachCarName}`;
+        winnerMove = eachCarMove;
+      } else if (winnerMove === eachCarMove) {
+        winner += `, ${eachCarName}`;
+      }
+    });
+    return winner;
   }
 }
 

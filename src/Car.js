@@ -10,4 +10,13 @@ export default class Car {
       this.move += 1;
     }
   }
+
+  printCurrentMovement() {
+    let result = `${this.name}: `;
+    let i;
+    for (i = 0; i < this.move; i += 1) {
+      result += '-';
+    }
+    return result;
+  }
 }
