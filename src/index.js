@@ -1,4 +1,5 @@
 import Car from './Car.js';
+import { hideElement, showElement } from './utils/dom.js';
 import { CarNamesInputCheckMethods, CountInputCheckMethods } from './utils/validity.js';
 
 class RacingCarGame {
@@ -12,6 +13,10 @@ class RacingCarGame {
     this.$carNamesInput = document.querySelector('#car-names-input');
     this.$carNamesSubmitButton = document.querySelector('#car-names-submit');
     this.$app = document.querySelector('#app');
+    this.$racingCountForm = document.querySelector('#racing-count-form');
+    this.$racingResultHeading = document.querySelector('#racing-result-heading');
+    this.$racingCountHeading = document.querySelector('#racing-count-heading');
+
     this.winnerTextSpan = document.createElement('span');
     this.resultTextDiv = document.createElement('div');
     this.init();
@@ -25,6 +30,14 @@ class RacingCarGame {
 
     this.winnerTextSpan.setAttribute('id', 'racing-winners');
     this.$app.appendChild(this.winnerTextSpan);
+
+    this.resetDOM();
+  }
+
+  resetDOM() {
+    hideElement(this.$racingCountHeading);
+    hideElement(this.$racingCountForm);
+    hideElement(this.$racingResultHeading);
   }
 
   triggerCountInputEvent() {
@@ -42,6 +55,7 @@ class RacingCarGame {
     this.moveCars();
     this.showRoundResult();
     this.showWinner();
+    showElement(this.$racingResultHeading);
   }
 
   showWinner() {
@@ -116,6 +130,12 @@ class RacingCarGame {
     if (!this.isCarNamesInputValid(this.carNamesArray)) {
       return;
     }
+    this.showCountDOM();
+  }
+
+  showCountDOM() {
+    showElement(this.$racingCountHeading);
+    showElement(this.$racingCountForm);
   }
 
   isCarNamesInputValid(carNamesArray) {
