@@ -93,18 +93,43 @@ export default function RacingCarGame() {
   // 3. 자동차 전진 or 정지
 
   const renderResult = carArr => {
+    const resultDiv = document.createElement('div');
+    resultDiv.setAttribute('id', 'result-wrapper');
+
+    $('#app').appendChild(resultDiv);
+
     let countInput = Number($('#racing-count-input').value);
     while (countInput) {
       printGameProcess(calculateRandomNum(carArr));
       countInput -= 1;
     }
+    printWinner(carArr);
+  };
+
+  const printWinner = carArr => {
+    const winners = getWinner(carArr);
+
+    const span = document.createElement('span');
+    span.innerText = `최종 우승자: ${winners.join(', ')}`;
+    span.setAttribute('id', 'racing-winners');
+    $('#result-wrapper').appendChild(span);
+  };
+
+  const getWinner = carArr => {
+    carArr = carArr.sort((a, b) => b.move - a.move);
+    const winnerMove = carArr[0].move;
+    const winners = [];
+    carArr.forEach(car => {
+      if (car.move === winnerMove) winners.push(car.name);
+    });
+    return winners;
   };
 
   const printGameProcess = objArr => {
     objArr.forEach(car => {
-      $('#app').insertAdjacentHTML('beforeend', `${car.name}: ${car.move ? '-'.repeat(car.move) : ''} <br>`);
+      $('#result-wrapper').insertAdjacentHTML('beforeend', `${car.name}: ${car.move ? '-'.repeat(car.move) : ''} <br>`);
     });
-    $('#app').insertAdjacentHTML('beforeend', `<br>`);
+    $('#result-wrapper').insertAdjacentHTML('beforeend', `<br>`);
   };
 
   const getCarArr = () => {
