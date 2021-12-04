@@ -2,9 +2,7 @@ import { EMPTY_STRING } from '../data/constants.js';
 
 // eslint-disable-next-line no-undef
 const isTryMove = () => MissionUtils.Random.pickNumberInRange(0, 9) >= 4;
-const getMoveCount = (logs) => {
-  return logs.reduce((prev, current) => (current ? prev + 1 : prev), 0);
-};
+const getMoveCount = (logs) => logs.reduce((p, c) => (c ? p + 1 : p), 0);
 
 export default class Car {
   constructor(name) {
@@ -16,8 +14,8 @@ export default class Car {
     let score = 0;
     this.logs = Array.from({ length: count }, () => {
       const isMoved = isTryMove();
-      if (isMoved === true) score += 1;
 
+      if (isMoved === true) score += 1;
       return isMoved;
     });
 
