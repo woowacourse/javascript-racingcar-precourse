@@ -6,12 +6,17 @@ export default class CarRacingGame {
     this.initElements();
     this.hideRacingCountForm();
     this.$carNamesSubmit.addEventListener('click', (e) => this.handleCarNamesSubmit(e));
+    this.$racingCountSubmit.addEventListener('click', (e) =>
+      this.handleRacingCountSubmit(e)
+    );
   }
   initElements = () => {
     this.$carNamesInput = $('#car-names-input');
     this.$carNamesSubmit = $('#car-names-submit');
     this.$racingCountFormTitle = $('#racing-count-form-title');
     this.$racingCountForm = $('#racing-count-form');
+    this.$racingCountInput = $('#racing-count-input');
+    this.$racingCountSubmit = $('#racing-count-submit');
   };
 
   hideRacingCountForm = () => {
@@ -50,9 +55,13 @@ export default class CarRacingGame {
     this.$carNamesInput.focus();
   };
 
-  showRacingCountForm() {
+  showRacingCountForm = () => {
     this.$racingCountFormTitle.style.display = 'block';
     this.$racingCountForm.style.display = 'block';
-  }
+  };
+
+  handleRacingCountSubmit = (e) => {
+    e.preventDefault();
+  };
 }
 new CarRacingGame();
