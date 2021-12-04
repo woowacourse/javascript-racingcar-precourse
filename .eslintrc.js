@@ -13,6 +13,7 @@ module.exports = {
     'no-new': 'off',
     'no-console': 'off',
     'no-alert': 'off',
+    'no-undef': 'off',
     'no-plusplus': 'off',
     'no-param-reassign': 'off',
     'no-return-assign': 'off',
