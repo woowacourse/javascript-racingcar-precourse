@@ -1,8 +1,12 @@
+import CheckValid from "./CheckValid.js";
 import Render from "./Render.js";
+import User from "./User.js";
 
 class RacingCarGame {
   constructor() {
     this.render = new Render();
+    this.user = new User();
+    this.checkValid = new CheckValid();
     this.submitCarNameForm = document.getElementById("car-names-form");
     this.submitRacingCountForm = document.getElementById("racing-count-form");
   }
@@ -17,6 +21,10 @@ class RacingCarGame {
 
   handleSubmitCarName(event) {
     event.preventDefault();
+    const isValid = this.checkValid.carNames(this.user.getCarNames());
+    if (isValid) {
+      this.render.showRacingCountForm();
+    }
   }
 }
 
