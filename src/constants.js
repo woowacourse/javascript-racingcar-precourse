@@ -18,3 +18,18 @@ export const SELECTOR = {
   RACING_RESULT_TITLE: '#racing-result-title',
   WINNERS: '#racing-winners',
 };
+
+export const NUMBER = {
+  ZERO: 0,
+  ONE: 1,
+  FOUR: 4,
+  FIVE_LETTERS: 5,
+  NINE: 9,
+};
+
+export const REGEX = {
+  IS_INCLUDE_SPACE: /\s/g,
+  IS_NUMBER: /^[^0-9]$/g,
+};
+
+export const COMMA = ',';

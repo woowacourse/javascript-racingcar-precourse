@@ -1,17 +1,18 @@
 import Car from './Car.js';
+import { NUMBER, REGEX, COMMA } from './constants.js';
 
 export const $ = selector => document.querySelector(selector);
 
 export const isBlank = string => {
-  return string.length === 0;
+  return string.length === NUMBER.ZERO;
 };
 
 export const isIncludeSpace = string => {
-  return /\s/g.test(string);
+  return REGEX.IS_INCLUDE_SPACE.test(string);
 };
 
 export const splitUsingComma = string => {
-  return string.split(',');
+  return string.split(COMMA);
 };
 
 export const isDuplicated = array => {
@@ -20,7 +21,7 @@ export const isDuplicated = array => {
 };
 
 export const isOverFiveLetters = array => {
-  return array.some(string => string.length > 5);
+  return array.some(string => string.length > NUMBER.FIVE_LETTERS);
 };
 
 export const generateCars = string => {
@@ -28,9 +29,9 @@ export const generateCars = string => {
 };
 
 export const isNumber = string => {
-  return /^[^0-9]$/g.test(string);
+  return REGEX.IS_NUMBER.test(string);
 };
 
 export const isZero = string => {
-  return Number(string) === 0;
+  return Number(string) === NUMBER.ZERO;
 };

@@ -1,8 +1,9 @@
+import { NUMBER } from './constants.js';
 /* eslint-disable no-undef */
 export default class Car {
   constructor(name) {
     this._name = name;
-    this._location = 0;
+    this._location = NUMBER.ZERO;
   }
 
   get name() {
@@ -14,7 +15,7 @@ export default class Car {
   }
 
   tryMove() {
-    const randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
-    if (randomNumber >= 4) this._location += 1;
+    const randomNumber = MissionUtils.Random.pickNumberInRange(NUMBER.ZERO, NUMBER.NINE);
+    if (randomNumber >= NUMBER.FOUR) this._location += NUMBER.ONE;
   }
 }
