@@ -1,10 +1,10 @@
-import View from '../view/View.js';
 import Model from '../model/Model.js';
+import View from '../view/View.js';
 
 export default class Controller {
   constructor() {
-    this.view = new View();
     this.model = new Model();
+    this.view = new View();
 
     this.view.bindCreateCarList(this.addCars.bind(this));
     this.view.bindStartRace(this.startRace.bind(this));

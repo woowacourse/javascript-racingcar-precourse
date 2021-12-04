@@ -1,6 +1,6 @@
-import { isValidCarNames, isRacingCountValid } from '../utils/validations.js';
-import { $, preventPageRefresh } from '../utils/domHelpers.js';
 import template from '../template/template.js';
+import { $, preventPageRefresh } from '../utils/domHelpers.js';
+import { isValidCarNames, isRacingCountValid } from '../utils/validations.js';
 import {
   ERROR_WRONG_INPUT_CAR_NAMES,
   ERROR_WRONG_INPUT_RACING_COUNT,
@@ -8,38 +8,40 @@ import {
 
 export default class View {
   constructor() {
-    this.$app = $('#app');
-    this.$app.insertAdjacentHTML('beforeend', `<div id="result-div"></div>`);
-    this.$carNamesForm = $('#car-names-form');
+    $('#app').insertAdjacentHTML('beforeend', `<div id="result-div"></div>`);
+
     this.$carNamesSubmit = $('#car-names-submit');
     this.$carNamesInput = $('#car-names-input');
     this.$racingCountHeading = $('#racing-count-heading');
-    this.$racingCountForm = $('#racing-count-form');
     this.$racingCountSubmit = $('#racing-count-submit');
     this.$racingCountInput = $('#racing-count-input');
     this.$resultHeading = $('#result-heading');
     this.$resultDiv = $('#result-div');
 
     this.hideElement();
-
     preventPageRefresh();
   }
 
   hideElement() {
     this.$racingCountHeading.style.visibility = 'hidden';
-    this.$racingCountForm.style.visibility = 'hidden';
+    this.$racingCountInput.style.visibility = 'hidden';
+    this.$racingCountSubmit.style.visibility = 'hidden';
     this.$resultHeading.style.visibility = 'hidden';
   }
 
   showRacingCountSection() {
     this.$racingCountHeading.style.visibility = 'visible';
-    this.$racingCountForm.style.visibility = 'visible';
+    this.$racingCountInput.style.visibility = 'visible';
+    this.$racingCountSubmit.style.visibility = 'visible';
+  }
+
+  getCarNameList() {
+    return this.$carNamesInput.value.split(',').map((name) => name.trim());
   }
 
   bindCreateCarList(handler) {
     this.$carNamesSubmit.addEventListener('click', () => {
-      const inputString = this.$carNamesInput.value.trim();
-      const nameList = inputString.split(',').map((name) => name.trim());
+      const nameList = this.getCarNameList();
 
       if (!isValidCarNames(nameList)) {
         alert(ERROR_WRONG_INPUT_CAR_NAMES);
