@@ -64,16 +64,12 @@ export default class UserInput {
     return this.racingCountInputEl.value;
   }
 
-  isValidRacingCountRange() {
+  isValidRacingCount() {
     if (this.getRacingCountNum() < RACING_COUNT_RULES.minCount) {
       alert(ERR_MESSAGE.racingCount);
       return false;
     }
 
     return true;
-  }
-
-  isValidRacingCount() {
-    return this.isVaildCarNameLength() && this.isValidRacingCountRange();
   }
 }
