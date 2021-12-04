@@ -1,4 +1,5 @@
 import checkCarName from './checkCarName.js';
+import Car from './Car.js';
 
 export default class RacingCarGame {
   constructor() {
@@ -18,6 +19,7 @@ export default class RacingCarGame {
   }
 
   makeVisibleCountSection() {
+    document.getElementById('racing-count-input').value = '';
     this.titleTag[0].style.visibility = 'visible';
     this.formTag[1].style.visibility = 'visible';
   }
@@ -38,11 +40,26 @@ export default class RacingCarGame {
     e.preventDefault();
     const inputCountString =
       document.getElementById('racing-count-input').value;
-    if (inputCountString.length === 0) {
+    this.inputCount = Number(inputCountString);
+    if (inputCountString.length === 0 || this.inputCount < 1) {
       alert('시도할 횟수 입력이 올바르지 않습니다. 숫자로 입력해주세요.');
     } else {
-      const inputCount = Number(inputCountString);
+      this.startRacingCarGame();
     }
+  }
+
+  startRacingCarGame() {
+    const car = this.carName.map((name) => new Car(name));
+    let i;
+    for (i = 0; i < this.inputCount; i += 1) {
+      this.moveCar(car);
+    }
+  }
+
+  moveCar(car) {
+    car.forEach((eachCar) => {
+      eachCar.isMove();
+    });
   }
 }
 
