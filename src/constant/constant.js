@@ -1,8 +1,8 @@
 export const DOM = {
-  carNamesInput: document.querySelector('#car-names-input'),
-  carNamesSubmit: document.querySelector('#car-names-submit'),
-  racingCountInput: document.querySelector('#racing-count-input'),
-  racingCountSubmit: document.querySelector('#racing-count-submit'),
+  $CAR_NAMES_INPUT: document.querySelector('#car-names-input'),
+  $CAR_NAMES_SUBMIT: document.querySelector('#car-names-submit'),
+  $RACING_COUNT_INPUT: document.querySelector('#racing-count-input'),
+  $RACING_COUNT_SUBMIT: document.querySelector('#racing-count-submit'),
   $APP: document.querySelector('#app'),
   $DIV: document.createElement('div'),
   $SPAN: document.createElement('span'),

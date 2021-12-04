@@ -6,10 +6,10 @@ import Game from './Game/Game.js';
 class RacingCar {
   constructor() {
     this.carNamesEvent = new CarNamesEvent();
-    this.racingCountEvent = new RacingCountEvent(this.carNamesEvent);
-    this.$racingCountSubmit = DOM.racingCountSubmit;
-    this.$racingCountInput = DOM.racingCountInput;
-    this.$carNamesSubmit = DOM.carNamesSubmit;
+    this.racingCountEvent = new RacingCountEvent();
+    this.$racingCountSubmit = DOM.$RACING_COUNT_SUBMIT;
+    this.$racingCountInput = DOM.$RACING_COUNT_INPUT;
+    this.$carNamesSubmit = DOM.$CAR_NAMES_SUBMIT;
     this.carNames = [];
     this.racingCount = 0;
     this.main();

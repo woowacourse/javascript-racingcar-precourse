@@ -2,7 +2,7 @@ import { DOM, ERROR_MESSAGE } from '../constant/constant.js';
 
 export default class CarNamesEvent {
   constructor() {
-    this.$carNamesInput = DOM.carNamesInput;
+    this.$carNamesInput = DOM.$CAR_NAMES_INPUT;
     this.carNames = '';
     this.errorMessage = '';
     this.carNamesArray = [];

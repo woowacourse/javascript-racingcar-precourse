@@ -1,10 +1,9 @@
 import { DOM, ERROR_MESSAGE, CAUTION_MESSAGE } from '../constant/constant.js';
 
 export default class RacingCountEvent {
-  constructor(carNamesEvent) {
-    this.$racingCountInput = DOM.racingCountInput;
-    this.$carNamesInput = DOM.carNamesInput;
-    this.carNamesEvent = carNamesEvent;
+  constructor() {
+    this.$racingCountInput = DOM.$RACING_COUNT_INPUT;
+    this.$carNamesInput = DOM.$CAR_NAMES_INPUT;
     this.stringRacingCount = '';
     this.numberRacingCount = 0;
   }
@@ -12,7 +11,6 @@ export default class RacingCountEvent {
   initializeRacingCount = () => {
     this.stringRacingCount = '';
     this.numberRacingCount = 0;
-    this.errorMessage = '';
   };
 
   alertErrorMessage = () => {
