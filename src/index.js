@@ -3,10 +3,12 @@ import { showAlert } from './utils/showAlert.js';
 import { getNotValidMessage } from './getNotValidMessage.js';
 import RacingCarGame from './racingCarGame.js';
 import Car from './car.js';
+import RacingGameView from './RacingGameView.js';
 
 class GameController {
   constructor() {
     this.racingCarGame = new RacingCarGame();
+    this.gameView = new RacingGameView();
     this.setEvent();
   }
 
@@ -33,7 +35,9 @@ class GameController {
     e.preventDefault();
     const racingCount = $racingCountInput.value;
     this.racingCarGame.setRacingCount(racingCount);
-    this.racingCarGame.play()
+    this.racingCarGame.play();
+    this.gameView.setGameResult(this.racingCarGame.gameResult);
+    this.gameView.renderRoundScroe();
   }
 }
 
