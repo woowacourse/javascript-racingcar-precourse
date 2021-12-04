@@ -1,4 +1,5 @@
 import CheckValid from "./CheckValid.js";
+import Racing from "./Racing.js";
 import Render from "./Render.js";
 import User from "./User.js";
 
@@ -34,7 +35,11 @@ class RacingCarGame {
     event.preventDefault();
     const isValid = this.checkValid.racingCount(this.user.getRacingCount());
     if (isValid) {
-      console.log(this.user.getRacingCount());
+      const racing = new Racing(
+        this.user.getCarNames(),
+        this.user.getRacingCount()
+      );
+      racing.start();
     }
   }
 }

@@ -9,6 +9,6 @@ export default class User {
   }
 
   getRacingCount() {
-    return this.rancingCount.value;
+    return Number(this.rancingCount.value);
   }
 }
