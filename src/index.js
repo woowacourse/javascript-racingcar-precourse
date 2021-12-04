@@ -1,13 +1,21 @@
 import { $ } from './utils/dom.js';
 import Validator from './Validator.js';
+
 import Car from './Car.js';
+import RacingCountForm from './RacingCountForm.js';
 
 class RacingCarGame {
   constructor() {
-    this.addEventListeners();
-    this.addDOM();
     this.cars = [];
     this.tryCount = 0;
+    this.$racingCountForm = new RacingCountForm();
+    this.addEventListeners();
+    this.addDOM();
+    this.init();
+  }
+
+  init() {
+    this.$racingCountForm.hide();
   }
 
   addDOM() {
