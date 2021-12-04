@@ -6,25 +6,25 @@ export default function racingGame() {
   const carNameInput = document.querySelector('#car-names-input');
   const carNameSubmitBtn = document.querySelector('#car-names-submit');
   const racingCountSubmitBtn = document.querySelector('#racing-count-submit');
-  const resultBox = document.querySelector('#app');
+  const appBox = document.querySelector('#app');
+  const resultBox = document.createElement('div');
+  resultBox.setAttribute('id', 'racing-result-box');
+  appBox.appendChild(resultBox);
 
-  //Racing 출력 함수
   function printRacing(names, count) {
     if (names != undefined) {
       const carResult = carRacing(names, count);
-      const racingResult = document.createElement('div');
+      const racingResult = document.querySelector('#racing-result-box');
       racingResult.innerHTML = `${carResult}`;
-      resultBox.appendChild(racingResult);
     }
   }
 
-  //car이름 배열로 리턴하는 함수
   function submitCarName() {
     const carInput = carNameInput.value;
     const listValue = validateCarName(carInput);
     return listValue;
   }
-  //User가 입력한 숫자 리턴하는 함수
+
   function submitCount() {
     const countInput = validateUserCount();
     return countInput;

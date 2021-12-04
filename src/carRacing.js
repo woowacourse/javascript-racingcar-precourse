@@ -4,7 +4,6 @@ export default function carRacing(Carnames, userCount) {
   const carList = Carnames.map((name) => new Car(name));
   let carResult = '';
 
-  //race출력 함수
   function getRaces(carList) {
     let raceResult = '';
     for (let i = 0; i < userCount; i++) {
@@ -20,7 +19,6 @@ export default function carRacing(Carnames, userCount) {
     return raceResult;
   }
 
-  //winner 출력 함수
   function getWinner(cars) {
     let winnerList = [];
     const lengthList = [];
@@ -38,8 +36,13 @@ export default function carRacing(Carnames, userCount) {
     return winners;
   }
 
-  carResult += getRaces(carList);
-  carResult += `<span>최종 우승자: </span>`;
-  carResult += `<span id="racing-winners">${getWinner(carList)}</span>`;
-  return carResult;
+  function raceResult() {
+    carResult = '';
+    carResult += getRaces(carList);
+    carResult += `<span>최종 우승자: </span>`;
+    carResult += `<span id="racing-winners">${getWinner(carList)}</span>`;
+    return carResult;
+  }
+
+  return raceResult();
 }
