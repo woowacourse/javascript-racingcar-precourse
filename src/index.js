@@ -17,8 +17,9 @@ class RacingCarGame {
     this.$racingResultHeading = document.querySelector('#racing-result-heading');
     this.$racingCountHeading = document.querySelector('#racing-count-heading');
 
-    this.winnerTextSpan = document.createElement('span');
-    this.resultTextDiv = document.createElement('div');
+    this.$winnerTextDiv = document.createElement('div');
+    this.$winnerTextSpan = document.createElement('span');
+    this.$resultTextDiv = document.createElement('div');
     this.init();
   }
   // CountInputContainer
@@ -26,10 +27,12 @@ class RacingCarGame {
     this.triggerCountInputEvent();
     this.triggerCarNamesInputEvent();
 
-    this.$app.appendChild(this.resultTextDiv);
+    this.$app.appendChild(this.$resultTextDiv);
 
-    this.winnerTextSpan.setAttribute('id', 'racing-winners');
-    this.$app.appendChild(this.winnerTextSpan);
+    this.$winnerTextSpan.setAttribute('id', 'racing-winners');
+    this.$app.appendChild(this.$winnerTextDiv);
+    this.$winnerTextDiv.innerText = '최종 우승자: ';
+    this.$winnerTextDiv.appendChild(this.$winnerTextSpan);
 
     this.resetDOM();
   }
@@ -66,10 +69,10 @@ class RacingCarGame {
         winner += `, ${this.result[key].name}`;
       }
     }
-    winner = `최종 우승자: ${winner.slice(2)}`;
+    winner = winner.slice(2);
     console.log(`winner`, winner);
 
-    this.winnerTextSpan.innerHTML = winner;
+    this.$winnerTextSpan.innerHTML = winner;
   }
 
   getMaxStep() {
@@ -111,7 +114,7 @@ class RacingCarGame {
       }
       resultText += '<br>';
     }
-    this.resultTextDiv.innerHTML = resultText;
+    this.$resultTextDiv.innerHTML = resultText;
   }
 
   isCountInputValid(value) {
