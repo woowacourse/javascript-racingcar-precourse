@@ -1,3 +1,9 @@
+import {
+  MIN_RANDOM_NUMBER,
+  MAX_RANDOM_NUMBER,
+  MOVE_CONDITION_NUMBER,
+} from './constants/constant.js';
+
 export default class Car {
   constructor(name) {
     this.name = name;
@@ -5,8 +11,11 @@ export default class Car {
   }
 
   doRacing() {
-    const randomNumber = MissionUtils.Random.pickNumberInRange(0, 9, 1);
-    if (randomNumber >= 4) {
+    const randomNumber = MissionUtils.Random.pickNumberInRange(
+      MIN_RANDOM_NUMBER,
+      MAX_RANDOM_NUMBER,
+    );
+    if (randomNumber >= MOVE_CONDITION_NUMBER) {
       this.move += '-';
     }
   }
