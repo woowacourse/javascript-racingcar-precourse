@@ -19,6 +19,14 @@ class Car {
   static generateCarsByNames(names) {
     return names.map((name) => new Car(name));
   }
+
+  static getMaxPosition(cars) {
+    return Math.max(...cars.map((car) => car.getPosition()));
+  }
+
+  static getCarsByPosition(cars, position) {
+    return cars.filter((car) => car.getPosition() === position);
+  }
 }
 
 export default Car;
