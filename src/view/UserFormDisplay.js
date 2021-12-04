@@ -7,12 +7,12 @@ import {
   $$countGroups,
   $$resultGroups,
 } from '../data/elements.js';
-import { elementDisable, elementVisible } from '../utils/element-tools.js';
+import { disableElement, visibleElement } from '../utils/element-tools.js';
 
 export default class UserFormDisplay {
   static init() {
-    elementVisible([...$$countGroups, ...$$resultGroups], false);
-    elementDisable([$nameInput, $nameSubmit, $countInput, $countSubmit], false);
+    visibleElement([...$$countGroups, ...$$resultGroups], false);
+    disableElement([$nameInput, $nameSubmit, $countInput, $countSubmit], false);
 
     $nameInput.value = '';
     $countInput.value = '';
@@ -32,13 +32,13 @@ export default class UserFormDisplay {
   static open(resultCode) {
     switch (resultCode) {
       case DONE.USERINPUT_NAME:
-        elementDisable([$nameInput, $nameSubmit], true);
-        elementVisible([...$$countGroups], true);
+        visibleElement([...$$countGroups], true);
+        disableElement([$nameInput, $nameSubmit], true);
         break;
 
       case DONE.USERINPUT_COUNT:
-        elementDisable([$countInput, $countSubmit], true);
-        elementVisible([...$$resultGroups], true);
+        visibleElement([...$$resultGroups], true);
+        disableElement([$countInput, $countSubmit], true);
         break;
 
       // no default

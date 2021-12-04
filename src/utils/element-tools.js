@@ -8,7 +8,7 @@ const setElements = (target) => {
   if (isArray === false) return [target];
 };
 
-export const elementDisable = (target, isDisabled) => {
+export const disableElement = (target, isDisabled) => {
   const elements = setElements(target);
 
   elements.forEach((element) => {
@@ -17,7 +17,7 @@ export const elementDisable = (target, isDisabled) => {
   });
 };
 
-export const elementVisible = (target, isVisible) => {
+export const visibleElement = (target, isVisible) => {
   const elements = setElements(target);
 
   elements.forEach((element) => {
