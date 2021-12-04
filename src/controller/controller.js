@@ -44,12 +44,9 @@ export class Controller {
   }
 
   renderWinner(cars) {
-    let domElement = '';
-
-    domElement += `<span>최종 우승자: </span>`;
-    domElement += `<span id="racing-winners">${this.getWinner(cars)}</span><br /><br />`;
-
-    return domElement;
+    return `<span>최종 우승자: </span>
+    <span id="racing-winners">${this.getWinner(cars)}</span>
+    <br /><br />`;
   }
 
   renderGameResult(carNames, racingCount) {
