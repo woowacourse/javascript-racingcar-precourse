@@ -1,4 +1,9 @@
 import { ELEMENT_ID } from './constants/index.js';
+import {
+  carNamesInputValidator,
+  racingCountInputValidator,
+} from './controllers/inputValidator.js';
+import { handleError } from './utils/errorHandler.js';
 import DOMElement from './views/domElement.js';
 
 const $carNamesInput = DOMElement.createById(ELEMENT_ID.CAR_NAMES_INPUT);
@@ -23,8 +28,44 @@ const renderWinnerNames = (winnerNames) => {
   $racingResult.appendChild($winnerWrapper);
 };
 
-const main = () => {
+const progressGame = () => {
   // TO BE IMPLEMENTED
+};
+
+const handleCarNamesSubmit = () => {
+  const carNamesText = $carNamesInput.getValue();
+  const validationResult = carNamesInputValidator.run(carNamesText);
+
+  if (!validationResult.isSuccess) {
+    handleError(validationResult.rejectType);
+    return;
+  }
+
+  $carNamesInput.setDisabled(true);
+  $carNamesSubmit.setDisabled(true);
+  $racingCountLabel.show();
+  $racingCountForm.show();
+};
+
+const handleRacingCountSubmit = () => {
+  const racingCountText = $racingCountInput.getValue();
+  const validationResult = racingCountInputValidator.run(racingCountText);
+
+  if (!validationResult.isSuccess) {
+    handleError(validationResult.rejectType);
+    return;
+  }
+
+  progressGame();
+};
+
+const main = () => {
+  $racingCountLabel.hide();
+  $racingCountForm.hide();
+  $racingResult.hide();
+
+  $carNamesSubmit.addOnClick(handleCarNamesSubmit, true);
+  $racingCountSubmit.addOnClick(handleRacingCountSubmit, true);
 };
 
 main();

@@ -27,6 +27,10 @@ class DOMElement {
     return this.$element.value;
   }
 
+  setDisabled(isDisabled) {
+    this.$element.disabled = isDisabled;
+  }
+
   hide() {
     this.$element.style.display = 'none';
   }
