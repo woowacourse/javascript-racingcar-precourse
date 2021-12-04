@@ -1,3 +1,5 @@
+const convertHashMapToArray = hashMap => [...hashMap.entries()];
+
 const printBars = distance => {
   let bars = '';
   for (let i = 0; i < distance; i += 1) {
@@ -6,13 +8,10 @@ const printBars = distance => {
   return bars;
 };
 
-const printOneRound = carNameDistanceMap => {
-  let result = '';
-  for (const [name, distance] of carNameDistanceMap.entries()) {
-    result += `${name}: ${printBars(distance)} <br/>`;
-  }
-  return result;
-};
+const printOneRound = carNameDistanceMap =>
+  `${convertHashMapToArray(carNameDistanceMap)
+    .map(([name, distance]) => `${name}: ${printBars(distance)}`)
+    .join('<br/>')} <br/>`;
 
 export const printCarGameResult = gameResult =>
   `${gameResult.map(printOneRound).join('<br/>')} <br/> 최종 우승자:`;
@@ -27,9 +26,8 @@ export const getMovingCarsResult = cars => {
   return carNameDistanceMap;
 };
 
-export const getFinalResult = gameResult => [
-  ...gameResult[gameResult.length - 1].entries(),
-];
+export const getFinalResult = gameResult =>
+  convertHashMapToArray(gameResult[gameResult.length - 1]);
 
 export const getMaximumDistance = finalResult =>
   finalResult.sort((a, b) => b[1] - a[1])[0][1];
