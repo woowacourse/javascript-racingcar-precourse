@@ -39,7 +39,7 @@ class CountInputContainer {
     this.makeCars();
     this.moveCars();
     console.log(`result`, this.result);
-    this.showResult();
+    this.showRoundResult();
   }
   makeCars() {
     this.result = {};
@@ -56,7 +56,7 @@ class CountInputContainer {
       }
     }
   }
-  showResult() {
+  showRoundResult() {
     // for 문으로 count만큼 출력
     let resultText = '';
     for (let i = 0; i < this.count; i++) {
