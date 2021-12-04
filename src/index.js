@@ -79,12 +79,20 @@ export default function RacingGame() {
     }
   };
 
+  const initInput = () => {
+    const carNamesInput = document.getElementById("car-names-input");
+
+    carNamesInput.value = "";
+    carNamesInput.focus();
+  };
+
   const onClickCarNamesSubmitButton = (event) => {
     event.preventDefault();
     const carNamesList = getCarNames();
 
     if (!isValidCarName(carNamesList)) {
       alert(getErrorMessage(carNamesList));
+      initInput();
       return;
     }
     console.log(carNamesList);
