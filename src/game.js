@@ -44,22 +44,6 @@ export default class Game {
     this._count = getUserInputForCount();
   }
 
-  startGame() {
-    if (this._count === 0) {
-      noCountException();
-      return;
-    }
-
-    displayResultText();
-
-    let index = 0;
-    for (index = 0; index < this._count; index++) {
-      this._race();
-    }
-
-    this._determineWinner();
-  }
-
   _race() {
     this._cars.forEach((car) => {
       car.goOrStop();
@@ -82,5 +66,21 @@ export default class Game {
     });
 
     createWinnersText(this._winners);
+  }
+
+  startGame() {
+    if (this._count === 0) {
+      noCountException();
+      return;
+    }
+
+    displayResultText();
+
+    let index = 0;
+    for (index = 0; index < this._count; index++) {
+      this._race();
+    }
+
+    this._determineWinner();
   }
 }
