@@ -9,7 +9,35 @@
 - 세 개의 요구사항을 만족하기 위해 노력한다. 특히 기능을 구현하기 전에 기능 목록을 만들고, 기능 단위로 커밋 하는 방식으로 진행한다.
 
 ---
+
+## 구현 기능 목록
+
+- `RacingCarGame`클래스
+  - Document elements 프로퍼티 설정
+  - 입력받을 차 이름 리스트와 시도할 횟수 프로퍼티로 설정
+  - car names submit 버튼 액션 메소드
+  - racing count submit 버튼 액션 메소드
+  - 레이싱 진행 후 결과를 element로 추가하는 메소드
+- `ValidateUtils`클래스
+  - 입력받은 차 이름들의 유효성 검사 메소드
+  - 입력받은 시도할 횟수 유효성 검사 메소드
+- `Car`클래스
+  - 차 이름으로 초기화 및 전진 프로퍼티 설정
+  - 랜덤으로 0~9사이의 숫자 생성 메소드
+  - 숫자가 4이상일 경우 전진하는 메소드
+- `Race`클래스
+  - 차 이름 리스트와 횟수로 초기화 및 결과 element 프로퍼티 설정
+  - 각 이름으로 **Car**객체 리스트 생성 메소드
+  - 1번의 레이스를 진행하는 메소드
+  - 1번의 레이스 결과를 결과element에 추가하는 메소드
+  - 우승자 리스트를 반환하는 메소드
+  - 우승자를 결과element에 추가하는 메소드
+  - 입력받은 횟수만큼 레이스를 진행하고 결과element를 반환하는 메소드
+
+---
+
 ## 🎯 기능 요구사항
+
 초간단 자동차 경주 게임을 구현한다.
 
 - 주어진 횟수 동안 n 대의 자동차는 전진 또는 멈출 수 있다.
@@ -30,9 +58,12 @@
 <br>
 
 ---
+
 ## ✅ 프로그래밍 요구사항
+
 - 주어진 `index.html`에 html 엘리먼트를 직접 추가하거나 기존의 html 엘리먼트를 임의로 삭제하지 않는다. id와 같은 선택자를 추가하는 작업만 가능하다.
 - 다음과 같이 Car 객체를 만들고, new 를 이용해 인스턴스를 만들어 사용한다.
+
 ```javascript
 function Car(name) {
   this.name = name;
@@ -46,6 +77,7 @@ class Car {
 ```
 
 ### DOM 선택자
+
 각 요소에 아래와 같은 선택자를 반드시 지정한다. 선택자를 올바르게 지정하지 않은 경우 0점으로 처리될 수 있으므로 주의한다.
 
 - 자동차의 이름을 입력하는 input 태그는 `car-names-input` id값을 가진다.
@@ -55,8 +87,8 @@ class Car {
 - 최종 우승자를 출력하는 span 태그는 `racing-winners` id값을 가진다.
   - 예) `<span id="racing-winners">poco,park,jun</span>`
 
-
 ### 라이브러리
+
 - 전진하는 조건을 판단하기 위한 랜덤 값은 [`MissionUtils` 라이브러리](https://github.com/woowacourse-projects/javascript-mission-utils#mission-utils)의 `Random.pickNumberInRange`를 사용해 구한다.
   - `MissionUtils` 라이브러리 스크립트는 `index.html`에 이미 포함되어 전역 객체에 추가되어 있으므로, 따로 `import` 하지 않아도 구현 코드 어디에서든 사용할 수 있다.
 
@@ -80,7 +112,6 @@ class Car {
 - **함수(또는 메소드)의 길이가 15라인을 넘어가지 않도록 구현한다.**
   - 함수(또는 메소드)가 한 가지 일만 잘 하도록 구현한다.
 
-
 <br>
 
 ## 📝 과제 진행 요구사항
@@ -93,30 +124,33 @@ class Car {
 ## ✉️ 미션 제출 방법
 
 - 미션 구현을 완료한 후 GitHub을 통해 제출해야 한다.
-   - GitHub을 활용한 제출 방법은 [프리코스 과제 제출 문서](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 를 참고해 제출한다.
+  - GitHub을 활용한 제출 방법은 [프리코스 과제 제출 문서](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse) 를 참고해 제출한다.
 - GitHub에 미션을 제출한 후 [우아한테크코스 지원 플랫폼](https://apply.techcourse.co.kr) 에 접속하여 프리코스 과제를 제출한다.
-   - 자세한 방법은 [링크](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse#제출-가이드) 를 참고한다.
-   - **Pull Request만 보내고, 지원 플랫폼에서 과제를 제출하지 않으면 최종 제출하지 않은 것으로 처리되니 주의한다.**
-
+  - 자세한 방법은 [링크](https://github.com/woowacourse/woowacourse-docs/tree/master/precourse#제출-가이드) 를 참고한다.
+  - **Pull Request만 보내고, 지원 플랫폼에서 과제를 제출하지 않으면 최종 제출하지 않은 것으로 처리되니 주의한다.**
 
 ### 🚨 과제 제출 전 체크리스트 - 0점 방지를 위한 주의사항
+
 - 요구사항에 명시된 출력값 형식을 지키지 않을 경우 기능 구현을 모두 정상적으로 했더라도 0점으로 처리된다.
 - 기능 구현을 완료한 뒤 아래 가이드에 따라 테스트를 실행했을 때 모든 테스트가 성공하는 지 확인한다. **테스트가 실패할 경우 0점으로 처리되므로, 반드시 확인 후 제출한다.**
 
 ### ✔️ 테스트 실행 가이드
-- 테스트 실행에 필요한 패키지 설치를 위해 `Node.js` 버전 `14` 이상이 필요하다. 
-- 다음 명령어를 입력해 패키지를 설치한다.     
+
+- 테스트 실행에 필요한 패키지 설치를 위해 `Node.js` 버전 `14` 이상이 필요하다.
+- 다음 명령어를 입력해 패키지를 설치한다.
+
 ```bash
 // {폴더 경로}/javascript-racingcar-precourse/ 에서
 npm install
-```     
+```
 
 - 설치가 완료되었다면, 다음 명령어를 입력해 테스트를 실행한다.
+
 ```bash
 // {폴더 경로}/javascript-racingcar-precourse/ 에서
 npm run test
 ```
 
-- 아래와 같은 화면이 나오며 모든 테스트가 pass한다면 성공! 
+- 아래와 같은 화면이 나오며 모든 테스트가 pass한다면 성공!
 
 ![테스트 결과](./images/test_result.png)
