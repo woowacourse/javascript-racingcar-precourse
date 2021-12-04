@@ -13,7 +13,7 @@ export const DONE = Object.freeze({
 
 export const DISPLAY = Object.freeze({
   WINNER_TITLE: '최종 우승자: ',
-  GAME_RESTART_TEXT: '게임을 재시작하시겠습니까?',
+  GAME_RESTART_TEXT: '게임을 재시작하시겠습니까? ',
   GAME_RESTART_BUTTON: '재시작',
 });
 
