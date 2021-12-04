@@ -1,15 +1,8 @@
 export default class Render {
   constructor() {
-    [, this.resultTitle] = document.querySelectorAll('h4');
-    this.createResultContainer();
+    this.resultTitle = document.querySelector('#result-title');
+    this.resultContainer = document.querySelector('#result-container');
     this.resetResult();
-  }
-
-  createResultContainer() {
-    const resultContainer = document.createElement('div');
-    resultContainer.setAttribute('id', 'result-container');
-    document.querySelector('#app').appendChild(resultContainer);
-    this.resultContainer = resultContainer;
   }
 
   resetResult() {
