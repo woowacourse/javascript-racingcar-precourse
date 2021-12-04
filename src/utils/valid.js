@@ -28,3 +28,11 @@ export const isValidNames = names => {
 
   return true;
 };
+
+export const isValidCount = count => {
+  if (count < NUM.MIN_COUNT) {
+    return false;
+  }
+
+  return true;
+};

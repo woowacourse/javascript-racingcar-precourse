@@ -1,3 +1,5 @@
+import { isValidCount } from '../utils/valid.js';
+
 class CountInput {
   constructor($countInput) {
     this.$countInput = $countInput;
@@ -17,7 +19,9 @@ class CountInput {
     e.preventDefault();
 
     const count = Number(this.$countInput.value);
-    console.log(count);
+    if (!isValidCount(count)) {
+      return;
+    }
   }
 }
 

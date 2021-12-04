@@ -9,6 +9,7 @@ export const ID = {
 
 export const NUM = {
   MAX_NAME_LENGTH: 5,
+  MIN_COUNT: 1,
 };
 
 export const ERROR = {
