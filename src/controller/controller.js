@@ -19,13 +19,7 @@ export class Controller {
   }
 
   getMaxMovedDistance(cars) {
-    let maxMovedDistance = 0;
-
-    cars.forEach((car) => {
-      if (car.getDistance() > maxMovedDistance) maxMovedDistance = car.getDistance();
-    });
-
-    return maxMovedDistance;
+    return Math.max(...cars.map((car) => car.getDistance()));
   }
 
   getWinner(cars) {
