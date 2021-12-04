@@ -4,7 +4,7 @@ export default class Car {
   constructor(name, condition) {
     this.name = name;
     this.condition = condition;
-    this.moveCount = NUMBER.ZERO;
+    this.initMoves();
   }
 
   get move() {
@@ -13,6 +13,13 @@ export default class Car {
 
   get dontMove() {
     return 0;
+  }
+
+  /**
+   * 전진 횟수를 초기화합니다.
+   */
+  initMoves() {
+    this.moveCount = NUMBER.ZERO;
   }
 
   /**
