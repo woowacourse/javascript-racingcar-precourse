@@ -6,11 +6,16 @@ import Car from "./car.js";
 
 class RacingGame {
   constructor() {
-    const { CAR_NAMES_INPUT, CAR_NAMES_SUBMIT } = ELEMENT_IDS;
+    const { CAR_NAMES_INPUT, CAR_NAMES_SUBMIT, RACING_COUNT_INPUT, RACING_COUNT_SUBMIT } = ELEMENT_IDS;
     this.$carNamesInput = document.querySelector(`#${CAR_NAMES_INPUT}`);
     this.$carNamesSubmit = document.querySelector(`#${CAR_NAMES_SUBMIT}`);
     this.$carNamesSubmit.addEventListener('click', () => this.handleSubmitCarNames());
     this.cars = [];
+
+    this.$racingCountInput = document.querySelector(`#${RACING_COUNT_INPUT}`);
+    this.$racingCountSubmit = document.querySelector(`#${RACING_COUNT_SUBMIT}`);
+    this.$racingCountSubmit.addEventListener('click', () => this.handleSubmitRacingCount());
+    this.racingCount = 0;
   }
   createCars(carNameArr) {
     return carNameArr.map((name) => {
@@ -26,6 +31,9 @@ class RacingGame {
     }
     const validCarArr = carNames.split(',');
     this.cars = this.createCars(validCarArr);
+  }
+  handleSubmitRacingCount() {
+    const racingCount = this.$racingCountInput.value;
   }
 }
 
