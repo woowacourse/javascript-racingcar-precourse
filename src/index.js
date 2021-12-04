@@ -9,12 +9,52 @@ export default function RacingGame() {
     return carNamesList;
   };
 
-  const isValidCarNameLength = (carNames) => {
+  const isValidLength = (carName) => {
+    if (carName.length > 5 || carName.length < 1) {
+      return false;
+    }
+
+    return true;
+  };
+
+  const isOnlySpace = (carName) => {
+    if (!carName.trim()) {
+      return true;
+    }
+
+    return false;
+  };
+
+  const isDuplicate = (carNames) => {
+    const carNamesSet = new Set(carNames);
+
+    if (carNames.length !== carNamesSet.size) {
+      return true;
+    }
+
+    return false;
+  };
+
+  const isLessThanTwoCars = (carNames) => {
+    if (carNames.length < 2) {
+      return true;
+    }
+
+    return false;
+  };
+
+  const isValidCarName = (carNames) => {
+    if (isDuplicate(carNames)) {
+      return false;
+    }
+    if (isLessThanTwoCars(carNames)) {
+      return false;
+    }
     for (const carName of carNames) {
-      if (carName.length > 5) {
+      if (isOnlySpace(carName)) {
         return false;
       }
-      if (carName.length < 1) {
+      if (!isValidLength(carName)) {
         return false;
       }
     }
@@ -26,9 +66,11 @@ export default function RacingGame() {
     event.preventDefault();
     const carNamesList = getCarNames();
 
-    if (!isValidCarNameLength(carNamesList)) {
+    if (!isValidCarName(carNamesList)) {
+      console.log("error");
       return;
     }
+    console.log(carNamesList);
   };
 
   carNamesSubmitButton.addEventListener("click", onClickCarNamesSubmitButton);
