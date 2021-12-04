@@ -1,12 +1,14 @@
 import { Car } from '../index.js'; 
-import { CARS_NAME, GMAE_COUNT, NUMBER, MESSAGE } from '../utils/constant.js'
+import { CARS_NAME, GMAE_COUNT, NUMBER, MESSAGE } from '../utils/constant.js';
+import { setGameElemetStyle } from '../utils/dom.js';
 
 export function formEvent() {
   const allForm = document.getElementsByTagName("form");
+  setGameElemetStyle("beforeGameStart")
   for (const eachForm of allForm) {
     eachForm.addEventListener("submit", (e) => {
       const inputCheckResult = inputCheck();
-      e.preventDefault();
+      e.preventDefault()
       if (inputCheckResult) {
         new Car(inputCheckResult);
       }
@@ -23,6 +25,7 @@ function inputCheck() {
   const carNameCheckResult = carNameCheck(userInputArray[CARS_NAME]);
   const gameCountCheckResult = gameCountCheck(userInputArray[GMAE_COUNT]);
   if (carNameCheckResult && gameCountCheckResult) {
+    setGameElemetStyle("gameCountInput")
     return userInputArray;
   }
 }
@@ -37,8 +40,10 @@ function carNameCheck(carsName) {
     alert(MESSAGE.CARNMAE_OVERFIVEWORD);
     result = false;
   }
-
-  return result;
+  if (result) {
+    setGameElemetStyle("carsInput")
+    return result;
+  }
 }
 
 function carsNameLengthCheck(carsName) {
