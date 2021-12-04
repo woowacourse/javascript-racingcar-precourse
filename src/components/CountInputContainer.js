@@ -1,16 +1,6 @@
 import Car from '../index.js';
-import { USER_INPUT_ALERT } from '../libs/constant.js';
+import { CountInputCheckMethods } from '../utils/validity.js';
 import CarNamesInputContainer from './CarNamesInputContainer.js';
-
-const InputCheckMethods = [
-  (value) => {
-    if (value === '' || Number(value) < 1 || parseInt(value) !== Number(value)) {
-      alert(USER_INPUT_ALERT.notNaturalNumber);
-      return false;
-    }
-    return true;
-  },
-];
 
 class CountInputContainer {
   count;
@@ -98,7 +88,7 @@ class CountInputContainer {
   }
 
   isInputValid(value) {
-    return InputCheckMethods.every((InputCheckMethod) => InputCheckMethod(value));
+    return CountInputCheckMethods.every((CountInputCheckMethod) => InputCheckMethod(value));
   }
 }
 

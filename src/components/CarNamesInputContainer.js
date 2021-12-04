@@ -1,3 +1,5 @@
+import { CAR_NAME_MAX_LENGTH } from '../libs/constant.js';
+
 class CarNamesInputContainer {
   carNamesArray;
   constructor() {
@@ -18,7 +20,6 @@ class CarNamesInputContainer {
     e.preventDefault();
     const carNames = this.$carNamesInput.value;
     this.carNamesArray = this.strToArr(carNames);
-    console.log(this.carNamesArray);
   }
 
   strToArr(str) {
