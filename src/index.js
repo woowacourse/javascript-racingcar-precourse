@@ -1,4 +1,10 @@
 import $ from './utils/utils.js';
+import getRandomNumber from './utils/getRandomNumber.js';
+
+function Car(name) {
+  this.name = name;
+  this.move = 0;
+}
 
 export default function RacingCarGame() {
   const isOverFive = carInput => {
@@ -77,12 +83,49 @@ export default function RacingCarGame() {
     e.preventDefault();
     const countInput = $('#racing-count-input').value;
     if (isValidCountInput(countInput)) {
-      console.log('ok');
+      renderResult(getCarArr());
       return;
     }
     printCountError(countInput);
     resetCountInput();
   });
+
+  // 3. 자동차 전진 or 정지
+
+  const renderResult = carArr => {
+    let countInput = Number($('#racing-count-input').value);
+    while (countInput) {
+      printGameProcess(calculateRandomNum(carArr));
+      countInput -= 1;
+    }
+  };
+
+  const printGameProcess = objArr => {
+    objArr.forEach(car => {
+      $('#app').insertAdjacentHTML('beforeend', `${car.name}: ${car.move ? '-'.repeat(car.move) : ''} <br>`);
+    });
+    $('#app').insertAdjacentHTML('beforeend', `<br>`);
+  };
+
+  const getCarArr = () => {
+    const carInput = $('#car-names-input')
+      .value.split(',')
+      .map(car => car.trim());
+
+    const cars = [];
+    carInput.forEach(car => {
+      cars.push(new Car(car));
+    });
+    return cars;
+  };
+
+  const calculateRandomNum = carArr => {
+    carArr.forEach(car => {
+      const randomNum = getRandomNumber();
+      if (randomNum >= 4) car.move += 1;
+    });
+    return carArr;
+  };
 }
 
 new RacingCarGame();
