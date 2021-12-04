@@ -51,7 +51,7 @@ export default class CarRacingGame {
 
   alertErrorMessage = () => {
     this.$carNamesInput.value = '';
-    alert(ERROR_MESSAGE);
+    alert(ERROR_MESSAGE.CAR_NAMES_FORM);
     this.$carNamesInput.focus();
   };
 
@@ -62,6 +62,23 @@ export default class CarRacingGame {
 
   handleRacingCountSubmit = (e) => {
     e.preventDefault();
+    const parsedInput = parseInt(this.$racingCountInput.value);
+    const isValid = this.validateCount(parsedInput);
+    if (!isValid) {
+      this.$racingCountInput.value = '';
+      alert(ERROR_MESSAGE.RACING_COUNT_FORM);
+      this.$racingCountInput.focus();
+    }
+  };
+
+  validateCount = (parsedInput) => {
+    if (parsedInput <= 0) {
+      return false;
+    }
+    if (isNaN(parsedInput)) {
+      return false;
+    }
+    return true;
   };
 }
 new CarRacingGame();
