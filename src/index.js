@@ -102,11 +102,9 @@ class RacingCarGame {
 
   makeCars() {
     this.result = {};
-    console.log(`carNamesInputContainer.carNamesArray`, this.carNamesArray);
     for (let car of this.carNamesArray) {
       this.result[car] = new Car(car);
     }
-    console.log(`this.result`, this.result);
   }
 
   moveCars() {
@@ -118,7 +116,10 @@ class RacingCarGame {
   }
 
   showRoundResult() {
-    // for 문으로 count만큼 출력
+    this.$resultTextDiv.innerHTML = this.makeRoundResult();
+  }
+
+  makeRoundResult() {
     let resultText = '';
     for (let i = 0; i < this.count; i++) {
       for (let key in this.result) {
@@ -126,7 +127,7 @@ class RacingCarGame {
       }
       resultText += '<br>';
     }
-    this.$resultTextDiv.innerHTML = resultText;
+    return resultText;
   }
 
   isCountInputValid(value) {
