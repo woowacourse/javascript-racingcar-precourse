@@ -5,16 +5,20 @@ import { MAX_CAR_NAMES_NUM, MIN_CAR_NAMES_NUM, MIN_CARS_NUM } from './constant/c
 export const getCarNameInput = e => {
   e.preventDefault();
   const carNamesInput = $('#car-names-input').value.split(',');
-  if (
-    !checkCarNum(carNamesInput) ||
-    !checkCarNameLength(carNamesInput) ||
-    !checkOverlapCarName(carNamesInput)
-  ) {
+  if (checkCarNameInput(carNamesInput)) {
     window.alert('잘못된 값을 입력하셨습니다.');
   } else {
     $('#racing-count-title').style.display = '';
     $('#racing-count-form').style.display = '';
   }
+};
+
+export const checkCarNameInput = carNamesInput => {
+  return (
+    !checkCarNum(carNamesInput) ||
+    !checkCarNameLength(carNamesInput) ||
+    !checkOverlapCarName(carNamesInput)
+  );
 };
 
 const checkCarNum = carNamesInput => {
@@ -29,8 +33,7 @@ const checkCarNameLength = carNamesInput => {
 };
 
 const checkOverlapCarName = carNamesInput => {
-  const isOverlap = carNamesInput.some(function (x) {
-    return !(carNamesInput.indexOf(x) !== carNamesInput.lastIndexOf(x));
+  return !carNamesInput.some(function (x) {
+    return carNamesInput.indexOf(x) !== carNamesInput.lastIndexOf(x);
   });
-  return isOverlap;
 };
