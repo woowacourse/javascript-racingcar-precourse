@@ -88,9 +88,9 @@
 
 - [x] 사용자는 `car-names-input` input 태그에 자동차 이름을 `n`개 입력할 수 있다.
 - [x] 사용자는 `car-names-submit` button 태그로 입력한 자동차 이름 `n`개를 제출할 수 있다.
-- [ ] 게임기는 입력 값이 제출되면 다음을 수행한다.
+- [x] 게임기는 입력 값이 제출되면 다음을 수행한다.
   - [x] [입력 값 파싱하기](https://github.com/leegwae/javascript-racingcar-precourse/tree/leegwae/docs#%EC%9E%85%EB%A0%A5-%EA%B0%92-%ED%8C%8C%EC%8B%B1%ED%95%98%EA%B8%B0): 입력 값에서 `자동차 이름`을 `n`개 얻는다.
-  - [ ] [입력 값 검사하기](https://github.com/leegwae/javascript-racingcar-precourse/tree/leegwae/docs#%EC%9E%85%EB%A0%A5-%EA%B0%92-%EA%B2%80%EC%82%AC%ED%95%98%EA%B8%B0): 각각의 `자동차 이름`이 유효한지 검사한다.
+  - [x] [입력 값 검사하기](https://github.com/leegwae/javascript-racingcar-precourse/tree/leegwae/docs#%EC%9E%85%EB%A0%A5-%EA%B0%92-%EA%B2%80%EC%82%AC%ED%95%98%EA%B8%B0): 각각의 `자동차 이름`이 유효한지 검사한다.
   - [x] [입력 값 처리하기](https://github.com/leegwae/javascript-racingcar-precourse/tree/leegwae/docs#%EC%9E%85%EB%A0%A5-%EA%B0%92-%EC%B2%98%EB%A6%AC%ED%95%98%EA%B8%B0): 입력 값 검사하기 결과에 따라 입력 값을 처리하고 게임을 진행한다.
 
 
@@ -110,11 +110,14 @@
 
 [완료 커밋](https://github.com/leegwae/javascript-racingcar-precourse/commit/e479004b3aa95346f17e4a2a5b1db285e7045e94)
 
+[완료 커밋](https://github.com/leegwae/javascript-racingcar-precourse/commits/leegwae): 공백 문자 검사
+
 각각의 `자동차 이름`은 다음 조건을 만족해야 한다.
 
 - [x] 화면에 표시하기 위하여 각각의 `자동차 이름`은 `1`자 이상  `5`자 이하여야 한다.
 - [x] 우승자를 구분하기 위하여 각각의 `자동차 이름`은 고유해야 한다.
-- [ ] `자동차 이름`은 공백 문자로만 이루어져서는 안된다.
+- [x] `자동차 이름`은 공백 문자로만 이루어져서는 안된다.
+- [x] `자동차 이름`의 양 끝에 공백 문자가 있으면 안된다.
 
 
 
