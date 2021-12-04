@@ -17,8 +17,8 @@ export default function RacingGame() {
     return true;
   };
 
-  const isOnlySpace = (carName) => {
-    if (!carName.trim()) {
+  const isEmpty = (carName) => {
+    if (!carName) {
       return true;
     }
 
@@ -51,7 +51,7 @@ export default function RacingGame() {
       return false;
     }
     for (const carName of carNames) {
-      if (isOnlySpace(carName)) {
+      if (isEmpty(carName)) {
         return false;
       }
       if (!isValidLength(carName)) {
