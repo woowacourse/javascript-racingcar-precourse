@@ -4,12 +4,14 @@ import TryCountValidator from './validators/TryCountValidator.js';
 
 import Car from './components/Car.js';
 import RacingCountForm from './components/RacingCountForm.js';
+import RacingResult from './components/RacingResult.js';
 
 class RacingCarGame {
   constructor() {
     this.cars = [];
     this.tryCount = 0;
     this.$racingCountForm = new RacingCountForm();
+    this.$racingResult = new RacingResult();
     this.addEventListeners();
     this.addDOM();
     this.init();
@@ -17,6 +19,7 @@ class RacingCarGame {
 
   init() {
     this.$racingCountForm.hide();
+    this.$racingResult.hide();
   }
 
   addDOM() {
@@ -42,6 +45,7 @@ class RacingCarGame {
     const splittedCarNames = $('#car-names-input').value.split(',');
     if (!this.validateCarNames(splittedCarNames)) return;
     splittedCarNames.forEach(carName => this.cars.push(new Car(carName)));
+    this.$racingCountForm.show();
     this.playRacingCarGame();
   }
 
@@ -63,6 +67,7 @@ class RacingCarGame {
 
   playRacingCarGame() {
     if (this.cars.length === 0 || this.tryCount === 0) return;
+    this.$racingResult.show();
 
     let resultStirng = '';
     this.cars.forEach(car => car.resetAdvance());
