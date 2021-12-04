@@ -17,6 +17,15 @@ const isContainedNull = (names) => {
     return names.some((name) => name === "");
 };
 
+const isInteger = (number) => {
+    return number % 1 === 0;
+};
+const isNotNegative = (number) => {
+    return number >= 0;
+};
+const isBlank = (number) => {
+    return number === "";
+};
 export const validateCarNames = (names) => {
     if (isContainedNull(names)) {
         return INPUT_ERROR.NULL;
@@ -29,5 +38,17 @@ export const validateCarNames = (names) => {
     }
     if (isContainedBlank(names)) {
         return INPUT_ERROR.CONTAINED_BLANK;
+    }
+};
+
+export const validateCount = (count) => {
+    if (isBlank(count)) {
+        return INPUT_ERROR.COUNT_BLANK;
+    }
+    if (!isNotNegative(count)) {
+        return INPUT_ERROR.COUNT_NEGATIVE;
+    }
+    if (!isInteger(count)) {
+        return INPUT_ERROR.COUNT_NOT_NATURAL;
     }
 };

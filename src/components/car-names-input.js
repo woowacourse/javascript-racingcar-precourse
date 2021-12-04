@@ -1,5 +1,5 @@
 import { SELECTOR } from "../constants/constant.js";
-import { validateCarNames } from "../utils/validation-names.js";
+import { validateCarNames } from "../utils/validation.js";
 
 export class CarNameInput {
     constructor(setCars) {
