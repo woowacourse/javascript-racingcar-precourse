@@ -1,6 +1,6 @@
 import RacingGame from './RacingGame.js';
-import initForms from './functions/initForms.js';
-import initHTML from './functions/initHTML.js';
+import initHTML from './utils/initializers/initHTML.js';
+import initForms from './utils/initializers/initForms.js';
 
 initHTML();
 

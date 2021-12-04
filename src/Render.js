@@ -21,9 +21,11 @@ export default class Render {
   racingState(round, states) {
     const racingStateContainer = document.createElement('p');
     racingStateContainer.setAttribute('id', `racing-state-${round}`);
+
     states.forEach((state) => {
       racingStateContainer.innerHTML += `${state} <br />`;
     });
+
     this.resultContainer.appendChild(racingStateContainer);
   }
 
@@ -31,10 +33,12 @@ export default class Render {
     const winnerName = winnerNames.join(',');
     const winnerContainer = document.createElement('p');
     const winnerNameContainer = document.createElement('span');
+
     winnerContainer.setAttribute('id', 'racing-final');
     winnerNameContainer.setAttribute('id', 'racing-winners');
     winnerContainer.innerText = '최종 우승자: ';
     winnerNameContainer.innerText = winnerName;
+
     winnerContainer.appendChild(winnerNameContainer);
     this.resultContainer.appendChild(winnerContainer);
   }

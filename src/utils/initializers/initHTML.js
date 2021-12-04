@@ -2,6 +2,7 @@ function initSelectors() {
   const [carNamesInput, racingCountInput] = document.querySelectorAll('input');
   const [carNamesSubmitButton, racingCountSubmitButton] = document.querySelectorAll('button');
   const [racingCountTitle, resultTitle] = document.querySelectorAll('h4');
+
   carNamesInput.setAttribute('id', 'car-names-input');
   racingCountInput.setAttribute('id', 'racing-count-input');
   carNamesSubmitButton.setAttribute('id', 'car-names-submit');
