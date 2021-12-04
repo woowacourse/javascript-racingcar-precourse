@@ -70,6 +70,13 @@ class RacingCarGame {
   }
 
   showWinner() {
+    const winner = this.makeWinners();
+    console.log(`winner`, winner);
+
+    this.$winnerTextSpan.innerHTML = winner;
+  }
+
+  makeWinner() {
     const maxStep = this.getMaxStep();
     let winner = '';
     for (let key in this.result) {
@@ -77,10 +84,7 @@ class RacingCarGame {
         winner += `, ${this.result[key].name}`;
       }
     }
-    winner = winner.slice(2);
-    console.log(`winner`, winner);
-
-    this.$winnerTextSpan.innerHTML = winner;
+    return winner.slice(2);
   }
 
   getMaxStep() {
