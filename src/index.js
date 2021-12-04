@@ -1,4 +1,5 @@
 import { ELEMENT_ID } from './constants/index.js';
+import GameController from './controllers/gameController.js';
 import { parseCars, parseRacingCount } from './controllers/inputParser.js';
 import {
   carNamesInputValidator,
@@ -19,44 +20,15 @@ const $racingCountSubmit = DOMElement.createById(
 );
 const $resultLabel = DOMElement.createById(ELEMENT_ID.RESULT_LABEL);
 
-const renderCurrentRound = (game) => {
-  const $round = DOMElement.createByTagName('div');
-
-  game.lines.forEach((line) => {
-    const $line = DOMElement.createByTagName('div');
-    $line.setText(`${line.car.name}: ${'-'.repeat(line.position)}`);
-    $round.appendChild($line);
-  });
-
-  $app.appendChild($round);
-  $app.appendChild(DOMElement.createByTagName('br'));
-};
-
-const renderWinnerNames = (game) => {
-  const winnerNames = game.calculateWinLines().map((line) => line.car.name);
-
-  const $winnerWrapper = DOMElement.createByTagName('div');
-  $winnerWrapper.setText('최종 우승자: ');
-
-  const $winner = DOMElement.createByTagName('span');
-  $winner.setId(ELEMENT_ID.RACING_WINNERS);
-  $winner.setText(winnerNames.join(','));
-
-  $app.appendChild($winnerWrapper);
-  $winnerWrapper.appendChild($winner);
-};
-
-const progressGame = () => {
+const startGame = () => {
   const cars = parseCars($carNamesInput.getValue());
   const racingCount = parseRacingCount($racingCountInput.getValue());
-  const game = new Game(cars, racingCount);
 
-  for (let i = 0; i < game.racingCount; i += 1) {
-    game.progressOneRound();
-    renderCurrentRound(game);
-  }
+  const gameModel = new Game(cars, racingCount);
+  const $gameView = $app;
+  const gameController = new GameController(gameModel, $gameView);
 
-  renderWinnerNames(game);
+  gameController.progressGameToEnd();
 };
 
 const handleCarNamesSubmit = () => {
@@ -87,7 +59,7 @@ const handleRacingCountSubmit = () => {
   $racingCountSubmit.setDisabled(true);
   $resultLabel.show();
 
-  progressGame();
+  startGame();
 };
 
 const initializeHTML = () => {
