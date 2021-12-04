@@ -1,3 +1,5 @@
+import RacingGameManager from './racingGameManager.js';
+
 import {
   ID_APP,
   DICT_ACTION_BUTTON_SUBMIT,
@@ -6,16 +8,17 @@ import {
   KEY_FORM_RACING_COUNT,
   BUTTON_SUBMIT_TEXT,
 } from './dom/const.js';
-import RacingGameManager from './racingGameManager.js';
+
 import removeChildrenByTagName from './dom/utils/removeChildrenByTag.js';
 import createFormManagerByKey from './dom/createFormManagerByKey.js';
 import displayFormByKey from './dom/displayFormByKey.js';
-import isValidCarNamesInput from './game/utils/isValidCarNamesInput.js';
-import isValidRacingCountInput from './game/utils/isValidRacingCountInput.js';
 import displayRacingCountHeading from './dom/displayRacingCountHeading.js';
 import displayRacingResultHeading from './dom/displayRacingResultHeading.js';
 import displayRaceStatus from './dom/displayRaceStatus.js';
 import displayWinners from './dom/displayWinners.js';
+
+import isValidCarNamesInput from './game/utils/isValidCarNamesInput.js';
+import isValidRacingCountInput from './game/utils/isValidRacingCountInput.js';
 
 export default class RacingGame {
   constructor() {
