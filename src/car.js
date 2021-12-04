@@ -1,6 +1,5 @@
 // import { ERROR_MSG } from "./constant";
-
-function Car(name) {
+export function Car(name) {
     this.name = name;
     this.distance = 0;
 }
@@ -19,3 +18,24 @@ export function CheckCarName(names) {
 
     return isPass;
 }
+
+export const checkDistance = (Cars) => {
+    Cars.forEach((element) => {
+        const num = MissionUtils.Random.pickNumberInRange(0, 9);
+        if (checkNum(num)) element.distance += 1;
+    });
+
+    return Cars;
+};
+
+export const repeatRacingCount = function (racing_count, Cars) {
+    for (let i = 0; i < racing_count; i++) {
+        Cars = checkDistance(Cars);
+    }
+    return Cars;
+};
+
+const checkNum = (number) => {
+    if (number > 3) return true;
+    else return false;
+};

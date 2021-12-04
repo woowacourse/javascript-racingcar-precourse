@@ -1,7 +1,7 @@
 // import { Car } from "./car.js";
 import { checkInputValidate } from "./input.js";
 import { CheckCarName } from "./car.js";
-
+import { PlayGame } from "./game.js";
 export default function SetGame() {
     const $racing_count_input = document.getElementById("racing-count-input");
     const $racing_count_btn = document.getElementById("racing-count-submit");
@@ -19,6 +19,8 @@ export default function SetGame() {
             const input_val = $racing_count_input.value;
             if (checkInputValidate(input_val)) setRacingCount(input_val);
             else alert();
+
+            new PlayGame(getGameInformation());
         });
 
         $car_names_submit.addEventListener("click", function (e) {
