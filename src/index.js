@@ -33,6 +33,10 @@ class CarGameUtil {
   static isValidate(namesArray) {
     return isEveryStringLessOrEqualsFive(namesArray);
   }
+
+  static isForward() {
+    return getRandomNumber() >= FORWARD_NUMBER_SIGN;
+  }
 }
 class CarGameLogic {
   constructor() {}
@@ -45,7 +49,10 @@ class CarGameLogic {
 
   simulatePerNumberOfTimes() {
     this.cars.forEach(car => {
-      // simulate
+      if (CarGameUtil.isForward()) {
+        car.setCountTemplatePlusOne();
+        car.setCountPlusOne();
+      }
     });
   }
 
