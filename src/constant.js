@@ -28,3 +28,5 @@ export const ERR_MESSAGE = {
   carNameSame: '중복되지 않는 자동차 이름을 사용해주세요.',
   racingCount: '1이상의 시도할 횟수를 입력해주세요.',
 };
+
+export const WINNER_COMMENT = '<strong>최종 우승자:</strong>';

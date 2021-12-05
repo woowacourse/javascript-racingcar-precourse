@@ -18,6 +18,6 @@ export default class View {
       }
     });
 
-    return winnerCarNameArray.join(',');
+    return `<strong>${winnerCarNameArray.join(',')}</strong>`;
   }
 }

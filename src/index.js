@@ -1,17 +1,29 @@
 import Car from './car.js';
 import UserInput from './userInput.js';
 import View from './view.js';
-import { ELEMENT_ID, ERR_MESSAGE } from './constant.js';
+import { ELEMENT_ID, ERR_MESSAGE, WINNER_COMMENT } from './constant.js';
 
 export default class CarRacingGame {
   constructor() {
     this.appEl = document.querySelector('#app');
     this.userInputObject = new UserInput();
     this.carObjects = [];
-    this.racingStatusSpanEl = document.createElement('span');
-    this.racingWinnerSpanEl = document.createElement('span');
+    this.racingStatusSpanEl = this.createSpanElement();
+    this.racingWinnerCommentEl = this.createSpanElement();
+    this.racingWinnerSpanEl = this.createSpanElement();
     this.racingWinnerSpanEl.id = ELEMENT_ID.racingResultId;
     this.bindEventListener();
+  }
+
+  createSpanElement() {
+    const spanEl = document.createElement('span');
+    this.appEl.appendChild(spanEl);
+    return spanEl;
+  }
+
+  bindEventListener() {
+    this.bindCarNameSubmitEl();
+    this.bindRacingCountSubmitEl();
   }
 
   bindCarNameSubmitEl() {
@@ -32,6 +44,7 @@ export default class CarRacingGame {
         this.isPassCarNameSubmitButton() &&
         this.userInputObject.isValidRacingCount()
       ) {
+        this.removeRacingView();
         this.racingPlay();
         this.racingResult();
       }
@@ -47,9 +60,10 @@ export default class CarRacingGame {
     return true;
   }
 
-  bindEventListener() {
-    this.bindCarNameSubmitEl();
-    this.bindRacingCountSubmitEl();
+  removeRacingView() {
+    this.racingStatusSpanEl.innerHTML = '';
+    this.racingWinnerCommentEl.innerHTML = '';
+    this.racingWinnerSpanEl.innerHTML = '';
   }
 
   racingPlay() {
@@ -62,12 +76,11 @@ export default class CarRacingGame {
       this.racingStatusSpanEl.innerHTML += '<br/>';
       racingCount += 1;
     }
-    this.appEl.appendChild(this.racingStatusSpanEl);
   }
 
   racingResult() {
+    this.racingWinnerCommentEl.innerHTML = WINNER_COMMENT;
     this.racingWinnerSpanEl.innerHTML = View.getWinnerCarNames(this.carObjects);
-    this.appEl.appendChild(this.racingWinnerSpanEl);
   }
 }
 
