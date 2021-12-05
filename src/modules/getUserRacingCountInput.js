@@ -14,12 +14,8 @@ export default function getUserRacingCountInput() {
   if (checkUserInputEmpty(racingCount)) {
     if (checkValidCarCount(racingCount)) {
       return racingCount;
-    } else if (checkValidCarCount(racingCount) === false) {
-      showAlertMsg('racingcountinput');
-      return false;
     }
-  } else if (checkUserInputEmpty(racingCount) === false) {
-    showAlertMsg('racingcountinput');
-    return false;
   }
+  showAlertMsg('racingcountinput');
+  return false;
 }
