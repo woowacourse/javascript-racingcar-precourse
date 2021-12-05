@@ -9,8 +9,13 @@
         "sourceType": "module"
     },
     "rules": {
+        "prettier/prettier": ["error", { "singleQuote": true }],
         "consistent-return": "off",
         "import/extensions": "off",
-        "no-alert": "off"
+        "no-new": "off",
+        "no-alert": "off",
+        "no-undef": "warn",
+        "no-param-reassign": "off",
+        "class-methods-use-this": "warn"
     }
 }
