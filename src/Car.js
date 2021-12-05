@@ -15,7 +15,7 @@ class Car {
     }
   }
 
-  dist() {
+  distRender() {
     let temp = '';
     for (let i = 0; i < this.sumDist; i++) {
       temp += '-';
@@ -23,8 +23,12 @@ class Car {
     return temp;
   }
 
-  get CarName() {
+  get carName() {
     return this.name;
+  }
+
+  get dist() {
+    return this.sumDist;
   }
 }
 

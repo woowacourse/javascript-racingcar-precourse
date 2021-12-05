@@ -5,21 +5,22 @@ const $app = document.querySelector('#app');
 const cars = {};
 
 const carNameInputRender = () => `
+  <h1>🏎️ 자동차 경주 게임</h1>
   <p>
     자동차 이름을 <strong>5자 이하로</strong> 콤마로 구분하여 입력해주세요.
     <br />
     올바른 예) east,west,south,north <br />
   </p>
   <form>
-    <input type="text" />
-    <button>확인</button>
+    <input type="text" id="car-names-input"/>
+    <button id="car-names-submit">확인</button>
   </form>`;
 
 const raceCountRender = () => `
   <h4>시도할 횟수를 입력해주세요.</h4>
   <form>
-    <input type="number" />
-    <button>확인</button>
+    <input type="number" id="racing-count-input"/>
+    <button id="racing-count-submit">확인</button>
   </form>`;
 
 const carNameValidate = carNames => {
@@ -36,6 +37,7 @@ const carNameValidate = carNames => {
 
 const raceCountValidate = count => {
   if (count < 0) return false;
+  if (!count) return false;
   return true;
 };
 
@@ -46,53 +48,54 @@ const raceRender = () => {
     cars[car].forwardOrNot();
 
     temp += `<div>
-      ${car} : ${cars[car].dist()}
+      ${car} : ${cars[car].distRender()}
       </div>`;
   }
   return temp;
 };
 
+// 차량 번호 입력
 $app.addEventListener('submit', e => {
-  const $carNameInput = $app.querySelector('input[type=text]');
-  const $carNameInputConfirm = $app.querySelector('input[type=text] ~ button');
+  // $app.querySelector('input[type=text]').id = 'car-names-input';
+  // $app.querySelector('input[type=text] ~ button').id = 'car-names-submit';
+
+  const $carNamesInput = $app.querySelector('#car-names-input');
+  const $carNamesSubmit = $app.querySelector('#car-names-submit');
 
   e.preventDefault();
   if (e.target !== $app.querySelectorAll('form')[0]) return;
-  if (!carNameValidate($carNameInput.value)) {
+  if (!carNameValidate($carNamesInput.value)) {
     window.alert('차량 이름은 5자 이내 혹은 1자 이상을 입력해주세요');
-    $carNameInput.focus();
+    $carNamesInput.focus();
     return;
   }
-  $carNameInput.disabled = true;
-  $carNameInputConfirm.disabled = true;
+  $carNamesInput.disabled = true;
+  $carNamesSubmit.disabled = true;
 
   $app.innerHTML += raceCountRender();
   console.log(cars);
 });
 
+// Count 입력
 $app.addEventListener('submit', e => {
-  const $raceCountInput = $app.querySelector('input[type=number]');
-  const $raceCountInputConfirm = $app.querySelector(
-    'input[type=number] ~ button'
-  );
+  // $app.querySelector('input[type=number]').id = 'racing-count-input';
+  // $app.querySelector('input[type=number] ~ button').id = 'racing-count-submit';
+
+  const $racingCountInput = $app.querySelector('#racing-count-input');
+  const $racingCountSubmit = $app.querySelector('#racing-count-submit');
 
   e.preventDefault();
   if (e.target !== $app.querySelectorAll('form')[1]) return;
-  if (!raceCountValidate($raceCountInput.value)) {
-    window.alert('양수를 입력해주세요');
-    $raceCountInput.focus();
+  if (!raceCountValidate($racingCountInput.value)) {
+    window.alert('숫자, 양수를 입력해주세요');
+    $racingCountInput.focus();
     return;
   }
-  $raceCountInput.disabled = true;
-  $raceCountInputConfirm.disabled = true;
+  $racingCountInput.disabled = true;
+  $racingCountSubmit.disabled = true;
   $app.innerHTML += `<h4>📄 실행 결과</h4>`;
 
-  // 객체들 입력된 input 숫자 만큼 반복되서 실행된다.
-  // 3번 만큼 $app.innerHTML += raceCountRender()가 실행된다.
-  // -> 인스틴스.createRandomNumber() 실행
-  // -> 거기에 더해지는 내용 실행
-
-  for (let i = 0; i < $raceCountInput.value; i++) {
+  for (let i = 0; i < $racingCountInput.value; i++) {
     $app.innerHTML += `<div>${raceRender()}</div><br>`;
   }
 });
