@@ -1,8 +1,8 @@
 import $ from '../utils/dom.js';
 
 const renderCountInput = () => {
-  $('#racing-count-title').className = 'visible';
-  $('#racing-count-form').className = 'visible';
+  $('#racing-count-title').style.display = 'block';
+  $('#racing-count-form').style.display = 'block';
 };
 
 export default renderCountInput;

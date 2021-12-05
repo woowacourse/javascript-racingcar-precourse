@@ -1,7 +1,6 @@
-.hidden { 
-  display: none;
-}
+@charset "utf-8";
 
-.visible {
-  display: block;
+#racing-count-title, 
+#racing-count-form { 
+  display: none;
 }
