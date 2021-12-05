@@ -1,11 +1,15 @@
+import { ERROR_MESSAGE } from './constants.js';
+
+const { NO_SELECTOR } = ERROR_MESSAGE;
+
 export function qs(selector, scope = document) {
-  if (!selector) throw new Error('no selector');
+  if (!selector) throw new Error(NO_SELECTOR);
 
   return scope.querySelector(selector);
 }
 
 export function qsAll(selector, scope = document) {
-  if (!selector) throw new Error('no selector');
+  if (!selector) throw new Error(NO_SELECTOR);
 
   return Array.from(scope.querySelectorAll(selector));
 }
@@ -15,7 +19,7 @@ export function on(target, eventName, handler) {
 }
 
 export function setStyleDisplay(element, value) {
-  if (!element) throw new Error('no selector');
+  if (!element) throw new Error(NO_SELECTOR);
   const el = element;
   el.style.display = value;
 }
