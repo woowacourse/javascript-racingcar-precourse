@@ -2,6 +2,7 @@ import { validateCarNames, validateRacingCount } from "./utils/validation.js";
 import ResultContainer from "./components/ResultContainer.js";
 import getGameResultData from "./utils/getGameResultData.js";
 import getCarNames from "./utils/getCarNames.js";
+import customError from "./utils/customError.js";
 
 const App = () => {
   const initialState = {
@@ -25,9 +26,10 @@ const App = () => {
     initialState.isErrorCarNames = isError;
 
     if (isError) {
-      window.alert(errorMessage);
-      carNamesInput.value = "";
-      return;
+      return customError({
+        errorMessage,
+        errorCallback: () => (carNamesInput.value = ""),
+      });
     }
 
     initialState.carNames = getCarNames(carNames);
@@ -43,9 +45,10 @@ const App = () => {
     });
 
     if (isError) {
-      window.alert(errorMessage);
-      racingCountInput.value = "";
-      return;
+      return customError({
+        errorMessage,
+        errorCallback: () => (racingCountInput.value = ""),
+      });
     }
 
     const data = getGameResultData(
