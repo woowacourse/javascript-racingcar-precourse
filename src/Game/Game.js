@@ -14,19 +14,19 @@ export default class Game {
     this.carResultInformations = [];
     this.randomNumbers = [];
     this.resultRacings = [];
-    this.racingTemplate = '';
+    this.resultTemplate = '';
   }
 
-  getRacingTemplate = () => {
+  getResultTemplate = () => {
     for (let columnIndex = 0; columnIndex < this.resultRacings[0].length; columnIndex += 1) {
       for (let rowIndex = 0; rowIndex < this.resultRacings.length; rowIndex += 1) {
-        this.racingTemplate += `<span>${this.resultRacings[rowIndex][columnIndex]}</span><br />`;
+        this.resultTemplate += `<span>${this.resultRacings[rowIndex][columnIndex]}</span><br />`;
       }
 
-      this.racingTemplate += '<br />';
+      this.resultTemplate += '<br />';
     }
 
-    this.render.template(this.$div, this.$app, this.racingTemplate);
+    this.render.template(this.$div, this.$app, this.resultTemplate);
   };
 
   getResultString = (car) => {
@@ -62,7 +62,7 @@ export default class Game {
   start = () => {
     this.getRandomNumbers();
     this.racingGameStart();
-    this.getRacingTemplate();
+    this.getResultTemplate();
 
     const winners = new Winners(this.carResultInformations);
     winners.getWinners();
