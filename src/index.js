@@ -18,39 +18,13 @@ export default function RacingGame() {
     return carNamesList;
   };
 
-  const isValidLength = (carName) => {
-    if (carName.length > 5 || carName.length < 1) {
-      return false;
-    }
+  const isValidLength = (carName) => carName.length <= 5 && carName.length >= 1;
 
-    return true;
-  };
+  const isEmpty = (carName) => !carName;
 
-  const isEmpty = (carName) => {
-    if (!carName) {
-      return true;
-    }
+  const isDuplicate = (carNames) => carNames.length !== new Set(carNames).size;
 
-    return false;
-  };
-
-  const isDuplicate = (carNames) => {
-    const carNamesSet = new Set(carNames);
-
-    if (carNames.length !== carNamesSet.size) {
-      return true;
-    }
-
-    return false;
-  };
-
-  const isLessThanTwoCars = (carNames) => {
-    if (carNames.length < 2) {
-      return true;
-    }
-
-    return false;
-  };
+  const isLessThanTwoCars = (carNames) => carNames.length < 2;
 
   const isValidCarName = (carNames) => {
     if (isDuplicate(carNames)) {
