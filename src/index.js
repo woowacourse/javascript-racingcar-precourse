@@ -23,6 +23,18 @@ class RacingGame {
     this.triggerRacingCountSubmitEvent();
   }
 
+  runGame() {
+    for (let i = 0; i < this.racingCount; i++) {
+      this.render();
+    }
+  }
+
+  render() {
+    const racingResultText =
+      this.racingCars.map((car) => `<div>${car.getName()}</div>`).join('') + '<br/>';
+    $('#racing-result-heading').insertAdjacentHTML('beforeend', racingResultText);
+  }
+
   preventFormSubmitEvent() {
     $('#car-names-form').addEventListener('submit', (e) => e.preventDefault());
     $('#racing-count-form').addEventListener('submit', (e) => e.preventDefault());
@@ -46,6 +58,7 @@ class RacingGame {
       if (isValidateRacingCount(racingCountInput)) {
         this.setRacingCount(racingCountInput);
         showRacingResultScreen();
+        this.runGame();
       }
     });
   }
