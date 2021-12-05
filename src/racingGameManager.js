@@ -11,6 +11,7 @@ export default class RacingGameManager {
   constructor() {
     this.cars = [];
     this.racingCount = 0;
+    this.raceStatusList = [];
     this.winners = [];
   }
 
@@ -30,12 +31,25 @@ export default class RacingGameManager {
     return Number.isInteger(count) && count >= min;
   }
 
+  play(racingCount) {
+    for (let i = 0; i < racingCount; i++) {
+      this.race();
+      this.raceStatusList.push(this.getCurrentRaceStatus());
+    }
+
+    this.judgeWinners();
+  }
+
   getCars() {
     return this.cars;
   }
 
   getRacingCount() {
     return this.racingCount;
+  }
+
+  getRaceStatusList() {
+    return this.raceStatusList;
   }
 
   getWinners() {

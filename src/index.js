@@ -12,7 +12,7 @@ import {
   ID_HEADING_RACING_RESULT,
 } from './dom/const.js';
 
-import displayRaceStatus from './dom/displayRaceStatus.js';
+import displayRaceStatusList from './dom/displayRaceStatusList.js';
 import displayWinners from './dom/displayWinners.js';
 
 export default class RacingGame {
@@ -33,16 +33,6 @@ export default class RacingGame {
     this.racingCountForm.setVisibility(false);
 
     this.racingGameManager = new RacingGameManager();
-  }
-
-  displayGameStatus(racingCount) {
-    for (let i = 0; i < racingCount; i++) {
-      this.racingGameManager.race();
-      displayRaceStatus(
-        this.app,
-        this.racingGameManager.getCurrentRaceStatus()
-      );
-    }
   }
 
   [DICT_ACTION_BUTTON_SUBMIT[KEY_FORM_CAR_NAMES]](e) {
@@ -73,9 +63,10 @@ export default class RacingGame {
     }
 
     this.racingGameManager.setRacingCountByInput(input);
+    this.racingGameManager.play(this.racingGameManager.getRacingCount());
+
     this.racingResultHeading.setVisibility(true);
-    this.displayGameStatus(this.racingGameManager.getRacingCount());
-    this.racingGameManager.judgeWinners();
+    displayRaceStatusList(this.app, this.racingGameManager.getRaceStatusList());
     displayWinners(this.app, this.racingGameManager.getWinners());
   }
 
