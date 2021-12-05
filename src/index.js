@@ -2,6 +2,7 @@ import {
   ELEMENT_IDS,
   RANDOM_NUM_RANGE,
   MIN_NUM_TO_GO,
+  WINNER_LABEL,
 } from "./constants.js";
 import Validator from "./validator.js";
 import Car from "./car.js";
@@ -20,11 +21,17 @@ class RacingGame {
 
     this.$app = document.querySelector(`#${APP}`);
     this.insertRacingScreen(this.$app);
+    this.insertRacingWinner(this.$app);
   }
   insertRacingScreen($app) {
     const screen = htmlToElement(`<div id="${ELEMENT_IDS.RACING_SCREEN}"></div>`);
     $app.insertAdjacentElement('beforeend', screen);
     this.$racingScreen = screen;
+  }
+  insertRacingWinner($app) {
+    const element = htmlToElement(`<div id="${ELEMENT_IDS.RACING_WINNERS}"></div>`);
+    $app.insertAdjacentElement('beforeend', element);
+    this.$racingWinners = element;
   }
   createCars(carNameArr) {
     return carNameArr.map((name) => {
@@ -57,6 +64,20 @@ class RacingGame {
       car.shouldGo(randomNum) && car.go();
     });
   }
+  findWinners() {
+    this.cars.sort((left, right) => {
+      return (left.position > right.position) ? -1 : 1;
+    });
+    let maxPosition = -1;
+    return this.cars.reduce((acc, cur) => {
+      if (cur.position < maxPosition) {
+        return acc;
+      }
+      maxPosition = cur.position;
+      acc.push(cur.name);
+      return acc;
+    }, []);
+  }
   printCurrentPosition() {
     let ul = `<ul>`;
     this.cars.forEach((car) => {
@@ -65,12 +86,18 @@ class RacingGame {
     ul += `</ul>`;
     this.$racingScreen.insertAdjacentElement('beforeend', htmlToElement(ul));
   }
+  printWinners() {
+    let winners = this.findWinners();
+    let div = `<div><label>${WINNER_LABEL}</label>${winners.join(', ')}</div>`;
+    this.$racingWinners.insertAdjacentElement('beforeend', htmlToElement(div));
+  }
   play() {
     this.cars = this.createCars(this.carNames.split(','));
     for(let i = 0; i < this.racingCount; i++) {
       this.moveCars();
       this.printCurrentPosition();
     }
+    this.printWinners();
   }
 }
 
