@@ -1,9 +1,17 @@
 import { CHARACTER } from '../asset/constant.js';
 
 export default class RacingResult {
-    constructor() {
+    constructor($racingCntForm) {
         this.$resultContainer = document.createElement('div');
         document.getElementById('app').append(this.$resultContainer);
+
+        this.$racingCntTitle = document.getElementById('racing-count-title');
+        this.$racingCntForm = $racingCntForm;
+
+        this.$racingResultTitle = document.getElementById('racing-result-title');
+
+        this.hideRacingCntForm();
+        this.hideRacingResultTitle();
     }
 
     render(gameResult, winners) {
@@ -40,5 +48,30 @@ export default class RacingResult {
 
     getResultContainerHTML() {
         return this.$resultContainer.innerHTML;
+    }
+
+    setDisplayRacingCntForm(display) {
+        this.$racingCntTitle.style.display = display;
+        this.$racingCntForm.style.display = display;
+    }
+
+    hideRacingCntForm() {
+        this.setDisplayRacingCntForm('none');
+    }
+
+    showRacingCntForm() {
+        this.setDisplayRacingCntForm('block');
+    }
+
+    setDisplayRacingResultTitle(display) {
+        this.$racingResultTitle.style.display = display;
+    }
+
+    hideRacingResultTitle() {
+        this.setDisplayRacingResultTitle('none');
+    }
+
+    showRacingResultTitle() {
+        this.setDisplayRacingResultTitle('block');
     }
 }

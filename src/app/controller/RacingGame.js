@@ -5,10 +5,12 @@ import RacingResult from '../view/RacingResult.js';
 
 export default class RacingGame {
     constructor() {
-        this.racingCars = new RacingCars();
-        this.racingResult = new RacingResult();
         this.$carNameInput = document.getElementById('car-names-input');
         this.$racingCntInput = document.getElementById('racing-count-input');
+        this.$carNamesForm = document.getElementById('car-names-form');
+        this.$racingCntForm = document.getElementById('racing-count-form');
+        this.racingCars = new RacingCars();
+        this.racingResult = new RacingResult(this.$racingCntForm);
     }
 
     init() {
@@ -17,7 +19,7 @@ export default class RacingGame {
     }
 
     triggerCarNameSubmitEvent() {
-        document.getElementById('car-names-form').addEventListener('submit', (e) => {
+        this.$carNamesForm.addEventListener('submit', (e) => {
             e.preventDefault();
             const carNames = this.getCarNames();
 
@@ -31,7 +33,7 @@ export default class RacingGame {
     }
 
     triggerRacingCntSubmitEvent() {
-        document.getElementById('racing-count-form').addEventListener('submit', (e) => {
+        this.$racingCntForm.addEventListener('submit', (e) => {
             e.preventDefault();
 
             if (this.racingCars.isEmptyCars()) {
