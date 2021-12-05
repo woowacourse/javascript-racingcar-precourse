@@ -63,7 +63,7 @@ src
     ├── customError.js
     ├── getCarNames.js
     ├── getGameResult.js
-    ├── newId.js
+    ├── getUniqueId.js
     └── validation.js
 ```
 
@@ -86,12 +86,12 @@ src
   ```
   function Car(name) {
   this.name = name;
-  this.id = newId();
+  this.id = getUniqueId();
   this.moveCount = 0;
   this.moveCounts = [];
   }
   ```
-  - newId() 자동차(Car)를 식별할 수 있는 고유한 값 `/utils/newId`
+  - getUniqueId() 자동차(Car)를 식별할 수 있는 고유한 값 `/utils/getUniqueId`
 - 시도할 횟수 입력 받기
   - 유효성 검사 `/utils/validation`
   - `validateRacingCount({racingCount, isErrorCarNames})`
