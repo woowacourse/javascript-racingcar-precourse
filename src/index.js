@@ -1,11 +1,7 @@
 import { validateCarNames } from "./utils/validation.js";
-import newId from "./utils/newId.js";
 import ResultContainer from "./components/ResultContainer.js";
 import getGameResultData from "./utils/getGameResultData.js";
-
-function Car(name) {
-  this.name = name;
-}
+import getCarNames from "./utils/getCarNames.js";
 
 const App = () => {
   const initialState = {
@@ -17,19 +13,8 @@ const App = () => {
   const racingCountForm = document.querySelector("#racing-count-form");
   const racingCountInput = document.querySelector("#racing-count-input");
 
-  const useAttributeInit = () => {
-    racingCountInput.setAttribute("min", 1);
-  };
-
-  const formatCarNames = (inputCarNames) => {
-    initialState.carNames = inputCarNames.map((name) => {
-      const newCar = new Car(name);
-      newCar["id"] = newId();
-      newCar["moveCount"] = 0;
-      newCar["moveCounts"] = [];
-      return newCar;
-    });
-  };
+  const useAttributeInit = () => racingCountInput.setAttribute("min", 1);
+  const render = ({ app, data }) => ResultContainer({ app, data });
 
   const onSubmitCarNamesForm = (e) => {
     e.preventDefault();
@@ -45,7 +30,7 @@ const App = () => {
       return;
     }
 
-    formatCarNames(carNames);
+    initialState.carNames = getCarNames(carNames);
   };
 
   const onSubmitRacingCountForm = (e) => {
@@ -71,10 +56,6 @@ const App = () => {
     );
 
     render({ app, data: JSON.parse(data) });
-  };
-
-  const render = ({ app, data }) => {
-    ResultContainer({ app, data });
   };
 
   useAttributeInit();

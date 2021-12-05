@@ -9,7 +9,7 @@ const getGameResultData = (data) => {
 
   const isMove = (randomNumber) => randomNumber >= 4;
 
-  const setCarResult = () => {
+  const setCar = () => {
     for (let car of carNames) {
       const randomNumber = MissionUtils.Random.pickNumberInRange(
         PICK_NUMBER_IN_RANGE_MIN,
@@ -23,24 +23,25 @@ const getGameResultData = (data) => {
     }
   };
 
-  const setRoundResult = () => {
+  const setRound = () => {
     for (let round = 0; round < racingCount; round++) {
-      setCarResult();
+      setCar();
     }
   };
 
-  setRoundResult();
+  const getWinners = (carNames, maxMoveCount) =>
+    carNames
+      .filter((car) => car.moveCount === maxMoveCount)
+      .map((car) => car.name)
+      .join(",");
 
-  const winners = carNames
-    .filter((car) => car.moveCount === maxMoveCount)
-    .map((car) => car.name)
-    .join(",");
+  setRound();
 
   return JSON.stringify({
     carNames,
     racingCount,
     maxMoveCount,
-    winners,
+    winners: getWinners(carNames, maxMoveCount),
   });
 };
 
