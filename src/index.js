@@ -99,6 +99,17 @@ export default function RacingGame() {
     return racingCountNumber;
   };
 
+  const isValidRacingCount = (racingCount) => {
+    if (racingCount < 1) {
+      return false;
+    }
+    if (!Number.isInteger(racingCount)) {
+      return false;
+    }
+
+    return true;
+  };
+
   const onClickCarNamesSubmitButton = (event) => {
     event.preventDefault();
     const carNamesList = getCarNames();
