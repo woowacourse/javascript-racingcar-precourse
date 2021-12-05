@@ -1,4 +1,5 @@
-import { CAR_NAMES_INPUT_MSG } from './constant.js';
+// import { CAR_NAMES_INPUT_MSG } from './constant.js';
+const CAR_NAMES_INPUT_MSG = require('./constant');
 
 const checkCarNameFunctions = [
     (carNames) => {
@@ -22,4 +23,33 @@ const checkCarNameFunctions = [
 const checkCarName = (carNames) =>
     checkCarNameFunctions.every((checkCarNameFunction) => checkCarNameFunction(carNames));
 
-export { checkCarName };
+const checkRacingCntFunctions = [
+    (racingCnt) => {
+        if (racingCnt === '') {
+            return false;
+        }
+
+        return true;
+    },
+    (racingCnt) => {
+        if (!Number(racingCnt)) {
+            return false;
+        }
+
+        return true;
+    },
+    (racingCnt) => {
+        if (racingCnt <= 0) {
+            return false;
+        }
+
+        return true;
+    },
+];
+
+module.exports = {
+    checkCarName,
+    checkRacingCntFunctions,
+};
+
+// export { checkCarName };
