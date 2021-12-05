@@ -16,7 +16,7 @@ export default class Winner {
     return cars.sort((a, b) => b.distance - a.distance)[0].distance;
   };
 
-  generateWinnerMessage = (cars) => {
+  setWinnerMessage = (cars) => {
     const winners = this.getWinner(cars);
 
     this.message = `
