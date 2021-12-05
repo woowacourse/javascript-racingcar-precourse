@@ -28,5 +28,6 @@ module.exports = {
     'no-use-before-define': 'off',
     'no-loop-func': 'off',
     'no-undef': 'off',
+    'class-methods-use-this': 'off',
   },
 };
