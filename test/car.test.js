@@ -1,4 +1,4 @@
-import Car from '../src/app/asset/car.js';
+import Car from '../src/app/asset/Car.js';
 import { CHARACTER } from '../src/app/asset/constant.js';
 
 describe('car', () => {

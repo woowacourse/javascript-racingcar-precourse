@@ -1,4 +1,4 @@
-import Car from '../asset/car.js';
+import Car from '../asset/Car.js';
 import { CAR_CONTAINER_INIT_VALUE } from '../asset/constant.js';
 
 export default class RacingCars {
