@@ -1,9 +1,9 @@
-import { ELEMENT_ID, ELEMENT_MESSAGE } from "./constant.js";
+import { ELEMENT_MESSAGE } from "./constant.js";
 
 export function setGameElemetStyle(elementStyleMessage) {
-  const gameCountForm = document.getElementById(ELEMENT_ID.COUNTFORM_ID);
-  const gameCountTitle = document.getElementById(ELEMENT_ID.COUNTTITLE_ID);
-  const gameResultTitle = document.getElementById(ELEMENT_ID.RESULTH1_ID);
+  const gameCountForm = document.getElementById("racing-count-form");
+  const gameCountTitle = document.getElementById("racing-count-title");
+  const gameResultTitle = document.getElementById("racing-result");
   if (elementStyleMessage === ELEMENT_MESSAGE.BEFORE_GAME) {
     gameCountForm.style.opacity = 0;
     gameCountTitle.style.opacity = 0;

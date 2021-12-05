@@ -1,5 +1,5 @@
 import { Car } from '../index.js'; 
-import { CARS_NAME, GMAE_COUNT, NUMBER, MESSAGE, ELEMENT_ID, ELEMENT_MESSAGE } from '../utils/constant.js';
+import { CARS_NAME, GMAE_COUNT, NUMBER, MESSAGE, ELEMENT_MESSAGE } from '../utils/constant.js';
 import { setGameElemetStyle } from '../utils/dom.js';
 
 export function formEvent() {
@@ -29,7 +29,7 @@ function inputEvent(submitEvent) {
 
 function inputCheck(inputValueArray, submitEvent) {
   let gameCountCheckResult;
-  if (submitEvent.target.id === ELEMENT_ID.COUNTFORM_ID) {
+  if (submitEvent.target.id === "racing-count-form") {
     gameCountCheckResult = gameCountCheck(inputValueArray[GMAE_COUNT]);
   }
   if (carNameCheck(inputValueArray[CARS_NAME]) && gameCountCheckResult) {
