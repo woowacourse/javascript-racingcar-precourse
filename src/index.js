@@ -10,7 +10,6 @@ import RacingWinner from './components/RacingWinner.js';
 class RacingCarGame {
   constructor() {
     this.cars = [];
-    this.tryCount = 0;
     this.$racingCountForm = new RacingCountForm();
     this.$racingResult = new RacingResult();
     this.$racingWinner = new RacingWinner();
@@ -39,7 +38,7 @@ class RacingCarGame {
     const splittedCarNames = $('#car-names-input').value.split(',');
     if (!this.validateCarNames(splittedCarNames)) return;
     splittedCarNames.forEach(carName => this.cars.push(new Car(carName)));
-    this.$racingCountForm.show();
+    this.$racingCountForm.render();
     this.playRacingCarGame();
   }
 
@@ -53,18 +52,18 @@ class RacingCarGame {
 
   onClickTryCountSubmitButton(event) {
     event.preventDefault();
-    const submitTryCount = $('#racing-count-input').value;
+    const submitTryCount = this.$racingCountForm.$input.value;
     if (!TryCountValidator.checkTryCountLessThanZero(submitTryCount)) return;
-    this.tryCount = submitTryCount;
+    this.$racingCountForm.$tryCount = submitTryCount;
     this.playRacingCarGame();
   }
 
   playRacingCarGame() {
-    if (!this.checkExistCarAndTryCount(this.cars, this.tryCount)) return;
+    if (!this.checkExistCarAndTryCount(this.cars, this.$racingCountForm.$tryCount)) return;
     this.resetCarsAdvance();
     this.$racingResult.initResults();
 
-    for (let i = 0; i < this.tryCount; i += 1) {
+    for (let i = 0; i < this.$racingCountForm.$tryCount; i += 1) {
       this.advanceCars();
       this.$racingResult.runOneTry(this.cars);
       this.$racingResult.render();
