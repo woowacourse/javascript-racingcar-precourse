@@ -1,7 +1,7 @@
 import {ERROR_MESSAGE, NUM_RULE} from './constants.js';
 import {showErrorMessage} from './util.js';
 
-const isEmptyInput = (nameArr) => nameArr.length < 1;
+const isEmptyInput = (nameArr) => nameArr.includes('');
 
 const isValidCarNameLength = (nameArr) => {
   return nameArr.every((name) => name.length <= NUM_RULE.NAME_LIMIT);
