@@ -64,6 +64,18 @@ export default class CarGame {
         return winners;
     }
 
+    displayWinnerHTML(winners){
+        const racingWinners = document.getElementById('racing-winners');
+        
+        let winnersText = ''; //TODO: 전에 '최종 우승자' 텍스트 element 
+        for(let i=0; i<winners.length; i++){
+            winnersText += `${winners[i]}, `;
+        }
+        
+        winnersText = winnersText.slice(0,-2);
+        racingWinners.innerHTML = winnersText;
+    }
+
     receiveCount(input){
         for(let i=0; i<input; i++){
             for(let j=0; j<this.cars.length; j++){
@@ -78,7 +90,6 @@ export default class CarGame {
             this.displayCurrentHTML(currentPositions);
         }
 
-        //TODO: display winner in console, change to HTML
-        console.log(this.findWinner(this.cars));
+        this.displayWinnerHTML(this.findWinner(this.cars));
     }
 }
