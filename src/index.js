@@ -5,10 +5,22 @@ import {
   showRacingCountForm,
   validateNames,
   validateCount,
+  createCars,
 } from './utils.js';
 import { ERROR_MESSAGE } from './constants.js';
 
-export default class CarRacingGame {
+export default class Car {
+  constructor(name) {
+    this.name = name;
+    this.forwardCount = 0;
+  }
+
+  generateRandomNumber = () => {
+    MissionUtils.Random.pickNumberInRange(0, 9);
+  };
+}
+
+class CarRacingGame {
   constructor() {
     this.initElements();
     hideRacingCountForm();
@@ -16,6 +28,7 @@ export default class CarRacingGame {
     this.$racingCountSubmit.addEventListener('click', (e) =>
       this.handleRacingCountSubmit(e)
     );
+    this.cars = [];
   }
 
   initElements = () => {
@@ -28,11 +41,13 @@ export default class CarRacingGame {
   handleCarNamesSubmit = (e) => {
     e.preventDefault();
     const currentInput = this.$carNamesInput.value;
-    const isValid = validateNames(currentInput);
+    const names = currentInput.split(',').map((item) => item.trim());
+    const isValid = validateNames(names);
     if (!isValid) {
       alertError(ERROR_MESSAGE.CAR_NAMES_FORM, this.$carNamesInput);
     }
     if (isValid) {
+      this.cars = createCars(names);
       showRacingCountForm();
     }
   };
@@ -46,4 +61,5 @@ export default class CarRacingGame {
     }
   };
 }
+
 new CarRacingGame();

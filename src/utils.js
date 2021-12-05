@@ -1,3 +1,5 @@
+import Car from './index.js';
+
 export const $ = (selector) => document.querySelector(selector);
 
 export const alertError = (message, $element) => {
@@ -17,8 +19,7 @@ export const showRacingCountForm = () => {
   $('#racing-count-input').focus();
 };
 
-export const validateNames = (currentInput) => {
-  const names = currentInput.split(',').map((item) => item.trim());
+export const validateNames = (names) => {
   if (names.length === 1) {
     return false;
   }
@@ -38,4 +39,9 @@ export const validateCount = (parsedInput) => {
     return false;
   }
   return true;
+};
+
+export const createCars = (names) => {
+  const cars = names.map((name) => new Car(name));
+  return cars;
 };
