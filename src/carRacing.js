@@ -43,7 +43,7 @@ export default class CarRacing {
 }
 
 class Template {
-  static getEachResult(data = []) {
+  getEachResult(data = []) {
     return `<div>${data
       .map(
         (eachResult) => `<ul style="list-style: none; padding: 0;">
@@ -54,13 +54,13 @@ class Template {
     </div>`;
   }
 
-  static getCarDistance({ name, distance }) {
+  getCarDistance({ name, distance }) {
     return `<li>
       ${name}: ${changeDistanceToBar(distance).join('')}
     </li>`;
   }
 
-  static getFinalWinner(data = []) {
+  getFinalWinner(data = []) {
     return `<div>
       <span>최종 우승자: </span>
       <span id="racing-winners">${data.join(', ')}</span>
