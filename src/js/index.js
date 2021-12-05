@@ -3,15 +3,20 @@ import handleCarNameInput from './handlers/handleCarNameInput.js';
 import handleRacingCountInput from './handlers/handleRacingCountInput.js';
 
 function RacingCarGame() {
+  this.init = () => {
+    $('#car-names-input').focus();
+  };
+
   $('#car-names-submit').addEventListener('click', e => {
     e.preventDefault();
     handleCarNameInput();
   });
+
   $('#racing-count-submit').addEventListener('click', e => {
     e.preventDefault();
     handleRacingCountInput();
   });
-  $('#car-names-input').focus();
 }
 
-new RacingCarGame();
+const racingCarGame = new RacingCarGame();
+racingCarGame.init();
