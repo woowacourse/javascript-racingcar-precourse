@@ -2,6 +2,9 @@ import Car from "./car.js";
 
 export default function RacingGame() {
   const carNamesSubmitButton = document.getElementById("car-names-submit");
+  const racingCountSubmitButton = document.getElementById(
+    "racing-count-submit"
+  );
 
   const getCarNames = () => {
     const carNamesInput = document.getElementById("car-names-input");
@@ -88,6 +91,14 @@ export default function RacingGame() {
     carNamesInput.focus();
   };
 
+  const getRacingCountNumber = () => {
+    const racingCountInput = document.getElementById("racing-count-input");
+    const racingCount = racingCountInput.value;
+    const racingCountNumber = Number(racingCount);
+
+    return racingCountNumber;
+  };
+
   const onClickCarNamesSubmitButton = (event) => {
     event.preventDefault();
     const carNamesList = getCarNames();
@@ -102,7 +113,17 @@ export default function RacingGame() {
     console.log(racingCars);
   };
 
+  const onClickRacingCountSubmitButton = (event) => {
+    event.preventDefault();
+    const racingCount = getRacingCountNumber();
+    console.log(racingCount);
+  };
+
   carNamesSubmitButton.addEventListener("click", onClickCarNamesSubmitButton);
+  racingCountSubmitButton.addEventListener(
+    "click",
+    onClickRacingCountSubmitButton
+  );
 }
 
 new RacingGame();
