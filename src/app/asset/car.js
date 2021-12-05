@@ -31,4 +31,8 @@ export default class Car {
     getName() {
         return this.name;
     }
+
+    getTrackLog() {
+        return this.track.join('');
+    }
 }

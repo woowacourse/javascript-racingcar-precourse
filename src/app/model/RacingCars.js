@@ -1,5 +1,6 @@
 import Car from '../asset/Car.js';
 import { CAR_CONTAINER_INIT_VALUE } from '../asset/constant.js';
+import range from '../asset/range.js';
 
 export default class RacingCars {
     constructor() {
@@ -28,5 +29,12 @@ export default class RacingCars {
         return this.cars
             .filter((car) => car.getTrackSize() === maxTrackSize)
             .map((car) => car.getName());
+    }
+
+    getGameResult(racingCnt) {
+        return this.cars.map((car) => ({
+            name: car.getName(),
+            trackLogs: range(racingCnt).map(() => car.goIfEnoughAccel().getTrackLog()),
+        }));
     }
 }

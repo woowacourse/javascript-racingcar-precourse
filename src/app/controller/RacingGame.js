@@ -34,16 +34,26 @@ export default class RacingGame {
 
             if (this.racingCars.isEmptyCars()) {
                 alert(RACING_CNT_INPUT_MSG.noRegisterCar);
+                this.$carNameInput.focus();
                 return;
             }
 
-            const racingCnt = this.getRacingCnt();
-
-            if (checkRacingCnt(racingCnt)) {
-            } else {
-                this.$racingCntInput.focus();
-            }
+            this.runGameIfValidRacingCnt();
         });
+    }
+
+    runGameIfValidRacingCnt() {
+        const racingCnt = this.getRacingCnt();
+
+        if (checkRacingCnt(racingCnt)) {
+            this.runGame(racingCnt);
+        } else {
+            this.$racingCntInput.focus();
+        }
+    }
+
+    runGame(racingCnt) {
+        const gameResult = this.racingCars.getGameResult(racingCnt);
     }
 
     getCarNames() {
