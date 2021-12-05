@@ -10,7 +10,6 @@
     - 자동차의 이름을 제출하는 button 태그의 id: `car-names-submit`
     - 레이싱 횟수를 입력하는 input 태그의 id: `racing-count-input`
     - 레이싱 횟수을 제출하는 button 태그의 id:  `racing-count-submit`
-    - 최종 우승자를 출력하는 span 태그의 id:  `racing-winners`
 
 ### 2. 초기 화면에 필요하지 않은 DOM 엘리먼트 숨기기
 - 초기 화면에 필요하지 않은 DOM 엘리먼트의 style.visibility 속성을 hidden으로 설정
