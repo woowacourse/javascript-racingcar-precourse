@@ -3,11 +3,12 @@ import CarNamesContainer from './components/CarNamesContainer.js';
 import RaicingCountContainer from './components/RacingCountContainer.js';
 import {DOM_ID, PROGRESS} from './utils/constants.js';
 import ResultContainer from './components/ResultContainer.js';
+import Car from './classes/Car.js';
 
 export default class App extends Component {
   setup() {
     this.$state = {
-      names: [],
+      cars: [],
       count: 0,
       progress: PROGRESS.INPUT_CAR_NAME
     };
@@ -37,8 +38,9 @@ export default class App extends Component {
   }
 
   submitCarNameInputHandler(nameArr) {
+    const cars = nameArr.map((name) => new Car(name));
     this.setState({
-      names: nameArr
+      cars
     });
   }
 
