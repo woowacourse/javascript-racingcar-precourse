@@ -2,7 +2,7 @@
 
 ## 🎬 프로젝트 결과물
 
-<img src= "../images/my-project-gif.gif" width="250" height="400"/>
+![프로젝트 결과물](../images/my-project-gif.gif)
 
 ## 📂 디렉토리 구조
 
