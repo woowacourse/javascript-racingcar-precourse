@@ -2,12 +2,19 @@
   "name": "javascript-racingcar-precourse",
   "version": "1.0.0",
   "description": "우아한테크코스 프리코스 자동차 경주 게임 미션",
-  "dependencies": {},
+  "dependencies": {
+    "eslint": "^8.4.0",
+    "eslint-config-airbnb": "^19.0.2",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "^2.5.1"
+  },
   "devDependencies": {
     "cypress": "8.7.0"
   },
   "scripts": {
-    "test": "cypress run --browser chrome"
+    "test": "cypress run --browser chrome",
+    "lint": "eslint src --fix"
   },
   "repository": {
     "type": "git",
