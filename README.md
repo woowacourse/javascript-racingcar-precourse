@@ -6,6 +6,9 @@
 
 1. 잘못된 입력 값 작성한 경우 alert를 이용해 메시지 보여줘야 함
 
+<br />
+<br />
+
 - 게임 클래스 작성
 
 start function
@@ -18,3 +21,7 @@ start function
 renderResult function
 
 1. html 요소를 건드리지 않아야 했기에, createElement, appendChild 함수 사용해서 구현
+
+renderWinner function
+
+1. span 요소를 생성하고, setAttribute 메서드를 사용해서 요구사항을 해결하였다.
