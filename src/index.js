@@ -61,14 +61,15 @@ class RacingCarGame {
 
   playRacingCarGame() {
     if (!this.checkExistCarAndTryCount(this.cars, this.tryCount)) return;
-    this.$racingResult.show();
     this.resetCarsAdvance();
+    this.$racingResult.initResults();
 
-    let resultStirng = '';
     for (let i = 0; i < this.tryCount; i += 1) {
-      resultStirng += this.printCarsAdvance();
+      this.advanceCars();
+      this.$racingResult.runOneTry(this.cars);
+      this.$racingResult.render();
     }
-    this.printGameResult(resultStirng);
+
     this.$racingWinner.checkWinners(this.cars);
     this.$racingWinner.render();
   }
@@ -81,19 +82,8 @@ class RacingCarGame {
     this.cars.forEach(car => car.resetAdvance());
   }
 
-  printCarsAdvance() {
-    let carsAdvanceString = '';
-    this.cars.forEach(car => {
-      car.advanceCar();
-      carsAdvanceString += `<div>${car.printAdvance()}</div>`;
-    });
-    carsAdvanceString += '<br />';
-    return carsAdvanceString;
-  }
-
-  printGameResult(result) {
-    $('#racing-car-result-container').innerHTML = '';
-    $('#racing-car-result-container').innerHTML = result;
+  advanceCars() {
+    this.cars.forEach(car => car.advanceCar());
   }
 }
 
