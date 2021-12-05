@@ -36,3 +36,27 @@
 11. `9`, `10`번을 차례대로 출력하기
 
 12. 자동차 이름 인풋창, 자동차 이동 인풋창 초기화 및 `car`객체 다 제거
+
+## 디렉토리 구조
+
+```
+|   index.js
+|
+\---app
+    +---asset
+    |       Car.js
+    |       constant.js
+    |       isEnoughAccel.js
+    |       range.js
+    |       validation.js
+    |
+    +---controller
+    |       RacingGame.js
+    |
+    +---model
+    |       RacingCars.js
+    |
+    \---view
+            RacingResult.js
+
+```
