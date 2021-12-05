@@ -2,6 +2,7 @@ import { ID } from './constants/index.js';
 import NameInput from './components/NameInput.js';
 import CountInput from './components/CountInput.js';
 import Result from './components/Result.js';
+
 class App {
   constructor($target) {
     this.$target = $target;
@@ -65,4 +66,5 @@ class App {
     });
   };
 }
+
 export default App;
