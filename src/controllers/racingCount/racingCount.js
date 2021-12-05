@@ -1,4 +1,5 @@
 import { isValidRacingCount } from "./checkRacingCount.js";
+import { getValueById } from "../../utils/getElementThings.js";
 
 import { alertForRacingCount } from "../../views/racingCount/alertForRacingCount.js";
 import {
@@ -9,7 +10,6 @@ import {
 class RacingCount {
   constructor() {
     this.racingCount = 0;
-    this.$racingCountInput = document.getElementById("racing-count-input");
     this.$racingCountSubmit = document.getElementById("racing-count-submit");
     this.addEventHandlers();
   }
@@ -21,7 +21,7 @@ class RacingCount {
   onClickRacingCountSubmit() {
     this.$racingCountSubmit.addEventListener("click", e => {
       e.preventDefault();
-      const racingCountStr = this.$racingCountInput.value;
+      const racingCountStr = getValueById("racing-count-input");
 
       if (isValidRacingCount(racingCountStr)) {
         this.setRacingCount(racingCountStr);

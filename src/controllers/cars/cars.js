@@ -1,5 +1,6 @@
 import { isValidCarNames } from "./checkCarNames.js";
 import { makeRacingCars } from "./makeRacingCars.js";
+import { getValueById } from "../../utils/getElementThings.js";
 
 import { alertForCarNames } from "../../views/carNames/alertForCarNames.js";
 import {
@@ -11,7 +12,6 @@ import VisiblePartOfRacingCount from "../../views/racingCount/visiblePartOfRacin
 class Cars {
   constructor() {
     this.cars = [];
-    this.$carNamesInput = document.getElementById("car-names-input");
     this.$carNamesSubmit = document.getElementById("car-names-submit");
     this.addEventHandlers();
   }
@@ -23,7 +23,7 @@ class Cars {
   onClickCarNamesSubmit() {
     this.$carNamesSubmit.addEventListener("click", e => {
       e.preventDefault();
-      const carNamesStr = this.$carNamesInput.value;
+      const carNamesStr = getValueById("car-names-input");
 
       if (isValidCarNames(carNamesStr)) {
         this.setCars(makeRacingCars(carNamesStr));
