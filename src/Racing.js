@@ -21,10 +21,18 @@ export default class Racing {
 
   prepareCar() {
     this.setCarNames();
-    return this.carNames.map(carName => new Car(carName));
+    const cars = this.carNames.map(carName => new Car(carName));
+    cars.forEach(car => car.prepareRacing());
+    return cars;
   }
 
   startRound(cars) {
-    cars.forEach(car => car.moving());
+    cars.forEach(car => {
+      const isGoFoward = car.moving();
+      car.saveRoundResult(isGoFoward);
+    });
+    this.renderRoundResult(cars);
   }
+
+  renderRoundResult(cars) {}
 }

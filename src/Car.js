@@ -12,4 +12,18 @@ export default class Car {
   getRandomValue() {
     return MissionUtils.Random.pickNumberInRange(NUMBER.MIN, NUMBER.MAX);
   }
+
+  prepareRacing() {
+    this.racingResult = { name: this.name, progress: "" };
+  }
+
+  getRacingResult() {
+    return this.racingResult;
+  }
+
+  saveRoundResult(isGoFoward) {
+    if (isGoFoward) {
+      this.racingResult.progress += "-";
+    }
+  }
 }
