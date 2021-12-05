@@ -1,7 +1,7 @@
-import { CAUTION_MESSAGE, DOM } from '../constant/constant.js';
-import CarNamesEvent from '../events/CarNamesEvent.js';
-import RacingCountEvent from '../events/RacingCountEvent.js';
-import Game from './Game.js';
+import { CAUTION_MESSAGE, DOM } from '../utils/constant.js';
+import CarNamesEvent from '../view/CarNamesEvent.js';
+import RacingCountEvent from '../view/RacingCountEvent.js';
+import Game from '../model/Game.js';
 
 export default class ConfigureRacingCar {
   constructor() {

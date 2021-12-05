@@ -1,4 +1,4 @@
-import { NUMBER } from '../constant/constant.js';
+import { NUMBER } from './constant.js';
 
 export default class RandomNumber {
   constructor(carNames, racingCount) {

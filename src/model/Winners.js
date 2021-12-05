@@ -1,5 +1,5 @@
-import { DOM } from '../constant/constant.js';
-import Render from './Render.js';
+import { DOM } from '../utils/constant.js';
+import Render from '../view/Render.js';
 
 export default class Winners {
   constructor(carResultInformations) {

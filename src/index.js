@@ -1,3 +1,3 @@
-import ConfigureRacingCar from './Game/ConfigureRacingCar.js';
+import ConfigureRacingCar from './controller/ConfigureRacingCar.js';
 
 new ConfigureRacingCar();

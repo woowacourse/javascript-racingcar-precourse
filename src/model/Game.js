@@ -1,8 +1,8 @@
-import Car from '../Car/Car.js';
-import { DOM } from '../constant/constant.js';
-import RandomNumber from '../getRandomNumber/RandomNumber.js';
+import Car from './Car.js';
+import { DOM } from '../utils/constant.js';
+import RandomNumber from '../utils/RandomNumber.js';
 import Winners from './Winners.js';
-import Render from './Render.js';
+import Render from '../view/Render.js';
 
 export default class Game {
   constructor(racingCount, carNames) {

@@ -1,4 +1,4 @@
-import { DOM, ERROR_MESSAGE } from '../constant/constant.js';
+import { DOM, ERROR_MESSAGE } from '../utils/constant.js';
 
 export default class CarNamesEvent {
   constructor() {
