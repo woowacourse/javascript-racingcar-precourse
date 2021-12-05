@@ -14,8 +14,7 @@ export default class RacingResult {
 
     renderGameResult(gameResult) {
         this.setResultContainerHTML(
-            `${this.getResultContainerHTML()}
-            ${gameResult.reduce(
+            gameResult.reduce(
                 (outer, carInfo) =>
                     `${outer}${carInfo.reduce(
                         (inner, { carName, trackLog }) =>
@@ -23,7 +22,7 @@ export default class RacingResult {
                         '',
                     )}<br/><br/>`,
                 '',
-            )}`,
+            ),
         );
     }
 
