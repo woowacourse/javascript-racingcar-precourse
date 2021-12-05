@@ -1,4 +1,4 @@
-import { $status } from "../common/constants";
+import { $status } from "../common/constants.js";
 
 export default class Car {
   constructor(name) {
@@ -7,7 +7,7 @@ export default class Car {
   }
 
   printPosition() {
-    const bar = "";
+    let bar = "";
     for (let i = 0; i < this.position; i += 1) {
       bar += "-";
     }
