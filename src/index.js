@@ -1,7 +1,6 @@
 import {
   ELEMENT_IDS,
   RANDOM_NUM_RANGE,
-  MIN_NUM_TO_GO,
   WINNER_LABEL,
   ERROR_MESSAGE,
 } from "./constants.js";
