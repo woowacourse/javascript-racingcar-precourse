@@ -13,7 +13,7 @@ const isDuplicatedNames = (nameArr) => {
   return nameArr.length !== nameSet.size;
 };
 
-export const isVaildNamesInput = ($target, names) => {
+export const isValidNamesInput = ($target, names) => {
   if (isEmptyInput(names)) {
     showErrorMessage($target, ERROR_MESSAGE.EMPTY_INPUT);
     return false;
