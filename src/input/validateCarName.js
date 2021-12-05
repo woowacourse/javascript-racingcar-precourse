@@ -1,4 +1,8 @@
-import { $carName, NAME_MAX_LENGTH } from "../common/constants.js";
+import {
+  $carName,
+  ERROR_CAR_NAME,
+  NAME_MAX_LENGTH,
+} from "../common/constants.js";
 
 const splitCarName = () => $carName.value.split(",");
 
@@ -16,7 +20,24 @@ const isCarNameLength = (carArr) => {
   return valid;
 };
 
+const isCarNameBlank = (carArr) => {
+  let valid = true;
+  carArr.map((el) => {
+    if (el === "") {
+      valid = false;
+      return false;
+    }
+  });
+
+  return valid;
+};
+
 export default function validateCarName() {
   const carArr = trimCarName(splitCarName());
-  console.log(isCarNameLength(carArr));
+  if (isCarNameLength(carArr) && isCarNameBlank(carArr)) {
+    return true;
+  }
+  $carName.focus();
+  alert(ERROR_CAR_NAME);
+  return false;
 }
