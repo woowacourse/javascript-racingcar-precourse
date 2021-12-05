@@ -3,7 +3,7 @@ import { CAR_CONTAINER_INIT_VALUE } from '../asset/constant.js';
 
 export default class RacingCars {
     constructor() {
-        this.setCars(CAR_CONTAINER_INIT_VALUE);
+        this.cars = CAR_CONTAINER_INIT_VALUE;
     }
 
     setCars(value) {
