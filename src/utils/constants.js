@@ -8,6 +8,7 @@ export const DOM_ID = Object.freeze({
   RACING_COUNT_INPUT: 'racing-count-input',
   RACING_COUNT_SUBMIT: 'racing-count-submit',
   RESULT_TITLE: 'result-title',
+  RESULT_CONTAINER: 'result-container',
   RACING_WINNERS: 'racing-winners'
 });
 
