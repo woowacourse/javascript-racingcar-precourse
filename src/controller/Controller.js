@@ -3,7 +3,7 @@ import RacingGame from '../model/RacingGame.js';
 import UserFormDisplay from '../view/UserFormDisplay.js';
 import GameResultDisplay from '../view/GameResultDisplay.js';
 
-export default class GameController {
+export default class Controller {
   constructor() {
     this.init();
     this.bindDefaultEvents();
@@ -11,6 +11,7 @@ export default class GameController {
 
   init() {
     this.gameInstance = new RacingGame();
+
     UserFormDisplay.init();
     GameResultDisplay.init();
   }
