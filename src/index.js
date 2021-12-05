@@ -13,11 +13,11 @@ class RacingGame {
     const { CAR_NAMES_INPUT, CAR_NAMES_SUBMIT, RACING_COUNT_INPUT, RACING_COUNT_SUBMIT, APP } = ELEMENT_IDS;
     this.$carNamesInput = document.querySelector(`#${CAR_NAMES_INPUT}`);
     this.$carNamesSubmit = document.querySelector(`#${CAR_NAMES_SUBMIT}`);
-    this.$carNamesSubmit.addEventListener('click', () => this.handleSubmitCarNames());
+    this.$carNamesSubmit.addEventListener('click', (e) => this.handleSubmitCarNames(e));
 
     this.$racingCountInput = document.querySelector(`#${RACING_COUNT_INPUT}`);
     this.$racingCountSubmit = document.querySelector(`#${RACING_COUNT_SUBMIT}`);
-    this.$racingCountSubmit.addEventListener('click', () => this.handleSubmitRacingCount());
+    this.$racingCountSubmit.addEventListener('click', (e) => this.handleSubmitRacingCount(e));
 
     this.$app = document.querySelector(`#${APP}`);
     this.insertRacingScreen(this.$app);
@@ -38,7 +38,8 @@ class RacingGame {
       return new Car(name);
     });
   }
-  handleSubmitCarNames() {
+  handleSubmitCarNames(e) {
+    e.preventDefault();
     const carNames = this.$carNamesInput.value;
     const { isValid, message } = Validator.isValidCarNames(carNames);
     if (!isValid) {
@@ -47,7 +48,8 @@ class RacingGame {
     }
     this.carNames = carNames;
   }
-  handleSubmitRacingCount() {
+  handleSubmitRacingCount(e) {
+    e.preventDefault();
     if (!this.carNames) {
       alert(ERROR_MESSAGE.EMPTY_CAR_NAMES);
       return;
