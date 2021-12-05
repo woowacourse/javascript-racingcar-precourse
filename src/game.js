@@ -7,7 +7,7 @@ export const PlayGame = function (game_information) {
     this.init = () => {
         setCars(setCarObject(game_information.car_names));
         setRacingCount(Number(game_information.racing_count));
-        gameStart();
+        gameStart(); // 게임 진행 상황을 element들로 구성해서 나타내 줘야 함. 이거 구현할 것.
     };
     const setCars = (object) => {
         this.Cars = object;

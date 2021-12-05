@@ -24,7 +24,7 @@ export const checkDistance = (Cars) => {
         const num = MissionUtils.Random.pickNumberInRange(0, 9);
         if (checkNum(num)) element.distance += 1;
     });
-
+    // 여기서 show 해야 함.
     return Cars;
 };
 
