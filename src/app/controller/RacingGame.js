@@ -49,6 +49,7 @@ export default class RacingGame {
 
         if (checkRacingCnt(racingCnt)) {
             this.runGame(Number(racingCnt));
+            this.resetEnv();
         } else {
             this.$racingCntInput.focus();
         }
@@ -59,7 +60,6 @@ export default class RacingGame {
             this.racingCars.getGameResult(racingCnt),
             this.racingCars.getWinners(),
         );
-        this.resetEnv();
     }
 
     resetEnv() {
