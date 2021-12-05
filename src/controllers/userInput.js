@@ -4,14 +4,18 @@ import {
   IsElementsExsistSpace,
 } from "./utils.js";
 
-export function carNamesInput(e) {
-  e.preventDefault();
+export function carNamesInput() {
   const $carNamesInput = document.getElementById("car-names-input");
-  const cars = makeStringToArrayByComma($carNamesInput.value);
+  const carsArray = makeStringToArrayByComma($carNamesInput.value);
 
-  if (IsElementsOverFiveWords(cars))
+  if (IsElementsOverFiveWords(carsArray))
     alert("자동차 이름을 5자 이하로 입력해주세요.");
-  else if (IsElementsExsistSpace(cars))
+  else if (IsElementsExsistSpace(carsArray))
     alert("자동차 이름에 공백을 제거해주세요.");
-  else console.log(cars);
+  else return carsArray;
+}
+
+export function racingCountInput() {
+  const $racingCountInput = document.getElementById("racing-count-input");
+  return $racingCountInput.value;
 }

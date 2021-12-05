@@ -1,5 +1,4 @@
-import { carNamesInput } from "./controllers/userInput.js";
+import { state } from "./models/state.js";
+import { init } from "./controllers/init.js";
 
-const $carNamesSubmit = document.getElementById("car-names-submit");
-
-$carNamesSubmit.addEventListener("click", carNamesInput);
+init(state);
