@@ -1,5 +1,5 @@
 import $ from '../utils/dom.js';
-import disableCountInput from '../views/disableCountInput.js';
+import { disableCountInput } from '../views/disableInput.js';
 import alertCountInputError from '../views/alertCountInputError.js';
 import resetCountInput from '../views/resetCountInput.js';
 import playGame from './playGame.js';

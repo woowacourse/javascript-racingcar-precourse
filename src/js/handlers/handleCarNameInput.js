@@ -2,7 +2,7 @@ import $ from '../utils/dom.js';
 import renderCountInput from '../views/renderCountInput.js';
 import { isOverFive, isDuplicate, alertCarInputError } from '../views/alertCarInputError.js';
 import resetCarInput from '../views/resetCarInput.js';
-import disableCarInput from '../views/disableCarInput.js';
+import { disableCarInput } from '../views/disableInput.js';
 import { CAR } from '../utils/constants.js';
 
 const isValidCarInput = carInput => {
