@@ -11,7 +11,7 @@ export const RACING_CNT_INPUT_MSG = {
 
 export const CHARACTER = {
     carNameSplit: ',',
-    carIntro: ':',
+    intro: ':',
     tyreTracks: '-',
 };
 

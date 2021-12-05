@@ -16,7 +16,7 @@ export default class RacingResult {
             (outer, carInfo) =>
                 `${outer}${carInfo.reduce(
                     (inner, { carName, trackLog }) =>
-                        `${inner}<span>${carName}${CHARACTER.carIntro} ${trackLog}</span><br/>`,
+                        `${inner}<span>${carName}${CHARACTER.intro} ${trackLog}</span><br/>`,
                     '',
                 )}<br/><br/>`,
             '',
@@ -24,8 +24,8 @@ export default class RacingResult {
     }
 
     renderWinners(winners) {
-        this.$resultContainer.innerHTML += `최종 우승자: <span id="racing-winners">${winners.join(
-            CHARACTER.carNameSplit,
-        )}</span>`;
+        this.$resultContainer.innerHTML += `최종 우승자${
+            CHARACTER.intro
+        } <span id='racing-winners'>${winners.join(CHARACTER.carNameSplit)}</span>`;
     }
 }
