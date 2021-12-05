@@ -55,7 +55,10 @@ export default class RacingGame {
     }
 
     runGame(racingCnt) {
-        this.racingResult.render(this.racingCars.getGameResult(racingCnt));
+        this.racingResult.render(
+            this.racingCars.getGameResult(racingCnt),
+            this.racingCars.getWinners(),
+        );
     }
 
     getCarNames() {

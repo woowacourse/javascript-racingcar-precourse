@@ -8,6 +8,7 @@ export default class RacingResult {
 
     render(gameResult, winners) {
         this.renderGameResult(gameResult);
+        this.renderWinners(winners);
     }
 
     renderGameResult(gameResult) {
@@ -20,5 +21,11 @@ export default class RacingResult {
                 )}<br/><br/>`,
             '',
         );
+    }
+
+    renderWinners(winners) {
+        this.$resultContainer.innerHTML += `최종 우승자: <span id="racing-winners">${winners.join(
+            CHARACTER.carNameSplit,
+        )}</span>`;
     }
 }
