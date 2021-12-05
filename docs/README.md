@@ -49,8 +49,8 @@
 
 - [x] 폴더 구조 변경 (`components`, `utils`, `validators`)
 - [x] `Validator` 생성
-- [ ] 자동차 이름 입력 Form 클래스 분리
-- [ ] 시도 횟수 입력 Form 클래스 분리
+- [x] 자동차 이름 입력 Form 클래스 분리
+- [x] 시도 횟수 입력 Form 클래스 분리
 - [x] 자동차 경기 결과 클래스 분리
 - [x] 최종 우승자 클래스 분리
-- [ ] 상수 값들을 따로 분리해서 저장 (`constants.js` 생성)
+- [x] 상수 값들을 따로 분리해서 저장 (`constants.js` 생성)
