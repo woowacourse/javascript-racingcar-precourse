@@ -1,12 +1,13 @@
 import Component from './components/Component.js';
 import CarNamesContainer from './components/CarNamesContainer.js';
 import RaicingCountContainer from './components/RacingCountContainer.js';
-import {DOM_ID} from './utils/constants.js';
+import {DOM_ID, PROGRESS} from './utils/constants.js';
 
 export default class App extends Component {
   setup() {
     this.$state = {
-      names: []
+      names: [],
+      progress: PROGRESS.INPUT_CAR_NAME
     };
   }
 
@@ -15,15 +16,24 @@ export default class App extends Component {
     const $RaicingCountContainer = this.$target.querySelector(`#${DOM_ID.RACING_COUNT_CONTAINER}`);
 
     new CarNamesContainer($CarNamesContainer, {
-      onSubmit: this.submitCarNameInputHandler.bind(this)
+      onSubmit: this.submitCarNameInputHandler.bind(this),
+      onChange: this.changeProgressHandler.bind(this)
     });
 
-    new RaicingCountContainer($RaicingCountContainer, {});
+    new RaicingCountContainer($RaicingCountContainer, {
+      progress: this.$state.progress
+    });
   }
 
   submitCarNameInputHandler(nameArr) {
     this.setState({
       names: nameArr
+    });
+  }
+
+  changeProgressHandler(progress) {
+    this.setState({
+      progress: progress
     });
   }
 }
