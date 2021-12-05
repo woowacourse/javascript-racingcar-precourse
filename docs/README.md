@@ -1,4 +1,34 @@
-# 📝 구현할 기능 목록
+# 🚗 자동차 경주 게임
+
+## 🎬 프로젝트 결과물
+
+<img src= "../images/my-project-gif.gif" width="250" height="400"/>
+
+## 📂 디렉토리 구조
+
+```sh
+┣ src
+┃   ┣ controller
+┃   ┃ ┣ CarNamesEvent.js
+┃   ┃ ┣ Controller.js
+┃   ┃ ┣ RacingCountEvent.js
+┃   ┃ ┗ RacingResult.js
+┃   ┣ model
+┃   ┃ ┣ Car.js
+┃   ┃ ┣ Game.js
+┃   ┃ ┗ Winners.js
+┃   ┣ utils
+┃   ┃ ┣ RandomNumber.js
+┃   ┃ ┗ constant.js
+┃   ┣ view
+┃   ┃ ┗ Render.js
+┃   ┗ index.js
+┣ docs
+┃   ┗ README.md
+┗ index.html
+```
+
+## 📝 구현할 기능 목록
 
 - [✅ ]html 선택자 추가
 
