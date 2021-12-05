@@ -57,7 +57,6 @@ class RacingCarGame {
   play() {
     if (!this.$racingTryCountForm.checkExistTryCount()) return;
     if (!this.checkExistCars()) return;
-
     this.resetCarsAdvance();
     this.$racingResult.initResults();
 
