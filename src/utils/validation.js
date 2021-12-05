@@ -11,6 +11,14 @@ const isDuplicate = (carNamesInput) => {
   return carNamesArray.length !== [...new Set(carNamesArray)].length;
 };
 
+const isIntegerInValid = (racingCountInput) => {
+  return !Number.isInteger(Number(racingCountInput));
+};
+
+const isSameOrLessZero = (racingCountInput) => {
+  return Number(racingCountInput) <= 0;
+};
+
 const isValidateCarNames = (carNamesInput) => {
   if (isEmpty(carNamesInput)) {
     alert('자동차 이름을 입력해주세요.  올바른 예) east,west,south,north');
@@ -33,6 +41,16 @@ const isValidateCarNames = (carNamesInput) => {
 const isValidateRacingCount = (racingCountInput) => {
   if (isEmpty(racingCountInput)) {
     alert('시도할 횟수를 입력해주세요.  올바른 예) 5');
+    return false;
+  }
+
+  if (isIntegerInValid(racingCountInput)) {
+    alert('시도할 횟수는 1 이상의 자연수로 입력해주세요.  올바른 예) 5');
+    return false;
+  }
+
+  if (isSameOrLessZero(racingCountInput)) {
+    alert('시도할 횟수는 1 이상의 자연수로 입력해주세요.  올바른 예) 5');
     return false;
   }
 
