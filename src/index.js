@@ -1,11 +1,10 @@
 import Car from './components/car.js';
-import { getMaxLengthOfStringList } from './functions/index.js';
+import { getMaxLengthOfStringList, isValidPositiveNumber } from './functions/index.js';
 import constants from './constants/index.js';
 
 class RacingGame {
   constructor() {
     this.carsList = [];
-    this.raceCount = null;
     this.carNameMaxLength = constants.MAX_CAR_NAME_LENGTH;
     this.#initElements();
     this.#hideUnusedElements();
@@ -50,7 +49,7 @@ class RacingGame {
 
   #addOnClickEventListeners() {
     this.$carNamesSubmitButton.addEventListener('click', this.#onClickCarNamesSubmitHandler.bind(this));
-
+    this.$racingCountSubmitButton.addEventListener('click', this.#onClickracingCountSubmitHandler.bind(this));
   }
 
   #onClickCarNamesSubmitHandler(event) {
@@ -64,6 +63,19 @@ class RacingGame {
       this.#showRacingCountElements();
     }
   }
+
+  #onClickracingCountSubmitHandler(event){
+    event.preventDefault();
+
+    const userInput = this.$racingCountInput.value;
+    if (isValidPositiveNumber(userInput)){
+      const raceCount = parseInt(userInput);
+      // simulate result here
+    }else{
+      alert(constants.COUNT_ERROR_MESSAGE);
+    }
+  }
+
 
   #createNewCars(carNamesInput){  
     const parsedCarNames = carNamesInput.split(',');
