@@ -1,9 +1,9 @@
 import { ELEMENT_MESSAGE } from "./constant.js";
 
 export function setGameElemetStyle(elementStyleMessage) {
-  const gameCountForm = document.getElementById("racing-count-form");
-  const gameCountTitle = document.getElementById("racing-count-title");
-  const gameResultTitle = document.getElementById("racing-result");
+  const gameCountForm = $("racing-count-form");
+  const gameCountTitle = $("racing-count-title");
+  const gameResultTitle = $("racing-result");
   if (elementStyleMessage === ELEMENT_MESSAGE.BEFORE_GAME) {
     gameCountForm.style.opacity = 0;
     gameCountTitle.style.opacity = 0;
@@ -14,4 +14,16 @@ export function setGameElemetStyle(elementStyleMessage) {
   } else if (elementStyleMessage === ELEMENT_MESSAGE.COUNT_INPUT) {
     gameResultTitle.style.opacity = 1;
   }
+}
+
+export function $(selector) {
+  return document.getElementById(selector);
+}
+
+export function $all(selector) {
+  return document.querySelectorAll(selector);
+}
+
+export function $new(selector) {
+  return document.createElement(selector);
 }

@@ -1,9 +1,9 @@
 import { Car } from '../index.js'; 
 import { CARS_NAME, GMAE_COUNT, NUMBER, MESSAGE, ELEMENT_MESSAGE } from '../utils/constant.js';
-import { setGameElemetStyle } from '../utils/dom.js';
+import { $all, setGameElemetStyle } from '../utils/dom.js';
 
 export function formEvent() {
-  const allForm = document.getElementsByTagName("form");
+  const allForm = $all("form");
   setGameElemetStyle(ELEMENT_MESSAGE.BEFORE_GAME);
   for (const eachForm of allForm) {
     eachForm.addEventListener("submit", (submitEvent) => {
@@ -16,7 +16,7 @@ export function formEvent() {
 }
 
 function inputEvent(submitEvent) {
-  const allInput = document.getElementsByTagName("input");
+  const allInput = $all("input");
   const inputValueArray = [];
   for (const eachInput of allInput) {
     inputValueArray.push(eachInput.value);
