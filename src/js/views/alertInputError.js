@@ -1,7 +1,5 @@
-export const alertCarInputError = ERROR_MSG => {
+const alertInputError = ERROR_MSG => {
   alert(ERROR_MSG);
 };
 
-export const alertCountInputError = ERROR_MSG => {
-  alert(ERROR_MSG);
-};
+export default alertInputError;
