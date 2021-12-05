@@ -4,7 +4,8 @@ import {
   PICK_NUMBER_IN_RANGE_MAX,
 } from "../utils/constants.js";
 
-const ResultContainer = ({ app, carNames, racingCount }) => {
+const ResultContainer = ({ app, data }) => {
+  const { carNames, racingCount } = data;
   let resultContainer = document.querySelector("#result-container");
   let maxMoveCount = 0;
 
