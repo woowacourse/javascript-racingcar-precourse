@@ -23,6 +23,8 @@ class RacingTryCountForm {
   }
 
   validateTryCount() {
+    if (!TryCountValidator.checkExistTryCount(this.$tryCount))
+      return alert('시도 횟수를 입력해 주세요');
     if (!TryCountValidator.checkTryCountLessThanZero(this.$tryCount))
       return alert('시도 횟수는 0보다 커야합니다.');
     return true;
