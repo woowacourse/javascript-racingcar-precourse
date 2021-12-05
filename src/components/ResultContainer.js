@@ -1,25 +1,12 @@
 import RacingWinners from "./RacingWinners.js";
-import {
-  PICK_NUMBER_IN_RANGE_MIN,
-  PICK_NUMBER_IN_RANGE_MAX,
-} from "../utils/constants.js";
+import ResultRound from "./ResultRound.js";
 
 const ResultContainer = ({ app, data }) => {
-  const { carNames, racingCount } = data;
+  const { carNames, racingCount, winners } = data;
   let resultContainer = document.querySelector("#result-container");
-  let maxMoveCount = 0;
-
-  const resetData = () => {
-    for (let car of carNames) car.moveCount = 0;
-  };
-
-  const resetUI = () => app.removeChild(resultContainer);
 
   const reset = () => {
-    if (resultContainer) {
-      resetData();
-      resetUI();
-    }
+    if (resultContainer) app.removeChild(resultContainer);
   };
 
   const init = () => {
@@ -30,41 +17,16 @@ const ResultContainer = ({ app, data }) => {
     app.append(resultContainer);
   };
 
-  const isMove = (randomNumber) => randomNumber >= 4;
-
-  const roundDetailRender = (car) => {
-    const { name, moveCount } = car;
-    return `<p style="margin: 0;">${name}: ${"-".repeat(moveCount)}</p>`;
-  };
-
-  const roundRender = () => {
-    let items = ``;
-
-    for (let car of carNames) {
-      const randomNumber = MissionUtils.Random.pickNumberInRange(
-        PICK_NUMBER_IN_RANGE_MIN,
-        PICK_NUMBER_IN_RANGE_MAX
-      );
-
-      if (isMove(randomNumber)) car.moveCount++;
-
-      maxMoveCount = Math.max(maxMoveCount, car.moveCount);
-      items += roundDetailRender(car);
-    }
-
-    return items;
-  };
-
-  const render = () => {
+  const render = (carNames, racingCount) => {
     for (let round = 0; round < racingCount; round++) {
-      resultContainer.innerHTML += `<div id="result-round" style="margin: 10px 0;">${roundRender()}</div>`;
+      resultContainer.innerHTML += ResultRound(carNames, round);
     }
 
-    resultContainer.innerHTML += RacingWinners({ carNames, maxMoveCount });
+    resultContainer.innerHTML += RacingWinners({ winners });
   };
 
   init();
-  render();
+  render(carNames, racingCount);
 };
 
 export default ResultContainer;
