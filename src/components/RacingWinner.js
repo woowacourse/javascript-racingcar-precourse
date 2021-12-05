@@ -23,12 +23,12 @@ class RacingResult {
   }
 
   checkWinners(cars) {
-    const maximumAdvance = Math.max(...cars.map(car => car.advance));
-    this.$winners = cars.filter(car => car.advance === maximumAdvance);
+    const maximumAdvance = Math.max(...cars.map(car => car.$advance));
+    this.$winners = cars.filter(car => car.$advance === maximumAdvance);
   }
 
   printWinnersWithSplit(winners) {
-    return winners.map(i => i.name).join(',');
+    return winners.map(winner => winner.$name).join(',');
   }
 }
 

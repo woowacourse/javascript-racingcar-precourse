@@ -83,7 +83,7 @@ class RacingCarGame {
   }
 
   advanceCars() {
-    this.cars.forEach(car => car.advanceCar());
+    this.cars.forEach(car => car.advance());
   }
 }
 

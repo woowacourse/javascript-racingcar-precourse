@@ -1,28 +1,24 @@
 class Car {
   constructor(name) {
-    this.name = name;
-    this.advance = 0;
+    this.$name = name;
+    this.$advance = 0;
   }
 
-  advanceCar() {
+  advance() {
     const randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
-    if (randomNumber >= 4) this.advance += 1;
+    if (randomNumber >= 4) this.$advance += 1;
   }
 
   printAdvance() {
-    return `${this.name}: ${this.changeNumberToDash(this.advance)}`;
+    return `${this.$name}: ${this.changeAdvanceToDash()}`;
   }
 
   resetAdvance() {
-    this.advance = 0;
+    this.$advance = 0;
   }
 
-  changeNumberToDash(advance) {
-    let dash = '';
-    for (let i = 0; i < advance; i += 1) {
-      dash += '-';
-    }
-    return dash;
+  changeAdvanceToDash() {
+    return '-'.repeat(this.$advance);
   }
 }
 
