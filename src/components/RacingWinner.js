@@ -1,4 +1,5 @@
 import { $ } from '../utils/dom.js';
+import { DOM } from '../constants.js';
 
 class RacingResult {
   constructor() {
@@ -17,7 +18,9 @@ class RacingResult {
 
   template() {
     return `
-      최종 우승자: <span id="racing-winners">${this.printWinnersWithSplit(this.$winners)}</span>
+      최종 우승자: <span id="${DOM.RACING_WINNERS}">${this.printWinnersWithSplit(
+      this.$winners,
+    )}</span>
     `;
   }
 

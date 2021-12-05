@@ -1,12 +1,13 @@
 import { $, $$ } from '../utils/dom.js';
 import TryCountValidator from '../validators/TryCountValidator.js';
+import { DOM, ERROR } from '../constants.js';
 
 class RacingTryCountForm {
   constructor() {
     // eslint-disable-next-line prefer-destructuring
     this.$title = $$('h4')[0];
-    this.$input = $('#racing-count-input');
-    this.$submit = $('#racing-count-submit');
+    this.$input = $(`#${DOM.RACING_COUNT_INPUT}`);
+    this.$submit = $(`#${DOM.RACING_COUNT_SUBMIT}`);
     this.$tryCount = 0;
   }
 
@@ -24,9 +25,9 @@ class RacingTryCountForm {
 
   validateTryCount() {
     if (!TryCountValidator.checkExistTryCount(this.$tryCount))
-      return alert('시도 횟수를 입력해 주세요');
+      return alert(ERROR.TRY_COUNT_REQUIRED);
     if (!TryCountValidator.checkTryCountLessThanZero(this.$tryCount))
-      return alert('시도 횟수는 0보다 커야합니다.');
+      return alert(ERROR.TRY_COUNT_HAVE_TO_OVER_ZERO);
     return true;
   }
 

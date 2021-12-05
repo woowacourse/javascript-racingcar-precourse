@@ -1,18 +1,18 @@
 import { $ } from '../utils/dom.js';
 import CarNameValidator from '../validators/CarNameValidator.js';
+import { DOM, ERROR } from '../constants.js';
 
 class RacingCountForm {
   constructor() {
-    this.$input = $('#car-names-input');
-    this.$submit = $('#car-names-submit');
+    this.$input = $(`#${DOM.CAR_NAMES_INPUT}`);
+    this.$submit = $(`#${DOM.CAR_NAMES_SUBMIT}`);
   }
 
   validateCarNames(names) {
-    if (!CarNameValidator.checkAtLeastOneCar(names))
-      return alert('자동차를 최소한 하나 이상 입력해주세요');
-    if (!CarNameValidator.checkCarNameDuplicated(names)) return alert('자동차 이름이 겹쳤습니다.');
+    if (!CarNameValidator.checkAtLeastOneCar(names)) return alert(ERROR.CAR_NAME_REQUIRED);
+    if (!CarNameValidator.checkCarNameDuplicated(names)) return alert(ERROR.CAR_NAME_DUPLICATED);
     if (!CarNameValidator.checkCarNameUnderFiveLetter(names))
-      return alert('자동차 이름은 5자 이하만 가능합니다.');
+      return alert(ERROR.CAR_NAME_HAVE_TO_UNDER_FIVE_LETTER);
     return true;
   }
 
