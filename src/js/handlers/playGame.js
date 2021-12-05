@@ -7,7 +7,11 @@ import getWinner from '../models/getWinner.js';
 const createResultElement = () => {
   const resultDiv = document.createElement('div');
   resultDiv.setAttribute('id', 'result-wrapper');
-  $('#app').appendChild(resultDiv);
+  resultDiv.innerHTML = `
+    <div id="result-process"></div>
+    <div id="result-winner">최종 우승자: </div>
+  `;
+  $('#app').append(resultDiv);
 };
 
 const playGame = countInput => {
