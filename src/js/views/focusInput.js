@@ -1,9 +1,5 @@
-import $ from '../utils/dom.js';
-
-export const focusCountInput = () => {
-  $('#racing-count-input').focus();
+const focusInput = inputSelector => {
+  inputSelector.focus();
 };
 
-export const focusCarInput = () => {
-  $('#car-names-input').focus();
-};
+export default focusInput;

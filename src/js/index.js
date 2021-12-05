@@ -1,11 +1,11 @@
 import $ from './utils/dom.js';
 import handleCarNameInput from './handlers/handleCarNameInput.js';
 import handleRacingCountInput from './handlers/handleRacingCountInput.js';
-import { focusCarInput } from './views/focusInput.js';
+import focusInput from './views/focusInput.js';
 
 function RacingCarGame() {
   this.init = () => {
-    focusCarInput();
+    focusInput($('#car-names-input'));
   };
 
   $('#car-names-submit').addEventListener('click', e => {

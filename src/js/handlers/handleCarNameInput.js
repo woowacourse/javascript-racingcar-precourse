@@ -4,7 +4,7 @@ import renderCountInput from '../views/renderCountInput.js';
 import alertInputError from '../views/alertInputError.js';
 import { resetCarInput } from '../views/resetInput.js';
 import { disableCarInput } from '../views/disableInput.js';
-import { focusCountInput } from '../views/focusInput.js';
+import focusInput from '../views/focusInput.js';
 
 export const isOverFive = carInput => {
   carInput = carInput.split(',').map(car => car.trim());
@@ -46,7 +46,7 @@ const handleCarNameInput = () => {
   if (isValidCarInput(carInput)) {
     disableCarInput();
     renderCountInput();
-    focusCountInput();
+    focusInput($('#racing-count-input'));
     return;
   }
   resetCarInput();
