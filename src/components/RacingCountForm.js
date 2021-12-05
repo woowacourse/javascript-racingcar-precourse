@@ -1,4 +1,5 @@
 import { $, $$ } from '../utils/dom.js';
+import TryCountValidator from '../validators/TryCountValidator.js';
 
 class RacingCountForm {
   constructor() {
@@ -19,6 +20,16 @@ class RacingCountForm {
     this.$input.style.display = '';
     this.$submit.style.display = '';
     this.$title.style.display = '';
+  }
+
+  validateTryCount() {
+    if (!TryCountValidator.checkTryCountLessThanZero(this.$tryCount))
+      return alert('시도 횟수는 0보다 커야합니다.');
+    return true;
+  }
+
+  getTryCount() {
+    this.$tryCount = this.$input.value;
   }
 }
 

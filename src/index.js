@@ -1,6 +1,3 @@
-import CarNameValidator from './validators/CarNameValidator.js';
-import TryCountValidator from './validators/TryCountValidator.js';
-
 import Car from './components/Car.js';
 import RacingCarNameForm from './components/RacingCarNameForm.js';
 import RacingCountForm from './components/RacingCountForm.js';
@@ -39,26 +36,21 @@ class RacingCarGame {
   onClickCarNameSubmitButton(event) {
     event.preventDefault();
     this.initCars();
+
     const splittedCarNames = this.$racingCarNameForm.getSplittedCarNames();
     if (!this.$racingCarNameForm.validateCarNames(splittedCarNames)) return;
-    splittedCarNames.forEach(carName => this.cars.push(new Car(carName)));
+
+    this.addCars(splittedCarNames);
     this.$racingCountForm.render();
     this.playRacingCarGame();
   }
 
-  validateCarNames(splittedCarNames) {
-    return (
-      CarNameValidator.checkAtLeastOneCar(splittedCarNames) &&
-      CarNameValidator.checkCarNameDuplicated(splittedCarNames) &&
-      CarNameValidator.checkCarNameUnderFiveLetter(splittedCarNames)
-    );
-  }
-
   onClickTryCountSubmitButton(event) {
     event.preventDefault();
-    const submitTryCount = this.$racingCountForm.$input.value;
-    if (!TryCountValidator.checkTryCountLessThanZero(submitTryCount)) return;
-    this.$racingCountForm.$tryCount = submitTryCount;
+
+    this.$racingCountForm.getTryCount();
+    if (!this.$racingCountForm.validateTryCount()) return;
+
     this.playRacingCarGame();
   }
 
@@ -79,6 +71,10 @@ class RacingCarGame {
 
   checkExistCarAndTryCount(cars, tryCount) {
     return cars.length !== 0 && tryCount !== 0;
+  }
+
+  addCars(splittedCarNames) {
+    splittedCarNames.forEach(carName => this.cars.push(new Car(carName)));
   }
 
   resetCarsAdvance() {
