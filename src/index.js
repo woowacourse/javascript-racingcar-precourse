@@ -11,10 +11,6 @@ export default function racingGame() {
   countSubmit.addEventListener('click', getCount);
 }
 
-function Car(name) {
-  this.name = name;
-}
-
 function getCarName() {
   let carNameList = [];
   carNameList = carNameInput.value.split(',');
