@@ -5,7 +5,7 @@ import Game from '../model/Game.js';
 import Render from '../view/Render.js';
 import Winners from '../model/Winners.js';
 
-export default class ConfigureRacingCar {
+export default class Controller {
   constructor() {
     this.carNamesEvent = new CarNamesEvent();
     this.racingCountEvent = new RacingCountEvent();

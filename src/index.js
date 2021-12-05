@@ -1,3 +1,3 @@
-import ConfigureRacingCar from './controller/ConfigureRacingCar.js';
+import Controller from './controller/Controller.js';
 
-new ConfigureRacingCar();
+new Controller();
