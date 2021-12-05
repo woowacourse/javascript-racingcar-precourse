@@ -2,14 +2,14 @@ import { $ } from '../utils/dom.js';
 import { MIN_CAR_NAME_LENGTH, MAX_CAR_NAME_LENGTH } from '../utils/constants.js';
 
 // racingCountInput 유효값 체크
-const isNonRacingCount = () => $('#racing-count-input').value == '';
+const isNonRacingCount = () => $('#racing-count-input').value === '';
 const isNumber = () => !isNaN(Number($('#racing-count-input').value));
 const isNegative = () => Number($('#racing-count-input').value) < 0;
 const isZero = () => Number($('#racing-count-input').value) === 0;
 const isFloat = () => !Number.isInteger(Number($('#racing-count-input').value));
 
 // carNamesInput 유효값 체크
-const isNonCarNames = () => $('#car-names-input').value == '';
+const isNonCarNames = () => $('#car-names-input').value === '';
 const isCarNamesInputValidLength = () => {
   const carNamesInput = $('#car-names-input').value.split(',');
   return carNamesInput.every(
