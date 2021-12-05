@@ -1,4 +1,4 @@
-const { checkCarName, checkRacingCnt } = require('../src/app/asset/validation');
+import { checkCarName, checkRacingCnt } from '../src/app/asset/validation.js';
 
 test('checkCarName', () => {
     expect(checkCarName(['abc', 'east'])).toBeTruthy();
