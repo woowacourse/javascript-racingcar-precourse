@@ -2,9 +2,9 @@ import $ from '../utils/dom.js';
 import { CAR, ERROR } from '../utils/constants.js';
 import renderCountInput from '../views/renderCountInput.js';
 import alertInputError from '../views/alertInputError.js';
-import { resetCarInput } from '../views/resetInput.js';
 import { disableCarInput } from '../views/disableInput.js';
 import focusInput from '../views/focusInput.js';
+import resetInput from '../views/resetInput.js';
 
 export const isOverFive = carInput => {
   carInput = carInput.split(',').map(car => car.trim());
@@ -49,7 +49,7 @@ const handleCarNameInput = () => {
     focusInput($('#racing-count-input'));
     return;
   }
-  resetCarInput();
+  resetInput($('#car-names-input'));
 };
 
 export default handleCarNameInput;

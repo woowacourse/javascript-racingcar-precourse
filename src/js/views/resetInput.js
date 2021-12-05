@@ -1,9 +1,5 @@
-import $ from '../utils/dom.js';
-
-export const resetCarInput = () => {
-  $('#car-names-input').value = '';
+const resetInput = selector => {
+  selector.value = '';
 };
 
-export const resetCountInput = () => {
-  $('#racing-count-input').value = '';
-};
+export default resetInput;

@@ -2,7 +2,7 @@ import $ from '../utils/dom.js';
 import { COUNT, ERROR } from '../utils/constants.js';
 import { disableCountInput } from '../views/disableInput.js';
 import alertInputError from '../views/alertInputError.js';
-import { resetCountInput } from '../views/resetInput.js';
+import resetInput from '../views/resetInput.js';
 import playGame from './playGame.js';
 
 const isValidCountInput = countInput => {
@@ -25,7 +25,7 @@ const handleRacingCountInput = () => {
     disableCountInput();
     return;
   }
-  resetCountInput();
+  resetInput($('#racing-count-input'));
 };
 
 export default handleRacingCountInput;
