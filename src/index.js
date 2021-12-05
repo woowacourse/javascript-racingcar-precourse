@@ -1,4 +1,4 @@
-import { validateCarNames } from "./utils/validation.js";
+import { validateCarNames, validateRacingCount } from "./utils/validation.js";
 import ResultContainer from "./components/ResultContainer.js";
 import getGameResultData from "./utils/getGameResultData.js";
 import getCarNames from "./utils/getCarNames.js";
@@ -37,13 +37,13 @@ const App = () => {
     e.preventDefault();
     const racingCountInput = e.target[0];
     const { carNames, isErrorCarNames } = initialState;
+    const { isError, errorMessage, racingCount } = validateRacingCount({
+      racingCount: racingCountInput.value,
+      isErrorCarNames,
+    });
 
-    if (racingCountInput.value === "") {
-      window.alert(`시도할 횟수를 입력해 주세요.`);
-      return;
-    }
-    if (isErrorCarNames) {
-      window.alert(`자동차 이름을 입력해 주세요.`);
+    if (isError) {
+      window.alert(errorMessage);
       racingCountInput.value = "";
       return;
     }
@@ -51,7 +51,7 @@ const App = () => {
     const data = getGameResultData(
       JSON.stringify({
         carNames,
-        racingCount: racingCountInput.value,
+        racingCount,
       })
     );
 

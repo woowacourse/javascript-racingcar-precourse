@@ -33,3 +33,24 @@ export const validateCarNames = (carNames) => {
   validateForm.carNames = carNamesArr;
   return validateForm;
 };
+
+export const validateRacingCount = ({ racingCount, isErrorCarNames }) => {
+  const validateForm = {
+    isError: false,
+    errorMessage: ``,
+    racingCount,
+  };
+
+  if (isErrorCarNames) {
+    validateForm.isError = true;
+    validateForm.errorMessage = `자동차 이름을 입력해 주세요.`;
+    return validateForm;
+  }
+  if (racingCount === "") {
+    validateForm.isError = true;
+    validateForm.errorMessage = `시도할 횟수를 입력해 주세요.`;
+    return validateForm;
+  }
+
+  return validateForm;
+};
