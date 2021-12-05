@@ -54,6 +54,25 @@ const raceRender = () => {
   return temp;
 };
 
+const victoryRender = () => {
+  // class들 순회하면서 dist를 호출해서 sumDist를 비교하면서 더 크면 기존꺼를 다 뺴고 넣고 같으면 기존꺼에 같이넣는식
+  let result = '';
+  let MIN = Number.MIN_SAFE_INTEGER;
+  let winner = [];
+
+  for (const car of Object.keys(cars)) {
+    if (MIN < cars[car].dist) {
+      winner = [];
+      winner.push(car);
+      MIN = cars[car].dist;
+    } else if (MIN === cars[car].dist) {
+      winner.push(car);
+    }
+  }
+  result = winner.join(', ');
+  return result;
+};
+
 // 차량 번호 입력
 $app.addEventListener('submit', e => {
   // $app.querySelector('input[type=text]').id = 'car-names-input';
@@ -98,6 +117,8 @@ $app.addEventListener('submit', e => {
   for (let i = 0; i < $racingCountInput.value; i++) {
     $app.innerHTML += `<div>${raceRender()}</div><br>`;
   }
+
+  $app.innerHTML += `최종 우승자: <span id="racing-winners">${victoryRender()}</span>`;
 });
 
 window.addEventListener('DOMContentLoaded', () => {
