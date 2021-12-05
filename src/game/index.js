@@ -48,6 +48,22 @@ export default class CarGame {
         racingCurrent.innerHTML += currentPositions + "<br>";
     }
 
+    findWinner(cars){
+        let max = 0;
+        let winners = [];
+
+        for(let i=0; i<cars.length; i++){
+            if(cars[i].position > max){
+                max = cars[i].position;
+                winners = [cars[i].name];
+            } else if( cars[i].position == max){
+                winners.push(cars[i].name);
+            }
+        }
+
+        return winners;
+    }
+
     receiveCount(input){
         for(let i=0; i<input; i++){
             for(let j=0; j<this.cars.length; j++){
@@ -61,5 +77,8 @@ export default class CarGame {
 
             this.displayCurrentHTML(currentPositions);
         }
+
+        //TODO: display winner in console, change to HTML
+        console.log(this.findWinner(this.cars));
     }
 }
