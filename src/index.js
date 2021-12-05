@@ -6,7 +6,7 @@ import RacingWinner from './components/RacingWinner.js';
 
 class RacingCarGame {
   constructor() {
-    this.cars = [];
+    this.$cars = [];
     this.$racingCarNameForm = new RacingCarNameForm();
     this.$racingTryCountForm = new RacingTryCountForm();
     this.$racingResult = new RacingResult();
@@ -42,7 +42,7 @@ class RacingCarGame {
 
     this.addCars(splittedCarNames);
     this.$racingTryCountForm.render();
-    this.playRacingCarGame();
+    this.play();
   }
 
   onClickTryCountSubmitButton(event) {
@@ -51,42 +51,44 @@ class RacingCarGame {
     this.$racingTryCountForm.getTryCount();
     if (!this.$racingTryCountForm.validateTryCount()) return;
 
-    this.playRacingCarGame();
+    this.play();
   }
 
-  playRacingCarGame() {
-    if (!this.checkExistCarAndTryCount(this.cars, this.$racingTryCountForm.$tryCount)) return;
+  play() {
+    if (!this.$racingTryCountForm.checkExistTryCount()) return;
+    if (!this.checkExistCars()) return;
+
     this.resetCarsAdvance();
     this.$racingResult.initResults();
 
     for (let i = 0; i < this.$racingTryCountForm.$tryCount; i += 1) {
       this.advanceCars();
-      this.$racingResult.runOneTry(this.cars);
+      this.$racingResult.runOneTry(this.$cars);
       this.$racingResult.render();
     }
 
-    this.$racingWinner.checkWinners(this.cars);
+    this.$racingWinner.checkWinners(this.$cars);
     this.$racingWinner.render();
   }
 
-  checkExistCarAndTryCount(cars, tryCount) {
-    return cars.length !== 0 && tryCount !== 0;
+  checkExistCars() {
+    return this.$cars.length !== 0;
   }
 
   addCars(splittedCarNames) {
-    splittedCarNames.forEach(carName => this.cars.push(new Car(carName)));
+    splittedCarNames.forEach(carName => this.$cars.push(new Car(carName)));
   }
 
   resetCarsAdvance() {
-    this.cars.forEach(car => car.resetAdvance());
+    this.$cars.forEach(car => car.resetAdvance());
   }
 
   advanceCars() {
-    this.cars.forEach(car => car.advance());
+    this.$cars.forEach(car => car.advance());
   }
 
   initCars() {
-    this.cars = [];
+    this.$cars = [];
   }
 }
 
