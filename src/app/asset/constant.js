@@ -15,4 +15,10 @@ export const CHARACTER = {
     tyreTracks: '-',
 };
 
+export const CAR_ACCEL_RULE = {
+    min: 0,
+    max: 9,
+    enough: 4,
+};
+
 export const CAR_CONTAINER_INIT_VALUE = null;

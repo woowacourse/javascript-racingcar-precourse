@@ -1,5 +1,9 @@
-const generateAccel = () => MissionUtils.Random.pickNumberInRange(0, 9);
+import { CAR_ACCEL_RULE } from './constant.js';
 
-const isEnoughAccel = () => generateAccel() >= 4;
+const { min, max, enough } = CAR_ACCEL_RULE;
+
+const generateAccel = () => MissionUtils.Random.pickNumberInRange(min, max);
+
+const isEnoughAccel = () => generateAccel() >= enough;
 
 export default isEnoughAccel;
