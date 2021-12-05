@@ -78,7 +78,8 @@
 │   │   ├── constants.js
 │   │   └── elements.js
 │   ├── utils
-│   │   └── element-tools.js
+│   │   ├── element-tools.js
+│   │   └── validator.js
 │   └── index.js
 ├── docs
 │   └── README.md
