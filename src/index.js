@@ -14,6 +14,7 @@ class RacingGame {
   init() {
     this.initScreen();
     this.preventFormSubmitEvent();
+    this.triggerCarNamesEvent();
   }
 
   initScreen() {
@@ -25,6 +26,12 @@ class RacingGame {
   preventFormSubmitEvent() {
     $('#car-names-form').addEventListener('submit', (e) => e.preventDefault());
     $('#racing-count-form').addEventListener('submit', (e) => e.preventDefault());
+  }
+
+  triggerCarNamesEvent() {
+    $('#car-names-submit').addEventListener('click', () => {
+      const carNamesInput = $('#car-names-input').value;
+    });
   }
 }
 
