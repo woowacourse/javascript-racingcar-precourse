@@ -21,7 +21,7 @@ class PlayAndResult {
       const cars = this.cars.getCars();
       const racingCount = this.racingCount.getRacingCount();
 
-      if (isValidRacingCount(cars)) {
+      if (isValidRacingCount(racingCount)) {
         const result = playGame(cars, racingCount);
         const winners = new Winners(result).getWinners();
 
