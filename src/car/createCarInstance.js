@@ -5,6 +5,5 @@ export default function createCarInstance(carnamelist) {
   carnamelist.forEach((item) => {
     carInstanceList.push(new Car(item));
   });
-  console.log(carInstanceList);
   return carInstanceList;
 }

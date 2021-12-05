@@ -1,6 +1,6 @@
 import { $ } from '../dom/dom.js';
 
-function computeForward(count) {
+function getForwardCount(count) {
   let road = '';
   for (let i = 0; i < count; i++) {
     road = road + '-';
@@ -15,7 +15,7 @@ export default function drawCarRacing(carInstanceList) {
   carInstanceList.forEach((item) => {
     const car = document.createElement('p');
     const carPoint = document.createTextNode(
-      `${item.name}: ${computeForward(item.count)}`
+      `${item.name}: ${getForwardCount(item.count)}`
     );
     car.append(carPoint);
     container.appendChild(car);

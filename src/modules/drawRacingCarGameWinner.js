@@ -1,7 +1,7 @@
 import { $ } from '../dom/dom.js';
 import computeRacingGameWinner from './computeRacingGameWinner.js';
 
-export default function drawRacingCarGameResult(carInstanceList) {
+export default function drawRacingCarGameWinner(carInstanceList) {
   const winner = computeRacingGameWinner(carInstanceList);
   const winnerContainer = document.createElement('div');
   winnerContainer.innerText = `최종 우승자: `;
