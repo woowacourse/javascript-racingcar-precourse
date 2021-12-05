@@ -1,11 +1,5 @@
-import { DOM } from '../utils/constant.js';
-import Render from '../view/Render.js';
-
 export default class Winners {
   constructor(carResultInformations) {
-    this.render = new Render();
-    this.$app = DOM.$APP;
-    this.$span = DOM.$SPAN;
     this.carResultInformations = carResultInformations;
     this.winnersTemplate = '';
     this.winners = [];
@@ -32,13 +26,15 @@ export default class Winners {
 
       return this.compareDistance(currentCarName, maxDistance, currentDistance);
     }, 0);
+
+    return this.winners;
   };
 
-  getWinnerTemplate = (winners) => {
+  makeWinnerTemplate = (winners) => {
     this.winnersTemplate = `최종 우승자: <span id="racing-winners">${winners}</span>`;
   };
 
-  getWinnersTemplate = () => {
+  makeWinnersTemplate = () => {
     let winnersString = '';
     this.winners.forEach((winner, index) => {
       if (index === this.winners.length - 1) {
@@ -50,18 +46,22 @@ export default class Winners {
       }
     });
 
-    this.getWinnerTemplate(winnersString);
+    this.makeWinnerTemplate(winnersString);
   };
 
   countWinners = () => {
     if (this.winners.length === 1) {
-      this.getWinnerTemplate(this.winners[0]);
+      this.makeWinnerTemplate(this.winners[0]);
     }
 
     if (this.winners.length !== 1) {
-      this.getWinnersTemplate();
+      this.makeWinnersTemplate();
     }
+  };
 
-    this.render.template(this.$span, this.$app, this.winnersTemplate);
+  getWinnersTemplate = () => {
+    this.countWinners();
+
+    return this.winnersTemplate;
   };
 }

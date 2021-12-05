@@ -1,14 +1,8 @@
 import Car from './Car.js';
-import { DOM } from '../utils/constant.js';
 import RandomNumber from '../utils/RandomNumber.js';
-import Winners from './Winners.js';
-import Render from '../view/Render.js';
 
 export default class Game {
   constructor(racingCount, carNames) {
-    this.render = new Render();
-    this.$app = DOM.$APP;
-    this.$div = DOM.$DIV;
     this.racingCount = racingCount;
     this.carNames = carNames;
     this.carResultInformations = [];
@@ -26,12 +20,10 @@ export default class Game {
       this.resultTemplate += '<br />';
     }
 
-    this.render.template(this.$div, this.$app, this.resultTemplate);
+    return this.resultTemplate;
   };
 
-  getResultString = (car) => {
-    return car.resultString();
-  };
+  getResultString = (car) => car.resultString();
 
   isMoveCar = (randomNumber, car) => {
     if (randomNumber >= 4) {
@@ -59,13 +51,10 @@ export default class Game {
     this.randomNumbers = this.randomNumber.get();
   };
 
+  getResultInformations = () => this.carResultInformations;
+
   start = () => {
     this.getRandomNumbers();
     this.racingGameStart();
-    this.getResultTemplate();
-
-    const winners = new Winners(this.carResultInformations);
-    winners.getWinners();
-    winners.countWinners();
   };
 }
