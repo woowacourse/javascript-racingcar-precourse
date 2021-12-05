@@ -1,5 +1,6 @@
 import Car from './Car.js';
 import showRaceResult from '../view/showRaceResult.js';
+import showWinners from '../view/showWinners.js';
 import initView from '../view/initView.js';
 
 function getCars(userInput) {
@@ -29,6 +30,7 @@ function getWinners(cars) {
 
 function decideWinners(cars) {
   const winners = getWinners(cars);
+  showWinners(winners);
 }
 
 export default function playGame(userInput) {
