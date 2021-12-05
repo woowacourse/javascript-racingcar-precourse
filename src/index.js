@@ -12,3 +12,16 @@ carNamesSubmit.addEventListener('click', e =>{
     
     game.receiveName(userInput);
 });
+
+document.querySelector('form > input[type="number"]').id = 'racing-count-input';
+document.querySelector('form > input[type="number"] + button').id = 'racing-count-submit';
+
+let racingCountSubmit = document.getElementById('racing-count-submit');
+racingCountSubmit.addEventListener('click', e =>{
+    e.preventDefault();
+    let userInput = document.getElementById('racing-count-input').value;
+
+    //TODO:
+    //game.receiveCount(userInput);
+    console.log(userInput);
+});
