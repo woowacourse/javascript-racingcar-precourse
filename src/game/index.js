@@ -34,16 +34,32 @@ export default class CarGame {
         }
     }
 
+    namePosition(car){
+        let name =`${car.name}:`
+        let position = ''
+        for(let i=0; i<car.position; i++){
+            position += '-'
+        }
+        return name + position;
+    }
+
+    displayCurrentHTML(currentPositions){
+        let racingCurrent = document.getElementById('racing-current');
+        racingCurrent.innerHTML += currentPositions + "<br>";
+    }
+
     receiveCount(input){
         for(let i=0; i<input; i++){
             for(let j=0; j<this.cars.length; j++){
                 this.moveCar(this.cars[j]);
             }
 
-            //TODO: display name, position in console, change display to HTML
+            let currentPositions = ``;
             for(let j=0; j<this.cars.length; j++){
-                console.log(i, this.cars[j].name, this.cars[j].position);
+                currentPositions += this.namePosition(this.cars[j]) + "<br>";
             }
+
+            this.displayCurrentHTML(currentPositions);
         }
     }
 }
