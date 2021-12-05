@@ -1,16 +1,16 @@
 import { CAR_NAMES_INPUT_MSG } from './constant.js';
 
 const checkCarNameFunctions = [
-    (names) => {
-        if (names.every((name) => name.length < 1 || name.length > 5)) {
+    (carNames) => {
+        if (carNames.every((carName) => carName.length < 1 || carName.length > 5)) {
             alert(CAR_NAMES_INPUT_MSG.length);
             return false;
         }
 
         return true;
     },
-    (names) => {
-        if (names.every((name) => name.length !== name.replace(/\s/g, '').length)) {
+    (carNames) => {
+        if (carNames.every((carName) => carName.length !== carName.replace(/\s/g, '').length)) {
             alert(CAR_NAMES_INPUT_MSG.space);
             return false;
         }
@@ -19,7 +19,7 @@ const checkCarNameFunctions = [
     },
 ];
 
-const checkCarName = (names) =>
-    checkCarNameFunctions.every((checkCarNameFunction) => checkCarNameFunction(names));
+const checkCarName = (carNames) =>
+    checkCarNameFunctions.every((checkCarNameFunction) => checkCarNameFunction(carNames));
 
 export { checkCarName };
