@@ -13,6 +13,16 @@ export default class Racing {
     for (let round = 1; round <= this.racingCount; round += 1) {
       this.startRound(Cars);
     }
+    this.showRacingWinner(Cars);
+  }
+
+  showRacingWinner(cars) {
+    const winnerDistance = Math.max(...cars.map(car => car.progress.length));
+    const winner = cars
+      .filter(car => car.progress.length === winnerDistance)
+      .map(car => car.name)
+      .join(", ");
+    this.render.winner(winner);
   }
 
   setCarNames() {

@@ -39,4 +39,13 @@ export default class Render {
     });
     this.content.append(roundResultArea);
   }
+
+  winner(name) {
+    const winnerText = document.createElement("span");
+    winnerText.innerText = `최종 우승자: `;
+    const winnerTag = document.createElement("span");
+    winnerTag.id = "racing-winners";
+    winnerTag.innerText = name;
+    this.content.append(winnerText, winnerTag);
+  }
 }
