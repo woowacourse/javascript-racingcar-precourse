@@ -1,5 +1,5 @@
-// const generateAccel = () => MissionUtils.Random.pickNumberInRange(0, 9);
+const generateAccel = () => MissionUtils.Random.pickNumberInRange(0, 9);
 
-const isEnoughAccel = (accel) => accel >= 4;
+const isEnoughAccel = () => generateAccel() >= 4;
 
-module.exports = isEnoughAccel;
+export default isEnoughAccel;
