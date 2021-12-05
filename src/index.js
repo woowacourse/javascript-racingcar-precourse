@@ -1,13 +1,14 @@
 import Car from "./car.js";
 
 export default function RacingGame() {
+  const carNamesInput = document.getElementById("car-names-input");
   const carNamesSubmitButton = document.getElementById("car-names-submit");
+  const racingCountInput = document.getElementById("racing-count-input");
   const racingCountSubmitButton = document.getElementById(
     "racing-count-submit"
   );
 
   const getCarNames = () => {
-    const carNamesInput = document.getElementById("car-names-input");
     const carNames = carNamesInput.value;
     const carNamesList = carNames.split(",").map((carName) => carName.trim());
 
@@ -84,15 +85,12 @@ export default function RacingGame() {
     }
   };
 
-  const initInput = () => {
-    const carNamesInput = document.getElementById("car-names-input");
-
-    carNamesInput.value = "";
-    carNamesInput.focus();
+  const initInput = (input) => {
+    input.value = "";
+    input.focus();
   };
 
   const getRacingCountNumber = () => {
-    const racingCountInput = document.getElementById("racing-count-input");
     const racingCount = racingCountInput.value;
     const racingCountNumber = Number(racingCount);
 
@@ -116,7 +114,7 @@ export default function RacingGame() {
 
     if (!isValidCarName(carNamesList)) {
       alert(getErrorMessage(carNamesList));
-      initInput();
+      initInput(carNamesInput);
       return;
     }
 
