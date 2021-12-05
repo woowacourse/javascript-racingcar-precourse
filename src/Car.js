@@ -15,4 +15,8 @@ export default class Car {
       this.step += 1;
     }
   }
+
+  result() {
+    return `${this.name}: ${'-'.repeat(this.step)}`;
+  }
 }
