@@ -20,12 +20,15 @@ const isContainedNull = (names) => {
 const isInteger = (number) => {
     return number % 1 === 0;
 };
+
 const isNotNegative = (number) => {
     return number >= 0;
 };
+
 const isBlank = (number) => {
     return number === "";
 };
+
 export const validateCarNames = (names) => {
     if (isContainedNull(names)) {
         return INPUT_ERROR.NULL;

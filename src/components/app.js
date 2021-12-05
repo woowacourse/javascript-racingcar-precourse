@@ -16,10 +16,10 @@ export class App {
         this.init();
     }
     init() {
-        this.bindEventsToComponents();
+        this.activateCarNamesInput();
         this.unmount();
     }
-    bindEventsToComponents() {
+    activateCarNamesInput() {
         this.carNamesInput = new CarNameInput(this.setCars.bind(this));
     }
     setCars(names) {
