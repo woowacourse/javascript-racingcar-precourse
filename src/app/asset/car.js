@@ -9,11 +9,14 @@ export default class Car {
 
     go() {
         this.track.push(CHARACTER.tyreTracks);
+        return this;
     }
 
     goIfEnoughAccel() {
         if (isEnoughAccel()) {
             this.go();
         }
+
+        return this;
     }
 }
