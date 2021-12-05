@@ -16,10 +16,10 @@ const createRoundWrap = (count) => {
   return $roundWrap;
 };
 
-const insertPlayLogs = ($wrap, playerLogs) => {
-  playerLogs.forEach((text, round) => {
-    const $roundResult = $wrap.querySelector(`div[data-round="${round}"]`);
-    const $progressText = createElement('SPAN', text);
+const insertRacerLog = ($wrap, racerLog) => {
+  racerLog.forEach((scoreText, gameRound) => {
+    const $roundResult = $wrap.querySelector(`div[data-round="${gameRound}"]`);
+    const $progressText = createElement('SPAN', scoreText);
     const $br = createElement('BR');
 
     $roundResult.append($progressText, $br);
@@ -56,7 +56,7 @@ export default class GameResultDisplay {
 
   static draw(gameResult, callback) {
     const $roundWrapList = createRoundWrap(gameResult.count);
-    gameResult.logs.forEach((player) => insertPlayLogs($roundWrapList, player));
+    gameResult.logs.forEach((log) => insertRacerLog($roundWrapList, log));
 
     const $winnerText = createWinnersText(gameResult.winners);
     $roundWrapList.append($winnerText);
