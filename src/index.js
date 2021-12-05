@@ -3,6 +3,7 @@ import {
   RANDOM_NUM_RANGE,
   MIN_NUM_TO_GO,
   WINNER_LABEL,
+  ERROR_MESSAGE,
 } from "./constants.js";
 import Validator from "./validator.js";
 import Car from "./car.js";
@@ -48,6 +49,10 @@ class RacingGame {
     this.carNames = carNames;
   }
   handleSubmitRacingCount() {
+    if (!this.carNames) {
+      alert(ERROR_MESSAGE.EMPTY_CAR_NAMES);
+      return;
+    }
     const racingCount = this.$racingCountInput.value;
     const { isValid, message } = Validator.isValidRacingCount(racingCount);
     if (!isValid) {

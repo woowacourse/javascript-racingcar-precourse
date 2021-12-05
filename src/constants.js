@@ -10,6 +10,7 @@ export const ELEMENT_IDS = {
 export const ERROR_MESSAGE = {
   CAR_NAMES: '쉼표(,)로 구분된 5글자 이하의 자동차 이름을 입력해주세요',
   RACING_COUNT: '1이상의 수를 입력해주세요',
+  EMPTY_CAR_NAMES: '자동차 이름을 입력해주세요',
 }
 export const CAR_NAME_MAX_LENGTH = 5;
 export const CAR_NAME_MIN_LENGTH = 1;
