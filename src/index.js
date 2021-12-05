@@ -60,23 +60,35 @@ class RacingCarGame {
   }
 
   playRacingCarGame() {
-    if (this.cars.length === 0 || this.tryCount === 0) return;
+    if (!this.checkExistCarAndTryCount(this.cars, this.tryCount)) return;
     this.$racingResult.show();
+    this.resetCarsAdvance();
 
     let resultStirng = '';
-    this.cars.forEach(car => car.resetAdvance());
-
     for (let i = 0; i < this.tryCount; i += 1) {
-      // eslint-disable-next-line no-loop-func
-      this.cars.forEach(car => {
-        car.advanceCar();
-        resultStirng += `<div>${car.printAdvance()}</div>`;
-      });
-      resultStirng += '<br />';
+      resultStirng += this.printCarsAdvance();
     }
     this.printGameResult(resultStirng);
     const winners = this.checkWinners(this.cars);
     this.printWinners(winners);
+  }
+
+  checkExistCarAndTryCount(cars, tryCount) {
+    return cars.length !== 0 && tryCount !== 0;
+  }
+
+  resetCarsAdvance() {
+    this.cars.forEach(car => car.resetAdvance());
+  }
+
+  printCarsAdvance() {
+    let carsAdvanceString = '';
+    this.cars.forEach(car => {
+      car.advanceCar();
+      carsAdvanceString += `<div>${car.printAdvance()}</div>`;
+    });
+    carsAdvanceString += '<br />';
+    return carsAdvanceString;
   }
 
   printGameResult(result) {
