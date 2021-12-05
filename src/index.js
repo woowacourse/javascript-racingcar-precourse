@@ -1,6 +1,6 @@
 import Car from './components/Car.js';
 import RacingCarNameForm from './components/RacingCarNameForm.js';
-import RacingCountForm from './components/RacingCountForm.js';
+import RacingTryCountForm from './components/RacingTryCountForm.js';
 import RacingResult from './components/RacingResult.js';
 import RacingWinner from './components/RacingWinner.js';
 
@@ -8,7 +8,7 @@ class RacingCarGame {
   constructor() {
     this.cars = [];
     this.$racingCarNameForm = new RacingCarNameForm();
-    this.$racingCountForm = new RacingCountForm();
+    this.$racingTryCountForm = new RacingTryCountForm();
     this.$racingResult = new RacingResult();
     this.$racingWinner = new RacingWinner();
     this.initDOM();
@@ -18,7 +18,7 @@ class RacingCarGame {
   initDOM() {
     this.$racingResult.createDOM();
     this.$racingWinner.createDOM();
-    this.$racingCountForm.hide();
+    this.$racingTryCountForm.hide();
     this.$racingResult.hide();
   }
 
@@ -27,7 +27,7 @@ class RacingCarGame {
       'click',
       this.onClickCarNameSubmitButton.bind(this),
     );
-    this.$racingCountForm.$submit.addEventListener(
+    this.$racingTryCountForm.$submit.addEventListener(
       'click',
       this.onClickTryCountSubmitButton.bind(this),
     );
@@ -41,25 +41,25 @@ class RacingCarGame {
     if (!this.$racingCarNameForm.validateCarNames(splittedCarNames)) return;
 
     this.addCars(splittedCarNames);
-    this.$racingCountForm.render();
+    this.$racingTryCountForm.render();
     this.playRacingCarGame();
   }
 
   onClickTryCountSubmitButton(event) {
     event.preventDefault();
 
-    this.$racingCountForm.getTryCount();
-    if (!this.$racingCountForm.validateTryCount()) return;
+    this.$racingTryCountForm.getTryCount();
+    if (!this.$racingTryCountForm.validateTryCount()) return;
 
     this.playRacingCarGame();
   }
 
   playRacingCarGame() {
-    if (!this.checkExistCarAndTryCount(this.cars, this.$racingCountForm.$tryCount)) return;
+    if (!this.checkExistCarAndTryCount(this.cars, this.$racingTryCountForm.$tryCount)) return;
     this.resetCarsAdvance();
     this.$racingResult.initResults();
 
-    for (let i = 0; i < this.$racingCountForm.$tryCount; i += 1) {
+    for (let i = 0; i < this.$racingTryCountForm.$tryCount; i += 1) {
       this.advanceCars();
       this.$racingResult.runOneTry(this.cars);
       this.$racingResult.render();

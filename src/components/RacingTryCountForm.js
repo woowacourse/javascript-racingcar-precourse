@@ -1,7 +1,7 @@
 import { $, $$ } from '../utils/dom.js';
 import TryCountValidator from '../validators/TryCountValidator.js';
 
-class RacingCountForm {
+class RacingTryCountForm {
   constructor() {
     // eslint-disable-next-line prefer-destructuring
     this.$title = $$('h4')[0];
@@ -33,4 +33,4 @@ class RacingCountForm {
   }
 }
 
-export default RacingCountForm;
+export default RacingTryCountForm;
