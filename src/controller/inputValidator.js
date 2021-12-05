@@ -6,6 +6,7 @@ const isNonRacingCount = () => $('#racing-count-input').value == '';
 const isNumber = () => !isNaN(Number($('#racing-count-input').value));
 const isNegative = () => Number($('#racing-count-input').value) < 0;
 const isZero = () => Number($('#racing-count-input').value) === 0;
+const isFloat = () => !Number.isInteger(Number($('#racing-count-input').value));
 
 // carNamesInput 유효값 체크
 const isNonCarNames = () => $('#car-names-input').value == '';
@@ -24,7 +25,7 @@ export const isCarNamesInputNonValid = () => {
 };
 
 export const isRacingCountInputNonValid = () => {
-  return isNonRacingCount() || !isNumber() || isNegative() || isZero();
+  return isNonRacingCount() || !isNumber() || isNegative() || isZero() || isFloat();
 };
 
 // 예외 메시지
