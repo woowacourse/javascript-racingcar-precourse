@@ -4,6 +4,7 @@ export const CAR = {
   CAN_MOVE_NUM: 4,
   FIRST_IN_NUM: 0,
   LAST_IN_NUM: 9,
+  MAX_SCORE_IDX: 0,
 };
 
 export const COUNT = {

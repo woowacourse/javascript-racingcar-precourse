@@ -15,7 +15,7 @@ const createResultElement = () => {
 };
 
 const playGame = countInput => {
-  const cars = getCarArr(); // 객체들이 모여있는 배열의 형식
+  const cars = getCarArr();
   createResultElement();
 
   while (countInput) {

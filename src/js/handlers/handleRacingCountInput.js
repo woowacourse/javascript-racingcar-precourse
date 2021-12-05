@@ -1,9 +1,9 @@
 import $ from '../utils/dom.js';
+import { COUNT, ERROR } from '../utils/constants.js';
 import { disableCountInput } from '../views/disableInput.js';
 import alertInputError from '../views/alertInputError.js';
 import { resetCountInput } from '../views/resetInput.js';
 import playGame from './playGame.js';
-import { COUNT, ERROR } from '../utils/constants.js';
 
 const isValidCountInput = countInput => {
   if (countInput === '') {
@@ -19,6 +19,7 @@ const isValidCountInput = countInput => {
 
 const handleRacingCountInput = () => {
   const countInput = $('#racing-count-input').value;
+
   if (isValidCountInput(countInput)) {
     playGame(Number(countInput));
     disableCountInput();

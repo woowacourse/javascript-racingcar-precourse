@@ -1,9 +1,9 @@
 import $ from '../utils/dom.js';
+import { CAR, ERROR } from '../utils/constants.js';
 import renderCountInput from '../views/renderCountInput.js';
 import alertInputError from '../views/alertInputError.js';
 import { resetCarInput } from '../views/resetInput.js';
 import { disableCarInput } from '../views/disableInput.js';
-import { CAR, ERROR } from '../utils/constants.js';
 import { focusCountInput } from '../views/focusInput.js';
 
 export const isOverFive = carInput => {
