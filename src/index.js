@@ -1,5 +1,5 @@
 import Car from './model/Car.js';
-import { $ } from './utils/dom.js';
+import { $, initScreen, showRacingCountScreen, showRacingResultScreen } from './utils/dom.js';
 import { isValidateCarNames, isValidateRacingCount } from './utils/validation.js';
 
 class RacingGame {
@@ -17,25 +17,10 @@ class RacingGame {
   }
 
   init() {
-    this.initScreen();
+    initScreen();
     this.preventFormSubmitEvent();
     this.triggerCarNamesSubmitEvent();
     this.triggerRacingCountSubmitEvent();
-  }
-
-  initScreen() {
-    $('#racing-count-heading').style.visibility = 'hidden';
-    $('#racing-count-form').style.visibility = 'hidden';
-    $('#racing-result-heading').style.visibility = 'hidden';
-  }
-
-  showRacingCountScreen() {
-    $('#racing-count-heading').style.visibility = 'visible';
-    $('#racing-count-form').style.visibility = 'visible';
-  }
-
-  showRacingResultScreen() {
-    $('#racing-result-heading').style.visibility = 'visible';
   }
 
   preventFormSubmitEvent() {
@@ -49,7 +34,7 @@ class RacingGame {
 
       if (isValidateCarNames(carNamesInput)) {
         this.setRacingCars(carNamesInput);
-        this.showRacingCountScreen();
+        showRacingCountScreen();
       }
     });
   }
@@ -60,7 +45,7 @@ class RacingGame {
 
       if (isValidateRacingCount(racingCountInput)) {
         this.setRacingCount(racingCountInput);
-        this.showRacingResultScreen();
+        showRacingResultScreen();
       }
     });
   }
