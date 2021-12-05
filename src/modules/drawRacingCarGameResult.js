@@ -3,8 +3,12 @@ import computeRacingGameWinner from './computeRacingGameWinner.js';
 
 export default function drawRacingCarGameResult(carInstanceList) {
   const winner = computeRacingGameWinner(carInstanceList);
-  const winnerContainer = document.createElement('span');
-  winnerContainer.id = 'racing-winners';
-  winnerContainer.innerText = `최종 우승자: ${winner}`;
+  const winnerContainer = document.createElement('div');
+  winnerContainer.innerText = `최종 우승자: `;
+
+  const winnerContent = document.createElement('span');
+  winnerContent.id = 'racing-winners';
+  winnerContent.innerText = `${winner}`;
+  winnerContainer.appendChild(winnerContent);
   $('#app').appendChild(winnerContainer);
 }
