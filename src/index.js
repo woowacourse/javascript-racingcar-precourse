@@ -1,12 +1,15 @@
 import Car from "./car.js";
 
 export default function RacingGame() {
+  const app = document.getElementById("app");
   const carNamesInput = document.getElementById("car-names-input");
   const carNamesSubmitButton = document.getElementById("car-names-submit");
   const racingCountInput = document.getElementById("racing-count-input");
   const racingCountSubmitButton = document.getElementById(
     "racing-count-submit"
   );
+  let racingCars = [];
+  let racingCount = 0;
 
   const getCarNames = () => {
     const carNames = carNamesInput.value;
@@ -108,6 +111,26 @@ export default function RacingGame() {
     return true;
   };
 
+  const renderRacingGame = () => {
+    const racingResultDiv = document.createElement("div");
+    racingResultDiv.id = "racing-result";
+    app.appendChild(racingResultDiv);
+
+    for (let i = 0; i < racingCount; i++) {
+      const racingProcessDiv = document.createElement("div");
+      racingProcessDiv.id = "racing-process";
+      racingResultDiv.appendChild(racingProcessDiv);
+
+      racingCars.forEach((car) => car.move());
+
+      const racingProcess = racingCars
+        .map((car) => `<span>${car.name}: ${car.distance}</span>`)
+        .join("");
+
+      racingProcessDiv.innerHTML += `${racingProcess}`;
+    }
+  };
+
   const onClickCarNamesSubmitButton = (event) => {
     event.preventDefault();
     const carNamesList = getCarNames();
@@ -118,13 +141,12 @@ export default function RacingGame() {
       return;
     }
 
-    const racingCars = carNamesList.map((carName) => new Car(carName));
-    console.log(racingCars);
+    racingCars = carNamesList.map((carName) => new Car(carName));
   };
 
   const onClickRacingCountSubmitButton = (event) => {
     event.preventDefault();
-    const racingCount = getRacingCountNumber();
+    racingCount = getRacingCountNumber();
 
     if (!isValidRacingCount(racingCount)) {
       alert("양의 정수를 입력해주세요.");
@@ -132,7 +154,7 @@ export default function RacingGame() {
       return;
     }
 
-    console.log(racingCount);
+    renderRacingGame();
   };
 
   carNamesSubmitButton.addEventListener("click", onClickCarNamesSubmitButton);
