@@ -1,6 +1,9 @@
 // ============== [ ID 선택자 상수 ] ======================
 export const ID_APP = 'app';
+export const ID_RACING_RESULT = 'racing-result';
 export const ID_RACING_WINNERS = 'racing-winners';
+export const ID_HEADING_RACING_COUNT = 'racing-count-heading';
+export const ID_HEADING_RACING_RESULT = 'racing-result-heading';
 
 // ============== [ Form 관리용 KEY ] =====================
 export const KEY_FORM_CAR_NAMES = 'carNames';
@@ -60,11 +63,6 @@ export const DICT_TYPE_FORM_ELEMENTS = {
   [KEY_FORM_CAR_NAMES]: TYPE_FORM_ELEMENTS_CAR_NAMES,
   [KEY_FORM_RACING_COUNT]: TYPE_FORM_ELEMENTS_RACING_COUNT,
 };
-
-// ======================= [ innerText of HTML Element] ===================================
-export const BUTTON_SUBMIT_TEXT = '확인';
-export const HEADING_RACING_COUNT = '시도할 횟수를 입력해주세요.';
-export const HEADING_RACING_RESULT = '📄 실행 결과';
 
 // ======================= [ 이벤트 위임으로 관리하는 action 딕셔너리 ] =========================
 export const DICT_ACTION_BUTTON_SUBMIT = {

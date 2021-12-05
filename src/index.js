@@ -1,4 +1,6 @@
 import RacingGameManager from './racingGameManager.js';
+import FormManager from './dom/formManager.js';
+import HeadingManager from './dom/headingManager.js';
 
 import {
   ID_APP,
@@ -6,14 +8,10 @@ import {
   MSG_ERROR,
   KEY_FORM_CAR_NAMES,
   KEY_FORM_RACING_COUNT,
-  BUTTON_SUBMIT_TEXT,
+  ID_HEADING_RACING_COUNT,
+  ID_HEADING_RACING_RESULT,
 } from './dom/const.js';
 
-import removeChildrenByTagName from './dom/utils/removeChildrenByTag.js';
-import createFormManagerByKey from './dom/createFormManagerByKey.js';
-import displayFormByKey from './dom/displayFormByKey.js';
-import displayRacingCountHeading from './dom/displayRacingCountHeading.js';
-import displayRacingResultHeading from './dom/displayRacingResultHeading.js';
 import displayRaceStatus from './dom/displayRaceStatus.js';
 import displayWinners from './dom/displayWinners.js';
 
@@ -21,38 +19,20 @@ export default class RacingGame {
   constructor() {
     this.app = document.getElementById(ID_APP);
     this.app.onclick = this.onClick.bind(this);
-    this.init();
 
-    this.carNamesForm = undefined;
-    this.racingCountForm = undefined;
+    this.racingCountHeading = new HeadingManager(ID_HEADING_RACING_COUNT);
+    this.racingCountHeading.setVisibility(false);
+    this.racingResultHeading = new HeadingManager(ID_HEADING_RACING_RESULT);
+    this.racingResultHeading.setVisibility(false);
 
-    this.displayCarNamesForm();
-
-    this.racingGameManager = new RacingGameManager();
-  }
-
-  init() {
-    removeChildrenByTagName(this.app, 'form');
-    removeChildrenByTagName(this.app, 'h4');
-  }
-
-  displayCarNamesForm() {
-    const isSucceededToDisplay = displayFormByKey(this.app, KEY_FORM_CAR_NAMES);
-    if (isSucceededToDisplay) {
-      this.carNamesForm = createFormManagerByKey(KEY_FORM_CAR_NAMES);
-      this.carNamesForm.setButtonText(BUTTON_SUBMIT_TEXT);
-    }
-  }
-
-  displayRacingCountForm() {
-    const isSucceededToDisplay = displayFormByKey(
-      this.app,
+    this.carNamesForm = FormManager.createFormManagerByKey(KEY_FORM_CAR_NAMES);
+    this.carNamesForm.setVisibility(true);
+    this.racingCountForm = FormManager.createFormManagerByKey(
       KEY_FORM_RACING_COUNT
     );
-    if (isSucceededToDisplay) {
-      this.racingCountForm = createFormManagerByKey(KEY_FORM_RACING_COUNT);
-      this.racingCountForm.setButtonText(BUTTON_SUBMIT_TEXT);
-    }
+    this.racingCountForm.setVisibility(false);
+
+    this.racingGameManager = new RacingGameManager();
   }
 
   displayGameStatus(racingCount) {
@@ -77,8 +57,8 @@ export default class RacingGame {
     }
 
     this.racingGameManager.setCarsByInput(input);
-    displayRacingCountHeading(this.app);
-    this.displayRacingCountForm();
+    this.racingCountHeading.setVisibility(true);
+    this.racingCountForm.setVisibility(true);
   }
 
   [DICT_ACTION_BUTTON_SUBMIT[KEY_FORM_RACING_COUNT]](e) {
@@ -93,7 +73,7 @@ export default class RacingGame {
     }
 
     this.racingGameManager.setRacingCountByInput(input);
-    displayRacingResultHeading(this.app);
+    this.racingResultHeading.setVisibility(true);
     this.displayGameStatus(this.racingGameManager.getRacingCount());
     this.racingGameManager.judgeWinners();
     displayWinners(this.app, this.racingGameManager.getWinners());
