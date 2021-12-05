@@ -1,1 +1,5 @@
-// 여기서는 필요한 함수들만 가져올 겁니다.
+import { carNamesInput } from "./controllers/userInput.js";
+
+const $carNamesSubmit = document.getElementById("car-names-submit");
+
+$carNamesSubmit.addEventListener("click", carNamesInput);
