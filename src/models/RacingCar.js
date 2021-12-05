@@ -9,6 +9,14 @@ class RacingCar {
   goFoward() {
     this.location += 1;
   }
+
+  getCarName() {
+    return this.car.name;
+  }
+
+  getLocation() {
+    return this.location;
+  }
 }
 
 export default RacingCar;

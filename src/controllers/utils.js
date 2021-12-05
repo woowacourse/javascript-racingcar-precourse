@@ -24,4 +24,10 @@ export function isElementsExsistSpace(array) {
   return false;
 }
 
-// + 중복 이름
+export function isDuplicate(array) {
+  const isDup = array.some(function (x) {
+    return array.indexOf(x) !== array.lastIndexOf(x);
+  });
+
+  return isDup;
+}

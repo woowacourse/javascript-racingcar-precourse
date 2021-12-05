@@ -3,6 +3,7 @@ import {
   isElementsOverFiveWords,
   isElementsExsistSpace,
   isElementsNoNamed,
+  isDuplicate,
 } from "./utils.js";
 
 export function carNamesInput() {
@@ -15,6 +16,8 @@ export function carNamesInput() {
     alert("자동차 이름에 공백을 제거해주세요.");
   else if (isElementsNoNamed(carsArray))
     alert("이름이 없는 자동차가 있습니다.");
+  else if (isDuplicate(carsArray))
+    alert("중복된 이름을 가진 자동차들이 있습니다.");
   else return carsArray;
 }
 

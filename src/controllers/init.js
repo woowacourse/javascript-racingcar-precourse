@@ -1,6 +1,7 @@
 import { carNamesInput, racingCountInput } from "./userInput.js";
 import RacingCar from "../models/RacingCar.js";
-import { play } from "./racingGame.js";
+import { play, getWinner } from "./racingGame.js";
+import { showWinner } from "../views/view.js";
 
 export function init(object) {
   carInputInit(object);
@@ -32,6 +33,7 @@ export function racingCountInputInit(object) {
     if (object.cars.length === 0) alert("자동차를 먼저 입력해주세요");
     else {
       for (let i = 0; i < racingCountInput(); i++) play(object);
+      showWinner(getWinner(object));
     }
   });
 }
