@@ -9,9 +9,9 @@ import {
   generateCars,
   isZero,
   hasSpecial,
-} from './utils.js';
-import { default as UI } from './DOMUtils.js';
-import { ERROR, SELECTOR } from './constants.js';
+} from './utils/utils.js';
+import { default as UI } from './utils/DOMUtils.js';
+import { ERROR, SELECTOR } from './utils/constants.js';
 
 export default function RacingCarGame() {
   const init = () => {

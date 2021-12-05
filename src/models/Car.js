@@ -1,4 +1,4 @@
-import { NUMBER } from './constants.js';
+import { NUMBER } from '../utils/constants.js';
 /* eslint-disable no-undef */
 export default class Car {
   constructor(name) {
