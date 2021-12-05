@@ -17,6 +17,8 @@
     "no-console": "off",
     "no-new": "off",
     "no-useless-return": "off",
-    "class-methods-use-this": "off"
+    "class-methods-use-this": "off",
+    "no-undef": "off",
+    "no-param-reassign": "off"
   }
 }
