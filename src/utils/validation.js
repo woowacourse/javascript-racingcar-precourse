@@ -1,5 +1,5 @@
-const isEmpty = (carNamesInput) => {
-  return carNamesInput === '';
+const isEmpty = (inputValue) => {
+  return inputValue === '';
 };
 
 const isLongerThanFiveLetters = (carNamesInput) => {
@@ -11,7 +11,7 @@ const isDuplicate = (carNamesInput) => {
   return carNamesArray.length !== [...new Set(carNamesArray)].length;
 };
 
-const isValidate = (carNamesInput) => {
+const isValidateCarNames = (carNamesInput) => {
   if (isEmpty(carNamesInput)) {
     alert('자동차 이름을 입력해주세요.  올바른 예) east,west,south,north');
     return false;
@@ -30,4 +30,13 @@ const isValidate = (carNamesInput) => {
   return true;
 };
 
-export default isValidate;
+const isValidateRacingCount = (racingCountInput) => {
+  if (isEmpty(racingCountInput)) {
+    alert('시도할 횟수를 입력해주세요.  올바른 예) 5');
+    return false;
+  }
+
+  return true;
+};
+
+export { isValidateCarNames, isValidateRacingCount };

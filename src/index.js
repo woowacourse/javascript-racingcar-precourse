@@ -1,5 +1,5 @@
 import { $ } from './utils/dom.js';
-import isValidate from './utils/validation.js';
+import { isValidateCarNames, isValidateRacingCount } from './utils/validation.js';
 
 class Car {
   constructor(name) {
@@ -16,6 +16,7 @@ class RacingGame {
     this.initScreen();
     this.preventFormSubmitEvent();
     this.triggerCarNamesSubmitEvent();
+    this.triggerRacingCountSubmitEvent();
   }
 
   initScreen() {
@@ -38,9 +39,19 @@ class RacingGame {
     $('#car-names-submit').addEventListener('click', () => {
       const carNamesInput = $('#car-names-input').value;
 
-      if (isValidate(carNamesInput)) {
+      if (isValidateCarNames(carNamesInput)) {
         this.racingCars = carNamesInput.split(',').map((carName) => new Car(carName));
         this.showRacingCountScreen();
+      }
+    });
+  }
+
+  triggerRacingCountSubmitEvent() {
+    $('#racing-count-submit').addEventListener('click', () => {
+      const racingCountInput = $('#racing-count-input').value;
+
+      if (isValidateRacingCount(racingCountInput)) {
+        console.log('옳은 값입니다.');
       }
     });
   }
