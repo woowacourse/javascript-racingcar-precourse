@@ -29,3 +29,12 @@ export const isValidNamesInput = ($target, names) => {
 
   return true;
 };
+
+export const isValidRacingCount = ($target, count) => {
+  if (Number.isNaN(count) || Number.isInteger(count) || count <= 0) {
+    showErrorMessage($target, ERROR_MESSAGE.NEGATIVE_NUMBER);
+    return false;
+  }
+
+  return true;
+};
