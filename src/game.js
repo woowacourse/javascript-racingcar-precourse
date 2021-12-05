@@ -1,4 +1,5 @@
-import { Car, checkDistance, repeatRacingCount } from "./car.js";
+import { Car, repeatRacingCount } from "./car.js";
+import { showResult, addApp } from "./view.js";
 export const PlayGame = function (game_information) {
     this.racing_count = 0;
     this.Cars = [];
@@ -22,11 +23,11 @@ export const PlayGame = function (game_information) {
     };
 
     const gameStart = () => {
-        console.log(this.racing_count, getCars());
         const a = repeatRacingCount(this.racing_count, getCars());
 
         setCars(a);
-        console.log(getCars());
+        const result = calcResult(getCars());
+        addApp(showResult(result));
     };
 
     const setCarObject = (car_names) => {
@@ -36,6 +37,21 @@ export const PlayGame = function (game_information) {
         });
 
         return Cars;
+    };
+
+    const calcResult = (object) => {
+        object.sort(function (a, b) {
+            return b.distance - a.distance;
+        });
+        const max = object[0].distance;
+        const result = [];
+        object.forEach((element) => {
+            if (element.distance === max) {
+                result.push(element.name);
+            }
+        });
+
+        return result;
     };
 
     this.init();
