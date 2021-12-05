@@ -14,7 +14,7 @@ const isValidCountInput = countInput => {
 const handleRacingCountInput = () => {
   const countInput = $('#racing-count-input').value;
   if (isValidCountInput(countInput)) {
-    startGame(countInput);
+    startGame(Number(countInput));
     disableCountInput();
     return;
   }
