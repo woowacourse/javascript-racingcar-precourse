@@ -39,4 +39,8 @@ export default class RacingCars {
             })),
         );
     }
+
+    destroyCars() {
+        this.setCars(CAR_CONTAINER_INIT_VALUE);
+    }
 }

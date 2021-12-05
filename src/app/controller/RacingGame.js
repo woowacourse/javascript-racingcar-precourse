@@ -59,6 +59,13 @@ export default class RacingGame {
             this.racingCars.getGameResult(racingCnt),
             this.racingCars.getWinners(),
         );
+        this.resetEnv();
+    }
+
+    resetEnv() {
+        this.setCarNameInput('');
+        this.setRacingCntInput('');
+        this.racingCars.destroyCars();
     }
 
     getCarNames() {
@@ -67,7 +74,15 @@ export default class RacingGame {
             .map((carName) => carName.trim());
     }
 
+    setCarNameInput(value) {
+        this.$carNameInput.value = value;
+    }
+
     getRacingCnt() {
         return this.$racingCntInput.value;
+    }
+
+    setRacingCntInput(value) {
+        this.$racingCntInput.value = value;
     }
 }
