@@ -1,3 +1,5 @@
+import { $ } from './utils/dom.js';
+
 class Car {
   constructor(name) {
     this.name = name;
@@ -14,13 +16,9 @@ class RacingGame {
   }
 
   initScreen() {
-    const racingCountTitle = document.querySelectorAll('h4')[0];
-    const racingCountForm = document.querySelectorAll('form')[1];
-    const racingResult = document.querySelectorAll('h4')[1];
-
-    racingCountTitle.style.visibility = 'hidden';
-    racingCountForm.style.visibility = 'hidden';
-    racingResult.style.visibility = 'hidden';
+    $('#racing-count-heading').style.visibility = 'hidden';
+    $('#racing-count-form').style.visibility = 'hidden';
+    $('#racing-result-heading').style.visibility = 'hidden';
   }
 }
 
