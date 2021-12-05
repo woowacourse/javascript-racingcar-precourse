@@ -1,9 +1,11 @@
 import Car from "./Car.js";
+import Render from "./Render.js";
 
 export default class Racing {
   constructor(carNames, racingCount) {
     this.carNames = carNames;
     this.racingCount = racingCount;
+    this.render = new Render();
   }
 
   start() {
@@ -31,8 +33,6 @@ export default class Racing {
       const isGoFoward = car.moving();
       car.saveRoundResult(isGoFoward);
     });
-    this.renderRoundResult(cars);
+    this.render.showRoundResult(cars);
   }
-
-  renderRoundResult(cars) {}
 }

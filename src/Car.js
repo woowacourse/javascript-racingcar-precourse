@@ -14,16 +14,16 @@ export default class Car {
   }
 
   prepareRacing() {
-    this.racingResult = { name: this.name, progress: "" };
+    this.progress = "";
   }
 
   getRacingResult() {
-    return this.racingResult;
+    return { name: this.name, progress: this.progress };
   }
 
   saveRoundResult(isGoFoward) {
     if (isGoFoward) {
-      this.racingResult.progress += "-";
+      this.progress += "-";
     }
   }
 }
