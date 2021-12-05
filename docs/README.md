@@ -6,7 +6,7 @@
 
 이 문서는 🚗`자동차 경주 게임`🚗이 구현할 기능을 정리합니다.
 
-각 기능의 완료 커밋은 기능을 최초로 구현했을 때의 커밋이므로, 리팩토링된 코드는 [전체 소스 코드](https://github.com/leegwae/javascript-racingcar-precourse/tree/leegwae)를 참고하세요.
+**각 기능의 완료 커밋은 기능을 최초로 구현했을 때의 커밋이므로, 리팩토링된 코드는 [전체 소스 코드](https://github.com/leegwae/javascript-racingcar-precourse/tree/leegwae)를 참고하세요.**
 
 
 
@@ -293,9 +293,10 @@
 
 DOM 요소에 접근하는 함수들과 클래스를 가진다.
 
-- `utils`: DOM 요소를 다루는 가장 기본적인 함수들
-- `const.js`: ID 선택자, innerText 등의 상수를 정의한다.
+- `/utils`: DOM 요소를 다루는 순수 함수
+- `const.js`: ID 선택자, Form 태그를 다룰 때 사용할 키 등의 상수를 정의한다.
 - `formManager.js`: Form과 해당 Form을 구성하는 input, button을 관리하는 `FormManager` 클래스를 정의한다.
+- `headingManager.js` 헤딩을 관리하는 `HeadingManager.js` 클래스를 정의한다.
 - `...기타 함수들`: `utils`의 함수들과 `const.js`의 상수를 사용하여 DOM 요소에 접근하는 함수를 정의한다.
 
 
@@ -304,7 +305,7 @@ DOM 요소에 접근하는 함수들과 클래스를 가진다.
 
 `자동차 경주 게임`과 관련한 상수와 게임 운영에 사용되는 순수 함수를 다룬다.
 
-- `utils`: 순수 함수들
+- `/utils`: 순수 함수들
 - `const.js`: `자동차 경주 게임`의 제약 조건 등을 상수로 정의한다.
 
 
@@ -332,7 +333,7 @@ DOM 요소에 접근하는 함수들과 클래스를 가진다.
 
 ### `racingGameManager.js`
 
-`자동차 경주 게임`의 상태(`cars`, `racingCount`, `winner`)를 관리하는 `RacingGameManager,js`를 정의한다.
+`자동차 경주 게임`의 상태(`cars`, `racingCount`, `winners`)를 관리하는 `RacingGameManager.js`를 정의한다.
 
 - 아래의 상태들을 다루는 모든 메서드를 가진다.
 
