@@ -125,6 +125,13 @@ export default function RacingGame() {
   const onClickRacingCountSubmitButton = (event) => {
     event.preventDefault();
     const racingCount = getRacingCountNumber();
+
+    if (!isValidRacingCount(racingCount)) {
+      alert("양의 정수를 입력해주세요.");
+      initInput(racingCountInput);
+      return;
+    }
+
     console.log(racingCount);
   };
 
