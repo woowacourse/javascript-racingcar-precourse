@@ -13,7 +13,7 @@ export function Car(userInput) {
   gameResultSpan.style.opacity = NUMBER.ZERO;
   gameResultDiv.innerHTML = `${gameResult.gameProcess}\n ${WINNER}: ${gameResult.gmaeWinner} `;
   gameResultSpan.textContent = gameResult.gmaeWinner;
-  gameResultWrap.append(gameResultDiv, gameResultSpan)
+  gameResultWrap.append(gameResultDiv, gameResultSpan);
 }
 
 formEvent()

@@ -6,11 +6,11 @@ export function gameStart(userInput) {
 }
 
 function setGameResult(userInput) {
+  const gameWinCountArray = Array.from({length: userInput[CARS_NAME].split(COMMA).length}, () => NUMBER.ZERO);
   const gameResultObject = {
     gameProcess: EMPTY,
     gmaeWinner: EMPTY
   };
-  const gameWinCountArray = Array.from({length: userInput[CARS_NAME].split(COMMA).length}, () => NUMBER.ZERO);
   for (let i = 0; i < userInput[GMAE_COUNT]; i++) {
     const winGameCountArray = setWinGameCount(setGameRandonNumber(gameWinCountArray), gameWinCountArray);
     gameResultObject.gameProcess += `${setProcessTemplete(winGameCountArray, userInput[CARS_NAME])}<br/>`;
