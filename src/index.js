@@ -10,8 +10,8 @@ export default class CarRacingGame {
     this.carObjects = [];
     this.racingStatusSpanEl = this.createSpanElement();
     this.racingWinnerCommentEl = this.createSpanElement();
-    this.racingWinnerSpanEl = this.createSpanElement();
-    this.racingWinnerSpanEl.id = ELEMENT_ID.racingResultId;
+    this.racingWinnerNameSpanEl = this.createSpanElement();
+    this.racingWinnerNameSpanEl.id = ELEMENT_ID.racingResultId;
     this.bindEventListener();
   }
 
@@ -47,6 +47,7 @@ export default class CarRacingGame {
         this.removeRacingView();
         this.racingPlay();
         this.racingResult();
+        this.removeCarForward();
       }
     });
   }
@@ -63,7 +64,7 @@ export default class CarRacingGame {
   removeRacingView() {
     this.racingStatusSpanEl.innerHTML = '';
     this.racingWinnerCommentEl.innerHTML = '';
-    this.racingWinnerSpanEl.innerHTML = '';
+    this.racingWinnerNameSpanEl.innerHTML = '';
   }
 
   racingPlay() {
@@ -80,7 +81,13 @@ export default class CarRacingGame {
 
   racingResult() {
     this.racingWinnerCommentEl.innerHTML = WINNER_COMMENT;
-    this.racingWinnerSpanEl.innerHTML = View.getWinnerCarNames(this.carObjects);
+    this.racingWinnerNameSpanEl.innerHTML = View.getWinnerCarNames(
+      this.carObjects,
+    );
+  }
+
+  removeCarForward() {
+    this.carObjects.forEach((carObject) => carObject.resetForward());
   }
 }
 

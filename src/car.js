@@ -14,6 +14,10 @@ export default class Car {
     return this.forward;
   }
 
+  resetForward() {
+    this.forward = 0;
+  }
+
   goAndStop() {
     if (
       MissionUtils.Random.pickNumberInRange(
