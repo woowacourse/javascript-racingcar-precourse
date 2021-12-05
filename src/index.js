@@ -129,6 +129,13 @@ export default function RacingGame() {
 
       racingProcessDiv.innerHTML += `${racingProcess}`;
     }
+
+    const racingWinnerSpan = document.createElement("span");
+    racingWinnerSpan.id = "racing-winners";
+    racingResultDiv.appendChild(racingWinnerSpan);
+
+    const winner = getWinner(racingCars);
+    racingWinnerSpan.innerHTML += `최종 우승자 : ${winner}`;
   };
 
   const getWinner = (racingCars) => {
@@ -136,7 +143,8 @@ export default function RacingGame() {
     const maxDistance = Math.max(...carsDistance);
     const winner = racingCars
       .filter((car) => car.distance.length === maxDistance)
-      .map((car) => car.name);
+      .map((car) => car.name)
+      .join(", ");
 
     return winner;
   };
