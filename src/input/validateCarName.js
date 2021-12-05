@@ -1,10 +1,10 @@
-import { $carName, $carNameSubmit } from "../common/constants.js";
+import { $carName } from "../common/constants.js";
 
-const splitCarName = () => {
-  $carNameSubmit.addEventListener("click", () => {
-    console.log($carName.value.split(","));
-    return $carName.value.split(",");
-  });
-};
+const splitCarName = () => $carName.value.split(",");
 
-export { splitCarName };
+const trimCarName = (carArr) => carArr.map((el) => el.trim());
+
+export default function validateCarName() {
+  let carArr = splitCarName();
+  carArr = trimCarName(carArr);
+}

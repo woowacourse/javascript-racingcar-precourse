@@ -1,3 +1,4 @@
-import { splitCarName } from "./input/validateCarName.js";
+import validateCarName from "./input/validateCarName.js";
+import { $carNameSubmit } from "./common/constants.js";
 
-splitCarName();
+$carNameSubmit.addEventListener("click", validateCarName);
