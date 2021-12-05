@@ -5,6 +5,7 @@ import TryCountValidator from './validators/TryCountValidator.js';
 import Car from './components/Car.js';
 import RacingCountForm from './components/RacingCountForm.js';
 import RacingResult from './components/RacingResult.js';
+import RacingWinner from './components/RacingWinner.js';
 
 class RacingCarGame {
   constructor() {
@@ -12,23 +13,16 @@ class RacingCarGame {
     this.tryCount = 0;
     this.$racingCountForm = new RacingCountForm();
     this.$racingResult = new RacingResult();
-    this.addEventListeners();
-    this.addDOM();
+    this.$racingWinner = new RacingWinner();
     this.init();
+    this.addEventListeners();
   }
 
   init() {
+    this.$racingResult.createDOM();
+    this.$racingWinner.createDOM();
     this.$racingCountForm.hide();
     this.$racingResult.hide();
-  }
-
-  addDOM() {
-    const racingCarResultContainer = document.createElement('div');
-    const racingWinnerContainer = document.createElement('div');
-    racingCarResultContainer.id = 'racing-car-result-container';
-    racingWinnerContainer.id = 'racing-winner-container';
-    $('#app').appendChild(racingCarResultContainer);
-    $('#app').appendChild(racingWinnerContainer);
   }
 
   addEventListeners() {
