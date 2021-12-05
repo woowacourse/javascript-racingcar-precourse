@@ -24,6 +24,11 @@ class RacingGame {
     $('#racing-result-heading').style.visibility = 'hidden';
   }
 
+  showRacingCountScreen() {
+    $('#racing-count-heading').style.visibility = 'visible';
+    $('#racing-count-form').style.visibility = 'visible';
+  }
+
   preventFormSubmitEvent() {
     $('#car-names-form').addEventListener('submit', (e) => e.preventDefault());
     $('#racing-count-form').addEventListener('submit', (e) => e.preventDefault());
@@ -34,7 +39,8 @@ class RacingGame {
       const carNamesInput = $('#car-names-input').value;
 
       if (isValidate(carNamesInput)) {
-        console.log('Fe');
+        this.racingCars = carNamesInput.split(',').map((carName) => new Car(carName));
+        this.showRacingCountScreen();
       }
     });
   }

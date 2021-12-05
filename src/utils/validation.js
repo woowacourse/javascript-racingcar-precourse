@@ -18,7 +18,7 @@ const isValidate = (carNamesInput) => {
   }
 
   if (isLongerThanFiveLetters(carNamesInput)) {
-    alert('자동차 이름은 5자 이하로 입력해주세요.  올바른 예) east,west,south,north');
+    alert(' 자동차 이름은 5자 이하로 입력해주세요.  올바른 예) east,west,south,north');
     return false;
   }
 
