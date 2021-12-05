@@ -91,7 +91,12 @@ class RacingGame {
     let div = `<div><label>${WINNER_LABEL}</label>${winners.join(', ')}</div>`;
     this.$racingWinners.insertAdjacentElement('beforeend', htmlToElement(div));
   }
+  resetResultView() {
+    this.$racingScreen.replaceChildren();
+    this.$racingWinners.replaceChildren();
+  }
   play() {
+    this.resetResultView();
     this.cars = this.createCars(this.carNames.split(','));
     for(let i = 0; i < this.racingCount; i++) {
       this.moveCars();
