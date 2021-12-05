@@ -24,24 +24,18 @@ const { MORE_THAN_FIVE_LETTERS, NO_MORE_THAN_ZERO } = ERROR_MESSAGE;
 
 const cars = [];
 
-function init() {
-  const app = qs(APP);
-  const carNamesInput = qs(CAR_NAMES_INPUT);
-  const carNamesSubmitButton = qs(CAR_NAMES_SUBMIT_BUTTON);
-  const racingCountInput = qs(RACING_COUNT_INPUT);
-  const racingCountSubmitButton = qs(RACING_COUNT_SUBMIT_BUTTON);
-  const racingCount = qs(RACING_COUNT);
-  const racingResult = qs(RACING_RESULT);
-  
-  setStyleDisplay(racingCount, NONE);
-  setStyleDisplay(racingCountInput, NONE);
-  setStyleDisplay(racingCountSubmitButton, NONE);
-  setStyleDisplay(racingResult, NONE);
-}
+const app = qs(APP);
+const carNamesInput = qs(CAR_NAMES_INPUT);
+const carNamesSubmitButton = qs(CAR_NAMES_SUBMIT_BUTTON);
+const racingCountInput = qs(RACING_COUNT_INPUT);
+const racingCountSubmitButton = qs(RACING_COUNT_SUBMIT_BUTTON);
+const racingCount = qs(RACING_COUNT);
+const racingResult = qs(RACING_RESULT);
 
-init();
-
-
+setStyleDisplay(racingCount, NONE);
+setStyleDisplay(racingCountInput, NONE);
+setStyleDisplay(racingCountSubmitButton, NONE);
+setStyleDisplay(racingResult, NONE);
 
 function showRacingCountForm() {
   setStyleDisplay(racingCount, BLOCK);
