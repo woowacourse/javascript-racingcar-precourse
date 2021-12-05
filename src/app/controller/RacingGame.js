@@ -48,7 +48,7 @@ export default class RacingGame {
         const racingCnt = this.getRacingCnt();
 
         if (checkRacingCnt(racingCnt)) {
-            this.runGame(racingCnt);
+            this.runGame(Number(racingCnt));
         } else {
             this.$racingCntInput.focus();
         }

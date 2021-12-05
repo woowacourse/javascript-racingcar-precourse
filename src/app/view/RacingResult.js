@@ -7,17 +7,18 @@ export default class RacingResult {
     }
 
     render(gameResult, winners) {
-        this.render(gameResult);
-        this.render(winners);
+        this.renderGameResult(gameResult);
     }
 
     renderGameResult(gameResult) {
-        this.$resultContainer.append(
-            gameResult.reduce(
-                (m, { carName, trackLogs }) =>
-                    `${m}<br/><p>${carName}${CHARACTER.carIntro} ${trackLogs.join(' ')}</p>`,
-                '',
-            ),
+        this.$resultContainer.innerHTML += gameResult.reduce(
+            (outer, carInfo) =>
+                `${outer}${carInfo.reduce(
+                    (inner, { carName, trackLog }) =>
+                        `${inner}<span>${carName}${CHARACTER.carIntro} ${trackLog}</span><br/>`,
+                    '',
+                )}<br/><br/>`,
+            '',
         );
     }
 }

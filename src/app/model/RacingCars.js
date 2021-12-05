@@ -35,7 +35,7 @@ export default class RacingCars {
         return range(racingCnt).map(() =>
             this.cars.map((car) => ({
                 carName: car.getName(),
-                trackLog: car.go().getTrackLog(),
+                trackLog: car.goIfEnoughAccel().getTrackLog(),
             })),
         );
     }
