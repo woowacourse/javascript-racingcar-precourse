@@ -6,3 +6,7 @@ export function isValidPositiveNumber(numStr) {
   if (isNaN(numStr)) return false;
   return parseInt(numStr) > 0;
 }
+
+export function getRandomNumber(){
+  return MissionUtils.Random.pickNumberInRange(0, 9);
+}
