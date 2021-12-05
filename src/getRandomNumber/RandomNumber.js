@@ -8,7 +8,7 @@ export default class RandomNumber {
   }
 
   pickRandomNumber = () => {
-    return MissionUtils.Random.pickNumberInRange(NUMBER.ZERO, NUMBER.NINE);
+    return MissionUtils.Random.pickNumberInRange(NUMBER.START, NUMBER.END);
   };
 
   get = () => {

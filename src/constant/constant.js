@@ -23,6 +23,6 @@ export const CAUTION_MESSAGE = {
 };
 
 export const NUMBER = {
-  ZERO: 0,
-  NINE: 9,
+  START: 0,
+  END: 9,
 };

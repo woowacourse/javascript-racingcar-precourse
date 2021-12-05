@@ -6,6 +6,7 @@ export default class Winners {
     this.$span = DOM.$SPAN;
     this.carResultInformations = carResultInformations;
     this.winnersTemplate = '';
+    this.winners = [];
   }
 
   compareDistance = (currentCarName, maxDistance, currentDistance) => {
