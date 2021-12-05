@@ -4,9 +4,11 @@ import alertInputError from '../views/alertInputError.js';
 import { resetCarInput } from '../views/resetInput.js';
 import { disableCarInput } from '../views/disableInput.js';
 import { CAR, ERROR } from '../utils/constants.js';
+import { focusCountInput } from '../views/focusInput.js';
 
 export const isOverFive = carInput => {
   carInput = carInput.split(',').map(car => car.trim());
+
   if (carInput.some(car => car.length > CAR.MAX_LENGTH)) {
     return true;
   }
@@ -15,6 +17,7 @@ export const isOverFive = carInput => {
 
 export const isDuplicate = carInput => {
   carInput = carInput.split(',').map(car => car.trim());
+
   if (carInput.length !== new Set(carInput).size) {
     return true;
   }
@@ -39,10 +42,11 @@ const isValidCarInput = carInput => {
 
 const handleCarNameInput = () => {
   const carInput = $('#car-names-input').value;
+
   if (isValidCarInput(carInput)) {
-    renderCountInput();
     disableCarInput();
-    $('#racing-count-input').focus();
+    renderCountInput();
+    focusCountInput();
     return;
   }
   resetCarInput();
