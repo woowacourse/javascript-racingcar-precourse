@@ -3,12 +3,15 @@ class Component {
     this.$target = $target;
     this.$props = $props;
     this.$state = {};
+    this.template();
     this.setup();
     this.setEvent();
     this.render();
   }
 
   setup() {}
+
+  template() {}
 
   render() {
     this.mounted();
