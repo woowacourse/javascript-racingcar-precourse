@@ -20,9 +20,9 @@ export default class GameController {
     UserFormDisplay.bindCountSubmit(this.handleGameCountInput.bind(this));
   }
 
-  handleRacerNamesInput(names) {
+  handleRacerNamesInput(event, names) {
     const resultCode = checkNameVaild(names);
-    if (UserFormDisplay.errorMessage(resultCode) === true) {
+    if (UserFormDisplay.errorMessage(resultCode, event.target) === true) {
       return false;
     }
 
@@ -30,9 +30,9 @@ export default class GameController {
     UserFormDisplay.open(resultCode);
   }
 
-  handleGameCountInput(count) {
+  handleGameCountInput(event, count) {
     const resultCode = checkCountVaild(count);
-    if (UserFormDisplay.errorMessage(resultCode) === true) {
+    if (UserFormDisplay.errorMessage(resultCode, event.target) === true) {
       return false;
     }
 

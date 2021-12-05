@@ -18,14 +18,12 @@ export default class UserFormDisplay {
     $countInput.value = '';
   }
 
-  static errorMessage(resultCode, eventElement = null) {
-    const exceptions = [DONE.USERINPUT_NAME, DONE.USERINPUT_COUNT];
+  static errorMessage(resultCode, eventElement) {
+    const exceptions = Object.values(DONE);
     if (exceptions.includes(resultCode) === true) return false;
-    if (eventElement instanceof HTMLElement === true) {
-      eventElement.previousElementSibling.focus();
-    }
 
     alert(resultCode.description);
+    eventElement.previousElementSibling.focus();
     return true;
   }
 
@@ -48,14 +46,14 @@ export default class UserFormDisplay {
   static bindNamesSubmit(handler) {
     $nameSubmit.addEventListener('click', (event) => {
       event.preventDefault();
-      handler($nameInput.value);
+      handler(event, $nameInput.value);
     });
   }
 
   static bindCountSubmit(handler) {
     $countSubmit.addEventListener('click', (event) => {
       event.preventDefault();
-      handler($countInput.value);
+      handler(event, $countInput.value);
     });
   }
 }
