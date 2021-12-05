@@ -1,4 +1,4 @@
-import { CAR_NAMES_INPUT_MSG } from './constant';
+import { CAR_NAMES_INPUT_MSG } from './constant.js';
 
 const checkCarNameFunctions = [
     (names) => {
@@ -19,4 +19,7 @@ const checkCarNameFunctions = [
     },
 ];
 
-const checkCarName = (names) => checkCarNameFunctions.every(names);
+const checkCarName = (names) =>
+    checkCarNameFunctions.every((checkCarNameFunction) => checkCarNameFunction(names));
+
+export { checkCarName };
