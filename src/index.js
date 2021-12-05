@@ -1,4 +1,5 @@
 import { $ } from './utils/dom.js';
+import isValidate from './utils/validation.js';
 
 class Car {
   constructor(name) {
@@ -31,6 +32,10 @@ class RacingGame {
   triggerCarNamesEvent() {
     $('#car-names-submit').addEventListener('click', () => {
       const carNamesInput = $('#car-names-input').value;
+
+      if (isValidate(carNamesInput)) {
+        console.log('Fe');
+      }
     });
   }
 }
