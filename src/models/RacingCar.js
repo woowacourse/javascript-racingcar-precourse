@@ -5,6 +5,10 @@ class RacingCar {
     this.car = new Car(name);
     this.location = 0;
   }
+
+  goFoward() {
+    this.location += 1;
+  }
 }
 
 export default RacingCar;

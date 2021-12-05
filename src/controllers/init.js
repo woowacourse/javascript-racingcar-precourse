@@ -1,5 +1,6 @@
 import { carNamesInput, racingCountInput } from "./userInput.js";
 import RacingCar from "../models/RacingCar.js";
+import { play } from "./racingGame.js";
 
 export function init(object) {
   carInputInit(object);
@@ -28,6 +29,7 @@ export function racingCountInputInit(object) {
   const $racingCountSubmit = document.getElementById("racing-count-submit");
   $racingCountSubmit.addEventListener("click", (e) => {
     e.preventDefault();
-    console.log(racingCountInput());
+    for (let i = 0; i < racingCountInput(); i++) play(object);
+    console.log("결과!: ", object);
   });
 }

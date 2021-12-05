@@ -1,17 +1,20 @@
 import {
   makeStringToArrayByComma,
-  IsElementsOverFiveWords,
-  IsElementsExsistSpace,
+  isElementsOverFiveWords,
+  isElementsExsistSpace,
+  isElementsNoNamed,
 } from "./utils.js";
 
 export function carNamesInput() {
   const $carNamesInput = document.getElementById("car-names-input");
   const carsArray = makeStringToArrayByComma($carNamesInput.value);
 
-  if (IsElementsOverFiveWords(carsArray))
+  if (isElementsOverFiveWords(carsArray))
     alert("자동차 이름을 5자 이하로 입력해주세요.");
-  else if (IsElementsExsistSpace(carsArray))
+  else if (isElementsExsistSpace(carsArray))
     alert("자동차 이름에 공백을 제거해주세요.");
+  else if (isElementsNoNamed(carsArray))
+    alert("이름이 없는 자동차가 있습니다.");
   else return carsArray;
 }
 
