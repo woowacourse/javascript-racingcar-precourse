@@ -10,6 +10,7 @@ class RacingCar {
     this.$racingCountSubmit = DOM.$RACING_COUNT_SUBMIT;
     this.$racingCountInput = DOM.$RACING_COUNT_INPUT;
     this.$carNamesSubmit = DOM.$CAR_NAMES_SUBMIT;
+    this.$app = DOM.$APP;
     this.carNames = [];
     this.racingCount = 0;
     this.main();
@@ -47,36 +48,40 @@ class RacingCar {
   };
 
   racingCountSubmit = () => {
-    this.$racingCountSubmit.addEventListener('click', (event) => {
-      event.preventDefault();
+    if (!this.isCarNamesSubmit()) {
+      return;
+    }
 
-      if (!this.isCarNamesSubmit()) {
-        return;
-      }
+    if (!this.isValidateCount()) {
+      return;
+    }
 
-      if (!this.isValidateCount()) {
-        return;
-      }
-
-      this.readyGame();
-    });
+    this.readyGame();
   };
 
   carNamesSubmit = () => {
-    this.$carNamesSubmit.addEventListener('click', (event) => {
-      event.preventDefault();
+    if (!this.carNamesEvent.validateNames()) {
+      this.carNamesEvent.alertMessage();
+    }
 
-      if (!this.carNamesEvent.validateNames()) {
-        this.carNamesEvent.alertMessage();
+    this.carNames = this.carNamesEvent.getInput();
+  };
+
+  onClickSubmitButton = () => {
+    this.$app.addEventListener('click', (event) => {
+      event.preventDefault();
+      if (event.target === this.$carNamesSubmit) {
+        this.carNamesSubmit();
       }
 
-      this.carNames = this.carNamesEvent.getInput();
+      if (event.target === this.$racingCountSubmit) {
+        this.racingCountSubmit();
+      }
     });
   };
 
   main = () => {
-    this.carNamesSubmit();
-    this.racingCountSubmit();
+    this.onClickSubmitButton();
     this.racingCountInputFocus();
   };
 }
