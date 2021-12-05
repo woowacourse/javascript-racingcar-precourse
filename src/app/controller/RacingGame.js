@@ -1,4 +1,4 @@
-import { checkCarName } from '../asset/validation.js';
+import { checkCarName, checkRacingCnt } from '../asset/validation.js';
 import { CHARACTER } from '../asset/constant.js';
 import RacingCars from '../model/RacingCars.js';
 
@@ -11,6 +11,7 @@ export default class RacingGame {
 
     init() {
         this.triggerCarNameSubmitEvent();
+        this.triggerRacingCntSubmitEvent();
     }
 
     triggerCarNameSubmitEvent() {
@@ -27,9 +28,25 @@ export default class RacingGame {
         });
     }
 
+    triggerRacingCntSubmitEvent() {
+        document.getElementById('racing-count-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const racingCnt = this.getRacingCnt();
+
+            if (checkRacingCnt(racingCnt)) {
+            } else {
+                this.$racingCntInput.focus();
+            }
+        });
+    }
+
     getCarNames() {
         return this.$carNameInput.value
             .split(CHARACTER.carNameSplit)
             .map((carName) => carName.trim());
+    }
+
+    getRacingCnt() {
+        return this.$racingCntInput.value;
     }
 }

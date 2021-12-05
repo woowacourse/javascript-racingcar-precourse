@@ -1,10 +1,9 @@
-// import { CAR_NAMES_INPUT_MSG } from './constant.js';
-// const CAR_NAMES_INPUT_MSG = require('./constant');
+import { CAR_NAMES_INPUT_MSG, RACING_CNT_INPUT_MSG } from './constant.js';
 
 const checkCarNameFunctions = [
     (carNames) => {
         if (carNames.some((carName) => carName.length < 1 || carName.length > 5)) {
-            // alert(CAR_NAMES_INPUT_MSG.length);
+            alert(CAR_NAMES_INPUT_MSG.length);
             return false;
         }
 
@@ -12,7 +11,7 @@ const checkCarNameFunctions = [
     },
     (carNames) => {
         if (carNames.some((carName) => carName.length !== carName.replace(/\s/g, '').length)) {
-            // alert(CAR_NAMES_INPUT_MSG.space);
+            alert(CAR_NAMES_INPUT_MSG.space);
             return false;
         }
 
@@ -26,6 +25,7 @@ const checkCarName = (carNames) =>
 const checkRacingCntFunctions = [
     (racingCnt) => {
         if (racingCnt === '') {
+            alert(RACING_CNT_INPUT_MSG.require);
             return false;
         }
 
@@ -33,6 +33,7 @@ const checkRacingCntFunctions = [
     },
     (racingCnt) => {
         if (!Number(racingCnt)) {
+            alert(RACING_CNT_INPUT_MSG.naturalNum);
             return false;
         }
 
@@ -40,6 +41,7 @@ const checkRacingCntFunctions = [
     },
     (racingCnt) => {
         if (racingCnt <= 0) {
+            alert(RACING_CNT_INPUT_MSG.naturalNum);
             return false;
         }
 
@@ -47,9 +49,7 @@ const checkRacingCntFunctions = [
     },
 ];
 
-module.exports = {
-    checkCarName,
-    checkRacingCntFunctions,
-};
+const checkRacingCnt = (racingCnt) =>
+    checkRacingCntFunctions.every((checkRacingCntFunction) => checkRacingCntFunction(racingCnt));
 
-// export { checkCarName };
+export { checkCarName, checkRacingCnt };
