@@ -131,6 +131,16 @@ export default function RacingGame() {
     }
   };
 
+  const getWinner = (racingCars) => {
+    const carsDistance = racingCars.map((car) => car.distance.length);
+    const maxDistance = Math.max(...carsDistance);
+    const winner = racingCars
+      .filter((car) => car.distance.length === maxDistance)
+      .map((car) => car.name);
+
+    return winner;
+  };
+
   const onClickCarNamesSubmitButton = (event) => {
     event.preventDefault();
     const carNamesList = getCarNames();
