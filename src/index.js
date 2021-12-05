@@ -1,4 +1,4 @@
-import RacingGame from './app/controller/RacingGame.js';
+import RacingGame from './app/index.js';
 
 const racingGame = new RacingGame();
 
