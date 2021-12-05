@@ -1,4 +1,4 @@
-import { changeDistanceToBar } from './utils.js';
+import { changeDistanceToBar } from '../utils.js';
 
 export default class CarRacing {
   constructor(cars) {

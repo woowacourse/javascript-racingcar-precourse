@@ -1,5 +1,5 @@
-import Car from './car.js';
-import CarRacing from './carRacing.js';
+import Car from './Car.js';
+import CarRacing from './CarRacing.js';
 import {
   APP,
   CAR_NAMES_INPUT,
@@ -10,8 +10,8 @@ import {
   RACING_COUNT_SUBMIT_BUTTON,
   RACING_RESULT,
   STYLE_DISPLAY,
-} from './constants.js';
-import { on, qs, setStyleDisplay, checkOverFiveLetters } from './utils.js';
+} from '../constants.js';
+import { on, qs, setStyleDisplay, checkOverFiveLetters } from '../utils.js';
 
 const { BLOCK, INLINE_BLOCK, NONE } = STYLE_DISPLAY;
 const { MORE_THAN_FIVE_LETTERS, NO_MORE_THAN_ZERO } = ERROR_MESSAGE;
@@ -21,6 +21,7 @@ export default class Main {
     this.initializeHTML();
     this.handleCarNamesSubmitButton();
     this.handleRacingCountSubmitButton();
+    this.cars = [];
   }
 
   initializeHTML() {
@@ -54,7 +55,7 @@ export default class Main {
         return;
       }
 
-      carNamesArr.forEach((name) => cars.push(new Car(name)));
+      carNamesArr.forEach((name) => this.cars.push(new Car(name)));
       this.showRacingCountForm();
     });
   }
@@ -75,9 +76,9 @@ export default class Main {
         return;
       }
 
-      const carRacing = new CarRacing(cars);
+      const carRacing = new CarRacing(this.cars);
       const resultTemplate = carRacing.play(racingCountInputValue);
-      showRacingResult(resultTemplate);
+      this.showRacingResult(resultTemplate);
     });
   }
 }
