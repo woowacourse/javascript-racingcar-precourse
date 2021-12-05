@@ -29,7 +29,9 @@ export function racingCountInputInit(object) {
   const $racingCountSubmit = document.getElementById("racing-count-submit");
   $racingCountSubmit.addEventListener("click", (e) => {
     e.preventDefault();
-    for (let i = 0; i < racingCountInput(); i++) play(object);
-    console.log("결과!: ", object);
+    if (object.cars.length === 0) alert("자동차를 먼저 입력해주세요");
+    else {
+      for (let i = 0; i < racingCountInput(); i++) play(object);
+    }
   });
 }
