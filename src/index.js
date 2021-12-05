@@ -1,7 +1,7 @@
 import UserInput from './userInput.js';
 import Car from './car.js';
 import View from './view.js';
-import { ELEMENT_ID } from './constant.js';
+import { ELEMENT_ID, ERR_MESSAGE } from './constant.js';
 
 export default class CarRacingGame {
   constructor() {
@@ -27,13 +27,22 @@ export default class CarRacingGame {
     this.userInputObject.racingCountSubmitEl.addEventListener('click', (e) => {
       e.preventDefault();
       if (
-        this.userInputObject.isValidCarNames() &&
+        this.isClickCarNameSubmitButton() &&
         this.userInputObject.isValidRacingCount()
       ) {
         this.racingPlay();
         this.racingResult();
       }
     });
+  }
+
+  isClickCarNameSubmitButton() {
+    if (this.carObjects.length === 0) {
+      alert(ERR_MESSAGE.clickCarNameSubmitButton);
+      return false;
+    }
+
+    return true;
   }
 
   bindEventListener() {
