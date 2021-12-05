@@ -17,9 +17,6 @@ import displayRacingResultHeading from './dom/displayRacingResultHeading.js';
 import displayRaceStatus from './dom/displayRaceStatus.js';
 import displayWinners from './dom/displayWinners.js';
 
-import isValidCarNamesInput from './game/utils/isValidCarNamesInput.js';
-import isValidRacingCountInput from './game/utils/isValidRacingCountInput.js';
-
 export default class RacingGame {
   constructor() {
     this.app = document.getElementById(ID_APP);
@@ -73,7 +70,7 @@ export default class RacingGame {
 
     const input = this.carNamesForm.getInputValue();
 
-    if (!isValidCarNamesInput(input)) {
+    if (!RacingGameManager.isValidCarNamesInput(input)) {
       alert(MSG_ERROR);
       this.carNamesForm.initInputValue();
       return;
@@ -89,7 +86,7 @@ export default class RacingGame {
 
     const input = this.racingCountForm.getInputValue();
 
-    if (!isValidRacingCountInput(input)) {
+    if (!RacingGameManager.isValidRacingCountInput(input)) {
       alert(MSG_ERROR);
       this.racingCountForm.initInputValue();
       return;
