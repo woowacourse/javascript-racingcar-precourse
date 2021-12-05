@@ -31,15 +31,6 @@ export default class RacingGameManager {
     return Number.isInteger(count) && count >= min;
   }
 
-  play(racingCount) {
-    for (let i = 0; i < racingCount; i++) {
-      this.race();
-      this.raceStatusList.push(this.getCurrentRaceStatus());
-    }
-
-    this.judgeWinners();
-  }
-
   getCars() {
     return this.cars;
   }
@@ -64,6 +55,15 @@ export default class RacingGameManager {
     this.racingCount = Number(input);
   }
 
+  play(racingCount) {
+    for (let i = 0; i < racingCount; i++) {
+      this.race();
+      this.raceStatusList.push(this.getCurrentRaceStatus());
+    }
+
+    this.judgeWinners();
+  }
+
   race() {
     this.cars.forEach((car) => {
       const randomNum = generateRandomNumber();
@@ -71,7 +71,7 @@ export default class RacingGameManager {
     });
   }
 
-  getMaxPosition() {
+  getCurrentMaxPosition() {
     return Math.max(...this.cars.map((car) => car.getPosition()));
   }
 
@@ -92,7 +92,7 @@ export default class RacingGameManager {
   }
 
   judgeWinners() {
-    const maxPosition = this.getMaxPosition();
+    const maxPosition = this.getCurrentMaxPosition();
     const winners = this.getCarsByPosition(maxPosition).map((car) =>
       car.getName()
     );

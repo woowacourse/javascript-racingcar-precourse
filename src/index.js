@@ -47,6 +47,7 @@ export default class RacingGame {
     }
 
     this.racingGameManager.setCarsByInput(input);
+
     this.racingCountHeading.setVisibility(true);
     this.racingCountForm.setVisibility(true);
   }
