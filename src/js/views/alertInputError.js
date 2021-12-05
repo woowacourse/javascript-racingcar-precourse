@@ -1,4 +1,4 @@
-import { CAR, ERROR } from '../utils/constants.js';
+import { CAR, COUNT, ERROR } from '../utils/constants.js';
 
 export const isOverFive = carInput => {
   carInput = carInput.split(',').map(car => car.trim());
@@ -23,5 +23,13 @@ export const alertCarInputError = carInput => {
     alert(ERROR.OVER_MAX_LENGTH);
   } else if (isDuplicate(carInput)) {
     alert(ERROR.NAME_DUPLICATE);
+  }
+};
+
+export const alertCountInputError = countInput => {
+  if (countInput === '') {
+    alert(ERROR.INPUT_BLANK);
+  } else if (Number(countInput) < COUNT.MIN_NUM) {
+    alert(ERROR.UNDER_MIN_NUM);
   }
 };
