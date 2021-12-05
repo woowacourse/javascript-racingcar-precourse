@@ -17,6 +17,7 @@ const handleCarNameInput = () => {
   if (isValidCarInput(carInput)) {
     renderCountInput();
     disableCarInput();
+    $('#racing-count-input').focus();
     return;
   }
   resetCarInput();

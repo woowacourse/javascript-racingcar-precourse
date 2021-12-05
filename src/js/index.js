@@ -11,6 +11,7 @@ function RacingCarGame() {
     e.preventDefault();
     handleRacingCountInput();
   });
+  $('#car-names-input').focus();
 }
 
 new RacingCarGame();
