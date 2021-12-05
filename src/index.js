@@ -1,8 +1,8 @@
-import { $ } from './utils/dom.js';
 import CarNameValidator from './validators/CarNameValidator.js';
 import TryCountValidator from './validators/TryCountValidator.js';
 
 import Car from './components/Car.js';
+import RacingCarNameForm from './components/RacingCarNameForm.js';
 import RacingCountForm from './components/RacingCountForm.js';
 import RacingResult from './components/RacingResult.js';
 import RacingWinner from './components/RacingWinner.js';
@@ -10,14 +10,15 @@ import RacingWinner from './components/RacingWinner.js';
 class RacingCarGame {
   constructor() {
     this.cars = [];
+    this.$racingCarNameForm = new RacingCarNameForm();
     this.$racingCountForm = new RacingCountForm();
     this.$racingResult = new RacingResult();
     this.$racingWinner = new RacingWinner();
-    this.init();
+    this.initDOM();
     this.addEventListeners();
   }
 
-  init() {
+  initDOM() {
     this.$racingResult.createDOM();
     this.$racingWinner.createDOM();
     this.$racingCountForm.hide();
@@ -25,8 +26,11 @@ class RacingCarGame {
   }
 
   addEventListeners() {
-    $('#car-names-submit').addEventListener('click', this.onClickCarNameSubmitButton.bind(this));
-    $('#racing-count-submit').addEventListener(
+    this.$racingCarNameForm.$submit.addEventListener(
+      'click',
+      this.onClickCarNameSubmitButton.bind(this),
+    );
+    this.$racingCountForm.$submit.addEventListener(
       'click',
       this.onClickTryCountSubmitButton.bind(this),
     );
@@ -34,9 +38,9 @@ class RacingCarGame {
 
   onClickCarNameSubmitButton(event) {
     event.preventDefault();
-    this.cars = [];
-    const splittedCarNames = $('#car-names-input').value.split(',');
-    if (!this.validateCarNames(splittedCarNames)) return;
+    this.initCars();
+    const splittedCarNames = this.$racingCarNameForm.getSplittedCarNames();
+    if (!this.$racingCarNameForm.validateCarNames(splittedCarNames)) return;
     splittedCarNames.forEach(carName => this.cars.push(new Car(carName)));
     this.$racingCountForm.render();
     this.playRacingCarGame();
@@ -83,6 +87,10 @@ class RacingCarGame {
 
   advanceCars() {
     this.cars.forEach(car => car.advance());
+  }
+
+  initCars() {
+    this.cars = [];
   }
 }
 
