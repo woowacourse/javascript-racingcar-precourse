@@ -1,3 +1,4 @@
+import { CAR } from '../utils/constants.js';
 import getRandomNumber from '../utils/getRandomNumber.js';
 
 export default function Car(name) {
@@ -6,7 +7,7 @@ export default function Car(name) {
 
   this.setMove = () => {
     const randomNum = getRandomNumber();
-    if (randomNum >= 4) {
+    if (randomNum >= CAR.CAN_MOVE_NUM) {
       this.move += 1;
     }
   };

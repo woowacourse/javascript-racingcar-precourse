@@ -3,9 +3,10 @@ import disableCountInput from '../views/disableCountInput.js';
 import alertCountInputError from '../views/alertCountInputError.js';
 import resetCountInput from '../views/resetCountInput.js';
 import playGame from './playGame.js';
+import { COUNT } from '../utils/constants.js';
 
 const isValidCountInput = countInput => {
-  if (countInput === '' || Number(countInput) < 1) {
+  if (countInput === '' || Number(countInput) < COUNT.MIN_NUM) {
     return false;
   }
   return true;
