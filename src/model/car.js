@@ -14,7 +14,13 @@ export default class Car {
     $status.innerHTML = `${this.name}: ${bar}<br>`;
   }
 
-  makeRandom() {}
+  makeRandom() {
+    return MissionUtils.Random.pickNumberInRange(0, 9);
+  }
 
-  judgeGoOrNot() {}
+  judgeGoOrNot() {
+    if (this.makeRandom >= 4) {
+      this.position += 1;
+    }
+  }
 }
