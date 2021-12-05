@@ -13,7 +13,7 @@ export default class Car {
   }
 
   goAndStop() {
-    if (Math.floor(Math.random() * 10) >= 4) {
+    if (MissionUtils.Random.pickNumberInRange(0, 9) >= 4) {
       this.forward += 1;
     }
   }
