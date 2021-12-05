@@ -9,25 +9,32 @@ const getGameResultData = (data) => {
 
   const isMove = (randomNumber) => randomNumber >= 4;
 
-  for (let round = 0; round < racingCount; round++) {
+  const setCarResult = () => {
     for (let car of carNames) {
       const randomNumber = MissionUtils.Random.pickNumberInRange(
         PICK_NUMBER_IN_RANGE_MIN,
         PICK_NUMBER_IN_RANGE_MAX
       );
+
       if (isMove(randomNumber)) car.moveCount++;
 
       car.moveCounts.push(car.moveCount);
       maxMoveCount = Math.max(maxMoveCount, car.moveCount);
     }
-  }
-  console.log(carNames, maxMoveCount);
+  };
+
+  const setRoundResult = () => {
+    for (let round = 0; round < racingCount; round++) {
+      setCarResult();
+    }
+  };
+
+  setRoundResult();
 
   const winners = carNames
     .filter((car) => car.moveCount === maxMoveCount)
     .map((car) => car.name)
     .join(",");
-  console.log(winners);
 
   return JSON.stringify({
     carNames,

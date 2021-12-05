@@ -9,7 +9,7 @@ function Car(name) {
 
 const App = () => {
   const initialState = {
-    isCorrectCarNames: false,
+    isErrorCarNames: true,
     carNames: [],
   };
   const app = document.querySelector("#app");
@@ -21,8 +21,8 @@ const App = () => {
     racingCountInput.setAttribute("min", 1);
   };
 
-  const formatCarNames = (carNames) => {
-    initialState.carNames = carNames.map((name) => {
+  const formatCarNames = (inputCarNames) => {
+    initialState.carNames = inputCarNames.map((name) => {
       const newCar = new Car(name);
       newCar["id"] = newId();
       newCar["moveCount"] = 0;
@@ -34,36 +34,47 @@ const App = () => {
   const onSubmitCarNamesForm = (e) => {
     e.preventDefault();
     const carNamesInput = e.target[0];
-    const { isError, errorMessage, carNames, isCorrectCarNames } =
-      validateCarNames(carNamesInput.value);
-
-    initialState.isCorrectCarNames = isCorrectCarNames;
-    formatCarNames(carNames);
+    const { isError, errorMessage, carNames } = validateCarNames(
+      carNamesInput.value
+    );
+    initialState.isErrorCarNames = isError;
 
     if (isError) {
       window.alert(errorMessage);
       carNamesInput.value = "";
+      return;
     }
+
+    formatCarNames(carNames);
   };
 
   const onSubmitRacingCountForm = (e) => {
     e.preventDefault();
     const racingCountInput = e.target[0];
-    const { isCorrectCarNames, carNames } = initialState;
+    const { carNames, isErrorCarNames } = initialState;
 
-    if (isCorrectCarNames) {
-      const data = getGameResultData(
-        JSON.stringify({
-          carNames,
-          racingCount: racingCountInput.value,
-        })
-      );
-
-      ResultContainer({ app, data: JSON.parse(data) });
+    if (racingCountInput.value === "") {
+      window.alert(`시도할 횟수를 입력해 주세요.`);
+      return;
+    }
+    if (isErrorCarNames) {
+      window.alert(`자동차 이름을 입력해 주세요.`);
+      racingCountInput.value = "";
       return;
     }
 
-    window.alert(`자동차 이름을 입력해 주세요.`);
+    const data = getGameResultData(
+      JSON.stringify({
+        carNames,
+        racingCount: racingCountInput.value,
+      })
+    );
+
+    render({ app, data: JSON.parse(data) });
+  };
+
+  const render = ({ app, data }) => {
+    ResultContainer({ app, data });
   };
 
   useAttributeInit();
