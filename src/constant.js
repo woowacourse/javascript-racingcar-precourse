@@ -3,6 +3,7 @@ export const ELEMENT_ID = {
   carNameSubmitId: '#car-names-submit',
   racingCountInputId: '#racing-count-input',
   racingCountSubmitId: '#racing-count-submit',
+  racingResultId: 'racing-winners',
 };
 
 export const CAR_NAME_RULES = {
