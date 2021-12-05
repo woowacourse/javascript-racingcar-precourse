@@ -1,10 +1,12 @@
 import { checkCarName, checkRacingCnt } from '../asset/validation.js';
 import { CHARACTER, RACING_CNT_INPUT_MSG } from '../asset/constant.js';
 import RacingCars from '../model/RacingCars.js';
+import RacingResult from '../view/RacingResult.js';
 
 export default class RacingGame {
     constructor() {
         this.racingCars = new RacingCars();
+        this.racingResult = new RacingResult();
         this.$carNameInput = document.getElementById('car-names-input');
         this.$racingCntInput = document.getElementById('racing-count-input');
     }
@@ -53,7 +55,7 @@ export default class RacingGame {
     }
 
     runGame(racingCnt) {
-        const gameResult = this.racingCars.getGameResult(racingCnt);
+        this.racingResult.render(this.racingCars.getGameResult(racingCnt));
     }
 
     getCarNames() {

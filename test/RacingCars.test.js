@@ -19,10 +19,10 @@ describe('RacingCars', () => {
         const gameResult = racingCars.getGameResult(5);
         expect(gameResult.length).toBe(5);
         expect(gameResult.every((game) => game.trackLogs.length <= 5)).toBeTruthy();
-        expect(gameResult[0].name).toBe('a');
-        expect(gameResult[1].name).toBe('b');
-        expect(gameResult[2].name).toBe('c');
-        expect(gameResult[3].name).toBe('d');
-        expect(gameResult[4].name).toBe('e');
+        expect(gameResult[0].carName).toBe('a');
+        expect(gameResult[1].carName).toBe('b');
+        expect(gameResult[2].carName).toBe('c');
+        expect(gameResult[3].carName).toBe('d');
+        expect(gameResult[4].carName).toBe('e');
     });
 });
