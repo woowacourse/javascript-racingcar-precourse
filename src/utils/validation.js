@@ -1,5 +1,5 @@
 import {ERROR_MESSAGE, NUM_RULE} from './constants.js';
-import {showErrorMessage} from './domUtil.js';
+import {showErrorMessage} from './util.js';
 
 const isEmptyInput = (nameArr) => nameArr.length < 1;
 
