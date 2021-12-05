@@ -6,6 +6,12 @@ export const ELEMENT_ID = {
   racingResultId: 'racing-winners',
 };
 
+export const CAR_RULES = {
+  minNumber: 0,
+  maxNumber: 9,
+  goStandard: 4,
+};
+
 export const CAR_NAME_RULES = {
   minLength: 1,
   maxLength: 5,

@@ -1,3 +1,5 @@
+import { CAR_RULES } from './constant';
+
 export default class Car {
   constructor(name) {
     this.carName = name;
@@ -13,7 +15,12 @@ export default class Car {
   }
 
   goAndStop() {
-    if (MissionUtils.Random.pickNumberInRange(0, 9) >= 4) {
+    if (
+      MissionUtils.Random.pickNumberInRange(
+        CAR_RULES.minNumber,
+        CAR_RULES.maxNumber,
+      ) >= CAR_RULES.goStandard
+    ) {
       this.forward += 1;
     }
   }
