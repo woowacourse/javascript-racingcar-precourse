@@ -1,14 +1,28 @@
-const checkCarNameFunctions = require('../src/app/asset/validation');
+const { checkCarName, checkRacingCntFunctions } = require('../src/app/asset/validation');
 
-const [checkCarLength, checkSpace] = checkCarNameFunctions;
-
-test('checkCarLength', () => {
-    expect(checkCarLength(['abc', 'ced', 'efg'])).toBeTruthy();
-    expect(checkCarLength(['moreThanFive', 'abc'])).toBeFalsy();
-    expect(checkCarLength(['', 'abc'])).toBeFalsy();
+test('checkCarName', () => {
+    expect(checkCarName(['abc', 'east'])).toBeTruthy();
+    expect(checkCarName(['ab c', 'east'])).toBeFalsy();
+    expect(checkCarName(['abcefg', 'east'])).toBeFalsy();
 });
 
-test('checkSpace', () => {
-    expect(checkSpace(['abc', 'ced', 'efg'])).toBeTruthy();
-    expect(checkSpace(['ab c', 'ced', 'efg'])).toBeFalsy();
+const [checkRequire, checkNumber, checkPositive] = checkRacingCntFunctions;
+
+test('checkRequire', () => {
+    expect(checkRequire('')).toBeFalsy();
+    expect(checkRequire('abc')).toBeTruthy();
+    expect(checkRequire(12)).toBeTruthy();
+});
+
+test('checkNumber', () => {
+    expect(checkNumber('afsd')).toBeFalsy();
+    expect(checkNumber('0')).toBeTruthy();
+    expect(checkNumber(0)).toBeTruthy();
+    expect(checkNumber(1)).toBeTruthy();
+});
+
+test('checkPositive', () => {
+    expect(checkPositive(0)).toBeFalsy();
+    expect(checkPositive(-1)).toBeFalsy();
+    expect(checkPositive(1)).toBeTruthy();
 });
