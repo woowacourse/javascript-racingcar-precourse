@@ -1,5 +1,5 @@
 import { checkCarName, checkRacingCnt } from '../asset/validation.js';
-import { CHARACTER } from '../asset/constant.js';
+import { CHARACTER, RACING_CNT_INPUT_MSG } from '../asset/constant.js';
 import RacingCars from '../model/RacingCars.js';
 
 export default class RacingGame {
@@ -31,6 +31,12 @@ export default class RacingGame {
     triggerRacingCntSubmitEvent() {
         document.getElementById('racing-count-form').addEventListener('submit', (e) => {
             e.preventDefault();
+
+            if (this.racingCars.isEmptyCars()) {
+                alert(RACING_CNT_INPUT_MSG.noRegisterCar);
+                return;
+            }
+
             const racingCnt = this.getRacingCnt();
 
             if (checkRacingCnt(racingCnt)) {

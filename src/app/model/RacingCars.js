@@ -13,4 +13,8 @@ export default class RacingCars {
     generateCars(carNames) {
         this.setCars(carNames.map((carName) => new Car(carName)));
     }
+
+    isEmptyCars() {
+        return this.cars === CAR_CONTAINER_INIT_VALUE;
+    }
 }
