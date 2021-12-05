@@ -1,5 +1,6 @@
 import { $carNamesInput, $carNamesSubmitBtn, $racingCountInput, $racingCountSubmitBtn } from '../data/domElement.js';
 import { getNotValidMessage } from './getNotValidMessage.js';
+import { disabledElement } from '../utils/domElementTool.js';
 import { showAlert } from '../utils/showAlert.js';
 import RacingCarGame from '../model/racingCarGame.js';
 import Car from '../model/car.js';
@@ -29,6 +30,8 @@ export default class GameController {
 
     const cars = carNames.map(name => new Car(name));
     this.racingCarGame.setCars(cars);
+
+    disabledElement($carNamesSubmitBtn);
   }
 
   handleSubmitRacingCount(e) {
@@ -36,7 +39,10 @@ export default class GameController {
     const racingCount = $racingCountInput.value;
     this.racingCarGame.setRacingCount(racingCount);
     this.racingCarGame.play();
+
     this.gameView.setGameResult(this.racingCarGame.gameResult);
     this.gameView.renderRoundScroe();
+    
+    disabledElement($racingCountSubmitBtn);
   }
 }
