@@ -10,6 +10,15 @@ class Car {
 class RacingGame {
   constructor() {
     this.racingCars = [];
+    this.racingCount = 0;
+  }
+
+  setRacingCars(carNamesInput) {
+    this.racingCars = carNamesInput.split(',').map((carName) => new Car(carName));
+  }
+
+  setRacingCount(racingCount) {
+    this.racingCount = parseInt(racingCount, 10);
   }
 
   init() {
@@ -30,6 +39,10 @@ class RacingGame {
     $('#racing-count-form').style.visibility = 'visible';
   }
 
+  showRacingResultScreen() {
+    $('#racing-result-heading').style.visibility = 'visible';
+  }
+
   preventFormSubmitEvent() {
     $('#car-names-form').addEventListener('submit', (e) => e.preventDefault());
     $('#racing-count-form').addEventListener('submit', (e) => e.preventDefault());
@@ -40,7 +53,7 @@ class RacingGame {
       const carNamesInput = $('#car-names-input').value;
 
       if (isValidateCarNames(carNamesInput)) {
-        this.racingCars = carNamesInput.split(',').map((carName) => new Car(carName));
+        this.setRacingCars(carNamesInput);
         this.showRacingCountScreen();
       }
     });
@@ -51,7 +64,8 @@ class RacingGame {
       const racingCountInput = $('#racing-count-input').value;
 
       if (isValidateRacingCount(racingCountInput)) {
-        console.log('옳은 값입니다.');
+        this.setRacingCount(racingCountInput);
+        this.showRacingResultScreen();
       }
     });
   }
