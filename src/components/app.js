@@ -2,17 +2,17 @@ import { CarNameInput } from "./car-names-input.js";
 import { hideNode, showNode, createResultNode, disableForm, createWinnersNode } from "../utils/dom.js";
 import { SELECTOR } from "../constants/constant.js";
 import { Car } from "../model/car.js";
+import { RacingGame } from "../model/racing-game.js";
 import { RacingCount } from "./racing-count.js";
-import { selectWinners } from "../utils/car-utils.js";
 
-export class RacingCarGame {
+export class App {
     constructor($target) {
         this.$target = $target;
         this.$carNamesForm = document.getElementById(SELECTOR.ID.CAR_NAMES_FORM);
         this.$racingCount = document.getElementById(SELECTOR.ID.RACING_COUNT_FORM);
         this.$racingCountCommand = document.getElementById(SELECTOR.ID.RACING_COUNT_COMMAND);
         this.$result = document.getElementById(SELECTOR.ID.RESULT);
-        this.state = { cars: [], count: 0, winners: [] };
+        this.game = new RacingGame();
         this.init();
     }
     init() {
@@ -24,11 +24,11 @@ export class RacingCarGame {
     }
     setCars(names) {
         this.activateRacingCount();
-        this.state.cars = names.map((name) => new Car(name));
+        this.game.cars = names.map((name) => new Car(name));
         disableForm(this.$carNamesForm);
     }
     setCount(count) {
-        this.state.count = count;
+        this.game.round = count;
         this.startRacing();
     }
     unmount() {
@@ -39,31 +39,24 @@ export class RacingCarGame {
     activateRacingCount() {
         showNode(this.$racingCountCommand);
         showNode(this.$racingCount);
-        this.racingCountInput = new RacingCount(this.setCount.bind(this));
+        this.$racingCountInput = new RacingCount(this.setCount.bind(this));
     }
     startRacing() {
         showNode(this.$result);
-        while (this.state.count--) {
-            this.moveCars();
+        while (this.game.round) {
+            this.game.moveCars();
+            this.printState();
         }
         showNode(this.$result);
         disableForm(this.$racingCount);
-        this.state.winners = selectWinners(this.state.cars);
         this.printWinner();
     }
-    moveCars() {
-        this.state.cars.forEach((car) => {
-            car.rollDice();
-            car.move();
-        });
-        this.printState();
-    }
     printState() {
-        const $resultNode = createResultNode(this.state.cars);
+        const $resultNode = createResultNode(this.game.cars);
         this.$target.appendChild($resultNode);
     }
     printWinner() {
-        const $winnerNode = createWinnersNode(this.state.winners);
+        const $winnerNode = createWinnersNode(this.game.winners);
         this.$target.appendChild($winnerNode);
     }
 }
