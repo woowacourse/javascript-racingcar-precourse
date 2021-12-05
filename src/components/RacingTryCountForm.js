@@ -33,6 +33,10 @@ class RacingTryCountForm {
   getTryCount() {
     this.$tryCount = this.$input.value;
   }
+
+  checkExistTryCount() {
+    return !!this.$tryCount;
+  }
 }
 
 export default RacingTryCountForm;
