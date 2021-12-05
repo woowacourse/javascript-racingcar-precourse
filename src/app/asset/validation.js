@@ -1,6 +1,6 @@
 const checkCarNameFunctions = [
     (names) => names.every((name) => name.length >= 1 && name.length <= 5),
-    (names) => names.every((name) => name.length === name.replace(/\s/g, '')),
+    (names) => names.every((name) => name.length === name.replace(/\s/g, '').length),
 ];
 
 module.exports = checkCarNameFunctions;
