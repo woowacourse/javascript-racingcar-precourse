@@ -26,6 +26,12 @@ setStyleDisplay(resultMessage, NONE);
 
 const cars = [];
 
+function showRacingCountForm() {
+  setStyleDisplay(numberOfAttempts, BLOCK);
+  setStyleDisplay(racingCountInput, INLINE_BLOCK);
+  setStyleDisplay(racingCountSubmitButton, INLINE_BLOCK);
+}
+
 on(carNamesSubmitButton, 'click', (event) => {
   event.preventDefault();
 
@@ -39,10 +45,11 @@ on(carNamesSubmitButton, 'click', (event) => {
   showRacingCountForm();
 });
 
-function showRacingCountForm() {
-  setStyleDisplay(numberOfAttempts, BLOCK);
-  setStyleDisplay(racingCountInput, INLINE_BLOCK);
-  setStyleDisplay(racingCountSubmitButton, INLINE_BLOCK);
+function showRacingResult(resultTemplate) {
+  setStyleDisplay(resultMessage, BLOCK);
+  const racingResult = document.createElement('div');
+  racingResult.innerHTML = resultTemplate;
+  app.append(racingResult);
 }
 
 on(racingCountSubmitButton, 'click', (event) => {
@@ -57,10 +64,3 @@ on(racingCountSubmitButton, 'click', (event) => {
   const resultTemplate = carRacing.play(racingCountInput.value);
   showRacingResult(resultTemplate);
 });
-
-function showRacingResult(resultTemplate) {
-  setStyleDisplay(resultMessage, BLOCK);
-  const racingResult = document.createElement('div');
-  racingResult.innerHTML = resultTemplate;
-  app.append(racingResult);
-}

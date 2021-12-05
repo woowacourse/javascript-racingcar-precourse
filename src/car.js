@@ -4,7 +4,7 @@ export default class Car {
     this.distance = 0;
   }
 
-  drive = (number) => {
+  drive(number) {
     if (number >= 4) this.distance += 1;
   }
 }

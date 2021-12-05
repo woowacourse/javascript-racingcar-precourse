@@ -7,4 +7,4 @@ export const STYLE_DISPLAY = {
   BLOCK: 'block',
   INLINE_BLOCK: 'inline-block',
   NONE: 'none',
-}
+};

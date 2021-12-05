@@ -1,11 +1,11 @@
 export function qs(selector, scope = document) {
-  if (!selector) throw 'no selector';
+  if (!selector) throw new Error('no selector');
 
   return scope.querySelector(selector);
 }
 
 export function qsAll(selector, scope = document) {
-  if (!selector) throw 'no selector';
+  if (!selector) throw new Error('no selector');
 
   return Array.from(scope.querySelectorAll(selector));
 }
@@ -15,7 +15,9 @@ export function on(target, eventName, handler) {
 }
 
 export function setStyleDisplay(element, value) {
-  element.style.display = value
+  if (!element) throw new Error('no selector');
+  const el = element;
+  el.style.display = value;
 }
 
 export function checkOverFiveLetters(cars) {
@@ -27,8 +29,8 @@ export function checkOverFiveLetters(cars) {
 
 export function changeDistanceToBar(distance) {
   const bar = [];
-  for (let i = 0; i < distance; i++) {
+  for (let i = 0; i < distance; i += 1) {
     bar.push('-');
   }
   return bar;
-};
+}
