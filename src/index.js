@@ -15,6 +15,11 @@ const App = () => {
   const app = document.querySelector("#app");
   const carNamesForm = document.querySelector("#car-names-form");
   const racingCountForm = document.querySelector("#racing-count-form");
+  const racingCountInput = document.querySelector("#racing-count-input");
+
+  const useAttributeInit = () => {
+    racingCountInput.setAttribute("min", 1);
+  };
 
   const formatCarNames = (carNames) => {
     initialState.carNames = carNames.map((name) => {
@@ -54,6 +59,7 @@ const App = () => {
     window.alert(`자동차 이름을 입력해 주세요.`);
   };
 
+  useAttributeInit();
   carNamesForm.addEventListener("submit", onSubmitCarNamesForm);
   racingCountForm.addEventListener("submit", onSubmitRacingCountForm);
 };
