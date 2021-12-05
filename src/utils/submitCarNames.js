@@ -1,40 +1,22 @@
 import { $ } from './selector.js';
+import { isValidCarNames } from './isValidCarNames.js';
+import Car from '../classes/Car.js';
 
 export const submitCarNames = () => {
   const carNamesList = converterStringToArray($('#car-names-input').value);
-  if (isValidCarNames(carNamesList)) {
-    return carNamesList;
-  }
-  $('#car-names-input').value = '';
-  return [];
-};
+  let cars = [];
 
-const isValidCarNames = carNamesList => {
-  for (let i = 0; i < carNamesList.length; i++) {
-    if (
-      isWrongLength(carNamesList[i]) ||
-      isDuplicatedName(carNamesList, carNamesList[i])
-    ) {
-      return false;
-    }
+  if (!isValidCarNames(carNamesList)) {
+    $('#car-names-input').value = '';
+    return [];
   }
-  return true;
-};
 
-const isWrongLength = carName => {
-  if (carName.length <= 0 || carName.length > 5) {
-    alert(`자동차 이름을 5자 이하로 정해주세요.`);
-    return true;
-  }
-  return false;
-};
+  carNamesList.forEach(carName => {
+    const car = new Car(carName);
+    cars.push(car);
+  });
 
-const isDuplicatedName = (carNamesList, carName) => {
-  if (carNamesList.indexOf(carName) !== carNamesList.lastIndexOf(carName)) {
-    alert(`이름이 중복되지 않도록 해주세요.`);
-    return true;
-  }
-  return false;
+  return cars;
 };
 
 const converterStringToArray = carNamesString => {
