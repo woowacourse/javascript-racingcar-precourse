@@ -150,7 +150,6 @@ export default class CarController {
         resultContainer.appendChild(document.createElement('br'));
       }
     }
-
     resultContainer.appendChild(document.createElement('br'));
 
     return resultContainer;
