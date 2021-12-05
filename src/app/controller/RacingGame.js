@@ -25,6 +25,7 @@ export default class RacingGame {
 
             if (checkCarName(carNames)) {
                 this.racingCars.generateCars(carNames);
+                this.racingResult.showRacingCntForm();
                 this.$racingCntInput.focus();
             } else {
                 this.$carNameInput.focus();

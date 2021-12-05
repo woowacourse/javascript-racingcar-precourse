@@ -16,6 +16,7 @@ export default class RacingResult {
 
     render(gameResult, winners) {
         this.setResultContainerHTML('');
+        this.showRacingResultTitle();
         this.renderGameResult(gameResult);
         this.renderWinners(winners);
     }
