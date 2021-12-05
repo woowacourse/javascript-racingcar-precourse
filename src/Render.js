@@ -30,22 +30,39 @@ export default class Render {
   }
 
   makeRoundResult(cars) {
-    const roundResultArea = document.createElement("p");
+    const roundResultArea = this.makeElement({ tag: "p" });
     cars.forEach(car => {
       const { name, progress } = car.getRacingResult();
-      const roundResult = document.createElement("div");
-      roundResult.innerText = `${name}: ${progress}`;
+      const roundResult = this.makeElement({
+        tag: "div",
+        innerText: `${name}: ${progress}`,
+      });
       roundResultArea.appendChild(roundResult);
     });
     this.content.append(roundResultArea);
   }
 
   winner(name) {
-    const winnerText = document.createElement("span");
-    winnerText.innerText = `최종 우승자: `;
-    const winnerTag = document.createElement("span");
-    winnerTag.id = "racing-winners";
-    winnerTag.innerText = name;
+    const winnerText = this.makeElement({
+      tag: "span",
+      innerText: `최종 우승자: `,
+    });
+    const winnerTag = this.makeElement({
+      tag: "span",
+      innerText: name,
+      id: "racing-winners",
+    });
     this.content.append(winnerText, winnerTag);
+  }
+
+  makeElement({ tag, innerText = "", id = "" }) {
+    const element = document.createElement(tag);
+    if (innerText) {
+      element.innerText = innerText;
+    }
+    if (id) {
+      element.id = id;
+    }
+    return element;
   }
 }
