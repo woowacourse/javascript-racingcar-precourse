@@ -1,3 +1,26 @@
+import { $ } from './selector.js';
+
+export const submitCarNames = () => {
+  const carNamesList = converterStringToArray($('#car-names-input').value);
+  if (isValidCarNames(carNamesList)) {
+    return carNamesList;
+  }
+  $('#car-names-input').value = '';
+  return [];
+};
+
+const isValidCarNames = carNamesList => {
+  for (let i = 0; i < carNamesList.length; i++) {
+    if (
+      isWrongLength(carNamesList[i]) ||
+      isDuplicatedName(carNamesList, carNamesList[i])
+    ) {
+      return false;
+    }
+  }
+  return true;
+};
+
 const isWrongLength = carName => {
   if (carName.length <= 0 || carName.length > 5) {
     alert(`자동차 이름을 5자 이하로 정해주세요.`);
@@ -14,32 +37,10 @@ const isDuplicatedName = (carNamesList, carName) => {
   return false;
 };
 
-const isValidCarNames = carNamesList => {
-  for (let i = 0; i < carNamesList.length; i++) {
-    if (isWrongLength(carNamesList[i])) {
-      return false;
-    }
-    if (isDuplicatedName(carNamesList, carNamesList[i])) {
-      return false;
-    }
-  }
-  return true;
-};
-
 const converterStringToArray = carNamesString => {
   let carNamesList = [];
   carNamesString
     .split(',')
     .forEach(carName => carNamesList.push(carName.trim()));
   return carNamesList;
-};
-
-export const submitCarNames = () => {
-  const carNamesInput = document.querySelector('#car-names-input');
-  const carNamesList = converterStringToArray(carNamesInput.value);
-  if (isValidCarNames(carNamesList)) {
-    return carNamesList;
-  }
-  carNamesInput.value = '';
-  return [];
 };

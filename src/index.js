@@ -1,16 +1,23 @@
+import { $ } from './utils/selector.js';
 import { submitCarNames } from './utils/submitCarNames.js';
+import { submitRacingCount } from './utils/submitRacingCount.js';
 
 export default class RacingGame {
   constructor() {
     this.carNames = [];
-    this.$carNamesSubmit = document.querySelector('#car-names-submit');
+    this.racingCount = 0;
     this.initEventListeners();
   }
 
   initEventListeners() {
-    this.$carNamesSubmit.addEventListener('click', () => {
-      this.carNames = submitCarNames();
-      console.log(this.carNames);
+    $('#car-names-submit').addEventListener('click', () => {
+      const carNames = submitCarNames();
+      console.log(carNames);
+    });
+
+    $('#racing-count-submit').addEventListener('click', () => {
+      const racingCount = submitRacingCount();
+      console.log(racingCount);
     });
   }
 }
