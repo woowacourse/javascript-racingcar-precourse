@@ -9,11 +9,11 @@ export default class Racing {
   }
 
   start() {
-    const Cars = this.prepareCar();
+    const cars = this.prepareCar();
     for (let round = 1; round <= this.racingCount; round += 1) {
-      this.startRound(Cars);
+      this.startOneRound(cars);
     }
-    this.showRacingWinner(Cars);
+    this.showRacingWinner(cars);
   }
 
   showRacingWinner(cars) {
@@ -38,10 +38,10 @@ export default class Racing {
     return cars;
   }
 
-  startRound(cars) {
+  startOneRound(cars) {
     cars.forEach(car => {
       const isGoFoward = car.moving();
-      car.saveRoundResult(isGoFoward);
+      car.updateProgress(isGoFoward);
     });
     this.render.showRoundResult(cars);
   }

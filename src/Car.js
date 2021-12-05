@@ -21,7 +21,7 @@ export default class Car {
     return { name: this.name, progress: this.progress };
   }
 
-  saveRoundResult(isGoFoward) {
+  updateProgress(isGoFoward) {
     if (isGoFoward) {
       this.progress += "-";
     }

@@ -8,14 +8,14 @@ class RacingCarGame {
     this.render = new Render();
     this.user = new User();
     this.checkValid = new CheckValid();
-    this.submitCarNameForm = document.getElementById("car-names-form");
-    this.submitRacingCountForm = document.getElementById("racing-count-form");
+    this.carNameForm = document.getElementById("car-names-form");
+    this.racingCountForm = document.getElementById("racing-count-form");
   }
 
   start() {
     this.render.hideRacingCountForm();
     this.render.hideResultText();
-    this.submitCarNameForm.addEventListener("submit", e =>
+    this.carNameForm.addEventListener("submit", e =>
       this.handleSubmitCarName(e)
     );
   }
@@ -25,7 +25,7 @@ class RacingCarGame {
     const isValid = this.checkValid.carNames(this.user.getCarNames());
     if (isValid) {
       this.render.showRacingCountForm();
-      this.submitRacingCountForm.addEventListener("submit", e =>
+      this.racingCountForm.addEventListener("submit", e =>
         this.handleSubmitRacingCount(e)
       );
     }
