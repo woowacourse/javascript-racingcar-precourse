@@ -1,4 +1,4 @@
-import { $ } from './utils/querySelector.js';
+import { $ } from '../utils/querySelector.js';
 
 export const $App = $('#app');
 export const $carNamesInput = $('#car-names-input');

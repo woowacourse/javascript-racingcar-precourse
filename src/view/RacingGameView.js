@@ -1,4 +1,4 @@
-import { $App } from './domElement.js';
+import { $App } from '../data/domElement.js';
 
 export default class RacingGameView {
   constructor() {

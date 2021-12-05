@@ -1,5 +1,5 @@
-import { getRandomNum } from './utils/getRandomNum.js';
-import { CONSTRAINTS, CONSTANTS } from './utils/constants.js';
+import { getRandomNum } from '../utils/getRandomNum.js';
+import { CONSTRAINTS, CONSTANTS } from '../data/constants.js';
 
 export default class RacingCarGame {
   constructor() {

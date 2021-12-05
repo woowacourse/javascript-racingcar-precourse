@@ -1,5 +1,5 @@
-import { ERR_MESSAGE, CONSTRAINTS } from './utils/constants.js';
-import Validator from './utils/validator.js';
+import { ERR_MESSAGE, CONSTRAINTS } from '../data/constants.js';
+import Validator from '../utils/validator.js';
 
 export const getNotValidMessage = carNames => {
   if (Validator.hasLessThanMin(carNames, CONSTRAINTS.MIN_CAR_NUMBER)) {
