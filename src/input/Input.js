@@ -1,7 +1,7 @@
 export default class Input {
-  constructor(carNames, repeatCount) {
-    this.carNames = carNames;
-    this.repeatCount = repeatCount;
+  constructor() {
+    this.carNames = null;
+    this.repeatCount = 0;
   }
 
   static isLongerThanFive(names) {
@@ -29,6 +29,10 @@ export default class Input {
     return true;
   }
 
+  static isAboveZero(repeatCount) {
+    return Number(repeatCount) > 0;
+  }
+
   setCarNames(carNames) {
     if (Input.isValidCarNames(carNames)) {
       this.carNames = carNames;
@@ -38,7 +42,11 @@ export default class Input {
   }
 
   setRepeatCount(repeatCount) {
-    this.repeatCount = repeatCount;
+    if (Input.isAboveZero(repeatCount)) {
+      this.repeatCount = repeatCount;
+      return;
+    }
+    this.repeatCount = 0;
   }
 
   getCarNames() {
