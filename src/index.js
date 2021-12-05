@@ -37,17 +37,18 @@ class CarGameUtil {
   static isForward() {
     return getRandomNumber() >= FORWARD_NUMBER_SIGN;
   }
+
+  static getWinnerCount(cars) {
+    return Math.max(...cars.map(car => car.count));
+  }
 }
 class CarGameLogic {
   constructor() {}
 
-  makeTemplatePerSimulate() {
-    let template = PLAIN_STRING;
-    this.cars.forEach(car => {
-      template = `${template}${car.name}: ${car.countTemplate}<br>`;
-    });
+  getWinner() {
+    const winnerCount = CarGameUtil.getWinnerCount(this.cars);
 
-    return template;
+    return this.cars.filter(car => car.count === winnerCount);
   }
 
   simulatePerNumberOfTimes() {
@@ -59,13 +60,26 @@ class CarGameLogic {
     });
   }
 
+  makeTemplatePerSimulate() {
+    let template = PLAIN_STRING;
+    this.cars.forEach(car => {
+      template = `${template}${car.name}: ${car.countTemplate}<br>`;
+    });
+
+    return template;
+  }
+
   makeResultTemplate(number) {
     let template = PLAIN_STRING;
     for (let i = 0; i < number; i = i + 1) {
       this.simulatePerNumberOfTimes();
       // simulate 이후 자동차를 기준으로 템플릿을 만들어 변수에 합친다.
-      template = `${template}${this.makeTemplatePerSimulate()}`;
+      template = `${template}${this.makeTemplatePerSimulate()} <br>`;
     }
+    const winnerArray = this.getWinner();
+    template = `${template}최종 우승자: ${winnerArray
+      .map(car => car.name)
+      .join(', ')}`;
 
     return template;
   }
