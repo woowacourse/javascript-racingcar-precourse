@@ -2,9 +2,11 @@ import Car from '../Car/Car.js';
 import { DOM } from '../constant/constant.js';
 import RandomNumber from '../getRandomNumber/RandomNumber.js';
 import Winners from './Winners.js';
+import Render from './Render.js';
 
 export default class Game {
   constructor(racingCount, carNames) {
+    this.render = new Render();
     this.$app = DOM.$APP;
     this.$div = DOM.$DIV;
     this.racingCount = racingCount;
@@ -15,21 +17,16 @@ export default class Game {
     this.racingTemplate = '';
   }
 
-  renderTemplate = (template) => {
-    this.$div.innerHTML = template;
-    this.$app.appendChild(this.$div);
-  };
-
   getRacingTemplate = () => {
     for (let columnIndex = 0; columnIndex < this.resultRacings[0].length; columnIndex += 1) {
       for (let rowIndex = 0; rowIndex < this.resultRacings.length; rowIndex += 1) {
-        this.racingTemplate += `<div>${this.resultRacings[rowIndex][columnIndex]}</div>`;
+        this.racingTemplate += `<span>${this.resultRacings[rowIndex][columnIndex]}</span><br />`;
       }
 
       this.racingTemplate += '<br />';
     }
 
-    this.renderTemplate(this.racingTemplate);
+    this.render.template(this.$div, this.$app, this.racingTemplate);
   };
 
   getResultString = (car) => {
