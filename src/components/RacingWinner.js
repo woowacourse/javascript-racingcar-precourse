@@ -18,6 +18,7 @@ class RacingResult {
 
   template() {
     return `
+      <br />
       최종 우승자: <span id="${DOM.RACING_WINNERS}">${this.printWinnersWithSplit(
       this.$winners,
     )}</span>
