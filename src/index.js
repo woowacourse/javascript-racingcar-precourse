@@ -1,11 +1,6 @@
+import Car from './model/Car.js';
 import { $ } from './utils/dom.js';
 import { isValidateCarNames, isValidateRacingCount } from './utils/validation.js';
-
-class Car {
-  constructor(name) {
-    this.name = name;
-  }
-}
 
 class RacingGame {
   constructor() {
