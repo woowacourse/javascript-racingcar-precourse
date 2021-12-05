@@ -2,6 +2,7 @@ import $ from '../utils/dom.js';
 import printGameProcess from '../views/printGameProcess.js';
 import printWinner from '../views/printWinner.js';
 import getCarArr from '../models/getCarArr.js';
+import getWinner from '../models/getWinner.js';
 
 const createResultElement = () => {
   const resultDiv = document.createElement('div');
@@ -20,7 +21,7 @@ const playGame = countInput => {
     printGameProcess(cars);
     countInput -= 1;
   }
-  printWinner(cars);
+  printWinner(getWinner(cars));
 };
 
 export default playGame;
