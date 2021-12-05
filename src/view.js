@@ -1,5 +1,5 @@
 export default class View {
-  static createRacingView(carObject) {
+  static getRacingStatus(carObject) {
     const fowardText = '-'.repeat(carObject.getForward());
 
     return `${carObject.getCarName()}: ${fowardText}<br/>`;

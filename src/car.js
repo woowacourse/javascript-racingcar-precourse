@@ -1,4 +1,4 @@
-import { CAR_RULES } from './constant';
+import { FORWARD_RULES } from './constant.js';
 
 export default class Car {
   constructor(name) {
@@ -17,9 +17,9 @@ export default class Car {
   goAndStop() {
     if (
       MissionUtils.Random.pickNumberInRange(
-        CAR_RULES.minNumber,
-        CAR_RULES.maxNumber,
-      ) >= CAR_RULES.goStandard
+        FORWARD_RULES.minNum,
+        FORWARD_RULES.maxNum,
+      ) >= FORWARD_RULES.goStandard
     ) {
       this.forward += 1;
     }

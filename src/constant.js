@@ -6,9 +6,9 @@ export const ELEMENT_ID = {
   racingResultId: 'racing-winners',
 };
 
-export const CAR_RULES = {
-  minNumber: 0,
-  maxNumber: 9,
+export const FORWARD_RULES = {
+  minNum: 0,
+  maxNum: 9,
   goStandard: 4,
 };
 

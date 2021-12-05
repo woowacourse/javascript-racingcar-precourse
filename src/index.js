@@ -1,14 +1,16 @@
-import UserInput from './userInput.js';
 import Car from './car.js';
+import UserInput from './userInput.js';
 import View from './view.js';
 import { ELEMENT_ID, ERR_MESSAGE } from './constant.js';
 
 export default class CarRacingGame {
   constructor() {
+    this.appEl = document.querySelector('#app');
     this.userInputObject = new UserInput();
     this.carObjects = [];
-    this.racingViewSpanEl = document.createElement('span');
-    this.racingResultSpanEl = document.createElement('span');
+    this.racingStatusSpanEl = document.createElement('span');
+    this.racingWinnerSpanEl = document.createElement('span');
+    this.racingWinnerSpanEl.id = ELEMENT_ID.racingResultId;
     this.bindEventListener();
   }
 
@@ -27,7 +29,7 @@ export default class CarRacingGame {
     this.userInputObject.racingCountSubmitEl.addEventListener('click', (e) => {
       e.preventDefault();
       if (
-        this.isClickCarNameSubmitButton() &&
+        this.isPassCarNameSubmitButton() &&
         this.userInputObject.isValidRacingCount()
       ) {
         this.racingPlay();
@@ -36,7 +38,7 @@ export default class CarRacingGame {
     });
   }
 
-  isClickCarNameSubmitButton() {
+  isPassCarNameSubmitButton() {
     if (this.carObjects.length === 0) {
       alert(ERR_MESSAGE.clickCarNameSubmitButton);
       return false;
@@ -55,18 +57,17 @@ export default class CarRacingGame {
     while (racingCount <= this.userInputObject.getRacingCount()) {
       this.carObjects.forEach((carObject) => {
         carObject.goAndStop();
-        this.racingViewSpanEl.innerHTML += View.createRacingView(carObject);
+        this.racingStatusSpanEl.innerHTML += View.getRacingStatus(carObject);
       });
-      this.racingViewSpanEl.innerHTML += '<br/>';
+      this.racingStatusSpanEl.innerHTML += '<br/>';
       racingCount += 1;
     }
-    document.querySelector('#app').appendChild(this.racingViewSpanEl);
+    this.appEl.appendChild(this.racingStatusSpanEl);
   }
 
   racingResult() {
-    this.racingResultSpanEl.id = ELEMENT_ID.racingResultId;
-    this.racingResultSpanEl.innerHTML = View.getWinnerCarNames(this.carObjects);
-    document.querySelector('#app').appendChild(this.racingResultSpanEl);
+    this.racingWinnerSpanEl.innerHTML = View.getWinnerCarNames(this.carObjects);
+    this.appEl.appendChild(this.racingWinnerSpanEl);
   }
 }
 
