@@ -1,6 +1,6 @@
 import $ from '../utils/dom.js';
 import disableCountInput from '../views/disableCountInput.js';
-import startGame from './startGame.js';
+import playGame from './playGame.js';
 import alertCountInputError from '../views/alertCountInputError.js';
 import resetCountInput from '../views/resetCountInput.js';
 
@@ -14,7 +14,7 @@ const isValidCountInput = countInput => {
 const handleRacingCountInput = () => {
   const countInput = $('#racing-count-input').value;
   if (isValidCountInput(countInput)) {
-    startGame(Number(countInput));
+    playGame(Number(countInput));
     disableCountInput();
     return;
   }
