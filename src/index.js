@@ -92,17 +92,28 @@ class CarGame extends CarGameLogic {
 
   init() {
     this.initDOM();
+    this.initView();
     this.initHandler();
     this.formCars.addEventListener('submit', this.onFormCarsSubmit);
     this.formCount.addEventListener('submit', this.onFormCountSubmit);
+  }
+
+  initView() {
+    this.hideElement(this.countTitle);
+    this.hideElement(this.formCount);
+    this.hideElement(this.resultTitle);
+    this.hideElement(this.result);
   }
 
   initDOM() {
     this.app = document.querySelector(DOM.APP);
 
     this.formCars = document.querySelector(DOM.CAR_NAMES);
+
+    this.countTitle = document.querySelector(DOM.COUNT_TITLE);
     this.formCount = document.querySelector(DOM.RANCING_COUNT);
 
+    this.resultTitle = document.querySelector(DOM.RESULT_TITLE);
     this.result = document.createElement('div');
     this.result.setAttribute('id', 'result');
     this.app.appendChild(this.result);
@@ -114,6 +125,8 @@ class CarGame extends CarGameLogic {
       const [{ value: carsString }] = e.target;
       try {
         this.cars = CarGameUtil.makeCars(carsString.split(','));
+        this.showElement(this.countTitle);
+        this.showElement(this.formCount);
       } catch (error) {
         this.cars = null;
         alert(error);
@@ -124,11 +137,21 @@ class CarGame extends CarGameLogic {
       const [{ value: stringNumber }] = e.target;
       try {
         this.result.innerHTML = this.makeResultTemplate(Number(stringNumber));
+        this.showElement(this.resultTitle);
+        this.showElement(this.result);
       } catch (error) {
         this.result.innerHTML = PLAIN_STRING;
         alert(error);
       }
     };
+  }
+
+  hideElement(el) {
+    el.style.display = 'none';
+  }
+
+  showElement(el) {
+    el.style.display = 'block';
   }
 }
 

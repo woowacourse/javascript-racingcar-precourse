@@ -7,6 +7,8 @@ export const DOM = {
   RANCING_COUNT_INPUT: '#racing-count-input',
   RANCING_COUNT_SUBMIT: '#racing-count-submit',
   RACING_WINNERS: '#racing-winners',
+  COUNT_TITLE: '#count-title',
+  RESULT_TITLE: '#result-title',
 };
 export const PLAIN_STRING = '';
 export const MINUS_SIGN = '-';
