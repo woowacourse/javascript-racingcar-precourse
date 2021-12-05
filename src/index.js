@@ -1,3 +1,5 @@
+import Car from "./car.js";
+
 export default function RacingGame() {
   const carNamesSubmitButton = document.getElementById("car-names-submit");
 
@@ -95,7 +97,9 @@ export default function RacingGame() {
       initInput();
       return;
     }
-    console.log(carNamesList);
+
+    const racingCars = carNamesList.map((carName) => new Car(carName));
+    console.log(racingCars);
   };
 
   carNamesSubmitButton.addEventListener("click", onClickCarNamesSubmitButton);
