@@ -8,7 +8,11 @@ export default class CheckValid {
       return false;
     }
     const namesArray = this.removeSpace(names);
-    return this.isValidLength(namesArray) && this.isValidCarNames(namesArray);
+    return (
+      this.isValidLength(namesArray) &&
+      this.isValidCarNames(namesArray) &&
+      this.checkDuplicate(namesArray)
+    );
   }
 
   racingCount(count) {
@@ -19,20 +23,20 @@ export default class CheckValid {
     return isValid;
   }
 
-  removeSpace(string) {
-    return string.split(",").map(name => name.replace(/\s*/g, ""));
+  removeSpace(carNames) {
+    return carNames.split(",").map(name => name.replace(/\s*/g, ""));
   }
 
-  isSplitComma(value) {
-    const includesComma = [...value].includes(",");
+  isSplitComma(carNames) {
+    const includesComma = [...carNames].includes(",");
     if (!includesComma) {
       return alert(MESSAGE.COMMA);
     }
-    return value.split(",");
+    return carNames.split(",");
   }
 
-  isValidLength(array) {
-    const isValidLength = array.every(
+  isValidLength(carNames) {
+    const isValidLength = carNames.every(
       name => name.length > CAR_NAME.MININUM && name.length <= CAR_NAME.LENGTH
     );
     if (!isValidLength) {
@@ -41,10 +45,18 @@ export default class CheckValid {
     return isValidLength;
   }
 
-  isValidCarNames(array) {
-    const invalidValue = array.some(name => /[^A-Za-z가-힇]/g.test(name));
+  isValidCarNames(carNames) {
+    const invalidValue = carNames.some(name => /[^A-Za-z가-힇]/g.test(name));
     if (invalidValue) {
       return alert(MESSAGE.INVALID_CAR_NAME);
+    }
+    return true;
+  }
+
+  checkDuplicate(carNames) {
+    const removeDulicate = new Set([...carNames]);
+    if (removeDulicate.size !== carNames.length) {
+      return alert(MESSAGE.DUPLICATE_CAR_NAME);
     }
     return true;
   }
