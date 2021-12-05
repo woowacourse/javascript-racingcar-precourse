@@ -43,6 +43,9 @@ class CarGameLogic {
 
   makeTemplatePerSimulate() {
     let template = PLAIN_STRING;
+    this.cars.forEach(car => {
+      template = `${template}${car.name}: ${car.countTemplate}<br>`;
+    });
 
     return template;
   }
