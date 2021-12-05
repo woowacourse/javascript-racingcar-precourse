@@ -1,4 +1,4 @@
-import { CAR } from '../utils/constants.js';
+import { CAR, ERROR } from '../utils/constants.js';
 
 export const isOverFive = carInput => {
   carInput = carInput.split(',').map(car => car.trim());
@@ -17,11 +17,11 @@ export const isDuplicate = carInput => {
 };
 
 export const alertCarInputError = carInput => {
-  if (carInput.length < CAR.MIN_COUNT) {
-    alert('빈값을 입력했습니다. 자동차 이름을 입력하세요.');
+  if (carInput.length < CAR.MIN_INPUT) {
+    alert(ERROR.INPUT_BLANK);
   } else if (isOverFive(carInput)) {
-    alert('자동차 이름은 5글자를 초과할 수 없습니다.');
+    alert(ERROR.OVER_MAX_LENGTH);
   } else if (isDuplicate(carInput)) {
-    alert('중복된 이름이 있습니다.');
+    alert(ERROR.NAME_DUPLICATE);
   }
 };
