@@ -10,7 +10,6 @@ class RacingResult {
 
   createDOM() {
     this.$container = document.createElement('div');
-    this.$container.id = 'racing-car-result-container';
     $('#app').appendChild(this.$container);
   }
 
