@@ -1,6 +1,9 @@
+import { makeStringToArrayByComma } from "./utils.js";
+
 export function carNamesInput(e) {
   e.preventDefault();
   const $carNamesInput = document.getElementById("car-names-input");
 
-  console.log($carNamesInput.value);
+  const cars = makeStringToArrayByComma($carNamesInput.value);
+  console.log(cars);
 }
