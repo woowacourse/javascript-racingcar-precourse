@@ -2,7 +2,7 @@ import Car from './Car.js';
 
 export default class RacingGame {
   constructor() {
-    this.carList = [];
+    this.racerList = [];
     this.winnerList = [];
     this.count = 0;
 
@@ -10,36 +10,36 @@ export default class RacingGame {
   }
 
   setRacer(names) {
-    const playerList = names.split(',');
+    const racerList = names.split(',');
 
-    playerList.forEach((name) => {
+    racerList.forEach((name) => {
       const carInstance = new Car(name);
-      this.carList.push(carInstance);
+      this.racerList.push(carInstance);
     });
   }
 
   setPlay(count) {
     this.count = count;
-    this.carList.forEach((car) => {
-      const score = car.move(count);
+    this.racerList.forEach((racer) => {
+      const score = racer.move(count);
       if (this.isWinner(score) === false) return true;
 
-      this.winnerList.push(car.name);
+      this.winnerList.push(racer.name);
     });
   }
 
-  isWinner(playerScore) {
+  isWinner(racerScore) {
     const nowMaxScore = this.winnerScore;
-    if (playerScore < nowMaxScore) return false;
+    if (racerScore < nowMaxScore) return false;
 
-    if (playerScore > nowMaxScore) this.winnerList = [];
-    this.winnerScore = playerScore;
+    if (racerScore > nowMaxScore) this.winnerList = [];
+    this.winnerScore = racerScore;
     return true;
   }
 
   get gameResult() {
     const result = [];
-    this.carList.forEach((car) => {
+    this.racerList.forEach((car) => {
       result.push(car.raceLogs);
     });
 
