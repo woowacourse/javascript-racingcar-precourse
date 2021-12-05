@@ -3,7 +3,7 @@ import {
   PICK_NUMBER_IN_RANGE_MAX,
 } from "./constants.js";
 
-const getGameResultData = (data) => {
+const getGameResult = (data) => {
   const { carNames, racingCount } = JSON.parse(data);
   let maxMoveCount = 0;
 
@@ -45,4 +45,4 @@ const getGameResultData = (data) => {
   });
 };
 
-export default getGameResultData;
+export default getGameResult;

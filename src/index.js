@@ -1,6 +1,6 @@
 import { validateCarNames, validateRacingCount } from "./utils/validation.js";
 import ResultContainer from "./components/ResultContainer.js";
-import getGameResultData from "./utils/getGameResultData.js";
+import getGameResult from "./utils/getGameResult.js";
 import getCarNames from "./utils/getCarNames.js";
 import customError from "./utils/customError.js";
 
@@ -51,7 +51,7 @@ const App = () => {
       });
     }
 
-    const data = getGameResultData(
+    const data = getGameResult(
       JSON.stringify({
         carNames,
         racingCount,
