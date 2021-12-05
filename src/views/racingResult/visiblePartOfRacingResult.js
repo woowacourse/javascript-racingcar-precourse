@@ -1,14 +1,8 @@
-class VisiblePartOfRacingResult {
+import VisibleElement from "../common/visibleElement.js";
+
+class VisiblePartOfRacingResult extends VisibleElement {
   constructor() {
-    this.$racingResultTitle = document.getElementById("racing-result-subtitle");
-  }
-
-  show() {
-    this.$racingResultTitle.style.display = "";
-  }
-
-  hide() {
-    this.$racingResultTitle.style.display = "none";
+    super(["racing-result-subtitle"]);
   }
 }
 

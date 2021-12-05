@@ -1,17 +1,8 @@
-class VisiblePartOfRacingCount {
+import VisibleElement from "../common/visibleElement.js";
+
+class VisiblePartOfRacingCount extends VisibleElement {
   constructor() {
-    this.$racingCountTitle = document.getElementById("racing-count-subtitle");
-    this.$racingCountForm = document.getElementById("racing-count-form");
-  }
-
-  show() {
-    this.$racingCountTitle.style.display = "";
-    this.$racingCountForm.style.display = "";
-  }
-
-  hide() {
-    this.$racingCountTitle.style.display = "none";
-    this.$racingCountForm.style.display = "none";
+    super(["racing-count-subtitle", "racing-count-form"]);
   }
 }
 
