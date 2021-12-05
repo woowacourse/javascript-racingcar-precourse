@@ -1,5 +1,8 @@
 import {
   $carName,
+  $racingCount,
+  $racingCountSubmit,
+  $racingCountTitle,
   ERROR_CAR_NAME,
   NAME_MAX_LENGTH,
 } from "../common/constants.js";
@@ -32,12 +35,17 @@ const isCarNameBlank = (carArr) => {
   return valid;
 };
 
-export default function validateCarName() {
+export default function validateCarName(e) {
+  e.preventDefault();
   const carArr = trimCarName(splitCarName());
   if (isCarNameLength(carArr) && isCarNameBlank(carArr)) {
+    $racingCountTitle.style.visibility = "visible";
+    $racingCount.style.visibility = "visible";
+    $racingCountSubmit.style.visibility = "visible";
     return true;
   }
   $carName.focus();
   alert(ERROR_CAR_NAME);
+
   return false;
 }
