@@ -18,6 +18,11 @@ export default class RacingCountEvent {
     this.$racingCountInput.focus();
   };
 
+  alertCautionMessage = (cautionMessage) => {
+    alert(cautionMessage);
+    this.$carNamesInput.focus();
+  };
+
   isPositiveInteger = () => {
     if (this.numberRacingCount > 0) {
       return true;
@@ -47,6 +52,14 @@ export default class RacingCountEvent {
     return this.numberRacingCount;
   };
 
+  isCarNamesBlank = () => {
+    if (this.$carNamesInput.value.length === 0) {
+      return true;
+    }
+
+    return false;
+  };
+
   validateCount = () => {
     this.stringRacingCount = this.$racingCountInput.value;
 
@@ -56,26 +69,5 @@ export default class RacingCountEvent {
       this.isPositiveInteger();
 
     return isValidate;
-  };
-
-  alertCautionMessage = (cautionMessage) => {
-    alert(cautionMessage);
-    this.$carNamesInput.focus();
-  };
-
-  isCarNamesBlank = () => {
-    if (this.$carNamesInput.value.length === 0) {
-      return true;
-    }
-
-    return false;
-  };
-
-  onFocusInput = () => {
-    this.$racingCountInput.addEventListener('focus', () => {
-      if (this.isCarNamesBlank()) {
-        this.alertCautionMessage(CAUTION_MESSAGE.FIRST_CAR_NAMES);
-      }
-    });
   };
 }

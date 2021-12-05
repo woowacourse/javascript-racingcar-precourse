@@ -17,7 +17,11 @@ export default class ConfigureRacingCar {
   }
 
   racingCountInputFocus = () => {
-    this.racingCountEvent.onFocusInput();
+    this.$racingCountInput.addEventListener('focus', () => {
+      if (this.racingCountEvent.isCarNamesBlank()) {
+        this.racingCountEvent.alertCautionMessage(CAUTION_MESSAGE.FIRST_CAR_NAMES);
+      }
+    });
   };
 
   readyGame = () => {
