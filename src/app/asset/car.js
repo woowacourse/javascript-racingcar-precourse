@@ -19,4 +19,16 @@ export default class Car {
 
         return this;
     }
+
+    getTrackSize() {
+        return this.track.length;
+    }
+
+    isWinner(winnerTrackSize) {
+        return this.getTrackSize() === winnerTrackSize;
+    }
+
+    getName() {
+        return this.name;
+    }
 }

@@ -17,4 +17,16 @@ export default class RacingCars {
     isEmptyCars() {
         return this.cars === CAR_CONTAINER_INIT_VALUE;
     }
+
+    getMaxTrackSize() {
+        return this.cars.reduce((m, car) => Math.max(m, car.getTrackSize()), 0);
+    }
+
+    getWinners() {
+        const maxTrackSize = this.getMaxTrackSize();
+
+        return this.cars
+            .filter((car) => car.getTrackSize() === maxTrackSize)
+            .map((car) => car.getName());
+    }
 }
