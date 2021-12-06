@@ -5,10 +5,17 @@ import { printResult, printRacing, printFinalWinnerIs } from './printResult.js';
 
 export default function racingCarGame() {
   const nameSubmitButton = document.getElementById('car-names-submit');
+  const numberSubmitButton = document.getElementById('racing-count-submit');
+  const numberSubmitBox = document.getElementById('racing-count-input');
   const players = [];
   let carNames = [];
   let racingCount = 0;
   let winners = [];
+
+  nameSubmitButton.addEventListener('click', getNameInput);
+  numberSubmitButton.addEventListener('click', getNumberInput);
+  numberSubmitBox.style.display = 'None';
+  numberSubmitButton.style.display = 'None';
 
   function getNameInput() {
     const nameEntered = document.getElementById('car-names-input').value;
@@ -17,9 +24,13 @@ export default function racingCarGame() {
     }
     isNameTooLong(carNames);
     makePlayers();
+    showNumberSubmit();
   }
 
-  nameSubmitButton.addEventListener('click', getNameInput);
+  function showNumberSubmit() {
+    numberSubmitBox.style.display = '';
+    numberSubmitButton.style.display = '';
+  }
 
   function makePlayers() {
     for (let i = 0; i < carNames.length; i++) {
@@ -27,9 +38,6 @@ export default function racingCarGame() {
       players.push(player);
     }
   }
-
-  const numberSubmitButton = document.getElementById('racing-count-submit');
-  numberSubmitButton.addEventListener('click', getNumberInput);
 
   function getNumberInput() {
     const racingCountEntered =
