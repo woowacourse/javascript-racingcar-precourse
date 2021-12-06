@@ -38,7 +38,7 @@ export const createWinnersText = (winners) => {
   _racingWinners.setAttribute('id', 'racing-winners');
 
   _racingWinnersText.innerHTML = RACING_WINNERS_TEXT;
-  _racingWinners.innerHTML = winners.join(', ');
+  _racingWinners.innerHTML = winners.join(',');
 
   app.appendChild(_racingWinnersText);
   app.appendChild(_racingWinners);
