@@ -11,6 +11,10 @@ function isCorrectCount(countInputValue) {
     return Number.isInteger(Number(countInputValue)) && countInputValue >= 1;
 }
 
+function gameStart(carNameArray, racingCount) {
+    console.log(carNameArray, racingCount);
+}
+
 // DOM
 const app = document.querySelector("#app");
 const carNameInput = document.querySelector("#car-names-input");
@@ -28,7 +32,14 @@ app.addEventListener("click", function(e) {
     }
     else if(e.target.id === "racing-count-submit") {
         if(isCorrectCount(countInput.value)) {
-            console.log(countInput.value);
+            if(!isCorrectCarName(carNameInput.value)) {
+                alert("자동차 이름을 형식에 맞춰 입력해 주세요.");
+                carNameInput.value = '';
+                carNameInput.focus();
+            }
+            else {
+                gameStart(carNameInput.value.split(','), Number(countInput.value));
+            }
         }
         else {
             alert("잘못된 입력 형식입니다. 1 이상의 정수를 입력해주세요.");
