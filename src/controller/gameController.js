@@ -57,6 +57,22 @@ export default class GameController {
   }
 
   play() {
-    console.log(this.model);
+    let totalRoundString = '';
+
+    for (let i = 0; i < this.model.count; i += 1) {
+      const roundString = this.createRoundString(this.model.cars);
+
+      totalRoundString += `${roundString} </br>`;
+    }
+
+    this.gameView.renderTotalRound(totalRoundString);
+    this.gameView.renderResult(this.model.cars);
+  }
+
+  createRoundString(cars) {
+    return cars.reduce((acc, car) => {
+      car.move();
+      return `${acc} ${car.name}: ${'-'.repeat(car.position)} </br>`;
+    }, '');
   }
 }
