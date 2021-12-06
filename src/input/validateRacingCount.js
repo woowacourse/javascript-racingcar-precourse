@@ -1,4 +1,5 @@
 import { $racingCount, ERROR_RACING_COUNT } from "../common/constants.js";
+import play from "../play/play.js";
 
 const trimRacingCount = () => $racingCount.value.trim();
 
@@ -10,7 +11,7 @@ export default function validateRacingCount(e) {
 
   const racingCount = trimRacingCount();
   if (isNaturalNumber(racingCount)) {
-    // 게임시작
+    play();
     return true;
   }
 

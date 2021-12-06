@@ -7,9 +7,9 @@ import {
   NAME_MAX_LENGTH,
 } from "../common/constants.js";
 
-const splitCarName = () => $carName.value.split(",");
+export const splitCarName = () => $carName.value.split(",");
 
-const trimCarName = (carArr) => carArr.map((el) => el.trim());
+export const trimCarName = (carArr) => carArr.map((el) => el.trim());
 
 const isCarNameLength = (carArr) => {
   let valid = true;
@@ -43,6 +43,7 @@ export default function validateCarName(e) {
     $racingCountTitle.style.visibility = "visible";
     $racingCount.style.visibility = "visible";
     $racingCountSubmit.style.visibility = "visible";
+
     return true;
   }
 
