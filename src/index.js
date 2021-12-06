@@ -61,11 +61,6 @@ class RacingGame {
     this.$racingWinners = element;
   }
 
-  createCars() {
-    const carNameArr = this.carNames.split(',');
-    return carNameArr.map((name) => new Car(name));
-  }
-
   handleSubmitCarNames(e) {
     e.preventDefault();
     const carNames = this.$carNamesInput.value;
@@ -91,6 +86,11 @@ class RacingGame {
     }
     this.racingCount = parseInt(racingCount, 10);
     this.play();
+  }
+
+  createCars() {
+    const carNameArr = this.carNames.split(',');
+    return carNameArr.map((name) => new Car(name));
   }
 
   moveCars() {
