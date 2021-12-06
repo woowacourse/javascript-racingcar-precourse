@@ -1,11 +1,14 @@
 import { checkEmpty, checkNamelength, checkNegative } from './check.js';
 import { INPUT_ERROR_MESSAGE, NEGATIVE_NUM_ERROR_MESSAGE } from './constant.js';
+import Car from './car.js';
+import { makeRandomNum } from './game.js';
 
 export default class RacingcarGame {
   constructor() {
     this.getInput();
     this.onCarSubmit();
     this.onNumSubmit();
+    makeRandomNum();
   }
 
   getInput() {
@@ -26,11 +29,13 @@ export default class RacingcarGame {
   getCarList(e) {
     e.preventDefault();
     const carList = this.$carListInput.value.split(',');
-    const valid = true;
+    let valid = true;
     if (!checkNamelength(carList, valid) || !checkEmpty(carList, valid)) {
       alert(INPUT_ERROR_MESSAGE);
       this.$carListInput.value = '';
+      return;
     }
+    this.play();
   }
 
   getRaceCount(e) {
@@ -39,8 +44,12 @@ export default class RacingcarGame {
     if (!checkNegative(raceCount)) {
       this.$raceCountInput.value = '';
       alert(NEGATIVE_NUM_ERROR_MESSAGE);
+      return;
     }
+    this.play();
   }
+
+  play() {}
 }
 
 new RacingcarGame();
