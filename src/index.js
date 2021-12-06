@@ -6,6 +6,8 @@ import {
   validateNames,
   validateCount,
   createCars,
+  createRacingResultArea,
+  proceedRacingStage,
 } from './utils.js';
 import { ERROR_MESSAGE } from './constants.js';
 
@@ -16,7 +18,7 @@ export default class Car {
   }
 
   generateRandomNumber = () => {
-    MissionUtils.Random.pickNumberInRange(0, 9);
+    return MissionUtils.Random.pickNumberInRange(0, 9);
   };
 }
 
@@ -58,6 +60,16 @@ class CarRacingGame {
     const isValid = validateCount(parsedInput);
     if (!isValid) {
       alertError(ERROR_MESSAGE.RACING_COUNT_FORM, this.$racingCountInput);
+    }
+    if (isValid) {
+      this.play(this.cars, parsedInput);
+    }
+  };
+
+  play = (cars, racingCount) => {
+    createRacingResultArea();
+    for (let i = 0; i < racingCount; i++) {
+      proceedRacingStage(cars);
     }
   };
 }

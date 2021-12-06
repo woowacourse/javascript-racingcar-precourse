@@ -45,3 +45,31 @@ export const createCars = (names) => {
   const cars = names.map((name) => new Car(name));
   return cars;
 };
+
+export const createRacingResultArea = () => {
+  const AREA_ID = 'racing-result';
+
+  const $racingResultArea = document.createElement('p');
+  $racingResultArea.id = AREA_ID;
+
+  $('#app').appendChild($racingResultArea);
+};
+
+export const proceedRacingStage = (cars) => {
+  cars.map((car) => {
+    const randomNum = car.generateRandomNumber();
+    if (randomNum >= 4) {
+      car.forwardCount++;
+    }
+    paintCurrentCar(car);
+  });
+  $('#racing-result').appendChild(document.createElement('br'));
+};
+
+export const paintCurrentCar = (car) => {
+  const CURRENT_DISTANCE = '-'.repeat(car.forwardCount);
+  const currentCarStatus = document.createTextNode(`${car.name}: ${CURRENT_DISTANCE}`);
+
+  $('#racing-result').appendChild(currentCarStatus);
+  $('#racing-result').appendChild(document.createElement('br'));
+};
