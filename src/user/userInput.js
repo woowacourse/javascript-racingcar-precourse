@@ -9,33 +9,28 @@ function Car(name) {
   this.name = name;
 }
 
-function racingCountInput(cars) {
-  cars.forEach(car => (car.count = 0));
-  $racingCountSubmit.addEventListener('click', event => {
-    event.preventDefault();
+export function getRacingCountInput() {
+  const racingCount = $racingCountInput.value;
 
-    const racingCount = $racingCountInput.value;
-
-    if (getValidateCount(Number(racingCount))) {
-      $racingCountInput.readOnly = true;
-      $racingCountSubmit.disabled = true;
-    }
-  });
+  if (getValidateCount(Number(racingCount))) {
+    $racingCountInput.readOnly = true;
+    $racingCountSubmit.disabled = true;
+    return racingCount;
+  }
+  return false;
 }
 
-function carNamesInput(event) {
-  event.preventDefault();
-
+export function getCarNamesInput() {
   const carNames = $carNamesInput.value.split(',');
 
   if (getValidateNames(carNames)) {
     $carNamesInput.readOnly = true;
     $carNamesSubmit.disabled = true;
-    const cars = carNames.map(name => new Car(name));
-    racingCountInput(cars);
-  }
-}
 
-export default function userInput() {
-  $carNamesSubmit.addEventListener('click', carNamesInput);
+    const cars = carNames.map(name => new Car(name));
+
+    cars.forEach(car => (car.count = 0));
+    return cars;
+  }
+  return false;
 }

@@ -1,7 +1,7 @@
-import playGame from './gameController.js';
+import prepareGame from './gameController.js';
 
 export default function RacingGame() {
-  playGame();
+  prepareGame();
 }
 
 new RacingGame();
