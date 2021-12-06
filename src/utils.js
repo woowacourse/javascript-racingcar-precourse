@@ -1,4 +1,4 @@
-import Car from './index.js';
+import Car from './Car.js';
 
 export const $ = (selector) => document.querySelector(selector);
 
@@ -62,7 +62,7 @@ export const proceedRacingStage = (cars) => {
   cars.map((car) => {
     const randomNum = car.generateRandomNumber();
     if (randomNum >= 4) {
-      car.forwardCount++;
+      car.moveForward();
     }
     paintCurrentCar(car);
   });
