@@ -16,6 +16,5 @@ module.exports = {
     'no-alert': 'off',
     'no-plusplus': 'off',
     'import/extensions': 'off',
-    'prettier/prettier': 'error',
   },
 };
