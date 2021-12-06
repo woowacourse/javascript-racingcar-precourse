@@ -32,6 +32,7 @@ export default class GameController {
       this.model.saveCars(carNamesInput);
     } catch (err) {
       alert(err);
+      this.gameView.resetCarNamesInput();
     }
   }
 

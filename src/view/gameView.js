@@ -6,4 +6,10 @@ export default class GameView {
 
     $racingCountInput.value = '';
   }
+
+  resetCarNamesInput() {
+    const $carNamesInput = $('#car-names-input');
+
+    $carNamesInput.value = '';
+  }
 }
