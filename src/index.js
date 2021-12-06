@@ -1,7 +1,7 @@
 import Input from './input/Input.js';
-import hideNextInput from './view/hideNextInput.js';
 import showNextInput from './view/showNextInput.js';
 import playGame from './game/playGame.js';
+import View from './view/View.js';
 
 const NAME_ERROR_MESSAGE = '입력 오류! 공백을 포함하지 않은 5자 이하 이름만 입력해주세요!';
 const REPEAT_ERROR_MESSAGE = '입력 오류! 1 이상 숫자를 입력해주세요!';
@@ -47,5 +47,5 @@ function gameEventHandler() {
   });
 }
 
-hideNextInput();
+const view = new View();
 gameEventHandler();
