@@ -1,59 +1,6 @@
 'use strict';
 
-// functions
-function gameStart(carNameArray, racingCount) {
-    const cars = generateCars(carNameArray);
-    for(let i = 0; i < racingCount; i++) {
-        playOneRoundGame(cars);
-        renderOneRoundResult(cars);
-    }
-    const winners = getWinners(cars);
-    renderWinners(winners);
-}
-
-function getWinners(cars) {
-    const maxStep = cars
-        .map(car => car.result)
-        .sort((a, b) => b.length  - a.length)[0]
-        .length;
-    return cars
-        .filter(car => car.result.length === maxStep)
-        .map(car => car.name);
-}
-
-function renderWinners(winners) {
-    const result = document.createElement('p');
-    result.innerHTML = `최종 우승자: <span id="racing-winners">${winners.join(', ')}</span>`;
-    app.appendChild(result);
-}
-
-function generateCars(carNameArray) {
-    const cars = [];
-    carNameArray.forEach(name => {
-        cars.push({name, result: ''});
-    });
-    return cars;
-}
-
-function playOneRoundGame(cars) {
-    cars.forEach(car => {
-        if(checkForwardCondition()) car.result += '-';
-    });
-}
-
-function renderOneRoundResult(cars) {
-    const roundResult = document.createElement('p');
-    cars.forEach(car => roundResult.innerHTML += `${car.name}: ${car.result}<br>`);
-    app.appendChild(roundResult);
-}
-
-function generateRandomNumber() {
-    return MissionUtils.Random.pickNumberInRange(0, 9);
-}
-
-function checkForwardCondition() {
-    return generateRandomNumber() >= 4;
-}
+import RacingCarGame from './racing-car-game.js';
 
 // event handler
 function isCorrectCarName(carNameInputValue) {
@@ -84,7 +31,10 @@ function onRacingCountSubmit() {
             carNameInput.focus();
         }
         else {
-            gameStart(carNameInput.value.split(','), Number(countInput.value));
+            const carNameArray = carNameInput.value.split(',');
+            const racingCount = Number(countInput.value);
+            const newGame = new RacingCarGame(carNameArray, racingCount, app);
+            newGame.gameStart();
         }
     }
     else {
