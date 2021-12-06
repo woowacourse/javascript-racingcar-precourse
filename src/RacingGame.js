@@ -108,6 +108,7 @@ export default class RacingGame {
     for (let i = 0; i < this.countNum; i += 1) {
       this.oneRoundgame(i); // 1 game
     }
+    this.getWinner();
   }
 
   oneRoundgame() {
@@ -123,5 +124,14 @@ export default class RacingGame {
       carResultDiv.innerHTML += `${stepResult[i]}<br>`;
     }
     this.result.div.appendChild(carResultDiv);
+  }
+
+  getWinner() {
+    const stepList = this.carList.map(car => car.step);
+    const maxStep = Math.max.apply(null, stepList);
+
+    const winnerList = this.carList.filter(car => car.step === maxStep);
+    const winnerNames = winnerList.map(winner => winner.name);
+    console.log(winnerNames);
   }
 }
