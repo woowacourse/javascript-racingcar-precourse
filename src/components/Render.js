@@ -24,12 +24,12 @@ export default class Render {
   }
 
   winner(winnerNames) {
-    const winner = document.createElement('span');
-    winner.setAttribute('id', 'racing-winners');
-    winner.innerHTML = '최종 우승자: ';
+    this.result.div.innerHTML += '최종 우승자: ';
 
+    const winnerSpan = document.createElement('span');
+    winnerSpan.setAttribute('id', 'racing-winners');
     const winnerName = winnerNames.join(', ');
-    winner.innerHTML += winnerName;
-    this.result.div.appendChild(winner);
+    winnerSpan.innerHTML += winnerName;
+    this.result.div.appendChild(winnerSpan);
   }
 }
