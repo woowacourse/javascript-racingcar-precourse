@@ -1,4 +1,8 @@
-import { MAX_NUMBER, MIN_NUMBER } from '../constants/constants.js';
+import {
+  MAX_NUMBER,
+  MIN_NUMBER,
+  POSITION_CONDITION_NUMBER,
+} from '../constants/constants.js';
 import { state } from '../index.js';
 
 export const makeNewCars = function (carNamesArray) {
@@ -19,5 +23,13 @@ export const addRandomPosition = function (racingCount) {
     for (let j = 0; j < state.carArray.length; j++) {
       state.carArray[j].position.push(getRandomNumber());
     }
+  }
+};
+
+const filterPosition = function () {
+  for (let i = 0; i < state.carArray.length; i++) {
+    state.carArray[i].position = state.carArray[i].position.filter(
+      (number) => number >= POSITION_CONDITION_NUMBER
+    );
   }
 };
