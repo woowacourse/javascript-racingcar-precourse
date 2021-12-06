@@ -12,6 +12,7 @@ export default function CarRacing() {
     carList:[]
   }
   this.start = () => {
+    drawResultContainer();
     addCarNamesEventListener();
   }
   const addCarNamesEventListener = () => {
@@ -39,6 +40,7 @@ export default function CarRacing() {
       this.gameObject.gameCount = InputCount();
       if (this.gameObject.gameCount) {
         racingCountSubmitBtn.disabled = true;
+        Play(this.gameObject);
       }
     });
   }
