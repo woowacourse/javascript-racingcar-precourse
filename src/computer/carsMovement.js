@@ -1,4 +1,5 @@
 import getRandomNumber from './numberGenerator.js';
+import printRacing from './printRacing.js';
 
 function isMoved() {
   const randomNumber = getRandomNumber();
@@ -9,23 +10,18 @@ function isMoved() {
   return false;
 }
 
-function getCarsMovement(cars) {
-  const carsMovement = [];
-
+function carsMovement(cars) {
   cars.forEach(car => {
     if (isMoved()) {
-      carsMovement.push(true);
-    } else {
-      carsMovement.push(false);
+      car.count += 1;
     }
   });
-  return carsMovement;
 }
 
 export default function moveCars(cars, racingCount) {
   let i = 0;
   for (i; i < racingCount; i += 1) {
-    const carsMovement = getCarsMovement(cars);
-    console.log(carsMovement);
+    carsMovement(cars);
+    printRacing(cars);
   }
 }
