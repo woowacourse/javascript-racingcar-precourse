@@ -1,20 +1,19 @@
 import Car from './car.js';
 import { checkNameValidation, checkCountValidation } from './validation.js';
 import { NAME_INPUT_ERROR, COUNT_INPUT_ERROR } from './constants.js';
+import Layout from './layout.js';
 
 class RacingGame {
   constructor() {
-    this.countForm = document.getElementById('count-form');
-    this.countH4 = document.getElementById('count-h4');
-    this.resultH4 = document.getElementById('result-h4');
-    this.app = document.getElementById('app');
     this.cars = [];
     this.count = 0;
-    this.hideForms();
+    this.winners = '';
+    this.layout = new Layout;
     this.init();
   }
 
   init() {
+    this.layout.hideForms();
     this.nameButtonHandler();
     this.countButtonHandler();
   }
@@ -28,7 +27,7 @@ class RacingGame {
       this.cars = [];
       names = userInput.value.split(',');
       names.forEach((element) => {
-        this.cars.push(new Car(element, 0));
+        this.cars.push(new Car(element));
       });
       this.checkName(names);
     });
@@ -36,26 +35,15 @@ class RacingGame {
 
   checkName(names) {
     if (checkNameValidation(names)) {
-      this.showCountForm();
+      this.layout.showCountForm();
     } else {
       this.cars = [];
       alert(NAME_INPUT_ERROR);
     }
   }
 
-  hideForms() {
-    this.countForm.style.visibility = 'hidden';
-    this.countH4.style.visibility = 'hidden';
-    this.resultH4.style.visibility = 'hidden';
-  }
-
-  showCountForm() {
-    this.countForm.style.visibility = 'visible';
-    this.countH4.style.visibility = 'visible';
-  }
-
   countButtonHandler() {
-    const countSubmitButton = document.getElementById('racing-count-button');
+    const countSubmitButton = document.getElementById('racing-count-submit');
     const userInput = document.getElementById('racing-count-input');
     countSubmitButton.addEventListener('click', (e) => {
       e.preventDefault();
@@ -68,16 +56,17 @@ class RacingGame {
     if (!checkCountValidation(this.count)) {
       alert(COUNT_INPUT_ERROR);
     } else {
-      this.doCount();
+      this.playGame();
     }
   }
 
-  doCount() {
-    this.resultH4.style.visibility = 'visible';
+  playGame() {
+    this.layout.showResultH4();
     for (let i = 0; i < this.count; i++) {
       this.getScores();
     }
-    this.printResult();
+    this.getWinners();
+    this.layout.printWinners(this.winners);
   }
 
   getScores() {
@@ -88,30 +77,19 @@ class RacingGame {
       }
       currentScore += `${e.name}: ${e.score} <br/>`;
     });
-    this.printScores(`${currentScore}<br/>`);
+    this.layout.printScores(`${currentScore}<br/>`);
   }
 
-  printScores(currentScore) {
-    const newDiv = document.createElement('div');
-    newDiv.innerHTML = currentScore;
-    this.app.appendChild(newDiv);
-  }
-
-  printResult() {
-    let winners = '';
+  getWinners() {
     let maxScore = 0;
     this.cars.forEach((e) => {
       if (maxScore === e.score.length) {
-        winners += `, ${e.name}`;
+        this.winners += `, ${e.name}`;
       } else if (maxScore <= e.score.length) {
         maxScore = e.score.length;
-        winners = e.name;
+        this.winners = e.name;
       }
     });
-    const winnerText = document.createElement('span');
-    winnerText.setAttribute('id', 'racing-winners');
-    winnerText.innerHTML = `최종 우숭자: ${winners}`;
-    this.app.appendChild(winnerText);
   }
 }
 
