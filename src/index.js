@@ -36,7 +36,9 @@ class RacingGame {
 
   render() {
     const racingResultText =
-      this.racingCars.map((car) => `<div>${car.getName()}</div>`).join('') + '<br/>';
+      this.racingCars
+        .map((car) => `<div>${car.getName()}: ${'-'.repeat(car.getDistance())}</div>`)
+        .join('') + '<br/>';
     $('#racing-result-heading').insertAdjacentHTML('beforeend', racingResultText);
   }
 
