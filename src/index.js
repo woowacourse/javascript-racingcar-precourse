@@ -10,7 +10,6 @@ class Game {
     this.result = [];
 
     // DOMs
-
     this.app = document.querySelector("#app");
 
     this.carInput = document.querySelector("#car-names-input");
@@ -33,13 +32,14 @@ class Game {
     );
   }
 
-  hideShowRacingCountSection(type) {
+  // hide and show HTML sections
+  toggleRacingCountSection(type) {
     this.racingCountTitle.style.display = type;
     this.racingInput.style.display = type;
     this.racingSubmit.style.display = type;
   }
 
-  hideShowResultSection(type) {
+  toggleResultSection(type) {
     this.resultTitle.style.display = type;
     const resultSection = document.querySelector("#result-section");
     if (resultSection) resultSection.style.display = type;
@@ -50,11 +50,11 @@ class Game {
     const carInputIsValid = validateCarInput(this.carInput.value);
     if (carInputIsValid) {
       this.registerCars(this.carInput.value);
-      this.hideShowRacingCountSection("");
+      this.toggleRacingCountSection("");
     } else {
       alert("입력 값이 유효하지 않습니다."); // eslint-disable-line no-alert
-      this.hideShowRacingCountSection("none");
-      this.hideShowResultSection("none");
+      this.toggleRacingCountSection("none");
+      this.toggleResultSection("none");
     }
   }
 
@@ -74,7 +74,7 @@ class Game {
     this.playGame(racingCount);
 
     // show result
-    this.hideShowResultSection("");
+    this.toggleResultSection("");
     const resultSection = this.createResultSection();
     this.app.appendChild(resultSection);
   }
@@ -88,7 +88,7 @@ class Game {
       this.proceedGame(racingCount);
     } else {
       alert("입력 값이 유효하지 않습니다."); // eslint-disable-line no-alert
-      this.hideShowResultSection("none");
+      this.toggleResultSection("none");
     }
   }
 
@@ -127,7 +127,7 @@ class Game {
       ...Object.values(finalResult).map((r) => r.length)
     );
 
-    // filter winners
+    // filter winners with max count
     const winners = Object.keys(finalResult).filter(
       (c) => finalResult[c].length === maxCount
     );
@@ -155,5 +155,5 @@ class Game {
 
 const game = new Game();
 
-game.hideShowRacingCountSection("none");
-game.hideShowResultSection("none");
+game.toggleRacingCountSection("none");
+game.toggleResultSection("none");
