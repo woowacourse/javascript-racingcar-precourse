@@ -1,4 +1,4 @@
-import { $ } from '../dom.js';
+import { $ } from '../dom/dom.js';
 
 function checkInputCarEmpty(carNames) {
   if (carNames.length === 0) {
