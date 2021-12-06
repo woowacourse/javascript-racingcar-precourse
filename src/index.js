@@ -10,9 +10,7 @@ export default function RacingCarGame() {
     $Car_names_submit.addEventListener('click', (e) => {
         e.preventDefault();
         const userInputCarNames = $Car_names_input.value;
-        //const arr = splice_names(userInputCarNames);
         carArray = splice_names(userInputCarNames);
-        console.log(carArray);
         $Racing_count_submit.style.display = '';
         $Racing_count_input.style.display = '';
     });
@@ -20,9 +18,7 @@ export default function RacingCarGame() {
     $Racing_count_submit.addEventListener('click', (e) => {
         e.preventDefault();
         const userInputTryNumbers = $Racing_count_input.value;
-        // const TryNumbers = check_numbers(userInputTryNumbers);
         tryNumbs = check_numbers(userInputTryNumbers);
-        console.log(carArray, tryNumbs);
         startGame(carArray, tryNumbs);
     });
 }
