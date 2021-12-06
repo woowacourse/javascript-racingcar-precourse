@@ -1,17 +1,16 @@
-export const isEveryStringLessOrEqualsFive = namesArray => {
-  return namesArray.every(name => name.length <= 5);
+import { FORWARD_CHECK_NUMBER, RANGE, WHITESPACE } from './constants.js';
+
+export const hasSomeStringIncludeSpace = (namesArray) => {
+  return namesArray.some((name) => name.includes(WHITESPACE));
 };
-export const hasSomeStringIncludeSpace = namesArray => {
-  return namesArray.some(name => name.includes(' '));
+export const hasSomeStringLengthGreaterThanFive = (namesArray) => {
+  return namesArray.some((name) => name.length > FORWARD_CHECK_NUMBER);
 };
-export const hasSomeStringLengthGreaterThanFive = namesArray => {
-  return namesArray.some(name => name.length > 5);
-};
-export const hasStringDuplicated = namesArray => {
+export const hasStringDuplicated = (namesArray) => {
   return new Set(namesArray).size !== namesArray.length;
 };
 export const getRandomNumber = () => {
-  return window.MissionUtils.Random.pickNumberInRange(0, 9);
+  return window.MissionUtils.Random.pickNumberInRange(RANGE.START, RANGE.FINISH);
 };
 export const generateFormHandler = ({ e, executor }) => {
   e.preventDefault();
