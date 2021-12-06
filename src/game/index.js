@@ -4,6 +4,7 @@ import {displayWinnerHTML, displayCurrentHTML} from './display.js';
 export default class CarGame {
 
     constructor(){
+        this.isFinished = false;
         this.cars = [];
     }
 
@@ -75,5 +76,6 @@ export default class CarGame {
         }
 
         displayWinnerHTML(this.findWinner(this.cars));
+        this.isFinished = true;
     }
 }

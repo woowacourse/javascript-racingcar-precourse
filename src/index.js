@@ -18,5 +18,7 @@ racingCountSubmit.addEventListener('click', e =>{
     e.preventDefault();
     let userInput = document.getElementById('racing-count-input').value;
 
-    game.receiveCount(userInput);
+    if(!game.isFinished){
+        game.receiveCount(userInput);
+    }
 });
