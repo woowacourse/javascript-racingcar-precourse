@@ -16,7 +16,6 @@ const isCarNameLength = (carArr) => {
   carArr.forEach((el) => {
     if (el.length > NAME_MAX_LENGTH) {
       valid = false;
-      return false;
     }
   });
 
@@ -28,7 +27,6 @@ const isCarNameBlank = (carArr) => {
   carArr.forEach((el) => {
     if (el === "") {
       valid = false;
-      return false;
     }
   });
 

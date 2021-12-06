@@ -14,5 +14,7 @@ module.exports = {
         endOfLine: "auto",
       },
     ],
+    "import/extensions": ["error", "ignorePackages", { js: "always" }],
+    "no-alert": "off",
   },
 };

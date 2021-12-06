@@ -27,13 +27,14 @@ const carMoveAndPrint = (carObject) => {
 };
 
 const sortCarObject = (carObject) => {
-  return carObject.sort(function (a, b) {
+  return carObject.sort((a, b) => {
     if (a.position > b.position) {
       return -1;
     }
     return 1;
   });
 };
+
 const showResult = (carObject) => {
   const sortedCars = sortCarObject(carObject);
   $winner.innerHTML = "";
