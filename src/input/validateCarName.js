@@ -46,6 +46,7 @@ export default function validateCarName(e) {
     return true;
   }
 
+  $carName.value = "";
   $carName.focus();
   alert(ERROR_CAR_NAME);
 
