@@ -1,7 +1,7 @@
 import { extractNames, isCarEnough, isNameTooLong } from './getNameInput.js';
 import { isTrialEnough } from './getNumberInput.js';
 import { Car } from './car.js';
-import { printResult } from './printResult.js';
+import { printResult, printRacing, printFinalWinnerIs } from './printResult.js';
 
 export default function racingCarGame() {
   const nameSubmitButton = document.getElementById('car-names-submit');
@@ -39,12 +39,14 @@ export default function racingCarGame() {
     }
     play();
     chooseWinner();
+    printFinalWinnerIs();
     printResult(winners);
   }
 
   function play() {
     for (let i = 0; i < racingCount; i++) {
       playersMoveByCount();
+      printRacing(players);
     }
   }
 
