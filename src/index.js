@@ -35,13 +35,6 @@ class RacingGame {
     this.renderWinnerText(this.getWinner());
   }
 
-  renderWinnerText(winnerList) {
-    const winner = winnerList.join(', ');
-    const winnerText = `최종 우승자: <span id="racing-winners">${winner}</span>`;
-
-    $('#racing-result-heading').insertAdjacentHTML('beforeend', winnerText);
-  }
-
   getWinner() {
     const maxDistance = Math.max(...this.racingCars.map((car) => car.getDistance()));
 
@@ -54,6 +47,13 @@ class RacingGame {
     }, []);
   }
 
+  renderWinnerText(winnerList) {
+    const winner = winnerList.join(', ');
+    const winnerText = `최종 우승자: <span id="racing-winners">${winner}</span>`;
+
+    $('#racing-result-heading').insertAdjacentHTML('beforeend', winnerText);
+  }
+
   render() {
     const racingResultText =
       this.racingCars
@@ -62,6 +62,7 @@ class RacingGame {
     $('#racing-result-heading').insertAdjacentHTML('beforeend', racingResultText);
   }
 
+  // 이벤트 함수
   preventFormSubmitEvent() {
     $('#car-names-form').addEventListener('submit', (e) => e.preventDefault());
     $('#racing-count-form').addEventListener('submit', (e) => e.preventDefault());

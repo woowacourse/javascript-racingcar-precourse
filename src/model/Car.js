@@ -1,6 +1,5 @@
-const getRandomNumber = () => {
-  return MissionUtils.Random.pickNumberInRange(0, 9);
-};
+import getRandomNumber from '../utils/getRandomNumber.js';
+
 class Car {
   constructor(name) {
     this.name = name;
