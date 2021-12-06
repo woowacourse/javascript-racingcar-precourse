@@ -9,10 +9,18 @@ class RacingCountForm {
   }
 
   validateCarNames(names) {
-    if (!CarNameValidator.checkAtLeastOneCar(names)) return alert(ERROR.CAR_NAME_REQUIRED);
-    if (!CarNameValidator.checkCarNameDuplicated(names)) return alert(ERROR.CAR_NAME_DUPLICATED);
-    if (!CarNameValidator.checkCarNameUnderFiveLetter(names))
+    if (!CarNameValidator.checkAtLeastOneCar(names)) {
+      return alert(ERROR.CAR_NAME_REQUIRED);
+    }
+
+    if (!CarNameValidator.checkCarNameDuplicated(names)) {
+      return alert(ERROR.CAR_NAME_DUPLICATED);
+    }
+
+    if (!CarNameValidator.checkCarNameUnderFiveLetter(names)) {
       return alert(ERROR.CAR_NAME_HAVE_TO_UNDER_FIVE_LETTER);
+    }
+
     return true;
   }
 

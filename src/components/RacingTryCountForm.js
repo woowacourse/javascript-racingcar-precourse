@@ -24,10 +24,14 @@ class RacingTryCountForm {
   }
 
   validateTryCount() {
-    if (!TryCountValidator.checkExistTryCount(this.$tryCount))
+    if (!TryCountValidator.checkExistTryCount(this.$tryCount)) {
       return alert(ERROR.TRY_COUNT_REQUIRED);
-    if (!TryCountValidator.checkTryCountLessThanZero(this.$tryCount))
+    }
+
+    if (!TryCountValidator.checkTryCountLessThanZero(this.$tryCount)) {
       return alert(ERROR.TRY_COUNT_HAVE_TO_OVER_ZERO);
+    }
+
     return true;
   }
 
