@@ -1,4 +1,4 @@
-import { INPUT_GUIDE_MESSAGE, INPUT_GUIDE_COLOR } from './constants/index.js';
+import InputGuide from './InputGuide.js';
 
 export default class Render {
   constructor() {
@@ -13,8 +13,8 @@ export default class Render {
   }
 
   initGuides() {
-    this.carNamesGuide = document.querySelector('#car-names-guide');
-    this.racingCountGuide = document.querySelector('#racing-count-guide');
+    this.carNamesGuide = new InputGuide('#car-names-guide');
+    this.racingCountGuide = new InputGuide('#racing-count-guide');
     this.carNamesGuideUnverified();
     this.racingCountGuideUnverified();
   }
@@ -32,24 +32,20 @@ export default class Render {
     this.resultTitle.hidden = false;
   }
 
-  racingCountGuideVerified() {
-    this.racingCountGuide.innerText = INPUT_GUIDE_MESSAGE.VERIFIED;
-    this.racingCountGuide.setAttribute('style', `color: ${INPUT_GUIDE_COLOR.VERIFIED}`);
-  }
-
-  racingCountGuideUnverified() {
-    this.racingCountGuide.innerText = INPUT_GUIDE_MESSAGE.UNVERIFIED;
-    this.racingCountGuide.setAttribute('style', `color: ${INPUT_GUIDE_COLOR.UNVERIFIED}`);
-  }
-
   carNamesGuideVerified() {
-    this.carNamesGuide.innerText = INPUT_GUIDE_MESSAGE.VERIFIED;
-    this.carNamesGuide.setAttribute('style', `color: ${INPUT_GUIDE_COLOR.VERIFIED}`);
+    this.carNamesGuide.setVerified();
   }
 
   carNamesGuideUnverified() {
-    this.carNamesGuide.innerText = INPUT_GUIDE_MESSAGE.UNVERIFIED;
-    this.carNamesGuide.setAttribute('style', `color: ${INPUT_GUIDE_COLOR.UNVERIFIED}`);
+    this.carNamesGuide.setUnverified();
+  }
+
+  racingCountGuideVerified() {
+    this.racingCountGuide.setVerified();
+  }
+
+  racingCountGuideUnverified() {
+    this.racingCountGuide.setUnverified();
   }
 
   racingState(round, states) {
