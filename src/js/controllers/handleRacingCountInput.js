@@ -1,9 +1,9 @@
 import $ from '../utils/dom.js';
+import playGame from './playGame.js';
 import { COUNT, ERROR } from '../utils/constants.js';
 import { disableCountInput } from '../views/disableInput.js';
 import alertInputError from '../views/alertInputError.js';
 import resetInput from '../views/resetInput.js';
-import playGame from './playGame.js';
 
 const isValidCountInput = countInput => {
   if (countInput === '') {

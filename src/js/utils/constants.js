@@ -2,8 +2,8 @@ export const CAR = {
   MIN_INPUT: 1,
   MAX_LENGTH: 5,
   CAN_MOVE_NUM: 4,
-  FIRST_IN_NUM: 0,
-  LAST_IN_NUM: 9,
+  MIN_IN_NUM: 0,
+  MAX_IN_NUM: 9,
   MAX_SCORE_IDX: 0,
 };
 
