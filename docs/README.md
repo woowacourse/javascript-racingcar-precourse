@@ -55,24 +55,26 @@
 - [x] 자동차 경기 결과 클래스 분리
 - [x] 최종 우승자 클래스 분리
 - [x] 상수 값들을 따로 분리해서 저장 (`constants.js` 생성)
-- [ ] 자동차 컨트롤러 생성해서 자동차 객체들을 관리하기
+- [x] 자동차 컨트롤러 생성해서 자동차 객체들을 관리하기
 
 ## 📌 폴더 구조
 
 ```
 📦src
-┣ 📂components
-┃ ┣ 📜Car.js
-┃ ┣ 📜RacingCarNameForm.js
-┃ ┣ 📜RacingResult.js
-┃ ┣ 📜RacingTryCountForm.js
-┃ ┗ 📜RacingWinner.js
-┣ 📂utils
-┃ ┣ 📜dom.js
-┃ ┗ 📜index.js
-┣ 📂validators
-┃ ┣ 📜CarNameValidator.js
-┃ ┗ 📜TryCountValidator.js
-┣ 📜constants.js
-┗ 📜index.js
+ ┣ 📂components
+ ┃ ┣ 📜Car.js
+ ┃ ┣ 📜RacingCarNameForm.js
+ ┃ ┣ 📜RacingResult.js
+ ┃ ┣ 📜RacingTryCountForm.js
+ ┃ ┗ 📜RacingWinner.js
+ ┣ 📂controllers
+ ┃ ┗ 📜Car.js
+ ┣ 📂utils
+ ┃ ┣ 📜dom.js
+ ┃ ┗ 📜index.js
+ ┣ 📂validators
+ ┃ ┣ 📜CarNameValidator.js
+ ┃ ┗ 📜TryCountValidator.js
+ ┣ 📜constants.js
+ ┗ 📜index.js
 ```
