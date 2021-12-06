@@ -5,6 +5,7 @@ import {
   hasSomeStringIncludeSpace,
   hasSomeStringLengthGreaterThanFive,
   hasStringDuplicated,
+  isNegativeNumberOrZero,
 } from './lib/utils.js';
 class Car {
   constructor(name, id) {
@@ -24,14 +25,14 @@ class Car {
 }
 class CarGameUtil {
   static makeCars(namesArray) {
-    if (CarGameUtil.isValidate(namesArray)) {
+    if (CarGameUtil.isValidCarNames(namesArray)) {
       return namesArray.map((name, index) => new Car(name, index));
     }
 
     return null;
   }
 
-  static isValidate(namesArray) {
+  static isValidCarNames(namesArray) {
     if (hasSomeStringIncludeSpace(namesArray)) {
       throw new Error('자동차 이름에 공백은 포함될 수 없습니다.');
     }
@@ -40,6 +41,14 @@ class CarGameUtil {
     }
     if (hasStringDuplicated(namesArray)) {
       throw new Error('자동차 이름은 중복될 수 없습니다.');
+    }
+
+    return true;
+  }
+
+  static isValidNumber(number) {
+    if (isNegativeNumberOrZero(number)) {
+      throw new Error('0보다 큰 수를 입력해주세요');
     }
 
     return true;
@@ -80,16 +89,18 @@ class CarGameLogic {
 
   makeResultTemplate(number) {
     let template = PLAIN_STRING;
-    for (let i = 0; i < number; i = i + 1) {
-      this.simulatePerNumberOfTimes();
-      // simulate 이후 자동차를 기준으로 템플릿을 만들어 변수에 합친다.
-      template = `${template}${this.makeTemplatePerSimulate()}<br>`;
+    if (CarGameUtil.isValidNumber(number)) {
+      for (let i = 0; i < number; i = i + 1) {
+        this.simulatePerNumberOfTimes();
+        // simulate 이후 자동차를 기준으로 템플릿을 만들어 변수에 합친다.
+        template = `${template}${this.makeTemplatePerSimulate()}<br>`;
+      }
+      const winnerArray = this.getWinner();
+      template = `${template}
+      최종 우승자: <span id="${DOM.RACING_WINNERS}">${winnerArray
+        .map((car) => car.name)
+        .join(SEPERATOR)}</span>`;
     }
-    const winnerArray = this.getWinner();
-    template = `${template}
-    최종 우승자: <span id="${DOM.RACING_WINNERS}">${winnerArray
-      .map((car) => car.name)
-      .join(SEPERATOR)}</span>`;
 
     return template;
   }

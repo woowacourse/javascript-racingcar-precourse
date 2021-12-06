@@ -9,6 +9,9 @@ export const hasSomeStringLengthGreaterThanFive = (namesArray) => {
 export const hasStringDuplicated = (namesArray) => {
   return new Set(namesArray).size !== namesArray.length;
 };
+export const isNegativeNumberOrZero = (number) => {
+  return number <= 0;
+};
 export const getRandomNumber = () => {
   return window.MissionUtils.Random.pickNumberInRange(RANGE.START, RANGE.FINISH);
 };
