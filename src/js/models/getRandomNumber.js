@@ -1,4 +1,4 @@
-import { CAR } from './constants.js';
+import { CAR } from '../utils/constants.js';
 
 const getRandomNumber = () => {
   return MissionUtils.Random.pickNumberInRange(CAR.FIRST_IN_NUM, CAR.LAST_IN_NUM);

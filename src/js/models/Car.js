@@ -1,5 +1,5 @@
 import { CAR } from '../utils/constants.js';
-import getRandomNumber from '../utils/getRandomNumber.js';
+import getRandomNumber from './getRandomNumber.js';
 
 export default function Car(name) {
   this.name = name;
