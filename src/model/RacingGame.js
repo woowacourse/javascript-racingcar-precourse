@@ -1,4 +1,5 @@
 import Car from './Car.js';
+import splitWithoutMargin from '../utils/split.js';
 
 export default class RacingGame {
   constructor() {
@@ -10,7 +11,7 @@ export default class RacingGame {
   }
 
   setRacer(names) {
-    const racerList = names.split(',');
+    const racerList = splitWithoutMargin(names, ',');
 
     racerList.forEach((name) => {
       const carInstance = new Car(name);

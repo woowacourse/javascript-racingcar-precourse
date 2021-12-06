@@ -5,15 +5,7 @@ import {
   isLengthLimit,
   isUniqueWord,
 } from '../utils/validator.js';
-
-const splitWithoutMargin = (value, splitWord) => {
-  const result = value.split(splitWord);
-  result.forEach((item, index) => {
-    result[index] = item.trim();
-  });
-
-  return result;
-};
+import splitWithoutMargin from '../utils/split.js';
 
 export const checkNameVaild = (userInput) => {
   if (isWithComma(userInput) === false) {

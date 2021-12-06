@@ -6,7 +6,7 @@ const getMoveCount = (logs) => logs.reduce((p, c) => (c ? p + 1 : p), 0);
 
 export default class Car {
   constructor(name) {
-    this.name = name.trim();
+    this.name = name;
     this.logs = [];
   }
 
@@ -14,8 +14,8 @@ export default class Car {
     let score = 0;
     this.logs = Array.from({ length: count }, () => {
       const isMoved = isTryMove();
-
       if (isMoved === true) score += 1;
+
       return isMoved;
     });
 
