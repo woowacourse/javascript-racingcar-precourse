@@ -5,8 +5,13 @@ import {
   PLAIN_STRING,
   SEPERATOR,
 } from './lib/constants.js';
-import { generateFormHandler, getRandomNumber } from './lib/utils.js';
-import { isEveryStringLessOrEqualsFive } from './lib/utils.js';
+import {
+  generateFormHandler,
+  getRandomNumber,
+  hasSomeStringIncludeSpace,
+  hasSomeStringLengthGreaterThanFive,
+  hasStringDuplicated,
+} from './lib/utils.js';
 class Car {
   constructor(name, id) {
     this.id = id;
@@ -28,11 +33,22 @@ class CarGameUtil {
     if (CarGameUtil.isValidate(namesArray)) {
       return namesArray.map((name, index) => new Car(name, index));
     }
-    throw new Error('자동차 이름을 5자 이하로 콤마로 구분하여 입력해주세요.');
+
+    return null;
   }
 
   static isValidate(namesArray) {
-    return isEveryStringLessOrEqualsFive(namesArray);
+    if (hasSomeStringIncludeSpace(namesArray)) {
+      throw new Error('자동차 이름에 공백은 포함될 수 없습니다.');
+    }
+    if (hasSomeStringLengthGreaterThanFive(namesArray)) {
+      throw new Error('자동차 이름은 5자 이하입니다.');
+    }
+    if (hasStringDuplicated(namesArray)) {
+      throw new Error('자동차 이름은 중복될 수 없습니다.');
+    }
+
+    return true;
   }
 
   static isForward() {
