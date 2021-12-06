@@ -7,6 +7,7 @@ class RacingGame {
     this.countForm = document.getElementById('count-form');
     this.countH4 = document.getElementById('count-h4');
     this.resultH4 = document.getElementById('result-h4');
+    this.app = document.getElementById('app');
     this.cars = [];
     this.count = 0;
     this.hideForms();
@@ -19,8 +20,8 @@ class RacingGame {
   }
 
   nameButtonHandler() {
-    const nameSubmitButton = document.getElementById('name-form-button');
-    const userInput = document.getElementById('name-form-input');
+    const nameSubmitButton = document.getElementById('car-names-submit');
+    const userInput = document.getElementById('car-names-input');
     let names;
     nameSubmitButton.addEventListener('click', (e) => {
       e.preventDefault();
@@ -54,8 +55,8 @@ class RacingGame {
   }
 
   countButtonHandler() {
-    const countSubmitButton = document.getElementById('count-form-button');
-    const userInput = document.getElementById('count-form-input');
+    const countSubmitButton = document.getElementById('racing-count-button');
+    const userInput = document.getElementById('racing-count-input');
     countSubmitButton.addEventListener('click', (e) => {
       e.preventDefault();
       this.count = userInput.value;
@@ -67,24 +68,51 @@ class RacingGame {
     if (!checkCountValidation(this.count)) {
       alert(COUNT_INPUT_ERROR);
     } else {
-      console.log(this.cars);
       this.doCount();
     }
   }
 
-  getScores() {
-    this.cars.forEach((e) => {
-      if (MissionUtils.Random.pickNumberInRange(1, 9) >= 4) {
-        e.score += 1;
-      }
-    });
-  }
-
   doCount() {
+    this.resultH4.style.visibility = 'visible';
     for (let i = 0; i < this.count; i++) {
-      console.log(`${i}번째 게임`);
       this.getScores();
     }
+    this.printResult();
+  }
+
+  getScores() {
+    let currentScore = '';
+    this.cars.forEach((e) => {
+      if (MissionUtils.Random.pickNumberInRange(1, 9) >= 4) {
+        e.score += '-';
+      }
+      currentScore += `${e.name}: ${e.score} <br/>`;
+    });
+    this.printScores(`${currentScore}<br/>`);
+  }
+
+  printScores(currentScore) {
+    const newDiv = document.createElement('div');
+    newDiv.innerHTML = currentScore;
+    this.app.appendChild(newDiv);
+  }
+
+  printResult() {
+    let winners = '';
+    let maxScore = 0;
+    this.cars.forEach((e) => {
+      if (maxScore === e.score.length) {
+        winners += `, ${e.name}`;
+      } else if (maxScore <= e.score.length) {
+        maxScore = e.score.length;
+        winners = e.name;
+      }
+    });
+    const winnerText = document.createElement('span');
+    winnerText.setAttribute('id', 'racing-winners');
+    winnerText.innerHTML = `최종 우숭자: ${winners}`;
+    this.app.appendChild(winnerText);
   }
 }
+
 new RacingGame();
