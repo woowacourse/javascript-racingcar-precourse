@@ -15,6 +15,11 @@ export default function RacingCarGame(app) {
     console.log(this.state.count);
   };
 
+  const hideCountFormAndResult = () => {
+    this.racingCountForm.hide();
+    this.racingResult.hide();
+  };
+
   const racing = () => {
     for (let i = 0; i < this.state.count; i++) {
       this.state.cars.forEach((car) => car.move());
@@ -41,7 +46,7 @@ export default function RacingCarGame(app) {
   };
 
   this.render = () => {
-    this.carNamesForm = CarNamesForm(setCars);
+    this.carNamesForm = CarNamesForm(setCars, hideCountFormAndResult);
     this.racingCountForm = new RacingCountForm(setCount, racing);
     this.racingResult = new RacingResult(app);
   };

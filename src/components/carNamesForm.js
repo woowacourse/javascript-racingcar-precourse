@@ -2,7 +2,7 @@ import Car from '../car.js';
 import { isValidCarName } from '../utils/validation.js';
 import { initInput } from '../utils/utils.js';
 
-export default function CarNamesForm(setCars) {
+export default function CarNamesForm(setCars, hide) {
   const input = document.getElementById('car-names-input');
   const submitButton = document.getElementById('car-names-submit');
 
@@ -19,6 +19,7 @@ export default function CarNamesForm(setCars) {
 
     if (!isValidCarName(carNameList).isValid) {
       alert(isValidCarName(carNameList).errorMessage);
+      hide();
       initInput(input);
       return;
     }
