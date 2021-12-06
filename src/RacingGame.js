@@ -19,26 +19,26 @@ export default class RacingGame {
 
   onSubmitCarNames(input) {
     const carNames = input.value.split(',');
-    this.render.resetResult();
-
     if (!isValidCarNames(carNames)) {
+      this.render.carNamesGuideUnverified();
+      this.render.resetResult();
       this.setCarNames([]);
       return;
     }
-
+    this.render.carNamesGuideVerified();
     this.setCarNames(carNames);
     if (this.isReadyForGame()) this.play();
   }
 
   onSubmitRacingCount(input) {
     const racingCount = Number(input.value);
-    this.render.resetResult();
-
     if (!isValidRacingCount(racingCount)) {
+      this.render.racingCountGuideUnverified();
+      this.render.resetResult();
       this.setCount(0);
       return;
     }
-
+    this.render.racingCountGuideVerified();
     this.setCount(racingCount);
     if (this.isReadyForGame()) this.play();
   }
@@ -48,6 +48,7 @@ export default class RacingGame {
   }
 
   play() {
+    this.render.resetResult();
     this.cars = this.carNames.map((name) => new Car(name));
 
     this.render.showResultTitle();

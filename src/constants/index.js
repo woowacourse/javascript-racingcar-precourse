@@ -19,6 +19,17 @@ const ERROR_MESSAGE = {
   MIN_OF_RACING_COUNT: `레이싱 횟수는 ${MIN_OF_RACING_COUNT}번 이상이어야 합니다.`,
 };
 
+// input guide
+const INPUT_GUIDE_MESSAGE = {
+  UNVERIFIED: '확인 필요',
+  VERIFIED: '확인 완료',
+};
+
+const INPUT_GUIDE_COLOR = {
+  UNVERIFIED: 'red',
+  VERIFIED: 'green',
+};
+
 export {
   // car
   MIN_OF_RANDOM,
@@ -31,6 +42,10 @@ export {
   MAX_LENGTH_OF_CAR_NAME,
   MIN_OF_RACING_COUNT,
 
-  // Error Message
+  // error message
   ERROR_MESSAGE,
+
+  // input guide
+  INPUT_GUIDE_MESSAGE,
+  INPUT_GUIDE_COLOR,
 };

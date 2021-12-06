@@ -17,7 +17,18 @@ function createResultContainer() {
   document.querySelector('#app').appendChild(resultContainer);
 }
 
+function createInputGuide() {
+  const [carNamesForm, racingCountForm] = document.querySelectorAll('form');
+  const carNamesGuide = document.createElement('span');
+  const racingCountGuide = document.createElement('span');
+  carNamesGuide.setAttribute('id', 'car-names-guide');
+  racingCountGuide.setAttribute('id', 'racing-count-guide');
+  carNamesForm.appendChild(carNamesGuide);
+  racingCountForm.appendChild(racingCountGuide);
+}
+
 export default function initHTML() {
   initSelectors();
   createResultContainer();
+  createInputGuide();
 }
