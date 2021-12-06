@@ -16,16 +16,6 @@ const NO_INPUT_ERROR_MESSAGE = '입력 오류! 자동차 이름과 반복할 횟
 const DISPLAY_NONE = 'none';
 const DISPLAY_BLOCK = 'block';
 
-function hideNextHtml($countHead, $countForm, $result) {
-  const $countHeadCopy = $countHead;
-  const $countFormCopy = $countForm;
-  const $resultCopy = $result;
-
-  $countHeadCopy.style.display = DISPLAY_NONE;
-  $countFormCopy.style.display = DISPLAY_NONE;
-  $resultCopy.style.display = DISPLAY_NONE;
-}
-
 function resetView($appDiv) {
   const $resultContainer = document.querySelector(RESULT_CONTAINER_ID);
 
@@ -41,8 +31,12 @@ export default class View {
     this.$result = document.querySelector(RESULT_ID);
     this.$carNamesInput = document.querySelector(CAR_NAMES_INPUT_ID);
     this.$appDiv = document.querySelector(APP_ID);
+  }
 
-    hideNextHtml(this.$countHead, this.$countForm, this.$result);
+  hideNextHtml() {
+    this.$countHead.style.display = DISPLAY_NONE;
+    this.$countForm.style.display = DISPLAY_NONE;
+    this.$result.style.display = DISPLAY_NONE;
   }
 
   alertError(error) {
