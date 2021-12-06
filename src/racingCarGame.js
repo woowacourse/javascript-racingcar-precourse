@@ -15,7 +15,8 @@ export default function RacingCarGame(app) {
 
   const setCount = (racingCount) => {
     this.state.count = racingCount;
-    console.log(this.state.count);
+    this.racingResult.show();
+    this.racingResult.clear();
   };
 
   const hideCountFormAndResult = () => {
@@ -24,7 +25,13 @@ export default function RacingCarGame(app) {
     this.racingResult.clear();
   };
 
+  const initDistance = () => {
+    this.state.cars.forEach((car) => car.init());
+  };
+
   const racing = () => {
+    initDistance();
+
     for (let i = 0; i < this.state.count; i++) {
       this.state.cars.forEach((car) => car.move());
 

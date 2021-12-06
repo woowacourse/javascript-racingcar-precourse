@@ -32,7 +32,7 @@ export default function RacingCountForm(setCount, racing) {
 
     if (!isValidRacingCount(racingCount)) {
       alert(`${ERROR_MESSAGE.RACING_COUNT}`);
-      initInput(input);
+      initInput(this.input);
       return;
     }
 

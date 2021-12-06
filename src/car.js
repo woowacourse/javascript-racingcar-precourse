@@ -4,7 +4,7 @@ export default function Car(name) {
   this.name = name;
   this.distance = '';
 
-  this.move = function () {
+  this.move = () => {
     const randomNumber = MissionUtils.Random.pickNumberInRange(
       RANDOM.MIN,
       RANDOM.MAX
@@ -13,5 +13,9 @@ export default function Car(name) {
     if (randomNumber >= GAME.MOVE_CONDITION) {
       this.distance += GAME.DISTANCE_MARKER;
     }
+  };
+
+  this.init = () => {
+    this.distance = '';
   };
 }
