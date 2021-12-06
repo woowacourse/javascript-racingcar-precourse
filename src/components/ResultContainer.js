@@ -1,22 +1,31 @@
-import {DOM_ID, PROGRESS} from '../utils/constants.js';
-import {hideElement, showElement} from '../utils/util.js';
+import {NUM_RULE} from '../utils/constants.js';
+import {generateRandomNumber, showDisplayContainer} from '../utils/util.js';
 import Component from './Component.js';
 
 export default class ResultContainer extends Component {
+  setup() {
+    this.$title = this.$props.$title;
+  }
+
   mounted() {
-    this.$title = document.querySelector(`#${DOM_ID.RESULT_TITLE}`);
-    this.toggleDisplayContainer();
+    showDisplayContainer(this.$target, this.$title);
+    this.raicing();
   }
 
   setEvent() {}
 
-  toggleDisplayContainer() {
-    if (this.$props.progress !== PROGRESS.PLAY) {
-      hideElement(this.$title);
-      hideElement(this.$target);
-    } else {
-      showElement(this.$title);
-      showElement(this.$target);
+  moveCar() {
+    this.$props.cars.forEach((car) => {
+      const randomNumber = generateRandomNumber();
+      if (randomNumber >= NUM_RULE.NAME_LIMIT) {
+        car.move();
+      }
+    });
+  }
+
+  raicing() {
+    for (let i = 0; i < this.$props.count; i = i + 1) {
+      this.moveCar();
     }
   }
 }
