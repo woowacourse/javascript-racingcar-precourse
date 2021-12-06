@@ -28,6 +28,9 @@ export const validateNames = (names) => {
       return false;
     }
   }
+  if (names.length !== new Set(names).size) {
+    return false;
+  }
   return true;
 };
 
