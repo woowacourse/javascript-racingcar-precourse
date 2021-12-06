@@ -1,13 +1,17 @@
 import { getCarNamesInput, getRacingCountInput } from './user/userInput.js';
+import moveCars from './computer/carsMovement.js';
 
 const $carNamesSubmit = document.querySelector('#car-names-submit');
+const $racingCountInput = document.querySelector('#racing-count-input');
 const $racingCountSubmit = document.querySelector('#racing-count-submit');
 
 function playGame(cars, racingCount) {
-  console.log(cars, racingCount);
+  moveCars(cars, racingCount);
 }
 
 function getRacingCount(cars) {
+  $racingCountInput.readOnly = false;
+  $racingCountSubmit.disabled = false;
   $racingCountSubmit.addEventListener('click', event => {
     event.preventDefault();
     const racingCount = getRacingCountInput();
@@ -28,5 +32,7 @@ function getCarNames() {
 }
 
 export default function prepareGame() {
+  $racingCountInput.readOnly = true;
+  $racingCountSubmit.disabled = true;
   getCarNames();
 }
