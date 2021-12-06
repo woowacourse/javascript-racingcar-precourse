@@ -24,6 +24,30 @@ function resetView($appDiv) {
   }
 }
 
+function showResultHead(result) {
+  const $resultHeadCopy = result;
+
+  $resultHeadCopy.style.display = DISPLAY_BLOCK;
+}
+
+function getPosition(car) {
+  let positionString = '';
+
+  for (let index = 0; index < car.getPosition(); index += 1) {
+    positionString += '-';
+  }
+  return positionString;
+}
+
+function getOneRaceResult(cars) {
+  let innerHtml = '';
+
+  cars.forEach((car) => {
+    innerHtml += `<div>${car.getName()}: ${getPosition(car)}</div>`;
+  });
+  return innerHtml;
+}
+
 export default class View {
   constructor() {
     this.$countHead = document.querySelector(RACING_COUNT_HEAD_ID);
@@ -64,5 +88,14 @@ export default class View {
     $newResultContainer.innerHTML = '';
     $newResultContainer.id = 'result-container';
     this.$appDiv.append($newResultContainer);
+  }
+
+  showRaceResult(cars) {
+    showResultHead(this.$result);
+    const $resultContainer = document.querySelector(RESULT_CONTAINER_ID);
+    const $oneRaceResult = document.createElement('p');
+  
+    $oneRaceResult.innerHTML = getOneRaceResult(cars);
+    $resultContainer.append($oneRaceResult);
   }
 }

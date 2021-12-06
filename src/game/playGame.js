@@ -1,10 +1,5 @@
-import showRaceResult from '../view/showRaceResult.js';
 import showWinners from '../view/showWinners.js';
 import GameController from './GameController.js';
-
-function goOnce(cars) {
-  cars.forEach((car) => car.go());
-}
 
 function getCarPositions(cars) {
   return cars.map((car) => car.getPosition());
@@ -26,11 +21,8 @@ function decideWinners(cars) {
 
 export default function playGame(userInput, view) {
   const controller = new GameController(userInput);
-
+  
   view.initView();
-  for (let index = 0; index < userInput.getRepeatCount(); index += 1) {
-    goOnce(controller.cars);
-    showRaceResult(controller.cars);
-  }
+  controller.repeatRace();
   decideWinners(controller.cars);
 }
