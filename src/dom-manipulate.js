@@ -1,4 +1,4 @@
-export default function domManipulate(){
+export default function domManipulate() {
   document.querySelector('form > input[type="text"]').id = 'car-names-input';
   document.querySelector('form > input[type="text"] + button').id = 'car-names-submit';
   document.querySelector('form > input[type="number"]').id = 'racing-count-input';
