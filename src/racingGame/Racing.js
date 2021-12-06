@@ -1,5 +1,6 @@
 import Car from "./Car.js";
 import Render from "./Render.js";
+import { changeArrayRemoveSpace } from "./utils.js";
 
 export default class Racing {
   constructor(carNames, racingCount) {
@@ -28,9 +29,7 @@ export default class Racing {
   }
 
   setCarNames() {
-    this.carNames = this.carNames
-      .split(",")
-      .map(name => name.replace(/\s*/g, ""));
+    this.carNames = changeArrayRemoveSpace(this.carNames);
   }
 
   prepareCar() {

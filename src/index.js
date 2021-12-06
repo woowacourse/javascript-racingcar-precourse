@@ -1,6 +1,6 @@
-import Racing from "./Racing.js";
-import Render from "./Render.js";
-import User from "./User.js";
+import Racing from "./racingGame/Racing.js";
+import Render from "./racingGame/Render.js";
+import User from "./racingGame/User.js";
 import checkValidCarNames from "./validation/checkCarNames.js";
 import checkValidracingCount from "./validation/checkRacingCount.js";
 

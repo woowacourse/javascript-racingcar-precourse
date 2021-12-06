@@ -1,3 +1,5 @@
+import { makeElement } from "./utils.js";
+
 export default class Render {
   constructor() {
     this.racingCountForm = document.getElementById("racing-count-form");
@@ -32,7 +34,7 @@ export default class Render {
 
   makeResultArea() {
     this.showResultText();
-    this.racingResultArea = this.makeElement({
+    this.racingResultArea = makeElement({
       tag: "div",
       id: "racing-result",
     });
@@ -40,10 +42,10 @@ export default class Render {
   }
 
   roundResult(cars) {
-    const roundResultArea = this.makeElement({ tag: "p" });
+    const roundResultArea = makeElement({ tag: "p" });
     cars.forEach(car => {
       const { name, progress } = car.getRacingResult();
-      const roundResult = this.makeElement({
+      const roundResult = makeElement({
         tag: "div",
         innerText: `${name}: ${progress}`,
       });
@@ -53,11 +55,11 @@ export default class Render {
   }
 
   winner(name) {
-    const winnerText = this.makeElement({
+    const winnerText = makeElement({
       tag: "span",
       innerText: `최종 우승자: `,
     });
-    const winnerTag = this.makeElement({
+    const winnerTag = makeElement({
       tag: "span",
       innerText: name,
       id: "racing-winners",
@@ -65,19 +67,8 @@ export default class Render {
     this.racingResultArea.append(winnerText, winnerTag);
   }
 
-  makeElement({ tag, innerText = "", id = "" }) {
-    const element = document.createElement(tag);
-    if (innerText) {
-      element.innerText = innerText;
-    }
-    if (id) {
-      element.id = id;
-    }
-    return element;
-  }
-
   makeReStartButton() {
-    const reStartButton = this.makeElement({
+    const reStartButton = makeElement({
       tag: "button",
       innerText: "게임 재시작",
     });

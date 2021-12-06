@@ -1,5 +1,6 @@
 import { MESSAGE } from "../constant/alertMessage.js";
 import { CAR_NAME } from "../constant/carName.js";
+import { changeArrayRemoveSpace } from "../racingGame/utils.js";
 
 const isSplitComma = carNames => {
   const includesComma = [...carNames].includes(",");
@@ -34,9 +35,6 @@ const checkDuplicate = carNames => {
   }
   return true;
 };
-
-const changeArrayRemoveSpace = carNames =>
-  carNames.split(",").map(name => name.trim());
 
 export default function checkValidCarNames(names) {
   if (!isSplitComma(names)) {

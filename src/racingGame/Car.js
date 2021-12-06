@@ -1,4 +1,4 @@
-import { NUMBER, RACING_COUNT } from "./constant/racing.js";
+import { NUMBER, RACING_COUNT } from "../constant/racing.js";
 
 export default class Car {
   constructor(name) {
