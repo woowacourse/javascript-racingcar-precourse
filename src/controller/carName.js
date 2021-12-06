@@ -1,6 +1,6 @@
 import { carNamesValidate } from '../util/validate.js';
-import * as render from '../view/render.js';
-import saveCars from '../model/cars.js';
+import { racingCountInputRender } from '../view/render.js';
+import { saveCars } from '../model/cars.js';
 
 export default () => {
   const $app = document.querySelector('#app');
@@ -13,7 +13,7 @@ export default () => {
     const carNames = $carNamesInput.value.split(',');
 
     if (!carNamesValidate(carNames)) return;
-    render.racingCountInputRender();
+    racingCountInputRender();
     saveCars(carNames);
   });
 };

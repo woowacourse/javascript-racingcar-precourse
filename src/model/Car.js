@@ -15,6 +15,11 @@ class Car {
     }
   }
 
+  calcDist() {
+    this.createRandomNumber();
+    this.forwardOrNot();
+  }
+
   distRender() {
     let temp = '';
     for (let i = 0; i < this.sumDist; i++) {
