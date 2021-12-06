@@ -1,5 +1,4 @@
-# 🚗 자동차 경주 게임 
-![](https://i.ibb.co/x5S3ZRL/2021-12-06-4-10-07.gif)
+# 🚗 우아한테크코스 프리코스 2주차 미션 자동차 경주 게임 
 - [데모 사이트 바로가기](https://sharp-dubinsky-eb56a4.netlify.app/)
 
 <br/>
