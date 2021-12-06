@@ -6,6 +6,7 @@ export default class GameController {
   constructor() {
     this.model = new Model();
     this.gameView = new GameView();
+
     this.setBinds();
     this.addEvents();
   }

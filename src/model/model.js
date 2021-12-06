@@ -4,6 +4,7 @@ import NUMBER from '../constants/number.js';
 export default class Model {
   constructor() {
     this.cars = [];
+    this.count = 0;
   }
 
   saveCars(userInput) {
