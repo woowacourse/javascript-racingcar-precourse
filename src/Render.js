@@ -75,4 +75,13 @@ export default class Render {
     }
     return element;
   }
+
+  makeReStartButton() {
+    const reStartButton = this.makeElement({
+      tag: "button",
+      innerText: "게임 재시작",
+    });
+    this.racingResultArea.append(reStartButton);
+    return reStartButton;
+  }
 }

@@ -15,6 +15,7 @@ export default class Racing {
       this.startOneRound(cars, render);
     }
     this.showRacingWinner(cars, render);
+    this.showGameReStart(render);
   }
 
   showRacingWinner(cars, render) {
@@ -45,5 +46,12 @@ export default class Racing {
       car.updateProgress(isGoFoward);
     });
     render.makeRoundResult(cars);
+  }
+
+  showGameReStart(render) {
+    const reStartButton = render.makeReStartButton();
+    return reStartButton.addEventListener("click", () => {
+      location.reload();
+    });
   }
 }
