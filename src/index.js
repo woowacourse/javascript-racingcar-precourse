@@ -1,15 +1,15 @@
 import Input from './input/Input.js';
 import playGame from './game/playGame.js';
-import View from './view/View.js';
+import View, {
+  CAR_NAMES_ERROR,
+  REPEAT_COUNT_ERROR,
+  EMPTY_INPUT_ERROR,
+} from './view/View.js';
 
 const CAR_NAME_INPUT_ID = '#car-names-input';
 const RACING_COUNT_INPUT_ID = '#racing-count-input';
 const CAR_NAME_SUBMIT_ID = '#car-names-submit';
 const RACING_COUNT_SUBMIT_ID = '#racing-count-submit';
-
-export const CAR_NAMES_ERROR = 1;
-export const REPEAT_COUNT_ERROR = 2;
-export const EMPTY_INPUT_ERROR = 3;
 
 function onCarNamesSubmit(event, userInput, view) {
   event.preventDefault();
@@ -46,7 +46,7 @@ function gameEventHandler() {
   const $repeatCountButton = document.querySelector(RACING_COUNT_SUBMIT_ID);
   const userInput = new Input();
   const view = new View();
-  
+
   $carNamesButton.addEventListener('click', (event) => {
     onCarNamesSubmit(event, userInput, view);
   });

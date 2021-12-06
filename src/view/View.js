@@ -1,9 +1,11 @@
-import { CAR_NAMES_ERROR, REPEAT_COUNT_ERROR, EMPTY_INPUT_ERROR } from '../index.js';
-
 const RACING_COUNT_HEAD_ID = '#racing-count-head';
 const RACING_COUNT_FORM = '#racing-count-form';
 const RESULT_ID = '#result';
 const CAR_NAMES_INPUT_ID = '#car-names-input';
+
+export const CAR_NAMES_ERROR = 1;
+export const REPEAT_COUNT_ERROR = 2;
+export const EMPTY_INPUT_ERROR = 3;
 
 const NAME_ERROR_MESSAGE = '입력 오류! 공백을 포함하지 않은 5자 이하 이름만 입력해주세요!';
 const REPEAT_ERROR_MESSAGE = '입력 오류! 1 이상 숫자를 입력해주세요!';
