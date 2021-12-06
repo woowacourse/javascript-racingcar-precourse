@@ -42,3 +42,15 @@ const getWinnerPosition = function () {
 
   return Math.max(...winnerPosition);
 };
+
+const decideWinner = function () {
+  filterPosition();
+  let winners = [];
+  for (const car of state.carArray) {
+    if (car.position.length === getWinnerPosition()) {
+      winners.push(car.name);
+    }
+
+    return winners;
+  }
+};
