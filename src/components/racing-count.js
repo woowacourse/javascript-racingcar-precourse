@@ -12,6 +12,7 @@ export class RacingCount {
   }
 
   bindEvents() {
+    this.$countInput.focus();
     this.$countSubmitButton.addEventListener(
       'click',
       this.submitCount.bind(this)
