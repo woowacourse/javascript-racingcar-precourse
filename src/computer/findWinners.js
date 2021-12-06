@@ -12,13 +12,13 @@ function getWinners(cars) {
       winners.push(` ${car.name}`);
     }
   });
-  return winners;
+  return winners.join();
 }
 
 function printWinners(winners) {
   $result.insertAdjacentHTML(
     'beforeend',
-    `<br><span id="racing-winners">최종 우승자: ${winners}</span>`
+    `<br>최종 우승자: <span id="racing-winners">${winners}</span>`
   );
 }
 
