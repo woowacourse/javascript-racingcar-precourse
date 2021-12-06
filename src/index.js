@@ -8,15 +8,23 @@ function gameStart(carNameArray, racingCount) {
         renderOneRoundResult(cars);
     }
     const winners = getWinners(cars);
+    renderWinners(winners);
 }
 
 function getWinners(cars) {
     const maxStep = cars
         .map(car => car.result)
-        .sort((a, b) => b.length  - a.length)[0].length;
+        .sort((a, b) => b.length  - a.length)[0]
+        .length;
     return cars
         .filter(car => car.result.length === maxStep)
         .map(car => car.name);
+}
+
+function renderWinners(winners) {
+    const result = document.createElement('p');
+    result.innerHTML = `최종 우승자: <span id="racing-winners">${winners.join(', ')}</span>`;
+    app.appendChild(result);
 }
 
 function generateCars(carNameArray) {
