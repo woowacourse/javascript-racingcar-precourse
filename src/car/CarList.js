@@ -1,4 +1,5 @@
-import Car from "./index.js";
+import Car from "./Car.js";
+import isMovable from "../utils/isMovable.js";
 
 class CarList {
     constructor() {
@@ -12,6 +13,24 @@ class CarList {
     init(carNameArray) {
         for(let i = 0; i<carNameArray.length; i++) {
             this.push(new Car(carNameArray[i]));
+        }
+    }
+
+    race() {
+        for(let i = 0; i<this.array.length; i++) {
+            this.move(i);
+        }
+    }
+
+    move(index) {
+        if(isMovable()) {
+            this.array[index].moveForward();
+        }
+    }
+
+    game(racingCountInput) {
+        for(let i = 0; i<racingCountInput; i++) {
+            this.race();
         }
     }
 }
