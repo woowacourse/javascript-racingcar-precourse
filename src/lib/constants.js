@@ -1,4 +1,4 @@
-export const DOM = {
+export const DOM = Object.freeze({
   APP: 'app',
   CAR_NAMES: 'car-names',
   CAR_NAMES_INPUT: 'car-names-input',
@@ -10,7 +10,7 @@ export const DOM = {
   COUNT_TITLE: 'count-title',
   RESULT: 'result',
   RESULT_TITLE: 'result-title',
-};
+});
 export const PLAIN_STRING = '';
 export const MINUS_SIGN = '-';
 export const FORWARD_NUMBER_SIGN = 4;
