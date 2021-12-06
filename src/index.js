@@ -28,7 +28,9 @@ class CarRacingGame {
   constructor() {
     this.initElements();
     hideRacingCountForm();
-    this.$carNamesSubmit.addEventListener('click', (e) => this.handleCarNamesSubmit(e));
+    this.$carNamesSubmit.addEventListener('click', (e) =>
+      this.handleCarNamesSubmit(e)
+    );
     this.$racingCountSubmit.addEventListener('click', (e) =>
       this.handleRacingCountSubmit(e)
     );

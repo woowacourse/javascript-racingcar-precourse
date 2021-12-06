@@ -68,7 +68,9 @@ export const proceedRacingStage = (cars) => {
 
 export const paintCurrentCar = (car) => {
   const CURRENT_DISTANCE = '-'.repeat(car.forwardCount);
-  const currentCarStatus = document.createTextNode(`${car.name}: ${CURRENT_DISTANCE}`);
+  const currentCarStatus = document.createTextNode(
+    `${car.name}: ${CURRENT_DISTANCE}`
+  );
 
   $('#racing-result').appendChild(currentCarStatus);
   $('#racing-result').appendChild(document.createElement('br'));
@@ -76,7 +78,9 @@ export const paintCurrentCar = (car) => {
 
 export const getWinners = (cars) => {
   const MAX_FORWARD = Math.max(...cars.map(({ forwardCount }) => forwardCount));
-  const winners = cars.filter(({ forwardCount }) => forwardCount === MAX_FORWARD);
+  const winners = cars.filter(
+    ({ forwardCount }) => forwardCount === MAX_FORWARD
+  );
   return winners;
 };
 
