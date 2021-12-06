@@ -1,6 +1,7 @@
 import { CARRACING } from './constants.js';
 import checkCarName from './checkInput/checkCarName.js';
 import checkCount from './checkInput/checkCount.js';
+import Car from './car.js';
 
 class CarName {
   constructor() {
@@ -15,10 +16,8 @@ class Count {
     this.input = document.querySelector('#racing-count-input');
     this.submit = document.querySelector('#racing-count-submit');
     this.setVisible(false);
-    // set visible
   }
 
-  // function visibility true;
   setVisible(boo) {
     if (boo) {
       this.title.style.visibility = 'visible';
@@ -70,7 +69,9 @@ export default class RacingGame {
     this.count.setVisible(true);
     this.count.submit.addEventListener('click', e => {
       e.preventDefault();
-      this.getCount(this.count.input);
+      if (this.getCount(this.count.input)) {
+        this.play();
+      }
     });
   }
 
@@ -94,5 +95,15 @@ export default class RacingGame {
     }
 
     return this.countNum;
+  }
+
+  play() {
+    this.cars = this.carNameList.map(name => new Car(name));
+
+    this.result.setVisible(true);
+
+    for (let i = 0; i < this.countNum; i += 1) {
+      oneRoundgame(); // 1 game
+    }
   }
 }
