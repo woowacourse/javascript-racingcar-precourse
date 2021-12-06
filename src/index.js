@@ -1,10 +1,4 @@
-import {
-  DOM,
-  FORWARD_NUMBER_SIGN,
-  MINUS_SIGN,
-  PLAIN_STRING,
-  SEPERATOR,
-} from './lib/constants.js';
+import { DOM, FORWARD_NUMBER_SIGN, MINUS_SIGN, PLAIN_STRING, SEPERATOR } from './lib/constants.js';
 import {
   generateFormHandler,
   getRandomNumber,
@@ -56,18 +50,18 @@ class CarGameUtil {
   }
 
   static getWinnerCount(cars) {
-    return Math.max(...cars.map(car => car.count));
+    return Math.max(...cars.map((car) => car.count));
   }
 }
 class CarGameLogic {
   getWinner() {
     const winnerCount = CarGameUtil.getWinnerCount(this.cars);
 
-    return this.cars.filter(car => car.count === winnerCount);
+    return this.cars.filter((car) => car.count === winnerCount);
   }
 
   simulatePerNumberOfTimes() {
-    this.cars.forEach(car => {
+    this.cars.forEach((car) => {
       if (CarGameUtil.isForward()) {
         car.setCountTemplatePlusOne();
         car.setCountPlusOne();
@@ -77,7 +71,7 @@ class CarGameLogic {
 
   makeTemplatePerSimulate() {
     let template = PLAIN_STRING;
-    this.cars.forEach(car => {
+    this.cars.forEach((car) => {
       template = `${template}${car.name}: ${car.countTemplate}<br>`;
     });
 
@@ -94,7 +88,7 @@ class CarGameLogic {
     const winnerArray = this.getWinner();
     template = `${template}
     최종 우승자: <span id="${DOM.RACING_WINNERS}">${winnerArray
-      .map(car => car.name)
+      .map((car) => car.name)
       .join(SEPERATOR)}</span>`;
 
     return template;
@@ -133,12 +127,12 @@ class CarGame extends CarGameLogic {
   }
 
   initHandler() {
-    this.onCarsFormSubmit = e =>
+    this.onCarsFormSubmit = (e) =>
       generateFormHandler({
         e,
         executor: this.afterCarsSubmitLogic.bind(this),
       });
-    this.onCountFormSubmit = e =>
+    this.onCountFormSubmit = (e) =>
       generateFormHandler({
         e,
         executor: this.afterCountSubmitLogic.bind(this),
