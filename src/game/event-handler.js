@@ -1,4 +1,5 @@
 import RacingCarGame from './racing-car-game.js';
+import { CAR_NAME_ALERT_MESSAGE, COUNT_ALERT_MESSAGE } from './message.js';
 
 export default class EventHandler {
     constructor(app) {
@@ -21,7 +22,7 @@ export default class EventHandler {
     
     onCarNameSubmit() {
         if(!this.isCorrectCarName()) {
-            this.popAlertMessage("잘못된 입력 형식입니다. 쉼표로 구분하여 각각 5자 이하로 입력해주세요.", this.carNameInput);
+            this.popAlertMessage(CAR_NAME_ALERT_MESSAGE, this.carNameInput);
         }
     }
     
@@ -33,9 +34,9 @@ export default class EventHandler {
                 const newGame = new RacingCarGame(carNameArray, racingCount, this.app);
                 newGame.gameStart();
             }
-            else this.popAlertMessage("자동차 이름을 형식에 맞춰 입력해 주세요.", this.carNameInput);
+            else this.popAlertMessage(CAR_NAME_ALERT_MESSAGE, this.carNameInput);
         }
-        else this.popAlertMessage("잘못된 입력 형식입니다. 1 이상의 정수를 입력해주세요.", this.countInput);
+        else this.popAlertMessage(COUNT_ALERT_MESSAGE, this.countInput);
     }
 
     popAlertMessage(message, input) {
