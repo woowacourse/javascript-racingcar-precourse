@@ -11,6 +11,18 @@
 <br>
 <br>
 
+---
+
+<br>
+
+[More Info](https://github.com/byhhh2/javascript-racingcar-precourse/blob/byhhh2/docs/Wiki.md)
+
+<br>
+
+---
+
+<br>
+
 ### 자동차의 전진 혹은 정지
 
 - 시도할 횟수에 입력된 값만큼 n대의 자동차가 전진 혹은 정지
