@@ -8,13 +8,17 @@ function gameStart(carNameArray, racingCount) {
     });
 
     for(let i = 0; i < racingCount; i++) {
-        const roundResult = document.createElement('p');
-        carNameArray.forEach(name => {
-            if(checkForwardCondition()) cars[name].result += '-';
-            roundResult.innerHTML += `${name}: ${cars[name].result}<br>`;
-        });
-        app.appendChild(roundResult);
+        playOneRoundGame(cars, carNameArray);
     }
+}
+
+function playOneRoundGame(cars, carNameArray) {
+    const roundResult = document.createElement('p');
+    carNameArray.forEach(name => {
+        if(checkForwardCondition()) cars[name].result += '-';
+        roundResult.innerHTML += `${name}: ${cars[name].result}<br>`;
+    });
+    app.appendChild(roundResult);
 }
 
 function generateRandomNumber() {
