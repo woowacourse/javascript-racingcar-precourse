@@ -1,3 +1,5 @@
+import { pickRandomNumberInZeroToNine } from '../utils/index.js';
+
 class Car {
   constructor(name) {
     this.$name = name;
@@ -5,8 +7,7 @@ class Car {
   }
 
   advance() {
-    const randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
-    if (randomNumber >= 4) this.$advance += 1;
+    if (pickRandomNumberInZeroToNine() >= 4) this.$advance += 1;
   }
 
   printAdvance() {
