@@ -1,6 +1,6 @@
 import Car from './model/Car.js';
 import { $, initScreen, showRacingCountScreen, showRacingResultScreen } from './utils/dom.js';
-import { render, renderWinner } from './utils/render.js';
+import { renderGame, renderWinner } from './utils/render.js';
 import { isValidateCarNames, isValidateRacingCount } from './utils/validation.js';
 
 class RacingGame {
@@ -31,7 +31,7 @@ class RacingGame {
   runGame() {
     for (let i = 0; i < this.racingCount; i++) {
       this.tryMove();
-      render(this.racingCars);
+      renderGame(this.racingCars);
     }
     renderWinner(this.getWinner());
   }
