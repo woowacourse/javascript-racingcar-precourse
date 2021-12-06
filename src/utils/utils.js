@@ -1,4 +1,4 @@
-import Car from '../models/Car.js';
+import Car from '../model/Car.js';
 import { NUMBER, REGEX, COMMA } from './constants.js';
 
 export const $ = selector => document.querySelector(selector);

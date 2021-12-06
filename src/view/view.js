@@ -1,5 +1,5 @@
-import { $ } from './utils.js';
-import { SELECTOR } from './constants.js';
+import { $ } from '../utils/utils.js';
+import { SELECTOR } from '../utils/constants.js';
 
 const DOMUtils = {
   initSection: () => {
