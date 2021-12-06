@@ -2,20 +2,23 @@ import { GAME, ERR_MESSAGE } from '../utils/constant.js';
 import { makeObjectCars } from '../init/cars.js';
 import { showCountInput } from '../init/setScreen.js';
 
+const { MAX_CAR_NAME_LENGTH, MIN_CAR_NAME_LENGTH } = GAME;
+const { NAME_TOO_LONG, NAME_CANNOT_BE_BLANK } = ERR_MESSAGE;
+
 function isValidLength(name) {
-  return name.length <= GAME.MAX_CAR_NAME_LENGTH;
+  return name.length <= MAX_CAR_NAME_LENGTH;
 }
 
 function isBlank(name) {
-  return name.length >= GAME.MIN_CAR_NAME_LENGTH;
+  return name.length >= MIN_CAR_NAME_LENGTH;
 }
 
 function isValidCarNames(carNames) {
   if (!carNames.every(isValidLength)) {
-    return alert(ERR_MESSAGE.NAME_TOO_LONG);
+    return alert(NAME_TOO_LONG);
   }
   if (!carNames.every(isBlank)) {
-    return alert(ERR_MESSAGE.NAME_CANNOT_BE_BLANK);
+    return alert(NAME_CANNOT_BE_BLANK);
   }
   return true;
 }

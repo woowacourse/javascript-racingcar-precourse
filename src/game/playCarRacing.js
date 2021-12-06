@@ -1,13 +1,15 @@
 import { GAME } from '../utils/constant.js';
 import { cars } from '../init/cars.js';
 
+const { MIN_RANGE, MAX_RANGE, MOVING_RANGE } = GAME;
+
 function getRandomNumber() {
   // eslint-disable-next-line no-undef
-  return MissionUtils.Random.pickNumberInRange(GAME.MIN_RANGE, GAME.MAX_RANGE);
+  return MissionUtils.Random.pickNumberInRange(MIN_RANGE, MAX_RANGE);
 }
 
 function getRacingResult(car) {
-  if (getRandomNumber() >= GAME.MOVING_RANGE) {
+  if (getRandomNumber() >= MOVING_RANGE) {
     car.count++;
   }
 }
