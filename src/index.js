@@ -3,6 +3,7 @@ import {
   FORWARD_NUMBER_SIGN,
   MINUS_SIGN,
   PLAIN_STRING,
+  SEPERATOR,
 } from './lib/constants.js';
 import { getRandomNumber } from './lib/utils.js';
 import { isEveryStringLessOrEqualsFive } from './lib/utils.js';
@@ -80,7 +81,7 @@ class CarGameLogic {
     template = `${template}
     최종 우승자: <span id="${DOM.RACING_WINNERS}">${winnerArray
       .map(car => car.name)
-      .join(',')}</span>`;
+      .join(SEPERATOR)}</span>`;
 
     return template;
   }
@@ -125,7 +126,7 @@ class CarGame extends CarGameLogic {
       e.preventDefault();
       const [{ value: carsString }] = e.target;
       try {
-        this.cars = CarGameUtil.makeCars(carsString.split(','));
+        this.cars = CarGameUtil.makeCars(carsString.split(SEPERATOR));
         this.showElement(this.countTitle);
         this.showElement(this.formCount);
       } catch (error) {
