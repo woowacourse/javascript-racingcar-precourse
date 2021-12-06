@@ -3,8 +3,6 @@
 </p>
 <h1 align="middle">자동차 경주 게임 기능 목록</h1>
 
----
-
 ## 📌 기능 목록
 
 #### **자동차 이름 입력 받기**
@@ -48,8 +46,6 @@
 - [x] 우승자는 가장 많이 전진한 하나 이상의 자동차이다.
 - [x] 여러 명일 경우 쉼표를 이용해서 구분한다.
 
----
-
 ## 📌 리팩토링
 
 - [x] 폴더 구조 변경 (`components`, `utils`, `validators`)
@@ -60,22 +56,20 @@
 - [x] 최종 우승자 클래스 분리
 - [x] 상수 값들을 따로 분리해서 저장 (`constants.js` 생성)
 
----
-
 ## 📌 폴더 구조
 
-📦src
-┣ 📂components
-┃ ┣ 📜Car.js
-┃ ┣ 📜RacingCarNameForm.js
-┃ ┣ 📜RacingResult.js
-┃ ┣ 📜RacingTryCountForm.js
-┃ ┗ 📜RacingWinner.js
-┣ 📂utils
-┃ ┣ 📜dom.js
-┃ ┗ 📜index.js
-┣ 📂validators
-┃ ┣ 📜CarNameValidator.js
-┃ ┗ 📜TryCountValidator.js
-┣ 📜constants.js
-┗ 📜index.js
+> 📦src
+> ┣ 📂components
+> ┃ ┣ 📜Car.js
+> ┃ ┣ 📜RacingCarNameForm.js
+> ┃ ┣ 📜RacingResult.js
+> ┃ ┣ 📜RacingTryCountForm.js
+> ┃ ┗ 📜RacingWinner.js
+> ┣ 📂utils
+> ┃ ┣ 📜dom.js
+> ┃ ┗ 📜index.js
+> ┣ 📂validators
+> ┃ ┣ 📜CarNameValidator.js
+> ┃ ┗ 📜TryCountValidator.js
+> ┣ 📜constants.js
+> ┗ 📜index.js
