@@ -37,6 +37,7 @@ const isCarNameBlank = (carArr) => {
 
 export default function validateCarName(e) {
   e.preventDefault();
+
   const carArr = trimCarName(splitCarName());
   if (isCarNameLength(carArr) && isCarNameBlank(carArr)) {
     $racingCountTitle.style.visibility = "visible";
@@ -44,6 +45,7 @@ export default function validateCarName(e) {
     $racingCountSubmit.style.visibility = "visible";
     return true;
   }
+
   $carName.focus();
   alert(ERROR_CAR_NAME);
 

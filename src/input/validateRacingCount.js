@@ -1,4 +1,4 @@
-import { $racingCount } from "../common/constants.js";
+import { $racingCount, ERROR_RACING_COUNT } from "../common/constants.js";
 
 const trimRacingCount = () => $racingCount.value.trim();
 
