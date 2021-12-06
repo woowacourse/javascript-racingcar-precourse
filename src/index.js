@@ -1,4 +1,11 @@
-import { DOM, FORWARD_NUMBER_SIGN, MINUS_SIGN, PLAIN_STRING, SEPERATOR } from './lib/constants.js';
+import {
+  DOM,
+  ERROR_MESSAGE,
+  FORWARD_NUMBER_SIGN,
+  MINUS_SIGN,
+  PLAIN_STRING,
+  SEPERATOR,
+} from './lib/constants.js';
 import {
   generateFormHandler,
   getRandomNumber,
@@ -34,13 +41,13 @@ class CarGameUtil {
 
   static isValidCarNames(namesArray) {
     if (hasSomeStringIncludeSpace(namesArray)) {
-      throw new Error('자동차 이름에 공백은 포함될 수 없습니다.');
+      throw new Error(ERROR_MESSAGE.CAR_NAME_INCLUDE_SPACE);
     }
     if (hasSomeStringLengthGreaterThanFive(namesArray)) {
-      throw new Error('자동차 이름은 5자 이하입니다.');
+      throw new Error(ERROR_MESSAGE.CAR_NAME_LENGTH_GREATHER_THAN_FIVE);
     }
     if (hasStringDuplicated(namesArray)) {
-      throw new Error('자동차 이름은 중복될 수 없습니다.');
+      throw new Error(ERROR_MESSAGE.CAR_NAME_DUPLICATED);
     }
 
     return true;
@@ -48,7 +55,7 @@ class CarGameUtil {
 
   static isValidNumber(number) {
     if (isNegativeNumberOrZero(number)) {
-      throw new Error('0보다 큰 수를 입력해주세요');
+      throw new Error(ERROR_MESSAGE.COUNT_NEGATIVE_NUMBER_OR_ZERO);
     }
 
     return true;
