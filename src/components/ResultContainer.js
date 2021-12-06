@@ -46,4 +46,15 @@ export default class ResultContainer extends Component {
     carContainer.appendChild(carText);
     this.$target.appendChild(carContainer);
   }
+
+  getWinner() {
+    this.$props.cars.sort((a, b) => b.position - a.position);
+    const winners = [this.$props.cars.shift()];
+    this.$props.cars.forEach((car) => {
+      if (winners[0].position === car.position) {
+        winners.push(car);
+      }
+    });
+    return winners.map((winner) => winner.name);
+  }
 }
