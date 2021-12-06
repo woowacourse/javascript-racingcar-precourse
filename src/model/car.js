@@ -11,7 +11,7 @@ export default class Car {
     for (let i = 0; i < this.position; i += 1) {
       bar += "-";
     }
-    $status.innerHTML = `${this.name}: ${bar}<br>`;
+    $status.innerHTML += `${this.name}: ${bar}<br>`;
   }
 
   makeRandom() {
@@ -19,7 +19,7 @@ export default class Car {
   }
 
   judgeGoOrNot() {
-    if (this.makeRandom >= 4) {
+    if (this.makeRandom() >= 4) {
       this.position += 1;
     }
   }

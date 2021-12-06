@@ -1,4 +1,9 @@
-import { $racingResultTitle, $winner } from "../common/constants.js";
+import {
+  $racingResultTitle,
+  $winner,
+  $racingCount,
+  $status,
+} from "../common/constants.js";
 import Car from "../model/car.js";
 import { trimCarName, splitCarName } from "../input/validateCarName.js";
 
@@ -12,6 +17,13 @@ export default function play() {
   resultVisible();
   const carArr = trimCarName(splitCarName());
   const carObject = makeCar(carArr);
+  for (let i = 0; i < $racingCount.value; i += 1) {
+    carObject.forEach((el) => {
+      el.judgeGoOrNot();
+      el.printPosition();
+    });
+    $status.innerHTML += `<br>  `;
+  }
 
   return true;
 }
