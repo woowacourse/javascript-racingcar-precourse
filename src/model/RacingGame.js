@@ -1,6 +1,17 @@
 import Car from './Car.js';
 import splitWithoutMargin from '../utils/split.js';
 
+const isWinner = (gameInstance, racerScore) => {
+  const racingGame = gameInstance;
+  const nowMaxScore = racingGame.winnerScore;
+  if (racerScore < nowMaxScore) return false;
+
+  if (racerScore > nowMaxScore) racingGame.winnerList = [];
+  racingGame.winnerScore = racerScore;
+
+  return true;
+};
+
 export default class RacingGame {
   constructor() {
     this.racerList = [];
@@ -23,19 +34,10 @@ export default class RacingGame {
     this.count = count;
     this.racerList.forEach((racer) => {
       const score = racer.move(count);
-      if (this.isWinner(score) === false) return true;
+      if (isWinner(this, score) === false) return true;
 
       this.winnerList.push(racer.name);
     });
-  }
-
-  isWinner(racerScore) {
-    const nowMaxScore = this.winnerScore;
-    if (racerScore < nowMaxScore) return false;
-
-    if (racerScore > nowMaxScore) this.winnerList = [];
-    this.winnerScore = racerScore;
-    return true;
   }
 
   get gameResult() {
