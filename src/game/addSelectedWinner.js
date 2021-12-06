@@ -2,21 +2,13 @@ import { cars } from '../init/cars.js';
 
 function getMaxCount() {
   return cars.reduce((acc, { count }) => {
-    if (count > acc) {
-      return count;
-    }
-    return acc;
+    return acc > count ? acc : count;
   }, 0);
 }
 
-function selectWinner(maxCount) {
-  const selectedWinner = cars.filter((car) => {
-    if (car.count === maxCount) {
-      return true;
-    }
-    return false;
-  });
-  return selectedWinner.map((winner) => winner.name).join(', ');
+function selectWinner() {
+  const maxCount = getMaxCount();
+  return cars.filter((car) => car.count === maxCount);
 }
 
 function makeWinnerString($resultScreenDiv, $winnerSpan) {
@@ -28,9 +20,10 @@ export default function addSelectedWinner($resultScreenDiv) {
   const $winnerSpan = document.createElement('span');
   $winnerSpan.id = 'racing-winners';
 
-  const maxCount = getMaxCount();
-  const selectedWinner = selectWinner(maxCount);
-  $winnerSpan.innerHTML = selectedWinner;
+  const selectedWinner = selectWinner()
+    .map((winner) => winner.name)
+    .join(', ');
 
+  $winnerSpan.innerHTML = selectedWinner;
   makeWinnerString($resultScreenDiv, $winnerSpan);
 }
