@@ -11,7 +11,11 @@ export default class Model {
 
     if (this.isValidatedLength(userInputArray, NUMBER.CARS_MIN_LENGTH)) {
       this.cars = userInputArray.map((name) => new Car(name));
+
+      return true;
     }
+
+    throw Error('2대이상의 차 이름을 넣어주세요');
   }
 
   isValidatedLength(userInputArray, givenLength) {

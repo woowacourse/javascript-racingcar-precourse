@@ -23,6 +23,10 @@ export default class GameController {
 
     const carNamesInput = $('#car-names-input').value;
 
-    this.model.saveCars(carNamesInput);
+    try {
+      this.model.saveCars(carNamesInput);
+    } catch (err) {
+      alert(err);
+    }
   }
 }
