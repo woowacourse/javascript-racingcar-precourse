@@ -1,9 +1,11 @@
+import $ from './utils/selector.js';
+
 export default class Layout{
   constructor() {
-    this.countForm = document.getElementById('count-form');
-    this.countH4 = document.getElementById('count-h4');
-    this.resultH4 = document.getElementById('result-h4');
-    this.app = document.getElementById('app');
+    this.countForm = $('#count-form');
+    this.countH4 = $('#count-h4');
+    this.resultH4 = $('#result-h4');
+    this.app = $('#app');
   }
 
   hideForms() {

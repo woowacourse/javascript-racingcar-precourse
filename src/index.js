@@ -1,6 +1,7 @@
+import $ from './utils/selector.js';
 import Car from './car.js';
 import { checkNameValidation, checkCountValidation } from './validation.js';
-import { NAME_INPUT_ERROR, COUNT_INPUT_ERROR } from './constants.js';
+import { NAME_INPUT_ERROR, COUNT_INPUT_ERROR } from './utils/constants.js';
 import Layout from './layout.js';
 
 class RacingGame {
@@ -19,8 +20,8 @@ class RacingGame {
   }
 
   nameButtonHandler() {
-    const nameSubmitButton = document.getElementById('car-names-submit');
-    const userInput = document.getElementById('car-names-input');
+    const nameSubmitButton = $('#car-names-submit');
+    const userInput = $('#car-names-input');
     let names;
     nameSubmitButton.addEventListener('click', (e) => {
       e.preventDefault();
@@ -43,8 +44,8 @@ class RacingGame {
   }
 
   countButtonHandler() {
-    const countSubmitButton = document.getElementById('racing-count-submit');
-    const userInput = document.getElementById('racing-count-input');
+    const countSubmitButton = $('#racing-count-submit');
+    const userInput = $('#racing-count-input');
     countSubmitButton.addEventListener('click', (e) => {
       e.preventDefault();
       this.count = userInput.value;
