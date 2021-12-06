@@ -13,11 +13,17 @@ function gameStart(carNameArray, racingCount) {
 }
 
 function playOneRoundGame(cars, carNameArray) {
-    const roundResult = document.createElement('p');
     carNameArray.forEach(name => {
         if(checkForwardCondition()) cars[name].result += '-';
-        roundResult.innerHTML += `${name}: ${cars[name].result}<br>`;
     });
+    renderOneRoundResult(cars);
+}
+
+function renderOneRoundResult(cars) {
+    const roundResult = document.createElement('p');
+    for(let car in cars) {
+        roundResult.innerHTML += `${car}: ${cars[car].result}<br>`
+    }
     app.appendChild(roundResult);
 }
 
