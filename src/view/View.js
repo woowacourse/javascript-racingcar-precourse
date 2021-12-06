@@ -10,6 +10,7 @@ const REPEAT_ERROR_MESSAGE = '입력 오류! 1 이상 숫자를 입력해주세�
 const NO_INPUT_ERROR_MESSAGE = '입력 오류! 자동차 이름과 반복할 횟수 모두 입력해주세요!';
 
 const DISPLAY_NONE = 'none';
+const DISPLAY_BLOCK = 'block';
 
 function hideNextHtml($countHead, $countForm, $result) {
   $countHead.style.display = DISPLAY_NONE;
@@ -22,7 +23,7 @@ export default class View {
     this.$countHead = document.querySelector(RACING_COUNT_HEAD_ID);
     this.$countForm = document.querySelector(RACING_COUNT_FORM);
     this.$result = document.querySelector(RESULT_ID);
-    this.$carNameInput = document.querySelector(CAR_NAMES_INPUT_ID);
+    this.$carNamesInput = document.querySelector(CAR_NAMES_INPUT_ID);
 
     hideNextHtml(this.$countHead, this.$countForm, this.$result);
   }
@@ -30,7 +31,7 @@ export default class View {
   alertError(error) {
     if (error === CAR_NAMES_ERROR) {
       alert(NAME_ERROR_MESSAGE);
-      this.$carNameInput.value = '';
+      this.$carNamesInput.value = '';
     }
     if (error === REPEAT_COUNT_ERROR) {
       alert(REPEAT_ERROR_MESSAGE);
@@ -38,5 +39,10 @@ export default class View {
     if (error === EMPTY_INPUT_ERROR) {
       alert(NO_INPUT_ERROR_MESSAGE);
     }
+  }
+
+  showNextInput() {
+    this.$countHead.style.display = DISPLAY_BLOCK;
+    this.$countForm.style.display = DISPLAY_BLOCK;
   }
 }

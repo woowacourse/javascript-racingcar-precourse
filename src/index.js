@@ -1,5 +1,4 @@
 import Input from './input/Input.js';
-import showNextInput from './view/showNextInput.js';
 import playGame from './game/playGame.js';
 import View from './view/View.js';
 
@@ -21,7 +20,7 @@ function onCarNamesSubmit(event, userInput, view) {
     view.alertError(CAR_NAMES_ERROR);
     return;
   }
-  showNextInput();
+  view.showNextInput();
 }
 
 function isEmptyInput(userInput) {
@@ -36,7 +35,7 @@ function onRepeatCountSubmit(event, userInput, view) {
     return;
   }
   if (isEmptyInput(userInput)) {
-    view.alertError(EMPTY_INPUT);
+    view.alertError(EMPTY_INPUT_ERROR);
     return;
   }
   playGame(userInput);
