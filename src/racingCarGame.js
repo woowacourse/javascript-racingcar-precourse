@@ -7,7 +7,7 @@ export default function RacingCarGame(app) {
 
   const setCars = (racingCars) => {
     this.state.cars = racingCars;
-    console.log(this.state.cars);
+    this.racingCountForm.show();
   };
 
   const setCount = (racingCount) => {
@@ -42,7 +42,7 @@ export default function RacingCarGame(app) {
 
   this.render = () => {
     this.carNamesForm = CarNamesForm(setCars);
-    this.racingCountForm = RacingCountForm(setCount, racing);
+    this.racingCountForm = new RacingCountForm(setCount, racing);
     this.racingResult = new RacingResult(app);
   };
 }
