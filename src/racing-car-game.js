@@ -1,3 +1,5 @@
+import Car from './car.js';
+
 export default class RacingCarGame {
     constructor(carNameArray, racingCount, app) {
         this.carNameArray = carNameArray;
@@ -35,7 +37,7 @@ export default class RacingCarGame {
     
     generateCars() {
         this.carNameArray.forEach(name => {
-            this.cars.push({name, result: ''});
+            this.cars.push(new Car(name));
         });
     }
     
