@@ -61,7 +61,7 @@ class CarGame extends CarGameController {
 
   afterCountSubmitLogic(stringCount) {
     try {
-      this.result.innerHTML = this.generateResultTemplate(Number(stringCount));
+      this.result.innerHTML = this.generateTemplateOfGameResult(Number(stringCount));
       this.showElement(this.resultTitle);
       this.showElement(this.result);
     } catch (error) {
