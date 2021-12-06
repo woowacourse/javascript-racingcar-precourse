@@ -26,6 +26,7 @@ export const createResultNode = (cars) => {
   cars.forEach((car) => {
     $resultNode.appendChild(car.positionElement);
   });
+
   $resultNode.style.margin =
     STYLE.RESULT_MARGIN_VERTICAL + ' ' + STYLE.RESULT_MARGIN_HORIZONTAL;
 
@@ -36,16 +37,42 @@ export const disableForm = ($form) => {
   $form.childNodes.forEach((node) => (node.disabled = true));
 };
 
-export const createWinnersNode = (winners) => {
-  const $winnerContainer = document.createElement('div');
-  const $textNode = document.createTextNode(COMMENT.FINAL_WINNER);
-  $winnerContainer.appendChild($textNode);
-  const $winnersSpan = document.createElement('span');
-  const winnersName = winners.map((car) => car.name);
-  const winnersList = winnersName.reduce((acc, cur) => acc + ',' + cur);
-  const $winners = document.createTextNode(winnersList);
-  $winnersSpan.appendChild($winners);
-  $winnersSpan.id = SELECTOR.ID.RACING_WINNERS;
-  $winnerContainer.appendChild($winnersSpan);
-  return $winnerContainer;
+const createElement = (tag, text, id) => {
+  const $container = document.createElement(tag);
+
+  if (text) {
+    const $textNode = document.createTextNode(text);
+    $container.appendChild($textNode);
+  }
+
+  if (id) {
+    $container.id = id;
+  }
+
+  return $container;
 };
+
+export class Winners {
+  constructor(cars) {
+    this.cars = cars;
+  }
+
+  get names() {
+    return this.cars.map((car) => car.name);
+  }
+
+  get list() {
+    return this.names.reduce((acc, cur) => `${acc},${cur}`);
+  }
+
+  get $element() {
+    const $container = createElement('div', COMMENT.FINAL_WINNER);
+    const $winnerSpan = createElement(
+      'span',
+      this.list,
+      SELECTOR.ID.RACING_WINNERS
+    );
+    $container.appendChild($winnerSpan);
+    return $container;
+  }
+}

@@ -4,7 +4,7 @@ import {
   showNode,
   createResultNode,
   disableForm,
-  createWinnersNode
+  Winners
 } from '../utils/dom.js';
 import { SELECTOR } from '../constants/constant.js';
 import { Car } from '../model/car.js';
@@ -63,7 +63,6 @@ export class App {
       this.game.moveCars();
       this.printState();
     }
-    showNode(this.$result);
     this.printWinner();
   }
 
@@ -73,7 +72,7 @@ export class App {
   }
 
   printWinner() {
-    const $winnerNode = createWinnersNode(this.game.winners);
-    this.$target.appendChild($winnerNode);
+    const winner = new Winners(this.game.winners);
+    this.$target.appendChild(winner.$element);
   }
 }
