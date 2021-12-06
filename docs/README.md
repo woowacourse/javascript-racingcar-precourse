@@ -29,12 +29,23 @@
 
 ### `racing-count-input`에 숫자 외 입력이 가능하다
 
-처음에는 `input type`이 `number`라 숫자만 입력 가능한 줄 알았는데, 테스트를 진행하다 보니 `+`,` -`,` e`,` .` 등의 입력이 가능했습니다.
+처음에는 `input type`이 `number`라 숫자만 입력 가능한 줄 알았는데, 테스트를 진행하다 보니 `+`,`-`,`e`,`.` 등의 입력이 가능했습니다.
 
-안내를 무시하고 `+`,` -`,` e`,` .` 등이 포함된 문장으로 제출시 `alert`로 다음과 같은 안내를 받게 됩니다.
+- `+`이 맨 앞에 포함된 숫자를 입력시 브라우저가 자동으로 `정수`로 변환하여 **게임을 정상 진행**합니다.
+  - ex) +3 => 3, +345 => 345
+- `+`이 중간에 포함된 정수를 입력시 브라우저가 자동으로 `''`로 변환하여 `alert(ERROR.BLANK_SUBMIT)` 오류 메시지를 보여줍니다.
+  - ex) 3+3 => 오류, 4+ => 오류
+- `e`이 포함된 숫자를 입력시 브라우저가 자동으로 `''`로 변환하여 `alert(ERROR.BLANK_SUBMIT)` 오류 메시지를 보여줍니다.
+  - ex) 3e => 오류, 3e3 => 오류
+- `-`,`.` 이 포함된 숫자를 입력시 **특수문자를 감지**하여 `alert(ERROR.INCLUDE_SPECIAL)` 오류 메시지를 보여줍니다.
+  - ex) -3 => 오류, 3.3 => 오류
+
+
+
 ```javascript
 // constants.js
 export const ERROR = {
+  BLANK_SUBMIT: '빈칸으로 제출 하실 수 없습니다.',
   INCLUDE_SPECIAL: '횟수는 특수문자를 입력하실 수 없습니다.',
 };
 ```
@@ -50,7 +61,7 @@ export const ERROR = {
 반복문을 통해 현재 위치만큼 `-`를 추가하고 반환하는 `makeHyphenGraph`함수를 만들어서 활용하였습니다.
 
 ```javascript
-// DOMUtils.js
+// utils.js
 const makeHyphenGraph = number => {
   let result = '';
   Array.from({ length: number }, () => (result += '-'));
@@ -63,29 +74,42 @@ const makeHyphenGraph = number => {
 ### 게임의 우승자를 보여주는 방법
 
 ```javascript
-// DOMUtils.js
-showWiners: array => {
+// utils.js
+export const getWinners = array => {
   // 1. 자동차 객체들이 담겨있는 배열에서 현재위치만 반환하고 그중 최대 값을 추출한다. 
   const maxValue = Math.max(...array.map(object => object._location));
   
-  const winners = array
-  // 2. 자동차 객체들이 담겨있는 배열에서 최대 값을 갖고있는 객체들만 필터링한다.
-  .filter(object => object._location === maxValue)
-  // 3. 최대 값으로 필터링된 객체들을 자동차의 이름으로 반환한다.
-  .map(object => object._name)
-  // 4. 우승자가 여러 명일 경우 쉼표(,)를 이용하여 구분한다.
-  .join(',');
-
-  $('#app').insertAdjacentHTML(
-    'beforeend',
-    `<div>최종 우승자: 
-       <span id="racing-winners">${winners}</span>
-     </div>`,
-  );
+  return array
+    // 2. 자동차 객체들이 담겨있는 배열에서 최대 값을 갖고있는 객체들만 필터링한다.
+      .filter(object => object._location === maxValue)
+    // 3. 최대 값으로 필터링된 객체들을 자동차의 이름으로 반환한다.
+      .map(object => object._name)
+    // 4. 우승자가 여러 명일 경우 쉼표(,)를 이용하여 구분한다.
+      .join(',');
 },
 ```
 
 <br>
+
+## 🗂 프로그램 구조
+
+```
+📦 src
+ ┣ 📜 index.js  // controller를 호출
+ ┣ 📂 model
+ ┃ ┗ 📜 Car.js  // 자동차의 속성을 갖는 model
+ ┣ 📂 view
+ ┃ ┗ 📜 view.js  // DOM조작을 담당하는 view
+ ┣ 📂 controller
+ ┃ ┗ 📜 controller.js  // 사용자의 입력을 받아 처리하는 controller
+ ┃ ┗ 📜 playCarRacing.js  // 입력받은 자동차 이름과 게임 횟수를 바탕으로 게임 진행
+ ┗ 📂 utils
+   ┣ 📜 constants.js  // 프로그램에 사용되는 모든 상수 모음
+   ┣ 📜 utils.js  // controller의 조작을 돕는 함수
+   ┗ 📜 validators.js  // 자동차 이름, 게임 횟수의 입력 유효성 검증
+```
+
+
 
 ## ✅ 프로그래밍 요구사항
 
