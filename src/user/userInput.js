@@ -1,3 +1,5 @@
+import { getValidateNames } from './validateInput.js';
+
 const $carNamesInput = document.querySelector('#car-names-input');
 const $carNamesSubmit = document.querySelector('#car-names-submit');
 
@@ -9,9 +11,10 @@ function carNamesInput(event) {
   event.preventDefault();
 
   const carNames = $carNamesInput.value.split(',');
-  const cars = carNames.map(name => new Car(name));
 
-  console.log(cars);
+  if (getValidateNames(carNames)) {
+    const cars = carNames.map(name => new Car(name));
+  }
 }
 
 export default function userInput() {
