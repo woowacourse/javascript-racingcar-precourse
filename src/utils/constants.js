@@ -1,8 +1,9 @@
 const MIN_RANGE_NUMBER = 0;
 const MAX_RANGE_NUMBER = 9;
-const RANGE_THRESHOLD = 4;
+const MOVE_CONDITION_NUMBER = 4;
 
 const CAR_DISTANCE_LOG = '-';
+const MAX_CAR_NAME_LENGTH = 5;
 
 const CAR_NAMES = {
   EMPTY_ERROR_MESSAGE: '자동차 이름을 입력해주세요.  올바른 예) east,west,south,north',
@@ -21,8 +22,9 @@ const RACING_COUNT = {
 export {
   MIN_RANGE_NUMBER,
   MAX_RANGE_NUMBER,
-  RANGE_THRESHOLD,
+  MOVE_CONDITION_NUMBER,
   CAR_DISTANCE_LOG,
+  MAX_CAR_NAME_LENGTH,
   CAR_NAMES,
   RACING_COUNT,
 };

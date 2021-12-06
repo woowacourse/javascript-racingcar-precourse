@@ -1,11 +1,11 @@
-import { CAR_NAMES, RACING_COUNT } from './constants.js';
+import { CAR_NAMES, MAX_CAR_NAME_LENGTH, RACING_COUNT } from './constants.js';
 
 const isEmpty = (inputValue) => {
   return inputValue === '';
 };
 
 const isLongerThanFiveLetters = (carNamesInput) => {
-  return carNamesInput.split(',').some((carName) => carName.length > 5);
+  return carNamesInput.split(',').some((carName) => carName.length > MAX_CAR_NAME_LENGTH);
 };
 
 const isDuplicate = (carNamesInput) => {
