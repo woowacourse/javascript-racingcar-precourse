@@ -1,4 +1,4 @@
-import { $status } from "../common/constants.js";
+// import { $status } from "../common/constants.js";
 
 export default class Car {
   constructor(name) {
@@ -11,7 +11,7 @@ export default class Car {
     for (let i = 0; i < this.position; i += 1) {
       bar += "-";
     }
-    $status.innerHTML += `${this.name}: ${bar}<br>`;
+    return `${this.name}: ${bar}<br>`;
   }
 
   makeRandom() {
