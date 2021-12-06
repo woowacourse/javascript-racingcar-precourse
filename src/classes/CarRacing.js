@@ -19,7 +19,10 @@ export default class CarRacing {
     for (let i = 0; i < count; i += 1) {
       const eachCarResult = this.cars.map((car) => {
         car.drive();
-        return Object.assign(Object.create(Object.getPrototypeOf(car)), car); // reference : https://stackoverflow.com/questions/41474986/how-to-clone-a-javascript-es6-class-instance
+        // 인스턴스 car를 리턴하면 주소 자체를 리턴하기 때문에 결국에는 각 횟수마다 모두 같은 distance를 리턴하게 된다.
+        // 그러므로 얕은 복사를 통해 각 레이싱 결과를 리턴해야한다.
+        // reference : https://stackoverflow.com/questions/41474986/how-to-clone-a-javascript-es6-class-instance
+        return Object.assign(Object.create(Object.getPrototypeOf(car)), car);
       });
       eachCountResults.push(eachCarResult);
     }
