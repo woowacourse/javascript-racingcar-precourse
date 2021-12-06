@@ -1,3 +1,5 @@
+import NUMBER from '../constants/number.js';
+
 export default class Car {
   constructor(name) {
     this.validateName(name);
@@ -7,13 +9,13 @@ export default class Car {
   }
 
   move() {
-    if (this.isBiggerThanThree()) {
+    if (this.isBiggerThanGivenNum(NUMBER.MOVE_LEAST_CONDITION)) {
       this.position += 1;
     }
   }
 
-  isBiggerThanThree() {
-    return MissionUtils.Random.pickNumberInRange(0, 9) >= 4;
+  isBiggerThanGivenNum(givenNum) {
+    return MissionUtils.Random.pickNumberInRange(0, 9) >= givenNum;
   }
 
   validateName(name) {

@@ -1,6 +1,7 @@
 const NUMBER = {
   CARS_MIN_LENGTH: 2,
   COUNT_LEAST_VALUE: 1,
+  MOVE_LEAST_CONDITION: 4,
 };
 
 export default NUMBER;
