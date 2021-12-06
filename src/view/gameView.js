@@ -25,6 +25,9 @@ export default class GameView {
   }
 
   renderResult(carInfo) {
-    console.log(carInfo, 'final');
+    const newSpan = document.createElement('span');
+    newSpan.innerHTML = `최종 우승자: <span id="racing-winners">${carInfo}</span>`;
+
+    this.$app.append(newSpan);
   }
 }

@@ -5,6 +5,7 @@ export default class GameModel {
   constructor() {
     this.cars = [];
     this.count = 0;
+    this.winners = [];
     this.isSubmitted = {
       cars: false,
       count: false,
@@ -46,5 +47,27 @@ export default class GameModel {
 
   isAllSubmitted() {
     return Object.values(this.isSubmitted).every((value) => value === true);
+  }
+
+  setWinners(gameResult) {
+    this.winners = this.getWinners(gameResult);
+  }
+
+  getWinners(gameResult) {
+    const maxValue = this.findMaxValue(gameResult);
+
+    return gameResult.reduce((acc, { name, position }) => {
+      if (maxValue === position) acc.push(name);
+
+      return acc;
+    }, []);
+  }
+
+  findMaxValue(gameResult) {
+    return gameResult.reduce((acc, { position }) => {
+      if (position > acc) acc = position;
+
+      return acc;
+    }, 0);
   }
 }

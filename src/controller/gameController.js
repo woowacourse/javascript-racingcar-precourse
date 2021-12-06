@@ -4,7 +4,7 @@ import GameView from '../view/gameView.js';
 
 export default class GameController {
   constructor() {
-    this.model = new GameModel();
+    this.gameModel = new GameModel();
     this.gameView = new GameView();
 
     this.setBinds();
@@ -30,12 +30,12 @@ export default class GameController {
     const carNamesInput = $('#car-names-input').value;
 
     try {
-      this.model.saveCars(carNamesInput);
+      this.gameModel.saveCars(carNamesInput);
     } catch (err) {
       alert(err);
       this.gameView.resetCarNamesInput();
     }
-    if (this.model.isAllSubmitted()) {
+    if (this.gameModel.isAllSubmitted()) {
       this.play();
     }
   }
@@ -46,12 +46,12 @@ export default class GameController {
     const racingCountInput = $('#racing-count-input').value;
 
     try {
-      this.model.saveCount(racingCountInput);
+      this.gameModel.saveCount(racingCountInput);
     } catch (err) {
       alert(err);
       this.gameView.resetRacingCountInput();
     }
-    if (this.model.isAllSubmitted()) {
+    if (this.gameModel.isAllSubmitted()) {
       this.play();
     }
   }
@@ -59,14 +59,16 @@ export default class GameController {
   play() {
     let totalRoundString = '';
 
-    for (let i = 0; i < this.model.count; i += 1) {
-      const roundString = this.createRoundString(this.model.cars);
+    for (let i = 0; i < this.gameModel.count; i += 1) {
+      const roundString = this.createRoundString(this.gameModel.cars);
 
       totalRoundString += `${roundString} </br>`;
     }
 
+    this.gameModel.setWinners(this.gameModel.cars);
+
     this.gameView.renderTotalRound(totalRoundString);
-    this.gameView.renderResult(this.model.cars);
+    this.gameView.renderResult(this.createResultString(this.gameModel.winners));
   }
 
   createRoundString(cars) {
@@ -74,5 +76,9 @@ export default class GameController {
       car.move();
       return `${acc} ${car.name}: ${'-'.repeat(car.position)} </br>`;
     }, '');
+  }
+
+  createResultString(winners) {
+    return winners.join(',');
   }
 }
