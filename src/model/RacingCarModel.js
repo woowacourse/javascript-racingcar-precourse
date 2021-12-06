@@ -18,9 +18,7 @@ class RacingCarModel {
     this.RacingCount = RacingCount;
     for (let key in this.RacingResult) {
       // 개수만큼 움직여주는 것을 모델이 할 일일까?
-      for (let i = 0; i < this.RacingCount; i++) {
-        this.RacingResult[key].move();
-      }
+      this.RacingResult[key].move(RacingCount);
     }
     console.log(this);
   }

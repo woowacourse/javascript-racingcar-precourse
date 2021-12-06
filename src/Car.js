@@ -4,9 +4,11 @@ class Car {
     this.step = 0;
     this.stepByRound = [];
   }
-  move() {
-    this.step += this.randomMove();
-    this.stepByRound.push(this.step);
+  move(RacingCount) {
+    for (let i = 0; i < RacingCount; i++) {
+      this.step += this.randomMove();
+      this.stepByRound.push(this.step);
+    }
   }
   randomMove() {
     const randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
