@@ -4,30 +4,28 @@
 function gameStart(carNameArray, racingCount) {
     const cars = generateCars(carNameArray);
     for(let i = 0; i < racingCount; i++) {
-        playOneRoundGame(cars, carNameArray);
+        playOneRoundGame(cars);
+        renderOneRoundResult(cars);
     }
 }
 
 function generateCars(carNameArray) {
-    const cars = {};
+    let cars = [];
     carNameArray.forEach(name => {
-        cars[name] = {result: ''};
+        cars.push({name, result: ''});
     });
     return cars;
 }
 
-function playOneRoundGame(cars, carNameArray) {
-    carNameArray.forEach(name => {
-        if(checkForwardCondition()) cars[name].result += '-';
+function playOneRoundGame(cars) {
+    cars.forEach(car => {
+        if(checkForwardCondition()) car.result += '-';
     });
-    renderOneRoundResult(cars);
 }
 
 function renderOneRoundResult(cars) {
     const roundResult = document.createElement('p');
-    for(let car in cars) {
-        roundResult.innerHTML += `${car}: ${cars[car].result}<br>`
-    }
+    cars.forEach(car => roundResult.innerHTML += `${car.name}: ${car.result}<br>`);
     app.appendChild(roundResult);
 }
 
