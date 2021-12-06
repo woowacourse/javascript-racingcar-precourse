@@ -13,6 +13,6 @@ export const NAME_LENGTH = {
 
 export const GAME = {
   MOVE_CONDITION: 4,
-  DISTANCE_MARKER: "-",
-  WINNER: "최종 우승자",
+  DISTANCE_MARKER: '-',
+  WINNER: '최종 우승자: ',
 };
