@@ -5,12 +5,8 @@ import {
 } from './const.js';
 
 export function countNumOfCar(name) {
-  let count = 1;
-  let pos = name.indexOf(',');
-  while (pos !== -1) {
-    count++;
-    pos = name.indexOf(',', pos + 1);
-  }
+  let names = name.split(',');
+  let count = names.length;
   return count;
 }
 
