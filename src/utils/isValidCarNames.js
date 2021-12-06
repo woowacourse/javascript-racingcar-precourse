@@ -1,4 +1,4 @@
-export const isValidCarNames = carNamesList => {
+export const isValidCarNames = (carNamesList) => {
   for (let i = 0; i < carNamesList.length; i++) {
     if (
       isWrongLength(carNamesList[i]) ||
@@ -10,7 +10,7 @@ export const isValidCarNames = carNamesList => {
   return true;
 };
 
-const isWrongLength = carName => {
+const isWrongLength = (carName) => {
   if (carName.length <= 0 || carName.length > 5) {
     alert(`자동차 이름을 5자 이하로 정해주세요.`);
     return true;

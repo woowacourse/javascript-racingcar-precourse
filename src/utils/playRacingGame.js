@@ -8,8 +8,8 @@ export const playRacingGame = (cars, racingCount) => {
   showWinner(cars);
 };
 
-const startRound = cars => {
-  cars.forEach(car => {
+const startRound = (cars) => {
+  cars.forEach((car) => {
     if (isMove()) {
       car.point++;
     }

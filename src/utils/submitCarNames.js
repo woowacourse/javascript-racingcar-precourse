@@ -11,7 +11,7 @@ export const submitCarNames = () => {
     return [];
   }
 
-  carNamesList.forEach(carName => {
+  carNamesList.forEach((carName) => {
     const car = new Car(carName);
     cars.push(car);
   });
@@ -19,10 +19,10 @@ export const submitCarNames = () => {
   return cars;
 };
 
-const converterStringToArray = carNamesString => {
+const converterStringToArray = (carNamesString) => {
   let carNamesList = [];
   carNamesString
     .split(',')
-    .forEach(carName => carNamesList.push(carName.trim()));
+    .forEach((carName) => carNamesList.push(carName.trim()));
   return carNamesList;
 };
