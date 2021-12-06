@@ -6,7 +6,7 @@ export const DOM = {
   RANCING_COUNT: '#racing-count',
   RANCING_COUNT_INPUT: '#racing-count-input',
   RANCING_COUNT_SUBMIT: '#racing-count-submit',
-  RACING_WINNERS: '#racing-winners',
+  RACING_WINNERS: 'racing-winners',
   COUNT_TITLE: '#count-title',
   RESULT_TITLE: '#result-title',
 };

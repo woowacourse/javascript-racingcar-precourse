@@ -74,12 +74,13 @@ class CarGameLogic {
     for (let i = 0; i < number; i = i + 1) {
       this.simulatePerNumberOfTimes();
       // simulate 이후 자동차를 기준으로 템플릿을 만들어 변수에 합친다.
-      template = `${template}${this.makeTemplatePerSimulate()} <br>`;
+      template = `${template}${this.makeTemplatePerSimulate()}<br>`;
     }
     const winnerArray = this.getWinner();
-    template = `${template}최종 우승자: ${winnerArray
+    template = `${template}
+    최종 우승자: <span id="${DOM.RACING_WINNERS}">${winnerArray
       .map(car => car.name)
-      .join(', ')}`;
+      .join(',')}</span>`;
 
     return template;
   }
