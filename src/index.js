@@ -1,6 +1,6 @@
 'use strict';
 
-import EventHandler from './event-handler.js';
+import EventHandler from './game/event-handler.js';
 
 const app = document.querySelector("#app");
 const handler = new EventHandler(app);
