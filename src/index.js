@@ -5,32 +5,33 @@ import { ELEMENT_ID, ERR_MESSAGE, WINNER_COMMENT } from './constants.js';
 
 export default class CarRacingGame {
   constructor() {
-    this.appEl = document.querySelector('#app');
+    this.appEl = document.querySelector(ELEMENT_ID.appId);
     this.userInputObject = new UserInput();
     this.carObjects = [];
-    this.racingStatusSpanEl = this.createSpanElement(ELEMENT_ID.racingStatusId);
-    this.racingWinnerCommentEl = this.createSpanElement(
+    this.racingStatusSpanEl = this.createSpan(ELEMENT_ID.racingStatusId);
+    this.racingWinnerCommentEl = this.createSpan(
       ELEMENT_ID.racingWinnerCommentId,
     );
-    this.racingWinnerNameSpanEl = this.createSpanElement(
+    this.racingWinnerNameSpanEl = this.createSpan(
       ELEMENT_ID.racingWinnerNameId,
     );
     this.bindEventListener();
   }
 
-  createSpanElement(ElementId) {
+  createSpan(ElementId) {
     const spanEl = document.createElement('span');
     spanEl.id = ElementId;
     this.appEl.appendChild(spanEl);
+
     return spanEl;
   }
 
   bindEventListener() {
-    this.bindCarNameSubmitEl();
-    this.bindRacingCountSubmitEl();
+    this.bindCarNameSubmit();
+    this.bindRacingCountSubmit();
   }
 
-  bindCarNameSubmitEl() {
+  bindCarNameSubmit() {
     this.userInputObject.carNameSubmitEl.addEventListener('click', (e) => {
       e.preventDefault();
       if (this.userInputObject.isValidCarNames()) {
@@ -41,7 +42,7 @@ export default class CarRacingGame {
     });
   }
 
-  bindRacingCountSubmitEl() {
+  bindRacingCountSubmit() {
     this.userInputObject.racingCountSubmitEl.addEventListener('click', (e) => {
       e.preventDefault();
       if (
@@ -67,9 +68,7 @@ export default class CarRacingGame {
         result = true;
       }
     });
-    if (result) {
-      alert(ERR_MESSAGE.clickCarNameSubmitButton);
-    }
+    if (result) alert(ERR_MESSAGE.clickCarNameSubmitButton);
 
     return result;
   }
@@ -81,8 +80,9 @@ export default class CarRacingGame {
   }
 
   racingPlay() {
+    const inputRacingCount = this.userInputObject.getRacingCount();
     let racingCount = 1;
-    while (racingCount <= this.userInputObject.getRacingCount()) {
+    while (racingCount <= inputRacingCount) {
       this.carObjects.forEach((carObject) => {
         carObject.goAndStop();
         this.racingStatusSpanEl.innerHTML += View.getRacingStatus(carObject);
