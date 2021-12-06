@@ -13,8 +13,9 @@ export default class Car {
 
   raceAdvance() {
     const randomNumber = this.generateRandomNumber();
+    const minAdvanceNumber = 4;
 
-    if (randomNumber >= 4) {
+    if (randomNumber >= minAdvanceNumber) {
       this.advance += '-';
     }
   }

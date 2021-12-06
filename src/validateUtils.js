@@ -10,7 +10,8 @@ export default class ValidateUtils {
   }
 
   static checkTextLength(text) {
-    if (text.length > 5 || text.length === 0) {
+    const maxTextLength = 5;
+    if (text.length > maxTextLength || text.length === 0) {
       return false;
     }
     return true;
