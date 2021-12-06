@@ -11,6 +11,14 @@ class RacingTryCountForm {
     this.$tryCount = 0;
   }
 
+  setTryCount() {
+    this.$tryCount = this.$input.value;
+  }
+
+  getTryCount() {
+    return this.$tryCount;
+  }
+
   hide() {
     this.$input.style.display = 'none';
     this.$submit.style.display = 'none';
@@ -33,10 +41,6 @@ class RacingTryCountForm {
     }
 
     return true;
-  }
-
-  getTryCount() {
-    this.$tryCount = this.$input.value;
   }
 
   checkExistTryCount() {

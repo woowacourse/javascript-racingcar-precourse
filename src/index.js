@@ -48,7 +48,7 @@ class RacingCarGame {
   onClickTryCountSubmitButton(event) {
     event.preventDefault();
 
-    this.$racingTryCountForm.getTryCount();
+    this.$racingTryCountForm.setTryCount();
     if (!this.$racingTryCountForm.validateTryCount()) return;
 
     this.play();
@@ -60,7 +60,7 @@ class RacingCarGame {
     this.resetCarsAdvance();
     this.$racingResult.initResults();
 
-    for (let i = 0; i < this.$racingTryCountForm.$tryCount; i += 1) {
+    for (let i = 0; i < this.$racingTryCountForm.getTryCount(); i += 1) {
       this.advanceCars();
       this.$racingResult.putBufferOneTryResults(this.$cars);
       this.$racingResult.render();

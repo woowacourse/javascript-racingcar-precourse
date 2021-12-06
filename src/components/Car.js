@@ -6,6 +6,14 @@ class Car {
     this.$advance = 0;
   }
 
+  getAdvance() {
+    return this.$advance;
+  }
+
+  getName() {
+    return this.$name;
+  }
+
   advance() {
     if (pickRandomNumberInZeroToNine() >= 4) this.$advance += 1;
   }
