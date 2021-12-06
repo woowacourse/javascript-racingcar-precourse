@@ -1,4 +1,6 @@
-export default function Car(name) {
-  this.name = name;
-  this.step = 0;
+export default class Car {
+  constructor(name) {
+    this.name = name;
+    this.step = 0;
+  }
 }

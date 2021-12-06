@@ -1,12 +1,13 @@
 import Car from './car.js';
 
-export function getStep(...cars) {
-  const carObjList = getCarObjList(...cars);
-  carObjList.forEach((car) => {
+export function getStep(cars) {
+  const carObjList = getCarObjList(cars);
+  for (let i = 0; i < cars.length; i++) {
     if (isStepValid()) {
-      car.step += 1;
+      carObjList[i].step += 1;
     }
-  });
+  }
+  return carObjList;
 }
 
 export function isStepValid() {
