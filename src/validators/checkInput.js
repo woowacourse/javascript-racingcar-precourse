@@ -29,15 +29,16 @@ function checkCarNameComma(carNameList) {
 }
 
 export function checkCarName(carNameList) {
+  let allowCarName = false;
   if (
     checkCarNameDuplicate(carNameList) &&
     checkCarNameLen(carNameList) &&
     checkCarNameComma(carNameList)
   ) {
-    return true;
+    allowCarName = true;
   }
 
-  return false;
+  return allowCarName;
 }
 
 export function checkCount(count) {

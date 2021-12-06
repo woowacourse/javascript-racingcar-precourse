@@ -9,5 +9,9 @@
         "ecmaVersion": 11,
         "sourceType": "module"
     },
-    "rules": { "no-unused-vars": "warn" }
+    "rules": { 
+        "no-unused-vars": "warn" ,
+        "no-alert": "off",
+        "ignorePackages": true
+    }
 }
