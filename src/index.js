@@ -62,7 +62,7 @@ class RacingCarGame {
 
     for (let i = 0; i < this.$racingTryCountForm.$tryCount; i += 1) {
       this.advanceCars();
-      this.$racingResult.runOneTry(this.$cars);
+      this.$racingResult.putBufferOneTryResults(this.$cars);
       this.$racingResult.render();
     }
 

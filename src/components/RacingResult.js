@@ -5,7 +5,7 @@ class RacingResult {
     // eslint-disable-next-line prefer-destructuring
     this.$title = $$('h4')[1];
     this.$container = null;
-    this.$results = [];
+    this.$resultsBuffer = [];
   }
 
   createDOM() {
@@ -15,19 +15,24 @@ class RacingResult {
 
   render() {
     this.$title.style.display = '';
-    this.$container.innerHTML = this.$results.join('<br />');
+    this.$container.innerHTML = this.printResultsBufferWithDivider();
   }
 
   hide() {
     this.$title.style.display = 'none';
   }
 
-  runOneTry(cars) {
-    this.$results.push(cars.map(car => `<div>${car.printAdvance()}</div>`).join(''));
+  printResultsBufferWithDivider() {
+    const divider = '<br />';
+    return this.$resultsBuffer.join(divider);
+  }
+
+  putBufferOneTryResults(cars) {
+    this.$resultsBuffer.push(cars.map(car => `<div>${car.printAdvance()}</div>`).join(''));
   }
 
   initResults() {
-    this.$results = [];
+    this.$resultsBuffer = [];
   }
 }
 
