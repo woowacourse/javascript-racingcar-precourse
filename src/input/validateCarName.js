@@ -47,8 +47,8 @@ const makeAlert = () => {
 
 export default function validateCarName(e) {
   e.preventDefault();
-
   const carArr = trimCarName(splitCarName());
+
   if (isCarNameLength(carArr) && isCarNameBlank(carArr)) {
     showCountInput();
     return true;

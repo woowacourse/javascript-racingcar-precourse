@@ -14,8 +14,8 @@ const makeAlert = () => {
 
 export default function validateRacingCount(e) {
   e.preventDefault();
-
   const racingCount = trimRacingCount();
+
   if (isNaturalNumber(racingCount)) {
     play();
     return true;

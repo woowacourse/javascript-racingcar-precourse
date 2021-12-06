@@ -1,7 +1,6 @@
 import {
-  $racingResultTitle,
   $racingCount,
-  $racingCountSubmit,
+  $racingResultTitle,
   $racingStatus,
   $winner,
 } from "../common/constants.js";
@@ -15,16 +14,18 @@ const resultVisible = () => {
 const makeCar = (carArr) => carArr.map((el) => new Car(el));
 
 const carMoveAndPrint = (carObject) => {
-  $racingStatus.innerHTML = `<br>`;
+  $racingStatus.innerHTML = "";
+
   for (let i = 0; i < $racingCount.value; i += 1) {
     carObject.forEach((el) => {
       el.judgeGoOrNot();
-      $racingStatus.innerHTML += el.printPosition();
+      el.printPosition();
     });
     $racingStatus.innerHTML += `<br>`;
-    // 엔터 추가
   }
-  $racingCountSubmit.after($racingStatus);
+
+  $racingStatus.innerHTML += `최종 우승자: `;
+  $racingResultTitle.after($racingStatus);
 };
 
 const sortCarObject = (carObject) => {
@@ -36,19 +37,20 @@ const sortCarObject = (carObject) => {
   });
 };
 
-const showResult = (carObject) => {
-  const sortedCars = sortCarObject(carObject);
+const showResult = (sortedCars) => {
   $winner.id = "racing-winners";
   $winner.innerHTML = "";
+
   sortedCars.forEach((el, idx) => {
     if (idx === 0) {
       $winner.innerHTML += `${el.name}`;
     }
-    if (el.position === carObject[0].position && idx !== 0) {
+    if (el.position === sortedCars[0].position && idx !== 0) {
       $winner.innerHTML += `, ${el.name}`;
     }
   });
-  $racingResultTitle.after($winner);
+
+  $racingStatus.after($winner);
 };
 
 export default function play() {
@@ -57,7 +59,7 @@ export default function play() {
   const carObject = makeCar(carArr);
 
   carMoveAndPrint(carObject);
-  showResult(carObject);
+  showResult(sortCarObject(carObject));
 
   return true;
 }
