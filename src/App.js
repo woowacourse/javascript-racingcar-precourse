@@ -1,21 +1,27 @@
 import Component from './components/Component.js';
 import CarNamesContainer from './components/CarNamesContainer.js';
 import RaicingCountContainer from './components/RacingCountContainer.js';
-import {DOM_ID, PROGRESS} from './utils/constants.js';
+import {DOM_ID} from './utils/constants.js';
 import ResultContainer from './components/ResultContainer.js';
 import Car from './classes/Car.js';
-
+import {hideAllElements} from './utils/util.js';
 export default class App extends Component {
+  constructor(...args) {
+    super(...args);
+    this.hideContainer();
+  }
+
   setup() {
     this.$state = {
       cars: [],
-      count: 0,
-      progress: PROGRESS.INPUT_CAR_NAME
+      count: 0
     };
 
-    this.$CarNamesContainer = this.$target.querySelector(`#${DOM_ID.CAR_NAMES_CONTAINER}`);
-    this.$RaicingCountContainer = this.$target.querySelector(`#${DOM_ID.RACING_COUNT_CONTAINER}`);
-    this.$ResultContainer = this.$target.querySelector(`#${DOM_ID.RESULT_CONTAINER}`);
+    this.$carNamesContainer = this.$target.querySelector(`#${DOM_ID.CAR_NAMES_CONTAINER}`);
+    this.$raicingCountTitle = this.$target.querySelector(`#${DOM_ID.RACING_COUNT_TITLE}`);
+    this.$raicingCountContainer = this.$target.querySelector(`#${DOM_ID.RACING_COUNT_CONTAINER}`);
+    this.$resultContainer = this.$target.querySelector(`#${DOM_ID.RESULT_CONTAINER}`);
+    this.$resultTitle = this.$target.querySelector(`#${DOM_ID.RESULT_TITLE}`);
   }
 
   template() {
@@ -23,17 +29,29 @@ export default class App extends Component {
   }
 
   mounted() {
-    new CarNamesContainer(this.$CarNamesContainer, {
+    new CarNamesContainer(this.$carNamesContainer, {
       onSubmit: this.submitCarNameInputHandler.bind(this),
-      onChange: this.changeProgressHandler.bind(this)
+      initRacingCount: this.mountRaicingCountContainer.bind(this)
     });
-    new RaicingCountContainer(this.$RaicingCountContainer, {
-      progress: this.$state.progress,
+  }
+
+  hideContainer() {
+    hideAllElements([this.$raicingCountTitle, this.$raicingCountContainer, this.$resultTitle, this.$resultContainer]);
+  }
+
+  mountRaicingCountContainer() {
+    new RaicingCountContainer(this.$raicingCountContainer, {
+      $title: this.$raicingCountTitle,
       onSubmit: this.submitRacingCountInputHandler.bind(this),
-      onChange: this.changeProgressHandler.bind(this)
+      initResult: this.mountResultContainer.bind(this)
     });
-    new ResultContainer(this.$ResultContainer, {
-      progress: this.$state.progress
+  }
+
+  mountResultContainer() {
+    new ResultContainer(this.$resultContainer, {
+      $title: this.$resultTitle,
+      cars: this.$state.cars,
+      count: this.$state.count
     });
   }
 
@@ -41,12 +59,6 @@ export default class App extends Component {
     const cars = nameArr.map((name) => new Car(name));
     this.setState({
       cars
-    });
-  }
-
-  changeProgressHandler(progress) {
-    this.setState({
-      progress
     });
   }
 
