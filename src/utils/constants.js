@@ -25,9 +25,3 @@ export const ERROR_MESSAGE = Object.freeze({
   DUPLICATED_NAME: '중복된 이름이 존재합니다.',
   NEGATIVE_NUMBER: '게임 횟수는 양수를 입력해주세요.'
 });
-
-export const PROGRESS = Object.freeze({
-  INPUT_CAR_NAME: 0,
-  INPUT_RACING_COUNT: 1,
-  PLAY: 2
-});

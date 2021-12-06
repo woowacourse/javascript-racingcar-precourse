@@ -1,6 +1,6 @@
 import Component from './Component.js';
 import {isValidNamesInput} from '../utils/validation.js';
-import {DOM_ID, PROGRESS} from '../utils/constants.js';
+import {DOM_ID} from '../utils/constants.js';
 
 export default class CarNamesContainer extends Component {
   mounted() {
@@ -8,14 +8,15 @@ export default class CarNamesContainer extends Component {
   }
 
   setEvent() {
-    const {onSubmit, onChange} = this.$props;
+    const {onSubmit, initRacingCount} = this.$props;
 
     this.addEvent('click', `#${DOM_ID.CAR_NAMES_SUBMIT}`, (event) => {
       event.preventDefault();
+
       const carNamesArr = this.$input.value.split(',');
       if (isValidNamesInput(this.$input, carNamesArr)) {
         onSubmit(carNamesArr);
-        onChange(PROGRESS.INPUT_RACING_COUNT);
+        initRacingCount();
       }
     });
   }

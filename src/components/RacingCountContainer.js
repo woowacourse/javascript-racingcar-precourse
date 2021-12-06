@@ -1,35 +1,28 @@
-import {DOM_ID, PROGRESS} from '../utils/constants.js';
-import {hideElement, showElement} from '../utils/util.js';
+import {DOM_ID} from '../utils/constants.js';
+import {showDisplayContainer} from '../utils/util.js';
 import {isValidRacingCount} from '../utils/validation.js';
 import Component from './Component.js';
 
 export default class RacingCountContainer extends Component {
-  mounted() {
-    this.$title = document.querySelector(`#${DOM_ID.RACING_COUNT_TITLE}`);
+  setup() {
+    this.$title = this.$props.$title;
     this.$input = this.$target.querySelector(`#${DOM_ID.RACING_COUNT_INPUT}`);
-    this.toggleDisplayContainer();
+  }
+
+  mounted() {
+    showDisplayContainer(this.$target, this.$title);
   }
 
   setEvent() {
-    const {onSubmit, onChange} = this.$props;
-
     this.addEvent('click', `#${DOM_ID.RACING_COUNT_SUBMIT}`, (event) => {
       event.preventDefault();
+
+      const {onSubmit, initResult} = this.$props;
       const racingCount = this.$input.value;
       if (isValidRacingCount(this.$input, racingCount)) {
         onSubmit(racingCount);
-        onChange(PROGRESS.PLAY);
+        initResult();
       }
     });
-  }
-
-  toggleDisplayContainer() {
-    if (this.$props.progress === PROGRESS.INPUT_CAR_NAME) {
-      hideElement(this.$title);
-      hideElement(this.$target);
-    } else {
-      showElement(this.$title);
-      showElement(this.$target);
-    }
   }
 }
