@@ -108,18 +108,18 @@ export default class View {
     showResultHead(this.$result);
     const $resultContainer = document.querySelector(RESULT_CONTAINER_ID);
     const $oneRaceResult = document.createElement('p');
-  
+
     $oneRaceResult.innerHTML = getOneRaceResult(cars);
     $resultContainer.append($oneRaceResult);
   }
 
-  showWinners(winners) {
+  static showWinners(winners) {
     const $resultContainer = document.querySelector(RESULT_CONTAINER_ID);
     const $winnersSpan = document.createElement('span');
     const winnerNames = getWinnerNames(winners);
     $winnersSpan.id = WINNER_SPAN_ID;
     showWinnerTitle($resultContainer);
-  
+
     $winnersSpan.textContent = `${winnerNames.join(', ')}`;
     $resultContainer.append($winnersSpan);
   }

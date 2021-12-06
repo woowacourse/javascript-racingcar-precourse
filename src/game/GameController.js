@@ -44,6 +44,6 @@ export default class GameController {
   decideWinners() {
     const winners = getWinners(this.cars);
 
-    this.view.showWinners(winners);
+    View.showWinners(winners);
   }
 }
