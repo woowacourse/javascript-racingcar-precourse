@@ -1,5 +1,3 @@
-import Car from './model/car.js';
+import GameController from './controller/gameController.js';
 
-const car = new Car();
-
-car.move();
+new GameController();
