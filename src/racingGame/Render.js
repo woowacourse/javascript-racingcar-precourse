@@ -51,7 +51,7 @@ export default class Render {
       });
       roundResultArea.appendChild(roundResult);
     });
-    this.racingResultArea.append(roundResultArea);
+    this.racingResultArea.appendChild(roundResultArea);
   }
 
   winner(name) {
