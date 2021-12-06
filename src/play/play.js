@@ -11,12 +11,10 @@ const resultVisible = () => {
   $racingResultTitle.style.visibility = "visible";
   $winner.style.visibility = "visible";
 };
+
 const makeCar = (carArr) => carArr.map((el) => new Car(el));
 
-export default function play() {
-  resultVisible();
-  const carArr = trimCarName(splitCarName());
-  const carObject = makeCar(carArr);
+const carMoveAndPrint = (carObject) => {
   for (let i = 0; i < $racingCount.value; i += 1) {
     carObject.forEach((el) => {
       el.judgeGoOrNot();
@@ -24,6 +22,38 @@ export default function play() {
     });
     $status.innerHTML += `<br>  `;
   }
+};
+
+const sortCarObject = (carObject) => {
+  return carObject.sort(function (a, b) {
+    if (a.position > b.position) {
+      return -1;
+    }
+    return 1;
+  });
+};
+const showResult = (carObject) => {
+  $winner.innerHTML = `최종 우승자: `;
+  const sortedCars = sortCarObject(carObject);
+
+  sortedCars.forEach((el, idx) => {
+    if (idx === 0) {
+      $winner.innerHTML += `${el.name}`;
+    }
+    if (el.position === carObject[0].position && idx !== 0) {
+      $winner.innerHTML += `, ${el.name}`;
+    }
+  });
+};
+
+export default function play() {
+  resultVisible();
+  $status.innerHTML = "";
+
+  const carArr = trimCarName(splitCarName());
+  const carObject = makeCar(carArr);
+  carMoveAndPrint(carObject);
+  showResult(carObject);
 
   return true;
 }
