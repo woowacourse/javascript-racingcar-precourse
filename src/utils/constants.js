@@ -33,4 +33,9 @@ export const REGEX = {
   HAS_SPECIAL: /[`~!@#$%^&*()_|+\-=?;:'",.<>\{\}\[\]\\\/ ]/g,
 };
 
-export const COMMA = ',';
+export const CHAR = {
+  COMMA: ',',
+  EMPTY: '',
+  HYPHEN: '-',
+  COMMA_WITH_SPACE: ', ',
+};

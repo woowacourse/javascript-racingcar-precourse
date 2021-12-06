@@ -1,5 +1,5 @@
 import Car from '../model/Car.js';
-import { NUMBER, REGEX, COMMA } from './constants.js';
+import { NUMBER, REGEX, CHAR } from './constants.js';
 
 export const $ = selector => document.querySelector(selector);
 
@@ -12,7 +12,7 @@ export const isIncludeSpace = string => {
 };
 
 export const splitUsingComma = string => {
-  return string.split(COMMA);
+  return string.split(CHAR.COMMA);
 };
 
 export const isDuplicated = array => {
@@ -37,12 +37,12 @@ export const isZero = string => {
 };
 
 export const hasSpecial = string => {
-  return string.split('').some(char => REGEX.HAS_SPECIAL.test(char));
+  return string.split(CHAR.EMPTY).some(char => REGEX.HAS_SPECIAL.test(char));
 };
 
 export const makeHyphenGraph = number => {
-  let result = '';
-  Array.from({ length: number }, () => (result += '-'));
+  let result = CHAR.EMPTY;
+  Array.from({ length: number }, () => (result += CHAR.HYPHEN));
 
   return result;
 };
@@ -53,5 +53,5 @@ export const getWinners = array => {
   return array
     .filter(object => object.location === maxValue)
     .map(object => object.name)
-    .join(', ');
+    .join(CHAR.COMMA_WITH_SPACE);
 };
