@@ -1,9 +1,11 @@
 import Model from '../model/model.js';
 import { $ } from '../utils/utils.js';
+import GameView from '../view/gameView.js';
 
 export default class GameController {
   constructor() {
     this.model = new Model();
+    this.gameView = new GameView();
     this.setBinds();
     this.addEvents();
   }
@@ -42,6 +44,7 @@ export default class GameController {
       this.model.saveCount(racingCountInput);
     } catch (err) {
       alert(err);
+      this.gameView.resetRacingCountInput();
     }
   }
 }
