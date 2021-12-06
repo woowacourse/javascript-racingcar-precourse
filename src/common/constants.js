@@ -5,6 +5,7 @@ const $racingCount = document.getElementById("racing-count-input");
 const $racingCountSubmit = document.getElementById("racing-count-submit");
 const $status = document.getElementById("racing-status");
 const $winner = document.getElementById("racing-winners");
+const $winnerTitle = document.getElementById("racing-winners-title");
 const $racingResultTitle = document.getElementById("racing-result-title");
 
 const NAME_MAX_LENGTH = 5;
@@ -18,6 +19,7 @@ export {
   $racingCount,
   $racingCountSubmit,
   $winner,
+  $winnerTitle,
   $status,
   $racingResultTitle,
   NAME_MAX_LENGTH,

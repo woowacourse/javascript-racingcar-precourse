@@ -1,6 +1,7 @@
 import {
   $racingResultTitle,
   $winner,
+  $winnerTitle,
   $racingCount,
   $status,
 } from "../common/constants.js";
@@ -10,6 +11,7 @@ import { trimCarName, splitCarName } from "../input/validateCarName.js";
 const resultVisible = () => {
   $racingResultTitle.style.visibility = "visible";
   $winner.style.visibility = "visible";
+  $winnerTitle.style.visibility = "visible";
 };
 
 const makeCar = (carArr) => carArr.map((el) => new Car(el));
@@ -20,7 +22,7 @@ const carMoveAndPrint = (carObject) => {
       el.judgeGoOrNot();
       el.printPosition();
     });
-    $status.innerHTML += `<br>  `;
+    $status.innerHTML += `<br>`;
   }
 };
 
@@ -33,8 +35,8 @@ const sortCarObject = (carObject) => {
   });
 };
 const showResult = (carObject) => {
-  $winner.innerHTML = `최종 우승자: `;
   const sortedCars = sortCarObject(carObject);
+  $winner.innerHTML = "";
 
   sortedCars.forEach((el, idx) => {
     if (idx === 0) {
