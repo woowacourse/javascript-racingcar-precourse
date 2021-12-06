@@ -58,18 +58,20 @@
 
 ## 📌 폴더 구조
 
-> 📦src
-> ┣ 📂components
-> ┃ ┣ 📜Car.js
-> ┃ ┣ 📜RacingCarNameForm.js
-> ┃ ┣ 📜RacingResult.js
-> ┃ ┣ 📜RacingTryCountForm.js
-> ┃ ┗ 📜RacingWinner.js
-> ┣ 📂utils
-> ┃ ┣ 📜dom.js
-> ┃ ┗ 📜index.js
-> ┣ 📂validators
-> ┃ ┣ 📜CarNameValidator.js
-> ┃ ┗ 📜TryCountValidator.js
-> ┣ 📜constants.js
-> ┗ 📜index.js
+```
+📦src
+┣ 📂components
+┃ ┣ 📜Car.js
+┃ ┣ 📜RacingCarNameForm.js
+┃ ┣ 📜RacingResult.js
+┃ ┣ 📜RacingTryCountForm.js
+┃ ┗ 📜RacingWinner.js
+┣ 📂utils
+┃ ┣ 📜dom.js
+┃ ┗ 📜index.js
+┣ 📂validators
+┃ ┣ 📜CarNameValidator.js
+┃ ┗ 📜TryCountValidator.js
+┣ 📜constants.js
+┗ 📜index.js
+```
