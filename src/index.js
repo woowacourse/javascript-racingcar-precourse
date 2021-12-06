@@ -11,14 +11,12 @@ import htmlToElement from './utils.js';
 
 class RacingGame {
   constructor() {
-    const { APP } = ELEMENT_IDS;
     this.bindCarNamesElements();
     this.bindRacingCountElements();
     this.registerEventListeners();
 
-    this.$app = document.querySelector(`#${APP}`);
-    this.insertRacingScreen(this.$app);
-    this.insertRacingWinner(this.$app);
+    const $app = document.querySelector(`#${ELEMENT_IDS.APP}`);
+    this.insertRaceResultView($app);
   }
 
   bindCarNamesElements() {
@@ -40,6 +38,11 @@ class RacingGame {
     this.$racingCountSubmit.addEventListener('click', (e) =>
       this.handleSubmitRacingCount(e)
     );
+  }
+
+  insertRaceResultView($app) {
+    this.insertRacingScreen($app);
+    this.insertRacingWinner($app);
   }
 
   insertRacingScreen($app) {
