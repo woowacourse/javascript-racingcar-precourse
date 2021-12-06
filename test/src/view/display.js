@@ -28,3 +28,9 @@ export const appendResultSpanElement = function () {
   resultSpan.id = 'result-span';
   result.appendChild(resultSpan);
 };
+
+export const appendRacingWinnerSpanElement = function () {
+  const racingWinners = document.createElement('span');
+  racingWinners.id = 'racing-winners';
+  result.appendChild(racingWinners);
+};

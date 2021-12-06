@@ -1,5 +1,9 @@
 import { validatedCarNames } from '../utils/validator.js';
-import { showRacingCountDiv, showResultDiv } from '../view/display.js';
+import {
+  appendRacingWinnerSpanElement,
+  showRacingCountDiv,
+  showResultDiv,
+} from '../view/display.js';
 import { getCarNamesInput } from '../utils/get-user-input.js';
 import { makeNewCars } from '../utils/game-utils.js';
 import { printGameResult } from '../view/print-result.js';
@@ -23,5 +27,6 @@ export const handleRacingCountSubmitButton = function () {
     showResultDiv();
     appendResultSpanElement();
     printGameResult(racingCount);
+    appendRacingWinnerSpanElement();
   }
 };
