@@ -1,8 +1,4 @@
-import {
-  MAX_NUMBER,
-  MIN_NUMBER,
-  POSITION_CONDITION_NUMBER,
-} from '../constants/constants.js';
+import { NUMBER } from '../constants/constants.js';
 import { Car } from '../domain/car.js';
 import { state } from '../index.js';
 
@@ -12,8 +8,8 @@ export const makeNewCars = function (carNamesArray) {
 
 const generateRandomNumber = function () {
   const randomNumber = MissionUtils.Random.pickNumberInRange(
-    MIN_NUMBER,
-    MAX_NUMBER
+    NUMBER.RANDOM_NUMBER.MIN,
+    NUMBER.RANDOM_NUMBER.MAX
   );
 
   return randomNumber;
@@ -30,7 +26,7 @@ export const addRandomPosition = function (racingCount) {
 const filterPosition = function () {
   for (let i = 0; i < state.carArray.length; i++) {
     state.carArray[i].position = state.carArray[i].position.filter(
-      (number) => number >= POSITION_CONDITION_NUMBER
+      (number) => number >= NUMBER.POSITION.CONDITION
     );
   }
 };
@@ -46,8 +42,9 @@ const getWinnerPosition = function () {
 };
 
 export const decideWinner = function () {
-  filterPosition();
   let winners = [];
+
+  filterPosition();
 
   for (const car of state.carArray) {
     if (car.position.length === getWinnerPosition()) {

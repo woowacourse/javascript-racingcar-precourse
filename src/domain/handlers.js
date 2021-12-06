@@ -25,12 +25,12 @@ export const handleCarNamesSubmitButton = function () {
 };
 
 export const handleRacingCountSubmitButton = function () {
-  const racingCount = getRacingCountInput();
+  const racingCountInputValue = getRacingCountInput();
 
-  if (validateRacingCount(racingCount)) {
+  if (validateRacingCount(racingCountInputValue)) {
     showResultDiv();
     appendResultSpanElement();
-    printGameResult(racingCount);
+    printGameResult(racingCountInputValue);
     appendRacingWinnerSpanElement();
     printFinalWinner();
   }

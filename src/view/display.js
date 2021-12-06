@@ -25,12 +25,14 @@ export const showResultDiv = function () {
 
 export const appendResultSpanElement = function () {
   const resultSpan = document.createElement('span');
+
   resultSpan.id = 'result-span';
   result.appendChild(resultSpan);
 };
 
 export const appendRacingWinnerSpanElement = function () {
   const racingWinners = document.createElement('span');
+
   racingWinners.id = 'racing-winners';
   result.appendChild(racingWinners);
 };
