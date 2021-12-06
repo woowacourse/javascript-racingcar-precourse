@@ -8,6 +8,8 @@ import {
   createCars,
   createRacingResultArea,
   proceedRacingStage,
+  getWinners,
+  paintWinners,
 } from './utils.js';
 import { ERROR_MESSAGE } from './constants.js';
 
@@ -71,6 +73,8 @@ class CarRacingGame {
     for (let i = 0; i < racingCount; i++) {
       proceedRacingStage(cars);
     }
+    const winners = getWinners(cars);
+    paintWinners(winners);
   };
 }
 

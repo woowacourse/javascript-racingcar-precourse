@@ -73,3 +73,23 @@ export const paintCurrentCar = (car) => {
   $('#racing-result').appendChild(currentCarStatus);
   $('#racing-result').appendChild(document.createElement('br'));
 };
+
+export const getWinners = (cars) => {
+  const MAX_FORWARD = Math.max(...cars.map(({ forwardCount }) => forwardCount));
+  const winners = cars.filter(({ forwardCount }) => forwardCount === MAX_FORWARD);
+  return winners;
+};
+
+export const paintWinners = (winners) => {
+  const WINNERS_NAMES = winners.map(({ name }) => name);
+
+  const $resultLine = document.createElement('span');
+  $resultLine.innerHTML = '최종 우승자: ';
+
+  const $racingWinners = document.createElement('span');
+  $racingWinners.id = 'racing-winners';
+  $racingWinners.innerHTML = WINNERS_NAMES.join();
+
+  $resultLine.appendChild($racingWinners);
+  $('#racing-result').appendChild($resultLine);
+};
