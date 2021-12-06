@@ -1,5 +1,6 @@
 import { getCarNamesInput, getRacingCountInput } from './user/userInput.js';
 import moveCars from './computer/carsMovement.js';
+import findWinners from './computer/findWinners.js';
 
 const $carNamesSubmit = document.querySelector('#car-names-submit');
 const $racingCountInput = document.querySelector('#racing-count-input');
@@ -7,6 +8,7 @@ const $racingCountSubmit = document.querySelector('#racing-count-submit');
 
 function playGame(cars, racingCount) {
   moveCars(cars, racingCount);
+  findWinners(cars);
 }
 
 function getRacingCount(cars) {
