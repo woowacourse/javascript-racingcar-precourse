@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import { inputCarName } from './index.js';
 import RacingGame from './RacingGame.js';
 
@@ -10,6 +11,10 @@ export default class InputRacingCount {
     this.addCountSubmitEvent();
   }
 
+  showResultText() {
+    document.getElementById('result-text').hidden = false;
+  }
+
   checkHaveCarName() {
     if (inputCarName.carNames.length === 0) {
       this.$racingCountInput.value = '';
@@ -17,6 +22,7 @@ export default class InputRacingCount {
 
       return alert('자동차 이름을 먼저 입력해주세요!');
     }
+    this.showResultText();
     new RacingGame(inputCarName.carNames, this.racingCount);
   }
 
@@ -44,9 +50,8 @@ export default class InputRacingCount {
   }
 
   isValidCount(inputCount) {
-    if (
-      !(this.checkNumberForm(inputCount) && this.checkNumberSize(inputCount))
-    ) {
+    // eslint-disable-next-line prettier/prettier
+    if (!(this.checkNumberForm(inputCount) && this.checkNumberSize(inputCount))) {
       this.invalidCountAction();
       return false;
     }

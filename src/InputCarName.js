@@ -3,8 +3,21 @@ export default class InputCarName {
     this.$carNamesInput = document.getElementById('car-names-input');
     this.$carNamesSubmit = document.getElementById('car-names-submit');
     this.carNames = [];
-
+    this.hideUnderCarName();
     this.addNamesSubmitEvent();
+  }
+
+  hideUnderCarName() {
+    document.getElementById('racing-count-input').hidden = true;
+    document.getElementById('racing-count-submit').hidden = true;
+    document.getElementById('count-text').hidden = true;
+    document.getElementById('result-text').hidden = true;
+  }
+
+  showUnderCarName() {
+    document.getElementById('racing-count-input').hidden = false;
+    document.getElementById('racing-count-submit').hidden = false;
+    document.getElementById('count-text').hidden = false;
   }
 
   checkLength(name) {
@@ -34,12 +47,8 @@ export default class InputCarName {
     const arrayLength = carNamesArray.length;
 
     for (let i = 0; i < arrayLength; i += 1) {
-      if (
-        !(
-          this.checkLength(carNamesArray[i]) &&
-          this.checkBlank(carNamesArray[i])
-        )
-      ) {
+      // eslint-disable-next-line prettier/prettier
+      if (!(this.checkLength(carNamesArray[i]) && this.checkBlank(carNamesArray[i]))) {
         this.invalidCarNames();
         return false;
       }
@@ -53,6 +62,7 @@ export default class InputCarName {
 
     if (this.isValidNames(carNamesArray)) {
       this.carNames = carNamesArray.slice();
+      this.showUnderCarName();
     }
   }
 

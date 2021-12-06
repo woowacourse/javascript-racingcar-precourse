@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import InputCarName from './InputCarName.js';
 import InputRacingCount from './InputRacingCount.js';
 

@@ -1,3 +1,4 @@
+/* eslint-disable import/no-cycle */
 import Car from './car.js';
 
 export default class RacingGame {
