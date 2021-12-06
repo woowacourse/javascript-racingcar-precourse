@@ -1,6 +1,21 @@
 'use strict';
 
 // functions
+function gameStart(carNameArray, racingCount) {
+    for(let i = 0; i < racingCount; i++) {
+        const roundResult = document.createElement('p');
+        carNameArray.forEach(name => {
+            roundResult.innerHTML += `${name}: ${generateRandomNumber()}<br>`;
+        });
+        app.appendChild(roundResult);
+    }
+}
+
+function generateRandomNumber() {
+    return MissionUtils.Random.pickNumberInRange(0, 9);
+}
+
+// event handler
 function isCorrectCarName(carNameInputValue) {
     const wrongNames = carNameInputValue
         .split(',')
@@ -11,10 +26,6 @@ function isCorrectCarName(carNameInputValue) {
 
 function isCorrectCount(countInputValue) {
     return Number.isInteger(Number(countInputValue)) && countInputValue >= 1;
-}
-
-function gameStart(carNameArray, racingCount) {
-    console.log(carNameArray, racingCount);
 }
 
 function onCarNameSubmit() {
