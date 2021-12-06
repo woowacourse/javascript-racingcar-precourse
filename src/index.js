@@ -2,7 +2,7 @@ import { hideCountInputAndResult } from './init/setScreen.js';
 import handleCarNamesSubmit from './input/handleCarNames.js';
 import handleRacingCountSubmit from './input/handleRacingCount.js';
 
-export default function racingCarGame() {
+function init() {
   const $carNamesSubmit = document.querySelector('#car-names-submit');
   const $racingCountSubmit = document.querySelector('#racing-count-submit');
 
@@ -12,5 +12,10 @@ export default function racingCarGame() {
   $racingCountSubmit.addEventListener('click', handleRacingCountSubmit);
 }
 
-// eslint-disable-next-line new-cap
-new racingCarGame();
+export default function racingCarGame() {
+  init();
+}
+
+window.addEventListener('DOMContentLoaded', () => {
+  racingCarGame();
+});
