@@ -28,9 +28,9 @@ function getWinners(cars) {
 }
 
 export default class GameController {
-  constructor(userInput) {
+  constructor(userInput, view) {
     this.userInput = userInput;
-    this.view = new View();
+    this.view = view;
     this.cars = getCars(this.userInput);
   }
 
