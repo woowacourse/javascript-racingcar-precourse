@@ -41,7 +41,7 @@ export default class CarRacingGame {
     this.userInputObject.racingCountSubmitEl.addEventListener('click', (e) => {
       e.preventDefault();
       if (
-        this.isPassCarNameSubmitButton() &&
+        this.isClickCarNameSubmitButton() &&
         this.userInputObject.isValidRacingCount()
       ) {
         this.removeRacingView();
@@ -52,13 +52,25 @@ export default class CarRacingGame {
     });
   }
 
-  isPassCarNameSubmitButton() {
-    if (this.carObjects.length === 0) {
+  isClickCarNameSubmitButton() {
+    if (this.carObjects.length === 0 || this.isChangeCarName()) {
       alert(ERR_MESSAGE.clickCarNameSubmitButton);
       return false;
     }
 
     return true;
+  }
+
+  isChangeCarName() {
+    let result = false;
+    const inputCarNameArray = this.userInputObject.getCarNameArray();
+    this.carObjects.forEach((carObject, idx) => {
+      if (carObject.getCarName() !== inputCarNameArray[idx]) {
+        result = true;
+      }
+    });
+
+    return result;
   }
 
   removeRacingView() {
