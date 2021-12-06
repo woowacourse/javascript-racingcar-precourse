@@ -13,3 +13,5 @@ export const MIN_NUMBER_OF_CAR = 2;
 export const MIN_NUMBER_OF_RACINGCOUNT = 1;
 
 export const EMPTY = 0;
+
+export const LINE_BREAK = '<br />';
