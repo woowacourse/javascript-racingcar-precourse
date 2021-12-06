@@ -15,4 +15,8 @@ const showRacingResultScreen = () => {
   $('#racing-result-heading').style.visibility = 'visible';
 };
 
-export { $, initScreen, showRacingCountScreen, showRacingResultScreen };
+const insertText = (selector, text) => {
+  $(selector).insertAdjacentHTML('beforeend', text);
+};
+
+export { $, initScreen, showRacingCountScreen, showRacingResultScreen, insertText };
