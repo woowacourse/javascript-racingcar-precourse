@@ -3,24 +3,24 @@ import { initInput } from '../utils/utils.js';
 import { ERROR_MESSAGE } from '../constants/errorMessage.js';
 
 export default function RacingCountForm(setCount, racing) {
-  const title = document.getElementById('racing-count-title');
-  const input = document.getElementById('racing-count-input');
-  const submitButton = document.getElementById('racing-count-submit');
+  this.title = document.getElementById('racing-count-title');
+  this.input = document.getElementById('racing-count-input');
+  this.submitButton = document.getElementById('racing-count-submit');
 
   this.show = () => {
-    title.classList.remove('hide');
-    input.classList.remove('hide');
-    submitButton.classList.remove('hide');
+    this.title.classList.remove('hide');
+    this.input.classList.remove('hide');
+    this.submitButton.classList.remove('hide');
   };
 
   this.hide = () => {
-    title.classList.add('hide');
-    input.classList.add('hide');
-    submitButton.classList.add('hide');
+    this.title.classList.add('hide');
+    this.input.classList.add('hide');
+    this.submitButton.classList.add('hide');
   };
 
   const getRacingCountNumber = () => {
-    const racingCount = input.value;
+    const racingCount = this.input.value;
     const racingCountNumber = Number(racingCount);
 
     return racingCountNumber;
@@ -41,7 +41,7 @@ export default function RacingCountForm(setCount, racing) {
   };
 
   const setEvent = () => {
-    submitButton.addEventListener('click', onClickSubmitButton);
+    this.submitButton.addEventListener('click', onClickSubmitButton);
   };
 
   setEvent();

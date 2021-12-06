@@ -29,4 +29,8 @@ export default function RacingResult(selector) {
   this.hide = () => {
     title.classList.add('hide');
   };
+
+  this.clear = () => {
+    container.innerHTML = '';
+  };
 }

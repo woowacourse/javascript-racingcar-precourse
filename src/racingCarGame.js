@@ -1,6 +1,7 @@
 import CarNamesForm from './components/carNamesForm.js';
 import RacingCountForm from './components/racingCountForm.js';
 import RacingResult from './components/racingResult.js';
+import { initInput } from './utils/utils.js';
 
 export default function RacingCarGame(app) {
   this.state = { cars: [], count: 0 };
@@ -8,6 +9,8 @@ export default function RacingCarGame(app) {
   const setCars = (racingCars) => {
     this.state.cars = racingCars;
     this.racingCountForm.show();
+    initInput(this.racingCountForm.input);
+    this.racingResult.clear();
   };
 
   const setCount = (racingCount) => {
@@ -18,6 +21,7 @@ export default function RacingCarGame(app) {
   const hideCountFormAndResult = () => {
     this.racingCountForm.hide();
     this.racingResult.hide();
+    this.racingResult.clear();
   };
 
   const racing = () => {
