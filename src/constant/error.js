@@ -1,0 +1,18 @@
+const INPUT_NAME_ERROR_CODE_1 = 0;
+const INPUT_NAME_ERROR_CODE_2 = 1;
+const INPUT_NAME_ERROR_CODE_3 = 2;
+
+const INPUT_NAME_ERROR_MESSAGE_1 = '각 자동차 이름을 5자 이하로 입력해 주세요.';
+const INPUT_NAME_ERROR_MESSAGE_2 = '각 자동차 이름이 빈 문자열이 되지 않게 입력해 주세요.';
+const INPUT_NAME_ERROR_MESSAGE_3 = '각 자동차 이름이 중복되지 않게 입력해 주세요.';
+
+const INPUT_NAME_ERROR = {
+  [INPUT_NAME_ERROR_CODE_1]: INPUT_NAME_ERROR_MESSAGE_1,
+  [INPUT_NAME_ERROR_CODE_2]: INPUT_NAME_ERROR_MESSAGE_2,
+  [INPUT_NAME_ERROR_CODE_3]: INPUT_NAME_ERROR_MESSAGE_3,
+};
+
+export {
+  INPUT_NAME_ERROR,
+};
+
