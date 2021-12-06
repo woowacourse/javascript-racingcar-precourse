@@ -19,10 +19,10 @@ const createRoundWrap = (count) => {
 const insertRacerLog = ($wrap, racerLog) => {
   racerLog.forEach((scoreText, gameRound) => {
     const $roundResult = $wrap.querySelector(`div[data-round="${gameRound}"]`);
-    const $progressText = createElement('SPAN', scoreText);
+    const $scoreText = createElement('SPAN', scoreText);
     const $br = createElement('BR');
 
-    $roundResult.append($progressText, $br);
+    $roundResult.append($scoreText, $br);
   });
 };
 
