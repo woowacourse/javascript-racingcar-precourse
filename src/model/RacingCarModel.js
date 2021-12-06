@@ -6,6 +6,11 @@ class RacingCarModel {
   RacingResult;
   carNamesArray;
 
+  startCars() {
+    this.makeCars();
+    this.moveCars(RacingCount);
+  }
+
   makeCars() {
     this.RacingResult = {};
     console.log(`carNamesArray`, this.carNamesArray);

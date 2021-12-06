@@ -32,15 +32,13 @@ class RacingCarController {
     if (!isCountInputValid(racingCount)) {
       return;
     }
-    this.RacingCarModel.makeCars();
-    // controller에서 model의 데이터를 변경시키는 방법
-    // model의 count를 변경시키는 방법으로 moveCars에 인수로 넘겨주었다.
-    this.RacingCarModel.moveCars(racingCount);
-    const winner = this.RacingCarModel.makeWinner();
-    this.RacingCarView.showWinner(winner);
+    this.RacingCarModel.startCars(racingCount);
 
     const roundResult = this.RacingCarModel.makeRoundResult();
+    const winner = this.RacingCarModel.makeWinner();
+
     this.RacingCarView.showRoundResult(roundResult);
+    this.RacingCarView.showWinner(winner);
     this.RacingCarView.showResultDOM();
   }
 
