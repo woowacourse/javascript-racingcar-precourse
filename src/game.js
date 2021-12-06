@@ -1,5 +1,14 @@
 import Car from './car.js';
 
+export function getStep(...cars) {
+  const carObjList = getCarObjList(...cars);
+  carObjList.forEach((car) => {
+    if (isStepValid()) {
+      car.step += 1;
+    }
+  });
+}
+
 export function isStepValid() {
   const step = makeRandomNum();
   let validStep = 0;
@@ -9,13 +18,12 @@ export function isStepValid() {
   return validStep;
 }
 
-export function getCarObjList(...cars) {
-  const carObjList = [];
-  cars.forEach((car) => {
-    const carObj = new Car(car);
+export function getCarObjList(cars) {
+  let carObjList = [];
+  for (let i = 0; i < cars.length; i++) {
+    const carObj = new Car(cars[i]);
     carObjList.push(carObj);
-  });
-
+  }
   return carObjList;
 }
 
