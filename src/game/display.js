@@ -16,5 +16,8 @@ export function displayWinnerHTML(winners){
 
 export function displayCurrentHTML(currentPositions){
     let racingCurrent = document.getElementById('racing-current');
-    racingCurrent.innerHTML += currentPositions + "<br>";
+    for(let i=0; i<currentPositions.length; i++){
+        racingCurrent.innerHTML += currentPositions[i] + '<br>';
+    }
+    racingCurrent.innerHTML += '<br>';
 }

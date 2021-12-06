@@ -66,9 +66,9 @@ export default class CarGame {
                 this.moveCar(this.cars[j]);
             }
 
-            let currentPositions = ``;
+            let currentPositions = [];
             for(let j=0; j<this.cars.length; j++){
-                currentPositions += this.namePosition(this.cars[j]) + "<br>";
+                currentPositions.push(this.namePosition(this.cars[j]));
             }
 
             displayCurrentHTML(currentPositions);
