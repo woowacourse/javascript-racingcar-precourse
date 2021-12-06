@@ -29,5 +29,6 @@ module.exports = {
     'no-loop-func': 'off',
     'no-undef': 'off',
     'class-methods-use-this': 'off',
+    'no-new': 'off',
   },
 };
