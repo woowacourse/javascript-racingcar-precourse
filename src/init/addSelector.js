@@ -6,6 +6,4 @@ export default () => {
 
   $app.querySelector('input[type=number]').id = 'racing-count-input';
   $app.querySelector('input[type=number] ~ button').id = 'racing-count-submit';
-
-  console.log($app.querySelector('#racing-count-input'));
 };

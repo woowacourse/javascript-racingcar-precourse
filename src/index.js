@@ -1,8 +1,7 @@
-// import init from './init/addSelector.js';
-// import hide from './init/hideDOM.js';
-
 import init from './init/init.js';
+import controller from './controller/carName.js';
 
 window.addEventListener('DOMContentLoaded', () => {
   init();
+  controller();
 });

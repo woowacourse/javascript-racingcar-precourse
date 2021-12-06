@@ -1,6 +1,3 @@
-// import hideDOM from './hideDOM.js';
-// import addSelector from './addSelector.js';
-
 import hideDOM from './hideDOM.js';
 import addSelector from './addSelector.js';
 
