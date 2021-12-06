@@ -1,5 +1,6 @@
 import Car from './model/Car.js';
 import { $, initScreen, showRacingCountScreen, showRacingResultScreen } from './utils/dom.js';
+import { render, renderWinner } from './utils/render.js';
 import { isValidateCarNames, isValidateRacingCount } from './utils/validation.js';
 
 class RacingGame {
@@ -30,9 +31,9 @@ class RacingGame {
   runGame() {
     for (let i = 0; i < this.racingCount; i++) {
       this.tryMove();
-      this.render();
+      render(this.racingCars);
     }
-    this.renderWinnerText(this.getWinner());
+    renderWinner(this.getWinner());
   }
 
   getWinner() {
@@ -45,21 +46,6 @@ class RacingGame {
 
       return acc;
     }, []);
-  }
-
-  renderWinnerText(winnerList) {
-    const winner = winnerList.join(', ');
-    const winnerText = `최종 우승자: <span id="racing-winners">${winner}</span>`;
-
-    $('#racing-result-heading').insertAdjacentHTML('beforeend', winnerText);
-  }
-
-  render() {
-    const racingResultText =
-      this.racingCars
-        .map((car) => `<div>${car.getName()}: ${'-'.repeat(car.getDistance())}</div>`)
-        .join('') + '<br/>';
-    $('#racing-result-heading').insertAdjacentHTML('beforeend', racingResultText);
   }
 
   // 이벤트 함수
