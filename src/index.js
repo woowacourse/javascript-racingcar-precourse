@@ -1,4 +1,5 @@
 import CarList from "./car/CarList.js";
+import isValidate from "./utils/isValidate.js";
 
 const formTag = document.querySelectorAll("form");
 const carNameButton = document.getElementById("car-names-submit");
@@ -22,6 +23,9 @@ carNameButton.addEventListener('click', event => {
 racingCountButton.addEventListener('click', event => {
     const racingCountInput = document.getElementById("racing-count-input").value;
 
-    carList.game(racingCountInput);
-    console.log(carList);
+    if(!isValidate("count", racingCountInput)) alert("잘못된 숫자를 입력하셨습니다.");
+    else {
+        carList.game(racingCountInput);
+        console.log(carList);
+    }
 });
