@@ -1,3 +1,5 @@
+import { CAR_NAMES, RACING_COUNT } from './constants.js';
+
 const isEmpty = (inputValue) => {
   return inputValue === '';
 };
@@ -19,20 +21,22 @@ const isSameOrLessZero = (racingCountInput) => {
   return Number(racingCountInput) <= 0;
 };
 
+const showErrorMessage = (message) => {
+  alert(message);
+  return false;
+};
+
 const isValidateCarNames = (carNamesInput) => {
   if (isEmpty(carNamesInput)) {
-    alert('자동차 이름을 입력해주세요.  올바른 예) east,west,south,north');
-    return false;
+    return showErrorMessage(CAR_NAMES.EMPTY_ERROR_MESSAGE);
   }
 
   if (isLongerThanFiveLetters(carNamesInput)) {
-    alert(' 자동차 이름은 5자 이하로 입력해주세요.  올바른 예) east,west,south,north');
-    return false;
+    return showErrorMessage(CAR_NAMES.LENGTH_ERROR_MEESSAGE);
   }
 
   if (isDuplicate(carNamesInput)) {
-    alert('자동차 이름은 중복 없이 입력해주세요.  올바른 예) east,west,south,north');
-    return false;
+    return showErrorMessage(CAR_NAMES.DUPLICATE_ERROR_MESSSAGE);
   }
 
   return true;
@@ -40,18 +44,15 @@ const isValidateCarNames = (carNamesInput) => {
 
 const isValidateRacingCount = (racingCountInput) => {
   if (isEmpty(racingCountInput)) {
-    alert('시도할 횟수를 입력해주세요.  올바른 예) 5');
-    return false;
+    return showErrorMessage(RACING_COUNT.EMPTY_ERROR_MESSAGE);
   }
 
   if (isIntegerInValid(racingCountInput)) {
-    alert('시도할 횟수는 1 이상의 자연수로 입력해주세요.  올바른 예) 5');
-    return false;
+    return showErrorMessage(RACING_COUNT.TYPE_ERROR_MESSAGE);
   }
 
   if (isSameOrLessZero(racingCountInput)) {
-    alert('시도할 횟수는 1 이상의 자연수로 입력해주세요.  올바른 예) 5');
-    return false;
+    return showErrorMessage(RACING_COUNT.RANGE_ERROR_MESSAGE);
   }
 
   return true;
