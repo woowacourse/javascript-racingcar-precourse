@@ -1,10 +1,14 @@
 import Car from './car.js';
 import NUMBER from '../constants/number.js';
 
-export default class Model {
+export default class GameModel {
   constructor() {
     this.cars = [];
     this.count = 0;
+    this.isSubmitted = {
+      cars: false,
+      count: false,
+    };
   }
 
   saveCars(userInput) {
@@ -12,6 +16,7 @@ export default class Model {
 
     if (this.isValidatedLength(userInputArray, NUMBER.CARS_MIN_LENGTH)) {
       this.cars = userInputArray.map((name) => new Car(name));
+      this.isSubmitted.cars = true;
 
       return true;
     }
@@ -28,6 +33,7 @@ export default class Model {
 
     if (this.isValidatedCount(userInputNum, NUMBER.COUNT_LEAST_VALUE)) {
       this.count = userInputNum;
+      this.isSubmitted.count = true;
 
       return true;
     }
@@ -36,5 +42,9 @@ export default class Model {
 
   isValidatedCount(userInputNum, countSize) {
     return userInputNum >= countSize;
+  }
+
+  isAllSubmitted() {
+    return Object.values(this.isSubmitted).every((value) => value === true);
   }
 }

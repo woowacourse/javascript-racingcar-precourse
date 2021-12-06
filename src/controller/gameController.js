@@ -1,10 +1,10 @@
-import Model from '../model/model.js';
+import GameModel from '../model/gameModel.js';
 import { $ } from '../utils/utils.js';
 import GameView from '../view/gameView.js';
 
 export default class GameController {
   constructor() {
-    this.model = new Model();
+    this.model = new GameModel();
     this.gameView = new GameView();
 
     this.setBinds();
@@ -35,6 +35,9 @@ export default class GameController {
       alert(err);
       this.gameView.resetCarNamesInput();
     }
+    if (this.model.isAllSubmitted()) {
+      this.play();
+    }
   }
 
   handleRacingCount(e) {
@@ -48,5 +51,12 @@ export default class GameController {
       alert(err);
       this.gameView.resetRacingCountInput();
     }
+    if (this.model.isAllSubmitted()) {
+      this.play();
+    }
+  }
+
+  play() {
+    console.log(this.model);
   }
 }
