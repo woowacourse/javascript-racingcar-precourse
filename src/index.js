@@ -1,6 +1,6 @@
 import Car from './model/Car.js';
 import { RANGE_THRESHOLD } from './utils/constants.js';
-import { $, initScreen, showRacingCountScreen, showRacingResultScreen } from './utils/dom.js';
+import { $id, initScreen, showRacingCountScreen, showRacingResultScreen } from './utils/dom.js';
 import getRandomNumber from './utils/getRandomNumber.js';
 import { renderGame, renderWinner } from './utils/render.js';
 import { isValidateCarNames, isValidateRacingCount } from './utils/validation.js';
@@ -56,13 +56,13 @@ class RacingGame {
   }
 
   preventFormSubmitEvent() {
-    $('#car-names-form').addEventListener('submit', (e) => e.preventDefault());
-    $('#racing-count-form').addEventListener('submit', (e) => e.preventDefault());
+    $id('car-names-form').addEventListener('submit', (e) => e.preventDefault());
+    $id('racing-count-form').addEventListener('submit', (e) => e.preventDefault());
   }
 
   triggerCarNamesSubmitEvent() {
-    $('#car-names-submit').addEventListener('click', () => {
-      const carNamesInput = $('#car-names-input').value;
+    $id('car-names-submit').addEventListener('click', () => {
+      const carNamesInput = $id('car-names-input').value;
 
       if (isValidateCarNames(carNamesInput)) {
         this.setRacingCars(carNamesInput);
@@ -72,8 +72,8 @@ class RacingGame {
   }
 
   triggerRacingCountSubmitEvent() {
-    $('#racing-count-submit').addEventListener('click', () => {
-      const racingCountInput = $('#racing-count-input').value;
+    $id('racing-count-submit').addEventListener('click', () => {
+      const racingCountInput = $id('racing-count-input').value;
 
       if (isValidateRacingCount(racingCountInput)) {
         this.setRacingCount(racingCountInput);

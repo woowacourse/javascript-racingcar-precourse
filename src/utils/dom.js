@@ -1,22 +1,22 @@
-const $ = (selector) => document.querySelector(selector);
+const $id = (selector) => document.getElementById(selector);
 
 const initScreen = () => {
-  $('#racing-count-heading').style.visibility = 'hidden';
-  $('#racing-count-form').style.visibility = 'hidden';
-  $('#racing-result-heading').style.visibility = 'hidden';
+  $id('racing-count-heading').style.visibility = 'hidden';
+  $id('racing-count-form').style.visibility = 'hidden';
+  $id('racing-result-heading').style.visibility = 'hidden';
 };
 
 const showRacingCountScreen = () => {
-  $('#racing-count-heading').style.visibility = 'visible';
-  $('#racing-count-form').style.visibility = 'visible';
+  $id('racing-count-heading').style.visibility = 'visible';
+  $id('racing-count-form').style.visibility = 'visible';
 };
 
 const showRacingResultScreen = () => {
-  $('#racing-result-heading').style.visibility = 'visible';
+  $id('racing-result-heading').style.visibility = 'visible';
 };
 
 const insertText = (selector, text) => {
-  $(selector).insertAdjacentHTML('beforeend', text);
+  $id(selector).insertAdjacentHTML('beforeend', text);
 };
 
-export { $, initScreen, showRacingCountScreen, showRacingResultScreen, insertText };
+export { $id, initScreen, showRacingCountScreen, showRacingResultScreen, insertText };
