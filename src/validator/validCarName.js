@@ -1,12 +1,12 @@
 import {
   MIN_CAR_NAME_LENGTH,
   MAX_CAR_NAME_LENGTH,
-} from './constants/constant.js';
-import { $carNamesInput } from './constants/HTMLconstant.js';
+} from '../constants/constant.js';
+import { $carNamesInput } from '../constants/HTMLconstant.js';
 import {
   TOO_LONG_CAR_NAME,
   TOO_SHORT_CAR_NAME,
-} from './constants/errorMessage.js';
+} from '../constants/errorMessage.js';
 
 const carNameOverFive = carNameGroup =>
   carNameGroup.some(name => name.length > MAX_CAR_NAME_LENGTH);
