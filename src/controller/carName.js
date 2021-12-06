@@ -1,4 +1,6 @@
 import carNamesValidate from '../util/validate.js';
+import * as render from '../view/render.js';
+import saveCars from '../model/cars.js';
 
 export default () => {
   const $app = document.querySelector('#app');
@@ -11,6 +13,7 @@ export default () => {
     const carNames = $carNamesInput.value.split(',');
 
     if (!carNamesValidate(carNames)) return;
-    console.log('성공');
+    render.racingCountInputRender();
+    saveCars(carNames);
   });
 };
