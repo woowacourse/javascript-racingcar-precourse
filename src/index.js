@@ -7,10 +7,20 @@ function gameStart(carNameArray, racingCount) {
         playOneRoundGame(cars);
         renderOneRoundResult(cars);
     }
+    const winners = getWinners(cars);
+}
+
+function getWinners(cars) {
+    const maxStep = cars
+        .map(car => car.result)
+        .sort((a, b) => b.length  - a.length)[0].length;
+    return cars
+        .filter(car => car.result.length === maxStep)
+        .map(car => car.name);
 }
 
 function generateCars(carNameArray) {
-    let cars = [];
+    const cars = [];
     carNameArray.forEach(name => {
         cars.push({name, result: ''});
     });
