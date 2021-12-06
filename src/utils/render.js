@@ -1,17 +1,15 @@
 import { insertText } from './dom.js';
+import { gameLineTemplate, winnerTemplate } from './template.js';
 
 const renderWinner = (winnerList) => {
-  const winner = winnerList.join(', ');
-  const winnerText = `최종 우승자: <span id="racing-winners">${winner}</span>`;
+  const winnerText = winnerTemplate(winnerList);
 
   insertText('#app', winnerText);
 };
 
 const renderGame = (racingCars) => {
   const gameResultText =
-    racingCars
-      .map((car) => `<div>${car.getName()}: ${'-'.repeat(car.getDistance())}</div>`)
-      .join('') + '<br/>';
+    racingCars.map((car) => gameLineTemplate(car.getName(), car.getDistance())).join('') + '<br/>';
 
   insertText('#app', gameResultText);
 };
