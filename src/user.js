@@ -3,6 +3,8 @@ import {
   userInputLengthException,
   userInputDuplicatedException,
   carNameIsVacuumException,
+  countOutRangeException,
+  countInvalidException,
 } from './exception.js';
 import { carNamesInput, racingCountInput } from './dom_element.js';
 
@@ -31,4 +33,15 @@ export const getUserInputArray = (userInput) => {
   return _userInputArray;
 };
 
-export const getUserInputForCount = () => Number(racingCountInput.value);
+export const getUserInputForCount = () => {
+  const _userInputForCount = Number(racingCountInput.value);
+
+  if (
+    countOutRangeException(_userInputForCount) ||
+    countInvalidException(_userInputForCount)
+  ) {
+    return 0;
+  }
+
+  return _userInputForCount;
+};

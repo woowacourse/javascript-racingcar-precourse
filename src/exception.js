@@ -5,7 +5,8 @@ import {
   USER_ALERT_OUT_RANGE,
   USER_ALERT_DUPLICATED,
   USER_ALERT_VACUUM,
-  USER_ALERT_NO_COUNT,
+  USER_ALERT_OUT_RANGE_COUNT,
+  USER_ALERT_NO_INTEGER,
 } from './constants.js';
 
 export const userInputTypeException = (userInput) => {
@@ -65,6 +66,20 @@ export const carNameIsVacuumException = (userInputArray) => {
   return _isException;
 };
 
-export const noCountException = () => {
-  alert(USER_ALERT_NO_COUNT);
+export const countOutRangeException = (userInputForCount) => {
+  if (userInputForCount <= 0) {
+    alert(USER_ALERT_OUT_RANGE_COUNT);
+    return true;
+  }
+
+  return false;
+};
+
+export const countInvalidException = (userInputForCount) => {
+  if (!Number.isInteger(userInputForCount)) {
+    alert(USER_ALERT_NO_INTEGER);
+    return true;
+  }
+
+  return false;
 };

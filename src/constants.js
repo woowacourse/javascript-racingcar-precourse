@@ -6,4 +6,5 @@ export const USER_ALERT_NO_COMMA = '자동차 이름은 쉼표로 구분해주�
 export const USER_ALERT_OUT_RANGE = '자동차 이름은 5자 이하만 가능합니다.';
 export const USER_ALERT_DUPLICATED = '중복된 자동차가 존재합니다.';
 export const USER_ALERT_VACUUM = '이름이 공백인 자동차가 존재합니다.';
-export const USER_ALERT_NO_COUNT = '시도 횟수가 0 입니다.';
+export const USER_ALERT_OUT_RANGE_COUNT = '시도 횟수는 0 이하일 수 없습니다.';
+export const USER_ALERT_NO_INTEGER = '시도 횟수는 정수만 입력될 수 있습니다.';
