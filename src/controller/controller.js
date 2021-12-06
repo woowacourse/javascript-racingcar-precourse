@@ -1,7 +1,8 @@
-import { $, generateCars, getWinners } from '../utils/utils.js';
+import { $ } from '../utils/utils.js';
 import { default as UI } from '../view/view.js';
 import { SELECTOR } from '../utils/constants.js';
 import { isValidCarNames, isValidRacingCount } from '../utils/validators.js';
+import playCarRacing from './playCarRacing.js';
 
 export default function RacingCarGame() {
   const init = () => {
@@ -31,22 +32,6 @@ export default function RacingCarGame() {
     playCarRacing();
 
     UI.disableRacingCountForm();
-  };
-
-  const playCarRacing = () => {
-    UI.showRacingResultTitle();
-
-    const cars = generateCars(UI.getCarNames());
-
-    Array.from({ length: Number(UI.getRacingCount()) }, () => tryMoveByRound(cars));
-
-    UI.showWiners(getWinners(cars));
-  };
-
-  const tryMoveByRound = cars => {
-    cars.forEach(car => car.tryMove());
-
-    UI.showRacingResult(cars);
   };
 
   init();
