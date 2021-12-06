@@ -2,10 +2,16 @@
 
 // functions
 function gameStart(carNameArray, racingCount) {
+    const cars = {};
+    carNameArray.forEach(name => {
+        cars[name] = {result: ''};
+    });
+
     for(let i = 0; i < racingCount; i++) {
         const roundResult = document.createElement('p');
         carNameArray.forEach(name => {
-            roundResult.innerHTML += `${name}: ${checkForwardCondition()}<br>`;
+            if(checkForwardCondition()) cars[name].result += '-';
+            roundResult.innerHTML += `${name}: ${cars[name].result}<br>`;
         });
         app.appendChild(roundResult);
     }
