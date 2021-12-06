@@ -3,80 +3,94 @@ import { isTrialEnough } from './getNumberInput.js';
 import { Car } from './car.js';
 import { printResult, printRacing, printFinalWinnerIs } from './printResult.js';
 
-export default function racingCarGame() {
-  const nameSubmitButton = document.getElementById('car-names-submit');
-  const numberSubmitButton = document.getElementById('racing-count-submit');
-  const numberSubmitBox = document.getElementById('racing-count-input');
-  const players = [];
-  let carNames = [];
-  let racingCount = 0;
-  let winners = [];
+export class RacingCarGame {
+  constructor() {
+    this.setElements();
+    this.setButton();
+    this.setDisplay();
 
-  nameSubmitButton.addEventListener('click', getNameInput);
-  numberSubmitButton.addEventListener('click', getNumberInput);
-  numberSubmitBox.style.display = 'None';
-  numberSubmitButton.style.display = 'None';
+    this.players = [];
+    this.carNames = [];
+    this.racingCount = 0;
+    this.winners = [];
+  }
 
-  function getNameInput() {
-    const nameEntered = document.getElementById('car-names-input').value;
+  setElements() {
+    this.nameSubmitInput = document.getElementById('car-names-input');
+    this.nameSubmitButton = document.getElementById('car-names-submit');
+    this.numberSubmitInput = document.getElementById('racing-count-input');
+    this.numberSubmitButton = document.getElementById('racing-count-submit');
+  }
+
+  setButton() {
+    this.nameSubmitButton.addEventListener('click', this.getNameInput);
+    this.numberSubmitButton.addEventListener('click', this.getNumberInput);
+  }
+
+  setDisplay() {
+    this.numberSubmitInput.style.display = 'None';
+    this.numberSubmitButton.style.display = 'None';
+  }
+
+  getNameInput = () => {
+    const nameEntered = this.nameSubmitInput.value;
     if (isCarEnough(nameEntered)) {
-      carNames = extractNames(nameEntered);
+      this.carNames = extractNames(nameEntered);
     }
-    isNameTooLong(carNames);
-    makePlayers();
-    showNumberSubmit();
-  }
+    isNameTooLong(this.carNames);
+    this.makePlayers();
+    this.showNumberSubmit();
+  };
 
-  function showNumberSubmit() {
-    numberSubmitBox.style.display = '';
-    numberSubmitButton.style.display = '';
-  }
+  showNumberSubmit = () => {
+    this.numberSubmitInput.style.display = '';
+    this.numberSubmitButton.style.display = '';
+  };
 
-  function makePlayers() {
-    for (let i = 0; i < carNames.length; i++) {
-      const player = new Car(carNames[i], 0);
-      players.push(player);
+  makePlayers = () => {
+    for (let i = 0; i < this.carNames.length; i++) {
+      const player = new Car(this.carNames[i], 0);
+      this.players.push(player);
     }
-  }
+  };
 
-  function getNumberInput() {
-    const racingCountEntered =
-      document.getElementById('racing-count-input').value;
+  getNumberInput = () => {
+    const racingCountEntered = this.numberSubmitInput.value;
     if (isTrialEnough(racingCountEntered)) {
-      racingCount = racingCountEntered;
+      this.racingCount = racingCountEntered;
     }
-    play();
-    chooseWinner();
+    this.play();
+    this.chooseWinner();
     printFinalWinnerIs();
-    printResult(winners);
-  }
+    printResult(this.winners);
+  };
 
-  function play() {
-    for (let i = 0; i < racingCount; i++) {
-      playersMoveByCount();
-      printRacing(players);
+  play = () => {
+    for (let i = 0; i < this.racingCount; i++) {
+      this.playersMoveByCount();
+      printRacing(this.players);
     }
-  }
+  };
 
-  function playersMoveByCount() {
-    for (let i = 0; i < players.length; i++) {
-      players[i].Move();
+  playersMoveByCount = () => {
+    for (let i = 0; i < this.players.length; i++) {
+      this.players[i].Move();
     }
-  }
+  };
 
-  function chooseWinner() {
+  chooseWinner = () => {
     let max = 0;
-    for (let i = 0; i < players.length; i++) {
-      if (players[i].location >= max) {
-        max = players[i].location;
+    for (let i = 0; i < this.players.length; i++) {
+      if (this.players[i].location >= max) {
+        max = this.players[i].location;
       }
     }
-    for (let i = 0; i < players.length; i++) {
-      if (players[i].location === max) {
-        winners.push(players[i].name);
+    for (let i = 0; i < this.players.length; i++) {
+      if (this.players[i].location === max) {
+        this.winners.push(this.players[i].name);
       }
     }
-  }
+  };
 }
 
-new racingCarGame();
+new RacingCarGame();
