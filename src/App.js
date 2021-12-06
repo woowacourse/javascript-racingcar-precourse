@@ -133,6 +133,7 @@ export default class App {
   racingCountSubmitClickEventHandler(e) {
     e.preventDefault();
 
+    this.initializeResult();
     const racingCount = this.$racingCountInput.value;
     const isValid = this.checkValidRacingCountValue(racingCount);
 
@@ -173,6 +174,7 @@ export default class App {
     const winenrList = this.findRacingWinner();
     this.rednerRacingWinner(winenrList);
     this.displayResult();
+    this.initializeCars();
   }
 
   race() {
@@ -221,5 +223,19 @@ export default class App {
     this.$result.removeAttribute('hidden');
     this.$racingWinnersTitle.removeAttribute('hidden');
     this.$racingWinners.removeAttribute('hidden');
+  }
+
+  initializeResult() {
+    this.$result.innerHTML = '';
+    this.$racingWinnersTitle.textContent = '';
+    this.$racingWinners.textContent = '';
+
+    this.$result.setAttribute('hidden', true);
+    this.$racingWinnersTitle.setAttribute('hidden', true);
+    this.$racingWinners.setAttribute('hidden', true);
+  }
+
+  initializeCars() {
+    this.cars = [];
   }
 }
