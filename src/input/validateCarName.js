@@ -13,7 +13,7 @@ const trimCarName = (carArr) => carArr.map((el) => el.trim());
 
 const isCarNameLength = (carArr) => {
   let valid = true;
-  carArr.map((el) => {
+  carArr.forEach((el) => {
     if (el.length > NAME_MAX_LENGTH) {
       valid = false;
       return false;
@@ -25,7 +25,7 @@ const isCarNameLength = (carArr) => {
 
 const isCarNameBlank = (carArr) => {
   let valid = true;
-  carArr.map((el) => {
+  carArr.forEach((el) => {
     if (el === "") {
       valid = false;
       return false;
