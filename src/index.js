@@ -1,7 +1,7 @@
 import { checkEmpty, checkNamelength, checkNegative } from './check.js';
 import { INPUT_ERROR_MESSAGE, NEGATIVE_NUM_ERROR_MESSAGE } from './constant.js';
 import Car from './car.js';
-import { makeRandomNum } from './game.js';
+import { getStep, plusStep } from './game.js';
 
 export default class RacingcarGame {
   constructor() {
@@ -32,8 +32,10 @@ export default class RacingcarGame {
     if (!checkNamelength(carList, valid) || !checkEmpty(carList, valid)) {
       alert(INPUT_ERROR_MESSAGE);
       this.$carListInput.value = '';
+      this.carListInputvalid = false;
       return;
     }
+    this.carListInputvalid = true;
     this.play();
   }
 
@@ -43,12 +45,21 @@ export default class RacingcarGame {
     if (!checkNegative(raceCount)) {
       this.$raceCountInput.value = '';
       alert(NEGATIVE_NUM_ERROR_MESSAGE);
+      this.raceCountInputvalid = false;
       return;
     }
+    this.raceCountInputvalid = true;
     this.play();
   }
 
-  play() {}
+  play() {
+    if (this.raceCountInputvalid && this.raceCountInputvalid) {
+      const carList = this.$carListInput.value.split(',');
+      const raceCount = this.$raceCountInput.value;
+      console.log(plusStep(carList, raceCount));
+    }
+    return;
+  }
 }
 
 new RacingcarGame();
