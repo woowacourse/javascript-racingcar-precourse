@@ -78,7 +78,7 @@ class CarGameLogic {
     });
   }
 
-  makeTemplatePerSimulate() {
+  generateEachSimulateTemplate() {
     let template = PLAIN_STRING;
     this.cars.forEach((car) => {
       template = `${template}${car.name}: ${car.countTemplate}<br>`;
@@ -87,22 +87,31 @@ class CarGameLogic {
     return template;
   }
 
-  makeResultTemplate(number) {
+  generateAllSimulateTemplate(number) {
     let template = PLAIN_STRING;
-    if (CarGameUtil.isValidNumber(number)) {
-      for (let i = 0; i < number; i = i + 1) {
-        this.simulatePerNumberOfTimes();
-        // simulate 이후 자동차를 기준으로 템플릿을 만들어 변수에 합친다.
-        template = `${template}${this.makeTemplatePerSimulate()}<br>`;
-      }
-      const winnerArray = this.getWinner();
-      template = `${template}
-      최종 우승자: <span id="${DOM.RACING_WINNERS}">${winnerArray
-        .map((car) => car.name)
-        .join(SEPERATOR)}</span>`;
+    for (let i = 0; i < number; i = i + 1) {
+      this.simulatePerNumberOfTimes();
+      // simulate 이후 자동차를 기준으로 템플릿을 만들어 변수에 합친다.
+      template = `${template}${this.generateEachSimulateTemplate()}<br>`;
     }
 
     return template;
+  }
+
+  generateWinnerTemplate() {
+    const winnerArray = this.getWinner();
+
+    return `최종 우승자: <span id="${DOM.RACING_WINNERS}">${winnerArray
+      .map((car) => car.name)
+      .join(SEPERATOR)}</span>`;
+  }
+
+  generateResultTemplate(number) {
+    if (CarGameUtil.isValidNumber(number)) {
+      return `${this.generateAllSimulateTemplate(number)}${this.generateWinnerTemplate()}`;
+    }
+
+    return PLAIN_STRING;
   }
 }
 class CarGame extends CarGameLogic {
@@ -163,7 +172,7 @@ class CarGame extends CarGameLogic {
 
   afterCountSubmitLogic(stringCount) {
     try {
-      this.result.innerHTML = this.makeResultTemplate(Number(stringCount));
+      this.result.innerHTML = this.generateResultTemplate(Number(stringCount));
       this.showElement(this.resultTitle);
       this.showElement(this.result);
     } catch (error) {
