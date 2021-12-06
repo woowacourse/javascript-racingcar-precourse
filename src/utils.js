@@ -38,3 +38,11 @@ export function changeDistanceToBar(distance) {
   }
   return bar;
 }
+
+export function setValidation(condition, errorMessage) {
+  if (condition) {
+    alert(errorMessage);
+    return true;
+  }
+  return false;
+}

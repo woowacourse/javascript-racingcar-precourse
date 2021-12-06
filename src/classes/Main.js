@@ -1,20 +1,26 @@
 import Car from './Car.js';
 import CarRacing from './CarRacing.js';
+import { SELECTOR, STYLE_DISPLAY, ERROR_MESSAGE } from '../constants.js';
 import {
+  on,
+  qs,
+  setStyleDisplay,
+  checkOverFiveLetters,
+  setValidation,
+} from '../utils.js';
+
+const { BLOCK, INLINE_BLOCK, NONE } = STYLE_DISPLAY;
+const { MORE_THAN_FIVE_LETTERS, NO_MORE_THAN_ZERO, EMPTY_VALUE } =
+  ERROR_MESSAGE;
+const {
   APP,
   CAR_NAMES_INPUT,
   CAR_NAMES_SUBMIT_BUTTON,
-  ERROR_MESSAGE,
-  RACING_COUNT,
   RACING_COUNT_INPUT,
   RACING_COUNT_SUBMIT_BUTTON,
+  RACING_COUNT,
   RACING_RESULT,
-  STYLE_DISPLAY,
-} from '../constants.js';
-import { on, qs, setStyleDisplay, checkOverFiveLetters } from '../utils.js';
-
-const { BLOCK, INLINE_BLOCK, NONE } = STYLE_DISPLAY;
-const { MORE_THAN_FIVE_LETTERS, NO_MORE_THAN_ZERO } = ERROR_MESSAGE;
+} = SELECTOR;
 
 export default class Main {
   constructor() {
@@ -48,12 +54,11 @@ export default class Main {
   handleCarNamesSubmitButton() {
     on(this.carNamesSubmitButton, 'click', (event) => {
       event.preventDefault();
-
       const carNamesArr = this.carNamesInput.value.split(',');
-      if (!checkOverFiveLetters(carNamesArr)) {
-        alert(MORE_THAN_FIVE_LETTERS);
+
+      if (setValidation(!this.carNamesInput.value, EMPTY_VALUE)) return;
+      if (setValidation(!checkOverFiveLetters(carNamesArr), MORE_THAN_FIVE_LETTERS))
         return;
-      }
 
       carNamesArr.forEach((name) => this.cars.push(new Car(name)));
       this.showRacingCountForm();
@@ -71,10 +76,8 @@ export default class Main {
     on(this.racingCountSubmitButton, 'click', (event) => {
       event.preventDefault();
       const racingCountInputValue = this.racingCountInput.value;
-      if (racingCountInputValue <= 0) {
-        alert(NO_MORE_THAN_ZERO);
-        return;
-      }
+
+      if (setValidation(racingCountInputValue <= 0, NO_MORE_THAN_ZERO)) return;
 
       const carRacing = new CarRacing(this.cars);
       const resultTemplate = carRacing.play(racingCountInputValue);
