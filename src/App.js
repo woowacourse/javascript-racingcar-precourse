@@ -138,6 +138,7 @@ export default class App {
 
     if (isValid) {
       this.racingCount = Number(racingCount);
+      this.startGame();
     }
   }
 
@@ -162,5 +163,63 @@ export default class App {
 
     alert(errorMessage);
     this.$racingCountInput.focus();
+  }
+
+  startGame() {
+    for (let i = 0; i < this.racingCount; i++) {
+      this.race();
+    }
+
+    const winenrList = this.findRacingWinner();
+    this.rednerRacingWinner(winenrList);
+    this.displayResult();
+  }
+
+  race() {
+    this.cars.forEach((car) => {
+      car.move();
+      this.renderMoveResult(car);
+    });
+
+    this.renderNewLine();
+  }
+
+  renderMoveResult(car) {
+    const $div = document.createElement('div');
+    $div.textContent = `${car.getName()}: ${'-'.repeat(car.getNumMove())}`
+
+    this.$result.appendChild($div);
+  }
+
+  renderNewLine() {
+    const $br = document.createElement('br');
+    this.$result.appendChild($br);
+  }
+
+  findRacingWinner() {
+    let currentHighNumMove = 0;
+    let currentWinners = []
+
+    this.cars.forEach((car)=>{
+      if (car.getNumMove() > currentHighNumMove) {
+        currentHighNumMove = car.getNumMove();
+        currentWinners = [car.getName()];
+      } else if (car.getNumMove() == currentHighNumMove) {
+        currentWinners.push(car.getName());
+      }
+    });
+
+    return currentWinners;
+  }
+
+  rednerRacingWinner(winenrList) {
+    this.$racingWinnersTitle.textContent = '최종 우승자: ';
+    this.$racingWinners.textContent = winenrList.join(',');
+  }
+
+  displayResult() {
+    this.$result.removeAttribute('hidden');
+    this.$racingWinnersTitle.removeAttribute('hidden');
+    this.$racingWinners.removeAttribute('hidden');
   }
 }
