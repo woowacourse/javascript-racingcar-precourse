@@ -22,3 +22,9 @@ export const showRacingCountDiv = function () {
 export const showResultDiv = function () {
   result.hidden = false;
 };
+
+export const appendResultSpanElement = function () {
+  const resultSpan = document.createElement('span');
+  resultSpan.id = 'result-span';
+  result.appendChild(resultSpan);
+};
