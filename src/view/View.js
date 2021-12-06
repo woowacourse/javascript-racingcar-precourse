@@ -16,6 +16,9 @@ const NO_INPUT_ERROR_MESSAGE = '입력 오류! 자동차 이름과 반복할 횟
 const DISPLAY_NONE = 'none';
 const DISPLAY_BLOCK = 'block';
 
+const WINNER_SPAN_ID = 'racing-winners';
+const WINNER_TITLE = '최종 우승자: ';
+
 function resetView($appDiv) {
   const $resultContainer = document.querySelector(RESULT_CONTAINER_ID);
 
@@ -46,6 +49,17 @@ function getOneRaceResult(cars) {
     innerHtml += `<div>${car.getName()}: ${getPosition(car)}</div>`;
   });
   return innerHtml;
+}
+
+function getWinnerNames(winners) {
+  return winners.map((winner) => winner.getName());
+}
+
+function showWinnerTitle($resultContainer) {
+  const $title = document.createElement('span');
+
+  $title.textContent = WINNER_TITLE;
+  $resultContainer.append($title);
 }
 
 export default class View {
@@ -97,5 +111,16 @@ export default class View {
   
     $oneRaceResult.innerHTML = getOneRaceResult(cars);
     $resultContainer.append($oneRaceResult);
+  }
+
+  showWinners(winners) {
+    const $resultContainer = document.querySelector(RESULT_CONTAINER_ID);
+    const $winnersSpan = document.createElement('span');
+    const winnerNames = getWinnerNames(winners);
+    $winnersSpan.id = WINNER_SPAN_ID;
+    showWinnerTitle($resultContainer);
+  
+    $winnersSpan.textContent = `${winnerNames.join(', ')}`;
+    $resultContainer.append($winnersSpan);
   }
 }

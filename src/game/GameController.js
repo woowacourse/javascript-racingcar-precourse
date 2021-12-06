@@ -14,6 +14,19 @@ function goOnce(cars) {
   cars.forEach((car) => car.go());
 }
 
+function getCarPositions(cars) {
+  return cars.map((car) => car.getPosition());
+}
+
+function getMaxPosition(cars) {
+  return Math.max.apply(null, getCarPositions(cars));
+}
+
+function getWinners(cars) {
+  const max = getMaxPosition(cars);
+  return cars.filter((car) => car.getPosition() === max);
+}
+
 export default class GameController {
   constructor(userInput) {
     this.userInput = userInput;
@@ -26,5 +39,11 @@ export default class GameController {
       goOnce(this.cars);
       this.view.showRaceResult(this.cars);
     }
+  }
+
+  decideWinners() {
+    const winners = getWinners(this.cars);
+
+    this.view.showWinners(winners);
   }
 }
