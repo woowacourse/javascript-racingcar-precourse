@@ -15,9 +15,13 @@ const DISPLAY_NONE = 'none';
 const DISPLAY_BLOCK = 'block';
 
 function hideNextHtml($countHead, $countForm, $result) {
-  $countHead.style.display = DISPLAY_NONE;
-  $countForm.style.display = DISPLAY_NONE;
-  $result.style.display = DISPLAY_NONE;
+  const $countHeadCopy = $countHead;
+  const $countFormCopy = $countForm;
+  const $resultCopy = $result;
+
+  $countHeadCopy.style.display = DISPLAY_NONE;
+  $countFormCopy.style.display = DISPLAY_NONE;
+  $resultCopy.style.display = DISPLAY_NONE;
 }
 
 export default class View {
