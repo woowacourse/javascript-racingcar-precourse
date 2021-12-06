@@ -18,8 +18,7 @@ export default class CarRacing {
 
     for (let i = 0; i < count; i += 1) {
       const eachCarResult = this.cars.map((car) => {
-        const randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
-        car.drive(randomNumber);
+        car.drive();
         return Object.assign(Object.create(Object.getPrototypeOf(car)), car); // reference : https://stackoverflow.com/questions/41474986/how-to-clone-a-javascript-es6-class-instance
       });
       eachCountResults.push(eachCarResult);
