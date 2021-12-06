@@ -15,31 +15,26 @@ import { ERROR_MESSAGE } from './constants.js';
 
 class CarRacingGame {
   constructor() {
-    this.initElements();
+    this.cars = [];
+
     hideRacingCountForm();
-    this.$carNamesSubmit.addEventListener('click', (e) =>
+
+    $('#car-names-submit').addEventListener('click', (e) =>
       this.handleCarNamesSubmit(e)
     );
-    this.$racingCountSubmit.addEventListener('click', (e) =>
+    $('#racing-count-submit').addEventListener('click', (e) =>
       this.handleRacingCountSubmit(e)
     );
-    this.cars = [];
   }
-
-  initElements = () => {
-    this.$carNamesInput = $('#car-names-input');
-    this.$carNamesSubmit = $('#car-names-submit');
-    this.$racingCountInput = $('#racing-count-input');
-    this.$racingCountSubmit = $('#racing-count-submit');
-  };
 
   handleCarNamesSubmit = (e) => {
     e.preventDefault();
-    const currentInput = this.$carNamesInput.value;
+    const $carNamesInput = $('#car-names-input');
+    const currentInput = $carNamesInput.value;
     const names = currentInput.split(',').map((item) => item.trim());
     const isValid = validateNames(names);
     if (!isValid) {
-      alertError(ERROR_MESSAGE.CAR_NAMES_FORM, this.$carNamesInput);
+      alertError(ERROR_MESSAGE.CAR_NAMES_FORM, $carNamesInput);
     }
     if (isValid) {
       this.cars = createCars(names);
@@ -49,10 +44,11 @@ class CarRacingGame {
 
   handleRacingCountSubmit = (e) => {
     e.preventDefault();
-    const parsedInput = parseInt(this.$racingCountInput.value);
+    const $racingCountInput = $('#racing-count-input');
+    const parsedInput = parseInt($racingCountInput.value);
     const isValid = validateCount(parsedInput);
     if (!isValid) {
-      alertError(ERROR_MESSAGE.RACING_COUNT_FORM, this.$racingCountInput);
+      alertError(ERROR_MESSAGE.RACING_COUNT_FORM, $racingCountInput);
     }
     if (isValid) {
       this.play(this.cars, parsedInput);
