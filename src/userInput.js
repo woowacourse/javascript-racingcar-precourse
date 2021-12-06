@@ -3,7 +3,7 @@ import {
   CAR_NAME_RULES,
   RACING_COUNT_RULES,
   ERR_MESSAGE,
-} from './constant.js';
+} from './constants.js';
 
 export default class UserInput {
   constructor() {

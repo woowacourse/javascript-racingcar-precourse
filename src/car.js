@@ -1,4 +1,4 @@
-import { FORWARD_RULES } from './constant.js';
+import { FORWARD_RULES } from './constants.js';
 
 export default class Car {
   constructor(name) {

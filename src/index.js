@@ -1,22 +1,26 @@
 import Car from './car.js';
 import UserInput from './userInput.js';
 import View from './view.js';
-import { ELEMENT_ID, ERR_MESSAGE, WINNER_COMMENT } from './constant.js';
+import { ELEMENT_ID, ERR_MESSAGE, WINNER_COMMENT } from './constants.js';
 
 export default class CarRacingGame {
   constructor() {
     this.appEl = document.querySelector('#app');
     this.userInputObject = new UserInput();
     this.carObjects = [];
-    this.racingStatusSpanEl = this.createSpanElement();
-    this.racingWinnerCommentEl = this.createSpanElement();
-    this.racingWinnerNameSpanEl = this.createSpanElement();
-    this.racingWinnerNameSpanEl.id = ELEMENT_ID.racingResultId;
+    this.racingStatusSpanEl = this.createSpanElement(ELEMENT_ID.racingStatusId);
+    this.racingWinnerCommentEl = this.createSpanElement(
+      ELEMENT_ID.racingWinnerCommentId,
+    );
+    this.racingWinnerNameSpanEl = this.createSpanElement(
+      ELEMENT_ID.racingWinnerNameId,
+    );
     this.bindEventListener();
   }
 
-  createSpanElement() {
+  createSpanElement(ElementId) {
     const spanEl = document.createElement('span');
+    spanEl.id = ElementId;
     this.appEl.appendChild(spanEl);
     return spanEl;
   }
@@ -41,7 +45,7 @@ export default class CarRacingGame {
     this.userInputObject.racingCountSubmitEl.addEventListener('click', (e) => {
       e.preventDefault();
       if (
-        this.isClickCarNameSubmitButton() &&
+        !this.isChangeCarName() &&
         this.userInputObject.isValidRacingCount()
       ) {
         this.removeRacingView();
@@ -52,23 +56,20 @@ export default class CarRacingGame {
     });
   }
 
-  isClickCarNameSubmitButton() {
-    if (this.carObjects.length === 0 || this.isChangeCarName()) {
-      alert(ERR_MESSAGE.clickCarNameSubmitButton);
-      return false;
-    }
-
-    return true;
-  }
-
   isChangeCarName() {
-    let result = false;
     const inputCarNameArray = this.userInputObject.getCarNameArray();
+    let result = false;
+    if (inputCarNameArray.length !== this.carObjects.length) {
+      result = true;
+    }
     this.carObjects.forEach((carObject, idx) => {
       if (carObject.getCarName() !== inputCarNameArray[idx]) {
         result = true;
       }
     });
+    if (result) {
+      alert(ERR_MESSAGE.clickCarNameSubmitButton);
+    }
 
     return result;
   }

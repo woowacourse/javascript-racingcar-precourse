@@ -3,7 +3,9 @@ export const ELEMENT_ID = {
   carNameSubmitId: '#car-names-submit',
   racingCountInputId: '#racing-count-input',
   racingCountSubmitId: '#racing-count-submit',
-  racingResultId: 'racing-winners',
+  racingStatusId:'racing-status',
+  racingWinnerCommentId:'racing-comment',
+  racingWinnerNameId: 'racing-winners',
 };
 
 export const FORWARD_RULES = {
@@ -29,4 +31,4 @@ export const ERR_MESSAGE = {
   racingCount: '1이상의 시도할 횟수를 입력해주세요.',
 };
 
-export const WINNER_COMMENT = '<strong>최종 우승자:</strong>';
+export const WINNER_COMMENT = '<strong>최종 우승자:</strong> ';
