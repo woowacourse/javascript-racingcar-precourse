@@ -2,14 +2,18 @@
 
 // functions
 function gameStart(carNameArray, racingCount) {
+    const cars = generateCars(carNameArray);
+    for(let i = 0; i < racingCount; i++) {
+        playOneRoundGame(cars, carNameArray);
+    }
+}
+
+function generateCars(carNameArray) {
     const cars = {};
     carNameArray.forEach(name => {
         cars[name] = {result: ''};
     });
-
-    for(let i = 0; i < racingCount; i++) {
-        playOneRoundGame(cars, carNameArray);
-    }
+    return cars;
 }
 
 function playOneRoundGame(cars, carNameArray) {
