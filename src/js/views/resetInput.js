@@ -1,5 +1,5 @@
-const resetInput = selector => {
-  selector.value = '';
+const resetInput = $selector => {
+  $selector.value = '';
 };
 
 export default resetInput;

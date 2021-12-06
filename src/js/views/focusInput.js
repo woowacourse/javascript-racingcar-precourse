@@ -1,5 +1,5 @@
-const focusInput = inputSelector => {
-  inputSelector.focus();
+const focusInput = $inputSelector => {
+  $inputSelector.focus();
 };
 
 export default focusInput;
