@@ -20,19 +20,22 @@ class RacingGame {
     } = ELEMENT_IDS;
     this.$carNamesInput = document.querySelector(`#${CAR_NAMES_INPUT}`);
     this.$carNamesSubmit = document.querySelector(`#${CAR_NAMES_SUBMIT}`);
-    this.$carNamesSubmit.addEventListener('click', (e) =>
-      this.handleSubmitCarNames(e)
-    );
-
     this.$racingCountInput = document.querySelector(`#${RACING_COUNT_INPUT}`);
     this.$racingCountSubmit = document.querySelector(`#${RACING_COUNT_SUBMIT}`);
-    this.$racingCountSubmit.addEventListener('click', (e) =>
-      this.handleSubmitRacingCount(e)
-    );
+    this.registerEventListeners();
 
     this.$app = document.querySelector(`#${APP}`);
     this.insertRacingScreen(this.$app);
     this.insertRacingWinner(this.$app);
+  }
+
+  registerEventListeners() {
+    this.$carNamesSubmit.addEventListener('click', (e) =>
+      this.handleSubmitCarNames(e)
+    );
+    this.$racingCountSubmit.addEventListener('click', (e) =>
+      this.handleSubmitRacingCount(e)
+    );
   }
 
   insertRacingScreen($app) {
@@ -96,13 +99,11 @@ class RacingGame {
 
   findWinners() {
     this.cars.sort((left, right) => (left.position > right.position ? -1 : 1));
-    let maxPosition = -1;
+    const maxPosition = this.cars[0].position;
     return this.cars.reduce((acc, cur) => {
-      if (cur.position < maxPosition) {
-        return acc;
+      if (cur.position === maxPosition) {
+        acc.push(cur.name);
       }
-      maxPosition = cur.position;
-      acc.push(cur.name);
       return acc;
     }, []);
   }
