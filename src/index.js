@@ -1,4 +1,4 @@
-import Car from './components/Car.js';
+import CarController from './controllers/Car.js';
 import RacingCarNameForm from './components/RacingCarNameForm.js';
 import RacingTryCountForm from './components/RacingTryCountForm.js';
 import RacingResult from './components/RacingResult.js';
@@ -6,7 +6,7 @@ import RacingWinner from './components/RacingWinner.js';
 
 class RacingCarGame {
   constructor() {
-    this.$cars = [];
+    this.$carController = new CarController();
     this.$racingCarNameForm = new RacingCarNameForm();
     this.$racingTryCountForm = new RacingTryCountForm();
     this.$racingResult = new RacingResult();
@@ -35,12 +35,12 @@ class RacingCarGame {
 
   onClickCarNameSubmitButton(event) {
     event.preventDefault();
-    this.initCars();
+    this.$carController.initCars();
 
     const splittedCarNames = this.$racingCarNameForm.getSplittedCarNames();
     if (!this.$racingCarNameForm.validateCarNames(splittedCarNames)) return;
 
-    this.addCars(splittedCarNames);
+    this.$carController.addCars(splittedCarNames);
     this.$racingTryCountForm.render();
     this.play();
   }
@@ -56,38 +56,18 @@ class RacingCarGame {
 
   play() {
     if (!this.$racingTryCountForm.checkExistTryCount()) return;
-    if (!this.checkExistCars()) return;
-    this.resetCarsAdvance();
+    if (!this.$carController.checkExistCars()) return;
+    this.$carController.resetCarsAdvance();
     this.$racingResult.initResults();
 
     for (let i = 0; i < this.$racingTryCountForm.getTryCount(); i += 1) {
-      this.advanceCars();
-      this.$racingResult.putBufferOneTryResults(this.$cars);
+      this.$carController.advanceCars();
+      this.$racingResult.putBufferOneTryResults(this.$carController.getCars());
       this.$racingResult.render();
     }
 
-    this.$racingWinner.checkWinners(this.$cars);
+    this.$racingWinner.checkWinners(this.$carController.getCars());
     this.$racingWinner.render();
-  }
-
-  checkExistCars() {
-    return this.$cars.length !== 0;
-  }
-
-  addCars(splittedCarNames) {
-    splittedCarNames.forEach(carName => this.$cars.push(new Car(carName)));
-  }
-
-  resetCarsAdvance() {
-    this.$cars.forEach(car => car.resetAdvance());
-  }
-
-  advanceCars() {
-    this.$cars.forEach(car => car.advance());
-  }
-
-  initCars() {
-    this.$cars = [];
   }
 }
 
