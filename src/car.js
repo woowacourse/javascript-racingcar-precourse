@@ -1,4 +1,3 @@
-// import { ERROR_MSG } from "./constant";
 import { showRacingProcess, addApp } from "./view.js";
 
 export function Car(name) {
@@ -10,10 +9,8 @@ export function CheckCarName(names) {
     let isPass = true;
     names.forEach((element) => {
         if (element.length > 5 || element.length < 1) {
-            // alert(ERROR_MSG.over_range);
             isPass = false;
         } else if (element === "") {
-            // alert(ERROR_MSG.input_something);
             isPass = false;
         }
     });
@@ -26,9 +23,10 @@ const checkDistance = (Cars) => {
         const num = MissionUtils.Random.pickNumberInRange(0, 9);
         if (checkNum(num)) element.distance += 1;
     });
-    // 여기서 show 해야 함.
+
     const process = showRacingProcess(Cars);
     addApp(process);
+
     return Cars;
 };
 
@@ -36,6 +34,7 @@ export const repeatRacingCount = function (racing_count, Cars) {
     for (let i = 0; i < racing_count; i++) {
         Cars = checkDistance(Cars);
     }
+
     return Cars;
 };
 

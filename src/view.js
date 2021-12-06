@@ -8,7 +8,6 @@ export const showRacingProcess = (object) => {
 
 export const showResult = (object) => {
     const winners = object.join(",");
-    console.log(winners, object, "@");
     return `<p>최종우승자:<span id="racing-winners">${winners}</span></p>`;
 };
 

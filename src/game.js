@@ -3,12 +3,11 @@ import { showResult, addApp } from "./view.js";
 export const PlayGame = function (game_information) {
     this.racing_count = 0;
     this.Cars = [];
-    // Object를 통해 생성된 생성자에서 this의 운선순위가 어떻게 되는지? new를 통해 생성자를 생성해야 함.
-    // 게임 시작 및 파일 구조를 다시한번 짜보자.
+
     this.init = () => {
         setCars(setCarObject(game_information.car_names));
         setRacingCount(Number(game_information.racing_count));
-        gameStart(); // 게임 진행 상황을 element들로 구성해서 나타내 줘야 함. 이거 구현할 것.
+        gameStart();
     };
     const setCars = (object) => {
         this.Cars = object;

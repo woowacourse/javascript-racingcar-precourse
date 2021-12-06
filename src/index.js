@@ -1,4 +1,3 @@
-// import { Car } from "./car.js";
 import { checkInputValidate } from "./input.js";
 import { CheckCarName } from "./car.js";
 import { PlayGame } from "./game.js";
@@ -18,7 +17,7 @@ export default function SetGame() {
             e.preventDefault();
             const input_val = $racing_count_input.value;
             if (checkInputValidate(input_val)) setRacingCount(input_val);
-            else alert();
+            else alert("올바른 값을 입력해주세요");
 
             new PlayGame(getGameInformation());
         });
@@ -27,10 +26,8 @@ export default function SetGame() {
             e.preventDefault();
             const names = $car_names_input.value.split(",");
             if (CheckCarName(names)) setCarNames(names);
-            else alert();
+            else alert("올바른 값을 입력해주세요");
         });
-        // 클릭되는 순간에 값이 나오기 때문에, 이게 어떻게 되는지 모르겠네..둘 중에 어느 버튼을 누르더라도,
-        // 조건이 확인된다면, 게임이 실행될 수 있게끔 설정해야함.
     };
 
     const getGameInformation = () => {
