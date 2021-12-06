@@ -3,15 +3,18 @@ import CarNamesEvent from './CarNamesEvent.js';
 import RacingCountEvent from './RacingCountEvent.js';
 import Game from '../model/Game.js';
 import ResultRacing from './RacingResult.js';
+import Render from '../view/Render.js';
 
 export default class Controller {
   constructor() {
     this.carNamesEvent = new CarNamesEvent();
     this.racingCountEvent = new RacingCountEvent();
+    this.render = new Render();
 
     this.$racingCountSubmit = DOM.$RACING_COUNT_SUBMIT;
     this.$racingCountInput = DOM.$RACING_COUNT_INPUT;
     this.$carNamesSubmit = DOM.$CAR_NAMES_SUBMIT;
+    this.$racingResultTitle = DOM.$RACING_RESULT_TITLE;
     this.$app = DOM.$APP;
 
     this.carNames = [];
@@ -89,7 +92,16 @@ export default class Controller {
     });
   };
 
+  resultTitleHidden = () => {
+    this.render.hidden(this.$racingResultTitle);
+  };
+
+  // resultTitleVisible = () => {
+  //   this.render.visible(this.$racingResultTitle);
+  // };
+
   main = () => {
+    this.resultTitleHidden();
     this.onClickSubmitButton();
     this.racingCountInputFocus();
   };

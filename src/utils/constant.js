@@ -3,6 +3,7 @@ export const DOM = {
   $CAR_NAMES_SUBMIT: document.querySelector('#car-names-submit'),
   $RACING_COUNT_INPUT: document.querySelector('#racing-count-input'),
   $RACING_COUNT_SUBMIT: document.querySelector('#racing-count-submit'),
+  $RACING_RESULT_TITLE: document.querySelector('#racing-result-title'),
   $APP: document.querySelector('#app'),
   $DIV: document.createElement('div'),
   $SPAN: document.createElement('span'),
