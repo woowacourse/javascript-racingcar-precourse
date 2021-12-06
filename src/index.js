@@ -1,5 +1,7 @@
 import Car from './model/Car.js';
+import { RANGE_THRESHOLD } from './utils/constants.js';
 import { $, initScreen, showRacingCountScreen, showRacingResultScreen } from './utils/dom.js';
+import getRandomNumber from './utils/getRandomNumber.js';
 import { renderGame, renderWinner } from './utils/render.js';
 import { isValidateCarNames, isValidateRacingCount } from './utils/validation.js';
 
@@ -24,9 +26,14 @@ class RacingGame {
     this.triggerRacingCountSubmitEvent();
   }
 
-  //이 쪽 리팩토링 마무리
   tryMove() {
-    this.racingCars.forEach((car) => car.move());
+    this.racingCars.forEach((car) => {
+      const randomNumber = getRandomNumber();
+
+      if (randomNumber >= RANGE_THRESHOLD) {
+        car.move();
+      }
+    });
   }
 
   runGame() {
@@ -44,7 +51,6 @@ class RacingGame {
       if (car.getDistance() === maxDistance) {
         result.push(car.getName());
       }
-
       return result;
     }, []);
   }

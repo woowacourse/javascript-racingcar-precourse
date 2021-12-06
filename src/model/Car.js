@@ -1,6 +1,3 @@
-import { RANGE_THRESHOLD } from '../utils/constants.js';
-import getRandomNumber from '../utils/getRandomNumber.js';
-
 class Car {
   constructor(name) {
     this.name = name;
@@ -16,11 +13,7 @@ class Car {
   }
 
   move() {
-    const randomNumber = getRandomNumber();
-
-    if (randomNumber >= RANGE_THRESHOLD) {
-      this.distance += 1;
-    }
+    this.distance += 1;
   }
 }
 
