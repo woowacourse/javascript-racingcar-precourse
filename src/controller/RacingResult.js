@@ -9,8 +9,6 @@ export default class ResultRacing {
 
     this.$racingResultTitle = DOM.$RACING_RESULT_TITLE;
     this.$app = DOM.$APP;
-    this.$div = DOM.$DIV;
-    this.$span = DOM.$SPAN;
 
     this.resultInformations = [];
     this.resultWinners = [];
@@ -20,9 +18,9 @@ export default class ResultRacing {
     this.main();
   }
 
-  renderWinnersTemplate = () => this.render.template(this.$span, this.$app, this.resultWinnersTemplate);
+  renderWinnersTemplate = () => this.render.template(DOM.$SPAN, this.$app, this.resultWinnersTemplate);
 
-  renderResultTemplate = () => this.render.template(this.$div, this.$app, this.resultTemplate);
+  renderResultTemplate = () => this.render.template(DOM.$DIV, this.$app, this.resultTemplate);
 
   getRacingResult = () => {
     this.resultTemplate = this.game.getResultTemplate();
@@ -34,6 +32,7 @@ export default class ResultRacing {
   };
 
   main = () => {
+    this.resultTitleVisible();
     this.getRacingResult();
     this.renderResultTemplate();
 
@@ -41,6 +40,5 @@ export default class ResultRacing {
     this.resultWinners = winners.getWinners();
     this.resultWinnersTemplate = winners.getWinnersTemplate();
     this.renderWinnersTemplate();
-    this.resultTitleVisible();
   };
 }
