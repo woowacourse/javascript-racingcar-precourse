@@ -28,7 +28,7 @@ function checkCarNameComma(carNameList) {
   return true;
 }
 
-export default function checkCarName(carNameList) {
+export function checkCarName(carNameList) {
   if (
     checkCarNameDuplicate(carNameList) &&
     checkCarNameLen(carNameList) &&
@@ -38,4 +38,12 @@ export default function checkCarName(carNameList) {
   }
 
   return false;
+}
+
+export function checkCount(count) {
+  if (count <= 0) {
+    return false;
+  }
+
+  return true;
 }

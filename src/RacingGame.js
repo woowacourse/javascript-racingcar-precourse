@@ -1,6 +1,5 @@
 import { CARRACING } from './constants.js';
-import checkCarName from './checkInput/checkCarName.js';
-import checkCount from './checkInput/checkCount.js';
+import { checkCarName, checkCount } from './validators/checkInput.js';
 import Car from './car.js';
 import { CarName, Count, Result } from './elementClass/elementClass.js';
 
@@ -61,7 +60,7 @@ export default class RacingGame {
     this.result.setVisible(true);
 
     for (let i = 0; i < this.countNum; i += 1) {
-      this.oneRoundgame(i); // 1 game
+      this.oneRoundgame(i);
     }
     this.getWinner();
   }
