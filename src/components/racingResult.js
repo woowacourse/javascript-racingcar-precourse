@@ -1,4 +1,5 @@
 import { createElementWithId } from '../utils/utils.js';
+import { GAME } from '../constants/gameRule.js';
 
 export default function RacingResult(selector) {
   const container = createElementWithId('div', 'racing-result', selector);
@@ -14,7 +15,7 @@ export default function RacingResult(selector) {
       'racing-result-winners',
       container
     );
-    winnerDiv.innerHTML += '최종 우승자: ';
+    winnerDiv.innerHTML += GAME.WINNER;
 
     const winnerSpan = createElementWithId('span', 'racing-winners', winnerDiv);
     winnerSpan.innerHTML += winner;
