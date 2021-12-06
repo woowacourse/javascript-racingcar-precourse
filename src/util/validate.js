@@ -7,6 +7,11 @@ const checkLength = carName => {
   return true;
 };
 
+const checkInt = racingCount => {
+  if (racingCount < 1) return false;
+  return true;
+};
+
 const carNamesValidate = carNames => {
   if (!carNames.every(checkLength)) {
     warningAlert('자동차 이름');
@@ -15,4 +20,12 @@ const carNamesValidate = carNames => {
   return true;
 };
 
-export default carNamesValidate;
+const racingCountValidate = racingCount => {
+  if (!checkInt(racingCount)) {
+    warningAlert('시도 횟수');
+    return false;
+  }
+  return true;
+};
+
+export { carNamesValidate, racingCountValidate };

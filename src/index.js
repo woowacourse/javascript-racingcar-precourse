@@ -1,5 +1,5 @@
 import init from './init/init.js';
-import controller from './controller/carName.js';
+import controller from './controller/controller.js';
 
 window.addEventListener('DOMContentLoaded', () => {
   init();

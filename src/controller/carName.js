@@ -1,4 +1,4 @@
-import carNamesValidate from '../util/validate.js';
+import { carNamesValidate } from '../util/validate.js';
 import * as render from '../view/render.js';
 import saveCars from '../model/cars.js';
 
