@@ -34,15 +34,18 @@ class Count {
 class Result {
   constructor() {
     this.title = document.querySelector('#result-title');
+    this.div = document.querySelector('#result-div');
     this.setVisible(false);
   }
 
   setVisible(boo) {
     if (boo) {
       this.title.style.visibility = 'visible';
+      this.div.style.visibility = 'visible';
       return true;
     }
     this.title.style.visibility = 'hidden';
+    this.div.style.visibility = 'hidden';
   }
 }
 
@@ -110,6 +113,15 @@ export default class RacingGame {
   oneRoundgame() {
     this.carList.forEach(car => car.play());
     const stepResult = this.carList.map(car => car.stepResult());
-    console.log(stepResult);
+    this.renderstepResult(stepResult);
+  }
+
+  renderstepResult(stepResult) {
+    const carResultDiv = document.createElement('p');
+
+    for (let i = 0; i < this.carList.length; i += 1) {
+      carResultDiv.innerHTML += `${stepResult[i]}<br>`;
+    }
+    this.result.div.appendChild(carResultDiv);
   }
 }
