@@ -2,52 +2,7 @@ import { CARRACING } from './constants.js';
 import checkCarName from './checkInput/checkCarName.js';
 import checkCount from './checkInput/checkCount.js';
 import Car from './car.js';
-
-class CarName {
-  constructor() {
-    this.input = document.querySelector('#car-names-input');
-    this.submit = document.querySelector('#car-names-submit');
-  }
-}
-
-class Count {
-  constructor() {
-    this.title = document.querySelector('#count-title');
-    this.input = document.querySelector('#racing-count-input');
-    this.submit = document.querySelector('#racing-count-submit');
-    this.setVisible(false);
-  }
-
-  setVisible(boo) {
-    if (boo) {
-      this.title.style.visibility = 'visible';
-      this.input.style.visibility = 'visible';
-      this.submit.style.visibility = 'visible';
-      return true;
-    }
-    this.title.style.visibility = 'hidden';
-    this.input.style.visibility = 'hidden';
-    this.submit.style.visibility = 'hidden';
-  }
-}
-
-class Result {
-  constructor() {
-    this.title = document.querySelector('#result-title');
-    this.div = document.querySelector('#result-div');
-    this.setVisible(false);
-  }
-
-  setVisible(boo) {
-    if (boo) {
-      this.title.style.visibility = 'visible';
-      this.div.style.visibility = 'visible';
-      return true;
-    }
-    this.title.style.visibility = 'hidden';
-    this.div.style.visibility = 'hidden';
-  }
-}
+import { CarName, Count, Result } from './elementClass/elementClass.js';
 
 export default class RacingGame {
   constructor() {
