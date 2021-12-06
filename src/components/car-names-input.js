@@ -21,5 +21,6 @@ export default class CarNameInput {
       return alert(errorMessage);
     }
     this.setCars(carNamesArr);
+    return undefined;
   }
 }

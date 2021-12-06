@@ -4,7 +4,7 @@ import { createProgressNode } from '../utils/dom.js';
 export default class Car {
   constructor(name) {
     this.name = name;
-    this._position = 0;
+    this.position = 0;
     this.randomNumber = 0;
   }
 
@@ -12,14 +12,6 @@ export default class Car {
     if (this.randomNumber >= CAR.MOVE_NUMBER) {
       this.position += 1;
     }
-  }
-
-  get position() {
-    return this._position;
-  }
-
-  set position(newPosition) {
-    this._position = newPosition;
   }
 
   rollDice() {

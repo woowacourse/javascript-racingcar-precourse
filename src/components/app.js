@@ -20,7 +20,7 @@ export default class App {
       SELECTOR.ID.RACING_COUNT_COMMAND
     );
     this.$result = document.getElementById(SELECTOR.ID.RESULT);
-    this.game = new RacingGame();
+    this.state = { cars: [], round: 0 };
     this.init();
   }
 
@@ -35,12 +35,13 @@ export default class App {
 
   setCars(names) {
     this.activateRacingCount();
-    this.game.cars = names.map((name) => new Car(name));
+    this.state.cars = names.map((name) => new Car(name));
     disableForm(this.$carNamesForm);
   }
 
   setCount(count) {
-    this.game.round = count;
+    this.state.round = count;
+    this.game = new RacingGame(this.state.cars, this.state.round);
     disableForm(this.$racingCount);
     this.startRacing();
   }
