@@ -1,7 +1,7 @@
-import { CARRACING } from './constants.js';
-import { checkCarName, checkCount } from './validators/checkInput.js';
+import { CARRACING } from '../constants.js';
+import { checkCarName, checkCount } from '../validators/checkInput.js';
 import Car from './car.js';
-import { CarName, Count, Result } from './elementClass/elementClass.js';
+import { CarName, Count, Result } from '../elementClass/elementClass.js';
 
 export default class RacingGame {
   constructor() {
