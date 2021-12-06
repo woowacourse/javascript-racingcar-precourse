@@ -118,12 +118,12 @@ export default class RacingGame {
   }
 
   renderstepResult(stepResult) {
-    const carResultDiv = document.createElement('p');
+    const carResult = document.createElement('p');
 
     for (let i = 0; i < this.carList.length; i += 1) {
-      carResultDiv.innerHTML += `${stepResult[i]}<br>`;
+      carResult.innerHTML += `${stepResult[i]}<br>`;
     }
-    this.result.div.appendChild(carResultDiv);
+    this.result.div.appendChild(carResult);
   }
 
   getWinner() {
@@ -132,6 +132,16 @@ export default class RacingGame {
 
     const winnerList = this.carList.filter(car => car.step === maxStep);
     const winnerNames = winnerList.map(winner => winner.name);
-    console.log(winnerNames);
+    this.renderWinner(winnerNames);
+  }
+
+  renderWinner(winnerNames) {
+    const winner = document.createElement('span');
+    winner.setAttribute('id', 'racing-winners');
+    winner.innerHTML = '최종 우승자: ';
+
+    const winnerName = winnerNames.join(', ');
+    winner.innerHTML += winnerName;
+    this.result.div.appendChild(winner);
   }
 }
