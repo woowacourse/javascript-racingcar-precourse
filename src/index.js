@@ -1,155 +1,33 @@
-import Car from './Car.js';
-import { hideElement, showElement } from './utils/dom.js';
-import { strToArray } from './utils/parse.js';
-import { isCarNamesInputValid, isCountInputValid } from './utils/validity.js';
+import RacingCarController from './controller/RacingCarController.js';
+import RacingCarModel from './model/RacingCarModel.js';
+import RacingCarView from './view/RacingCarView.js';
 
-class RacingCarGame {
-  count;
-  result;
-  carNamesArray;
-
+class App {
   constructor() {
-    this.$racingCountSubmitButton = document.querySelector('#racing-count-submit');
-    this.$racingCountInput = document.querySelector('#racing-count-input');
-    this.$carNamesInput = document.querySelector('#car-names-input');
-    this.$carNamesSubmitButton = document.querySelector('#car-names-submit');
-    this.$app = document.querySelector('#app');
-    this.$racingCountForm = document.querySelector('#racing-count-form');
-    this.$racingResultHeading = document.querySelector('#racing-result-heading');
-    this.$racingCountHeading = document.querySelector('#racing-count-heading');
+    const model = new RacingCarModel();
+    const view = new RacingCarView();
+    const controller = new RacingCarController(model, view);
 
-    this.$winnerTextDiv = document.createElement('div');
-    this.$winnerTextSpan = document.createElement('span');
-    this.$resultTextDiv = document.createElement('div');
-    this.init();
-  }
-  // CountInputContainer
-  init() {
-    this.triggerCountInputEvent();
-    this.triggerCarNamesInputEvent();
+    this.RacingCarController = controller;
+    // 의존성 주입 시 -> 순환 하면 안된다!
+    // 한쪽에서만 쓰도록 구조를 설계
 
-    this.makeDOM();
-    this.resetDOM();
-  }
-
-  makeDOM() {
-    this.$app.appendChild(this.$resultTextDiv);
-    this.$winnerTextSpan.setAttribute('id', 'racing-winners');
-    this.$app.appendChild(this.$winnerTextDiv);
-    this.$winnerTextDiv.innerText = '최종 우승자: ';
-    this.$winnerTextDiv.appendChild(this.$winnerTextSpan);
-  }
-
-  resetDOM() {
-    hideElement(this.$racingCountHeading);
-    hideElement(this.$racingCountForm);
-    hideElement(this.$racingResultHeading);
-    hideElement(this.$winnerTextDiv);
-  }
-
-  triggerCountInputEvent() {
-    this.$racingCountSubmitButton.addEventListener('click', (e) => this.onCountSubmit(e));
-  }
-
-  onCountSubmit(e) {
-    e.preventDefault();
-    const count = this.$racingCountInput.value;
-    if (!isCountInputValid(count)) {
-      return;
-    }
-    this.count = count;
-    this.makeCars();
-    this.moveCars();
-    this.showRoundResult();
-    this.showWinner();
-    this.showResultDOM();
-  }
-
-  showResultDOM() {
-    showElement(this.$racingResultHeading);
-    showElement(this.$winnerTextDiv);
-  }
-
-  showWinner() {
-    const winner = this.makeWinners();
-    console.log(`winner`, winner);
-
-    this.$winnerTextSpan.innerHTML = winner;
-  }
-
-  makeWinner() {
-    const maxStep = this.getMaxStep();
-    let winner = '';
-    for (let key in this.result) {
-      if (this.result[key].step === maxStep) {
-        winner += `, ${this.result[key].name}`;
-      }
-    }
-    return winner.slice(2);
-  }
-
-  getMaxStep() {
-    const stepArray = this.getStepArray();
-    return Math.max(...stepArray);
-  }
-
-  getStepArray() {
-    const stepArray = [];
-    for (let key in this.result) {
-      stepArray.push(this.result[key].step);
-    }
-    return stepArray;
-  }
-
-  makeCars() {
-    this.result = {};
-    for (let car of this.carNamesArray) {
-      this.result[car] = new Car(car);
-    }
-  }
-
-  moveCars() {
-    for (let key in this.result) {
-      for (let i = 0; i < this.count; i++) {
-        this.result[key].move();
-      }
-    }
-  }
-
-  showRoundResult() {
-    this.$resultTextDiv.innerHTML = this.makeRoundResult();
-  }
-
-  makeRoundResult() {
-    let resultText = '';
-    for (let i = 0; i < this.count; i++) {
-      for (let key in this.result) {
-        resultText += `<div>${key}: ${'-'.repeat(this.result[key].stepByRound[i])}</div>\n`;
-      }
-      resultText += '<br>';
-    }
-    return resultText;
-  }
-
-  // CarNamesInputContainer
-  triggerCarNamesInputEvent() {
-    this.$carNamesSubmitButton.addEventListener('click', (e) => this.onCarNamesSubmit(e));
-  }
-
-  onCarNamesSubmit(e) {
-    e.preventDefault();
-    const carNames = this.$carNamesInput.value;
-    this.carNamesArray = strToArray(carNames, ',');
-    if (!isCarNamesInputValid(this.carNamesArray)) {
-      return;
-    }
-    this.showCountDOM();
-  }
-
-  showCountDOM() {
-    showElement(this.$racingCountHeading);
-    showElement(this.$racingCountForm);
+    // 모델과 뷰는 상호작용하면 안 된다.
+    // model, view -> controller
+    this.RacingCarController.triggerEvent();
   }
 }
 
-new RacingCarGame();
+// 클래스 안에서 클래스를 생성하지 안 된다.
+// 클래스는 밖에서 생성되고, 안으로 넣어준다.
+// 무조건 이 클래스 안에서 쓰는 애들은 상관없는데,
+// 다양한 클래스에서 상호작용하는 애들은 밖에서 선언해준다.
+
+const app = new App();
+
+// view -> controller
+// controller -> model
+//
+
+// 이벤트는 뷰가 받아서, 컨트롤러에 함수를 호출해서, 모델을 작업하고.
+// 모델이 변경되면 뷰에 반영이 되게 한다.
