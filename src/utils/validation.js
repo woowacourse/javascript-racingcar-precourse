@@ -1,4 +1,8 @@
-import { MAX_LENGTH_CAR_NAME } from '../constant/game.js';
+import {
+  MAX_LENGTH_CAR_NAME,
+  MIN_COUNT_CAR,
+  MIN_RANGE_RACING_COUNT,
+ } from '../constant/game.js';
 
 const checkNameLength = (carNames) => {
   const isPass = carNames.every((name) => name.length <= MAX_LENGTH_CAR_NAME);
@@ -21,8 +25,22 @@ const checkDuplicateName = (carNames) => {
   return isPass;
 };
 
+const checkExistingCar = (cars) => {
+  const isPass = cars.length >= MIN_COUNT_CAR;
+
+  return isPass;
+};
+
+const checkValidNumber = (racingCount) => {
+  const isPass = racingCount >= MIN_RANGE_RACING_COUNT && Number.isInteger(Number(racingCount))
+
+  return isPass
+};
+
 export {
   checkNameLength,
   checkEmptyName,
   checkDuplicateName,
+  checkExistingCar,
+  checkValidNumber,
 };
