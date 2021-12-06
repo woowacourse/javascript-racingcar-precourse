@@ -4,13 +4,20 @@ const isEmpty = (inputValue) => {
   return inputValue === '';
 };
 
+const isContainsBlankName = (carNamesInput) => {
+  const carNamesArray = carNamesInput.split(',');
+
+  return carNamesArray.some((carName) => carName.replace(/ /g, '').length === 0);
+};
+
 const isLongerThanFiveLetters = (carNamesInput) => {
   return carNamesInput.split(',').some((carName) => carName.length > MAX_CAR_NAME_LENGTH);
 };
 
 const isDuplicate = (carNamesInput) => {
   const carNamesArray = carNamesInput.split(',');
-  return carNamesArray.length !== [...new Set(carNamesArray)].length;
+
+  return carNamesArray.length !== new Set(carNamesArray).size;
 };
 
 const isIntegerInValid = (racingCountInput) => {
@@ -29,6 +36,10 @@ const showErrorMessage = (message) => {
 const isValidateCarNames = (carNamesInput) => {
   if (isEmpty(carNamesInput)) {
     return showErrorMessage(CAR_NAMES.EMPTY_ERROR_MESSAGE);
+  }
+
+  if (isContainsBlankName(carNamesInput)) {
+    return showErrorMessage(CAR_NAMES.BLANK_ERROR_MESSAGE);
   }
 
   if (isLongerThanFiveLetters(carNamesInput)) {

@@ -11,6 +11,13 @@ class RacingGame {
     this.racingCount = 0;
   }
 
+  init() {
+    initScreen();
+    this.preventFormSubmitEvent();
+    this.triggerCarNamesSubmitEvent();
+    this.triggerRacingCountSubmitEvent();
+  }
+
   setRacingCars(carNamesInput) {
     this.racingCars = carNamesInput.split(',').map((carName) => new Car(carName));
   }
@@ -19,11 +26,14 @@ class RacingGame {
     this.racingCount = parseInt(racingCount, 10);
   }
 
-  init() {
-    initScreen();
-    this.preventFormSubmitEvent();
-    this.triggerCarNamesSubmitEvent();
-    this.triggerRacingCountSubmitEvent();
+  runGame() {
+    for (let i = 0; i < this.racingCount; i++) {
+      this.tryMove();
+      renderGame(this.racingCars);
+    }
+
+    const winnerList = this.getWinner();
+    renderWinner(winnerList);
   }
 
   tryMove() {
@@ -34,14 +44,6 @@ class RacingGame {
         car.move();
       }
     });
-  }
-
-  runGame() {
-    for (let i = 0; i < this.racingCount; i++) {
-      this.tryMove();
-      renderGame(this.racingCars);
-    }
-    renderWinner(this.getWinner());
   }
 
   getWinner() {
