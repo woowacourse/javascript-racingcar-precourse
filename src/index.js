@@ -8,7 +8,6 @@ export default class RacingcarGame {
     this.getInput();
     this.onCarSubmit();
     this.onNumSubmit();
-    makeRandomNum();
   }
 
   getInput() {
