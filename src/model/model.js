@@ -21,4 +21,16 @@ export default class Model {
   isValidatedLength(userInputArray, givenLength) {
     return userInputArray.length >= givenLength;
   }
+
+  saveCount(userInput) {
+    const userInputNum = Number(userInput);
+
+    if (this.isValidatedCount(userInputNum, NUMBER.COUNT_LEAST_VALUE)) {
+      this.count = userInputNum;
+    }
+  }
+
+  isValidatedCount(userInputNum, countSize) {
+    return userInputNum >= countSize;
+  }
 }
