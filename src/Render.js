@@ -2,8 +2,7 @@ export default class Render {
   constructor() {
     this.racingCountForm = document.getElementById("racing-count-form");
     this.racingCountText = document.getElementById("racing-count-label");
-    this.resultText = document.getElementById("result");
-    this.content = document.getElementById("app");
+    this.resultText = document.getElementById("game-result");
   }
 
   hideRacingCountForm() {
@@ -24,9 +23,20 @@ export default class Render {
     this.racingCountText.style.display = "block";
   }
 
-  showRoundResult(cars) {
+  clearRacingResult() {
+    const prevRacingResult = document.querySelector("#racing-result");
+    if (prevRacingResult) {
+      prevRacingResult.remove();
+    }
+  }
+
+  makeResultArea() {
     this.showResultText();
-    this.makeRoundResult(cars);
+    this.racingResultArea = this.makeElement({
+      tag: "div",
+      id: "racing-result",
+    });
+    this.resultText.insertAdjacentElement("afterend", this.racingResultArea);
   }
 
   makeRoundResult(cars) {
@@ -39,7 +49,7 @@ export default class Render {
       });
       roundResultArea.appendChild(roundResult);
     });
-    this.content.append(roundResultArea);
+    this.racingResultArea.append(roundResultArea);
   }
 
   winner(name) {
@@ -52,7 +62,7 @@ export default class Render {
       innerText: name,
       id: "racing-winners",
     });
-    this.content.append(winnerText, winnerTag);
+    this.racingResultArea.append(winnerText, winnerTag);
   }
 
   makeElement({ tag, innerText = "", id = "" }) {

@@ -5,24 +5,25 @@ export default class Racing {
   constructor(carNames, racingCount) {
     this.carNames = carNames;
     this.racingCount = racingCount;
-    this.render = new Render();
   }
 
   start() {
     const cars = this.prepareCar();
+    const render = new Render();
+    render.makeResultArea();
     for (let round = 1; round <= this.racingCount; round += 1) {
-      this.startOneRound(cars);
+      this.startOneRound(cars, render);
     }
-    this.showRacingWinner(cars);
+    this.showRacingWinner(cars, render);
   }
 
-  showRacingWinner(cars) {
+  showRacingWinner(cars, render) {
     const winnerDistance = Math.max(...cars.map(car => car.progress.length));
     const winner = cars
       .filter(car => car.progress.length === winnerDistance)
       .map(car => car.name)
       .join(", ");
-    this.render.winner(winner);
+    render.winner(winner);
   }
 
   setCarNames() {
@@ -38,11 +39,11 @@ export default class Racing {
     return cars;
   }
 
-  startOneRound(cars) {
+  startOneRound(cars, render) {
     cars.forEach(car => {
       const isGoFoward = car.moving();
       car.updateProgress(isGoFoward);
     });
-    this.render.showRoundResult(cars);
+    render.makeRoundResult(cars);
   }
 }

@@ -33,6 +33,7 @@ class RacingCarGame {
 
   handleSubmitRacingCount(event) {
     event.preventDefault();
+    this.render.clearRacingResult();
     const isValid = this.checkValid.racingCount(this.user.getRacingCount());
     if (isValid) {
       const racing = new Racing(
