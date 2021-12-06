@@ -2,7 +2,7 @@ import {
   $,
   alertError,
   hideRacingCountForm,
-  showRacingCountForm,
+  revealRacingCountForm,
   validateNames,
   validateCount,
   createCars,
@@ -54,7 +54,7 @@ class CarRacingGame {
     }
     if (isValid) {
       this.cars = createCars(names);
-      showRacingCountForm();
+      revealRacingCountForm();
     }
   };
 

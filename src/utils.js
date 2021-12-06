@@ -13,7 +13,7 @@ export const hideRacingCountForm = () => {
   $('#racing-count-form').style.display = 'none';
 };
 
-export const showRacingCountForm = () => {
+export const revealRacingCountForm = () => {
   $('#racing-count-form-title').style.display = 'block';
   $('#racing-count-form').style.display = 'block';
   $('#racing-count-input').focus();
