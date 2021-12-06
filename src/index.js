@@ -60,8 +60,6 @@ class CarGameUtil {
   }
 }
 class CarGameLogic {
-  constructor() {}
-
   getWinner() {
     const winnerCount = CarGameUtil.getWinnerCount(this.cars);
 
@@ -124,16 +122,13 @@ class CarGame extends CarGameLogic {
   }
 
   initDOM() {
-    this.app = document.querySelector(DOM.APP);
-
-    this.formCars = document.querySelector(DOM.CAR_NAMES);
-
-    this.countTitle = document.querySelector(DOM.COUNT_TITLE);
-    this.formCount = document.querySelector(DOM.RANCING_COUNT);
-
-    this.resultTitle = document.querySelector(DOM.RESULT_TITLE);
+    this.app = document.getElementById(DOM.APP);
+    this.formCars = document.getElementById(DOM.CAR_NAMES);
+    this.countTitle = document.getElementById(DOM.COUNT_TITLE);
+    this.formCount = document.getElementById(DOM.RANCING_COUNT);
+    this.resultTitle = document.getElementById(DOM.RESULT_TITLE);
     this.result = document.createElement('div');
-    this.result.setAttribute('id', 'result');
+    this.result.setAttribute('id', DOM.RESULT);
     this.app.appendChild(this.result);
   }
 
