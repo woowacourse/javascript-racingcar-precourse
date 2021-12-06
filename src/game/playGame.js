@@ -1,14 +1,6 @@
-import Car from './Car.js';
 import showRaceResult from '../view/showRaceResult.js';
 import showWinners from '../view/showWinners.js';
-
-function getCars(userInput) {
-  const cars = [];
-  userInput.getCarNames().forEach((name) => {
-    cars.push(new Car(name));
-  });
-  return cars;
-}
+import GameController from './GameController.js';
 
 function goOnce(cars) {
   cars.forEach((car) => car.go());
@@ -33,12 +25,12 @@ function decideWinners(cars) {
 }
 
 export default function playGame(userInput, view) {
-  const cars = getCars(userInput);
+  const controller = new GameController(userInput);
 
   view.initView();
   for (let index = 0; index < userInput.getRepeatCount(); index += 1) {
-    goOnce(cars);
-    showRaceResult(cars);
+    goOnce(controller.cars);
+    showRaceResult(controller.cars);
   }
-  decideWinners(cars);
+  decideWinners(controller.cars);
 }
