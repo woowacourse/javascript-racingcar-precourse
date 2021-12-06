@@ -1,8 +1,4 @@
 export default {
-  checkTryCountLessThanZero(submitTryCount) {
-    return !(submitTryCount <= 0);
-  },
-  checkExistTryCount(submitTryCount) {
-    return !!submitTryCount;
-  },
+  checkTryCountLessThanZero: submitTryCount => !(submitTryCount <= 0),
+  checkExistTryCount: submitTryCount => !!submitTryCount,
 };
