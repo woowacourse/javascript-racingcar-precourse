@@ -2,8 +2,8 @@ import { validatedCarNames, validateRacingCount } from '../utils/validator.js';
 import {
   appendRacingWinnerSpanElement,
   appendResultSpanElement,
-  showRacingCountDiv,
-  showResultDiv,
+  showRacingCountContainer,
+  showResultTextElement,
 } from '../view/display.js';
 import {
   getCarNamesInput,
@@ -18,7 +18,7 @@ export const handleCarNamesSubmitButton = function () {
 
   if (validatedCarNames(carNamesArray)) {
     makeNewCars(carNamesArray);
-    showRacingCountDiv();
+    showRacingCountContainer();
   }
 
   return true;
@@ -28,7 +28,7 @@ export const handleRacingCountSubmitButton = function () {
   const racingCountInputValue = getRacingCountInput();
 
   if (validateRacingCount(racingCountInputValue)) {
-    showResultDiv();
+    showResultTextElement();
     appendResultSpanElement();
     printGameResult(racingCountInputValue);
     appendRacingWinnerSpanElement();

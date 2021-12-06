@@ -13,13 +13,13 @@ export const hideResultContainer = function () {
   result.hidden = true;
 };
 
-export const showRacingCountDiv = function () {
+export const showRacingCountContainer = function () {
   racingCountText.hidden = false;
   racingCountInput.hidden = false;
   racingCountBtn.hidden = false;
 };
 
-export const showResultDiv = function () {
+export const showResultTextElement = function () {
   result.hidden = false;
 };
 

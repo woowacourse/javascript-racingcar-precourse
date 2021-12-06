@@ -1,11 +1,14 @@
 import { state } from '../index.js';
 import { LINE_BREAK, NUMBER } from '../constants/constants.js';
-import { addRandomPosition, decideWinner } from '../utils/game-utils.js';
+import {
+  addRandomNumberToPosition,
+  decideWinner,
+} from '../utils/game-utils.js';
 
 export const printGameResult = function (racingCount) {
   const resultSpan = document.querySelector('#result-span');
 
-  addRandomPosition(racingCount);
+  addRandomNumberToPosition(racingCount);
 
   for (let i = 1; i <= racingCount; i++) {
     for (const car of state.carArray) {
