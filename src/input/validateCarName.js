@@ -39,6 +39,12 @@ const showCountInput = () => {
   $racingCountSubmit.style.visibility = "visible";
 };
 
+const makeAlert = () => {
+  $carName.value = "";
+  $carName.focus();
+  alert(ERROR_CAR_NAME);
+};
+
 export default function validateCarName(e) {
   e.preventDefault();
 
@@ -47,10 +53,7 @@ export default function validateCarName(e) {
     showCountInput();
     return true;
   }
-
-  $carName.value = "";
-  $carName.focus();
-  alert(ERROR_CAR_NAME);
+  makeAlert();
 
   return false;
 }

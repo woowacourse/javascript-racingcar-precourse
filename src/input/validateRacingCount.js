@@ -6,6 +6,12 @@ const trimRacingCount = () => $racingCount.value.trim();
 const isNaturalNumber = () =>
   Number.isInteger($racingCount.value * 1) && $racingCount.value > 0;
 
+const makeAlert = () => {
+  $racingCount.value = "";
+  $racingCount.focus();
+  alert(ERROR_RACING_COUNT);
+};
+
 export default function validateRacingCount(e) {
   e.preventDefault();
 
@@ -14,10 +20,7 @@ export default function validateRacingCount(e) {
     play();
     return true;
   }
-
-  $racingCount.value = "";
-  $racingCount.focus();
-  alert(ERROR_RACING_COUNT);
+  makeAlert();
 
   return false;
 }
