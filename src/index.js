@@ -32,6 +32,26 @@ class RacingGame {
       this.tryMove();
       this.render();
     }
+    this.renderWinnerText(this.getWinner());
+  }
+
+  renderWinnerText(winnerList) {
+    const winner = winnerList.join(', ');
+    const winnerText = `최종 우승자: <span id="racing-winners">${winner}</span>`;
+
+    $('#racing-result-heading').insertAdjacentHTML('beforeend', winnerText);
+  }
+
+  getWinner() {
+    const maxDistance = Math.max(...this.racingCars.map((car) => car.getDistance()));
+
+    return this.racingCars.reduce((acc, car) => {
+      if (car.getDistance() === maxDistance) {
+        acc.push(car.getName());
+      }
+
+      return acc;
+    }, []);
   }
 
   render() {
