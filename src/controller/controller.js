@@ -1,4 +1,4 @@
-import { $, generateCars } from '../utils/utils.js';
+import { $, generateCars, getWinners } from '../utils/utils.js';
 import { default as UI } from '../view/view.js';
 import { SELECTOR } from '../utils/constants.js';
 import { isValidCarNames, isValidRacingCount } from '../utils/validators.js';
@@ -40,7 +40,7 @@ export default function RacingCarGame() {
 
     Array.from({ length: Number(UI.getRacingCount()) }, () => tryMoveByRound(cars));
 
-    UI.showWiners(cars);
+    UI.showWiners(getWinners(cars));
   };
 
   const tryMoveByRound = cars => {

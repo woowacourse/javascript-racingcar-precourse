@@ -39,3 +39,19 @@ export const isZero = string => {
 export const hasSpecial = string => {
   return string.split('').some(char => REGEX.HAS_SPECIAL.test(char));
 };
+
+export const makeHyphenGraph = number => {
+  let result = '';
+  Array.from({ length: number }, () => (result += '-'));
+
+  return result;
+};
+
+export const getWinners = array => {
+  const maxValue = Math.max(...array.map(object => object.location));
+
+  return array
+    .filter(object => object.location === maxValue)
+    .map(object => object.name)
+    .join(', ');
+};

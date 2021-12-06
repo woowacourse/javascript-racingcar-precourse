@@ -1,4 +1,4 @@
-import { $ } from '../utils/utils.js';
+import { $, makeHyphenGraph } from '../utils/utils.js';
 import { SELECTOR } from '../utils/constants.js';
 
 const DOMUtils = {
@@ -46,17 +46,11 @@ const DOMUtils = {
     $(SELECTOR.APP).insertAdjacentHTML('beforeend', result);
   },
 
-  showWiners: array => {
-    const maxValue = Math.max(...array.map(object => object.location));
-    const winners = array
-      .filter(object => object.location === maxValue)
-      .map(object => object.name)
-      .join(', ');
-
+  showWiners: string => {
     $(SELECTOR.APP).insertAdjacentHTML(
       'beforeend',
       `<div>최종 우승자: 
-        <span id="racing-winners">${winners}</span>
+        <span id="racing-winners">${string}</span>
       </div>`,
     );
   },
@@ -69,13 +63,6 @@ const hideRacingCountSection = () => {
 
 const hideRacingResultSection = () => {
   $(SELECTOR.RACING_RESULT_TITLE).style.display = 'none';
-};
-
-const makeHyphenGraph = number => {
-  let result = '';
-  Array.from({ length: number }, () => (result += '-'));
-
-  return result;
 };
 
 export default DOMUtils;
