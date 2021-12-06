@@ -1,4 +1,5 @@
 import Car from './car.js'
+import {displayWinnerHTML, displayCurrentHTML} from './display.js';
 
 export default class CarGame {
 
@@ -43,11 +44,6 @@ export default class CarGame {
         return name + position;
     }
 
-    displayCurrentHTML(currentPositions){
-        let racingCurrent = document.getElementById('racing-current');
-        racingCurrent.innerHTML += currentPositions + "<br>";
-    }
-
     findWinner(cars){
         let max = 0;
         let winners = [];
@@ -64,22 +60,6 @@ export default class CarGame {
         return winners;
     }
 
-    displayWinnerHTML(winners){
-        const racingWinners = document.getElementById('racing-winners');
-        const preWinnerText = document.createElement('span');
-        preWinnerText.innerHTML = '최종 우승자: '
-        
-        racingWinners.before(preWinnerText);
-
-        let winnersText = ''; 
-        for(let i=0; i<winners.length; i++){
-            winnersText += `${winners[i]}, `;
-        }
-        
-        winnersText = winnersText.slice(0,-2);
-        racingWinners.innerHTML = winnersText;
-    }
-
     receiveCount(input){
         for(let i=0; i<input; i++){
             for(let j=0; j<this.cars.length; j++){
@@ -91,9 +71,9 @@ export default class CarGame {
                 currentPositions += this.namePosition(this.cars[j]) + "<br>";
             }
 
-            this.displayCurrentHTML(currentPositions);
+            displayCurrentHTML(currentPositions);
         }
 
-        this.displayWinnerHTML(this.findWinner(this.cars));
+        displayWinnerHTML(this.findWinner(this.cars));
     }
 }
