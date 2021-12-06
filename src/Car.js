@@ -6,10 +6,10 @@ export default class Car {
   }
 
   moving() {
-    return this.getRandomValue() >= RACING_COUNT.GO_FORWARD;
+    return this.getRandomNumber() >= RACING_COUNT.GO_FORWARD;
   }
 
-  getRandomValue() {
+  getRandomNumber() {
     return MissionUtils.Random.pickNumberInRange(NUMBER.MIN, NUMBER.MAX);
   }
 

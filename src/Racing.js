@@ -45,7 +45,7 @@ export default class Racing {
       const isGoFoward = car.moving();
       car.updateProgress(isGoFoward);
     });
-    render.makeRoundResult(cars);
+    render.roundResult(cars);
   }
 
   showGameReStart(render) {

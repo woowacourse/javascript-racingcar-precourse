@@ -39,7 +39,7 @@ export default class Render {
     this.resultText.insertAdjacentElement("afterend", this.racingResultArea);
   }
 
-  makeRoundResult(cars) {
+  roundResult(cars) {
     const roundResultArea = this.makeElement({ tag: "p" });
     cars.forEach(car => {
       const { name, progress } = car.getRacingResult();
