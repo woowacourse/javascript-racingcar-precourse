@@ -98,12 +98,18 @@ export default class RacingGame {
   }
 
   play() {
-    this.cars = this.carNameList.map(name => new Car(name));
+    this.carList = this.carNameList.map(name => new Car(name));
 
     this.result.setVisible(true);
 
     for (let i = 0; i < this.countNum; i += 1) {
-      oneRoundgame(); // 1 game
+      this.oneRoundgame(i); // 1 game
     }
+  }
+
+  oneRoundgame() {
+    this.carList.forEach(car => car.play());
+    const stepResult = this.carList.map(car => car.stepResult());
+    console.log(stepResult);
   }
 }
