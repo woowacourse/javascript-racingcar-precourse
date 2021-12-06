@@ -1,4 +1,5 @@
 import Car from './Car.js';
+import Form from './Form.js';
 import Render from './Render.js';
 import { isValidCarNames, isValidRacingCount } from './utils/validations.js';
 
@@ -9,12 +10,11 @@ export default class RacingGame {
     this.render = new Render();
   }
 
-  setCarNames(carNames) {
-    this.carNames = carNames;
-  }
-
-  setCount(count) {
-    this.count = count;
+  initForm() {
+    this.carNamesForm = new Form('car-names');
+    this.racingCountForm = new Form('racing-count');
+    this.carNamesForm.addClickEvent(this.onSubmitCarNames.bind(this));
+    this.racingCountForm.addClickEvent(this.onSubmitRacingCount.bind(this));
   }
 
   onSubmitCarNames(input) {
@@ -22,11 +22,11 @@ export default class RacingGame {
     if (!isValidCarNames(carNames)) {
       this.render.carNamesGuideUnverified();
       this.render.resetResult();
-      this.setCarNames([]);
+      this.carNames = [];
       return;
     }
     this.render.carNamesGuideVerified();
-    this.setCarNames(carNames);
+    this.carNames = carNames;
     if (this.isReadyForGame()) this.play();
   }
 
@@ -35,11 +35,11 @@ export default class RacingGame {
     if (!isValidRacingCount(racingCount)) {
       this.render.racingCountGuideUnverified();
       this.render.resetResult();
-      this.setCount(0);
+      this.count = 0;
       return;
     }
     this.render.racingCountGuideVerified();
-    this.setCount(racingCount);
+    this.count = racingCount;
     if (this.isReadyForGame()) this.play();
   }
 

@@ -13,8 +13,8 @@ export default class Render {
   }
 
   initGuides() {
-    this.carNamesGuide = new InputGuide('#car-names-guide');
-    this.racingCountGuide = new InputGuide('#racing-count-guide');
+    this.carNamesGuide = new InputGuide('car-names');
+    this.racingCountGuide = new InputGuide('racing-count');
     this.carNamesGuideUnverified();
     this.racingCountGuideUnverified();
   }

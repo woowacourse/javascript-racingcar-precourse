@@ -1,8 +1,8 @@
 import { INPUT_GUIDE_MESSAGE, INPUT_GUIDE_COLOR } from './constants/index.js';
 
 export default class InputGuide {
-  constructor(id) {
-    this.guideContainer = document.querySelector(id);
+  constructor(ID) {
+    this.guideContainer = document.querySelector(`#${ID}-guide`);
   }
 
   setVerified() {
