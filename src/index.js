@@ -29,7 +29,7 @@ class RacingGame {
     this.$racingScreen = screen;
   }
   insertRacingWinner($app) {
-    const element = htmlToElement(`<div id="${ELEMENT_IDS.RACING_WINNERS}"></div>`);
+    const element = htmlToElement(`<span id="${ELEMENT_IDS.RACING_WINNERS}"></span>`);
     $app.insertAdjacentElement('beforeend', element);
     this.$racingWinners = element;
   }
@@ -94,8 +94,8 @@ class RacingGame {
   }
   printWinners() {
     let winners = this.findWinners();
-    let div = `<div><label>${WINNER_LABEL}</label>${winners.join(', ')}</div>`;
-    this.$racingWinners.insertAdjacentElement('beforeend', htmlToElement(div));
+    this.$racingWinners.insertAdjacentElement('beforebegin', htmlToElement(`<label>${WINNER_LABEL}: </label>`));
+    this.$racingWinners.innerText = `${winners.join(',')}`;
   }
   resetResultView() {
     this.$racingScreen.replaceChildren();

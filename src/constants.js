@@ -16,4 +16,4 @@ export const CAR_NAME_MAX_LENGTH = 5;
 export const CAR_NAME_MIN_LENGTH = 1;
 export const MIN_NUM_TO_GO = 4;
 export const RANDOM_NUM_RANGE = [0, 9];
-export const WINNER_LABEL = '최종 우승자: ';
+export const WINNER_LABEL = '최종 우승자';
