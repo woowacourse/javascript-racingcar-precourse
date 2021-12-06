@@ -1,7 +1,11 @@
 import {
+  handleCarNamesSubmitButton,
+  handleRacingCountSubmitButton,
+} from '../src/domain/handlers.js';
+import {
   hideRacingCountContainer,
   hideResultContainer,
-} from './view/display.js';
+} from '../src/view/display.js';
 
 export const state = {
   carArray: [],
@@ -16,10 +20,12 @@ const init = function () {
 
   carNamesButton.addEventListener('click', (event) => {
     event.preventDefault();
+    handleCarNamesSubmitButton();
   });
 
   racingCountButton.addEventListener('click', (event) => {
     event.preventDefault();
+    handleRacingCountSubmitButton();
   });
 };
 

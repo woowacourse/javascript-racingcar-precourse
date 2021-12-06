@@ -3,13 +3,14 @@ import {
   MIN_NUMBER,
   POSITION_CONDITION_NUMBER,
 } from '../constants/constants.js';
+import { Car } from '../domain/car.js';
 import { state } from '../index.js';
 
 export const makeNewCars = function (carNamesArray) {
-  carNamesArray.forEach((name) => state.carArray.push(new carNamesArray(name)));
+  carNamesArray.forEach((name) => state.carArray.push(new Car(name)));
 };
 
-export const generateRandomNumber = function () {
+const generateRandomNumber = function () {
   const randomNumber = MissionUtils.Random.pickNumberInRange(
     MIN_NUMBER,
     MAX_NUMBER
@@ -21,7 +22,7 @@ export const generateRandomNumber = function () {
 export const addRandomPosition = function (racingCount) {
   for (let i = 0; i < racingCount; i++) {
     for (let j = 0; j < state.carArray.length; j++) {
-      state.carArray[j].position.push(getRandomNumber());
+      state.carArray[j].position.push(generateRandomNumber());
     }
   }
 };
@@ -36,6 +37,7 @@ const filterPosition = function () {
 
 const getWinnerPosition = function () {
   let winnerPosition = [];
+
   for (const car of state.carArray) {
     winnerPosition.push(car.position.length);
   }
@@ -43,14 +45,15 @@ const getWinnerPosition = function () {
   return Math.max(...winnerPosition);
 };
 
-const decideWinner = function () {
+export const decideWinner = function () {
   filterPosition();
   let winners = [];
+
   for (const car of state.carArray) {
     if (car.position.length === getWinnerPosition()) {
       winners.push(car.name);
     }
-
-    return winners;
   }
+
+  return winners;
 };

@@ -1,10 +1,14 @@
-import { validatedCarNames } from '../utils/validator.js';
+import { validatedCarNames, validateRacingCount } from '../utils/validator.js';
 import {
   appendRacingWinnerSpanElement,
+  appendResultSpanElement,
   showRacingCountDiv,
   showResultDiv,
 } from '../view/display.js';
-import { getCarNamesInput } from '../utils/get-user-input.js';
+import {
+  getCarNamesInput,
+  getRacingCountInput,
+} from '../utils/get-user-input.js';
 import { makeNewCars } from '../utils/game-utils.js';
 import { printFinalWinner, printGameResult } from '../view/print-result.js';
 
