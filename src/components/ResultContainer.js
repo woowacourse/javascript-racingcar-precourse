@@ -33,6 +33,8 @@ export default class ResultContainer extends Component {
       const br = document.createElement('br');
       this.$target.appendChild(br);
     }
+
+    this.printWinner();
   }
 
   printOneBlock(name, position) {
@@ -56,5 +58,15 @@ export default class ResultContainer extends Component {
       }
     });
     return winners.map((winner) => winner.name);
+  }
+
+  printWinner() {
+    const winnerTitle = document.createElement('span');
+    winnerTitle.innerText = '최종 우승자: ';
+    const winnerNames = document.createElement('span');
+    winnerNames.innerText = this.getWinner().join(', ');
+    winnerNames.id = DOM_ID.RACING_WINNERS;
+    this.$target.appendChild(winnerTitle);
+    this.$target.appendChild(winnerNames);
   }
 }
