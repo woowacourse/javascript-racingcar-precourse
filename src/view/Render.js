@@ -8,7 +8,7 @@ export default class Render {
     $title.style.visibility = 'hidden';
   };
 
-  // visible = ($title) => {
-  //   $title.style.visibility = 'visible';
-  // };
+  visible = ($title) => {
+    $title.style.visibility = 'visible';
+  };
 }

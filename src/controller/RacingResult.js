@@ -7,6 +7,7 @@ export default class ResultRacing {
     this.game = game;
     this.render = new Render();
 
+    this.$racingResultTitle = DOM.$RACING_RESULT_TITLE;
     this.$app = DOM.$APP;
     this.$div = DOM.$DIV;
     this.$span = DOM.$SPAN;
@@ -28,6 +29,10 @@ export default class ResultRacing {
     this.resultInformations = this.game.getResultInformations();
   };
 
+  resultTitleVisible = () => {
+    this.render.visible(this.$racingResultTitle);
+  };
+
   main = () => {
     this.getRacingResult();
     this.renderResultTemplate();
@@ -36,5 +41,6 @@ export default class ResultRacing {
     this.resultWinners = winners.getWinners();
     this.resultWinnersTemplate = winners.getWinnersTemplate();
     this.renderWinnersTemplate();
+    this.resultTitleVisible();
   };
 }

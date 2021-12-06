@@ -96,10 +96,6 @@ export default class Controller {
     this.render.hidden(this.$racingResultTitle);
   };
 
-  // resultTitleVisible = () => {
-  //   this.render.visible(this.$racingResultTitle);
-  // };
-
   main = () => {
     this.resultTitleHidden();
     this.onClickSubmitButton();
