@@ -3,49 +3,57 @@ import showNextInput from './view/showNextInput.js';
 import playGame from './game/playGame.js';
 import View from './view/View.js';
 
-const NAME_ERROR_MESSAGE = '입력 오류! 공백을 포함하지 않은 5자 이하 이름만 입력해주세요!';
-const REPEAT_ERROR_MESSAGE = '입력 오류! 1 이상 숫자를 입력해주세요!';
-const NO_INPUT_ERROR_MESSAGE = '입력 오류! 자동차 이름과 반복할 횟수 모두 입력해주세요!';
+const CAR_NAME_INPUT_ID = '#car-names-input';
+const RACING_COUNT_INPUT_ID = '#racing-count-input';
+const CAR_NAME_SUBMIT_ID = '#car-names-submit';
+const RACING_COUNT_SUBMIT_ID = '#racing-count-submit';
 
-function onCarNamesSubmit(event, userInput) {
+export const CAR_NAMES_ERROR = 1;
+export const REPEAT_COUNT_ERROR = 2;
+export const EMPTY_INPUT_ERROR = 3;
+
+function onCarNamesSubmit(event, userInput, view) {
   event.preventDefault();
-  const $carNamesInput = document.querySelector('#car-names-input');
+  const $carNamesInput = document.querySelector(CAR_NAME_INPUT_ID);
 
   userInput.setCarNames($carNamesInput.value.split(','));
   if (!userInput.getCarNames()) {
-    alert(NAME_ERROR_MESSAGE);
-    $carNamesInput.value = '';
+    view.alertError(CAR_NAMES_ERROR);
     return;
   }
   showNextInput();
 }
 
-function onRepeatCountSubmit(event, userInput) {
+function isEmptyInput(userInput) {
+  return !userInput.getCarNames() || userInput.getRepeatCount() === 0;
+}
+
+function onRepeatCountSubmit(event, userInput, view) {
   event.preventDefault();
-  userInput.setRepeatCount(document.querySelector('#racing-count-input').value);
+  userInput.setRepeatCount(document.querySelector(RACING_COUNT_INPUT_ID).value);
   if (userInput.getRepeatCount() === 0) {
-    alert(REPEAT_ERROR_MESSAGE);
+    view.alertError(REPEAT_COUNT_ERROR);
     return;
   }
-  if (userInput.getCarNames() && userInput.getRepeatCount() !== 0) {
-    playGame(userInput);
+  if (isEmptyInput(userInput)) {
+    view.alertError(EMPTY_INPUT);
     return;
   }
-  alert(NO_INPUT_ERROR_MESSAGE);
+  playGame(userInput);
 }
 
 function gameEventHandler() {
-  const $carNamesButton = document.querySelector('#car-names-submit');
-  const $repeatCountButton = document.querySelector('#racing-count-submit');
+  const $carNamesButton = document.querySelector(CAR_NAME_SUBMIT_ID);
+  const $repeatCountButton = document.querySelector(RACING_COUNT_SUBMIT_ID);
   const userInput = new Input();
-
+  const view = new View();
+  
   $carNamesButton.addEventListener('click', (event) => {
-    onCarNamesSubmit(event, userInput);
+    onCarNamesSubmit(event, userInput, view);
   });
   $repeatCountButton.addEventListener('click', (event) => {
-    onRepeatCountSubmit(event, userInput);
+    onRepeatCountSubmit(event, userInput, view);
   });
 }
 
-const view = new View();
 gameEventHandler();
