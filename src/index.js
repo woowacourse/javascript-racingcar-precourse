@@ -112,6 +112,9 @@ class RacingGame {
 
   resetResultView() {
     this.$racingScreen.replaceChildren();
+    if (this.$racingWinners.previousSibling.nodeName === 'LABEL') {
+      this.$racingWinners.previousSibling.remove();
+    }
     this.$racingWinners.replaceChildren();
   }
 
