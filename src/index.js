@@ -11,22 +11,26 @@ import htmlToElement from './utils.js';
 
 class RacingGame {
   constructor() {
-    const {
-      CAR_NAMES_INPUT,
-      CAR_NAMES_SUBMIT,
-      RACING_COUNT_INPUT,
-      RACING_COUNT_SUBMIT,
-      APP,
-    } = ELEMENT_IDS;
-    this.$carNamesInput = document.querySelector(`#${CAR_NAMES_INPUT}`);
-    this.$carNamesSubmit = document.querySelector(`#${CAR_NAMES_SUBMIT}`);
-    this.$racingCountInput = document.querySelector(`#${RACING_COUNT_INPUT}`);
-    this.$racingCountSubmit = document.querySelector(`#${RACING_COUNT_SUBMIT}`);
+    const { APP } = ELEMENT_IDS;
+    this.bindCarNamesElements();
+    this.bindRacingCountElements();
     this.registerEventListeners();
 
     this.$app = document.querySelector(`#${APP}`);
     this.insertRacingScreen(this.$app);
     this.insertRacingWinner(this.$app);
+  }
+
+  bindCarNamesElements() {
+    const { CAR_NAMES_INPUT, CAR_NAMES_SUBMIT } = ELEMENT_IDS;
+    this.$carNamesInput = document.querySelector(`#${CAR_NAMES_INPUT}`);
+    this.$carNamesSubmit = document.querySelector(`#${CAR_NAMES_SUBMIT}`);
+  }
+
+  bindRacingCountElements() {
+    const { RACING_COUNT_INPUT, RACING_COUNT_SUBMIT } = ELEMENT_IDS;
+    this.$racingCountInput = document.querySelector(`#${RACING_COUNT_INPUT}`);
+    this.$racingCountSubmit = document.querySelector(`#${RACING_COUNT_SUBMIT}`);
   }
 
   registerEventListeners() {
