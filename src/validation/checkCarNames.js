@@ -21,7 +21,7 @@ const isValidLength = carNames => {
 };
 
 const isValidCarNames = carNames => {
-  const invalidValue = carNames.some(name => /[^A-Za-z가-힇]/g.test(name));
+  const invalidValue = carNames.some(name => /[^A-Za-z가-힝]/g.test(name));
   if (invalidValue) {
     return alert(MESSAGE.INVALID_CAR_NAME);
   }
