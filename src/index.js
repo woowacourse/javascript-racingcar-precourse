@@ -23,8 +23,13 @@ class RacingGame {
     this.triggerRacingCountSubmitEvent();
   }
 
+  tryMove() {
+    this.racingCars.forEach((car) => car.move());
+  }
+
   runGame() {
     for (let i = 0; i < this.racingCount; i++) {
+      this.tryMove();
       this.render();
     }
   }

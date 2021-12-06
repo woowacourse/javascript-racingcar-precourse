@@ -1,3 +1,6 @@
+const getRandomNumber = () => {
+  return MissionUtils.Random.pickNumberInRange(0, 9);
+};
 class Car {
   constructor(name) {
     this.name = name;
@@ -10,6 +13,12 @@ class Car {
 
   getDistance() {
     return this.distance;
+  }
+
+  move() {
+    if (getRandomNumber() >= 4) {
+      this.distance += 1;
+    }
   }
 }
 
