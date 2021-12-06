@@ -66,8 +66,12 @@ export default class CarGame {
 
     displayWinnerHTML(winners){
         const racingWinners = document.getElementById('racing-winners');
+        const preWinnerText = document.createElement('span');
+        preWinnerText.innerHTML = '최종 우승자: '
         
-        let winnersText = ''; //TODO: 전에 '최종 우승자' 텍스트 element 
+        racingWinners.before(preWinnerText);
+
+        let winnersText = ''; 
         for(let i=0; i<winners.length; i++){
             winnersText += `${winners[i]}, `;
         }
