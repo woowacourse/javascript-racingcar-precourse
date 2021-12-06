@@ -1,7 +1,7 @@
 export default class Winner {
   constructor(cars) {
     this.message = "";
-    this.generateWinnerMessage(cars);
+    this.setWinnerMessage(cars);
   }
 
   getWinner = (cars) => {
