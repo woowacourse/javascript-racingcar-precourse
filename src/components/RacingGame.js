@@ -1,6 +1,7 @@
 import { CARRACING } from '../constants.js';
 import { checkCarName, checkCount } from '../validators/checkInput.js';
 import Car from './car.js';
+import Render from './Render.js';
 import { CarName, Count, Result } from '../elementClass/elementClass.js';
 
 export default class RacingGame {
@@ -8,6 +9,7 @@ export default class RacingGame {
     this.carName = new CarName();
     this.count = new Count();
     this.result = new Result();
+    this.render = new Render();
     this.carNameList = [];
     this.countNum = 0;
     this.initCarName();
@@ -62,40 +64,12 @@ export default class RacingGame {
     for (let i = 0; i < this.countNum; i += 1) {
       this.oneRoundgame(i);
     }
-    this.getWinner();
+    this.render.getWinner(this.carList);
   }
 
   oneRoundgame() {
     this.carList.forEach(car => car.play());
-    const stepResult = this.carList.map(car => car.stepResult());
-    this.renderstepResult(stepResult);
-  }
-
-  renderstepResult(stepResult) {
-    const carResult = document.createElement('p');
-
-    for (let i = 0; i < this.carList.length; i += 1) {
-      carResult.innerHTML += `${stepResult[i]}<br>`;
-    }
-    this.result.div.appendChild(carResult);
-  }
-
-  getWinner() {
-    const stepList = this.carList.map(car => car.step);
-    const maxStep = Math.max.apply(null, stepList);
-
-    const winnerList = this.carList.filter(car => car.step === maxStep);
-    const winnerNames = winnerList.map(winner => winner.name);
-    this.renderWinner(winnerNames);
-  }
-
-  renderWinner(winnerNames) {
-    const winner = document.createElement('span');
-    winner.setAttribute('id', 'racing-winners');
-    winner.innerHTML = '최종 우승자: ';
-
-    const winnerName = winnerNames.join(', ');
-    winner.innerHTML += winnerName;
-    this.result.div.appendChild(winner);
+    const stepResultList = this.carList.map(car => car.stepResult());
+    this.render.stepResult(stepResultList);
   }
 }
