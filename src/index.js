@@ -39,12 +39,12 @@ class RacingGame {
   getWinner() {
     const maxDistance = Math.max(...this.racingCars.map((car) => car.getDistance()));
 
-    return this.racingCars.reduce((acc, car) => {
+    return this.racingCars.reduce((result, car) => {
       if (car.getDistance() === maxDistance) {
-        acc.push(car.getName());
+        result.push(car.getName());
       }
 
-      return acc;
+      return result;
     }, []);
   }
 
