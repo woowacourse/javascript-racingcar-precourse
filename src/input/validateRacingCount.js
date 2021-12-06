@@ -3,10 +3,13 @@ import play from "../play/play.js";
 
 const trimRacingCount = () => $racingCount.value.trim();
 
-const isNaturalNumber = () =>
-  Number.isInteger($racingCount.value * 1) &&
-  $racingCount.value > 0 &&
-  !$racingCount.value.includes("e");
+const isNaturalNumber = () => {
+  return (
+    Number.isInteger($racingCount.value * 1) &&
+    $racingCount.value > 0 &&
+    !$racingCount.value.includes("e")
+  );
+};
 
 const makeAlert = () => {
   $racingCount.value = "";
