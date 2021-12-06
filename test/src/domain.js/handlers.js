@@ -6,7 +6,7 @@ import {
 } from '../view/display.js';
 import { getCarNamesInput } from '../utils/get-user-input.js';
 import { makeNewCars } from '../utils/game-utils.js';
-import { printGameResult } from '../view/print-result.js';
+import { printFinalWinner, printGameResult } from '../view/print-result.js';
 
 export const handleCarNamesSubmitButton = function () {
   const carNamesInputValue = getCarNamesInput();
@@ -28,5 +28,6 @@ export const handleRacingCountSubmitButton = function () {
     appendResultSpanElement();
     printGameResult(racingCount);
     appendRacingWinnerSpanElement();
+    printFinalWinner();
   }
 };
