@@ -2,6 +2,8 @@ const MIN_RANGE_NUMBER = 0;
 const MAX_RANGE_NUMBER = 9;
 const RANGE_THRESHOLD = 4;
 
+const CAR_DISTANCE_LOG = '-';
+
 const CAR_NAMES = {
   EMPTY_ERROR_MESSAGE: '자동차 이름을 입력해주세요.  올바른 예) east,west,south,north',
   LENGTH_ERROR_MEESSAGE:
@@ -16,4 +18,11 @@ const RACING_COUNT = {
   RANGE_ERROR_MESSAGE: '시도할 횟수는 1 이상의 자연수로 입력해주세요.  올바른 예) 5',
 };
 
-export { MIN_RANGE_NUMBER, MAX_RANGE_NUMBER, RANGE_THRESHOLD, CAR_NAMES, RACING_COUNT };
+export {
+  MIN_RANGE_NUMBER,
+  MAX_RANGE_NUMBER,
+  RANGE_THRESHOLD,
+  CAR_DISTANCE_LOG,
+  CAR_NAMES,
+  RACING_COUNT,
+};

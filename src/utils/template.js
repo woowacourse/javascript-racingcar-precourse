@@ -1,5 +1,7 @@
+import { CAR_DISTANCE_LOG } from './constants.js';
+
 const gameLineTemplate = (carName, carDistance) => {
-  return `<div>${carName}: ${'-'.repeat(carDistance)}</div>`;
+  return `<div>${carName}: ${CAR_DISTANCE_LOG.repeat(carDistance)}</div>`;
 };
 
 const winnerTemplate = (winnerList) => {

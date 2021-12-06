@@ -24,6 +24,7 @@ class RacingGame {
     this.triggerRacingCountSubmitEvent();
   }
 
+  //이 쪽 리팩토링 마무리
   tryMove() {
     this.racingCars.forEach((car) => car.move());
   }
@@ -48,7 +49,6 @@ class RacingGame {
     }, []);
   }
 
-  // 이벤트 함수
   preventFormSubmitEvent() {
     $('#car-names-form').addEventListener('submit', (e) => e.preventDefault());
     $('#racing-count-form').addEventListener('submit', (e) => e.preventDefault());

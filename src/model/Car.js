@@ -16,7 +16,9 @@ class Car {
   }
 
   move() {
-    if (getRandomNumber() >= RANGE_THRESHOLD) {
+    const randomNumber = getRandomNumber();
+
+    if (randomNumber >= RANGE_THRESHOLD) {
       this.distance += 1;
     }
   }
