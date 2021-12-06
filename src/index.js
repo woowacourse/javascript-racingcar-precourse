@@ -12,15 +12,23 @@ import htmlToElement from './utils.js';
 class RacingGame {
   constructor() {
     const {
-      CAR_NAMES_INPUT, CAR_NAMES_SUBMIT, RACING_COUNT_INPUT, RACING_COUNT_SUBMIT, APP,
+      CAR_NAMES_INPUT,
+      CAR_NAMES_SUBMIT,
+      RACING_COUNT_INPUT,
+      RACING_COUNT_SUBMIT,
+      APP,
     } = ELEMENT_IDS;
     this.$carNamesInput = document.querySelector(`#${CAR_NAMES_INPUT}`);
     this.$carNamesSubmit = document.querySelector(`#${CAR_NAMES_SUBMIT}`);
-    this.$carNamesSubmit.addEventListener('click', (e) => this.handleSubmitCarNames(e));
+    this.$carNamesSubmit.addEventListener('click', (e) =>
+      this.handleSubmitCarNames(e)
+    );
 
     this.$racingCountInput = document.querySelector(`#${RACING_COUNT_INPUT}`);
     this.$racingCountSubmit = document.querySelector(`#${RACING_COUNT_SUBMIT}`);
-    this.$racingCountSubmit.addEventListener('click', (e) => this.handleSubmitRacingCount(e));
+    this.$racingCountSubmit.addEventListener('click', (e) =>
+      this.handleSubmitRacingCount(e)
+    );
 
     this.$app = document.querySelector(`#${APP}`);
     this.insertRacingScreen(this.$app);
@@ -28,13 +36,17 @@ class RacingGame {
   }
 
   insertRacingScreen($app) {
-    const screen = htmlToElement(`<div id="${ELEMENT_IDS.RACING_SCREEN}"></div>`);
+    const screen = htmlToElement(
+      `<div id="${ELEMENT_IDS.RACING_SCREEN}"></div>`
+    );
     $app.insertAdjacentElement('beforeend', screen);
     this.$racingScreen = screen;
   }
 
   insertRacingWinner($app) {
-    const element = htmlToElement(`<span id="${ELEMENT_IDS.RACING_WINNERS}"></span>`);
+    const element = htmlToElement(
+      `<span id="${ELEMENT_IDS.RACING_WINNERS}"></span>`
+    );
     $app.insertAdjacentElement('beforeend', element);
     this.$racingWinners = element;
   }
@@ -83,7 +95,7 @@ class RacingGame {
   }
 
   findWinners() {
-    this.cars.sort((left, right) => ((left.position > right.position) ? -1 : 1));
+    this.cars.sort((left, right) => (left.position > right.position ? -1 : 1));
     let maxPosition = -1;
     return this.cars.reduce((acc, cur) => {
       if (cur.position < maxPosition) {
@@ -106,7 +118,10 @@ class RacingGame {
 
   printWinners() {
     const winners = this.findWinners();
-    this.$racingWinners.insertAdjacentElement('beforebegin', htmlToElement(`<label>${WINNER_LABEL}: </label>`));
+    this.$racingWinners.insertAdjacentElement(
+      'beforebegin',
+      htmlToElement(`<label>${WINNER_LABEL}: </label>`)
+    );
     this.$racingWinners.innerText = `${winners.join(',')}`;
   }
 
