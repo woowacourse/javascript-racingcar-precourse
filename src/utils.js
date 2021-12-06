@@ -1,6 +1,7 @@
-export const htmlToElement = (html) => {
+const htmlToElement = (html) => {
   const template = document.createElement('template');
-  html = html.trim();
-  template.innerHTML = html;
+  template.innerHTML = html.trim();
   return template.content.firstChild;
-}
+};
+
+export default htmlToElement;

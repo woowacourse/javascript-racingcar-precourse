@@ -1,16 +1,19 @@
 import {
   ELEMENT_IDS,
   RANDOM_NUM_RANGE,
+  MIN_NUM_TO_GO,
   WINNER_LABEL,
   ERROR_MESSAGE,
-} from "./constants.js";
-import Validator from "./validator.js";
-import Car from "./car.js";
-import { htmlToElement } from "./utils.js";
+} from './constants.js';
+import Validator from './validator.js';
+import Car from './car.js';
+import htmlToElement from './utils.js';
 
 class RacingGame {
   constructor() {
-    const { CAR_NAMES_INPUT, CAR_NAMES_SUBMIT, RACING_COUNT_INPUT, RACING_COUNT_SUBMIT, APP } = ELEMENT_IDS;
+    const {
+      CAR_NAMES_INPUT, CAR_NAMES_SUBMIT, RACING_COUNT_INPUT, RACING_COUNT_SUBMIT, APP,
+    } = ELEMENT_IDS;
     this.$carNamesInput = document.querySelector(`#${CAR_NAMES_INPUT}`);
     this.$carNamesSubmit = document.querySelector(`#${CAR_NAMES_SUBMIT}`);
     this.$carNamesSubmit.addEventListener('click', (e) => this.handleSubmitCarNames(e));
@@ -36,10 +39,9 @@ class RacingGame {
     this.$racingWinners = element;
   }
 
-  createCars(carNameArr) {
-    return carNameArr.map((name) => {
-      return new Car(name);
-    });
+  createCars() {
+    const carNameArr = this.carNames.split(',');
+    return carNameArr.map((name) => new Car(name));
   }
 
   handleSubmitCarNames(e) {
@@ -72,15 +74,16 @@ class RacingGame {
   moveCars() {
     const [MIN, MAX] = RANDOM_NUM_RANGE;
     this.cars.forEach((car) => {
+      /* eslint-disable no-undef */
       const randomNum = MissionUtils.Random.pickNumberInRange(MIN, MAX);
-      car.shouldGo(randomNum) && car.go();
+      if (randomNum >= MIN_NUM_TO_GO) {
+        car.go();
+      }
     });
   }
 
   findWinners() {
-    this.cars.sort((left, right) => {
-      return (left.position > right.position) ? -1 : 1;
-    });
+    this.cars.sort((left, right) => ((left.position > right.position) ? -1 : 1));
     let maxPosition = -1;
     return this.cars.reduce((acc, cur) => {
       if (cur.position < maxPosition) {
@@ -93,16 +96,16 @@ class RacingGame {
   }
 
   printCurrentPosition() {
-    let ul = `<ul>`;
+    let ul = '<ul>';
     this.cars.forEach((car) => {
       ul += `<li>${car.name}: ${'-'.repeat(car.position)}</li>`;
     });
-    ul += `</ul>`;
+    ul += '</ul>';
     this.$racingScreen.insertAdjacentElement('beforeend', htmlToElement(ul));
   }
 
   printWinners() {
-    let winners = this.findWinners();
+    const winners = this.findWinners();
     this.$racingWinners.insertAdjacentElement('beforebegin', htmlToElement(`<label>${WINNER_LABEL}: </label>`));
     this.$racingWinners.innerText = `${winners.join(',')}`;
   }
@@ -111,11 +114,11 @@ class RacingGame {
     this.$racingScreen.replaceChildren();
     this.$racingWinners.replaceChildren();
   }
-  
+
   play() {
     this.resetResultView();
-    this.cars = this.createCars(this.carNames.split(','));
-    for(let i = 0; i < this.racingCount; i++) {
+    this.cars = this.createCars();
+    for (let i = 0; i < this.racingCount; i += 1) {
       this.moveCars();
       this.printCurrentPosition();
     }
@@ -123,4 +126,4 @@ class RacingGame {
   }
 }
 
-new RacingGame();
+new RacingGame(); // eslint-disable-line no-new
