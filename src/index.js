@@ -38,7 +38,7 @@ function onRepeatCountSubmit(event, userInput, view) {
     view.alertError(EMPTY_INPUT_ERROR);
     return;
   }
-  playGame(userInput);
+  playGame(userInput, view);
 }
 
 function gameEventHandler() {

@@ -1,7 +1,6 @@
 import Car from './Car.js';
 import showRaceResult from '../view/showRaceResult.js';
 import showWinners from '../view/showWinners.js';
-import initView from '../view/initView.js';
 
 function getCars(userInput) {
   const cars = [];
@@ -33,10 +32,10 @@ function decideWinners(cars) {
   showWinners(winners);
 }
 
-export default function playGame(userInput) {
+export default function playGame(userInput, view) {
   const cars = getCars(userInput);
 
-  initView();
+  view.initView();
   for (let index = 0; index < userInput.getRepeatCount(); index += 1) {
     goOnce(cars);
     showRaceResult(cars);
