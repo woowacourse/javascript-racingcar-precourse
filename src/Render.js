@@ -24,29 +24,17 @@ export default class Render {
     this.resultContainer.innerHTML = '';
   }
 
-  hideResultTitle() {
-    this.resultTitle.hidden = true;
-  }
+  hideResultTitle() { this.resultTitle.hidden = true; }
 
-  showResultTitle() {
-    this.resultTitle.hidden = false;
-  }
+  showResultTitle() { this.resultTitle.hidden = false; }
 
-  carNamesGuideVerified() {
-    this.carNamesGuide.setVerified();
-  }
+  carNamesGuideVerified() { this.carNamesGuide.setVerified(); }
 
-  carNamesGuideUnverified() {
-    this.carNamesGuide.setUnverified();
-  }
+  carNamesGuideUnverified() { this.carNamesGuide.setUnverified(); }
 
-  racingCountGuideVerified() {
-    this.racingCountGuide.setVerified();
-  }
+  racingCountGuideVerified() { this.racingCountGuide.setVerified(); }
 
-  racingCountGuideUnverified() {
-    this.racingCountGuide.setUnverified();
-  }
+  racingCountGuideUnverified() { this.racingCountGuide.setUnverified(); }
 
   racingState(round, states) {
     const racingStateContainer = document.createElement('p');
