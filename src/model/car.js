@@ -1,16 +1,16 @@
 import { CAR } from '../constants/constant.js';
 import { createProgressNode } from '../utils/dom.js';
 
-export class Car {
+export default class Car {
   constructor(name) {
     this.name = name;
     this._position = 0;
-    this.randomNumber;
+    this.randomNumber = 0;
   }
 
   move() {
     if (this.randomNumber >= CAR.MOVE_NUMBER) {
-      this.position = this.position + 1;
+      this.position += 1;
     }
   }
 

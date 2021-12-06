@@ -1,7 +1,7 @@
 import { SELECTOR } from '../constants/constant.js';
 import { validateCarNames } from '../utils/validation.js';
 
-export class CarNameInput {
+export default class CarNameInput {
   constructor(setCars) {
     this.$input = document.getElementById(SELECTOR.ID.CAR_NAMES_INPUT);
     this.$button = document.getElementById(SELECTOR.ID.CAR_NAMES_BUTTON);

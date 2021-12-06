@@ -1,4 +1,4 @@
-import { CarNameInput } from './car-names-input.js';
+import CarNameInput from './car-names-input.js';
 import {
   hideNode,
   showNode,
@@ -7,11 +7,11 @@ import {
   Winners
 } from '../utils/dom.js';
 import { SELECTOR } from '../constants/constant.js';
-import { Car } from '../model/car.js';
-import { RacingGame } from '../model/racing-game.js';
-import { RacingCount } from './racing-count.js';
+import Car from '../model/car.js';
+import RacingGame from '../model/racing-game.js';
+import RacingCount from './racing-count.js';
 
-export class App {
+export default class App {
   constructor($target) {
     this.$target = $target;
     this.$carNamesForm = document.getElementById(SELECTOR.ID.CAR_NAMES_FORM);

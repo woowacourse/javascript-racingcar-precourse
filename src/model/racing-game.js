@@ -1,6 +1,6 @@
-import { selectWinners } from '../utils/car-utils.js';
+import selectWinners from '../utils/car-utils.js';
 
-export class RacingGame {
+export default class RacingGame {
   constructor() {
     this._cars;
     this._round;
@@ -27,7 +27,7 @@ export class RacingGame {
       car.rollDice();
       car.move();
     });
-    this.round--;
+    this.round -= 1;
   }
 
   get winners() {

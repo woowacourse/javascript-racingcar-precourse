@@ -18,13 +18,16 @@ const createElement = (tag, text, id) => {
 export const hideNode = ($node) => {
   $node.style.display = 'none';
 };
+
 export const showNode = ($node) => {
   $node.style.display = 'block';
 };
 
 export const createProgressNode = (name, position) => {
-  let paragraph = name + ': ';
-  while (position--) {
+  let paragraph = `${name}: `;
+  let pos = position;
+  while (pos) {
+    pos -= 1;
     paragraph += '-';
   }
 
@@ -40,15 +43,16 @@ export const createResultNode = (cars) => {
     $resultNode.appendChild(car.positionElement);
   });
 
-  $resultNode.style.margin =
-    STYLE.RESULT_MARGIN_VERTICAL + ' ' + STYLE.RESULT_MARGIN_HORIZONTAL;
+  $resultNode.style.margin = `${STYLE.RESULT_MARGIN_VERTICAL} ${STYLE.RESULT_MARGIN_HORIZONTAL}`;
 
   return $resultNode;
 };
 
-export const disableForm = ($form) => {
-  $form.childNodes.forEach((node) => (node.disabled = true));
-};
+export function disableForm($form) {
+  $form.childNodes.forEach(function (node) {
+    node.disabled = true;
+  });
+}
 
 export class Winners {
   constructor(cars) {

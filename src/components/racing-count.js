@@ -1,7 +1,7 @@
 import { SELECTOR } from '../constants/constant.js';
 import { validateCount } from '../utils/validation.js';
 
-export class RacingCount {
+export default class RacingCount {
   constructor(setCount) {
     this.$countInput = document.getElementById(SELECTOR.ID.RACING_COUNT_INPUT);
     this.$countSubmitButton = document.getElementById(

@@ -42,6 +42,7 @@ export const validateCarNames = (names) => {
   if (isContainedBlank(names)) {
     return INPUT_ERROR.CONTAINED_BLANK;
   }
+  return undefined;
 };
 
 export const validateCount = (count) => {
@@ -54,4 +55,5 @@ export const validateCount = (count) => {
   if (!isInteger(count)) {
     return INPUT_ERROR.COUNT_NOT_NATURAL;
   }
+  return undefined;
 };
