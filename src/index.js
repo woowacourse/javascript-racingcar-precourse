@@ -5,7 +5,7 @@ function gameStart(carNameArray, racingCount) {
     for(let i = 0; i < racingCount; i++) {
         const roundResult = document.createElement('p');
         carNameArray.forEach(name => {
-            roundResult.innerHTML += `${name}: ${generateRandomNumber()}<br>`;
+            roundResult.innerHTML += `${name}: ${checkForwardCondition()}<br>`;
         });
         app.appendChild(roundResult);
     }
@@ -13,6 +13,10 @@ function gameStart(carNameArray, racingCount) {
 
 function generateRandomNumber() {
     return MissionUtils.Random.pickNumberInRange(0, 9);
+}
+
+function checkForwardCondition() {
+    return generateRandomNumber() >= 4;
 }
 
 // event handler
