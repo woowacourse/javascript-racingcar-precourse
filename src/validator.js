@@ -14,6 +14,7 @@ export default class Validator {
     const isValid = carNameArr.length === validCarNameArr.length;
     return { isValid, message: isValid ? null : CAR_NAMES };
   }
+  
   static isValidRacingCount(racingCount) {
     const { RACING_COUNT } = ERROR_MESSAGE;
     const isValid = !!racingCount && !(new RegExp('[^0-9]+')).test(racingCount);

@@ -23,21 +23,25 @@ class RacingGame {
     this.insertRacingScreen(this.$app);
     this.insertRacingWinner(this.$app);
   }
+
   insertRacingScreen($app) {
     const screen = htmlToElement(`<div id="${ELEMENT_IDS.RACING_SCREEN}"></div>`);
     $app.insertAdjacentElement('beforeend', screen);
     this.$racingScreen = screen;
   }
+
   insertRacingWinner($app) {
     const element = htmlToElement(`<span id="${ELEMENT_IDS.RACING_WINNERS}"></span>`);
     $app.insertAdjacentElement('beforeend', element);
     this.$racingWinners = element;
   }
+
   createCars(carNameArr) {
     return carNameArr.map((name) => {
       return new Car(name);
     });
   }
+
   handleSubmitCarNames(e) {
     e.preventDefault();
     const carNames = this.$carNamesInput.value;
@@ -48,6 +52,7 @@ class RacingGame {
     }
     this.carNames = carNames;
   }
+
   handleSubmitRacingCount(e) {
     e.preventDefault();
     if (!this.carNames) {
@@ -63,6 +68,7 @@ class RacingGame {
     this.racingCount = parseInt(racingCount, 10);
     this.play();
   }
+
   moveCars() {
     const [MIN, MAX] = RANDOM_NUM_RANGE;
     this.cars.forEach((car) => {
@@ -70,6 +76,7 @@ class RacingGame {
       car.shouldGo(randomNum) && car.go();
     });
   }
+
   findWinners() {
     this.cars.sort((left, right) => {
       return (left.position > right.position) ? -1 : 1;
@@ -84,6 +91,7 @@ class RacingGame {
       return acc;
     }, []);
   }
+
   printCurrentPosition() {
     let ul = `<ul>`;
     this.cars.forEach((car) => {
@@ -92,15 +100,18 @@ class RacingGame {
     ul += `</ul>`;
     this.$racingScreen.insertAdjacentElement('beforeend', htmlToElement(ul));
   }
+
   printWinners() {
     let winners = this.findWinners();
     this.$racingWinners.insertAdjacentElement('beforebegin', htmlToElement(`<label>${WINNER_LABEL}: </label>`));
     this.$racingWinners.innerText = `${winners.join(',')}`;
   }
+
   resetResultView() {
     this.$racingScreen.replaceChildren();
     this.$racingWinners.replaceChildren();
   }
+  
   play() {
     this.resetResultView();
     this.cars = this.createCars(this.carNames.split(','));
