@@ -5,7 +5,7 @@ import {
   PLAIN_STRING,
   SEPERATOR,
 } from './lib/constants.js';
-import { getRandomNumber } from './lib/utils.js';
+import { generateFormHandler, getRandomNumber } from './lib/utils.js';
 import { isEveryStringLessOrEqualsFive } from './lib/utils.js';
 class Car {
   constructor(name, id) {
@@ -96,8 +96,8 @@ class CarGame extends CarGameLogic {
     this.initDOM();
     this.initView();
     this.initHandler();
-    this.formCars.addEventListener('submit', this.onFormCarsSubmit);
-    this.formCount.addEventListener('submit', this.onFormCountSubmit);
+    this.formCars.addEventListener('submit', this.onCarsFormSubmit);
+    this.formCount.addEventListener('submit', this.onCountFormSubmit);
   }
 
   initView() {
@@ -122,30 +122,38 @@ class CarGame extends CarGameLogic {
   }
 
   initHandler() {
-    this.onFormCarsSubmit = e => {
-      e.preventDefault();
-      const [{ value: carsString }] = e.target;
-      try {
-        this.cars = CarGameUtil.makeCars(carsString.split(SEPERATOR));
-        this.showElement(this.countTitle);
-        this.showElement(this.formCount);
-      } catch (error) {
-        this.cars = null;
-        alert(error);
-      }
-    };
-    this.onFormCountSubmit = e => {
-      e.preventDefault();
-      const [{ value: stringNumber }] = e.target;
-      try {
-        this.result.innerHTML = this.makeResultTemplate(Number(stringNumber));
-        this.showElement(this.resultTitle);
-        this.showElement(this.result);
-      } catch (error) {
-        this.result.innerHTML = PLAIN_STRING;
-        alert(error);
-      }
-    };
+    this.onCarsFormSubmit = e =>
+      generateFormHandler({
+        e,
+        executor: this.afterCarsSubmitLogic.bind(this),
+      });
+    this.onCountFormSubmit = e =>
+      generateFormHandler({
+        e,
+        executor: this.afterCountSubmitLogic.bind(this),
+      });
+  }
+
+  afterCarsSubmitLogic(carsString) {
+    try {
+      this.cars = CarGameUtil.makeCars(carsString.split(SEPERATOR));
+      this.showElement(this.countTitle);
+      this.showElement(this.formCount);
+    } catch (error) {
+      this.cars = null;
+      alert(error);
+    }
+  }
+
+  afterCountSubmitLogic(stringCount) {
+    try {
+      this.result.innerHTML = this.makeResultTemplate(Number(stringCount));
+      this.showElement(this.resultTitle);
+      this.showElement(this.result);
+    } catch (error) {
+      this.result.innerHTML = PLAIN_STRING;
+      alert(error);
+    }
   }
 
   hideElement(el) {
