@@ -1,14 +1,17 @@
-export default class Car {
-  constructor(name) {
-    this.name = name;
-    this.distance = "";
-  }
+import { RANDOM, GAME } from './constants/gameRule.js';
 
-  move() {
-    const randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
+export default function Car(name) {
+  this.name = name;
+  this.distance = '';
 
-    if (randomNumber >= 4) {
-      this.distance += "-";
+  this.move = function () {
+    const randomNumber = MissionUtils.Random.pickNumberInRange(
+      RANDOM.MIN,
+      RANDOM.MAX
+    );
+
+    if (randomNumber >= GAME.MOVE_CONDITION) {
+      this.distance += GAME.DISTANCE_MARKER;
     }
-  }
+  };
 }
