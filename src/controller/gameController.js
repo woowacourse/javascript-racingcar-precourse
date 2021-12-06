@@ -38,6 +38,10 @@ export default class GameController {
 
     const racingCountInput = $('#racing-count-input').value;
 
-    this.model.saveCount(racingCountInput);
+    try {
+      this.model.saveCount(racingCountInput);
+    } catch (err) {
+      alert(err);
+    }
   }
 }

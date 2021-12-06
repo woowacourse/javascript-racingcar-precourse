@@ -27,7 +27,10 @@ export default class Model {
 
     if (this.isValidatedCount(userInputNum, NUMBER.COUNT_LEAST_VALUE)) {
       this.count = userInputNum;
+
+      return true;
     }
+    throw Error('1이상의 숫자를 입력해주세요!');
   }
 
   isValidatedCount(userInputNum, countSize) {
