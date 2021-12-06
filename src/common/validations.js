@@ -7,7 +7,7 @@ import { isEquals, isNotEquals, setErrorMessage } from './utils.js';
  * @param {string} inputNames
  * @returns {string[]}
  */
-export const filteredSideBlacnk = inputNames => inputNames.split(',').map(name => name.trim());
+export const filteredSideBlank = inputNames => inputNames.split(',').map(name => name.trim());
 
 /**
  * 배열 원소의 공백 여부를 검사합니다.
@@ -58,7 +58,7 @@ export const duplicateCheck = values => {
  * @returns {string[] | ''}
  */
 export const inputValidation = inputValue => {
-  const filteredValues = filteredSideBlacnk(inputValue);
+  const filteredValues = filteredSideBlank(inputValue);
 
   const [checkedBlank, blankError] = blankCheck(filteredValues);
   if (blankError) return setErrorMessage('blankError');
