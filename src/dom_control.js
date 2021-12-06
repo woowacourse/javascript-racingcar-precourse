@@ -3,6 +3,7 @@ import {
   racingCountText,
   racingCountForm,
   racingResultText,
+  racingCountSubmitButton,
   app,
 } from './dom_element.js';
 
@@ -41,4 +42,8 @@ export const createWinnersText = (winners) => {
 
   app.appendChild(_racingWinnersText);
   app.appendChild(_racingWinners);
+};
+
+export const endGame = () => {
+  racingCountSubmitButton.disabled = 'disabled';
 };

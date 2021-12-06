@@ -9,6 +9,7 @@ import {
   createRacingLog,
   createWinnersText,
   displayResultText,
+  endGame,
 } from './dom_control.js';
 
 export default class Game {
@@ -80,5 +81,6 @@ export default class Game {
     }
 
     this._determineWinner();
+    endGame();
   }
 }
