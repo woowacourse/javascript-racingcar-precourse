@@ -20,30 +20,25 @@ export default {
     ResultView.setup($(ELEMENT_ID.app));
     WinnersView.setup($(ELEMENT_ID.app));
   },
-
   onSubmitCarNames(carNames) {
     CarsModel.setCars(carNames);
     CountFormView.show();
   },
-
   onSubmitRacingCounts(racingCount) {
     CarsModel.resetCars();
     this.playGame(racingCount);
   },
-
   playGame(count) {
     CarsModel.play(count).then((result) => {
       this.onPlayResult(result);
     });
   },
-
   onPlayResult(result) {
     ResultView.render(result);
     CarsModel.getWinners().then((winners) => {
       this.onGetWinners(winners);
     });
   },
-
   onGetWinners(winners) {
     WinnersView.render(winners);
   },

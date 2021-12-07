@@ -18,6 +18,7 @@ export default {
     }
     return true;
   },
+
   checkValidRacingCount(count) {
     if (!isPositiveNumber(count)) {
       alert(ALERT_MESSAGE.WRONG_COUNT_NUMBER);
@@ -30,6 +31,7 @@ export default {
     return true;
   },
 };
+
 const isPositiveNumber = (number) => number > 0;
 const isValidCarNamesLength = (carNamesArray) =>
   carNamesArray.every(

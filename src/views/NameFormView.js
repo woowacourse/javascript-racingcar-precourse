@@ -3,6 +3,7 @@ import VALID_CHECK from '../utils/validation.js';
 import View from './View.js';
 
 const NameFormView = { ...View };
+
 NameFormView.setup = function (el) {
   this.init(el);
   this.inputEl = this.el.querySelector(ELEMENT_ID.carNamesInput);

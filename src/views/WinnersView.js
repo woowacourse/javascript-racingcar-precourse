@@ -18,4 +18,5 @@ WinnersView.render = function (winners) {
     ',',
   )}</span>`;
 };
+
 export default WinnersView;

@@ -13,7 +13,6 @@ CountFormView.setup = function (el) {
 
   return this;
 };
-
 CountFormView.bindEvent = function () {
   this.submitEl.addEventListener('click', (e) => this.onClickSubmit(e));
 };
@@ -26,7 +25,6 @@ CountFormView.onClickSubmit = function (e) {
   }
   this.emit(EVENT_TYPE.SUBMIT, { input: racingCountInput });
 };
-
 CountFormView.clearInput = function () {
   this.inputEl.value = '';
   this.inputEl.focus();

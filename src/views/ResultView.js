@@ -3,6 +3,7 @@ import { $, createElementWithID } from '../utils/dom.js';
 import View from './View.js';
 
 const ResultView = { ...View };
+
 ResultView.setup = function (el) {
   this.init(el);
   this.addBox();
