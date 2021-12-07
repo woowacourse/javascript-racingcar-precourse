@@ -1,7 +1,7 @@
 import Winner from "./winner.js";
 import { DOMS } from "../util/constant.js";
 
-export default class RacingCarGame {
+export default class Game {
   play = (cars, racingCount) => {
     this.resetResult(cars);
 

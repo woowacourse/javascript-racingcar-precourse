@@ -1,6 +1,4 @@
-import RacingCarGame from "./game/racing-game.js";
-import Input from "./game/input.js";
+import RacingCarGame from "./racingCarGame.js";
 
-const game = new RacingCarGame();
-const input = new Input(game);
-input.init();
+const racingCarGame = new RacingCarGame();
+racingCarGame.init();
