@@ -1,3 +1,5 @@
+import VALID_CHECK from '../utils/validation.js';
+
 export default function NameFormView(el) {
   this.el = el;
   this.inputEl = this.el.querySelector('#car-names-input');
@@ -13,17 +15,9 @@ export default function NameFormView(el) {
 
   this.onClickSubmit = (e) => {
     e.preventDefault();
-    const carNamesInput = this.inputEl.value.split(',');
-    if (!this.inputEl.value.length) {
-      alert('자동차 이름이 없습니다.');
-      return;
-    }
-    if (!carNamesInput.every((name) => name.length <= 5)) {
-      alert('자동차 이름은 5자 이하입니다.');
-      return;
-    }
-    if (carNamesInput.length !== new Set(carNamesInput).size) {
-      alert('중복된 이름이 있습니다.');
+    const carNamesInput = this.inputEl.value;
+    if (!VALID_CHECK.checkValidCarName(carNamesInput)) {
+      this.clearInput();
       return;
     }
     this.emit('@submit', { input: carNamesInput });
@@ -38,5 +32,10 @@ export default function NameFormView(el) {
     const e = new CustomEvent(event, { detail: data });
     this.el.dispatchEvent(e);
     return this;
+  };
+
+  this.clearInput = () => {
+    this.inputEl.value = '';
+    this.inputEl.focus();
   };
 }
