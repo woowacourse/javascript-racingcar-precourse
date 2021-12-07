@@ -5,10 +5,12 @@ import Layout from './Layout.js';
 export default class RacingCarGame {
   constructor() {
     this.layout = new Layout();
-    document.getElementById('car-names-submit').onclick =
-      this.onCarNameInputSubmit.bind(this);
-    document.getElementById('racing-count-submit').onclick =
-      this.onCountInputSubmit.bind(this);
+    document.getElementById('car-names-submit').onclick = (
+      this.onCarNameInputSubmit.bind(this)
+    );
+    document.getElementById('racing-count-submit').onclick = (
+      this.onCountInputSubmit.bind(this)
+    );
   }
 
   onCarNameInputSubmit(e) {
