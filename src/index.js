@@ -5,7 +5,7 @@ import { showElement, hideElement } from "./view.js";
 
 export default function SetGame() {
     const $racing_count_input = document.getElementById("racing-count-input");
-    const $racing_count_btn = document.getElementById("racing-count-submit");
+    const $racing_count_submit = document.getElementById("racing-count-submit");
     const $racing_count_form = document.getElementById("racing-count-form");
     const $racing_count_h4 = document.getElementById("racing-count-h4");
 
@@ -22,21 +22,25 @@ export default function SetGame() {
         hideElement($racing_count_form);
         hideElement($racing_result_h4);
         hideElement($racing_count_h4);
-        $racing_count_btn.addEventListener("click", function (e) {
-            e.preventDefault();
-            const input_val = $racing_count_input.value;
-            if (checkInputValidate(input_val)) {
-                setRacingCount(input_val);
-                showElement($racing_result_h4);
-            } else {
-                alert("올바른 값을 입력해주세요");
-                $racing_count_input.value = "";
-            }
 
-            new PlayGame(getGameInformation());
-        });
+        setCarSubmit($car_names_submit);
+        setCountSubmit($racing_count_submit);
+    };
 
-        $car_names_submit.addEventListener("click", function (e) {
+    const getGameInformation = () => {
+        return this.game_information;
+    };
+
+    const setRacingCount = (value) => {
+        this.game_information.racing_count = value;
+    };
+
+    const setCarNames = (value) => {
+        this.game_information.car_names = value;
+    };
+
+    const setCarSubmit = (element) => {
+        element.addEventListener("click", function (e) {
             e.preventDefault();
             const names = $car_names_input.value.split(",");
             if (CheckCarName(names)) {
@@ -50,16 +54,20 @@ export default function SetGame() {
         });
     };
 
-    const getGameInformation = () => {
-        return this.game_information;
-    };
+    const setCountSubmit = (element) => {
+        element.addEventListener("click", function (e) {
+            e.preventDefault();
+            const input_val = $racing_count_input.value;
+            if (checkInputValidate(input_val)) {
+                setRacingCount(input_val);
+                showElement($racing_result_h4);
+            } else {
+                alert("올바른 값을 입력해주세요");
+                $racing_count_input.value = "";
+            }
 
-    const setRacingCount = (value) => {
-        this.game_information.racing_count = value;
-    };
-
-    const setCarNames = (value) => {
-        this.game_information.car_names = value;
+            new PlayGame(getGameInformation());
+        });
     };
 
     this.init();
