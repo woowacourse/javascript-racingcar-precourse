@@ -1,35 +1,43 @@
 import CarNamesForm from './CarNamesForm.js';
 import { validator } from '../validation/validator.js';
+import RacingCountForm from './RacingCountForm.js';
 
 export default class Controller {
   constructor() {
-    this.$input = document.getElementById('car-names-input');
-    this.$submit = document.getElementById('car-names-submit');
+    this.$carNamesInput = document.getElementById('car-names-input');
+    this.$carNamesSubmit = document.getElementById('car-names-submit');
+    this.$racingCountInput = document.getElementById('racing-count-input');
+    this.$racingCountSubmit = document.getElementById('racing-count-submit');
 
-    this.carNamesForm = new CarNamesForm(this.$input, this.$submit);
+    this.carNamesForm = new CarNamesForm(
+      this.$carNamesInput,
+      this.$carNamesSubmit
+    );
+    this.racingCountForm = new RacingCountForm(
+      this.$racingCountInput,
+      this.$racingCountSubmit
+    );
 
     this.carNames = [];
+    this.racingCount = 0;
 
     this.bindCarNamesSubmitEvent();
+    this.bindRacingCountSubmitEvent();
   }
 
-  alertError = message => {
-    if (!message) {
+  alertMessage = text => {
+    if (!text) {
       return false;
     }
 
-    alert(message);
+    alert(text);
     this.carNamesForm.initValue();
+    this.carNames = [];
 
     return true;
   };
 
-  checkValidInput = () => {
-    // car-names-input 유효성 검사
-    return this.carNamesForm.validateInput();
-  };
-
-  checkValid = ([...carNames]) => {
+  checkCarName = ([...carNames]) => {
     // 각 carName 유효성 검사
     for (const carName of carNames) {
       const message = validator.validate('carName', carName);
@@ -48,28 +56,52 @@ export default class Controller {
     event.preventDefault();
 
     // car-names-input 유효성 검사
-    const invalidInputMessage = this.checkValidInput();
-    if (this.alertError(invalidInputMessage)) {
+    const invalidInputMessage = this.carNamesForm.validateInput();
+    if (this.alertMessage(invalidInputMessage)) {
       return;
     }
 
     // 각 carName 유효성 검사
     const carNames = this.carNamesForm.getValue().split(',');
-    const invalidCarNameMessage = this.checkValid(carNames);
-    if (this.alertError(invalidCarNameMessage)) {
+    const invalidCarNameMessage = this.checkCarName(carNames);
+    if (this.alertMessage(invalidCarNameMessage)) {
       return;
     }
 
     // carName 중복 유효성 검사
     const carNameDuplicatedMessage = this.checkDuplicate(carNames);
-    if (this.alertError(carNameDuplicatedMessage)) {
+    if (this.alertMessage(carNameDuplicatedMessage)) {
       return;
     }
 
     this.carNames = carNames;
+    console.log(this.carNames);
+  };
+
+  onClickRacingCountSubmit = event => {
+    event.preventDefault();
+
+    if (this.carNames.length <= 0) {
+      this.alertMessage('자동차 이름을 먼저 입력해주세요.');
+      return;
+    }
+
+    const invalidInputMessage = this.racingCountForm.validateInput();
+    if (this.alertMessage(invalidInputMessage)) {
+      return;
+    }
+    this.racingCount = this.racingCountForm.getValue();
+    console.log(this.racingCount);
   };
 
   bindCarNamesSubmitEvent = () => {
-    this.$submit.addEventListener('click', this.onClickCarNamesSubmit);
+    this.$carNamesSubmit.addEventListener('click', this.onClickCarNamesSubmit);
+  };
+
+  bindRacingCountSubmitEvent = () => {
+    this.$racingCountSubmit.addEventListener(
+      'click',
+      this.onClickRacingCountSubmit
+    );
   };
 }

@@ -13,7 +13,7 @@ export const checkers = {
   isNonEmpty: {
     type: CHECKER_TYPE.NOEMPTY,
     validate: value => value !== '',
-    message: '자동차 이름을 입력해주세요.',
+    message: '값을 입력해주세요.',
   },
 
   isNumber: {
