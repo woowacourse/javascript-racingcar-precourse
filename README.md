@@ -19,32 +19,16 @@
 
 - [X] EventListener Setting 후 초기화 - `initEventListener`
 
-<b>Car.js</b> (module)
-
-- [X] 자동차 객체 생성 클래스 - `Car`
-- [X] 자동차 객체 안에 이동 거리 추가 method - `move`
-
-<b>validCarName.js</b> (module)
-
-- [X] 자동차 이름 validation 처리 (길이, x<=5) - `validLength`
-- [X] 자동차 이름 validation 처리 (중복) - `validDuplicate`
-- [X] 처리에 따른 alert 알림 - `alertWrong`
-
-<b>showDOM.js</b> (module)
-
-- [X] 자동차 이름 입력 창 (block) & 횟수 입력창 (none) - `initDOM`
-- [X] 시도할 횟수 창 보여주기 - `showNextDOM`
-
 <b>constants.js</b> (constants)
 
 - [X] DOM 요소 setting
 - [X] 경고 문구 및 조건 setting  
 
-<b>setResult.js</b> (module)
 
-- [X] 한 턴 실행 결과 시각화 - `showGameResult`
-- [X] 우승자 판별 - `whoIsWinner`
-- [X] 우승자 출력 (여러명 case 고려) - `printWinner`
+<b>Car.js</b> (module)
+
+- [X] 자동차 객체 생성 클래스 - `Car`
+- [X] 자동차 객체 안에 이동 거리 추가 method - `move`
 
 <b>playGame.js</b> (module)
 
@@ -53,12 +37,29 @@
 - [X] 이동 횟수만큼 게임 진행 - `startGame`
 - [X] 자동자 전진 가능 판별 (x>=4) - `isMoveCar`
 
-<b>submitCarNames.js</b> (module)
+<b>validCarName.js</b> (utils)
+
+- [X] 자동차 이름 validation 처리 (길이, x<=5) - `validLength`
+- [X] 자동차 이름 validation 처리 (중복) - `validDuplicate`
+- [X] 처리에 따른 alert 알림 - `alertWrong`
+
+<b>showDOM.js</b> (utils)
+
+- [X] 자동차 이름 입력 창 (block) & 횟수 입력창 (none) - `initDOM`
+- [X] 시도할 횟수 창 보여주기 - `showNextDOM`
+
+<b>setResult.js</b> (utils)
+
+- [X] 한 턴 실행 결과 시각화 - `showGameResult`
+- [X] 우승자 판별 - `whoIsWinner`
+- [X] 우승자 출력 (여러명 case 고려) - `printWinner`
+
+<b>submitCarNames.js</b> (utils)
 
 - [X] 자동차 이름 입력 처리 (Parsing) - `parseCarName` 
 - [X] 자동차 입력 수대로 Car 객체 생성 - `createCars`
 
-<b>submitCountTrun.js</b> (module)
+<b>submitCountTrun.js</b> (utils)
 
 - [X] 이동 횟수 입력 처리 - `checkInput`
 
