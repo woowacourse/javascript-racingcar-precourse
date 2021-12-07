@@ -1,14 +1,12 @@
 import { ELEMENT_ID } from '../utils/constants.js';
 import { $, createElementWithID } from '../utils/dom.js';
+import View from './View.js';
 
-const ResultView = {};
+const ResultView = { ...View };
 ResultView.setup = function (el) {
   this.init(el);
   this.addBox();
   return this;
-};
-ResultView.init = function (el) {
-  this.el = el;
 };
 ResultView.addBox = function () {
   this.el.appendChild(createElementWithID('div', 'result-box'));

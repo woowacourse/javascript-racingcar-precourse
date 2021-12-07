@@ -1,9 +1,11 @@
 import { ELEMENT_ID } from '../utils/constants.js';
 import { $, createElementWithID } from '../utils/dom.js';
-const WinnersView = {};
+import View from './View.js';
+
+const WinnersView = { ...View };
 
 WinnersView.setup = function (el) {
-  this.el = el;
+  this.init(el);
   this.addBox();
   return this;
 };

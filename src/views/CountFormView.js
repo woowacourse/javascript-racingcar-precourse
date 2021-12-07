@@ -1,7 +1,9 @@
 import { ELEMENT_ID, EVENT_TYPE } from '../utils/constants.js';
 import VALID_CHECK from '../utils/validation.js';
+import View from './View.js';
 
-const CountFormView = {};
+const CountFormView = { ...View };
+
 CountFormView.setup = function (el) {
   this.init(el);
   this.inputEl = this.el.querySelector(ELEMENT_ID.racingCountInput);
@@ -9,9 +11,7 @@ CountFormView.setup = function (el) {
   this.bindEvent();
   return this;
 };
-CountFormView.init = function (el) {
-  this.el = el;
-};
+
 CountFormView.bindEvent = function () {
   this.submitEl.addEventListener('click', (e) => this.onClickSubmit(e));
 };
@@ -24,15 +24,7 @@ CountFormView.onClickSubmit = function (e) {
   }
   this.emit(EVENT_TYPE.SUBMIT, { input: racingCountInput });
 };
-CountFormView.on = function (event, handler) {
-  this.el.addEventListener(event, handler);
-  return this;
-};
-CountFormView.emit = function (event, data) {
-  const e = new CustomEvent(event, { detail: data });
-  this.el.dispatchEvent(e);
-  return this;
-};
+
 CountFormView.clearInput = function () {
   this.inputEl.value = '';
   this.inputEl.focus();
