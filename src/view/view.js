@@ -1,5 +1,4 @@
 import $ from '../utils/selector.js';
-import Controller from '../controller/controller.js';
 
 export default class View{
   constructor(controller) {
