@@ -1,4 +1,4 @@
-import { showGameResult } from "./setResult.js";
+import { showGameResult, printWinner } from "./setResult.js";
 import { showResultText } from "./showDOM.js";
 
 export default class playGame {
@@ -24,5 +24,7 @@ export default class playGame {
       });
       showGameResult(this.carsArr);
     }
+
+    printWinner(this.carsArr);
   }
 }

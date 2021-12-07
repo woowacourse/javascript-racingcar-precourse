@@ -43,8 +43,8 @@
 <b>setResult.js</b> (module)
 
 - [X] 한 턴 실행 결과 시각화 - `showGameResult`
-- [ ] 우승자 판별 - `whoIsWinner`
-- [ ] 우승자 출력 (여러명 case 고려) - `printWinner`
+- [X] 우승자 판별 - `whoIsWinner`
+- [X] 우승자 출력 (여러명 case 고려) - `printWinner`
 
 <b>playGame.js</b> (module)
 
