@@ -14,7 +14,6 @@ class RacingCarModel {
 
   makeCars() {
     this.racingResult = {};
-    console.log(`carNamesArray`, this.carNamesArray);
     for (let car of this.carNamesArray) {
       this.racingResult[car] = new Car(car);
     }
