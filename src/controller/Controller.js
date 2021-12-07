@@ -81,7 +81,6 @@ export default class Controller {
     }
 
     this.carNames = carNames;
-    console.log(this.carNames);
   };
 
   onClickRacingCountSubmit = event => {
@@ -98,7 +97,6 @@ export default class Controller {
     }
 
     this.racingCount = this.racingCountForm.getValue();
-    console.log(this.racingCount);
 
     this.startGame();
   };
