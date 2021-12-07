@@ -1,5 +1,5 @@
 import { ELEMENT_ID } from '../utils/constants.js';
-import CarsModel from '../models/CarsModel.js';
+import VALID_CHECK from '../utils/validation.js';
 
 export default function NameFormView(el) {
   this.el = el;
@@ -17,12 +17,8 @@ export default function NameFormView(el) {
   this.onClickSubmit = (e) => {
     e.preventDefault();
     const racingCountInput = this.inputEl.value;
-    if (racingCountInput <= 0) {
-      alert('잘못된 횟수 입력입니다.');
-      return;
-    }
-    if (!CarsModel.getCars().length) {
-      alert('자동차 이름을 먼저 입력해주세요.');
+    if (!VALID_CHECK.checkValidRacingCount(racingCountInput)) {
+      this.clearInput();
       return;
     }
     this.emit('@submit', { input: racingCountInput });

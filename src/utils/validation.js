@@ -1,4 +1,5 @@
-import { ALERT_MESSAGE, NUMBER_RULE } from './constants';
+import { ALERT_MESSAGE, NUMBER_RULE } from './constants.js';
+import CarsModel from '../models/CarsModel.js';
 
 export default {
   checkValidCarName(carNamesInput) {
@@ -11,7 +12,7 @@ export default {
       alert(ALERT_MESSAGE.WRONG_COUNT_NUMBER);
       return false;
     }
-    if (!isDuplicatedCarNames(splittedCarNames)) {
+    if (isDuplicatedCarNames(splittedCarNames)) {
       alert(ALERT_MESSAGE.DUPLICATED_CAR_NAME);
       return false;
     }
