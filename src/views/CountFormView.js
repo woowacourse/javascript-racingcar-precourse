@@ -21,7 +21,7 @@ export default function NameFormView(el) {
       this.clearInput();
       return;
     }
-    this.emit('@submit', { input: racingCountInput });
+    this.emit(EVENT_TYPE.SUBMIT, { input: racingCountInput });
   };
 
   this.on = (event, handler) => {
