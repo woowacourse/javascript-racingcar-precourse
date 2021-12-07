@@ -23,7 +23,7 @@ export const FORWARD_NUMBER_SIGN = 4;
 export const SEPERATOR = ',';
 export const WHITESPACE = ' ';
 export const RANGE = Object.freeze({
-  START: 0,
-  FINISH: 9,
+  MIN: 0,
+  MAX: 9,
 });
 export const FORWARD_CHECK_NUMBER = 5;

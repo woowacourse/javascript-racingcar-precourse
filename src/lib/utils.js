@@ -13,7 +13,7 @@ export const isNegativeNumberOrZero = (number) => {
   return number <= 0;
 };
 export const getRandomNumber = () => {
-  return window.MissionUtils.Random.pickNumberInRange(RANGE.START, RANGE.FINISH);
+  return window.MissionUtils.Random.pickNumberInRange(RANGE.MIN, RANGE.MAX);
 };
 export const generateFormHandler = ({ e, executor }) => {
   e.preventDefault();
