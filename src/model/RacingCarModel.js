@@ -60,9 +60,7 @@ class RacingCarModel {
     let resultText = '';
     for (let i = 0; i < this.RacingCount; i++) {
       for (let key in this.RacingResult) {
-        resultText += `<div>${key}: ${MOVE_UNIT.repeat(
-          this.RacingResult[key].stepByRound[i],
-        )}</div>\n`;
+        resultText += `${key}: ${MOVE_UNIT.repeat(this.RacingResult[key].stepByRound[i])}<br>`;
       }
       resultText += '<br>';
     }
