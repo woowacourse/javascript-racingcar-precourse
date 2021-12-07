@@ -10,7 +10,7 @@ export default class CarNamesForm {
     this.$input.value = '';
   };
 
-  getValue = () => this.$input.value;
+  getValue = () => this.$input.value.replace(/ /gi, '');
 
   validateInput = () => validator.validate('rawInput', this.getValue());
 }
