@@ -1,6 +1,15 @@
+## 🏎 기능 이용방법
+1. 첫 번째 입력창에 경주할 자동차 이름을 쉼표(,)로 구분해서 입력하고 확인을 눌러주세요.
+    - 각 자동차의 이름의 앞뒤 공백은 제거돼서 저장이 됩니다.
+2. 두 번째 입력창에 레이싱 횟수를 입력하고 확인을 눌러주세요.
+3. 레이싱을 다시 진행하고 싶다면, 1번 과정부터 다시 수행해 주세요.
+
+<br>
+
 ## 🛠 환경 설정
 1. 테스트를 위한 cypress 설치
 2. eslint와 prettier 설치
+<br>
 
 ## 💻 구현할 기능 목록
 ### 1. index.html에 DOM 선택자 지정하기
@@ -52,3 +61,54 @@
 - 최종 우승자까지 선정 후 저장된 Car 인스턴스를 초기화하는 기능 구현
 - 게임 재시작 시 이전 실행 결과를 초기화 시키는 기능 구현
     - 게임 재시작은 한 번의 게임이 종료된 후, 다시 `racing-count-submit` button 태그를 눌렀을 때를 의미
+
+<br>
+
+## 🗂 프로젝트 구조
+
+```bash
+├─docs
+│  └─README.md
+│  
+├─images 
+│  ├─racingcar_icon.png
+│  ├─result.gif
+│  ├─result.jpg
+│  └─test_result.png
+│
+├─src
+│  ├─class // App.js에서 사용하는 Class를 저장한 디렉터리
+│  │  ├─Car.js
+│  │  └─Render.js
+│  │
+│  ├─component // component를 저장한 디렉터리
+│  │  ├─CarNameForm.js
+│  │  ├─Form.js
+│  │  └─RacingCountForm.js
+│  │
+│  ├─constant // 상수를 저장한 디렉터리
+│  │  ├─error.js
+│  │  ├─game.js
+│  │  └─selector.js
+│  │
+│  ├─utils // 공용으로 사용하는 함수를 저장한 디렉터리
+│  │  └─validation.js
+│  │
+│  ├─App.js
+│  │
+│  └─index.js
+│
+├─test
+│  └─app.spec.js
+│
+├─.eslintrc.json 
+├─.gitignore
+├─.npmrc
+├─.prettierrc.json
+├─cypress.json
+├─index.html
+├─LICENSE
+├─package-lock.json
+├─package.json
+└─README.md
+```
