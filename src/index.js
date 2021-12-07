@@ -18,8 +18,11 @@ export default function RacingCarGame() {
     $Racing_count_submit.addEventListener('click', (e) => {
         e.preventDefault();
         const userInputTryNumbers = $Racing_count_input.value;
-        tryNumbs = check_numbers(userInputTryNumbers);
-        startGame(carArray, tryNumbs);
+        if (!check_numbers(userInputTryNumbers)) return;
+        else {
+            tryNumbs = check_numbers(userInputTryNumbers);
+            startGame(carArray, tryNumbs);
+        }
     });
 };
 
