@@ -27,10 +27,8 @@ export default class RacingCountForm extends Component {
     });
   }
 
-  render() {
-    const { gameStatus } = this.props;
-
-    const renderByStatus = {
+  renderByStatus(status) {
+    const renderCases = {
       [GAME_STATUS.RACING_COUNT_REQUIRED]: () => {
         showElement(this.container);
         showElement(this._title);
@@ -44,9 +42,14 @@ export default class RacingCountForm extends Component {
         disableForm(this.container);
       },
     };
+    return renderCases[status]();
+  }
+
+  render() {
+    const { gameStatus } = this.props;
     if (!gameStatus) {
-      return renderByStatus[GAME_STATUS.NAMES_REQUIRED]();
+      return this.renderByStatus(GAME_STATUS.NAMES_REQUIRED);
     }
-    renderByStatus[gameStatus]();
+    this.renderByStatus(gameStatus);
   }
 }
