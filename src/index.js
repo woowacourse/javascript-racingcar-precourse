@@ -1,11 +1,12 @@
 import Car from './car.js';
-import { isEmptyName, isFiveOver, isDuplication } from './validator.js';
+import { isEmptyName, isBiggerThanFive, isDuplicatedName, isValidCount } from './validator.js';
 
 export default class RacingGame {
   constructor() {
     this.cars = [];
     this.isValidNames = 0;
-    this.moveCount = document.getElementById('racing-count-input');
+    this.moveCount = 0;
+    this.inputCount = document.getElementById('racing-count-input');
     this.inputNames = document.getElementById('car-names-input');
     document.getElementById('car-names-submit').setAttribute('type', 'button');
     document.getElementById('racing-count-submit').setAttribute('type', 'button');
@@ -57,7 +58,41 @@ export default class RacingGame {
     return true;
   }
 
-  playGame() {}
+  getResultElement() {
+    let gameResult = document.createElement('span');
+    gameResult.setAttribute('id', 'game-result');
+    document.getElementById('app').appendChild(gameResult);
+
+    return gameResult;
+  }
+
+  playGame() {
+    while (this.moveCount > 0) {
+      this.movedCar();
+      this.getResultElement.innerText += '\n';
+      this.moveCount--;
+    }
+  }
+
+  movedCar() {
+    for (let car of this.cars) {
+      if (this.canMove()) {
+        car.distance += '-';
+      }
+
+      this.getResultElement().innerText += `${car.name}: ${car.distance}\n`;
+    }
+  }
+
+  canMove() {
+    let randomNum = window.MissionUtils.Random.pickNumberInRange(0, 9);
+
+    if (randomNum >= 4) {
+      return true;
+    }
+
+    return false;
+  }
 
   makeCars(inputNames) {
     for (let name of inputNames) {
