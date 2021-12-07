@@ -4,6 +4,7 @@ import { isEmptyName, isFiveOver, isDuplication } from './validator.js';
 export default class RacingGame {
   constructor() {
     this.cars = [];
+    this.isValidNames = 0;
     this.moveCount = document.getElementById('racing-count-input');
     this.inputNames = document.getElementById('car-names-input');
     document.getElementById('car-names-submit').setAttribute('type', 'button');
@@ -26,7 +27,19 @@ export default class RacingGame {
       return false;
     }
 
+    this.makeCars(inputNames);
+    this.isValidNames = 1;
     return true;
+  }
+
+  makeCars(inputNames) {
+    for (let name of inputNames) {
+      this.cars.push(new Car(name));
+    }
+
+    for (let car of this.cars) {
+      car.distance = '';
+    }
   }
 }
 
