@@ -32,8 +32,8 @@ export default class GameController {
     try {
       this.gameModel.saveCars(carNamesInput);
     } catch (err) {
-      alert(err);
       this.gameView.resetCarNamesInput();
+      return alert(err);
     }
 
     this.gameView.show(this.gameView.$racingCountTitle);
@@ -48,8 +48,8 @@ export default class GameController {
     try {
       this.gameModel.saveCount(racingCountInput);
     } catch (err) {
-      alert(err);
       this.gameView.resetRacingCountInput();
+      return alert(err);
     }
 
     this.gameView.show(this.gameView.$racingResultTitle);

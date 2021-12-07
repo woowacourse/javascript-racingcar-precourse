@@ -6,6 +6,7 @@ export default class GameView {
     this.$racingCountTitle = $('#racing-count-title');
     this.$racingCountForm = $('#racing-count-form');
     this.$racingResultTitle = $('#racing-result-title');
+
     this.init();
   }
 
