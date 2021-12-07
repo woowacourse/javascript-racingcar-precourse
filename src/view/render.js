@@ -63,9 +63,9 @@ const racingWinnerRender = () => {
 };
 
 const racingAndResultRender = racingCount => {
+  resultTitle.style.display = 'block';
   racingRender(racingCount);
   racingWinnerRender(racingCount);
-  resultTitle.style.display = 'block';
 };
 
 export {
