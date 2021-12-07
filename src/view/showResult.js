@@ -1,16 +1,14 @@
-import { $ } from "../common/const.js";
-
-function getWinnerList(Cars) {
+function getWinnerList(carList) {
   const winnerList = [];
   let maxCount = -1e9;
 
-  Cars.forEach((car) => {
+  carList.forEach((car) => {
     if (maxCount <= car.currentCount) {
       maxCount = car.currentCount;
     }
   });
 
-  Cars.forEach((car) => {
+  carList.forEach((car) => {
     if (maxCount === car.currentCount) {
       winnerList.push(car.name);
     }
@@ -19,31 +17,28 @@ function getWinnerList(Cars) {
   return winnerList.join(", ");
 }
 
-export function appendBr() {
-  const $result = $("result-div");
+export function appendBr($resultDiv) {
   const br = document.createElement("br");
-  $result.appendChild(br);
+
+  $resultDiv.appendChild(br);
 }
 
-export function showWinners(Cars) {
-  const $result = $("result-div");
-  const $div = document.createElement("div");
-  $result.appendChild($div);
-  $div.innerText = "최종 우승자:";
+export function showWinners(carList, $resultDiv) {
+  const $winnerTitle = document.createElement("span");
+  const $racingWinners = document.createElement("span");
+  $racingWinners.id = "racing-winners";
 
-  const $span = document.createElement("span");
-  $span.id = "racing-winners";
-  $div.appendChild($span);
+  $resultDiv.appendChild($winnerTitle);
+  $resultDiv.appendChild($racingWinners);
 
-  $span.innerHTML = `${getWinnerList(Cars)}`;
-  $result.appendChild($span);
+  $winnerTitle.innerHTML = "최종 우승자: ";
+  $racingWinners.innerHTML = `${getWinnerList(carList)}`;
 }
 
-export function showResult(car) {
+export function showResult(car, $resultDiv) {
+  const $racing = document.createElement("div");
   const { name } = car;
 
-  const $result = $("result-div");
-  const $p = document.createElement("p");
-  $p.innerHTML = `${name}: ${car.showRunning()}`;
-  $result.appendChild($p);
+  $racing.innerHTML = `${name}: ${car.showRunning()}`;
+  $resultDiv.appendChild($racing);
 }
