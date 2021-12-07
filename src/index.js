@@ -21,6 +21,6 @@ export default function RacingCarGame() {
         tryNumbs = check_numbers(userInputTryNumbers);
         startGame(carArray, tryNumbs);
     });
-}
+};
 
 RacingCarGame();

@@ -19,5 +19,5 @@ export class Car {
 
     getPoint() {
         if (this.position !== "") return this.point += this.position.length;
-    }
+    };
 };

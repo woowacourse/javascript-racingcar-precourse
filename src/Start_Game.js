@@ -3,7 +3,6 @@ import { $Racing_winners } from "./Html_Const.js"
 
 export const startGame = (carArray, tryNumbs) => {
     $Racing_winners.innerHTML = '';
-    //let nums = setTryNums(tryNumbs);
     let carList = makeCarList(carArray);
     let racingResultList = {};
     for (let i = 0; i < tryNumbs; i++) {
@@ -21,16 +20,9 @@ export const startGame = (carArray, tryNumbs) => {
 
 const makeCarList = carArray => {
     let carList = [];
-    carArray.forEach(element => {
-        carList.push(new Car(element));
-    });
+    carArray.forEach(element => { carList.push(new Car(element)); });
     return carList;
-}
-
-// const setTryNums = tryNumbs => {
-//     let nums = tryNumbs;
-//     return nums;
-// }
+};
 
 const gameResult = racingResultList => {
     let ResultList = racingResultList;
@@ -38,20 +30,16 @@ const gameResult = racingResultList => {
     let winner_arr = getWinner(ResultList, winner_point);
     let winners = winner_arr.join(', ');
     $Racing_winners.innerHTML += `최종 우승자 : ${winners} <br>`;
-}
+};
 
 const maxPoint = dict => {
     let max = 0;
-    for (let key in dict) {
-        if (dict[key] >= max) max = dict[key];
-    }
+    for (let key in dict) { if (dict[key] >= max) max = dict[key]; };
     return max;
-}
+};
 
 const getWinner = (dict, point) => {
     let arr = [];
-    for (let key in dict) {
-        if (dict[key] === point) arr.push(key);
-    }
+    for (let key in dict) { if (dict[key] === point) arr.push(key); };
     return arr;
-}
+};
