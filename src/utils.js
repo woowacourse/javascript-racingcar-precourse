@@ -1,3 +1,4 @@
+import { INPUT_RULE } from './constants.js';
 import Car from './Car.js';
 
 export const $ = (selector) => document.querySelector(selector);
@@ -20,11 +21,14 @@ export const revealRacingCountForm = () => {
 };
 
 export const validateNames = (names) => {
-  if (names.length === 1) {
+  if (names.length < INPUT_RULE.CARS_COUNT_MIN) {
     return false;
   }
   for (let i = 0; i < names.length; i++) {
-    if (names[i].length === 0 || names[i].length > 5) {
+    if (
+      names[i].length < INPUT_RULE.CAR_NAME_LENGTH_MIN ||
+      names[i].length > INPUT_RULE.CAR_NAME_LENGTH_MAX
+    ) {
       return false;
     }
   }
@@ -35,7 +39,7 @@ export const validateNames = (names) => {
 };
 
 export const validateCount = (parsedInput) => {
-  if (parsedInput <= 0) {
+  if (parsedInput < INPUT_RULE.RACING_COUNT_MIN) {
     return false;
   }
   if (isNaN(parsedInput)) {
