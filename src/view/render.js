@@ -45,8 +45,9 @@ const racingRender = racingCount => {
   $app.appendChild($racing);
 };
 
-const winnerPick = (winnerDist, car) => {
-  if (cars[car].dist === winnerDist) return car;
+const finalWinners = [];
+const winnerPick = (finalWinners, winnerDist, car) => {
+  if (cars[car].dist === winnerDist) finalWinners.push(car);
 };
 
 const winnerCalc = () => {
@@ -55,10 +56,9 @@ const winnerCalc = () => {
     winners.push(cars[car].dist);
   }
 
-  const finalWinners = [];
   const winnerDist = Math.max(...winners);
   for (const car of Object.keys(cars)) {
-    finalWinners.push(winnerPick(winnerDist, car));
+    winnerPick(finalWinners, winnerDist, car);
   }
   return finalWinners.join(', ');
 };
