@@ -17,7 +17,6 @@
 
 <b>index.js</b> (root)
 
-- [X] 자동차 이름 입력 창 (block) & 횟수 입력창 (none) - `initDOM`
 - [X] EventListener Setting 후 초기화 - `initEventListener`
 
 <b>Car.js</b> (module)
@@ -30,6 +29,11 @@
 - [X] 자동차 이름 validation 처리 (길이, x<=5) - `validLength`
 - [X] 자동차 이름 validation 처리 (중복) - `validDuplicate`
 - [X] 처리에 따른 alert 알림 - `alertWrong`
+
+<b>showDOM.js</b> (module)
+
+- [X] 자동차 이름 입력 창 (block) & 횟수 입력창 (none) - `initDOM`
+- [X] 시도할 횟수 창 보여주기 - `showNextDOM`
 
 <b>constants.js</b> (constants)
 
