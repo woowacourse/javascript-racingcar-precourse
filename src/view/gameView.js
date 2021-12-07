@@ -3,6 +3,24 @@ import { $ } from '../utils/utils.js';
 export default class GameView {
   constructor() {
     this.$app = $('#app');
+    this.$racingCountTitle = $('#racing-count-title');
+    this.$racingCountForm = $('#racing-count-form');
+    this.$racingResultTitle = $('#racing-result-title');
+    this.init();
+  }
+
+  init() {
+    this.hide(this.$racingCountTitle);
+    this.hide(this.$racingCountForm);
+    this.hide(this.$racingResultTitle);
+  }
+
+  hide(tag) {
+    tag.style.display = 'none';
+  }
+
+  show(tag) {
+    tag.style.display = 'block';
   }
 
   resetRacingCountInput() {
