@@ -49,11 +49,12 @@ class CarList {
     const racingWinners = document.getElementById("racing-winners");
     let resultText = "";
     for (let i = 0; i < this.array.length; i++) {
-      resultText +=
-        "\n" + this.array[i].getName() + ": " + this.array[i].displayDistance();
+      resultText += `\n${this.array[i].getName()}: ${this.array[
+        i
+      ].displayDistance()}`;
     }
 
-    racingWinners.innerText += resultText + "\n";
+    racingWinners.innerText += `${resultText}\n`;
   }
 
   displayWinner() {
@@ -65,7 +66,7 @@ class CarList {
       resultString = this.makeResultString(winnerArray);
     else resultString = winnerArray.toString();
 
-    racingWinners.innerText += "\n최종 우승자: " + resultString;
+    racingWinners.innerText += `\n최종 우승자: ${resultString}`;
   }
 
   getWinnerArray() {
@@ -89,7 +90,7 @@ class CarList {
 
     for (let i = 0; i < winnerArray.length; i++) {
       if (i === 0) winnerResult += winnerArray[i];
-      else winnerResult += ", " + winnerArray[i];
+      else winnerResult += `, ${winnerArray[i]}`;
     }
 
     return winnerResult;
