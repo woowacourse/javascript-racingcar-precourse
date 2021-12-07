@@ -1,11 +1,29 @@
-import $ from './utils/selector.js';
+import $ from '../utils/selector.js';
 
-export default class Layout{
+export default class View{
   constructor() {
     this.countForm = $('#count-form');
     this.countH4 = $('#count-h4');
     this.resultH4 = $('#result-h4');
     this.app = $('#app');
+  }
+
+  nameButtonHandler() {
+    const nameSubmitButton = $('#car-names-submit');
+    const userInput = $('#car-names-input');
+    nameSubmitButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      this.controller.getCarNames(userInput.value);
+    });
+  }
+
+  countButtonHandler() {
+    const countSubmitButton = $('#racing-count-submit');
+    const userInput = $('#racing-count-input');
+    countSubmitButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      this.controller.checkCount(userInput.value);
+    });
   }
 
   hideForms() {
