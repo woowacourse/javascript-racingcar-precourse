@@ -63,8 +63,8 @@
 
 #### ✅ 프로그래밍 요구사항
 
-- [ ] id와 같은 선택자를 추가하는 것 외에 주어진 `index.html` 을 수정하지 않는다.
-- [ ] `Car` 객체를 만들고, `new` 로 인스턴스를 생성하여 사용한다.
+- [x] id와 같은 선택자를 추가하는 것 외에 주어진 `index.html` 을 수정하지 않는다.
+- [x] `Car` 객체를 만들고, `new` 로 인스턴스를 생성하여 사용한다.
 
   ```javascript
   class Car {
@@ -75,21 +75,21 @@
   ```
 
 - 각 요소에 아래와 같은 선택자를 반드시 지정한다.
-  - [ ] 자동차의 이름을 입력하는 input 태그는 `car-names-input` id값을 가진다.
-  - [ ] 자동차의 이름을 제출하는 button 태그는 `car-names-submit` id값을 가진다.
-  - [ ] 레이싱 횟수를 입력하는 input 태그는 `racing-count-input` id값을 가진다.
-  - [ ] 레이싱 횟수을 제출하는 button 태그는 `racing-count-submit` id값을 가진다.
-  - [ ] 최종 우승자를 출력하는 span 태그는 `racing-winners` id값을 가진다.
+  - [x] 자동차의 이름을 입력하는 input 태그는 `car-names-input` id값을 가진다.
+  - [x] 자동차의 이름을 제출하는 button 태그는 `car-names-submit` id값을 가진다.
+  - [x] 레이싱 횟수를 입력하는 input 태그는 `racing-count-input` id값을 가진다.
+  - [x] 레이싱 횟수을 제출하는 button 태그는 `racing-count-submit` id값을 가진다.
+  - [x] 최종 우승자를 출력하는 span 태그는 `racing-winners` id값을 가진다.
     - 예) `<span id="racing-winners">poco,park,jun</span>`
-- [ ] 무작위 값은 [`MissionUtils` 라이브러리](https://github.com/woowacourse-projects/javascript-mission-utils#mission-utils)의 `Random.pickNumberInRange`를 사용해 구한다.
-- [ ] 외부 라이브러리(jQuery, Lodash 등)를 사용하지 않고, 순수 Vanilla JS로만 구현한다.
-- [ ] [NHN FE개발랩](https://ui.toast.com/fe-guide/ko_CODING-CONVENTION)의 자바스크립트 코드 컨벤션을 지키면서 프로그래밍한다.
-- [ ] indent(인덴트, 들여쓰기)를 3이 넘지 않도록 구현한다.
-- [ ] 변수 선언시 `var` 를 사용하지 않는다.
+- [x] 무작위 값은 [`MissionUtils` 라이브러리](https://github.com/woowacourse-projects/javascript-mission-utils#mission-utils)의 `Random.pickNumberInRange`를 사용해 구한다.
+- [x] 외부 라이브러리(jQuery, Lodash 등)를 사용하지 않고, 순수 Vanilla JS로만 구현한다.
+- [x] [NHN FE개발랩](https://ui.toast.com/fe-guide/ko_CODING-CONVENTION)의 자바스크립트 코드 컨벤션을 지키면서 프로그래밍한다.
+- [x] indent(인덴트, 들여쓰기)를 3이 넘지 않도록 구현한다.
+- [x] 변수 선언시 `var` 를 사용하지 않는다.
 - [ ] 함수(메소드)의 길이가 15라인을 넘지 않도록 구현한다.
 
 #### 📝 과제 진행 요구사항
 
 - [x] [미션 저장소](<[https://github.com/woowacourse/javascript-racingcar-precours](https://github.com/woowacourse/javascript-racingcar-precourse)>)를 fork/clone해 미션을 시작한다.
 
-- [ ] 기능 목록 단위로 커밋한다.
+- [x] 기능 목록 단위로 커밋한다.
