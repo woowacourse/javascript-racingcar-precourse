@@ -8,40 +8,31 @@ import {
 export default class Render {
   constructor() {
     this.$app = document.getElementById(ID_APP);
+
+    this.$result = Render.appendNode(this.$app, 'div', {
+      id: ID_RSULT,
+      hidden: true,
+    });
+    this.$racingWinnersTitle = Render.appendNode(this.$app, 'span', {
+      id: ID_RACING_WINNERS_TITLE,
+      hidden: true,
+    });
+    this.$racingWinners = Render.appendNode(this.$app, 'span', {
+      id: ID_RACING_WINNERS,
+      hidden: true,
+    });
   }
 
-  addElement() {
-    this.addResultElement();
-    this.addRacingWinnersTitleElement();
-    this.addRacingWinnersElement();
-  }
+  static appendNode(parent, tag, attributes={}) {
+    const $tag = document.createElement(tag);
 
-  addResultElement() {
-    const $result = document.createElement('div');
-    $result.setAttribute('id', ID_RSULT);
-    $result.setAttribute('hidden', true);
+    for (const [name, value] of Object.entries(attributes)) {
+      $tag.setAttribute(name, value);
+    }
+
+    parent.appendChild($tag)
     
-    this.$app.appendChild($result);
-
-    this.$result = $result;
-  }
-
-  addRacingWinnersTitleElement() {
-    const $racingWinnersTitle = document.createElement('span');
-    $racingWinnersTitle.setAttribute('id', ID_RACING_WINNERS_TITLE,);
-    $racingWinnersTitle.setAttribute('hidden', true);
-    this.$app.appendChild($racingWinnersTitle);
-
-    this.$racingWinnersTitle = $racingWinnersTitle
-  }
-
-  addRacingWinnersElement() {
-    const $racingWinners = document.createElement('span');
-    $racingWinners.setAttribute('id', ID_RACING_WINNERS);
-    $racingWinners.setAttribute('hidden', true);
-    this.$app.appendChild($racingWinners);
-
-    this.$racingWinners = $racingWinners;
+    return $tag;
   }
 
   renderRacingWinner(winenrList) {
@@ -50,15 +41,12 @@ export default class Render {
   }
 
   renderMoveResult(car) {
-    const $div = document.createElement('div');
-    $div.textContent = `${car.getName()}: ${'-'.repeat(car.getNumMove())}`
-
-    this.$result.appendChild($div);
+    const $div = Render.appendNode(this.$result, 'div');
+    $div.textContent = `${car.getName()}: ${'-'.repeat(car.getNumMove())}`;
   }
 
   renderNewLine() {
-    const $br = document.createElement('br');
-    this.$result.appendChild($br);
+    Render.appendNode(this.$result, 'br');
   }
 
   displayResult() {

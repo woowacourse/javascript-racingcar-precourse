@@ -13,7 +13,6 @@ export default class App {
   }
 
   init() {
-    this.render.addElement();
     this.addEvent();
   }
 
