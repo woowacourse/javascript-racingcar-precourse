@@ -1,3 +1,5 @@
+import setCarForwardResult from './GameResult.js';
+
 function play() {
   for (let i = 0; i < window.cars.length; i += 1) {
     const randomNumber = window.MissionUtils.Random.pickNumberInRange(0, 9);
@@ -9,5 +11,6 @@ function play() {
 export default function playRacingGame(racingCount) {
   for (let i = 0; i < racingCount; i += 1) {
     play();
+    setCarForwardResult();
   }
 }
