@@ -33,7 +33,7 @@ function showResultHead(result) {
   $resultHeadCopy.style.display = DISPLAY_BLOCK;
 }
 
-function getPosition(car) {
+function getPositionBar(car) {
   let positionString = '';
 
   for (let index = 0; index < car.getPosition(); index += 1) {
@@ -46,7 +46,7 @@ function getOneRaceResult(cars) {
   let innerHtml = '';
 
   cars.forEach((car) => {
-    innerHtml += `<div>${car.getName()}: ${getPosition(car)}</div>`;
+    innerHtml += `<div>${car.getName()}: ${getPositionBar(car)}</div>`;
   });
   return innerHtml;
 }
