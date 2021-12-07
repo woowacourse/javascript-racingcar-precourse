@@ -1,5 +1,6 @@
-// eslint-disable-next-line import/extensions
+/* eslint-disable import/extensions */
 import { getRandomNumber } from '../functions/index.js';
+import constants from '../constants/index.js';
 
 export default class Car {
   constructor(name) {
@@ -8,7 +9,7 @@ export default class Car {
   }
 
   simulate() {
-    if (getRandomNumber() >= 4) this.location += 1;
+    if (getRandomNumber() >= constants.MAX_RACE_LIMIT_INT) this.location += 1;
   }
 
   toString() {

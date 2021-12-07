@@ -110,6 +110,11 @@ class RacingGame {
     this.carsList.forEach((car) => car.setLocation(0));
   }
 
+  /**
+   *
+   * @param {String} carNamesInput 유저의 입력값
+   * @returns {Boolean} 유저 입력값이 조건에 부합하고 this.carsList 생성됬을 경우 true.
+   */
   #createNewCars(carNamesInput) {
     const parsedCarNames = carNamesInput.split(',');
     const isValidInput = this.#isValidCarNamesList(parsedCarNames);
@@ -122,12 +127,18 @@ class RacingGame {
     return carNamesList.length > 1 && this.#isValidCarNamesLength(carNamesList);
   }
 
+  /**
+   *
+   * @summary 리스트 안에 이름 길이가 1 이상이고 5 이하인지 확인.
+   * @param {[String]} carNamesList 자동차 이름 리스트
+   * @returns {Boolean}
+   */
   #isValidCarNamesLength(carNamesList) {
     return getMaxLengthOfStringList(carNamesList) <= this.carNameMaxLength && !carNamesList.includes('');
   }
 
   #simulateGame(raceCount) {
-    this.#resetGame();
+    this.#resetGame(); // 게임을 다시 시작할 경우를 고려한 초기화
 
     for (let i = 0; i < raceCount; i += 1) {
       this.#simulateRound();
