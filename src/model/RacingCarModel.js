@@ -5,7 +5,7 @@ import { strToArray } from '../utils/parse.js';
 class RacingCarModel {
   #racingCount;
   #racingResult;
-  carNamesArray;
+  #carNamesArray;
 
   startCars(racingCount) {
     this.makeCars();
@@ -14,7 +14,7 @@ class RacingCarModel {
 
   makeCars() {
     this.#racingResult = {};
-    for (let car of this.carNamesArray) {
+    for (let car of this.#carNamesArray) {
       this.#racingResult[car] = new Car(car);
     }
   }
@@ -52,7 +52,8 @@ class RacingCarModel {
   }
 
   parseCarNamesToArray(carNames) {
-    this.carNamesArray = strToArray(carNames, CAR_NAMES_SEPARATER);
+    this.#carNamesArray = strToArray(carNames, CAR_NAMES_SEPARATER);
+    return this.#carNamesArray;
   }
 
   makeRoundResult() {

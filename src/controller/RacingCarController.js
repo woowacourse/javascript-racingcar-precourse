@@ -12,8 +12,8 @@ class RacingCarController {
   }
 
   onCarNamesSubmit(carNames) {
-    this.RacingCarModel.parseCarNamesToArray(carNames);
-    if (!isCarNamesInputValid(this.RacingCarModel.carNamesArray)) {
+    const carNamesArray = this.RacingCarModel.parseCarNamesToArray(carNames);
+    if (!isCarNamesInputValid(carNamesArray)) {
       return;
     }
     this.RacingCarView.showCountDOM();
