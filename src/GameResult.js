@@ -1,6 +1,8 @@
-import { app } from './elements.js';
+import { app, gameResultHeader } from './elements.js';
 
 export function setCarForwardResult() {
+  gameResultHeader.style.display = 'block';
+
   for (let i = 0; i < window.cars.length; i += 1) {
     const car = window.cars[i];
     const carName = car.name;

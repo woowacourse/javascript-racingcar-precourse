@@ -1,6 +1,12 @@
-import { carNamesInput, racingCountInput } from './elements.js';
+import {
+  carNamesInput,
+  racingCountForm,
+  racingCountHeader,
+  racingCountSubmit,
+} from './elements.js';
 
 import { checkCarNamesInputValid } from './InputValidation.js';
+import onRacingCountSubmit from './RacingCount.js';
 
 function onInvalidCarNamesInput() {
   alert('잘못 입력하셨습니다. 자동차 이름을 5자 이하로 입력해 주세요.');
@@ -24,7 +30,9 @@ function createCars(carNames) {
 
 function onValidCarNamesInput(carNames) {
   window.cars = createCars(carNames);
-  racingCountInput.focus();
+  racingCountHeader.style.display = 'block';
+  racingCountForm.style.display = 'block';
+  racingCountSubmit.addEventListener('click', onRacingCountSubmit);
 }
 
 export default function onCarNamesSubmit(event) {

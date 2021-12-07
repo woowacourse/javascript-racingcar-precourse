@@ -16,7 +16,7 @@ export default function onRacingCountSubmit(event) {
 
   if (!racingCountInputValid) {
     onInvalidRacingCountInput();
-  } else if (window.cars) {
+  } else {
     playRacingGame(racingCount);
   }
 }
