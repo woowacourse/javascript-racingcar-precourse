@@ -23,7 +23,7 @@ export default class ValidateUtils {
       return false;
     }
     if (number <= 0) {
-      alert('0이상의 수를 입력해주세요');
+      alert('1이상의 수를 입력해주세요');
       return false;
     }
     return true;
