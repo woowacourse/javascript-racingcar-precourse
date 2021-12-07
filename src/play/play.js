@@ -23,8 +23,8 @@ const carMoveAndPrint = (carObject) => {
     });
     $racingStatus.innerHTML += `<br>`;
   }
-
   $racingStatus.innerHTML += `최종 우승자: `;
+
   $racingResultTitle.after($racingStatus);
 };
 
@@ -33,6 +33,7 @@ const sortCarObject = (carObject) => {
     if (a.position > b.position) {
       return -1;
     }
+
     return 1;
   });
 };
@@ -40,16 +41,14 @@ const sortCarObject = (carObject) => {
 const showResult = (sortedCars) => {
   $winner.id = "racing-winners";
   $winner.innerHTML = "";
+  const maxPosition = sortedCars[0].position;
 
-  sortedCars.forEach((el, idx) => {
-    if (idx === 0) {
-      $winner.innerHTML += `${el.name}`;
-    }
-    if (el.position === sortedCars[0].position && idx !== 0) {
-      $winner.innerHTML += `, ${el.name}`;
-    }
-  });
+  const winnerList = sortedCars
+    .filter((car) => car.position === maxPosition)
+    .map((car) => car.name)
+    .join(",");
 
+  $winner.innerText = winnerList;
   $racingStatus.after($winner);
 };
 
