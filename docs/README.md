@@ -1,6 +1,15 @@
-# 구현할 기능 목록
+# 기능 요구사항
+- 주어진 횟수 동안 n 대의 자동차는 전진 또는 멈출 수 있다.
+- 자동차에 이름을 부여할 수 있다. 전진하는 자동차를 출력할 때 자동차 이름을 같이 출력한다.
+- 자동차 이름은 쉼표(,)를 기준으로 구분하며 이름은 5자 이하만 가능하다.
+- 사용자는 몇 번의 이동을 할 것인지를 입력할 수 있어야 한다.
+- 전진하는 조건은 0에서 9 사이에서 무작위 값을 구한 후 무작위 값이 4 이상일 경우이다.
+- 자동차 경주 게임을 완료한 후 누가 우승했는지를 알려준다. 우승자는 한 명 이상일 수 있다.
+- 우승자가 여러 명일 경우 쉼표(,)를 이용하여 구분한다.
+- 사용자가 잘못된 입력 값을 작성한 경우 alert을 이용해 메시지를 보여주고, 다시 입력할 수 있게 한다.
 
-### 기능 요구사항
+
+## 구현할 기능 목록
 
 - [x] 자동차 이름 입력 받기
 - [x] 자동차 이름을 쉼표 기준 구분하기
@@ -15,12 +24,39 @@
 - [x] 우승자 찾기
 - [x] 우승자 출력하기 (우승자가 여러명일 땐 쉼표로 구분)
 
-### 프로그래밍 요구사항
+### 예외
+- 입력 값에 빈 값이 있으면 안됨
+- 차 이름 5자 이하만 가능
+- 차 이름 중복 금지
+- 횟수 숫자만 가능
+- 횟수 음수 안됨
+- 횟수 소수 안됨
 
-- [ ] Car 객체를 만들고, new를 이용해 인스턴스 만들어 사용하기
-- [ ] 자동차의 이름을 입력하는 input 태그의 id는 `car-names-input`
-- [ ] 자동차의 이름을 제출하는 button 태그의 id는 `car-names-submit`
-- [ ] 레이싱 횟수를 입력하는 input 태그의 id는 `racing-count-input`
-- [ ] 레이싱 횟수을 제출하는 button 태그의 id는 `racing-count-submit`
-- [ ] 최종 우승자를 출력하는 span 태그의 id는 `racing-winners`
-- [ ] `MissionUtils.Random.pickNumberInRange` 함수로 랜덤 값 생성하기
+## 프로그래밍 요구사항
+
+- [x] Car 객체를 만들고, new를 이용해 인스턴스 만들어 사용하기
+- [x] 자동차의 이름을 입력하는 input 태그의 id는 `car-names-input`
+- [x] 자동차의 이름을 제출하는 button 태그의 id는 `car-names-submit`
+- [x] 레이싱 횟수를 입력하는 input 태그의 id는 `racing-count-input`
+- [x] 레이싱 횟수을 제출하는 button 태그의 id는 `racing-count-submit`
+- [x] 최종 우승자를 출력하는 span 태그의 id는 `racing-winners`
+- [x] `MissionUtils.Random.pickNumberInRange` 함수로 랜덤 값 생성하기
+
+## 폴더 구조
+
+```sh
+├── src
+│   ├── classes
+│   │   └── Car.js
+│   ├── components
+│   │   ├── CarNamesContainer.js
+│   │   ├── Component.js
+│   │   ├── RacingCountContainer.js
+│   │   └── ResultContainer.js
+│   ├── utils
+│   │   ├── constants.js
+│   │   ├── util.js
+│   │   └── validation.js
+│   ├── App.js
+│   └── index.js
+```
