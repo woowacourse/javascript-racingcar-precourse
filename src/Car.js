@@ -4,8 +4,8 @@ class Car {
     this.step = 0;
     this.stepByRound = [];
   }
-  move(RacingCount) {
-    for (let i = 0; i < RacingCount; i++) {
+  move(racingCount) {
+    for (let i = 0; i < racingCount; i++) {
       this.step += this.randomMove();
       this.stepByRound.push(this.step);
     }
