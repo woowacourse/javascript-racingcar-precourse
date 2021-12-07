@@ -5,55 +5,62 @@
 
 ## ✔️ 기능 설계 (ire4564)
 
-이번 2주차 미션은 자동차 경주 게임을 아래의 요구사항에 맞춰 만드는 미션이다. 이번에는 저번 야구게임 미션과는 달리 함수형이 아닌 클래스형을 사용하여 미션을 진행할 예정이다.  코딩컨벤션은 저번 미션과 마찬가지로 <NHN FE 개발랩>의 코딩컨벤션을 선택하여 따랐다. (ESLint 사용 예정) 또한 moudle 사용 건 때문에 별도로 https server를 설치하였다. 실행 시에는 `npm start` 를 하여 실행하면 된다. <br/>
+이번 2주차 미션은 자동차 경주 게임을 아래의 요구사항에 맞춰 만드는 미션이다. 코딩컨벤션은 저번 미션과 마찬가지로 <NHN FE 개발랩>의 코딩컨벤션을 선택하여 따랐다. (ESLint 사용 예정) 또한 moudle 사용 건 때문에 별도로 https server를 설치하였다. 실행 시에는 `npm start` 를 하여 실행하면 된다. <br/>
 
 <br/>
 
-필요한 기능은 아래와 같다. <br/>
-
-최대한 함수를 자잘하게 나누려고 노력하였으며, 함수 단위로 기능을 작성한 결과 아래와 같은 기능이 나왔다. 기능은 각각 커밋 시에 알아보기 쉽도록 각각의 번호를 붙였다.<br/>
+필요한 기능은 아래와 같다. 최대한 함수를 자잘하게 나누려고 노력하였으며, 함수 단위로 기능을 작성한 결과 아래와 같은 기능이 나왔다.<br/>
 
 
 
 <br/>
 
-<b>index.js</b>
+<b>index.js</b> (root)
 
-- [ ] String Result 생성 (002) - `createResult`
+- [ ] 자동차 이름 입력 창 (block) & 횟수 입력창 (none) - `initDOM`
+- [ ] EventListener Setting 후 초기화 - `initEventListener`
 
-- [ ] Set Result in DOM (003) -`setResult`
+<b>Car.js</b> (module)
 
-<b>compare.js</b>
+- [ ] 자동차 객체 생성 클래스 - `Car`
+- [ ] 자동차 객체 안에 이동 거리 추가 method - `move`
 
-- [x] Strike 개수 세기 (004) - `countStrike`
+<b>validCarName.js</b> (module)
 
-- [ ] Ball 개수 세기 (005) - `countBall`
+- [ ] 자동차 이름 validation 처리 (길이, x<=5) - `validLength`
+- [ ] 자동차 이름 validation 처리 (중복) - `validDuplicate`
+- [ ] 처리에 따른 alert 알림 - `alertWrong`
 
-- [ ] 낫싱인지 판단 (006) - `isNothing`
+<b>constants.js</b> (constants)
 
-- [ ] 모두 정답인지 판단 (007) - `isCorrectAll`
+- [ ] DOM 요소 setting
+- [ ] 경고 문구 및 조건 setting  
 
-<b>restart.js</b>
+<b>setResult.js</b> (module)
 
-- [x] Button을 보이기 (008) - `setButton`
+- [ ] 우승자 판별 - `whoIsWinner`
+- [ ] 우승자 출력 (여러명 case 고려) - `printWinner`
 
-- [x] Button을 숨기기 (009) - `clearButton`
+<b>playGame.js</b> (module)
 
-- [x] Random 값 생성 (001) - `createAnswer`
+- [ ] 자동차 입력 수대로 Car 객체 생성 (submitCarNames)
+- [ ] 이동 입력 수대로 Game 처리 (submitTrunCount)
 
-<b>validation.js</b>
+<b>submitCarNames.js</b> (module)
 
-- [x] input을 모든 조건에 맞도록 check - `checkInput` 
+- [ ] 자동차 이름 입력 처리 (Parsing) - `parseCarName` 
+- [ ] 자동차 입력 수대로 Car 객체 생성 - `createCars`
 
-- [x] input 값이 비어있지 않은지 (011) - `isNotnull`
+<b>submitTrunCount.js</b> (module)
 
-- [x] 3자리 수가 맞는지 (012) - `isThreeNum`
+- [ ] 이동 횟수 입력 처리 - `checkInput`
+- [ ] 자동자 전진 가능 판별 (x>=4) - `isMoveCar`
+- [ ] 이동 횟수만큼 게임 진행 - `startGame`
 
-- [x] 서로 다른 수인지 (013) - `isAnother`
 
-- [x] 숫자인지 검사 (014) - `isNumber`
 
-- [x] 0이 포함되었는지 범위 검사 (015) - `isZero`
+* 설계하는 데 소요 시간 (1.5h)
+* 개발하는 데 소요 시간 (-)
 
 
 
