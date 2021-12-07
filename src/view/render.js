@@ -30,6 +30,23 @@ const moveDistByOne = $racing => {
   }
 };
 
+// 최종 결과가
+const winnerCalc = () => {
+  const winners = [];
+  for (const car of Object.keys(cars)) {
+    winners.push(cars[car].dist);
+  }
+
+  const finalWinners = [];
+  const maxDist = Math.max(...winners);
+  for (const car of Object.keys(cars)) {
+    if (cars[car].dist === maxDist) {
+      finalWinners.push(car);
+    }
+  }
+  return finalWinners.join(', ');
+};
+
 const racingRender = racingCount => {
   const $racing = document.createElement('div');
   $racing.id = 'racing';
@@ -41,9 +58,13 @@ const racingRender = racingCount => {
   $app.appendChild($racing);
 };
 
+const racingWinnerRender = () => {
+  $app.innerHTML += `<div>최종 우승자: <span id="racing-winners">${winnerCalc()}</span></div>`;
+};
+
 const racingAndResultRender = racingCount => {
   racingRender(racingCount);
-  // racingResultRender(racingCount);
+  racingWinnerRender(racingCount);
   resultTitle.style.display = 'block';
 };
 
