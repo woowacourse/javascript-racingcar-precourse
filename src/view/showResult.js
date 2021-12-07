@@ -1,8 +1,8 @@
 import { $ } from "../common/const.js";
 
 function getWinnerList(Cars) {
-  let maxCount = -1e9;
   const winnerList = [];
+  let maxCount = -1e9;
 
   Cars.forEach((car) => {
     if (maxCount <= car.currentCount) {
