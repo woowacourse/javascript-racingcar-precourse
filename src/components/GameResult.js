@@ -1,7 +1,7 @@
 import Component from '../core/Component.js';
 import { $, createElement } from '../utils/dom.js';
 import { GAME_STATUS } from '../utils/constants.js';
-import { printCarGameResult } from '../utils/game.js';
+import { printCarGameResult } from '../utils/view.js';
 
 export default class GameResult extends Component {
   initDoms() {
