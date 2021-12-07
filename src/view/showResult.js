@@ -40,8 +40,10 @@ export function showWinners(Cars) {
 }
 
 export function showResult(car) {
+  const { name } = car;
+
   const $result = $("result-div");
   const $p = document.createElement("p");
-  $p.innerHTML = `${car.name}: ${car.showRunning()}`;
+  $p.innerHTML = `${name}: ${car.showRunning()}`;
   $result.appendChild($p);
 }
