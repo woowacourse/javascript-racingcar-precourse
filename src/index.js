@@ -1,3 +1,3 @@
-import { validator } from './validation/validator.js';
+import Controller from './controller/Controller.js';
 
-console.log(validator.validate('racingCount', ''));
+new Controller();
