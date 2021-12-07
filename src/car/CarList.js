@@ -14,7 +14,9 @@ class CarList {
 
     init(carNameArray) {
         for(let i = 0; i<carNameArray.length; i++) {
-            if(isValidate("name", carNameArray[i])) this.push(new Car(carNameArray[i]));
+            if(isValidate("name", carNameArray[i])) {
+                this.push(new Car(carNameArray[i]));
+            }
             else {
                 this.array = [];
                 alert("잘못된 이름입니다.");
@@ -59,8 +61,12 @@ class CarList {
         const winnerArray = this.getWinnerArray();
         let resultString = "";
 
-        if(winnerArray.length > 1) resultString = this.makeResultString(winnerArray);
-        else resultString = winnerArray.toString();
+        if(winnerArray.length > 1) {
+            resultString = this.makeResultString(winnerArray);
+        }
+        else {
+            resultString = winnerArray.toString();
+        }
 
         racingWinners.innerText += "\n최종 우승자: " + resultString;
     }
@@ -73,7 +79,8 @@ class CarList {
             if(this.array[i].getDistance() > maxDistance) {
                 winnerArray = [this.array[i].getName()];
                 maxDistance = this.array[i].getDistance();
-            }else if(this.array[i].getDistance() === maxDistance) {
+            }
+            else if(this.array[i].getDistance() === maxDistance) {
                 winnerArray.push(this.array[i].getName());
             }
         }
@@ -85,8 +92,12 @@ class CarList {
         let winnerResult = "";
 
         for(let i = 0; i<winnerArray.length; i++) {
-            if(i === 0) winnerResult += winnerArray[i];
-            else winnerResult += ", " + winnerArray[i];
+            if(i === 0) {
+                winnerResult += winnerArray[i];
+            }
+            else {
+                winnerResult += ", " + winnerArray[i];
+            }
         }
 
         return winnerResult;

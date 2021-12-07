@@ -1,6 +1,10 @@
 function isValidate(type, input) {
-    if(type === "name") return !isOverFiveSyllable(input);
-    else return isPositive(input);
+    if(type === "name") {
+        return !isOverFiveSyllable(input);
+    }
+    else {
+        return isPositive(input);
+    }
 }
 
 function isOverFiveSyllable(input) {

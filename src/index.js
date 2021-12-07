@@ -23,7 +23,9 @@ carNameButton.addEventListener('click', event => {
 racingCountButton.addEventListener('click', event => {
     const racingCountInput = document.getElementById("racing-count-input").value;
 
-    if(!isValidate("count", racingCountInput)) alert("잘못된 숫자를 입력하셨습니다.");
+    if(!isValidate("count", racingCountInput)) {
+        alert("잘못된 숫자를 입력하셨습니다.");
+    }
     else {
         carList.game(racingCountInput);
         console.log(carList);
