@@ -14,18 +14,26 @@ export default class Controller {
     alert(message);
   };
 
+  splitCarNamesInput = delimeter => {
+    return this.carNamesForm.getValue().split(delimeter);
+  };
+
   onClickCarNamesSubmit = event => {
     event.preventDefault();
 
-    const message = this._carNamesForm.validateInput();
+    const message = this.carNamesForm.validateInput();
 
     if (message) {
       this.alertError(message);
-      this._carNamesForm.initValue();
+      this.carNamesForm.initValue();
+      return;
     }
+
+    const carNames = this.splitCarNamesInput(',');
+    console.log(carNames);
   };
 
   bindCarNamesSubmitEvent = () => {
-    this.$submit.addEventListener('click', this.onClickSubmit);
+    this.$submit.addEventListener('click', this.onClickCarNamesSubmit);
   };
 }

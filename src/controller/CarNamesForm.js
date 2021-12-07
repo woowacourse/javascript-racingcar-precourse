@@ -12,7 +12,7 @@ export default class CarNamesForm {
 
   getValue = () => this.$input.value;
 
-  validateInput() {
-    return validator.validate('carName', this.getValue());
-  }
+  validateInput = () => {
+    return validator.validate('rawInput', this.getValue());
+  };
 }
