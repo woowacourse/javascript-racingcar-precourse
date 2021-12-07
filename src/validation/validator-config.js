@@ -7,5 +7,6 @@ export const config = {
     CHECKER_TYPE.ALPHANUM,
     CHECKER_TYPE.MAXSIZELIMIT,
   ],
+  carNames: [CHECKER_TYPE.NODUPLICATE],
   racingCount: [CHECKER_TYPE.NOEMPTY, CHECKER_TYPE.NUM],
 };

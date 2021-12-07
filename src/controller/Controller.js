@@ -7,54 +7,66 @@ export default class Controller {
     this.$submit = document.getElementById('car-names-submit');
 
     this.carNamesForm = new CarNamesForm(this.$input, this.$submit);
+
     this.carNames = [];
 
     this.bindCarNamesSubmitEvent();
   }
 
   alertError = message => {
-    alert(message);
-    this.carNamesForm.initValue();
-  };
-
-  splitCarNamesInput = delimeter =>
-    this.carNamesForm.getValue().split(delimeter);
-
-  validateCarNamesInput = () => {
-    // car-names-input 유효성 검사
-    const message = this.carNamesForm.validateInput();
-
-    if (message) {
-      this.alertError(message);
+    if (!message) {
       return false;
     }
+
+    alert(message);
+    this.carNamesForm.initValue();
 
     return true;
   };
 
-  validateCarName = ([...carNames]) => {
+  checkValidInput = () => {
+    // car-names-input 유효성 검사
+    return this.carNamesForm.validateInput();
+  };
+
+  checkValid = ([...carNames]) => {
     // 각 carName 유효성 검사
     for (const carName of carNames) {
       const message = validator.validate('carName', carName);
 
       if (message) {
-        this.alertError(message);
-        return false;
+        return message;
       }
     }
+  };
 
-    return true;
+  checkDuplicate = ([...carNames]) => {
+    return validator.validate('carNames', carNames);
   };
 
   onClickCarNamesSubmit = event => {
     event.preventDefault();
-    if (!this.validateCarNamesInput()) {
+
+    // car-names-input 유효성 검사
+    const invalidInputMessage = this.checkValidInput();
+    if (this.alertError(invalidInputMessage)) {
       return;
     }
 
-    this.carNames = this.splitCarNamesInput(',');
-    if (!this.validateCarName(this.carNames)) {
+    // 각 carName 유효성 검사
+    const carNames = this.carNamesForm.getValue().split(',');
+    const invalidCarNameMessage = this.checkValid(carNames);
+    if (this.alertError(invalidCarNameMessage)) {
+      return;
     }
+
+    // carName 중복 유효성 검사
+    const carNameDuplicatedMessage = this.checkDuplicate(carNames);
+    if (this.alertError(carNameDuplicatedMessage)) {
+      return;
+    }
+
+    this.carNames = carNames;
   };
 
   bindCarNamesSubmitEvent = () => {

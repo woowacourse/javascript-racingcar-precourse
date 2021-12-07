@@ -6,13 +6,14 @@ export const CHECKER_TYPE = {
   NUM: 'isNumber',
   ALPHANUMCOMMA: 'isAlphaNumberComma',
   MAXSIZELIMIT: 'maxSizeLimit',
+  NODUPLICATE: 'isNonDuplicate',
 };
 
 export const checkers = {
   isNonEmpty: {
     type: CHECKER_TYPE.NOEMPTY,
     validate: value => value !== '',
-    message: '값을 입력해주세요.',
+    message: '자동차 이름을 입력해주세요.',
   },
 
   isNumber: {
@@ -37,5 +38,11 @@ export const checkers = {
     type: CHECKER_TYPE.MAXSIZELIMIT,
     validate: value => value.length <= MAX_SIZE,
     message: `자동차 이름을 ${MAX_SIZE}자 이하로 입력해주세요`,
+  },
+
+  isNonDuplicate: {
+    type: CHECKER_TYPE.isNonDuplicate,
+    validate: value => value.length === new Set(value).size,
+    message: '중복된 이름이 있습니다.',
   },
 };
