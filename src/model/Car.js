@@ -1,3 +1,5 @@
+import { RANDOM_NUMBER } from '../libs/constant';
+
 class Car {
   constructor(name) {
     this.name = name;
@@ -11,8 +13,11 @@ class Car {
     }
   }
   randomMove() {
-    const randomNumber = MissionUtils.Random.pickNumberInRange(0, 9);
-    if (randomNumber >= 4) {
+    const randomNumber = MissionUtils.Random.pickNumberInRange(
+      RANDOM_NUMBER.start,
+      RANDOM_NUMBER.end,
+    );
+    if (randomNumber >= RANDOM_NUMBER.winSeparater) {
       return 1;
     }
     return 0;

@@ -11,3 +11,9 @@ export const CAR_NAMES_SEPARATER = ',';
 export const MOVE_UNIT = '-';
 
 export const WINNER_COMMENT = '최종 우승자: ';
+
+export const RANDOM_NUMBER = {
+  start: 0,
+  end: 9,
+  winSeparater: 4,
+};
