@@ -22,6 +22,13 @@ export const CarNamesInputCheckMethods = [
     }
     return true;
   },
+  (value) => {
+    if (value.trim().length === 0) {
+      alert(USER_INPUT_ALERT.blankNameError);
+      return false;
+    }
+    return true;
+  },
 ];
 
 export function isCarNamesInputValid(carNamesArray) {
