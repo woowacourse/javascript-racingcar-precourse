@@ -11,7 +11,7 @@ export default class GameModel {
   saveCars(userInput) {
     const userInputArray = userInput.split(',');
 
-    if (this.isValidatedLength(userInputArray, NUMBER.CARS_MIN_LENGTH)) {
+    if (this.isValidatedLength(userInputArray, NUMBER.MIN_CARS_LENGTH)) {
       this.cars = userInputArray.map((name) => new Car(name));
 
       return true;
@@ -27,7 +27,7 @@ export default class GameModel {
   saveCount(userInput) {
     const userInputNum = Number(userInput);
 
-    if (this.isValidatedCount(userInputNum, NUMBER.COUNT_LEAST_VALUE)) {
+    if (this.isValidatedCount(userInputNum, NUMBER.MIN_COUNT)) {
       this.count = userInputNum;
 
       return true;
