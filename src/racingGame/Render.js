@@ -62,13 +62,4 @@ export default class Render {
     });
     this.racingResultArea.append(winnerText, winnerTag);
   }
-
-  makeReStartButton() {
-    const reStartButton = makeElement({
-      tag: "button",
-      innerText: "게임 재시작",
-    });
-    this.racingResultArea.append(reStartButton);
-    return reStartButton;
-  }
 }
