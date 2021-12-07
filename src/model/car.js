@@ -7,11 +7,7 @@ export default class Car {
   }
 
   printPosition() {
-    let bar = "";
-    for (let i = 0; i < this.position; i += 1) {
-      bar += "-";
-    }
-    $racingStatus.innerHTML += `${this.name}: ${bar}<br>`;
+    $racingStatus.innerHTML += `${this.name}: ${"-".repeat(this.position)}<br>`;
   }
 
   makeRandom() {
