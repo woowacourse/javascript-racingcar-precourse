@@ -1,7 +1,9 @@
-import { $Car_names_input, $Car_names_submit, $Racing_count_input, $Racing_count_submit } from "./Html_Const.js";
-import { splice_names } from "./Check_CarNames.js";
-import { check_numbers } from "./Check_TryNumbers.js";
-import { startGame } from "./Start_Game.js";
+import {
+    $Car_names_input, $Car_names_submit, $Racing_count_input, $Racing_count_submit,
+} from './Html_Const.js';
+import { splice_names } from './Check_CarNames.js';
+import { check_numbers } from './Check_TryNumbers.js';
+import { startGame } from './Start_Game.js';
 
 export default function RacingCarGame() {
     let carArray = [];
@@ -16,8 +18,8 @@ export default function RacingCarGame() {
         e.preventDefault();
         const userInputTryNumbers = $Racing_count_input.value;
         if (!check_numbers(userInputTryNumbers)) return;
-        else startGame(carArray, check_numbers(userInputTryNumbers));
+        startGame(carArray, check_numbers(userInputTryNumbers));
     });
-};
+}
 
 RacingCarGame();
