@@ -28,10 +28,6 @@ class Car {
     return temp;
   }
 
-  get carName() {
-    return this.name;
-  }
-
   get dist() {
     return this.sumDist;
   }

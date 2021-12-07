@@ -10,7 +10,9 @@ export default () => {
   $carNamesSubmit.addEventListener('click', e => {
     e.preventDefault();
 
-    const carNames = $carNamesInput.value.split(',');
+    const carNames = $carNamesInput.value
+      .split(',')
+      .map(carName => carName.trim());
 
     if (!carNamesValidate(carNames)) return;
     racingCountInputRender();
