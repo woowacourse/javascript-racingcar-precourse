@@ -15,3 +15,11 @@ export const addApp = (string) => {
     const $app = document.getElementById("app");
     $app.innerHTML += string;
 };
+
+export const showElement = (element) => {
+    element.style.display = "block";
+};
+
+export const hideElement = (element) => {
+    element.style.display = "none";
+};
