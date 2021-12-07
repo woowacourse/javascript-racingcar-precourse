@@ -36,3 +36,25 @@
 - [x] 레이싱이 끝나면 최종 우승자를 찾는다.
 - [x] 최종 우승자를 <span id="racing-winners">에 담아서 출력한다.
 - [x] 레이싱 버튼을 한번 더 누를 시 기존의 결과를 리셋 후 레이싱을 새로 시작한다.
+
+## 📂 폴더 구조
+
+```
+src
+ ┣ controller
+ ┃ ┗ MainController.js
+ ┣ models
+ ┃ ┣ Car.js
+ ┃ ┗ CarsModel.js
+ ┣ utils
+ ┃ ┣ dom.js
+ ┃ ┣ constants.js
+ ┃ ┗ validation.js
+ ┣ views
+ ┃ ┣ View.js
+ ┃ ┣ NameFormView.js
+ ┃ ┣ CountFormView.js
+ ┃ ┣ ResultView.js
+ ┃ ┗ WinnersView.js.js
+ ┗ index.js
+```
