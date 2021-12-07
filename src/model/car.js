@@ -21,7 +21,7 @@ export default class Car {
   }
 
   validateName(name, givenLength) {
-    if (name.length > givenLength) {
+    if (name.length > givenLength || !name.trim()) {
       throwError(MESSAGE.ERROR.NOT_MEET_CAR_NAME_CONDITION);
     }
   }

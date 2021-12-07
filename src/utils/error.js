@@ -1,7 +1,7 @@
-export const showError = (message) => {
-  alert(message);
+export const showError = (error) => {
+  alert(error.message);
 };
 
 export const throwError = (message) => {
-  throw Error(message);
+  throw new Error(message);
 };
