@@ -1,3 +1,5 @@
+import { cars } from '../model/cars.js';
+
 const $app = document.querySelector('#app');
 const countFormTitle = $app.querySelectorAll('h4')[0];
 const racingCountInputForm = $app.querySelectorAll('form')[1];
@@ -19,8 +21,29 @@ const racingCountInputRender = () => {
   racingCountInputForm.style.display = 'block';
 };
 
-// 시도 과정 및 결과 렌더
-const racingAndResultRender = () => {
+// 시도 과정 및 결과
+const moveDistByOne = $racing => {
+  for (const car of Object.keys(cars)) {
+    $racing.innerHTML += `
+      ${car}: ${cars[car].distRender()}<br>
+    `;
+  }
+};
+
+const racingRender = racingCount => {
+  const $racing = document.createElement('div');
+  $racing.id = 'racing';
+
+  for (let i = 0; i < racingCount; i++) {
+    moveDistByOne($racing);
+    $racing.innerHTML += '<br>';
+  }
+  $app.appendChild($racing);
+};
+
+const racingAndResultRender = racingCount => {
+  racingRender(racingCount);
+  // racingResultRender(racingCount);
   resultTitle.style.display = 'block';
 };
 

@@ -13,7 +13,7 @@ export default () => {
     const racingCount = $racingCountInput.value;
 
     if (!racingCountValidate(racingCount)) return;
-    racingAndResultRender();
     count(racingCount);
+    racingAndResultRender(racingCount);
   });
 };
