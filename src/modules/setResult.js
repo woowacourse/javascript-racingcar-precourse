@@ -25,7 +25,7 @@ export const whoIsWinner = (finalCars) => {
 export const printWinner = (finalCars) => {
   const result = whoIsWinner(finalCars);
   const container = document.createElement('div');
-  const finalResult = `최종 우승자: ${result.filter((val) => val !== '').join(', ')}`;
+  const finalResult = `최종 우승자: <span id="racing-winners">${result.filter((val) => val !== '').join(',')}</span>`;
 
   container.innerHTML = finalResult;
   document.body.appendChild(container);
