@@ -7,6 +7,25 @@ function onInvalidCarNamesInput() {
   carNamesInput.focus();
 }
 
+function Car(name) {
+  this.name = name;
+  this.forwardCount = 0;
+}
+
+function createCars(carNames) {
+  const cars = [];
+
+  for (let i = 0; i < carNames.length; i += 1) {
+    cars[i] = new Car(carNames[i]);
+  }
+
+  return cars;
+}
+
+function onValidCarNamesInput(carNames) {
+  window.cars = createCars(carNames);
+}
+
 export default function onCarNamesSubmit(event) {
   event.preventDefault();
   const carNames = carNamesInput.value.split(',');
@@ -14,5 +33,7 @@ export default function onCarNamesSubmit(event) {
 
   if (!carNamesInputValid) {
     onInvalidCarNamesInput();
+  } else {
+    onValidCarNamesInput(carNames);
   }
 }
