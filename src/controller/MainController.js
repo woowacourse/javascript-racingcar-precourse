@@ -23,6 +23,7 @@ export default {
 
   onSubmitCarNames(carNames) {
     CarsModel.setCars(carNames);
+    CountFormView.show();
   },
 
   onSubmitRacingCounts(racingCount) {

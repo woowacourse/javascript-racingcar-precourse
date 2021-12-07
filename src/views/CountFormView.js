@@ -9,6 +9,8 @@ CountFormView.setup = function (el) {
   this.inputEl = this.el.querySelector(ELEMENT_ID.racingCountInput);
   this.submitEl = this.el.querySelector(ELEMENT_ID.racingCountSubmit);
   this.bindEvent();
+  this.hide();
+
   return this;
 };
 
