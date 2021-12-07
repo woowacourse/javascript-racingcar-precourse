@@ -1,37 +1,18 @@
+import { $ } from "../common/const.js";
+import Car from "../model/Cars.js";
 import { showResult, appendBr, showWinners } from "../view/showResult.js";
 
-class Car {
-  constructor(name) {
-    this.name = name;
-    this.currentCount = 0;
-  }
-
-  go() {
-    if (MissionUtils.Random.pickNumberInRange(1, 10) >= 4) {
-      this.currentCount++;
-    }
-  }
-
-  showRunning() {
-    let courrentLine = "";
-    for (let i = 0; i < this.currentCount; i++) {
-      courrentLine += "-";
-    }
-
-    return courrentLine;
-  }
-}
-
 export default function racingCars(carNames, runTime) {
-  const Cars = carNames.map((name) => new Car(name));
+  const carList = carNames.map((name) => new Car(name));
+  const $resultDiv = $("result-div");
   let time = runTime;
 
   while (time--) {
-    Cars.map((car) => {
+    carList.map((car) => {
       car.go();
-      showResult(car);
+      showResult(car, $resultDiv);
     });
-    appendBr();
+    appendBr($resultDiv);
   }
-  showWinners(Cars);
+  showWinners(carList, $resultDiv);
 }
