@@ -11,12 +11,16 @@ const RACING_COUNT_INPUT_ID = '#racing-count-input';
 const CAR_NAME_SUBMIT_ID = '#car-names-submit';
 const RACING_COUNT_SUBMIT_ID = '#racing-count-submit';
 
+function isInvalidNames(names) {
+  return !names;
+}
+
 function onCarNamesSubmit(event, userInput, view) {
   event.preventDefault();
   const $carNamesInput = document.querySelector(CAR_NAME_INPUT_ID);
 
   userInput.setCarNames($carNamesInput.value.split(','));
-  if (!userInput.getCarNames()) {
+  if (isInvalidNames(userInput.getCarNames())) {
     view.alertError(CAR_NAMES_ERROR);
     return;
   }
