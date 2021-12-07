@@ -26,14 +26,13 @@ export default class GameController {
     e.preventDefault();
 
     try {
-      this.gameModel.saveCars(this.gameView.$carNamesInput.value);
+      this.gameModel.setCars(this.gameView.$carNamesInput.value);
     } catch (err) {
       this.gameView.resetCarNamesInput();
 
       return showError(err);
     }
 
-    // this.gameView.makeReadOnly(this.gameView.$carNamesInput);
     this.gameView.show(this.gameView.$racingCountTitle);
     this.gameView.show(this.gameView.$racingCountForm);
   }
@@ -47,7 +46,7 @@ export default class GameController {
     e.preventDefault();
 
     try {
-      this.gameModel.saveRacingCount(this.gameView.$racingCountInput.value);
+      this.gameModel.setRacingCount(this.gameView.$racingCountInput.value);
     } catch (err) {
       this.gameView.resetRacingCountInput();
 

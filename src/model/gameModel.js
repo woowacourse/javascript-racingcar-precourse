@@ -11,7 +11,7 @@ export default class GameModel {
     this.isPlayed = false;
   }
 
-  saveCars(userInput) {
+  setCars(userInput) {
     const userInputArray = userInput.split(',');
 
     if (isValidatedCarNames(userInputArray)) {
@@ -21,7 +21,7 @@ export default class GameModel {
     }
   }
 
-  saveRacingCount(userInputString) {
+  setRacingCount(userInputString) {
     if (isValidatedRacingCount(userInputString)) {
       this.racingCount = Number(userInputString);
 
