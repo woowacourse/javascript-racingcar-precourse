@@ -1,4 +1,4 @@
-import { CAR_NAME_MAX_LENGTH, USER_INPUT_ALERT } from '../libs/constant.js';
+import { CAR_NAME_MAX_LENGTH, USER_INPUT_ALERT } from './constant.js';
 
 export const CountInputCheckMethods = [
   (value) => {
@@ -25,6 +25,10 @@ export const CarNamesInputCheckMethods = [
 ];
 
 export function isCarNamesInputValid(carNamesArray) {
+  if (carNamesArray.length === 0) {
+    alert(USER_INPUT_ALERT.blankError);
+    return false;
+  }
   return carNamesArray.every((carName) =>
     CarNamesInputCheckMethods.every((CarNamesInputCheckMethod) =>
       CarNamesInputCheckMethod(carName),

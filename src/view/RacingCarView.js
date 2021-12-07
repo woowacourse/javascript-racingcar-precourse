@@ -1,4 +1,4 @@
-import { WINNER_COMMENT } from '../libs/constant.js';
+import { WINNER_COMMENT } from '../utils/constant.js';
 import { hideElement, showElement } from '../utils/dom.js';
 
 class RacingCarView {
