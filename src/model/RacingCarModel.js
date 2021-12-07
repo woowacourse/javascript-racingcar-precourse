@@ -25,12 +25,9 @@ class RacingCarModel {
       // 개수만큼 움직여주는 것을 모델이 할 일일까?
       this.RacingResult[key].move(RacingCount);
     }
-    console.log(this);
   }
 
   makeWinner() {
-    // this bind
-    console.log(this);
     const maxStep = this.getMaxStep();
     let winner = '';
     for (let key in this.RacingResult) {
