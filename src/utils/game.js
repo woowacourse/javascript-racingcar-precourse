@@ -27,11 +27,19 @@ export const getMovingCarsResult = cars => {
   return carNameDistanceMap;
 };
 
-export const getFinalResult = gameResult =>
+const getFinalResult = gameResult =>
   convertHashMapToArray(gameResult[gameResult.length - 1]);
 
-export const getMaximumDistance = finalResult =>
+const getMaximumDistance = finalResult =>
   finalResult.sort((a, b) => b[1] - a[1])[0][1];
+
+export const getWinners = gameResult => {
+  const finalResult = getFinalResult(gameResult);
+  const maximumDistance = getMaximumDistance(finalResult);
+  return finalResult
+    .filter(([, distance]) => distance === maximumDistance)
+    .map(([name]) => name);
+};
 
 export const canMoveCar = () =>
   MissionUtils.Random.pickNumberInRange(0, 9) >= RULE.MOVE_CAR_REQUIREMENT;
