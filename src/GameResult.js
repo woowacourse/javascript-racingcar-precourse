@@ -10,9 +10,13 @@ function keepInputValues() {
   racingCountInput.setAttribute('value', racingCountInput.value);
 }
 
+function setResultHeader() {
+  gameResultHeader.style.display = 'block';
+}
+
 export function setCarForwardResult() {
   keepInputValues();
-  gameResultHeader.style.display = 'block';
+  setResultHeader();
 
   for (let i = 0; i < window.cars.length; i += 1) {
     const car = window.cars[i];
