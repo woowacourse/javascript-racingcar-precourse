@@ -8,15 +8,11 @@ import {
   checkEmptyName,
   checkDuplicateName,
 } from '../utils/validation.js';
+import Form from './Form.js';
 
-export default class CarNameForm {
+export default class CarNameForm extends Form {
   constructor() {
-    this.$input = document.getElementById(ID_CAR_NAMES_INPUT);
-    this.$submit = document.getElementById(ID_CAR_NAMES_SUBMIT);
-  }
-
-  addSubmitClickEventHandler(handler) {
-    this.$submit.addEventListener('click', handler);
+    super(ID_CAR_NAMES_INPUT, ID_CAR_NAMES_SUBMIT);
   }
 
   processInputValue() {
@@ -37,17 +33,9 @@ export default class CarNameForm {
     const isAllPass = checkingResults.every((result) => result);
 
     if (!isAllPass) {
-      this.handleException(checkingResults);
+      this.handleException(checkingResults, INPUT_NAME_ERROR);
     }
 
     return isAllPass;
-  }
-
-  handleException(checkingResults) {
-    const errorCode = checkingResults.indexOf(false);
-    const errorMessage = INPUT_NAME_ERROR[errorCode];
-
-    alert(errorMessage);
-    this.$input.focus();
   }
 }

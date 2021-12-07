@@ -4,15 +4,11 @@ import {
 } from '../constant/selector.js';
 import { INPUT_RACING_COUNT_ERROR } from '../constant/error.js';
 import { checkExistingCar, checkValidNumber } from '../utils/validation.js';
+import Form from './Form.js';
 
-export default class RacingCountForm {
+export default class RacingCountForm extends Form {
   constructor() {
-    this.$input = document.getElementById(ID_RACING_COUNT_INPUT);
-    this.$submit = document.getElementById(ID_RACING_COUNT_SUBMIT);
-  }
-
-  addSubmitClickEventHandler(handler) {
-    this.$submit.addEventListener('click', handler);
+    super(ID_RACING_COUNT_INPUT, ID_RACING_COUNT_SUBMIT);
   }
 
   getInputValue() {
@@ -28,17 +24,9 @@ export default class RacingCountForm {
     const isAllPass = checkingResults.every((result) => result);
 
     if (!isAllPass) {
-      this.handleException(checkingResults);
+      this.handleException(checkingResults, INPUT_RACING_COUNT_ERROR);
     }
 
     return isAllPass;
-  }
-
-  handleException(checkingResults) {
-    const errorCode = checkingResults.indexOf(false);
-    const errorMessage = INPUT_RACING_COUNT_ERROR[errorCode];
-
-    alert(errorMessage);
-    this.$input.focus();
   }
 }
