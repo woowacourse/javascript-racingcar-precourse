@@ -22,8 +22,6 @@ class Car {
 }
 
 export default function racingCars(carNames, runTime) {
-  console.log("레이싱 시작!", carNames, runTime);
-
   const Cars = carNames.map((name) => new Car(name));
   let time = runTime;
 
