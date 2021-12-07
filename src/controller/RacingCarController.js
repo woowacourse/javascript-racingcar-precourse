@@ -1,6 +1,5 @@
 import RacingCarModel from '../model/RacingCarModel.js';
 import { isCarNamesInputValid, isCountInputValid } from '../utils/validity.js';
-import RacingCarView from '../view/RacingCarView.js';
 
 class RacingCarController {
   constructor(model, view) {
@@ -9,9 +8,17 @@ class RacingCarController {
   }
 
   triggerEvent() {
-    // this.triggerCountInputEvent();
-    this.triggerCarNamesInputEvent();
     this.RacingCarView.setOnCountSubmit(this.onCountSubmit.bind(this));
+    this.RacingCarView.setOnCarNamesSubmit(this.onCarNamesSubmit.bind(this));
+  }
+
+  onCarNamesSubmit(carNames) {
+    console.log(`carNames`, carNames);
+    this.RacingCarModel.parseCarNamesToArray(carNames);
+    if (!isCarNamesInputValid(this.RacingCarModel.carNamesArray)) {
+      return;
+    }
+    this.RacingCarView.showCountDOM();
   }
 
   // triggerCountInputEvent() {
@@ -33,31 +40,13 @@ class RacingCarController {
       return;
     }
     this.RacingCarModel.startCars(racingCount);
-
+    // 객체지향 - 추상화. 다른 객체에서 무엇을 하고 있는지 몰라야 한다.
     const roundResult = this.RacingCarModel.makeRoundResult();
     const winner = this.RacingCarModel.makeWinner();
 
     this.RacingCarView.showRoundResult(roundResult);
     this.RacingCarView.showWinner(winner);
     this.RacingCarView.showResultDOM();
-  }
-
-  triggerCarNamesInputEvent() {
-    this.RacingCarView.$carNamesSubmitButton.addEventListener('click', (e) =>
-      this.onCarNamesSubmit(e),
-    );
-  }
-
-  onCarNamesSubmit(e) {
-    e.preventDefault();
-    const carNames = this.RacingCarView.$carNamesInput.value;
-    // model의 carNamesArray를 변경시키는 방법
-    this.RacingCarModel.parseCarNamesToArray(carNames);
-
-    if (!isCarNamesInputValid(this.RacingCarModel.carNamesArray)) {
-      return;
-    }
-    this.RacingCarView.showCountDOM();
   }
 }
 

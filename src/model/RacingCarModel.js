@@ -6,7 +6,7 @@ class RacingCarModel {
   RacingResult;
   carNamesArray;
 
-  startCars() {
+  startCars(RacingCount) {
     this.makeCars();
     this.moveCars(RacingCount);
   }

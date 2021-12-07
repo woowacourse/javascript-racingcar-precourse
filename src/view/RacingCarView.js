@@ -63,6 +63,14 @@ class RacingCarView {
       fn(racingCount);
     });
   }
+
+  setOnCarNamesSubmit(fn) {
+    this.$carNamesSubmitButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      const carNames = this.$carNamesInput.value;
+      fn(carNames);
+    });
+  }
 }
 
 export default RacingCarView;
