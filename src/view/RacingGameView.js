@@ -1,7 +1,7 @@
 import { WINNER_COMMENT } from '../utils/constant.js';
 import { hideElement, showElement } from '../utils/dom.js';
 
-class RacingCarView {
+class RacingGameView {
   constructor() {
     this.$racingCountSubmitButton = document.querySelector('#racing-count-submit');
     this.$racingCountInput = document.querySelector('#racing-count-input');
@@ -73,4 +73,4 @@ class RacingCarView {
   }
 }
 
-export default RacingCarView;
+export default RacingGameView;

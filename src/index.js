@@ -1,15 +1,14 @@
-import RacingCarController from './controller/RacingCarController.js';
-import RacingCarModel from './model/RacingCarModel.js';
-import RacingCarView from './view/RacingCarView.js';
+import RacingGameController from './controller/RacingGameController.js';
+import RacingGameModel from './model/RacingGameModel.js';
+import RacingGameView from './view/RacingGameView.js';
 
 class App {
   constructor() {
-    const model = new RacingCarModel();
-    const view = new RacingCarView();
-    const controller = new RacingCarController(model, view);
+    const model = new RacingGameModel();
+    const view = new RacingGameView();
+    const controller = new RacingGameController(model, view);
 
-    this.RacingCarController = controller;
-    this.RacingCarController.triggerEvent();
+    controller.triggerEvent();
   }
 }
 

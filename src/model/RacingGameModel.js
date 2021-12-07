@@ -2,7 +2,7 @@ import Car from './Car.js';
 import { CAR_NAMES_SEPARATER, MOVE_UNIT } from '../utils/constant.js';
 import { strToArray } from '../utils/parse.js';
 
-class RacingCarModel {
+class RacingGameModel {
   #racingCount;
   #racingResult;
   #carNamesArray;
@@ -73,4 +73,4 @@ class RacingCarModel {
   }
 }
 
-export default RacingCarModel;
+export default RacingGameModel;
