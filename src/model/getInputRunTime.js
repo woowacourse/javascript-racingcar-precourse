@@ -6,7 +6,7 @@ export default function getInputRunTime() {
   let countInput = $racingCountInput.value;
 
   const validation = new Validation();
-  if (validation.setRacingCount(countInput)) {
+  if (validation.isValidateRacingCount(countInput)) {
     return countInput;
   } else {
     return "";

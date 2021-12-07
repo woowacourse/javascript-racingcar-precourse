@@ -1,4 +1,3 @@
-import validate from "./validate.js";
 import { $ } from "../common/const.js";
 import Validation from "./validate.js";
 
@@ -7,7 +6,7 @@ export default function getInputCarNames() {
   const carNamesInputArray = $carNamesInput?.value?.split(",");
 
   const validation = new Validation();
-  if (validation.setCarNames(carNamesInputArray)) {
+  if (validation.isValidateCarNames(carNamesInputArray)) {
     return carNamesInputArray;
   } else {
     return "";
