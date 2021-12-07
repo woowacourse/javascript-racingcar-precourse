@@ -1,5 +1,5 @@
 import Car from './Car.js';
-import { CAR_NAMES_SEPARATER, MOVE_UNIT } from '../libs/constant.js';
+import { CAR_NAMES_SEPARATER, MOVE_UNIT } from '../utils/constant.js';
 import { strToArray } from '../utils/parse.js';
 
 class RacingCarModel {

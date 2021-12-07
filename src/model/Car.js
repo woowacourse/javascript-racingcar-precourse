@@ -1,4 +1,4 @@
-import { RANDOM_NUMBER } from '../libs/constant';
+import { RANDOM_NUMBER } from '../utils/constant.js';
 
 class Car {
   constructor(name) {
