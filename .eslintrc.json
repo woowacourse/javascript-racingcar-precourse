@@ -9,6 +9,13 @@
     "ecmaVersion": 12
   },
   "rules": {
+    "no-new": "off",
+    "no-alert": "off",
+    "no-param-reassign": "off",
+    "consistent-return": "off",
+    "import/extensions": "off",
+    "class-methods-use-this": "off",
+    "import/prefer-default-export": "off",
     "prettier/prettier": ["error", { "printWidth": 100 }],
     "max-depth": ["error", 2],
     "max-lines-per-function": ["error", 15]
