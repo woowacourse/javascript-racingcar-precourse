@@ -9,7 +9,7 @@ import { checkCarNamesInputValid } from './InputValidation.js';
 import onRacingCountSubmit from './RacingCount.js';
 
 function onInvalidCarNamesInput() {
-  alert('잘못 입력하셨습니다. 자동차 이름을 5자 이하로 입력해 주세요.');
+  alert('잘못 입력하셨습니다. 5자 이하로 중복 없이 입력해 주세요.');
   carNamesInput.focus();
 }
 

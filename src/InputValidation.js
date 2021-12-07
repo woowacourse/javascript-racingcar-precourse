@@ -1,11 +1,17 @@
 function checkCarNamesLengthValid(carNames) {
-  return carNames.map((elem) => elem.length <= 5);
+  return carNames.map((elem) => elem.length > 0 && elem.length <= 5);
+}
+
+function checkCarNamesNotDuplicate(carNames) {
+  return carNames.length === new Set(carNames).size;
 }
 
 export function checkCarNamesInputValid(carNames) {
   const carNamesValidation = checkCarNamesLengthValid(carNames);
 
-  return !carNamesValidation.includes(false);
+  return (
+    !carNamesValidation.includes(false) && checkCarNamesNotDuplicate(carNames)
+  );
 }
 
 function checkRacingCountNumber(racingCount) {
