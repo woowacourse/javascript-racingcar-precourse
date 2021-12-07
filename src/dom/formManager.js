@@ -13,6 +13,7 @@ class FormManager {
 
     const idDictionary = DICT_ID_FORM_ELEMENTS[formKey];
     const buttonAction = DICT_ACTION_BUTTON_SUBMIT[formKey];
+
     const formManager = new FormManager(idDictionary);
     formManager.setButtonAction(buttonAction);
 
