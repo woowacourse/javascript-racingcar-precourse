@@ -61,12 +61,11 @@ export default function SetGame() {
             if (checkInputValidate(input_val)) {
                 setRacingCount(input_val);
                 showElement($racing_result_h4);
+                new PlayGame(getGameInformation());
             } else {
                 alert("올바른 값을 입력해주세요");
                 $racing_count_input.value = "";
             }
-
-            new PlayGame(getGameInformation());
         });
     };
 
