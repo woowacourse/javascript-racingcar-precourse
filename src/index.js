@@ -47,6 +47,31 @@ class RacingGame {
     this.$racingCountTitle.style.display = '';
   }
 
+  #showRacingResultElements() {
+    this.$racingResultTitle.style.display = '';
+    this.$racingStepsSpan.style.display = '';
+    this.$racingWinnersSpan.style.display = '';
+    this.$racingWinnersSpan.innerText = this.#getWinnersString();
+
+  }
+
+  #getWinnersString() {
+    let maxLoc = -1
+    let winners = []
+
+    for (let i = 0; i < this.carsList.length; i++) {
+      const currCar = this.carsList[i];
+
+      if (currCar.getLocation() > maxLoc){
+        maxLoc = currCar.getLocation();
+        winners = [currCar.getName()]
+      }
+      else if (currCar.getLocation() === maxLoc) winners.push(currCar.getName())
+    }
+    return winners.join(', ');
+  }
+
+
   #addOnClickEventListeners() {
     this.$carNamesSubmitButton.addEventListener('click', this.#onClickCarNamesSubmitHandler.bind(this));
     this.$racingCountSubmitButton.addEventListener('click', this.#onClickracingCountSubmitHandler.bind(this));
@@ -71,11 +96,11 @@ class RacingGame {
     if (isValidPositiveNumber(userInput)){
       const raceCount = parseInt(userInput);
       // simulate result here
+      this.#simulateGame(raceCount);
     }else{
       alert(constants.COUNT_ERROR_MESSAGE);
     }
   }
-
 
   #createNewCars(carNamesInput){  
     const parsedCarNames = carNamesInput.split(',');
@@ -91,6 +116,27 @@ class RacingGame {
 
   #isValidCarNamesLength(carNamesList){
     return getMaxLengthOfStringList(carNamesList) <= this.carNameMaxLength && !carNamesList.includes('');
+  }
+
+  #simulateGame(raceCount){
+    for (let i = 0; i < raceCount; i++){
+      this.#simulateRound();
+      this.#addResultString();
+    }
+    this.#showRacingResultElements();
+  }
+
+  #simulateRound(){
+    this.carsList.forEach((car) => car.simulate());
+  }
+
+  #getSimulationRoundString(){
+    return this.carsList.map((c) => c.toString()).join('<br/>') + '<br/><br/>';
+  }
+
+  #addResultString(){
+    const str = this.#getSimulationRoundString();
+    this.$racingStepsSpan.insertAdjacentHTML( 'beforeend', str );
   }
 }
 

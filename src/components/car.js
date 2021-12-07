@@ -17,4 +17,12 @@ export default class Car {
     }
     return str;
   }
+
+  getLocation(){
+    return this.location;
+  }
+
+  getName(){
+    return this.name;
+  }
 }
