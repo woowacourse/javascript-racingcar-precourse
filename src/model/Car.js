@@ -19,10 +19,11 @@ class Car {
       RANDOM_NUMBER.start,
       RANDOM_NUMBER.end,
     );
+    let isMove = 0;
     if (randomNumber >= RANDOM_NUMBER.winSeparater) {
-      return 1;
+      isMove = 1;
     }
-    return 0;
+    return isMove;
   }
 }
 
