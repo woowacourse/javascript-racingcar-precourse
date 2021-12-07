@@ -10,9 +10,9 @@ import CarsModel from '../models/CarsModel.js';
 
 export default {
   init() {
-    new NameFormView($(ELEMENT_ID.carNamesForm))
-      .init()
-      .on(EVENT_TYPE.SUBMIT, (e) => this.onSubmitCarNames(e.detail.input));
+    NameFormView.setup($(ELEMENT_ID.carNamesForm)).on(EVENT_TYPE.SUBMIT, (e) =>
+      this.onSubmitCarNames(e.detail.input),
+    );
     CountFormView.setup($(ELEMENT_ID.racingCountForm)).on(
       EVENT_TYPE.SUBMIT,
       (e) => this.onSubmitRacingCounts(e.detail.input),
