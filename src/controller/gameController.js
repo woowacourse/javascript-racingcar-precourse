@@ -38,6 +38,11 @@ export default class GameController {
     this.gameView.show(this.gameView.$racingCountForm);
   }
 
+  resetPlayResult() {
+    this.gameView.resetRacingResult();
+    this.gameModel.cars.forEach((car) => car.resetPosition());
+  }
+
   handleRacingCount(e) {
     e.preventDefault();
 
@@ -45,22 +50,24 @@ export default class GameController {
       this.gameModel.saveRacingCount(this.gameView.$racingCountInput.value);
     } catch (err) {
       this.gameView.resetRacingCountInput();
+
       return showError(err);
     }
 
-    this.gameView.resetRacingResult();
-    // this.gameView.makeReadOnly(this.gameView.$racingCountInput);
-    this.gameView.show(this.gameView.$racingResultTitle);
+    if (this.gameModel.isPlayed) this.resetPlayResult();
+
     this.play();
   }
 
   play() {
     const totalRoundText = createTotalRoundText(this.gameModel.racingCount, this.gameModel.cars);
 
+    this.gameModel.setIsPlayed(true);
     this.gameModel.setWinners(this.gameModel.cars);
 
     const resultText = createResultText(this.gameModel.winners);
 
+    this.gameView.show(this.gameView.$racingResultTitle);
     this.gameView.renderTotalRound(totalRoundText);
     this.gameView.renderResult(resultText);
   }

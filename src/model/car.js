@@ -25,4 +25,8 @@ export default class Car {
       throwError(MESSAGE.ERROR.NOT_MEET_CAR_NAME_CONDITION);
     }
   }
+
+  resetPosition() {
+    this.position = 0;
+  }
 }

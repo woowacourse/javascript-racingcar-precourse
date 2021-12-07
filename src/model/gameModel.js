@@ -8,6 +8,7 @@ export default class GameModel {
     this.cars = [];
     this.racingCount = 0;
     this.winners = [];
+    this.isPlayed = false;
   }
 
   saveCars(userInput) {
@@ -28,6 +29,10 @@ export default class GameModel {
     }
 
     return throwError(MESSAGE.ERROR.NOT_MEET_RACING_COUNT_CONDITION);
+  }
+
+  setIsPlayed(booleanValue) {
+    this.isPlayed = booleanValue;
   }
 
   setWinners(gameResult) {

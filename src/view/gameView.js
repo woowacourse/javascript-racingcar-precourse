@@ -17,6 +17,8 @@ export default class GameView {
     this.hide(this.$racingCountTitle);
     this.hide(this.$racingCountForm);
     this.hide(this.$racingResultTitle);
+    this.$racingResultTitle.insertAdjacentHTML('afterend', '<div id="racing-result"></div>');
+    this.$racingResult = $('#racing-result');
   }
 
   hide(tag) {
@@ -35,17 +37,17 @@ export default class GameView {
     this.$carNamesInput.value = '';
   }
 
-  renderTotalRound(totalRoundString) {
-    const newDiv = document.createElement('div');
-    newDiv.innerHTML = totalRoundString;
-
-    this.$app.append(newDiv);
+  resetRacingResult() {
+    this.$racingResult.innerHTML = '';
   }
 
-  renderResult(carInfo) {
-    const newSpan = document.createElement('span');
-    newSpan.innerHTML = `최종 우승자: <span id="racing-winners">${carInfo}</span>`;
+  renderTotalRound(totalRoundText) {
+    this.$racingResult.insertAdjacentHTML('beforeend', totalRoundText);
+  }
 
-    this.$app.append(newSpan);
+  renderResult(winnerText) {
+    const resultText = `최종 우승자: <span id="racing-winners">${winnerText}</span>`;
+
+    this.$racingResult.insertAdjacentHTML('beforeend', resultText);
   }
 }
