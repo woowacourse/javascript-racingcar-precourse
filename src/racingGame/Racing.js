@@ -24,7 +24,7 @@ export default class Racing {
     const winner = cars
       .filter(car => car.progress.length === winnerDistance)
       .map(car => car.name)
-      .join(", ");
+      .join(",");
     render.winner(winner);
   }
 
