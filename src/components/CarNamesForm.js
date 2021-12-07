@@ -6,13 +6,13 @@ import { parseCarNames, isValidCarNames } from '../utils/input.js';
 export default class CarNamesForm extends Component {
   initDoms() {
     this.container = $('#car-names-form');
-    this._input = $('#car-names-input', this.container);
+    this._inputElement = $('#car-names-input', this.container);
   }
 
   bindEvents() {
     this.appendRootEvent('submit', event => {
       event.preventDefault();
-      const names = parseCarNames(this._input.value);
+      const names = parseCarNames(this._inputElement.value);
       if (!isValidCarNames(names)) {
         return alert(MESSAGE.INVALID_CAR_NAMES);
       }

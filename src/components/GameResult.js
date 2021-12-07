@@ -6,14 +6,14 @@ import { printCarGameResult } from '../utils/game.js';
 export default class GameResult extends Component {
   initDoms() {
     this.container = $('#game-result');
-    this._winnerElem = createElement('racing-winners', '', 'span');
+    this._winnerElement = createElement('racing-winners', '', 'span');
   }
 
   render() {
     const { gameStatus, gameResult, winners } = this.props;
     if (gameStatus !== GAME_STATUS.END) return;
     this.container.innerHTML = printCarGameResult(gameResult);
-    this._winnerElem.innerHTML = winners.join(',');
-    this.container.appendChild(this._winnerElem);
+    this._winnerElement.innerHTML = winners.join(',');
+    this.container.appendChild(this._winnerElement);
   }
 }
