@@ -1,6 +1,17 @@
-import { app, gameResultHeader } from './elements.js';
+import {
+  app,
+  carNamesInput,
+  gameResultHeader,
+  racingCountInput,
+} from './elements.js';
+
+function keepInputValues() {
+  carNamesInput.setAttribute('value', carNamesInput.value);
+  racingCountInput.setAttribute('value', racingCountInput.value);
+}
 
 export function setCarForwardResult() {
+  keepInputValues();
   gameResultHeader.style.display = 'block';
 
   for (let i = 0; i < window.cars.length; i += 1) {
