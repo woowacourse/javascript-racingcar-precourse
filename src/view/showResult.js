@@ -1,12 +1,20 @@
-function findMaxCount(Cars) {
+function getWinnerList(Cars) {
   let maxCount = -1e9;
+  const winnerList = [];
+
   Cars.forEach((car) => {
     if (maxCount <= car.currentCount) {
       maxCount = car.currentCount;
     }
   });
 
-  return maxCount;
+  Cars.forEach((car) => {
+    if (maxCount === car.currentCount) {
+      winnerList.push(car.name);
+    }
+  });
+
+  return winnerList.join(", ");
 }
 
 export function appendBr() {
@@ -25,16 +33,7 @@ export function showWinners(Cars) {
   $span.id = "racing-winners";
   $div.appendChild($span);
 
-  const maxCount = findMaxCount(Cars);
-  const winnerList = [];
-
-  Cars.forEach((car) => {
-    if (maxCount === car.currentCount) {
-      winnerList.push(car.name);
-    }
-  });
-
-  $span.innerHTML = `${winnerList.join(", ")}`;
+  $span.innerHTML = `${getWinnerList(Cars)}`;
   $result.appendChild($span);
 }
 
