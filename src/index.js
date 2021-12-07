@@ -1,3 +1,4 @@
+import Car from './car.js';
 import { isEmptyName, isFiveOver, isDuplication } from './validator.js';
 
 export default class RacingGame {
@@ -11,17 +12,17 @@ export default class RacingGame {
 
   clickNameBtn = () => {
     if (!this.isCorrectName(this.inputNames.value)) {
-      alert('입력 형식이 틀렸습니다. 다시 확인해주세요');
+      alert('이름 입력 형식이 틀렸어요. 다시 확인해주세요🙄');
       return;
     }
 
-    console.log('클릭 이름확인');
+    document.getElementById('car-names-submit').setAttribute('disabled', 'true');
   };
 
   isCorrectName(userInput) {
     let inputNames = userInput.split(',');
 
-    if (isEmptyName(inputNames) || isFiveOver(inputNames) || isDuplication(inputNames)) {
+    if (isEmptyName(inputNames) || isBiggerThanFive(inputNames) || isDuplicatedName(inputNames)) {
       return false;
     }
 
