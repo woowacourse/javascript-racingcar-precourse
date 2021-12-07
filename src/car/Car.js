@@ -8,6 +8,10 @@ class Car {
     return this.name;
   }
 
+  getDistance() {
+    return this.distance;
+  }
+
   moveForward() {
     this.distance++;
   }
