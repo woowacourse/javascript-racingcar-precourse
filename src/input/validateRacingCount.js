@@ -14,6 +14,7 @@ const isNaturalNumber = () => {
 const makeAlert = () => {
   $racingCount.value = "";
   $racingCount.focus();
+
   alert(ERROR_RACING_COUNT);
 };
 

@@ -42,6 +42,7 @@ const showCountInput = () => {
 const makeAlert = () => {
   $carName.value = "";
   $carName.focus();
+
   alert(ERROR_CAR_NAME);
 };
 
