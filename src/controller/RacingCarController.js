@@ -1,4 +1,3 @@
-import RacingCarModel from '../model/RacingCarModel.js';
 import { isCarNamesInputValid, isCountInputValid } from '../utils/validity.js';
 
 class RacingCarController {

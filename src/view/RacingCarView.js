@@ -1,4 +1,3 @@
-import RacingCarModel from '../model/RacingCarModel.js';
 import { hideElement, showElement } from '../utils/dom.js';
 
 class RacingCarView {
