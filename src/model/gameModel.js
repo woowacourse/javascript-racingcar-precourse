@@ -6,10 +6,6 @@ export default class GameModel {
     this.cars = [];
     this.count = 0;
     this.winners = [];
-    this.isSubmitted = {
-      cars: false,
-      count: false,
-    };
   }
 
   saveCars(userInput) {
@@ -17,7 +13,6 @@ export default class GameModel {
 
     if (this.isValidatedLength(userInputArray, NUMBER.CARS_MIN_LENGTH)) {
       this.cars = userInputArray.map((name) => new Car(name));
-      this.isSubmitted.cars = true;
 
       return true;
     }
@@ -34,7 +29,6 @@ export default class GameModel {
 
     if (this.isValidatedCount(userInputNum, NUMBER.COUNT_LEAST_VALUE)) {
       this.count = userInputNum;
-      this.isSubmitted.count = true;
 
       return true;
     }
@@ -43,10 +37,6 @@ export default class GameModel {
 
   isValidatedCount(userInputNum, countSize) {
     return userInputNum >= countSize;
-  }
-
-  isAllSubmitted() {
-    return Object.values(this.isSubmitted).every((value) => value === true);
   }
 
   setWinners(gameResult) {

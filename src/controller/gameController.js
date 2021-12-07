@@ -51,9 +51,9 @@ export default class GameController {
       alert(err);
       this.gameView.resetRacingCountInput();
     }
-    if (this.gameModel.isAllSubmitted()) {
-      this.play();
-    }
+
+    this.gameView.show(this.gameView.$racingResultTitle);
+    this.play();
   }
 
   play() {
