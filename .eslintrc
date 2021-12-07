@@ -19,7 +19,6 @@
       "no-alert": "off",
       "no-undef":"off",
       "consistent-return": "off",
-      "no-underscore-dangle":"off",
       "no-restricted-syntax": ["off", "ForOfStatement"],
       "no-param-reassign":"off",
       "no-unused-expressions": [
