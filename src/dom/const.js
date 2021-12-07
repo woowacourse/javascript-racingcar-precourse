@@ -48,22 +48,6 @@ export const DICT_ID_FORM_ELEMENTS = {
   [KEY_FORM_RACING_COUNT]: getIdOfElementsInFormByKey(KEY_FORM_RACING_COUNT),
 };
 
-// ============== [ Form을 구성하는 태그들의 type 딕셔너리 ] =============================
-const TYPE_FORM_ELEMENTS_CAR_NAMES = {
-  inputType: 'text',
-  buttonType: 'submit',
-};
-
-const TYPE_FORM_ELEMENTS_RACING_COUNT = {
-  inputType: 'number',
-  buttonType: 'submit',
-};
-
-export const DICT_TYPE_FORM_ELEMENTS = {
-  [KEY_FORM_CAR_NAMES]: TYPE_FORM_ELEMENTS_CAR_NAMES,
-  [KEY_FORM_RACING_COUNT]: TYPE_FORM_ELEMENTS_RACING_COUNT,
-};
-
 // ======================= [ 이벤트 위임으로 관리하는 action 딕셔너리 ] =========================
 export const DICT_ACTION_BUTTON_SUBMIT = {
   [KEY_FORM_CAR_NAMES]: 'checkCarNames',
