@@ -13,9 +13,10 @@ export default {
     new NameFormView($(ELEMENT_ID.carNamesForm))
       .init()
       .on(EVENT_TYPE.SUBMIT, (e) => this.onSubmitCarNames(e.detail.input));
-    new CountFormView($(ELEMENT_ID.racingCountForm))
-      .init()
-      .on(EVENT_TYPE.SUBMIT, (e) => this.onSubmitRacingCounts(e.detail.input));
+    CountFormView.setup($(ELEMENT_ID.racingCountForm)).on(
+      EVENT_TYPE.SUBMIT,
+      (e) => this.onSubmitRacingCounts(e.detail.input),
+    );
     ResultView.setup($(ELEMENT_ID.app));
     WinnersView.setup($(ELEMENT_ID.app));
   },
