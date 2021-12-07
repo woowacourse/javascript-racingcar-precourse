@@ -12,14 +12,14 @@ import { MESSAGE, GAME_STATUS } from '../utils/constants.js';
 export default class RacingCountForm extends Component {
   initDoms() {
     this.container = $('#racing-count-form');
-    this._titleElement = $('#racing-count-title');
-    this._inputElement = $('#racing-count-input');
+    this.titleElement = $('#racing-count-title');
+    this.inputElement = $('#racing-count-input');
   }
 
   bindEvents() {
     this.appendRootEvent('submit', event => {
       event.preventDefault();
-      const count = parseRacingCount(this._inputElement.value);
+      const count = parseRacingCount(this.inputElement.value);
       if (!isValidRacingCount(count)) {
         return alert(MESSAGE.INVALID_CAR_RACINGS);
       }
@@ -31,12 +31,12 @@ export default class RacingCountForm extends Component {
     const renderCases = {
       [GAME_STATUS.RACING_COUNT_REQUIRED]: () => {
         showElement(this.container);
-        showElement(this._titleElement);
+        showElement(this.titleElement);
         enableForm(this.container);
       },
       [GAME_STATUS.NAMES_REQUIRED]: () => {
         hideElement(this.container);
-        hideElement(this._titleElement);
+        hideElement(this.titleElement);
       },
       [GAME_STATUS.END]: () => disableForm(this.container),
     };

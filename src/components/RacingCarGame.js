@@ -48,12 +48,12 @@ export default class RacingCarGame extends Component {
   }
 
   onSubmitRacingCount(count) {
-    const gameResult = this._play(count);
+    const gameResult = this.play(count);
     const winners = getWinners(gameResult);
     this.setState({ count, gameStatus: GAME_STATUS.END, gameResult, winners });
   }
 
-  _play(count) {
+  play(count) {
     const gameResult = [];
     const { cars } = this.state;
     for (let i = 0; i < count; i += 1) {
