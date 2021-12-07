@@ -1,6 +1,6 @@
 import {
   ID_APP,
-  ID_RSULT,
+  ID_RESULT,
   ID_RACING_WINNERS_TITLE,
   ID_RACING_WINNERS,
 } from '../constant/selector.js';
@@ -10,7 +10,7 @@ export default class Render {
     this.$app = document.getElementById(ID_APP);
 
     this.$result = Render.appendNode(this.$app, 'div', {
-      id: ID_RSULT,
+      id: ID_RESULT,
       hidden: true,
     });
     this.$racingWinnersTitle = Render.appendNode(this.$app, 'span', {
