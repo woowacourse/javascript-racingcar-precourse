@@ -1,3 +1,4 @@
+import { WINNER_COMMENT } from '../libs/constant.js';
 import { hideElement, showElement } from '../utils/dom.js';
 
 class RacingCarView {
@@ -24,7 +25,7 @@ class RacingCarView {
   }
 
   appendElements() {
-    this.$winnerTextDiv.innerText = '최종 우승자: ';
+    this.$winnerTextDiv.innerText = WINNER_COMMENT;
     this.$app.appendChild(this.$resultTextDiv);
     this.$app.appendChild(this.$winnerTextDiv);
     this.$winnerTextDiv.appendChild(this.$winnerTextSpan);

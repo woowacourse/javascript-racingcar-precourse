@@ -9,3 +9,5 @@ export const USER_INPUT_ALERT = {
 export const CAR_NAMES_SEPARATER = ',';
 
 export const MOVE_UNIT = '-';
+
+export const WINNER_COMMENT = '최종 우승자: ';
