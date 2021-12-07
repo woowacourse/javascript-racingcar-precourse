@@ -37,11 +37,12 @@
 
 <b>constants.js</b> (constants)
 
-- [ ] DOM 요소 setting
-- [ ] 경고 문구 및 조건 setting  
+- [X] DOM 요소 setting
+- [X] 경고 문구 및 조건 setting  
 
 <b>setResult.js</b> (module)
 
+- [X] 한 턴 실행 결과 시각화 - `showGameResult`
 - [ ] 우승자 판별 - `whoIsWinner`
 - [ ] 우승자 출력 (여러명 case 고려) - `printWinner`
 
@@ -59,7 +60,7 @@
 
 <b>submitCountTrun.js</b> (module)
 
-- [ ] 이동 횟수 입력 처리 - `checkInput`
+- [X] 이동 횟수 입력 처리 - `checkInput`
 
 
 
