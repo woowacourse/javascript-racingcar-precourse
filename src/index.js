@@ -9,27 +9,34 @@ export default class RacingCarGame {
       this.onCountInputSubmit.bind(this);
     this.formTag = document.getElementsByTagName('form');
     this.titleTag = document.getElementsByTagName('h4');
-    this.makeHiddenCountAndResultSection();
     this.printRacingCarGameResult = document.createElement('div');
     document.body.appendChild(this.printRacingCarGameResult);
     this.printWinner = document.createElement('div');
     document.body.appendChild(this.printWinner);
+    this.makeHiddenCountAndResultSection();
   }
 
   makeHiddenCountAndResultSection() {
     this.titleTag[0].style.visibility = 'hidden';
     this.formTag[1].style.visibility = 'hidden';
     this.titleTag[1].style.visibility = 'hidden';
+    this.printRacingCarGameResult.style.visibility = 'hidden';
+    this.printWinner.style.visibility = 'hidden';
   }
 
   makeVisibleCountSection() {
     document.getElementById('racing-count-input').value = '';
     this.titleTag[0].style.visibility = 'visible';
     this.formTag[1].style.visibility = 'visible';
+    this.titleTag[1].style.visibility = 'hidden';
+    this.printRacingCarGameResult.style.visibility = 'hidden';
+    this.printWinner.style.visibility = 'hidden';
   }
 
   makeVisibleResultSection() {
     this.titleTag[1].style.visibility = 'visible';
+    this.printRacingCarGameResult.style.visibility = 'visible';
+    this.printWinner.style.visibility = 'visible';
   }
 
   onCarNameInputSubmit(e) {
@@ -53,6 +60,7 @@ export default class RacingCarGame {
       alert(
         '시도할 횟수 입력이 올바르지 않습니다. 1 이상의 숫자로 입력해주세요.'
       );
+      this.makeVisibleCountSection();
     } else {
       this.startRacingCarGame();
     }
