@@ -14,9 +14,17 @@ export default {
     }
     return this.cars;
   },
+  deepCopy(arr) {
+    return arr.map((obj) => {
+      return { ...obj };
+    });
+  },
   play(count) {
+    const result = [];
     for (let i = 0; i < count; i += 1) {
       this.raceCars();
+      result.push(this.deepCopy(this.cars));
     }
+    return Promise.resolve(result);
   },
 };
