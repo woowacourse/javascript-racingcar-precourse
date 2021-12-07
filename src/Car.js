@@ -1,4 +1,4 @@
-import { carNamesInput } from './elements.js';
+import { carNamesInput, racingCountInput } from './elements.js';
 
 import checkCarNamesInputValid from './InputValidation.js';
 
@@ -24,6 +24,7 @@ function createCars(carNames) {
 
 function onValidCarNamesInput(carNames) {
   window.cars = createCars(carNames);
+  racingCountInput.focus();
 }
 
 export default function onCarNamesSubmit(event) {
