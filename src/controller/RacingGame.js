@@ -30,7 +30,7 @@ export default class RacingGame {
     let roundResult = [];
 
     for (const car of this._cars) {
-      const ramdomValue = pickNumberInRange(1, 9);
+      const ramdomValue = pickNumberInRange(0, 9);
       car.go(ramdomValue);
       roundResult.push(car.getData());
     }

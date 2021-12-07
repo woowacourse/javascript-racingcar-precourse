@@ -1,13 +1,19 @@
 import CarNamesForm from './CarNamesForm.js';
-import { validator } from '../validation/validator.js';
 import RacingCountForm from './RacingCountForm.js';
+import Car from '../model/Car.js';
+import RacingGame from './RacingGame.js';
+
+import { validator } from '../validation/validator.js';
 
 export default class Controller {
-  constructor() {
+  constructor(render) {
+    this.$app = document.getElementById('app');
     this.$carNamesInput = document.getElementById('car-names-input');
     this.$carNamesSubmit = document.getElementById('car-names-submit');
     this.$racingCountInput = document.getElementById('racing-count-input');
     this.$racingCountSubmit = document.getElementById('racing-count-submit');
+
+    this.render = render;
 
     this.carNamesForm = new CarNamesForm(
       this.$carNamesInput,
@@ -90,8 +96,11 @@ export default class Controller {
     if (this.alertMessage(invalidInputMessage)) {
       return;
     }
+
     this.racingCount = this.racingCountForm.getValue();
     console.log(this.racingCount);
+
+    this.startGame();
   };
 
   bindCarNamesSubmitEvent = () => {
@@ -103,5 +112,68 @@ export default class Controller {
       'click',
       this.onClickRacingCountSubmit
     );
+  };
+
+  getResultString = (char, count) => {
+    let result = '';
+    for (let i = 0; i < count; i++) {
+      result += char;
+    }
+    return result;
+  };
+
+  getWinnerString = winners => {
+    let result = '';
+    for (const winner of winners) {
+      result += `${winner}, `;
+    }
+    return result.substring(0, result.length - 2);
+  };
+
+  getResultTemplate = gameResultData => {
+    let template = '';
+
+    for (let round = 0; round < gameResultData.length; round++) {
+      for (let car = 0; car < gameResultData[0].length; car++) {
+        const carData = gameResultData[round][car];
+        const carName = carData.name;
+        const resultString = this.getResultString('-', carData.distance);
+
+        template += `<span>${carName}: ${resultString} </span><br />`;
+      }
+      template += `<br />`;
+    }
+
+    return template;
+  };
+
+  getWinnerTemplate = winners => {
+    const winnerString = this.getWinnerString(winners);
+
+    return `최종 우승자: <span id="racing-winners">${winnerString}</span>`;
+  };
+
+  renderGameResult = template => {
+    const $div = document.createElement('div');
+    this.render.template($div, this.$app, template);
+  };
+
+  renderWinners = template => {
+    const $span = document.createElement('span');
+    this.render.template($span, this.$app, template);
+  };
+
+  startGame = () => {
+    let cars = [];
+    for (const carName of this.carNames) {
+      cars.push(new Car(carName));
+    }
+
+    const game = new RacingGame(cars, this.racingCount);
+    const resultTemplate = this.getResultTemplate(game.getResult());
+    const winnerTemplate = this.getWinnerTemplate(game.getWinners());
+
+    this.renderGameResult(resultTemplate);
+    this.renderWinners(winnerTemplate);
   };
 }
