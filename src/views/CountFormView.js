@@ -1,4 +1,4 @@
-import { ELEMENT_ID } from '../utils/constants';
+import { ELEMENT_ID } from '../utils/constants.js';
 
 export default function NameFormView(el) {
   this.el = el;
@@ -16,6 +16,10 @@ export default function NameFormView(el) {
   this.onClickSubmit = (e) => {
     e.preventDefault();
     const racingCountInput = this.inputEl.value;
+    if (racingCountInput <= 0) {
+      alert('잘못된 횟수 입력입니다.');
+      return;
+    }
   };
 
   this.on = (event, handler) => {
