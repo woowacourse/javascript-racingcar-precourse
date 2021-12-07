@@ -18,6 +18,7 @@
     "no-restricted-globals": "off",
     "class-methods-use-this": "off",
     "no-alert": "off",
-    "consistent-return": "off"
+    "consistent-return": "off",
+    "no-param-reassign": "warn"
   }
 }

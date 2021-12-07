@@ -7,22 +7,18 @@ export default class Render {
     this.resultText = document.getElementById("game-result");
   }
 
-  hideRacingCountForm() {
-    this.racingCountForm.style.display = "none";
-    this.racingCountText.style.display = "none";
+  init() {
+    this.hide(this.racingCountForm);
+    this.hide(this.racingCountText);
+    this.hide(this.resultText);
   }
 
-  hideResultText() {
-    this.resultText.style.display = "none";
+  hide(dom) {
+    dom.style.display = "none";
   }
 
-  showResultText() {
-    this.resultText.style.display = "block";
-  }
-
-  showRacingCountForm() {
-    this.racingCountForm.style.display = "block";
-    this.racingCountText.style.display = "block";
+  show(dom) {
+    dom.style.display = "block";
   }
 
   clearRacingResult() {
@@ -33,7 +29,7 @@ export default class Render {
   }
 
   makeResultArea() {
-    this.showResultText();
+    this.show(this.resultText);
     this.racingResultArea = makeElement({
       tag: "div",
       id: "racing-result",

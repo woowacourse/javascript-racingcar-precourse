@@ -13,8 +13,7 @@ class RacingCarGame {
   }
 
   start() {
-    this.render.hideRacingCountForm();
-    this.render.hideResultText();
+    this.render.init();
     this.carNameForm.addEventListener("submit", e =>
       this.handleSubmitCarName(e)
     );
@@ -24,7 +23,8 @@ class RacingCarGame {
     event.preventDefault();
     const isValid = checkValidCarNames(this.user.getCarNames());
     if (isValid) {
-      this.render.showRacingCountForm();
+      this.render.show(this.render.racingCountText);
+      this.render.show(this.render.racingCountForm);
       this.racingCountForm.addEventListener("submit", e =>
         this.handleSubmitRacingCount(e)
       );
