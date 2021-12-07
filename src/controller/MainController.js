@@ -4,6 +4,8 @@ import { ELEMENT_ID } from '../utils/constants.js';
 import NameFormView from '../views/NameFormView.js';
 import CountFormView from '../views/CountFormView.js';
 
+import CarsModel from '../models/CarsModel.js';
+
 export default {
   init() {
     new NameFormView($(ELEMENT_ID.carNamesForm))
@@ -13,6 +15,6 @@ export default {
   },
 
   onSubmitCarNames(carNames) {
-    console.log(carNames);
+    CarsModel.setCars(carNames);
   },
 };
