@@ -24,15 +24,15 @@ export default class GameController {
   handleCarNames(e) {
     e.preventDefault();
 
-    const carNamesInput = this.gameView.$carNamesInput.value;
-
     try {
-      this.gameModel.saveCars(carNamesInput);
+      this.gameModel.saveCars(this.gameView.$carNamesInput.value);
     } catch (err) {
       this.gameView.resetCarNamesInput();
+
       return showError(err);
     }
 
+    // this.gameView.makeReadOnly(this.gameView.$carNamesInput);
     this.gameView.show(this.gameView.$racingCountTitle);
     this.gameView.show(this.gameView.$racingCountForm);
   }
@@ -40,15 +40,15 @@ export default class GameController {
   handleRacingCount(e) {
     e.preventDefault();
 
-    const racingCountInput = this.gameView.$racingCountInput.value;
-
     try {
-      this.gameModel.saveCount(racingCountInput);
+      this.gameModel.saveRacingCount(this.gameView.$racingCountInput.value);
     } catch (err) {
       this.gameView.resetRacingCountInput();
       return showError(err);
     }
 
+    // this.gameView.resetRacingResult();
+    // this.gameView.makeReadOnly(this.gameView.$racingCountInput);
     this.gameView.show(this.gameView.$racingResultTitle);
     this.play();
   }
@@ -56,7 +56,7 @@ export default class GameController {
   play() {
     let totalRoundString = '';
 
-    for (let i = 0; i < this.gameModel.count; i += 1) {
+    for (let i = 0; i < this.gameModel.racingCount; i += 1) {
       const roundString = this.createRoundString(this.gameModel.cars);
 
       totalRoundString += `${roundString} </br>`;

@@ -25,8 +25,24 @@ const isNotDuplicated = (userInputArray) => {
 export const isValidatedCarNames = (userInputArray) => {
   if (isValidatedLength(userInputArray, NUMBER.MIN_CARS_LENGTH) && isNotDuplicated(userInputArray))
     return true;
+
+  return false;
 };
 
-export const isValidatedCount = (userInputNum, countSize) => {
-  return userInputNum >= countSize;
+const isNotProperNumber = (userInputString) => {
+  return userInputString.startsWith('0');
+};
+
+const isLessThanGivenNum = (userInputString, givenNum) => {
+  return Number(userInputString) < givenNum;
+};
+
+export const isValidatedRacingCount = (userInputString) => {
+  if (
+    isNotProperNumber(userInputString) ||
+    isLessThanGivenNum(userInputString, NUMBER.MIN_RACING_COUNT)
+  )
+    return false;
+
+  return true;
 };

@@ -1,13 +1,12 @@
 import Car from './car.js';
-import NUMBER from '../constants/number.js';
 import MESSAGE from '../constants/message.js';
 import { throwError } from '../utils/error.js';
-import { isValidatedCarNames, isValidatedCount } from './validator.js';
+import { isValidatedCarNames, isValidatedRacingCount } from './validator.js';
 
 export default class GameModel {
   constructor() {
     this.cars = [];
-    this.count = 0;
+    this.racingCount = 0;
     this.winners = [];
   }
 
@@ -21,16 +20,14 @@ export default class GameModel {
     }
   }
 
-  saveCount(userInput) {
-    const userInputNum = Number(userInput);
-
-    if (isValidatedCount(userInputNum, NUMBER.MIN_COUNT)) {
-      this.count = userInputNum;
+  saveRacingCount(userInputString) {
+    if (isValidatedRacingCount(userInputString)) {
+      this.racingCount = Number(userInputString);
 
       return true;
     }
 
-    return throwError(MESSAGE.ERROR.NOT_MEET_COUNT_CONDITION);
+    return throwError(MESSAGE.ERROR.NOT_MEET_RACING_COUNT_CONDITION);
   }
 
   setWinners(gameResult) {
