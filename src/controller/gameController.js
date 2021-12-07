@@ -1,5 +1,6 @@
 import GameModel from '../model/gameModel.js';
 import GameView from '../view/gameView.js';
+import { showError } from '../utils/error.js';
 
 export default class GameController {
   constructor() {
@@ -29,7 +30,7 @@ export default class GameController {
       this.gameModel.saveCars(carNamesInput);
     } catch (err) {
       this.gameView.resetCarNamesInput();
-      return alert(err);
+      return showError(err);
     }
 
     this.gameView.show(this.gameView.$racingCountTitle);
@@ -45,7 +46,7 @@ export default class GameController {
       this.gameModel.saveCount(racingCountInput);
     } catch (err) {
       this.gameView.resetRacingCountInput();
-      return alert(err);
+      return showError(err);
     }
 
     this.gameView.show(this.gameView.$racingResultTitle);

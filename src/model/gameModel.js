@@ -1,5 +1,7 @@
 import Car from './car.js';
 import NUMBER from '../constants/number.js';
+import MESSAGE from '../constants/message.js';
+import { throwError } from '../utils/error.js';
 
 export default class GameModel {
   constructor() {
@@ -16,8 +18,7 @@ export default class GameModel {
 
       return true;
     }
-
-    throw Error('2대이상의 차 이름을 넣어주세요');
+    throwError(MESSAGE.ERROR.NOT_MEET_CARS_NUM_CONDITION);
   }
 
   isValidatedLength(userInputArray, givenLength) {
@@ -32,7 +33,7 @@ export default class GameModel {
 
       return true;
     }
-    throw Error('1이상의 숫자를 입력해주세요!');
+    throwError(MESSAGE.ERROR.NOT_MEET_COUNT_CONDITION);
   }
 
   isValidatedCount(userInputNum, countSize) {
