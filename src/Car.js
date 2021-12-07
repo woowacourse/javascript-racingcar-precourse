@@ -2,6 +2,7 @@ export class Car {
     constructor(name) {
         this.name = name;
         this.position = "";
+        this.point = 0;
     };
 
     makeRandNumbs() {
@@ -15,4 +16,8 @@ export class Car {
     getResult() {
         return `${this.name} : ${this.position}`;
     };
+
+    getPoint() {
+        if (this.position !== "") return this.point += this.position.length;
+    }
 };
