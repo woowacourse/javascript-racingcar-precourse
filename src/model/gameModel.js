@@ -2,6 +2,7 @@ import Car from './car.js';
 import NUMBER from '../constants/number.js';
 import MESSAGE from '../constants/message.js';
 import { throwError } from '../utils/error.js';
+import { isValidatedCarNames } from './validator.js';
 
 export default class GameModel {
   constructor() {
@@ -13,16 +14,11 @@ export default class GameModel {
   saveCars(userInput) {
     const userInputArray = userInput.split(',');
 
-    if (this.isValidatedLength(userInputArray, NUMBER.MIN_CARS_LENGTH)) {
+    if (isValidatedCarNames(userInputArray)) {
       this.cars = userInputArray.map((name) => new Car(name));
 
       return true;
     }
-    return throwError(MESSAGE.ERROR.NOT_MEET_CARS_NUM_CONDITION);
-  }
-
-  isValidatedLength(userInputArray, givenLength) {
-    return userInputArray.length >= givenLength;
   }
 
   saveCount(userInput) {
@@ -33,6 +29,7 @@ export default class GameModel {
 
       return true;
     }
+
     return throwError(MESSAGE.ERROR.NOT_MEET_COUNT_CONDITION);
   }
 
