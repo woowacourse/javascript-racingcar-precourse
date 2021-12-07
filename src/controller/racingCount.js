@@ -1,5 +1,5 @@
 import { racingCountValidate } from '../util/validate.js';
-import { racingAndResultRender } from '../view/render.js';
+import { racingResultAndWinnersRender } from '../view/render.js';
 
 export default () => {
   const $app = document.querySelector('#app');
@@ -12,6 +12,6 @@ export default () => {
     const racingCount = $racingCountInput.value;
 
     if (!racingCountValidate(racingCount)) return;
-    racingAndResultRender(racingCount);
+    racingResultAndWinnersRender(racingCount);
   });
 };

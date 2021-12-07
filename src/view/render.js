@@ -3,14 +3,14 @@ import { cars } from '../model/cars.js';
 const $app = document.querySelector('#app');
 const countFormTitle = $app.querySelectorAll('h4')[0];
 const racingCountInputForm = $app.querySelectorAll('form')[1];
-const resultTitle = $app.querySelectorAll('h4')[1];
+const racingResultTitle = $app.querySelectorAll('h4')[1];
 
 // [자동차 이름 입력 창]만 렌더된 상황
 const racingCountAndResultHide = () => {
   // [시도 횟수 입력 창] 및 [실행 결과] 숨기기
   countFormTitle.style.display = 'none';
   racingCountInputForm.style.display = 'none';
-  resultTitle.style.display = 'none';
+  racingResultTitle.style.display = 'none';
 };
 
 // [시도 횟수 입력 창] 추가 렌더
@@ -24,23 +24,25 @@ const racingCountInputRender = () => {
   racingCountInputForm.style.display = 'block';
 };
 
-const moveDistByOne = $racing => {
+const moveOnce = $racing => {
   for (const car of Object.keys(cars)) {
     cars[car].calcDist();
     $racing.innerHTML += `
       ${car}: ${cars[car].distRender()}<br>
     `;
   }
+  $racing.innerHTML += '<br>';
 };
 
-// [레이싱] 렌더
-const racingRender = racingCount => {
+// [실행결과 : 레이싱] 렌더
+const racingResultRender = racingCount => {
   const $racing = document.createElement('div');
   $racing.id = 'racing';
 
   for (let i = 0; i < racingCount; i++) {
-    moveDistByOne($racing);
-    $racing.innerHTML += '<br>';
+    const $racingOneTime = document.createElement('div');
+    moveOnce($racingOneTime);
+    $racing.appendChild($racingOneTime);
   }
   $app.appendChild($racing);
 };
@@ -51,36 +53,36 @@ const winnerPick = (finalWinners, winnerDist, car) => {
 };
 
 const winnerCalc = () => {
-  const winners = [];
+  const winnersDistArr = [];
   for (const car of Object.keys(cars)) {
-    winners.push(cars[car].dist);
+    winnersDistArr.push(cars[car].dist);
   }
 
-  const winnerDist = Math.max(...winners);
+  const maxDist = Math.max(...winnersDistArr);
   for (const car of Object.keys(cars)) {
-    winnerPick(finalWinners, winnerDist, car);
+    winnerPick(finalWinners, maxDist, car);
   }
   return finalWinners.join(', ');
 };
 
 // [최종 우승자] 렌더
-const racingWinnerRender = () => {
+const winnersRender = () => {
   $app.innerHTML += `<div>최종 우승자: <span id="racing-winners">${winnerCalc()}</span></div>`;
 };
 
-const racingAndResultRender = racingCount => {
+const racingResultAndWinnersRender = racingCount => {
   const $racingCountInput = $app.querySelector('#racing-count-input');
   const $racingCountSubmit = $app.querySelector('#racing-count-submit');
   $racingCountInput.disabled = 'true';
   $racingCountSubmit.disabled = 'true';
 
-  resultTitle.style.display = 'block';
-  racingRender(racingCount);
-  racingWinnerRender(racingCount);
+  racingResultTitle.style.display = 'block';
+  racingResultRender(racingCount);
+  winnersRender(racingCount);
 };
 
 export {
   racingCountAndResultHide,
   racingCountInputRender,
-  racingAndResultRender
+  racingResultAndWinnersRender
 };
