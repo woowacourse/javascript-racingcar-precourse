@@ -1,5 +1,5 @@
 import { config } from './validator-config.js';
-import { checkers } from './checker.js';
+import { CHECKER_TYPE, checkers } from './checker.js';
 
 export const validator = {
   checkers,

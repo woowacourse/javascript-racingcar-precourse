@@ -1,8 +1,11 @@
+export const MAX_SIZE = 5;
+
 export const CHECKER_TYPE = {
   NOEMPTY: 'isNonEmpty',
   ALPHANUM: 'isAlphaNumber',
   NUM: 'isNumber',
   ALPHANUMCOMMA: 'isAlphaNumberComma',
+  MAXSIZELIMIT: 'maxSizeLimit',
 };
 
 export const checkers = {
@@ -28,5 +31,11 @@ export const checkers = {
     type: CHECKER_TYPE.ALPHANUMCOMMA,
     validate: value => /^[a-zA-Z0-9,]+$/.test(value),
     message: '영문자와 숫자, 콤마(,)만 입력해주세요.',
+  },
+
+  maxSizeLimit: {
+    type: CHECKER_TYPE.MAXSIZELIMIT,
+    validate: value => value.length <= MAX_SIZE,
+    message: `자동차 이름을 ${MAX_SIZE}자 이하로 입력해주세요`,
   },
 };

@@ -1,4 +1,5 @@
 import CarNamesForm from './CarNamesForm.js';
+import { validator } from '../validation/validator.js';
 
 export default class Controller {
   constructor() {
@@ -6,31 +7,54 @@ export default class Controller {
     this.$submit = document.getElementById('car-names-submit');
 
     this.carNamesForm = new CarNamesForm(this.$input, this.$submit);
+    this.carNames = [];
 
     this.bindCarNamesSubmitEvent();
   }
 
   alertError = message => {
     alert(message);
+    this.carNamesForm.initValue();
   };
 
-  splitCarNamesInput = delimeter => {
-    return this.carNamesForm.getValue().split(delimeter);
-  };
+  splitCarNamesInput = delimeter =>
+    this.carNamesForm.getValue().split(delimeter);
 
-  onClickCarNamesSubmit = event => {
-    event.preventDefault();
-
+  validateCarNamesInput = () => {
+    // car-names-input 유효성 검사
     const message = this.carNamesForm.validateInput();
 
     if (message) {
       this.alertError(message);
-      this.carNamesForm.initValue();
+      return false;
+    }
+
+    return true;
+  };
+
+  validateCarName = ([...carNames]) => {
+    // 각 carName 유효성 검사
+    for (const carName of carNames) {
+      const message = validator.validate('carName', carName);
+
+      if (message) {
+        this.alertError(message);
+        return false;
+      }
+    }
+
+    return true;
+  };
+
+  onClickCarNamesSubmit = event => {
+    event.preventDefault();
+    if (!this.validateCarNamesInput()) {
       return;
     }
 
-    const carNames = this.splitCarNamesInput(',');
-    console.log(carNames);
+    this.carNames = this.splitCarNamesInput(',');
+    if (!this.validateCarName(this.carNames)) {
+    }
   };
 
   bindCarNamesSubmitEvent = () => {
