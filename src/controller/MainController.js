@@ -21,6 +21,6 @@ export default {
   },
 
   onSubmitRacingCounts(racingCount) {
-    console.log(racingCount);
+    CarsModel.play(racingCount).then((result) => console.log(result));
   },
 };

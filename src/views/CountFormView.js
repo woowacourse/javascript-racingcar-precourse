@@ -1,4 +1,4 @@
-import { ELEMENT_ID } from '../utils/constants.js';
+import { ELEMENT_ID, EVENT_TYPE } from '../utils/constants.js';
 import VALID_CHECK from '../utils/validation.js';
 
 export default function NameFormView(el) {

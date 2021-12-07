@@ -1,4 +1,4 @@
-import { NUMBER_RULE } from '../utils/constants';
+import { NUMBER_RULE } from '../utils/constants.js';
 
 export default function Car(name) {
   this.name = name;
