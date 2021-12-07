@@ -6,7 +6,7 @@
 
 <br>
 
-![프로젝트](images\play.gif)
+![프로젝트](images/play.gif)
 
 <br>
 
