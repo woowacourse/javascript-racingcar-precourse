@@ -2,8 +2,10 @@
 
 -   # 게임 시작 전
 
-    -   횟수(Count) 입력 / 자동차 이름 입력 (해당 2가지 조건이 만족 되었을 때 게임 진행 가능)
+    -   자동차 이름 입력 (validate 검사)
+    -   횟수(Count) 입력 (validate 검사))
         -   2가지 조건 중 하나라도 입력이 성립되지 않으면, alert 띄우기
+    -   자동차 이름이 통과하면, 횟수 입력가능 칸이 입력 되도록 설정.
 
 -   # 게임 진행
 
@@ -21,22 +23,29 @@
 
     -   Count 입력 및 자동차 이름 조건 확인 함수 생성
 
+        -   자동차 이름 checklist
+
+            -   글자 범위 (1 ~ 5)
+            -   공백 확인
+
+        -   자동차 이름 통과시, 횟수 입력 view 띄워주기
+
         -   Count checklist
 
             -   숫자인지 isNaN
             -   0 이 아닌지 === 0
             -   길이가 1이상인지 (공백 확인)
 
-        -   자동차 이름 checklist
-            -   글자 범위 (1 ~ 5)
-            -   공백 확인
+        -   Count checkList 통과시 결과 나타나도록 설정.
 
     -   자동차 이름 입력 및 조건 확인 함수 생성
+
         -   위 2개의 조건이 성립된다면,자동차 이름 array길이 만큼 Car object 생성
             function Car(name){
             this.name = name;
             this.distance = 0
             }
+
     -   게임 진행
 
         -   MissionUtils.Random.pickNumberInRange(0, 9)를 활용해서 나온 숫자가 4이상인지 확인
