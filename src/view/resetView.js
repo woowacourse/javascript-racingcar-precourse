@@ -1,7 +1,7 @@
 import { $ } from "../common/const.js";
 
 function initView() {
-  const $app = document.getElementById("app");
+  const $app = $("app");
   const $resultDiv = document.createElement("div");
 
   $resultDiv.id = "result-div";

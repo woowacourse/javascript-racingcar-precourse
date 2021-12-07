@@ -1,3 +1,5 @@
+import { $ } from "../common/const";
+
 function getWinnerList(Cars) {
   let maxCount = -1e9;
   const winnerList = [];
@@ -18,13 +20,13 @@ function getWinnerList(Cars) {
 }
 
 export function appendBr() {
-  const $result = document.getElementById("result-div");
+  const $result = $("result-div");
   const br = document.createElement("br");
   $result.appendChild(br);
 }
 
 export function showWinners(Cars) {
-  const $result = document.getElementById("result-div");
+  const $result = $("result-div");
   const $div = document.createElement("div");
   $result.appendChild($div);
   $div.innerText = "최종 우승자:";
@@ -38,7 +40,7 @@ export function showWinners(Cars) {
 }
 
 export function showResult(car) {
-  const $result = document.getElementById("result-div");
+  const $result = $("result-div");
   const $p = document.createElement("p");
   $p.innerHTML = `${car.name}: ${car.showRunning()}`;
   $result.appendChild($p);
