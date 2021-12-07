@@ -1,10 +1,11 @@
 import NUMBER from '../constants/number.js';
 import MESSAGE from '../constants/message.js';
 import { throwError } from '../utils/error.js';
+import { isValidatedCarName } from './validator.js';
 
 export default class Car {
   constructor(name) {
-    this.validateName(name, NUMBER.MAX_CAR_NAME_LENGTH);
+    this.validateName(name);
 
     this.name = name;
     this.position = 0;
@@ -17,13 +18,16 @@ export default class Car {
   }
 
   isBiggerThanGivenNum(allowedMinDigit, allowedMaxDigit, givenNum) {
+    // eslint-disable-next-line no-undef
     return MissionUtils.Random.pickNumberInRange(allowedMinDigit, allowedMaxDigit) >= givenNum;
   }
 
-  validateName(name, givenLength) {
-    if (name.length > givenLength || !name.trim()) {
-      throwError(MESSAGE.ERROR.NOT_MEET_CAR_NAME_CONDITION);
+  validateName(name) {
+    if (isValidatedCarName(name, NUMBER.MAX_CAR_NAME_LENGTH)) {
+      return true;
     }
+
+    throwError(MESSAGE.ERROR.NOT_MEET_CAR_NAME_CONDITION);
   }
 
   resetPosition() {

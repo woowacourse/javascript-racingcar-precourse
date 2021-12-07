@@ -46,3 +46,15 @@ export const isValidatedRacingCount = (userInputString) => {
 
   return true;
 };
+
+const isLessThanGivenLength = (name, givenLength) => {
+  return name.length <= givenLength;
+};
+
+const isNotEmpty = (name) => {
+  return !!name.trim();
+};
+
+export const isValidatedCarName = (name, givenLength) => {
+  return isLessThanGivenLength(name, givenLength) && isNotEmpty(name);
+};

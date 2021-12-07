@@ -18,5 +18,5 @@ export const createTotalRoundText = (racingCount, cars) => {
 };
 
 export const createResultText = (winners) => {
-  return winners.join(',');
+  return winners.join(', ');
 };
