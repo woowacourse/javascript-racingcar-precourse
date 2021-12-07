@@ -1,3 +1,5 @@
+/* eslint-disable import/extensions */
+/* eslint-disable no-alert */
 import Car from './components/car.js';
 import { getMaxLengthOfStringList, isValidPositiveNumber } from './functions/index.js';
 import constants from './constants/index.js';
@@ -28,7 +30,7 @@ class RacingGame {
     this.$appDiv.appendChild(this.$racingStepsSpan);
 
     this.$racingWinnersSpan = document.createElement('span');
-    this.$racingWinnersSpan.setAttribute('id', 'racing-winners');
+    this.$racingWinnersSpan.setAttribute('id', 'racing-result');
     this.$appDiv.appendChild(this.$racingWinnersSpan);
   }
 
@@ -51,26 +53,23 @@ class RacingGame {
     this.$racingResultTitle.style.display = '';
     this.$racingStepsSpan.style.display = '';
     this.$racingWinnersSpan.style.display = '';
-    this.$racingWinnersSpan.innerText = this.#getWinnersString();
-
+    this.$racingWinnersSpan.innerHTML = `최종 우승자: <span id='racing-winners'>${this.#getWinnersString()}<span/>`;
   }
 
   #getWinnersString() {
-    let maxLoc = -1
-    let winners = []
+    let maxLoc = -1;
+    let winners = [];
 
-    for (let i = 0; i < this.carsList.length; i++) {
+    for (let i = 0; i < this.carsList.length; i += 1) {
       const currCar = this.carsList[i];
 
-      if (currCar.getLocation() > maxLoc){
+      if (currCar.getLocation() > maxLoc) {
         maxLoc = currCar.getLocation();
-        winners = [currCar.getName()]
-      }
-      else if (currCar.getLocation() === maxLoc) winners.push(currCar.getName())
+        winners = [currCar.getName()];
+      } else if (currCar.getLocation() === maxLoc) winners.push(currCar.getName());
     }
     return winners.join(', ');
   }
-
 
   #addOnClickEventListeners() {
     this.$carNamesSubmitButton.addEventListener('click', this.#onClickCarNamesSubmitHandler.bind(this));
@@ -84,25 +83,34 @@ class RacingGame {
     const created = this.#createNewCars(userInput);
     if (!created) {
       alert(constants.INPUT_ERROR_MESSAGE);
+      this.#hideUnusedElements();
     } else {
       this.#showRacingCountElements();
     }
   }
 
-  #onClickracingCountSubmitHandler(event){
+  #onClickracingCountSubmitHandler(event) {
     event.preventDefault();
 
     const userInput = this.$racingCountInput.value;
-    if (isValidPositiveNumber(userInput)){
-      const raceCount = parseInt(userInput);
-      // simulate result here
+    if (isValidPositiveNumber(userInput)) {
+      const raceCount = parseInt(userInput, 10);
       this.#simulateGame(raceCount);
-    }else{
+    } else {
       alert(constants.COUNT_ERROR_MESSAGE);
     }
   }
 
-  #createNewCars(carNamesInput){  
+  #resetGame() {
+    this.$racingStepsSpan.innerText = '';
+    this.#resetCarLocations();
+  }
+
+  #resetCarLocations() {
+    this.carsList.forEach((car) => car.setLocation(0));
+  }
+
+  #createNewCars(carNamesInput) {
     const parsedCarNames = carNamesInput.split(',');
     const isValidInput = this.#isValidCarNamesList(parsedCarNames);
 
@@ -110,35 +118,37 @@ class RacingGame {
     return isValidInput;
   }
 
-  #isValidCarNamesList(carNamesList){
+  #isValidCarNamesList(carNamesList) {
     return carNamesList.length > 1 && this.#isValidCarNamesLength(carNamesList);
   }
 
-  #isValidCarNamesLength(carNamesList){
+  #isValidCarNamesLength(carNamesList) {
     return getMaxLengthOfStringList(carNamesList) <= this.carNameMaxLength && !carNamesList.includes('');
   }
 
-  #simulateGame(raceCount){
-    for (let i = 0; i < raceCount; i++){
+  #simulateGame(raceCount) {
+    this.#resetGame();
+
+    for (let i = 0; i < raceCount; i += 1) {
       this.#simulateRound();
       this.#addResultString();
     }
+
     this.#showRacingResultElements();
   }
 
-  #simulateRound(){
+  #simulateRound() {
     this.carsList.forEach((car) => car.simulate());
   }
 
-  #getSimulationRoundString(){
-    return this.carsList.map((c) => c.toString()).join('<br/>') + '<br/><br/>';
+  #getSimulationRoundString() {
+    return `${this.carsList.map((c) => c.toString()).join('<br/>')}<br/><br/>`;
   }
 
-  #addResultString(){
+  #addResultString() {
     const str = this.#getSimulationRoundString();
-    this.$racingStepsSpan.insertAdjacentHTML( 'beforeend', str );
+    this.$racingStepsSpan.insertAdjacentHTML('beforeend', str);
   }
 }
-
+// eslint-disable-next-line no-new
 new RacingGame();
-
