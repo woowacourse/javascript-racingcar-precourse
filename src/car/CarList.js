@@ -1,6 +1,7 @@
 import Car from "./Car.js";
 import isMovable from "../utils/isMovable.js";
 import makeResultElement from "../utils/makeResultElement.js";
+import isValidate from "../utils/isValidate.js";
 
 class CarList {
   constructor() {
@@ -13,7 +14,13 @@ class CarList {
 
   init(carNameArray) {
     for (let i = 0; i < carNameArray.length; i++) {
-      this.push(new Car(carNameArray[i]));
+      if (isValidate("name", carNameArray[i]))
+        this.push(new Car(carNameArray[i]));
+      else {
+        this.array = [];
+        alert("잘못된 이름입니다.");
+        return;
+      }
     }
   }
 
