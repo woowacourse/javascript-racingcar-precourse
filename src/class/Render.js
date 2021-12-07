@@ -23,15 +23,15 @@ export default class Render {
     });
   }
 
-  static appendNode(parent, tag, attributes={}) {
+  static appendNode(parent, tag, attributes = {}) {
     const $tag = document.createElement(tag);
 
-    for (const [name, value] of Object.entries(attributes)) {
+    Object.entries(attributes).forEach(([name, value]) => {
       $tag.setAttribute(name, value);
-    }
+    });
 
-    parent.appendChild($tag)
-    
+    parent.appendChild($tag);
+
     return $tag;
   }
 

@@ -17,8 +17,12 @@ export default class App {
   }
 
   addEvent() {
-    this.carNameForm.addSubmitClickEventHandler(this.carNamesSubmitClickEventHandler.bind(this));
-    this.racingCountForm.addSubmitClickEventHandler(this.racingCountSubmitClickEventHandler.bind(this));
+    this.carNameForm.addSubmitClickEventHandler(
+      this.carNamesSubmitClickEventHandler.bind(this)
+    );
+    this.racingCountForm.addSubmitClickEventHandler(
+      this.racingCountSubmitClickEventHandler.bind(this)
+    );
   }
 
   carNamesSubmitClickEventHandler(e) {
@@ -43,7 +47,10 @@ export default class App {
 
     this.render.initializeResult();
     const racingCount = this.racingCountForm.getInputValue();
-    const isValid = this.racingCountForm.checkValidInputValue(this.cars, racingCount);
+    const isValid = this.racingCountForm.checkValidInputValue(
+      this.cars,
+      racingCount
+    );
 
     if (isValid) {
       this.racingCount = Number(racingCount);
@@ -52,7 +59,7 @@ export default class App {
   }
 
   startGame() {
-    for (let i = 0; i < this.racingCount; i++) {
+    for (let i = 0; i < this.racingCount; i += 1) {
       this.race();
     }
 
@@ -73,13 +80,13 @@ export default class App {
 
   findRacingWinner() {
     let currentHighNumMove = 0;
-    let currentWinners = []
+    let currentWinners = [];
 
-    this.cars.forEach((car)=>{
+    this.cars.forEach((car) => {
       if (car.getNumMove() > currentHighNumMove) {
         currentHighNumMove = car.getNumMove();
         currentWinners = [car.getName()];
-      } else if (car.getNumMove() == currentHighNumMove) {
+      } else if (car.getNumMove() === currentHighNumMove) {
         currentWinners.push(car.getName());
       }
     });

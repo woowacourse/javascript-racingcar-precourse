@@ -1,4 +1,4 @@
-import { 
+import {
   MAX_NUMBER_IN_RANGE,
   MIN_NUMBER_IN_RANGE,
   MOVE_THRESHOLD,
@@ -19,14 +19,17 @@ export default class Car {
   }
 
   move() {
-    if (this.determineMove()) {
+    if (Car.determineMove()) {
       this.numMove += 1;
     }
   }
 
-  determineMove() {
-    const picked = MissionUtils.Random.pickNumberInRange(MIN_NUMBER_IN_RANGE, MAX_NUMBER_IN_RANGE);
-    const canMove = picked >= MOVE_THRESHOLD
+  static determineMove() {
+    const picked = MissionUtils.Random.pickNumberInRange(
+      MIN_NUMBER_IN_RANGE,
+      MAX_NUMBER_IN_RANGE
+    );
+    const canMove = picked >= MOVE_THRESHOLD;
 
     return canMove;
   }

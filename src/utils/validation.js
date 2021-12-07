@@ -2,7 +2,7 @@ import {
   MAX_LENGTH_CAR_NAME,
   MIN_COUNT_CAR,
   MIN_RANGE_RACING_COUNT,
- } from '../constant/game.js';
+} from '../constant/game.js';
 
 const checkNameLength = (carNames) => {
   const isPass = carNames.every((name) => name.length <= MAX_LENGTH_CAR_NAME);
@@ -32,9 +32,11 @@ const checkExistingCar = (cars) => {
 };
 
 const checkValidNumber = (racingCount) => {
-  const isPass = racingCount >= MIN_RANGE_RACING_COUNT && Number.isInteger(Number(racingCount))
+  const isPass =
+    racingCount >= MIN_RANGE_RACING_COUNT &&
+    Number.isInteger(Number(racingCount));
 
-  return isPass
+  return isPass;
 };
 
 export {

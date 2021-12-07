@@ -10,7 +10,7 @@ const ID_RSULT = 'result';
 const ID_RACING_WINNERS_TITLE = 'racing-winners-title';
 const ID_RACING_WINNERS = 'racing-winners';
 
-export { 
+export {
   ID_APP,
   ID_CAR_NAMES_INPUT,
   ID_CAR_NAMES_SUBMIT,
