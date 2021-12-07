@@ -6,12 +6,14 @@ class Car {
     this.step = 0;
     this.stepByRound = [];
   }
+
   move(racingCount) {
     for (let i = 0; i < racingCount; i++) {
       this.step += this.randomMove();
       this.stepByRound.push(this.step);
     }
   }
+
   randomMove() {
     const randomNumber = MissionUtils.Random.pickNumberInRange(
       RANDOM_NUMBER.start,
