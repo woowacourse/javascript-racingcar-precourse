@@ -72,6 +72,33 @@ export default class RacingGame {
       this.getResultElement.innerText += '\n';
       this.moveCount--;
     }
+
+    this.getResultElement().innerText += '최종우승자: ';
+    this.printWinner();
+  }
+
+  printWinner() {
+    let gameWinner = document.createElement('span');
+    gameWinner.setAttribute('id', 'racing-winners');
+    document.getElementById('app').appendChild(gameWinner);
+
+    this.cars.sort((a, b) => b.distance.length - a.distance.length);
+
+    gameWinner.innerText += `${this.getWinner(this.cars).toString()}`;
+  }
+
+  getWinner(cars) {
+    let Winner = [];
+
+    for (let car of cars) {
+      if (cars[0].distance === car.distance) {
+        Winner.push(car.name);
+      } else if (cars[0].distance !== car.distance) {
+        return Winner;
+      }
+    }
+
+    return Winner;
   }
 
   movedCar() {
