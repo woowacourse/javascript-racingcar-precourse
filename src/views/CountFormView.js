@@ -1,7 +1,7 @@
 import { ELEMENT_ID, EVENT_TYPE } from '../utils/constants.js';
 import VALID_CHECK from '../utils/validation.js';
 
-export default function NameFormView(el) {
+export default function CountFormView(el) {
   this.el = el;
   this.inputEl = this.el.querySelector(ELEMENT_ID.racingCountInput);
   this.submitEl = this.el.querySelector(ELEMENT_ID.racingCountSubmit);

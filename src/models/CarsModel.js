@@ -27,4 +27,14 @@ export default {
     }
     return Promise.resolve(result);
   },
+  getWinners() {
+    const maxCountNumber = Math.max(
+      ...this.cars.map((car) => car.forwardCount),
+    );
+    return Promise.resolve(
+      this.cars
+        .filter((car) => car.forwardCount === maxCountNumber)
+        .map((car) => car.name),
+    );
+  },
 };
