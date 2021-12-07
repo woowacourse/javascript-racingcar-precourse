@@ -8,7 +8,9 @@ export default class RacingGame {
     this.moveCount = document.getElementById('racing-count-input');
     this.inputNames = document.getElementById('car-names-input');
     document.getElementById('car-names-submit').setAttribute('type', 'button');
+    document.getElementById('racing-count-submit').setAttribute('type', 'button');
     document.getElementById('car-names-submit').addEventListener('click', this.clickNameBtn);
+    document.getElementById('racing-count-submit').addEventListener('click', this.clickCountBtn);
   }
 
   clickNameBtn = () => {
@@ -31,6 +33,31 @@ export default class RacingGame {
     this.isValidNames = 1;
     return true;
   }
+
+  clickCountBtn = () => {
+    if (!this.isCorrectCount(this.inputCount.value)) {
+      alert('횟수를 올바르게 입력해주세요');
+      return;
+    } else if (this.isValidNames === 0) {
+      alert('자동차 이름 입력 후 다시 입력해주세요');
+      return;
+    }
+
+    this.playGame();
+  };
+
+  isCorrectCount(userInput) {
+    let inputCount = Number(userInput);
+
+    if (!isValidCount(inputCount)) {
+      return false;
+    }
+
+    this.moveCount = inputCount;
+    return true;
+  }
+
+  playGame() {}
 
   makeCars(inputNames) {
     for (let name of inputNames) {

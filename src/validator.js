@@ -8,7 +8,7 @@ function isEmptyName(inputNames) {
   return false;
 }
 
-function isFiveOver(inputNames) {
+function isBiggerThanFive(inputNames) {
   for (let name of inputNames) {
     if (name.length > 5) {
       return true;
@@ -18,7 +18,7 @@ function isFiveOver(inputNames) {
   return false;
 }
 
-function isDuplication(inputNames) {
+function isDuplicatedName(inputNames) {
   let names = new Set(inputNames);
 
   if (inputNames.length === names.size) {
@@ -28,4 +28,12 @@ function isDuplication(inputNames) {
   return true;
 }
 
-export { isEmptyName, isFiveOver, isDuplication };
+function isValidCount(inputCount) {
+  if (Number.isNaN(inputCount) || Number(inputCount) > 0) {
+    return true;
+  }
+
+  return false;
+}
+
+export { isEmptyName, isBiggerThanFive, isDuplicatedName, isValidCount };
