@@ -1,6 +1,6 @@
 function Car(name) {
   this.name = name;
-  this.count = 0;
+  this.distance = 0;
 }
 
 export const cars = [];

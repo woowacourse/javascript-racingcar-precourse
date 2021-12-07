@@ -7,7 +7,7 @@ function printRacingResult($resultScreenDiv) {
   cars.forEach((car) => {
     $resultScreenDiv.insertAdjacentHTML(
       'beforeend',
-      `${car.name}: ${'-'.repeat(car.count)}<br>`,
+      `${car.name}: ${'-'.repeat(car.distance)}<br>`,
     );
   });
   $resultScreenDiv.insertAdjacentHTML('beforeend', '<br>');

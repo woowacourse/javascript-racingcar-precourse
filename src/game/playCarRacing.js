@@ -10,7 +10,7 @@ function getRandomNumber() {
 
 function getRacingResult(car) {
   if (getRandomNumber() >= MOVING_RANGE) {
-    car.count++;
+    car.distance++;
   }
 }
 

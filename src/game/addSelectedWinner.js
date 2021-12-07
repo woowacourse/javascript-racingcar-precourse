@@ -1,14 +1,14 @@
 import { cars } from '../init/cars.js';
 
-function getMaxCount() {
-  return cars.reduce((acc, { count }) => {
-    return acc > count ? acc : count;
+function getMaxDistance() {
+  return cars.reduce((acc, { distance }) => {
+    return acc > distance ? acc : distance;
   }, 0);
 }
 
 function selectWinner() {
-  const maxCount = getMaxCount();
-  return cars.filter((car) => car.count === maxCount);
+  const maxDistance = getMaxDistance();
+  return cars.filter((car) => car.distance === maxDistance);
 }
 
 function makeWinnerString($resultScreenDiv, $winnerSpan) {
