@@ -1,5 +1,5 @@
 import Car from './model/Car.js';
-import { MOVE_CONDITION_NUMBER } from './utils/constants.js';
+import { GAME_RULE } from './utils/constants.js';
 import { $id, initScreen, showRacingCountScreen, showRacingResultScreen } from './utils/dom.js';
 import getRandomNumber from './utils/getRandomNumber.js';
 import { renderGame, renderWinner } from './utils/render.js';
@@ -40,7 +40,7 @@ class RacingGame {
     this.racingCars.forEach((car) => {
       const randomNumber = getRandomNumber();
 
-      if (randomNumber >= MOVE_CONDITION_NUMBER) {
+      if (randomNumber >= GAME_RULE.MOVE_CONDITION_NUMBER) {
         car.move();
       }
     });

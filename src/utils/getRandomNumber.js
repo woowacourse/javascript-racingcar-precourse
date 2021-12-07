@@ -1,7 +1,10 @@
-import { MAX_RANGE_NUMBER, MIN_RANGE_NUMBER } from './constants.js';
+import { GAME_RULE } from './constants.js';
 
 const getRandomNumber = () => {
-  return MissionUtils.Random.pickNumberInRange(MIN_RANGE_NUMBER, MAX_RANGE_NUMBER);
+  return MissionUtils.Random.pickNumberInRange(
+    GAME_RULE.MIN_RANGE_NUMBER,
+    GAME_RULE.MAX_RANGE_NUMBER
+  );
 };
 
 export default getRandomNumber;

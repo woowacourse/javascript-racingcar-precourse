@@ -1,9 +1,10 @@
-const MIN_RANGE_NUMBER = 0;
-const MAX_RANGE_NUMBER = 9;
-const MOVE_CONDITION_NUMBER = 4;
-
-const CAR_DISTANCE_LOG = '-';
-const MAX_CAR_NAME_LENGTH = 5;
+const GAME_RULE = Object.freeze({
+  MIN_RANGE_NUMBER: 0,
+  MAX_RANGE_NUMBER: 9,
+  MOVE_CONDITION_NUMBER: 4,
+  MAX_CAR_NAME_LENGTH: 5,
+  CAR_DISTANCE_LOG: '-',
+});
 
 const CAR_NAMES = Object.freeze({
   EMPTY_ERROR_MESSAGE: '자동차 이름을 입력해주세요.  올바른 예) east,west,south,north',
@@ -20,12 +21,4 @@ const RACING_COUNT = Object.freeze({
   RANGE_ERROR_MESSAGE: '시도할 횟수는 1 이상의 자연수로 입력해주세요.  올바른 예) 5',
 });
 
-export {
-  MIN_RANGE_NUMBER,
-  MAX_RANGE_NUMBER,
-  MOVE_CONDITION_NUMBER,
-  CAR_DISTANCE_LOG,
-  MAX_CAR_NAME_LENGTH,
-  CAR_NAMES,
-  RACING_COUNT,
-};
+export { GAME_RULE, CAR_NAMES, RACING_COUNT };

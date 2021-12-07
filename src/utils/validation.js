@@ -1,4 +1,4 @@
-import { CAR_NAMES, MAX_CAR_NAME_LENGTH, RACING_COUNT } from './constants.js';
+import { GAME_RULE, CAR_NAMES, RACING_COUNT } from './constants.js';
 
 const isEmpty = (inputValue) => {
   return inputValue === '';
@@ -11,7 +11,7 @@ const isContainsBlankName = (carNamesInput) => {
 };
 
 const isLongerThanFiveLetters = (carNamesInput) => {
-  return carNamesInput.split(',').some((carName) => carName.length > MAX_CAR_NAME_LENGTH);
+  return carNamesInput.split(',').some((carName) => carName.length > GAME_RULE.MAX_CAR_NAME_LENGTH);
 };
 
 const isDuplicate = (carNamesInput) => {
