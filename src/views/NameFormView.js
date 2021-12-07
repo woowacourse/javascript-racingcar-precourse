@@ -21,7 +21,7 @@ export default function NameFormView(el) {
       this.clearInput();
       return;
     }
-    this.emit('@submit', { input: carNamesInput });
+    this.emit('@submit', { input: carNamesInput.split(',') });
   };
 
   this.on = (event, handler) => {

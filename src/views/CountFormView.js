@@ -1,4 +1,5 @@
 import { ELEMENT_ID } from '../utils/constants.js';
+import CarsModel from '../models/CarsModel.js';
 
 export default function NameFormView(el) {
   this.el = el;
@@ -20,6 +21,11 @@ export default function NameFormView(el) {
       alert('잘못된 횟수 입력입니다.');
       return;
     }
+    if (!CarsModel.getCars().length) {
+      alert('자동차 이름을 먼저 입력해주세요.');
+      return;
+    }
+    this.emit('@submit', { input: racingCountInput });
   };
 
   this.on = (event, handler) => {

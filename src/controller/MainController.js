@@ -11,10 +11,16 @@ export default {
     new NameFormView($(ELEMENT_ID.carNamesForm))
       .init()
       .on('@submit', (e) => this.onSubmitCarNames(e.detail.input));
-    new CountFormView($(ELEMENT_ID.racingCountForm)).init();
+    new CountFormView($(ELEMENT_ID.racingCountForm))
+      .init()
+      .on('@submit', (e) => this.onSubmitRacingCounts(e.detail.input));
   },
 
   onSubmitCarNames(carNames) {
     CarsModel.setCars(carNames);
+  },
+
+  onSubmitRacingCounts(racingCount) {
+    console.log(racingCount);
   },
 };
