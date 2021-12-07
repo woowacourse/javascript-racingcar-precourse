@@ -26,6 +26,7 @@ export default {
   },
 
   onSubmitRacingCounts(racingCount) {
+    CarsModel.resetCars();
     this.playGame(racingCount);
   },
 

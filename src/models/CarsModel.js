@@ -37,4 +37,7 @@ export default {
         .map((car) => car.name),
     );
   },
+  resetCars() {
+    this.cars.forEach((car) => (car.forwardCount = 0));
+  },
 };
