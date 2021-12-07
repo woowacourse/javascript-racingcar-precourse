@@ -28,7 +28,7 @@ export default class Car {
   }
 
   validateName(name, givenLength) {
-    if (name.length >= givenLength) {
+    if (name.length > givenLength) {
       throw Error('자동차 이름은 5자이하여야합니다!');
     }
   }
