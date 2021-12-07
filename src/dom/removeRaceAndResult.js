@@ -7,9 +7,9 @@ function removeRace() {
 }
 
 function removeResult() {
-  const $racingWinners = document.getElementById('racing-winners');
-  if ($racingWinners) {
-    $racingWinners.parentNode.removeChild($racingWinners);
+  const $result = document.getElementById('result');
+  if ($result) {
+    $result.remove();
   }
 }
 

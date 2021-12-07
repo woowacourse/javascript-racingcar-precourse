@@ -15,6 +15,8 @@ export const ALERT_MESSAGE = {
   racingCountAlert: '0이 아닌 숫자를 입력해주세요.',
 };
 
+export const WINNER_MESSAGE = '최종 우승자: ';
+
 export const DISPLAY = {
   none: 'none',
   block: 'block',
