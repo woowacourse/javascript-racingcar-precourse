@@ -45,17 +45,17 @@
 
 - [ ] 자동차 입력 수대로 Car 객체 생성 (submitCarNames)
 - [ ] 이동 입력 수대로 Game 처리 (submitTrunCount)
+- [ ] 이동 횟수만큼 게임 진행 - `startGame`
+- [ ] 자동자 전진 가능 판별 (x>=4) - `isMoveCar`
 
 <b>submitCarNames.js</b> (module)
 
 - [ ] 자동차 이름 입력 처리 (Parsing) - `parseCarName` 
 - [ ] 자동차 입력 수대로 Car 객체 생성 - `createCars`
 
-<b>submitTrunCount.js</b> (module)
+<b>submitCountTrun.js</b> (module)
 
 - [ ] 이동 횟수 입력 처리 - `checkInput`
-- [ ] 자동자 전진 가능 판별 (x>=4) - `isMoveCar`
-- [ ] 이동 횟수만큼 게임 진행 - `startGame`
 
 
 
