@@ -94,14 +94,14 @@
 │   └── js
 │       ├── index.js                      // 페이지에 접속하면 게임을 시작할 수 있게 하는 로직
 │       ├── controllers                   // models, views 사이를 연결하면서 이벤트를 관리하고, 프로그램이 돌아갈 수 있게 하는 역할
-│       │   ├── handleCarNameInput.js     // 위 두개의 입력을 제대로 했을 때, 자동차 게임을 시작하는 로직 
-│       │   ├── handleRacingCountInput.js // 위 두개의 입력을 제대로 했을 때, 자동차 게임을 시작하는 로직 
+│       │   ├── handleCarNameInput.js     // index.js에서 자동차 이름 입력창을 클릭하면 실행하는 로직
+│       │   ├── handleRacingCountInput.js // index.js에서 시도 횟수를 입력받는 창을 클릭하면 실행하는 로직 
 │       │   └── playGame.js               // 위 두개의 입력을 제대로 했을 때, 자동차 게임을 시작하는 로직 
 │       ├── models                        // 데이터를 관리하는 역할 (views에 접근하지 않음)
-│       │   ├── Car.js                    // 위 두개의 입력을 제대로 했을 때, 자동차 게임을 시작하는 로직 
-│       │   ├── getCarArr.js              // 위 두개의 입력을 제대로 했을 때, 자동차 게임을 시작하는 로직 
-│       │   ├── getRandomNumber.js        // 위 두개의 입력을 제대로 했을 때, 자동차 게임을 시작하는 로직 
-│       │   └── getWinner.js              // 위 두개의 입력을 제대로 했을 때, 자동차 게임을 시작하는 로직 
+│       │   ├── Car.js                    // Car 객체를 생성 및 관리하는 생성자 함수 
+│       │   ├── getCarArr.js              // 사용자가 입력한 자동차들을 객체로 만들어서, 배열화 시키는 로직 
+│       │   ├── getRandomNumber.js        // 랜덤한 숫자를 생성하는 로직 
+│       │   └── getWinner.js              // 게임의 우승자를 가져오는 로직  
 │       ├── views                         // 화면을 관리하는 역할 (models에 접근하지 않음)
 │       │   ├── alertInputError.js        // input 에러를 alert 창으로 띄우는 로직 
 │       │   ├── disableInput.js           // input창을 입력한 후, 비활성화 시키는 로직 
