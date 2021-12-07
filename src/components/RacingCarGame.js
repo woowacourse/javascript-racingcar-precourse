@@ -5,7 +5,7 @@ import RacingCountForm from './RacingCountForm.js';
 import GameResult from './GameResult.js';
 import { $, createElement } from '../utils/dom.js';
 import { GAME_STATUS } from '../utils/constants.js';
-import { getMovingCarsResult, getWinners } from '../utils/game.js';
+import { moveCarAndGetDistances, getWinners } from '../utils/game.js';
 
 export default class RacingCarGame extends Component {
   initDoms() {
@@ -57,7 +57,7 @@ export default class RacingCarGame extends Component {
     const gameResult = [];
     const { cars } = this.state;
     for (let i = 0; i < count; i += 1) {
-      gameResult.push(getMovingCarsResult(cars));
+      gameResult.push(moveCarAndGetDistances(cars));
     }
     return gameResult;
   }

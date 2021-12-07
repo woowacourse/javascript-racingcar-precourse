@@ -1,7 +1,7 @@
 import { convertHashMapToArray } from './general.js';
 import { RULE } from './constants.js';
 
-export const getMovingCarsResult = cars => {
+export const moveCarAndGetDistances = cars => {
   const carNameDistanceMap = new Map();
   cars.forEach(car => {
     car.goForward();
