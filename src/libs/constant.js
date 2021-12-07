@@ -5,3 +5,5 @@ export const USER_INPUT_ALERT = {
   notNaturalNumberError: '자연수만 입력해주세요.',
   lengthError: `${CAR_NAME_MAX_LENGTH}자 이하의 이름을 입력해주세요.`,
 };
+
+export const CAR_NAMES_SEPARATER = ',';

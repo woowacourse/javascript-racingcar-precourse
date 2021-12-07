@@ -1,4 +1,5 @@
 import Car from '../Car.js';
+import { CAR_NAMES_SEPARATER } from '../libs/constant.js';
 import { strToArray } from '../utils/parse.js';
 
 class RacingCarModel {
@@ -52,7 +53,7 @@ class RacingCarModel {
   }
 
   parseCarNamesToArray(carNames) {
-    this.carNamesArray = strToArray(carNames, ',');
+    this.carNamesArray = strToArray(carNames, CAR_NAMES_SEPARATER);
   }
 
   makeRoundResult() {
