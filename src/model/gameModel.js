@@ -18,7 +18,7 @@ export default class GameModel {
 
       return true;
     }
-    throwError(MESSAGE.ERROR.NOT_MEET_CARS_NUM_CONDITION);
+    return throwError(MESSAGE.ERROR.NOT_MEET_CARS_NUM_CONDITION);
   }
 
   isValidatedLength(userInputArray, givenLength) {
@@ -33,7 +33,7 @@ export default class GameModel {
 
       return true;
     }
-    throwError(MESSAGE.ERROR.NOT_MEET_COUNT_CONDITION);
+    return throwError(MESSAGE.ERROR.NOT_MEET_COUNT_CONDITION);
   }
 
   isValidatedCount(userInputNum, countSize) {
