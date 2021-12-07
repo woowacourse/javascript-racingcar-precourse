@@ -8,12 +8,14 @@ export default class Winner {
     const maxDistance = this.getMaxDistance(cars);
 
     return cars
-      .filter((car) => car.distance === maxDistance)
-      .map((car) => car.name);
+      .filter((car) => car.getDistance() === maxDistance)
+      .map((car) => car.getName());
   };
 
   getMaxDistance = (cars) => {
-    return cars.sort((a, b) => b.distance - a.distance)[0].distance;
+    return cars
+      .sort((a, b) => b.getDistance() - a.getDistance())[0]
+      .getDistance();
   };
 
   setWinnerMessage = (cars) => {

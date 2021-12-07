@@ -20,7 +20,10 @@ export default class Game {
   printGameProcess = (cars) => {
     const gameProcess =
       cars
-        .map((car) => `<div>${car.name}: ${"-".repeat(car.distance)}</div>`)
+        .map(
+          (car) =>
+            `<div>${car.getName()}: ${"-".repeat(car.getDistance())}</div>`
+        )
         .join("") + "<br/>";
 
     const processWrapper = `<div class="game-process">${gameProcess}</div>`;

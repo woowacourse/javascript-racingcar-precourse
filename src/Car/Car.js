@@ -3,24 +3,24 @@ import { CAR_MOVE_RANGE } from "../util/constant.js";
 export default class Car {
   constructor(name) {
     this.carName = name;
-    this.forwardCnt = 0;
+    this.distance = 0;
   }
 
-  get name() {
+  getName = () => {
     return this.carName;
-  }
+  };
 
-  get distance() {
-    return this.forwardCnt;
-  }
+  getDistance = () => {
+    return this.distance;
+  };
 
   reset = () => {
-    this.forwardCnt = 0;
+    this.distance = 0;
   };
 
   move = () => {
     if (this.isCarMoving()) {
-      this.forwardCnt += 1;
+      this.distance += 1;
     }
   };
 
