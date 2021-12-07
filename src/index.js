@@ -1,7 +1,9 @@
 import { $carNameSubmit, $racingCountSubmit } from "./constants/constants.js";
-import { initDOM, showNextDOM } from "./modules/showDOM.js";
 import { parseCarName, createCars } from "./modules/submitCarNames.js";
+import { initDOM, showNextDOM } from "./modules/showDOM.js";
+import { checkInput } from "./modules/submitCountTrun.js";
 import { warning } from "./modules/validCarName.js";
+import playGame from "./modules/playGame.js";
 
 export default class RacingCarGame {
   constructor() {
@@ -13,13 +15,14 @@ export default class RacingCarGame {
     $carNameSubmit.addEventListener('click', (e) => {
       e.preventDefault();
       if(warning(parseCarName())) {
-        const Cars = createCars();
         showNextDOM();
       }
     });
 
     $racingCountSubmit.addEventListener('click', (e) => {
       e.preventDefault();
+      const cars = createCars();
+      new playGame(cars,checkInput());
     });
   }
 }
