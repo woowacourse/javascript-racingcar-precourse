@@ -13,7 +13,12 @@ export default function NameFormView(el) {
 
   this.onClickSubmit = (e) => {
     e.preventDefault();
-    this.emit('@submit', { input: this.inputEl.value });
+    const carNamesInput = this.inputEl.value.split(',');
+    if (!carNamesInput.every((name) => name.length <= 5)) {
+      alert('자동차 이름은 5자 이하입니다.');
+      return;
+    }
+    this.emit('@submit', { input: carNamesInput });
   };
 
   this.on = (event, handler) => {
