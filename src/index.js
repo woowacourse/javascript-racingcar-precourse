@@ -1,9 +1,7 @@
-function Car(name) {
-  this.name = name;
+import init from "./control/init.js";
+
+export default function RacingCarGame() {
+  init();
 }
 
-class Car {
-  constructor(name) {
-    this.name = name;
-  }
-}
+new RacingCarGame();
