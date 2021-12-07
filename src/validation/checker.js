@@ -7,25 +7,19 @@ export const CHECKER_TYPE = {
 export const checkers = {
   isNonEmpty: {
     type: CHECKER_TYPE.NOEMPTY,
-    validate: value => {
-      return value !== '';
-    },
+    validate: (value) => value !== '',
     message: '값을 입력해주세요.',
   },
 
   isNumber: {
     type: CHECKER_TYPE.NUM,
-    validate: value => {
-      return !isNaN(value);
-    },
+    validate: (value) => !Number.isNaN(value),
     message: '숫자만 입력해주세요.',
   },
 
   isAlphaNumber: {
     type: CHECKER_TYPE.ALPHANUM,
-    validate: value => {
-      return /^[a-zA-z0-9]+$/.test(value);
-    },
+    validate: (value) => /^[a-zA-z0-9]+$/.test(value),
     message: '영문자와 숫자만 입력해주세요.',
   },
 };
