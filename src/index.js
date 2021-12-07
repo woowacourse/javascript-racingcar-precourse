@@ -10,6 +10,10 @@ export default class RacingCarGame {
     this.formTag = document.getElementsByTagName('form');
     this.titleTag = document.getElementsByTagName('h4');
     this.makeHiddenCountAndResultSection();
+    this.printRacingCarGameResult = document.createElement('div');
+    document.body.appendChild(this.printRacingCarGameResult);
+    this.printWinner = document.createElement('div');
+    document.body.appendChild(this.printWinner);
   }
 
   makeHiddenCountAndResultSection() {
@@ -22,6 +26,10 @@ export default class RacingCarGame {
     document.getElementById('racing-count-input').value = '';
     this.titleTag[0].style.visibility = 'visible';
     this.formTag[1].style.visibility = 'visible';
+  }
+
+  makeVisibleResultSection() {
+    this.titleTag[1].style.visibility = 'visible';
   }
 
   onCarNameInputSubmit(e) {
@@ -53,21 +61,20 @@ export default class RacingCarGame {
   startRacingCarGame() {
     const car = this.carName.map((name) => new Car(name));
     let i;
-    let racingCarGameResult = '';
+    this.printRacingCarGameResult.innerHTML = '';
     for (i = 0; i < this.inputCount; i += 1) {
-      racingCarGameResult += this.moveCar(car);
+      this.moveCar(car);
     }
-    let winner = this.findWinner(car);
+    const winner = this.constructor.findWinner(car);
+    this.printResult(winner);
   }
 
-  static moveCar(car) {
-    let currentGameResult = '';
+  moveCar(car) {
     car.forEach((eachCar) => {
       eachCar.isMove();
-      currentGameResult += `${eachCar.printCurrentMovement()}\n`;
+      this.printRacingCarGameResult.innerHTML += `${eachCar.printCurrentMovement()}<br />`;
     });
-    currentGameResult += '\n';
-    return currentGameResult;
+    this.printRacingCarGameResult.innerHTML += '<br />';
   }
 
   static findWinner(car) {
@@ -84,6 +91,11 @@ export default class RacingCarGame {
       }
     });
     return winner;
+  }
+
+  printResult(winner) {
+    this.makeVisibleResultSection();
+    this.printWinner.innerHTML = `최종우승자: <span id="racing-winners">${winner}</span>`;
   }
 }
 
