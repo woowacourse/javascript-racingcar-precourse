@@ -17,13 +17,13 @@
 
 <b>index.js</b> (root)
 
-- [ ] 자동차 이름 입력 창 (block) & 횟수 입력창 (none) - `initDOM`
-- [ ] EventListener Setting 후 초기화 - `initEventListener`
+- [X] 자동차 이름 입력 창 (block) & 횟수 입력창 (none) - `initDOM`
+- [X] EventListener Setting 후 초기화 - `initEventListener`
 
 <b>Car.js</b> (module)
 
-- [ ] 자동차 객체 생성 클래스 - `Car`
-- [ ] 자동차 객체 안에 이동 거리 추가 method - `move`
+- [X] 자동차 객체 생성 클래스 - `Car`
+- [X] 자동차 객체 안에 이동 거리 추가 method - `move`
 
 <b>validCarName.js</b> (module)
 
@@ -50,8 +50,8 @@
 
 <b>submitCarNames.js</b> (module)
 
-- [ ] 자동차 이름 입력 처리 (Parsing) - `parseCarName` 
-- [ ] 자동차 입력 수대로 Car 객체 생성 - `createCars`
+- [X] 자동차 이름 입력 처리 (Parsing) - `parseCarName` 
+- [X] 자동차 입력 수대로 Car 객체 생성 - `createCars`
 
 <b>submitCountTrun.js</b> (module)
 

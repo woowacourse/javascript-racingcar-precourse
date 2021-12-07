@@ -11,4 +11,6 @@ export const $carNameSubmit = document.querySelector('#car-names-submit');
 
 export const $racingCountSubmit = document.querySelector('#racing-count-submit');
 
+export const $racingCountText = document.querySelector(".racing-count-text"); 
 
+export const $resultText = document.querySelector(".result-text");
