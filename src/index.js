@@ -1,8 +1,10 @@
-import initView from './view/initView.js';
 import inputEventHandler from './input/inputEventHandler.js';
+import View from './view/View.js';
 
 function raceCarGame() {
-  const view = initView();
+  const view = new View();
+
+  view.hideNextHtml();
   inputEventHandler(view);
 }
 
