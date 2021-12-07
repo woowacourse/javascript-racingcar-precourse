@@ -26,3 +26,7 @@ export const isValidatedCarNames = (userInputArray) => {
   if (isValidatedLength(userInputArray, NUMBER.MIN_CARS_LENGTH) && isNotDuplicated(userInputArray))
     return true;
 };
+
+export const isValidatedCount = (userInputNum, countSize) => {
+  return userInputNum >= countSize;
+};
