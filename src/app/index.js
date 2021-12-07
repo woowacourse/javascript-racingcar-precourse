@@ -50,7 +50,7 @@ class CarGame extends CarGameController {
 
   afterCarsSubmitLogic(carsString) {
     try {
-      this.cars = CarGameUtil.makeCars(carsString.split(SEPERATOR));
+      this.cars = CarGameUtil.generateCars(carsString.split(SEPERATOR));
       this.showElement(this.countTitle);
       this.showElement(this.formCount);
     } catch (error) {

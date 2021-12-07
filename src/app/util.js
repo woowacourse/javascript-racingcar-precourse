@@ -9,7 +9,7 @@ import {
 import Car from './car.js';
 
 class CarGameUtil {
-  static makeCars(namesArray) {
+  static generateCars(namesArray) {
     if (CarGameUtil.isValidCarNames(namesArray)) {
       return namesArray.map((name, index) => new Car(name, index));
     }
