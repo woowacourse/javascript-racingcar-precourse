@@ -29,6 +29,8 @@ export default class EventHandler {
     onRacingCountSubmit() {
         if(this.isCorrectCount()) {
             if(this.isCorrectCarName()) {
+                this.resetScreenResult();
+
                 const carNameArray = this.carNameInput.value.split(',');
                 const racingCount = Number(this.countInput.value);
                 const newGame = new RacingCarGame(carNameArray, racingCount, this.app);
@@ -37,6 +39,13 @@ export default class EventHandler {
             else this.popAlertMessage(CAR_NAME_ALERT_MESSAGE, this.carNameInput);
         }
         else this.popAlertMessage(COUNT_ALERT_MESSAGE, this.countInput);
+    }
+
+    resetScreenResult() {
+        const gameResult = document.querySelector('#screen-result');
+        while(gameResult.nextElementSibling) {
+            gameResult.nextElementSibling.remove();
+        }
     }
 
     popAlertMessage(message, input) {
