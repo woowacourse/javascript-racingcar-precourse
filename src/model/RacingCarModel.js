@@ -1,5 +1,5 @@
 import Car from '../Car.js';
-import { CAR_NAMES_SEPARATER } from '../libs/constant.js';
+import { CAR_NAMES_SEPARATER, MOVE_UNIT } from '../libs/constant.js';
 import { strToArray } from '../utils/parse.js';
 
 class RacingCarModel {
@@ -60,7 +60,9 @@ class RacingCarModel {
     let resultText = '';
     for (let i = 0; i < this.RacingCount; i++) {
       for (let key in this.RacingResult) {
-        resultText += `<div>${key}: ${'-'.repeat(this.RacingResult[key].stepByRound[i])}</div>\n`;
+        resultText += `<div>${key}: ${MOVE_UNIT.repeat(
+          this.RacingResult[key].stepByRound[i],
+        )}</div>\n`;
       }
       resultText += '<br>';
     }
