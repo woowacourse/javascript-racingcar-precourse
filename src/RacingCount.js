@@ -1,6 +1,7 @@
 import { racingCountInput } from './elements.js';
 
 import { checkRacingCountInputValid } from './InputValidation.js';
+import playRacingGame from './PlayGame.js';
 
 function onInvalidRacingCountInput() {
   alert('잘못 입력하셨습니다. 양의 정수를 입력해 주세요.');
@@ -15,5 +16,7 @@ export default function onRacingCountSubmit(event) {
 
   if (!racingCountInputValid) {
     onInvalidRacingCountInput();
+  } else if (window.cars) {
+    playRacingGame(racingCount);
   }
 }
