@@ -14,9 +14,9 @@
 
 #### Car 객체 정의
 
-- [ ] Car 객체를 정의한다.
-  - [ ] `MissionUtils` 라이브러리의 `Random.pickNumberInRange`를 사용하여 0-9사이의 수를 얻는다.
-  - [ ] 얻은 값이 4 이상일 경우 전진한다.
+- [x] Car 객체를 정의한다.
+  - [x] `MissionUtils` 라이브러리의 `Random.pickNumberInRange`를 사용하여 0-9사이의 수를 얻는다.
+  - [x] 얻은 값이 4 이상일 경우 전진한다.
 
 #### 레이싱 횟수 입력
 
