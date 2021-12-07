@@ -4,7 +4,7 @@ import {
   hasSomeStringIncludeSpace,
   hasSomeStringLengthGreaterThanFive,
   hasStringDuplicated,
-  isNegativeNumberOrZero,
+  isNumberLessThanZero,
 } from '../lib/utils.js';
 import Car from './car.js';
 
@@ -32,7 +32,7 @@ class CarGameUtil {
   }
 
   static isValidNumber(number) {
-    if (isNegativeNumberOrZero(number)) {
+    if (isNumberLessThanZero(number)) {
       throw new Error(ERROR_MESSAGE.COUNT_NEGATIVE_NUMBER_OR_ZERO);
     }
 
