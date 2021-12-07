@@ -35,11 +35,13 @@ class RacingCarModel {
         winner += `, ${this.#racingResult[key].name}`;
       }
     }
+
     return winner.slice(2);
   }
 
   getMaxStep() {
     const stepArray = this.getStepArray();
+
     return Math.max(...stepArray);
   }
 
@@ -48,11 +50,13 @@ class RacingCarModel {
     for (let key in this.#racingResult) {
       stepArray.push(this.#racingResult[key].step);
     }
+
     return stepArray;
   }
 
   parseCarNamesToArray(carNames) {
     this.#carNamesArray = strToArray(carNames, CAR_NAMES_SEPARATER);
+
     return this.#carNamesArray;
   }
 
@@ -64,6 +68,7 @@ class RacingCarModel {
       }
       resultText += '<br>';
     }
+
     return resultText;
   }
 }

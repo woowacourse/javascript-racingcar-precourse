@@ -23,6 +23,7 @@ class Car {
     if (randomNumber >= RANDOM_NUMBER.winSeparater) {
       isMove = 1;
     }
+
     return isMove;
   }
 }
