@@ -4,8 +4,10 @@ function checkRacingCount(racingCount) {
   const isUnderZero = Number(racingCount) <= 0 ? true : false;
   if (isUnderZero) {
     showAlert("RACING_COUNT");
+
     return false;
   }
+
   return true;
 }
 
@@ -19,8 +21,10 @@ function checkNameisSpace(carNamesArray) {
 
   if (isExistSpace) {
     showAlert("SPACE");
+
     return false;
   }
+
   return true;
 }
 
@@ -34,8 +38,10 @@ function checkTotalCar(carNamesArray) {
 
   if (isOverTotalMaxLength) {
     showAlert("LENGTH");
+
     return false;
   }
+
   return true;
 }
 
@@ -52,6 +58,7 @@ export default class Validation {
     if (!checkTotalCar(carNamesArray)) {
       return false;
     }
+
     return true;
   }
 
@@ -59,6 +66,7 @@ export default class Validation {
     if (!checkRacingCount(racingCount)) {
       return false;
     }
+
     return true;
   }
 }

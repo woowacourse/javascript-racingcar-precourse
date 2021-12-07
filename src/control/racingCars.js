@@ -17,6 +17,7 @@ class Car {
     for (let i = 0; i < this.currentCount; i++) {
       courrentLine += "-";
     }
+
     return courrentLine;
   }
 }
