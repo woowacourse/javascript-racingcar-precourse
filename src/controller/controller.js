@@ -1,12 +1,13 @@
 import { checkNameValidation, checkCountValidation } from '../utils/validation.js';
 import { NAME_INPUT_ERROR, COUNT_INPUT_ERROR } from '../utils/constants.js';
+import Car from '../model/car.js';
+import View from '../view/view.js';
 
 export default class Controller {
-  constructor(car, view){
-    this.view = view;
-    this.model = car;
+  constructor(){
     this.cars = [];
     this.winners = '';
+    this.view = new View(this);
   }
 
   init() {
@@ -15,7 +16,7 @@ export default class Controller {
     this.view.countButtonHandler();
   }
   
-  getCarNames(userInput){
+  getCarNames(userInput) {
     this.cars = [];
     let names = userInput.split(',');
     names.forEach((element) => {
@@ -37,13 +38,13 @@ export default class Controller {
     if (!checkCountValidation(count)) {
       alert(COUNT_INPUT_ERROR);
     } else {
-      this.playGame();
+      this.playGame(count);
     }
   }
 
-  playGame() {
+  playGame(count) {
     this.view.showResultH4();
-    for (let i = 0; i < this.count; i++) {
+    for (let i = 0; i < count; i++) {
       this.getScores();
     }
     this.getWinners();

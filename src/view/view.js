@@ -1,7 +1,9 @@
 import $ from '../utils/selector.js';
+import Controller from '../controller/controller.js';
 
 export default class View{
-  constructor() {
+  constructor(controller) {
+    this.controller = controller;
     this.countForm = $('#count-form');
     this.countH4 = $('#count-h4');
     this.resultH4 = $('#result-h4');
