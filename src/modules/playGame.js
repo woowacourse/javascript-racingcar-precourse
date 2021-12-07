@@ -1,3 +1,5 @@
+import { showGameResult } from "./setResult.js";
+import { showResultText } from "./showDOM.js";
 
 export default class playGame {
   constructor(carsArr, playCount) {
@@ -13,12 +15,14 @@ export default class playGame {
   }
 
   startGame() {
+    showResultText();
+
     for(let i = 0; i < this.playCount; i++) {
       //racing term 
       this.carsArr.forEach(car => {
         this.isMoveCar() ? car.move() : false;
       });
-      this.carsArr.forEach((car, index) => console.log("car" + index + " : ", car.distance))
+      showGameResult(this.carsArr);
     }
   }
 }

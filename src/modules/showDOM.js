@@ -12,3 +12,7 @@ export const showNextDOM = () => {
   $racingCountInput.style.display = "inline";
   $racingCountSubmit.style.display = "inline";
 }
+
+export const showResultText = () => {
+  $resultText.style.display = "block";
+}
