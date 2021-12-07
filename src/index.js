@@ -1,17 +1,19 @@
 import {
-  $,
   alertError,
-  hideRacingCountForm,
-  revealRacingCountForm,
   validateNames,
   validateCount,
   createCars,
-  createRacingResultArea,
   proceedRacingStage,
   getWinners,
+} from './utils/gameLogic.js';
+import {
+  $,
+  hideRacingCountForm,
+  revealRacingCountForm,
+  createRacingResultArea,
   paintWinners,
-} from './utils.js';
-import { ERROR_MESSAGE } from './constants.js';
+} from './utils/dom.js';
+import { ERROR_MESSAGE } from './utils/constants.js';
 
 class CarRacingGame {
   constructor() {
