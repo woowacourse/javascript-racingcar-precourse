@@ -11,26 +11,26 @@ class RacingCarView {
     this.$racingResultHeading = document.querySelector('#racing-result-heading');
     this.$racingCountHeading = document.querySelector('#racing-count-heading');
 
+    this.$resultTextDiv = document.createElement('div');
     this.$winnerTextDiv = document.createElement('div');
     this.$winnerTextSpan = document.createElement('span');
-    this.$resultTextDiv = document.createElement('div');
-    this.resetDOM();
-  }
-
-  resetDOM() {
-    this.makeDOM();
-    this.hideDOM();
-  }
-
-  makeDOM() {
-    this.$app.appendChild(this.$resultTextDiv);
     this.$winnerTextSpan.setAttribute('id', 'racing-winners');
-    this.$app.appendChild(this.$winnerTextDiv);
+    this.resetElements();
+  }
+
+  resetElements() {
+    this.appendElements();
+    this.hideElements();
+  }
+
+  appendElements() {
     this.$winnerTextDiv.innerText = '최종 우승자: ';
+    this.$app.appendChild(this.$resultTextDiv);
+    this.$app.appendChild(this.$winnerTextDiv);
     this.$winnerTextDiv.appendChild(this.$winnerTextSpan);
   }
 
-  hideDOM() {
+  hideElements() {
     hideElement(this.$racingCountHeading);
     hideElement(this.$racingCountForm);
     hideElement(this.$racingResultHeading);

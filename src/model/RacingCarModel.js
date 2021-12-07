@@ -1,4 +1,4 @@
-import Car from '../Car.js';
+import Car from './Car.js';
 import { CAR_NAMES_SEPARATER, MOVE_UNIT } from '../libs/constant.js';
 import { strToArray } from '../utils/parse.js';
 
