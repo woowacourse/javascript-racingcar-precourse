@@ -1,9 +1,10 @@
+import { ELEMENT_ID } from '../utils/constants.js';
 import VALID_CHECK from '../utils/validation.js';
 
 export default function NameFormView(el) {
   this.el = el;
-  this.inputEl = this.el.querySelector('#car-names-input');
-  this.submitEl = this.el.querySelector('#car-names-submit');
+  this.inputEl = this.el.querySelector(ELEMENT_ID.carNamesInput);
+  this.submitEl = this.el.querySelector(ELEMENT_ID.carNamesSubmit);
   this.init = () => {
     this.bindEvent();
     return this;
