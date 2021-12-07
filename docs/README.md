@@ -10,6 +10,20 @@
 ## 작동결과
 <img src="https://user-images.githubusercontent.com/32920566/144782702-08628697-bc3c-429b-8873-e50322ecd22c.gif" width="300" height="500"/>
 
+## 사용 라이브러리
+### 랜덤 라이브러리
+```
+"@woowacourse/mission-utils" : "^1.0.1"
+```
+### Linter
+```
+"eslint": "^8.4.0",
+"eslint-config-airbnb": "^19.0.2",
+"eslint-config-prettier": "^8.3.0",
+"eslint-plugin-prettier": "^4.0.0",
+"prettier": "^2.5.1"
+```
+
 # 기능 목록
 ## 1. 자동차 입력
 
@@ -91,7 +105,7 @@
 │  ├─model
 │       ├── car.js # car 객체 구현
 │  └─play
-│       ├── play.js # car 객체 내부 모듈을 사용하여 게임을 진행
+│       ├── play.js # car 객체 내부 모듈을 사용하여 게임을 진행 (DOM 그리기)
 └─test
     ├── app.spec.js # test 코드
 ```
