@@ -17,10 +17,10 @@ const carList = new CarList();
 
 carNameButton.addEventListener("click", () => {
   carList.init(carNameArray);
-  console.log(carList);
+  console.log(carNameInput.value);
 });
 
 racingCountButton.addEventListener("click", () => {
   carList.game(racingCountInput);
-  console.log(carList);
+  console.log(racingCountInput.value);
 });

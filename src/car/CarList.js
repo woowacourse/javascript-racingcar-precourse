@@ -1,4 +1,6 @@
 import Car from "./Car.js";
+import isMovable from "../utils/isMovable.js";
+import makeResultElement from "../utils/makeResultElement.js";
 
 class CarList {
   constructor() {
@@ -19,6 +21,7 @@ class CarList {
     for (let i = 0; i < this.array.length; i++) {
       this.move(i);
     }
+    this.display();
   }
 
   move(index) {
@@ -28,9 +31,21 @@ class CarList {
   }
 
   game(racingCountInput) {
+    makeResultElement();
     for (let i = 0; i < racingCountInput; i++) {
       this.race();
     }
+  }
+
+  display() {
+    const racingWinners = document.getElementById("racing-winners");
+    let resultText = "";
+    for (let i = 0; i < this.array.length; i++) {
+      resultText +=
+        "\n" + this.array[i].getName() + ": " + this.array[i].displayDistance();
+    }
+
+    racingWinners.innerText += resultText + "\n";
   }
 }
 
