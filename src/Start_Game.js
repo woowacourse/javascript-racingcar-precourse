@@ -1,8 +1,8 @@
 import { Car } from './Car.js';
-import { $Racing_winners } from './Html_Const.js';
+import { $racingWinners } from './Html_Const.js';
 
 export const startGame = (carArray, tryNumbs) => {
-    $Racing_winners.innerHTML = '';
+    $racingWinners.innerHTML = '';
     const carList = makeCarList(carArray);
     const racingResultList = {};
     for (let i = 0; i < tryNumbs; i++) {
@@ -11,8 +11,8 @@ export const startGame = (carArray, tryNumbs) => {
             element.makeCarMove();
             try_result += `${element.getResult()}<br> \n`;
         });
-        $Racing_winners.innerHTML += try_result;
-        $Racing_winners.innerHTML += '<br>';
+        $racingWinners.innerHTML += try_result;
+        $racingWinners.innerHTML += '<br>';
     }
     carList.forEach((element) => { racingResultList[element.name] = element.getPoint(); });
     gameResult(racingResultList);
@@ -29,7 +29,7 @@ const gameResult = (racingResultList) => {
     const winner_point = maxPoint(ResultList);
     const winner_arr = getWinner(ResultList, winner_point);
     const winners = winner_arr.join(', ');
-    $Racing_winners.innerHTML += `최종 우승자 : ${winners} <br>`;
+    $racingWinners.innerHTML += `최종 우승자 : ${winners} <br>`;
 };
 
 const maxPoint = (dict) => {

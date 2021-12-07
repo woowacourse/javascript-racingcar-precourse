@@ -1,5 +1,5 @@
 import {
-    $Car_names_input, $Car_names_submit, $Racing_count_input, $Racing_count_submit,
+    $carNamesInput, $carNamesSubmit, $racingCountInput, $racingCountSubmit,
 } from './Html_Const.js';
 import { splice_names } from './Check_CarNames.js';
 import { check_numbers } from './Check_TryNumbers.js';
@@ -7,16 +7,16 @@ import { startGame } from './Start_Game.js';
 
 export default function RacingCarGame() {
     let carArray = [];
-    $Car_names_submit.addEventListener('click', (e) => {
+    $carNamesSubmit.addEventListener('click', (e) => {
         e.preventDefault();
-        const userInputCarNames = $Car_names_input.value;
+        const userInputCarNames = $carNamesInput.value;
         carArray = splice_names(userInputCarNames);
-        $Racing_count_submit.style.display = '';
-        $Racing_count_input.style.display = '';
+        $racingCountSubmit.style.display = '';
+        $racingCountInput.style.display = '';
     });
-    $Racing_count_submit.addEventListener('click', (e) => {
+    $racingCountSubmit.addEventListener('click', (e) => {
         e.preventDefault();
-        const userInputTryNumbers = $Racing_count_input.value;
+        const userInputTryNumbers = $racingCountInput.value;
         if (!check_numbers(userInputTryNumbers)) return;
         startGame(carArray, check_numbers(userInputTryNumbers));
     });
