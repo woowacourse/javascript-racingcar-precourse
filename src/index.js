@@ -3,7 +3,7 @@ import UserInput from './userInput.js';
 import View from './view.js';
 import { ELEMENT_ID, ERR_MESSAGE, WINNER_COMMENT } from './constants.js';
 
-export default class CarRacingGame {
+class CarRacingGame {
   constructor() {
     this.appEl = document.querySelector(ELEMENT_ID.appId);
     this.userInputObject = new UserInput();
