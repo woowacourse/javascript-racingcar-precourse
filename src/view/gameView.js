@@ -1,4 +1,4 @@
-import { $ } from '../utils/utils.js';
+import { $ } from './selector.js';
 
 export default class GameView {
   constructor() {
@@ -6,6 +6,9 @@ export default class GameView {
     this.$racingCountTitle = $('#racing-count-title');
     this.$racingCountForm = $('#racing-count-form');
     this.$racingResultTitle = $('#racing-result-title');
+    this.$racingCountInput = $('#racing-count-input');
+    this.$carNamesInput = $('#car-names-input');
+    this.$carNamesForm = $('#car-names-form');
 
     this.init();
   }
@@ -25,15 +28,11 @@ export default class GameView {
   }
 
   resetRacingCountInput() {
-    const $racingCountInput = $('#racing-count-input');
-
-    $racingCountInput.value = '';
+    this.$racingCountInput.value = '';
   }
 
   resetCarNamesInput() {
-    const $carNamesInput = $('#car-names-input');
-
-    $carNamesInput.value = '';
+    this.$carNamesInput.value = '';
   }
 
   renderTotalRound(totalRoundString) {

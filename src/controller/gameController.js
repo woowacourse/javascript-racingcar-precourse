@@ -1,5 +1,4 @@
 import GameModel from '../model/gameModel.js';
-import { $ } from '../utils/utils.js';
 import GameView from '../view/gameView.js';
 
 export default class GameController {
@@ -17,17 +16,14 @@ export default class GameController {
   }
 
   addEvents() {
-    const $carNamesForm = $('#car-names-form');
-    const $racingCountForm = $('#racing-count-form');
-
-    $carNamesForm.addEventListener('submit', this.handleCarNames);
-    $racingCountForm.addEventListener('submit', this.handleRacingCount);
+    this.gameView.$carNamesForm.addEventListener('submit', this.handleCarNames);
+    this.gameView.$racingCountForm.addEventListener('submit', this.handleRacingCount);
   }
 
   handleCarNames(e) {
     e.preventDefault();
 
-    const carNamesInput = $('#car-names-input').value;
+    const carNamesInput = this.gameView.$carNamesInput.value;
 
     try {
       this.gameModel.saveCars(carNamesInput);
@@ -43,7 +39,7 @@ export default class GameController {
   handleRacingCount(e) {
     e.preventDefault();
 
-    const racingCountInput = $('#racing-count-input').value;
+    const racingCountInput = this.gameView.$racingCountInput.value;
 
     try {
       this.gameModel.saveCount(racingCountInput);
