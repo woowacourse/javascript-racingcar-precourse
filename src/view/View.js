@@ -81,9 +81,11 @@ export default class View {
     if (error === CAR_NAMES_ERROR) {
       alert(NAME_ERROR_MESSAGE);
       this.$carNamesInput.value = '';
+      return;
     }
     if (error === REPEAT_COUNT_ERROR) {
       alert(REPEAT_ERROR_MESSAGE);
+      return;
     }
     if (error === EMPTY_INPUT_ERROR) {
       alert(NO_INPUT_ERROR_MESSAGE);
