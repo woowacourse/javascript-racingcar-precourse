@@ -1,4 +1,5 @@
-import { $ } from '../utils/dom.js';
+import { ELEMENT_ID } from '../utils/constants.js';
+import { $, createElementWithID } from '../utils/dom.js';
 
 const ResultView = {};
 ResultView.setup = function (el) {
@@ -10,12 +11,11 @@ ResultView.init = function (el) {
   this.el = el;
 };
 ResultView.addBox = function () {
-  const resultBox = document.createElement('div');
-  resultBox.id = 'result-box';
-  this.el.appendChild(resultBox);
+  this.el.appendChild(createElementWithID('div', 'result-box'));
+  this.resultBox = $(ELEMENT_ID.resultBox);
 };
 ResultView.render = function (results) {
-  $('#result-box').innerHTML = this.getResultsTemplate(results);
+  this.resultBox.innerHTML = this.getResultsTemplate(results);
 };
 ResultView.getResultsTemplate = function (results) {
   return (

@@ -6,6 +6,8 @@ export const ELEMENT_ID = Object.freeze({
   racingCountInput: '#racing-count-input',
   racingCountSubmit: '#racing-count-submit',
   app: '#app',
+  resultBox: '#result-box',
+  winnersBox: '#winners-box',
 });
 
 export const NUMBER_RULE = Object.freeze({
