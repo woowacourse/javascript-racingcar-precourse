@@ -70,7 +70,8 @@
 <br/>
 ## ✔️ Test 결과
 요구사항과 관련된 모든 테스트 사항을 통과하는 것을 확인할 수 있었다. <br/>
-![image](https://user-images.githubusercontent.com/44183221/145016317-3a5afe3a-49ca-450b-92f7-db74be37d11d.png)
+![image](https://user-images.githubusercontent.com/44183221/145016616-df854b7a-5876-4763-be61-020eb8030690.png)
+
 <br/>
 
 ---
