@@ -1,4 +1,4 @@
-import { $ } from "../common/const";
+import { $ } from "../common/const.js";
 
 function getWinnerList(Cars) {
   let maxCount = -1e9;
