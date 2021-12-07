@@ -11,15 +11,12 @@ export default class Render {
 
     this.$result = Render.appendNode(this.$app, 'div', {
       id: ID_RESULT,
-      hidden: true,
     });
     this.$racingWinnersTitle = Render.appendNode(this.$app, 'span', {
       id: ID_RACING_WINNERS_TITLE,
-      hidden: true,
     });
     this.$racingWinners = Render.appendNode(this.$app, 'span', {
       id: ID_RACING_WINNERS,
-      hidden: true,
     });
   }
 
