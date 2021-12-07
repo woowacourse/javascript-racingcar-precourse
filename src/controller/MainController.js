@@ -37,7 +37,11 @@ export default {
   onPlayResult(result) {
     ResultView.render(result);
     CarsModel.getWinners().then((winners) => {
-      console.log(winners);
+      this.onGetWinners(winners);
     });
+  },
+
+  onGetWinners(winners) {
+    WinnersView.render(winners);
   },
 };

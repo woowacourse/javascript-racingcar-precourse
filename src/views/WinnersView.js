@@ -12,5 +12,9 @@ WinnersView.addBox = function () {
   this.el.appendChild(winnersBox);
   this.winnersBox = $('#winners-box');
 };
-
+WinnersView.render = function (winners) {
+  this.winnersBox.innerHTML = `최종 우승자: <span id="racing-winners">${winners.join(
+    ',',
+  )}</span>`;
+};
 export default WinnersView;
