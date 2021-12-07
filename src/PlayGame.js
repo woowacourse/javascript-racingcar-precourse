@@ -1,4 +1,4 @@
-import setCarForwardResult from './GameResult.js';
+import { setCarForwardResult, setFinalWinners } from './GameResult.js';
 
 function play() {
   for (let i = 0; i < window.cars.length; i += 1) {
@@ -13,4 +13,5 @@ export default function playRacingGame(racingCount) {
     play();
     setCarForwardResult();
   }
+  setFinalWinners();
 }
