@@ -1,4 +1,8 @@
-import { $racingCount, ERROR_RACING_COUNT } from "../common/constants.js";
+import {
+  $racingCount,
+  ERROR_RACING_COUNT,
+  EMPTY,
+} from "../common/constants.js";
 import play from "../play/play.js";
 
 const trimRacingCount = () => $racingCount.value.trim();
@@ -12,7 +16,7 @@ const isNaturalNumber = () => {
 };
 
 const makeAlert = () => {
-  $racingCount.value = "";
+  $racingCount.value = EMPTY;
   $racingCount.focus();
 
   alert(ERROR_RACING_COUNT);

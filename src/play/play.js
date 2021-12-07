@@ -3,6 +3,7 @@ import {
   $racingResultTitle,
   $racingStatus,
   $winner,
+  EMPTY,
 } from "../common/constants.js";
 import Car from "../model/car.js";
 import { trimCarName, splitCarName } from "../input/validateCarName.js";
@@ -14,7 +15,7 @@ const resultVisible = () => {
 const makeCar = (carArr) => carArr.map((el) => new Car(el));
 
 const carMoveAndPrint = (carObject) => {
-  $racingStatus.innerHTML = "";
+  $racingStatus.innerHTML = EMPTY;
 
   for (let i = 0; i < $racingCount.value; i += 1) {
     carObject.forEach((el) => {
@@ -40,13 +41,13 @@ const sortCarObject = (carObject) => {
 
 const showResult = (sortedCars) => {
   $winner.id = "racing-winners";
-  $winner.innerHTML = "";
+  $winner.innerHTML = EMPTY;
   const maxPosition = sortedCars[0].position;
 
   const winnerList = sortedCars
     .filter((car) => car.position === maxPosition)
     .map((car) => car.name)
-    .join(",");
+    .join(", ");
 
   $winner.innerText = winnerList;
   $racingStatus.after($winner);

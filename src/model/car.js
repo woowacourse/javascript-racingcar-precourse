@@ -1,4 +1,9 @@
-import { $racingStatus } from "../common/constants.js";
+import {
+  $racingStatus,
+  MIN_RANDOM,
+  MAX_RANDOM,
+  RANDOM_POINT,
+} from "../common/constants.js";
 
 export default class Car {
   constructor(name) {
@@ -11,11 +16,11 @@ export default class Car {
   }
 
   makeRandom() {
-    return MissionUtils.Random.pickNumberInRange(0, 9);
+    return MissionUtils.Random.pickNumberInRange(MIN_RANDOM, MAX_RANDOM);
   }
 
   judgeGoOrNot() {
-    if (this.makeRandom() >= 4) {
+    if (this.makeRandom() >= RANDOM_POINT) {
       this.position += 1;
     }
   }

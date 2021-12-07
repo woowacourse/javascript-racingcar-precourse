@@ -5,6 +5,7 @@ import {
   $racingCountTitle,
   ERROR_CAR_NAME,
   NAME_MAX_LENGTH,
+  EMPTY,
 } from "../common/constants.js";
 
 export const splitCarName = () => $carName.value.split(",");
@@ -25,7 +26,7 @@ const isCarNameLength = (carArr) => {
 const isCarNameBlank = (carArr) => {
   let valid = true;
   carArr.forEach((el) => {
-    if (el === "") {
+    if (el === EMPTY) {
       valid = false;
     }
   });
@@ -40,7 +41,7 @@ const showCountInput = () => {
 };
 
 const makeAlert = () => {
-  $carName.value = "";
+  $carName.value = EMPTY;
   $carName.focus();
 
   alert(ERROR_CAR_NAME);
