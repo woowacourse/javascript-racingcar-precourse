@@ -3,6 +3,9 @@
 </p>
 <h1 align="middle">자동차 경주 게임</h1>
 
+### 배포주소
+https://skdms3030.github.io/javascript-racingcar-precourse/
+
 
 ## 🎯 기능 요구사항
 초간단 자동차 경주 게임을 구현한다.
