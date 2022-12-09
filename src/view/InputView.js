@@ -10,9 +10,9 @@ class InputView {
   inputCarName() {
     Console.readLine(MESSAGE.start, (input) => {
       handleError(() => CarsValidation.validate(input), this.inputCarName);
-    });
 
-    // this.#controller.createCar();
+      this.#controller.createCar(input);
+    });
   }
 }
 
