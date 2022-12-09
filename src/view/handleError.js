@@ -4,7 +4,7 @@ const handleError = (tryFn, catchFn) => {
   try {
     tryFn();
   } catch (error) {
-    print(error);
+    print(error.message);
     catchFn();
   }
 };

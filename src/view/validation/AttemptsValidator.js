@@ -9,7 +9,8 @@ const AttemptsValidator = {
   },
 
   validate(input) {
-    if (this.isNumber(input)) throw new ValidationError(ERROR.attempts);
+    if (!AttemptsValidator.isNumber(input))
+      throw new ValidationError(ERROR.attempts);
   },
 };
 
