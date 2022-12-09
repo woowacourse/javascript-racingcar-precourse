@@ -13,7 +13,7 @@ const CarsValidation = {
     return input.split(',');
   },
 
-  isValidName(input) {
+  isValidSize(input) {
     return input.length <= CARNAME.max && input.length >= CARNAME.min;
   },
 
@@ -24,7 +24,7 @@ const CarsValidation = {
   isCorrectName(input) {
     this.split(input).forEach((car) => {
       const name = car.trim();
-      if (!this.isValidName(name)) throw new ValidationError(ERROR.name);
+      if (!this.isValidSize(name)) throw new ValidationError(ERROR.name);
     });
   },
 
