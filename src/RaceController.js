@@ -2,6 +2,7 @@ const RaceService = require('./RaceService');
 const { MESSAGE } = require('./utils/constants');
 const { print } = require('./view/OutputView');
 const ResultView = require('./view/ResultView');
+const WinnerView = require('./view/WinnerView');
 
 class RaceController {
   #service = new RaceService();
@@ -16,13 +17,23 @@ class RaceController {
 
     for (let i = 0; i < attempts; i += 1) {
       const result = this.getResult();
-      print(result);
+      print(this.printResultStr(result));
+
+      if (i === attempts - 1) this.printWinner(result);
     }
   }
 
   getResult() {
-    const result = this.#service.play();
+    return this.#service.play();
+  }
+
+  printResultStr(result) {
     return ResultView.print(result);
+  }
+
+  printWinner(result) {
+    const winner = WinnerView.getWinner(result);
+    print(winner);
   }
 }
 module.exports = RaceController;

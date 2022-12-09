@@ -22,13 +22,14 @@ const CarsValidation = {
   },
 
   isCorrectName(input) {
-    this.split(input).forEach((name) => {
+    this.split(input).forEach((car) => {
+      const name = car.trim();
       if (!this.isValidName(name)) throw new ValidationError(ERROR.name);
     });
   },
 
   isDuplicate(input) {
-    return new Set(this.split(input)).size === this.split(input);
+    return new Set(this.split(input)).size === this.split(input).length;
   },
 
   validate(input) {
