@@ -2,16 +2,28 @@ const { Console } = require('@woowacourse/mission-utils');
 const { MESSAGE } = require('../utils/constants');
 const RaceController = require('../RaceController');
 const handleError = require('./handleError');
-const CarsValidation = require('./validation/CarsValidation');
+const CarsValidator = require('./validation/CarsValidator');
+const AttemptsValidator = require('./validation/AttemptsValidator');
 
 class InputView {
   #controller = new RaceController();
 
   inputCarName() {
     Console.readLine(MESSAGE.start, (input) => {
-      handleError(() => CarsValidation.validate(input), this.inputCarName);
-
+      handleError(
+        () => CarsValidator.validate(input),
+        () => this.inputCarName(),
+      );
       this.#controller.createCar(input);
+    });
+    this.inputAttempts();
+  }
+
+  inputAttempts() {
+    Console.readLine(MESSAGE.attempts, (input) => {
+      handleError(() => AttemptsValidator.validate(input), this.inputAttempts);
+
+      this.#controller.getResult(input);
     });
   }
 }
