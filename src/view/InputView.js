@@ -25,8 +25,8 @@ class InputView {
         () => AttemptsValidator.validate(input),
         () => this.inputAttempts(),
       );
-
       this.#controller.printResult(input);
+      Console.close();
     });
   }
 }
