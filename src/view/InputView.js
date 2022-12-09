@@ -15,15 +15,18 @@ class InputView {
         () => this.inputCarName(),
       );
       this.#controller.createCar(input);
+      this.inputAttempts();
     });
-    this.inputAttempts();
   }
 
   inputAttempts() {
     Console.readLine(MESSAGE.attempts, (input) => {
-      handleError(() => AttemptsValidator.validate(input), this.inputAttempts);
+      handleError(
+        () => AttemptsValidator.validate(input),
+        () => this.inputAttempts(),
+      );
 
-      this.#controller.getResult(input);
+      this.#controller.printResult(input);
     });
   }
 }
