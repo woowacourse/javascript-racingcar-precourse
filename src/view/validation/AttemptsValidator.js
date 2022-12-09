@@ -5,7 +5,7 @@ const AttemptsValidator = {
   isNumber(input) {
     const inputNumber = Math.floor(Number(input));
 
-    return String(inputNumber) === input && inputNumber >= 0;
+    return String(inputNumber) === input && inputNumber >= 1;
   },
 
   validate(input) {
