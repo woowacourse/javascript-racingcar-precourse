@@ -27,9 +27,14 @@ const CarsValidation = {
     });
   },
 
+  isDuplicate(input) {
+    return new Set(this.split(input)).size === this.split(input);
+  },
+
   validate(input) {
     this.isCorrectName(input);
-    if (!this.canPlay(input)) throw new ValidationError(ERROR.car_min);
+    if (!this.canPlay(input)) throw new ValidationError(ERROR.least_count);
+    if (!this.isDuplicate(input)) throw new ValidationError(ERROR.duplicate);
   },
 };
 
