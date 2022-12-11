@@ -1,5 +1,5 @@
 const { MOVE } = require('../src/lib/constants/message');
-const { moveFormatter, nameFormatter, roundFormatter } = require('../src/lib/utils/formatter');
+const { moveFormatter, nameFormatter } = require('../src/lib/utils/formatter');
 
 describe('포멧터 검사', () => {
   test('moveFormatter - 움직임 개수에 따른 반환값', () => {
