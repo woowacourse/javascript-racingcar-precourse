@@ -10,7 +10,7 @@ class RacingGame {
 
   #carList = [];
 
-  result = {
+  #result = {
     process: [],
     winner: null,
   };
@@ -39,7 +39,7 @@ class RacingGame {
 
   #racingProcess() {
     const round = this.#getRound();
-    this.result.process.push(round);
+    this.#result.process.push(round);
   }
 
   #getRound() {
@@ -53,12 +53,12 @@ class RacingGame {
   checkWinner() {
     const max = this.#carList.sort(carMoveSort)[0];
     const maxFilter = this.#carList.filter((car) => winFilter(car, max));
-    this.result.winner = maxFilter.map((car) => car.getName());
+    this.#result.winner = maxFilter.map((car) => car.getName());
     return this;
   }
 
   getResult() {
-    return this.result;
+    return this.#result;
   }
 }
 
