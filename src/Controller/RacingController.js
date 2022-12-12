@@ -43,7 +43,8 @@ class RacingController {
 
   #readTry(input) {
     if(this.#hasErrorOccurredByCheck(input,V_TRY)) return this.#retry(TRY);
-    this.#model.calculate(input)
+    this.#view.printResult(this.#model.calculate(input))
+
   }
   
   #hasErrorOccurredByCheck(input, name) {
