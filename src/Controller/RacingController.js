@@ -18,7 +18,7 @@ class RacingController {
   #validator;
 
   constructor() {
-    this.#model = Model
+    this.#model = new Model()
     this.#view = View;
     this.#validator = Validator;
   }
@@ -43,7 +43,7 @@ class RacingController {
 
   #readTry(input) {
     if(this.#hasErrorOccurredByCheck(input,V_TRY)) return this.#retry(TRY);
-    console.log("succes")
+    this.#model.calculate(input)
   }
   
   #hasErrorOccurredByCheck(input, name) {
@@ -64,7 +64,7 @@ class RacingController {
 
   #retry(input) {
     if (input === 'CarName') return this.#inputCarName();
-    if (input === "try") return this.#inputTry() 
+    if (input === 'try') return this.#inputTry() 
   }
 
 }

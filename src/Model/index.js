@@ -1,8 +1,19 @@
 const Car = require("./Car")
 
-const Model = {
+
+class Model  {
+
+    #carName
+
+
+
     saveCarName(input) {
-        new Car (input)
+        this.#carName = input    
+    }
+
+    calculate(input) {
+       const car = new Car(this.#carName,input)
+       return car.getResult()
     }
 }
 
