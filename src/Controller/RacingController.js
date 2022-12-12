@@ -6,7 +6,9 @@ const View = require('../View');
 
 
 const CAR_NAME = "CarName"
+const TRY = "try"
 const V_CAR_NAME = "checkCarName"
+const V_TRY = "checkTry"
 
 class RacingController {
   #model;
@@ -32,14 +34,24 @@ class RacingController {
   #readCarName(input) {
     if(this.#hasErrorOccurredByCheck(input,V_CAR_NAME)) return this.#retry(CAR_NAME);
     this.#model.saveCarName(input)
+    this.#inputTry()
+  }
+
+  #inputTry() {
+    this.#view.readTry(this.#readTry.bind(this));
+  }
+
+  #readTry(input) {
+    if(this.#hasErrorOccurredByCheck(input,V_TRY)) return this.#retry(TRY);
+    console.log("succes")
   }
   
-   #hasErrorOccurredByCheck(input, name) {
+  #hasErrorOccurredByCheck(input, name) {
     try {
-    this.#validator[name](input);
-    } catch (error) {
-    return this.#handleError(error);
-    }
+        this.#validator[name](input);
+        } catch (error) {
+        return this.#handleError(error);
+        }
     }
 
   #handleError(error) {
@@ -52,6 +64,7 @@ class RacingController {
 
   #retry(input) {
     if (input === 'CarName') return this.#inputCarName();
+    if (input === "try") return this.#inputTry() 
   }
 
 }
