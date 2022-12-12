@@ -1,7 +1,7 @@
 const CarName = require('../../src/Validator/CarName');
 
 describe('CarName', () => {
-    describe('checkComma', () => {
+    describe('checkInput', () => {
         it('콤마와 스페이스로 잘 구분하였을 때', () => {
           expect(() => new CarName ("민수, 영희, 조조")).toBeTruthy()
         });
