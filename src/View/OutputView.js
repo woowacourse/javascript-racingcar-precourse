@@ -1,29 +1,25 @@
 const { Console } = require('@woowacourse/mission-utils');
+const {OUTPUT_MESSAGE} = require("../Constants/view")
 
-const OUTPUT_MESSAGE = {
-    error: (message, name, cause) => `${name} : ${message}\n[CAUSE] : ${cause}`,
-  };
+const NL = '\n'
 
 const OutputView = {
-  print(input) {
-    Console.print(input);
-  },
 
   printError({ message, name, cause }) {
     Console.print(OUTPUT_MESSAGE.error(message, name, cause));
   },
 
   printResult({total, winner}) {
-    Console.print('\n실행 결과\n')
+    Console.print(NL + OUTPUT_MESSAGE.result_start + NL)
     this.multiplePrints(total)
-    Console.print(`최종 우승자 : ${winner.join(", ")}`);
+    Console.print(OUTPUT_MESSAGE.winner(winner));
     Console.close()
   },
 
   multiplePrints(total) {
     total.forEach((result) => {
         this.for(result)
-        Console.print('\n')
+        Console.print(NL)
     })
   },
 

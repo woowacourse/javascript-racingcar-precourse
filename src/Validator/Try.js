@@ -1,9 +1,6 @@
 const ValidationError = require("../Error/ValidationError")
+const ERROR_MESSAGE = require("../Constants/error")
 
-const ERROR_MESSAGE = {
-    number : "숫자만 입력하실 수 있습니다.",
-    zero : "숫자가 0으로 시작할 수 없습니다."
-}
 
 class Try{
 
