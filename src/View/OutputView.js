@@ -14,15 +14,25 @@ const OutputView = {
   },
 
   printResult({total, winner}) {
-    Console.print('실행 결과\n')
+    Console.print('\n실행 결과\n')
+    this.multiplePrints(total)
+    Console.print(`최종 우승자 : ${winner.join(", ")}`);
+    Console.close()
+  },
+
+  multiplePrints(total) {
     total.forEach((result) => {
-        for (let car in result){
-            Console.print(`${car}: ${result[car]}`);
-        }
+        this.for(result)
         Console.print('\n')
     })
-    Console.print(`최종 우승자 : ${winner.join(", ")}`);
+  },
+
+  for(result) {
+    for (let car in result){
+        Console.print(`${car}: ${result[car]}`);
+    }
   }
+
 };
 
 module.exports = OutputView;
