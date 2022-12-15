@@ -1,4 +1,7 @@
 const {
+  movingCondition: { START, END, CRITERION },
+} = require('../settings');
+const {
   ERROR_MESSAGE: { carName },
   throwError,
 } = require('../error/ErrorHandler');
@@ -20,6 +23,13 @@ class Car {
 
     const isInvalidCharacter = !/^[a-zA-Z가-힣0-9]*$/.test(name);
     throwError(isInvalidCharacter, carName.character);
+  }
+
+  moveOnce(pickNumber) {
+    const randomNumber = pickNumber(START, END);
+    const isMovable = randomNumber >= CRITERION;
+
+    return { name: this.#name, isMovable };
   }
 }
 
