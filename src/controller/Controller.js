@@ -1,8 +1,12 @@
-const { readCarName } = require('../view/InputView');
+const { readCarName, readTryCount } = require('../view/InputView');
 
 class Controller {
   readCarName() {
     readCarName();
+  }
+
+  readTryCount() {
+    readTryCount();
   }
 }
 

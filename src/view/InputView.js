@@ -21,6 +21,10 @@ const InputView = {
   readCarName(callback) {
     InputView.readInput(InputView.MESSAGE.carName, callback);
   },
+
+  readTryCount(callback) {
+    InputView.readInput(InputView.MESSAGE.tryCount, callback);
+  },
 };
 
 module.exports = InputView;
