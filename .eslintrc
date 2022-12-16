@@ -1,0 +1,21 @@
+{
+  "extends": ["airbnb-base"],
+  "env": {
+    "node": true,
+    "es6": true,
+    "browser": true,
+    "jest": true
+  },
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "rules": {
+    "max-lines-per-function": ["error", 10],
+    "max-depth": ["error", 2],
+    "max-params": ["error", 3],
+    "consistent-return": "off",
+    "object-curly-newline": "off",
+    "implicit-arrow-linebreak": "off"
+  }
+}
