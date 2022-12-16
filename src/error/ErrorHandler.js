@@ -1,5 +1,3 @@
-const { Console } = require('@woowacourse/mission-utils');
-
 const PREFIX = '[ERROR]';
 
 const ErrorHandler = {
@@ -16,9 +14,14 @@ const ErrorHandler = {
 
   throwError(isInvalid, message) {
     if (isInvalid) {
-      Console.print(message);
       throw new Error(message);
     }
+  },
+
+  validateTryCount(tryCount) {
+    const isNotNaturalNumber = !(/^\d+$/.test(tryCount) && Number(tryCount));
+
+    ErrorHandler.throwError(isNotNaturalNumber, ErrorHandler.ERROR_MESSAGE.tryCount.naturalNumber);
   },
 };
 
