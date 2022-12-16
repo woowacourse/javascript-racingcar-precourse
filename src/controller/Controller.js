@@ -1,7 +1,8 @@
-const { Random } = require('@woowacourse/mission-utils');
+const { Random, Console } = require('@woowacourse/mission-utils');
+const { validateTryCount } = require('../error/ErrorHandler');
 const CarGame = require('../model/CarGame');
 const { readCarName, readTryCount } = require('../view/InputView');
-const { printStart } = require('../view/OutputView');
+const { printStart, printMovingResult, printWinner } = require('../view/OutputView');
 
 class Controller {
   #carGame = new CarGame();
@@ -19,10 +20,24 @@ class Controller {
   }
 
   askTryCount() {
-    readTryCount();
+    readTryCount(this.moveAll.bind(this, Random.pickNumberInRange));
   }
 
-  move(pickNumber) {}
+  moveOnce(pickNumber) {
+    const movingResult = this.#carGame.moveOnce(pickNumber);
+
+    printMovingResult(movingResult);
+    return movingResult;
+  }
+
+  moveAll(pickNumber, tryCount) {
+    validateTryCount(tryCount);
+    let movingResult;
+
+    for (let index = 0; index < Number(tryCount); index += 1) {
+      movingResult = this.moveOnce(pickNumber);
+    }
+  }
 }
 
 module.exports = Controller;
