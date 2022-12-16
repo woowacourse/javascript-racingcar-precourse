@@ -9,6 +9,8 @@ const {
 class Car {
   #name;
 
+  #moveCount = 0;
+
   constructor(name) {
     Car.validate(name);
     this.#name = name;
@@ -29,7 +31,9 @@ class Car {
     const randomNumber = pickNumber(START, END);
     const isMovable = randomNumber >= CRITERION;
 
-    return { name: this.#name, isMovable };
+    if (isMovable) this.#moveCount += 1;
+
+    return { name: this.#name, moveCount: this.#moveCount };
   }
 }
 

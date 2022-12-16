@@ -37,6 +37,19 @@ class Controller {
     for (let index = 0; index < Number(tryCount); index += 1) {
       movingResult = this.moveOnce(pickNumber);
     }
+
+    Controller.win(movingResult);
+  }
+
+  static win(movingResult) {
+    const winners = CarGame.getWinner(movingResult);
+    printWinner(winners);
+
+    Controller.quit();
+  }
+
+  static quit() {
+    Console.close();
   }
 }
 
