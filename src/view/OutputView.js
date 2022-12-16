@@ -20,6 +20,10 @@ const OutputView = {
   printMovingResult(movingResult) {
     Console.print(OutputView.getMovingResult(movingResult));
   },
+
+  printWinner(winners) {
+    Console.print(`${OutputView.MESSAGE.winner}: ${winners.join(', ')}`);
+  },
 };
 
 module.exports = OutputView;
